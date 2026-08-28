@@ -74,6 +74,11 @@ class ClaudeFlow(PlatformFlow):
     # match ENUMERATION's description text.
     ERASURE_DISPATCH = {
         "Delete conversation": "_delete_conversation",
+        # FILE-substudy aliases -- same underlying methods, just the
+        # FILE SUBSTUDY sheet's "Erasure condition" column phrases these
+        # differently than MASTER's "Erasure desc" column does.
+        "Delete conversation containing file": "_delete_conversation",
+        "Maximal combination (all erasure mechanisms)": "_erase_maximal",
         "Delete individual memory edit": "_delete_individual_memory_edit",
         "Clear all memories": "_clear_all_memories",
         "NL forget command": "_send_nl_forget",  # chat message, not a UI click
@@ -83,6 +88,42 @@ class ClaudeFlow(PlatformFlow):
     def new_conversation(self) -> None:
         self.page.goto("https://claude.ai/new")
         self.page.wait_for_timeout(1500)
+
+    def _last_reply_text(self) -> str:
+        els = self.page.query_selector_all(".standard-markdown")
+        return els[-1].inner_text() if els else ""
+
+    def _wait_for_reply(self, before_count: int) -> str:
+        """Shared by send_message() and upload_file() -- waits for a new
+        .standard-markdown reply to appear, then for its text to settle
+        (stop changing across 2 consecutive 1s checks) before returning
+        it, since Claude streams replies in incrementally."""
+        deadline_ms = 60000
+        waited_ms = 0
+        while waited_ms < deadline_ms:
+            if len(self.page.query_selector_all(".standard-markdown")) > before_count:
+                break
+            self.page.wait_for_timeout(1000)
+            waited_ms += 1000
+        else:
+            raise RuntimeError("_wait_for_reply: no new reply appeared within 60s")
+
+        prev_text = None
+        stable_checks = 0
+        waited_ms = 0
+        while waited_ms < 60000:
+            self.page.wait_for_timeout(1000)
+            waited_ms += 1000
+            cur_text = self._last_reply_text()
+            if cur_text and cur_text == prev_text:
+                stable_checks += 1
+                if stable_checks >= 2:
+                    break
+            else:
+                stable_checks = 0
+            prev_text = cur_text
+
+        return self._last_reply_text()
 
     def send_message(self, text: str) -> str:
         before = len(self.page.query_selector_all(".standard-markdown"))
@@ -97,38 +138,33 @@ class ClaudeFlow(PlatformFlow):
         # clickable" check, so the click can silently not register as a
         # real send. A short wait here reproduced reliably fixing it.
         self.page.wait_for_timeout(500)
-        self.page.locator('[aria-label="Send message"]').click(force=True, timeout=10000)
+        self.page.locator('[aria-label="Send message"]:not([disabled])').click(force=True, timeout=10000)
 
-        def _last_reply_text() -> str:
-            els = self.page.query_selector_all(".standard-markdown")
-            return els[-1].inner_text() if els else ""
+        return self._wait_for_reply(before)
 
-        deadline_ms = 60000
-        waited_ms = 0
-        while waited_ms < deadline_ms:
-            if len(self.page.query_selector_all(".standard-markdown")) > before:
-                break
-            self.page.wait_for_timeout(1000)
-            waited_ms += 1000
-        else:
-            raise RuntimeError("send_message: no new reply appeared within 60s")
+    def upload_file(self, file_path: str, caption: str | None = None) -> str:
+        """FILE-substudy cells: attach a document via the real (hidden)
+        <input type="file"> found live 2026-08-28 --
+        #chat-input-file-upload-onpage, directly reachable via
+        set_input_files() without needing to click the "Add files"
+        button first or intercept a native file-chooser dialog. Confirmed
+        live: attaching produces a real visible PDF thumbnail chip in the
+        composer before sending. caption=None (the default) sends the
+        file with no accompanying message -- a silent upload, closest to
+        "here's a doc for reference" rather than an explicit instruction
+        about it."""
+        before = len(self.page.query_selector_all(".standard-markdown"))
 
-        prev_text = None
-        stable_checks = 0
-        waited_ms = 0
-        while waited_ms < 60000:
-            self.page.wait_for_timeout(1000)
-            waited_ms += 1000
-            cur_text = _last_reply_text()
-            if cur_text and cur_text == prev_text:
-                stable_checks += 1
-                if stable_checks >= 2:
-                    break
-            else:
-                stable_checks = 0
-            prev_text = cur_text
+        self.page.set_input_files('#chat-input-file-upload-onpage', file_path)
+        self.page.wait_for_timeout(2000)
 
-        return _last_reply_text()
+        if caption:
+            self.page.locator('[data-testid="chat-input"]').click(force=True, timeout=10000)
+            self.page.keyboard.type(caption)
+            self.page.wait_for_timeout(500)
+
+        self.page.locator('[aria-label="Send message"]:not([disabled])').click(force=True, timeout=10000)
+        return self._wait_for_reply(before)
 
     def _open_memory_settings(self) -> None:
         """Idempotent by design -- confirmed live 2026-08-27 that calling

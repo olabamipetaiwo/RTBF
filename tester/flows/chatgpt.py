@@ -17,10 +17,11 @@ into the summary's "Ask or update" box, which is functionally closer to I2
 _delete_individual_memory_entry() below; needs a DECISIONS update, not a
 selector fix.
 
-Two of 7 erasure rows are still VERIFY/PROVISIONAL (E5 field-clear vs.
-toggle on Q6, E6 bulk-history-delete on Q5) -- Q6 is now moot per the above
-(there's no toggle, just a text field), Q5 (bulk chat history delete)
-hasn't been located live yet.
+Both of the originally VERIFY/PROVISIONAL erasure rows are now resolved:
+Q6 (E5 field-clear vs. toggle) is moot per the above (there's no toggle,
+just a text field). Q5 (E6, bulk chat history delete) confirmed live
+2026-08-28: it genuinely exists, under Settings > Data controls > "Delete
+all" ("Delete all chats") -- see _clear_all_chat_history_bulk().
 """
 
 from __future__ import annotations
@@ -36,10 +37,14 @@ class ChatGPTFlow(PlatformFlow):
     ERASURE_DISPATCH = {
         "NL forget prompt": "_send_nl_forget",  # chat message, not a UI click
         "Delete conversation": "_delete_conversation",
+        # FILE-substudy aliases -- see flows/claude.py's ERASURE_DISPATCH
+        # for why these exist (same methods, different sheet phrasing).
+        "Delete conversation containing file": "_delete_conversation",
+        "Maximal combination (all erasure mechanisms)": "_erase_maximal",
         "Delete individual memory entry": "_delete_individual_memory_entry",
         "Clear all memories": "_clear_all_memories",
         "Clear custom instructions": "_clear_custom_instructions",  # VERIFY, Q6 -- field-clear vs. toggle, see method docstring
-        "Clear all chat history (bulk)": "_clear_all_chat_history_bulk",  # PROVISIONAL, Q5
+        "Clear all chat history (bulk)": "_clear_all_chat_history_bulk",  # confirmed live 2026-08-28, Q5
         "MAXIMAL": "_erase_maximal",
     }
 
@@ -53,40 +58,32 @@ class ChatGPTFlow(PlatformFlow):
         self.page.locator('[data-testid="create-new-chat-button"]').first.click(force=True, timeout=10000)
         self.page.wait_for_timeout(1500)
 
-    def send_message(self, text: str) -> str:
-        before = len(self.page.query_selector_all('[data-message-author-role="assistant"]'))
+    def _last_assistant_text(self) -> str:
+        turns = self.page.query_selector_all('[data-message-author-role="assistant"]')
+        return turns[-1].inner_text() if turns else ""
 
-        self.page.locator("#prompt-textarea").click(force=True, timeout=10000)
-        self.page.keyboard.type(text)
-        self.page.locator('[data-testid="send-button"]').click(force=True, timeout=10000)
-
-        # Wait for a NEW assistant turn to appear (turn count increases),
-        # not just for the send-button selector to exist -- it exists
-        # before, during, and after sending, so it's not a useful signal by
-        # itself. Poll rather than wait_for_selector for that reason.
+    def _wait_for_reply(self, before_count: int) -> str:
+        """Shared by send_message() and upload_file(). Waits for a NEW
+        assistant turn to appear (turn count increases), not just for the
+        send-button selector to exist -- it exists before, during, and
+        after sending, so it's not a useful signal by itself. Then waits
+        for streaming to finish by polling until the response text stops
+        changing between checks -- the send-button testid doesn't
+        reliably flip back to a stable "done" state to wait on (confirmed
+        live 2026-08-27). Re-queries fresh each poll rather than reusing
+        one ElementHandle -- React replaces (not mutates) the streaming
+        turn's DOM node, so a handle captured early goes stale and reads
+        back empty forever (confirmed live 2026-08-27)."""
         deadline_ms = 60000
         waited_ms = 0
         while waited_ms < deadline_ms:
             turns = self.page.query_selector_all('[data-message-author-role="assistant"]')
-            if len(turns) > before:
+            if len(turns) > before_count:
                 break
             self.page.wait_for_timeout(1000)
             waited_ms += 1000
         else:
-            raise RuntimeError("send_message: no new assistant turn appeared within 60s")
-
-        # Then wait for streaming to finish by polling until the response
-        # text stops changing between checks -- the send-button testid
-        # doesn't reliably flip back to a stable "done" state to wait on
-        # (confirmed live 2026-08-27: waiting on it timed out even after
-        # the reply had clearly finished rendering).
-        # Re-query fresh each poll rather than reusing one ElementHandle --
-        # React replaces (not mutates) the streaming turn's DOM node, so a
-        # handle captured early goes stale and reads back empty forever
-        # (confirmed live 2026-08-27).
-        def _last_assistant_text() -> str:
-            turns = self.page.query_selector_all('[data-message-author-role="assistant"]')
-            return turns[-1].inner_text() if turns else ""
+            raise RuntimeError("_wait_for_reply: no new assistant turn appeared within 60s")
 
         prev_text = None
         stable_checks = 0
@@ -94,7 +91,7 @@ class ChatGPTFlow(PlatformFlow):
         while waited_ms < 60000:
             self.page.wait_for_timeout(1000)
             waited_ms += 1000
-            cur_text = _last_assistant_text()
+            cur_text = self._last_assistant_text()
             if cur_text and cur_text == prev_text:
                 stable_checks += 1
                 if stable_checks >= 2:
@@ -103,7 +100,37 @@ class ChatGPTFlow(PlatformFlow):
                 stable_checks = 0
             prev_text = cur_text
 
-        return _last_assistant_text()
+        return self._last_assistant_text()
+
+    def send_message(self, text: str) -> str:
+        before = len(self.page.query_selector_all('[data-message-author-role="assistant"]'))
+
+        self.page.locator("#prompt-textarea").click(force=True, timeout=10000)
+        self.page.keyboard.type(text)
+        self.page.locator('[data-testid="send-button"]').click(force=True, timeout=10000)
+
+        return self._wait_for_reply(before)
+
+    def upload_file(self, file_path: str, caption: str | None = None) -> str:
+        """FILE-substudy cells: attach a document via the real (hidden)
+        <input type="file" id="upload-files"> found live 2026-08-28 --
+        the only one of 3 file inputs present (upload-files/upload-photos/
+        upload-camera) without an image-only accept restriction. Directly
+        reachable via set_input_files(), no need to click "Add files and
+        more" first. caption=None (default) sends the file with no
+        accompanying message."""
+        before = len(self.page.query_selector_all('[data-message-author-role="assistant"]'))
+
+        self.page.set_input_files('#upload-files', file_path)
+        self.page.wait_for_timeout(2000)
+
+        if caption:
+            self.page.locator("#prompt-textarea").click(force=True, timeout=10000)
+            self.page.keyboard.type(caption)
+            self.page.wait_for_timeout(500)
+
+        self.page.locator('[data-testid="send-button"]').click(force=True, timeout=10000)
+        return self._wait_for_reply(before)
 
     def _open_settings_personalization(self) -> None:
         self.page.goto("https://chatgpt.com/#settings/Personalization")
@@ -136,12 +163,27 @@ class ChatGPTFlow(PlatformFlow):
         Overview text -- this is now an AI-generated summary, not a raw
         list of stored facts, so exact-string matching against the
         referent/token may need to tolerate paraphrase. See module
-        docstring."""
+        docstring.
+
+        Closes both the Memory dialog and the Settings overlay (2
+        Escape presses) before returning -- confirmed live 2026-08-28
+        this is genuinely needed: leaving them open breaks a subsequent
+        new_conversation() call (the composer/send-button never render
+        while the Settings hash-route overlay is still active), which
+        surfaced as a real send_message() timeout in
+        _run_recall_probes()'s R3 step the first time this method was
+        exercised as part of a real recall run. Same shape of bug as
+        Claude's _open_memory_settings() (see that module's docstring)."""
         self._open_settings_personalization()
         self.page.get_by_role("button", name="Manage", exact=True).first.click()
         self.page.wait_for_timeout(1500)
         dialog = self.page.query_selector_all('[role="dialog"]')[-1]
-        return dialog.inner_text()
+        text = dialog.inner_text()
+        self.page.keyboard.press("Escape")
+        self.page.wait_for_timeout(500)
+        self.page.keyboard.press("Escape")
+        self.page.wait_for_timeout(800)
+        return text
 
     # --- ERASURE_DISPATCH targets ---
 
@@ -184,7 +226,15 @@ class ChatGPTFlow(PlatformFlow):
         (aria-label "About You menu") -> "Delete and turn off memory".
         Note the real UI combines clear + disable in one action -- there is
         no clear-without-disabling variant, worth noting as a caveat on
-        this cell's outcome coding."""
+        this cell's outcome coding. Confirmed live 2026-08-28: a real
+        confirm dialog follows ("Delete and turn off memory? ... Delete
+        and turn off memory / Cancel"), needs its own click -- the earlier
+        caveat about this being unverified is resolved. Also confirmed:
+        this genuinely disables the "Enable memory" toggle in
+        Personalization settings, not just this dialog's own framing --
+        re-enable it manually (Personalization -> "Enable memory" switch)
+        before running any further memory-dependent cells on this
+        account."""
         self._open_settings_personalization()
         self.page.get_by_role("button", name="Manage", exact=True).first.click()
         self.page.wait_for_timeout(1500)
@@ -192,8 +242,14 @@ class ChatGPTFlow(PlatformFlow):
         self.page.wait_for_timeout(500)
         self.page.get_by_role("menuitem", name="Delete and turn off memory").click()
         self.page.wait_for_timeout(1000)
-        # Confirmation dialog selector not yet captured -- if one appears,
-        # this will need a follow-up click; verify live before trusting.
+        self.page.locator('[role="dialog"], [role="alertdialog"]').last.get_by_role(
+            "button", name="Delete and turn off memory", exact=True
+        ).click(force=True)
+        self.page.wait_for_timeout(2000)
+        self.page.keyboard.press("Escape")
+        self.page.wait_for_timeout(500)
+        self.page.keyboard.press("Escape")
+        self.page.wait_for_timeout(500)
 
     def _clear_custom_instructions(self) -> None:
         """Confirmed live 2026-08-27: this is a genuine text field, not a
@@ -203,10 +259,34 @@ class ChatGPTFlow(PlatformFlow):
         self._fill_custom_instructions("")
 
     def _clear_all_chat_history_bulk(self) -> None:
-        """PROVISIONAL (Q5, default IN): not yet located live -- likely
-        under Settings -> Data controls, not Personalization. Needs a
-        follow-up selector pass before this cell can run."""
-        raise NotImplementedError
+        """E6: confirmed live 2026-08-28 (DECISIONS Q5) -- genuinely
+        exists as a real "Delete all chats" action, under Settings > Data
+        controls (not Personalization, and not the Archive-all button
+        right above it -- easy to mix up, "Archive all" is a different
+        control on the same panel). Path: profile menu -> Settings ->
+        Data controls tab -> "Delete all" button
+        (aria-label="Delete all Delete all chats") -> a real confirm
+        dialog ("Clear your chat history - are you sure? This will
+        delete all chats, including chats in Projects.") -> "Confirm
+        deletion". Verified with a real persistence check (4 conversations
+        -> 0 after reload). The confirm dialog's own text notes memory is
+        a separate system ("To clear any memories from your chats, visit
+        your settings") -- confirms this doesn't overlap with
+        _clear_all_memories()."""
+        self.page.click('[data-testid="accounts-profile-button"]', force=True)
+        self.page.wait_for_timeout(800)
+        self.page.click("text=Settings", force=True)
+        self.page.wait_for_timeout(1000)
+        self.page.click("text=Data controls", force=True)
+        self.page.wait_for_timeout(1000)
+        self.page.click('button[aria-label="Delete all Delete all chats"]', force=True)
+        self.page.wait_for_timeout(800)
+        self.page.locator('[role="dialog"], [role="alertdialog"]').last.get_by_role(
+            "button", name="Confirm deletion", exact=True
+        ).click(force=True)
+        self.page.wait_for_timeout(2000)
+        self.page.keyboard.press("Escape")
+        self.page.wait_for_timeout(500)
 
     def _erase_maximal(self) -> None:
         """E7: all singles combined in one setup (design rule)."""

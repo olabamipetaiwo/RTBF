@@ -50,6 +50,13 @@ class GeminiFlow(PlatformFlow):
     ERASURE_DISPATCH = {
         "NL forget prompt": "_send_nl_forget",  # chat message, not a UI click
         "Delete single conversation": "_delete_conversation",
+        # FILE-substudy aliases -- see flows/claude.py's ERASURE_DISPATCH
+        # for why these exist. MAXIMAL's alias still hits the same
+        # cross-domain _delete_all_activity() block as the main battery's
+        # GE-*-E6 cells -- not resolved by this alias, just correctly
+        # mapped to the same (currently blocked) method.
+        "Delete conversation containing file": "_delete_conversation",
+        "Maximal combination (all erasure mechanisms)": "_erase_maximal",
         "Delete all activity": "_delete_all_activity",  # cross-domain, blocked on session capture -- see module docstring
         "Delete single Saved info item": "_delete_saved_info_item",
         "Delete all Saved info": "_delete_all_saved_info",
@@ -73,30 +80,24 @@ class GeminiFlow(PlatformFlow):
     def new_conversation(self) -> None:
         self._goto_fresh("https://gemini.google.com/app")
 
-    def send_message(self, text: str) -> str:
-        before = len(self.page.query_selector_all(".model-response-text"))
+    def _last_response_text(self) -> str:
+        els = self.page.query_selector_all(".model-response-text")
+        return els[-1].inner_text() if els else ""
 
-        self.page.locator('[aria-label="Enter a prompt for Gemini"]').click(force=True, timeout=10000)
-        self.page.keyboard.type(text)
-        self.page.locator('[aria-label="Send message"]').click(force=True, timeout=10000)
-
-        # Poll for a new response block, then for its text to stabilize --
-        # same rationale as ChatGPT's send_message(): re-query fresh each
-        # time rather than holding one stale ElementHandle, since the
-        # framework replaces (not mutates) the streaming node.
-        def _last_response_text() -> str:
-            els = self.page.query_selector_all(".model-response-text")
-            return els[-1].inner_text() if els else ""
-
+    def _wait_for_reply(self, before_count: int) -> str:
+        """Shared by send_message() and upload_file(). Poll for a new
+        response block, then for its text to stabilize -- re-query fresh
+        each time rather than holding one stale ElementHandle, since the
+        framework replaces (not mutates) the streaming node."""
         deadline_ms = 60000
         waited_ms = 0
         while waited_ms < deadline_ms:
-            if len(self.page.query_selector_all(".model-response-text")) > before:
+            if len(self.page.query_selector_all(".model-response-text")) > before_count:
                 break
             self.page.wait_for_timeout(1000)
             waited_ms += 1000
         else:
-            raise RuntimeError("send_message: no new response appeared within 60s")
+            raise RuntimeError("_wait_for_reply: no new response appeared within 60s")
 
         prev_text = None
         stable_checks = 0
@@ -104,7 +105,7 @@ class GeminiFlow(PlatformFlow):
         while waited_ms < 60000:
             self.page.wait_for_timeout(1000)
             waited_ms += 1000
-            cur_text = _last_response_text()
+            cur_text = self._last_response_text()
             if cur_text and cur_text == prev_text:
                 stable_checks += 1
                 if stable_checks >= 2:
@@ -113,7 +114,42 @@ class GeminiFlow(PlatformFlow):
                 stable_checks = 0
             prev_text = cur_text
 
-        return _last_response_text()
+        return self._last_response_text()
+
+    def send_message(self, text: str) -> str:
+        before = len(self.page.query_selector_all(".model-response-text"))
+
+        self.page.locator('[aria-label="Enter a prompt for Gemini"]').click(force=True, timeout=10000)
+        self.page.keyboard.type(text)
+        self.page.locator('[aria-label="Send message"]').click(force=True, timeout=10000)
+
+        return self._wait_for_reply(before)
+
+    def upload_file(self, file_path: str, caption: str | None = None) -> str:
+        """FILE-substudy cells: attach a document via one of the two
+        hidden <input type="file"> elements found live 2026-08-28 after
+        clicking "Upload & tools" (no unique id/selector distinguishes
+        them from each other, but both accept .pdf among many other
+        extensions -- .first works fine). Directly reachable via
+        set_input_files() once the "Upload & tools" menu has been opened
+        once (the inputs don't exist in the DOM before that). Confirmed
+        live: produces a real "File uploaded <filename>.pdf" confirmation
+        chip before sending. caption=None (default) sends the file with
+        no accompanying message."""
+        before = len(self.page.query_selector_all(".model-response-text"))
+
+        self.page.click('[aria-label="Upload & tools"]', force=True)
+        self.page.wait_for_timeout(800)
+        self.page.locator('input[type="file"]').first.set_input_files(file_path)
+        self.page.wait_for_timeout(2000)
+
+        if caption:
+            self.page.locator('[aria-label="Enter a prompt for Gemini"]').click(force=True, timeout=10000)
+            self.page.keyboard.type(caption)
+            self.page.wait_for_timeout(500)
+
+        self.page.locator('[aria-label="Send message"]').click(force=True, timeout=10000)
+        return self._wait_for_reply(before)
 
     def set_memory_field(self, text: str) -> None:
         """I2 for Gemini: "Saved info" (UI label "Instructions for

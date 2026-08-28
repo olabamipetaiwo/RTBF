@@ -52,6 +52,10 @@ class DeepSeekFlow(PlatformFlow):
     # sheet's Erasure desc column), matching MASTER's description text.
     ERASURE_DISPATCH = {
         "Delete single conversation": "_delete_single_conversation",
+        # FILE-substudy aliases -- see flows/claude.py's ERASURE_DISPATCH
+        # for why these exist.
+        "Delete conversation containing file": "_delete_single_conversation",
+        "Maximal combination (all erasure mechanisms)": "_erase_maximal",
         "Delete all history": "_delete_all_history",  # confirmed live -- exists via Multi-select, see module docstring
         "NL forget prompt": "_send_nl_forget",  # chat message, not a UI click
         "MAXIMAL": "_erase_maximal",
@@ -73,37 +77,33 @@ class DeepSeekFlow(PlatformFlow):
         self.page.wait_for_timeout(1500)
         self._dismiss_cookie_banner()
 
-    def send_message(self, text: str) -> str:
-        self._dismiss_cookie_banner()
-        before = len(self.page.query_selector_all(".ds-markdown"))
+    def _last_reply_text(self) -> str:
+        els = self.page.query_selector_all(".ds-markdown")
+        return els[-1].inner_text() if els else ""
 
-        self.page.locator('textarea[placeholder="Message DeepSeek"]').click(force=True, timeout=10000)
-        self.page.keyboard.type(text)
-        # With the cookie banner dismissed above, this should be the only
-        # match -- if a second ds-button--primary shows up again for some
-        # other reason, that's worth investigating live, not silently
-        # picking one.
+    def _click_primary_send_button(self) -> None:
+        """Shared by send_message() and upload_file(). With the cookie
+        banner dismissed, this should be the only match -- if a second
+        ds-button--primary shows up again for some other reason, that's
+        worth investigating live, not silently picking one."""
         send_btns = self.page.query_selector_all('[role="button"].ds-button--primary')
         if len(send_btns) != 1:
             raise RuntimeError(
-                f"send_message: expected exactly 1 primary button (the send button), found {len(send_btns)} "
+                f"expected exactly 1 primary button (the send button), found {len(send_btns)} "
                 "-- investigate live before trusting which one is the real send button."
             )
         send_btns[0].click(force=True)
 
-        def _last_reply_text() -> str:
-            els = self.page.query_selector_all(".ds-markdown")
-            return els[-1].inner_text() if els else ""
-
+    def _wait_for_reply(self, before_count: int) -> str:
         deadline_ms = 60000
         waited_ms = 0
         while waited_ms < deadline_ms:
-            if len(self.page.query_selector_all(".ds-markdown")) > before:
+            if len(self.page.query_selector_all(".ds-markdown")) > before_count:
                 break
             self.page.wait_for_timeout(1000)
             waited_ms += 1000
         else:
-            raise RuntimeError("send_message: no new reply appeared within 60s")
+            raise RuntimeError("_wait_for_reply: no new reply appeared within 60s")
 
         prev_text = None
         stable_checks = 0
@@ -111,7 +111,7 @@ class DeepSeekFlow(PlatformFlow):
         while waited_ms < 60000:
             self.page.wait_for_timeout(1000)
             waited_ms += 1000
-            cur_text = _last_reply_text()
+            cur_text = self._last_reply_text()
             if cur_text and cur_text == prev_text:
                 stable_checks += 1
                 if stable_checks >= 2:
@@ -120,7 +120,38 @@ class DeepSeekFlow(PlatformFlow):
                 stable_checks = 0
             prev_text = cur_text
 
-        return _last_reply_text()
+        return self._last_reply_text()
+
+    def send_message(self, text: str) -> str:
+        self._dismiss_cookie_banner()
+        before = len(self.page.query_selector_all(".ds-markdown"))
+
+        self.page.locator('textarea[placeholder="Message DeepSeek"]').click(force=True, timeout=10000)
+        self.page.keyboard.type(text)
+        self._click_primary_send_button()
+
+        return self._wait_for_reply(before)
+
+    def upload_file(self, file_path: str, caption: str | None = None) -> str:
+        """FILE-substudy cells: attach a document via the real (hidden)
+        <input type="file"> found live 2026-08-28 -- directly reachable
+        via set_input_files(), no attach button needed (DeepSeek's icon
+        row has no distinguishing text/aria-label to click through
+        anyway). .pdf is in its accept list. caption=None (default)
+        sends the file with no accompanying message."""
+        self._dismiss_cookie_banner()
+        before = len(self.page.query_selector_all(".ds-markdown"))
+
+        self.page.locator('input[type="file"]').first.set_input_files(file_path)
+        self.page.wait_for_timeout(2000)
+
+        if caption:
+            self.page.locator('textarea[placeholder="Message DeepSeek"]').click(force=True, timeout=10000)
+            self.page.keyboard.type(caption)
+            self.page.wait_for_timeout(500)
+
+        self._click_primary_send_button()
+        return self._wait_for_reply(before)
 
     def set_memory_field(self, text: str) -> None:
         """Not applicable -- DeepSeek has no I2/I3 injection surface, no

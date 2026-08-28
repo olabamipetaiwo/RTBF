@@ -75,6 +75,17 @@ class PerplexityFlow(PlatformFlow):
     # check stealth can address.
     USE_STEALTH = True
 
+    # DECISIONS Q7 confirmed live: this Free-tier test account is 403'd
+    # out of Memory entirely -- read_memory_settings() was never
+    # implemented (correctly) since there's nothing reachable to read.
+    # Without this override, base.py's default HAS_MEMORY_UI = True would
+    # make any caller that checks it (e.g. the FILE substudy's
+    # _verify_file_injection() in run_cell.py) call
+    # read_memory_settings() and hit its NotImplementedError instead of
+    # skipping it cleanly -- same pattern as deepseek.py's own (genuinely
+    # memory-feature-less) HAS_MEMORY_UI = False.
+    HAS_MEMORY_UI = False
+
     # Set once I2's real target is confirmed live -- default (empty) means
     # I2 routes to send_message() like Claude/ChatGPT/Copilot; add "I2"
     # here if it turns out to target a dedicated field instead, like
@@ -87,6 +98,12 @@ class PerplexityFlow(PlatformFlow):
     # really separate actions.
     ERASURE_DISPATCH = {
         "NL forget prompt": "_send_nl_forget",  # chat message, not a UI click
+        # FILE-substudy aliases -- see flows/claude.py's ERASURE_DISPATCH
+        # for why these exist. MAXIMAL's alias hits the same Q7 tier-gate
+        # block as the main battery's PE-*-E6 cells (calls memory-clear
+        # methods that are NotImplementedError on this Free-tier account).
+        "Delete conversation containing file": "_delete_single_thread",
+        "Maximal combination (all erasure mechanisms)": "_erase_maximal",
         "Delete single thread": "_delete_single_thread",
         "Delete all threads": "_delete_all_threads",
         "Delete individual memory": "_delete_individual_memory",
@@ -127,19 +144,23 @@ class PerplexityFlow(PlatformFlow):
         self.page.wait_for_timeout(500)
         self.page.locator('button[aria-label="Submit"]').click(force=True)
 
-        def _last_reply_text() -> str:
-            els = self.page.query_selector_all('[class*="prose"]')
-            return els[-1].inner_text() if els else ""
+        return self._wait_for_reply(before)
 
+    def _last_reply_text(self) -> str:
+        els = self.page.query_selector_all('[class*="prose"]')
+        return els[-1].inner_text() if els else ""
+
+    def _wait_for_reply(self, before_count: int) -> str:
+        """Shared by send_message() and upload_file()."""
         deadline_ms = 60000
         waited_ms = 0
         while waited_ms < deadline_ms:
-            if len(self.page.query_selector_all('[class*="prose"]')) > before:
+            if len(self.page.query_selector_all('[class*="prose"]')) > before_count:
                 break
             self.page.wait_for_timeout(1000)
             waited_ms += 1000
         else:
-            raise RuntimeError("send_message: no new reply appeared within 60s")
+            raise RuntimeError("_wait_for_reply: no new reply appeared within 60s")
 
         prev_text = None
         stable_checks = 0
@@ -147,7 +168,7 @@ class PerplexityFlow(PlatformFlow):
         while waited_ms < 60000:
             self.page.wait_for_timeout(1000)
             waited_ms += 1000
-            cur_text = _last_reply_text()
+            cur_text = self._last_reply_text()
             if cur_text and cur_text == prev_text:
                 stable_checks += 1
                 if stable_checks >= 2:
@@ -156,7 +177,30 @@ class PerplexityFlow(PlatformFlow):
                 stable_checks = 0
             prev_text = cur_text
 
-        return _last_reply_text()
+        return self._last_reply_text()
+
+    def upload_file(self, file_path: str, caption: str | None = None) -> str:
+        """FILE-substudy cells: attach a document via the real (hidden)
+        <input type="file"> found live 2026-08-28 -- directly reachable
+        via set_input_files(), no need to click "Add files or tools"
+        first. .pdf is in its accept list. Unlike Claude/ChatGPT/Copilot/
+        Gemini, send_message()'s own docstring notes the Submit button
+        doesn't exist in the DOM until the composer has TEXT content --
+        confirm live whether attaching a file alone is enough before
+        trusting caption=None works the same way here."""
+        self._dismiss_cookie_banner()
+        before = len(self.page.query_selector_all('[class*="prose"]'))
+
+        self.page.locator('input[type="file"]').first.set_input_files(file_path)
+        self.page.wait_for_timeout(2000)
+
+        if caption:
+            self.page.locator('#ask-input').click(force=True)
+            self.page.keyboard.type(caption)
+            self.page.wait_for_timeout(500)
+
+        self.page.locator('button[aria-label="Submit"]').click(force=True, timeout=10000)
+        return self._wait_for_reply(before)
 
     def set_memory_field(self, text: str) -> None:
         """Only used if I2 turns out to target a field, not chat -- confirm

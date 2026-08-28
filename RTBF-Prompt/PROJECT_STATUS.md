@@ -329,14 +329,25 @@ product change reintroduces the surface. MASTER now has 18 ChatGPT rows
 `VERIFY` to `LOCKED` status -- confirmed live, resolves DECISIONS Q6 as a
 genuine field-clear (not a toggle).
 
+**Update, 2026-08-28**: `_clear_all_chat_history_bulk` (E6, DECISIONS Q5)
+resolved -- the user pointed to the real path (profile icon > Settings >
+Data controls > "Delete all"), confirmed live: a genuine bulk action,
+distinct from per-conversation delete, with its own confirm dialog
+("Clear your chat history - are you sure? This will delete all chats,
+including chats in Projects.") and verified working via a real
+persistence check (conversations 4 -> 0, then 1 -> 0 again through the
+actual class method). The confirm dialog's own text confirms E6 doesn't
+overlap with memory ("To clear any memories from your chats, visit your
+settings"). `CH-I1-E6`/`CH-I2-E6`/`CH-I3-E6` moved from `PROVISIONAL` to
+`LOCKED` in MASTER.
+
 Still not implemented/verified for ChatGPT: `_send_nl_forget` (E1 -- blocked
 on `erasure_request_sentence()` not being wired into the pipeline, not a
 selector issue), `_clear_all_memories` (E4 -- code exists, not yet run live
-against the account's real memory), `_clear_all_chat_history_bulk` (E6 --
-never located in the live UI; Q5 still open), `_erase_maximal` (E7 --
-depends on the above). These stayed in MASTER as-is (not archived) since
-they're untested, not confirmed broken -- deliberate scope decision, see
-this session's exchange on the archive-vs-cut threshold.
+against the account's real memory), `_erase_maximal` (E7 -- depends on E1).
+These stayed in MASTER as-is (not archived) since they're untested, not
+confirmed broken -- deliberate scope decision, see this session's exchange
+on the archive-vs-cut threshold.
 
 ### Gemini live selector work, 2026-08-27 (`../tester`)
 
@@ -856,6 +867,254 @@ doesn't depend on the qualitative-coding pipeline, only the erasure text
 does, so banking the injection timestamp now means the 48h clock is
 already running by the time that pipeline's output is ready. `erase`
 still refuses for these cells, same as before.
+
+### ChatGPT DECISIONS Q5 resolved + FILE substudy DECISIONS Q14/Q15/Q16 resolved, 2026-08-28
+
+**Q5 (ChatGPT bulk chat-history delete)**: the user pointed to the real
+path (profile icon -> Settings -> Data controls -> "Delete all"), which
+`_clear_all_chat_history_bulk()` (`../tester/flows/chatgpt.py`) never
+managed to locate on its own during the original build. Confirmed live:
+a genuine bulk action distinct from per-conversation delete, with its
+own confirm dialog ("Clear your chat history - are you sure? This will
+delete all chats, including chats in Projects.") whose own text confirms
+it doesn't overlap with memory ("To clear any memories from your chats,
+visit your settings"). Verified with real persistence checks
+(4 conversations -> 0, then again 1 -> 0 through the actual class
+method). `CH-I1-E6`/`CH-I2-E6`/`CH-I3-E6` moved from `PROVISIONAL` to
+`LOCKED` in MASTER.
+
+**FILE substudy (`../tester`'s note: this sheet actually has 12 rows,
+not the 22 this doc's older intro paragraph above states -- that
+paragraph is a dated snapshot from early in the project, left as
+historical record rather than corrected)**: all three of its blocking/
+non-blocking open questions resolved in one pass.
+
+- **Q15** (DeepSeek in or out): IN, confirmed -- matches the default,
+  keeps FILE substudy platform coverage consistent with the main
+  88-cell battery.
+- **Q16** (verification procedure): REVISED, not just accepted as
+  written. The original rule only checked memory/personalization
+  settings for the token post-upload -- which can't distinguish "the
+  platform never read the file" from "the platform read it
+  in-conversation but never persisted it to memory" (both look
+  identical: token absent from settings). Added an in-conversation
+  check as an equal, separate passive check alongside the
+  memory-settings check, both run before the forced-read ("please
+  summarize this document") fallback. Outcome now logged as which
+  specific condition(s) produced extraction (conversation-only /
+  memory-only / both / forced / never), not a single flag. Propagated
+  into all 12 FILE SUBSTUDY rows' "Verification rule" column directly,
+  not just recorded as an abstract decision.
+- **Q14** (PDF template content): originally specified as "mirroring
+  survey Scenario B" -- investigated `RTBF-Prompt/data/RTBF.qsf`
+  directly and found this ambiguous: both a "Scenario A: Urgent
+  Deletion" label and a plain "Scenario B" label are attached to the
+  *same* weather/dog-park vignette text (looks like Loop & Merge
+  sequencing labels, not topic labels), while a separate, differently-
+  labeled Health Scenario vignette (a gender-health-clinic appointment,
+  more sensitive) also exists in the file. Rather than guess which one
+  Q14 meant, the user redirected: don't mirror the survey at all --
+  build the file substudy around the SAME referent+token disclosure
+  convention already used for I1/I2/I3 instead. Final design: one fixed
+  "Notes" template (a short personal to-do-list-style page, a few
+  mundane filler bullets) with the existing per-cell
+  `FILE_CONTENT_TEMPLATE` line ("Note to self: I've been calling
+  {referent} \"{token}\" in my planning notes.") embedded among them --
+  already sitting in the xlsx's Disclosure sentence column for every
+  FILE SUBSTUDY row, no new text generation needed. Real PDFs generated
+  via Playwright's `page.pdf()` (HTML -> PDF, no new dependency) --
+  see `../tester/generate_file_substudy_pdfs.py`, output at
+  `../tester/data/file_substudy_pdfs/<cell_id>.pdf`, one real file per
+  cell using each cell's actual assigned token. Visually verified one
+  (`CL-IF-E-CONV.pdf`) renders cleanly.
+
+**Still not done for the FILE substudy**: `upload_file()` itself is
+still `NotImplementedError` on every platform -- no live investigation
+of any platform's actual "attach a file" UI has happened yet. Today's
+work unblocks *starting* that work (the document to upload now exists
+and the procedure for verifying it is settled); the selector-finding
+pass itself is a separate, not-yet-started task.
+
+### `upload_file()` built for 5/6 platforms, 2026-08-28 (`../tester`)
+
+Same live-investigation-only playbook as every other method this
+session. All 5 confirmed platforms use the identical underlying
+mechanic: a real (usually hidden) `<input type="file">` reachable
+directly via Playwright's `set_input_files()`, no need to click through
+to a native OS file picker. `.pdf` is in every platform's accept list.
+`upload_file(file_path, caption=None)` attaches the file, optionally
+types a caption, clicks Send, and returns the reply -- same contract as
+`send_message()`. Each platform's `send_message()`/`upload_file()` reply-
+waiting logic was refactored into a shared `_wait_for_reply()` helper to
+avoid duplicating the polling loop.
+
+- **Claude**: `#chat-input-file-upload-onpage`.
+- **ChatGPT**: `#upload-files` (two other file inputs exist,
+  `#upload-photos`/`#upload-camera`, both image-only -- this is the one
+  without an accept restriction).
+- **Gemini**: two unlabeled file inputs appear only after clicking
+  "Upload & tools" once; `.first` works. **Needed a fresh cookie export
+  from the user mid-session** -- the existing session authenticated fine
+  for chat but hit a real platform error ("Something went wrong (1100)")
+  specifically on file-processing requests, resolved entirely by the new
+  cookies. Plausibly file-processing needs a fresher/fuller auth grant
+  than plain chat does, not (or not only) rate-limiting.
+- **Copilot**: single unlabeled file input, directly reachable.
+- **DeepSeek**: single unlabeled file input, directly reachable (its own
+  send button still needs the existing exactly-1-primary-button
+  assertion, factored into a shared `_click_primary_send_button()`
+  helper alongside the reply-wait refactor).
+
+**A real per-platform finding, not just plumbing**: sending the file
+silently (no caption) produces genuinely different first-reply behavior
+per platform -- Claude/Copilot/DeepSeek all spontaneously summarize the
+whole document unprompted (the token came back in the very first reply
+every time); ChatGPT and Perplexity just acknowledge receipt ("I've
+received the PDF, what would you like me to do with it?") and need the
+in-conversation check's forced-read follow-up to actually surface
+content. This is exactly the kind of platform difference Q16's revised
+verification procedure (in-conversation + memory-settings, both passive,
+before a forced-read fallback) was designed to catch rather than assume
+uniform behavior across all 6.
+
+**A real Q7-adjacent bug fixed**: `PerplexityFlow` never set
+`HAS_MEMORY_UI = False` despite Q7 confirming this Free-tier account has
+no reachable Memory settings -- `read_memory_settings()` was correctly
+never implemented, but nothing told callers to skip it. Any code path
+checking memory (this FILE-substudy verification helper, and the main
+battery's own `recall_cell()` R2 step, never previously exercised for
+Perplexity) would have called it and hit a raw `NotImplementedError`
+instead of cleanly treating it as N/A. Fixed to match `deepseek.py`'s
+existing pattern for its own genuinely memory-feature-less case.
+
+**Erasure aliasing**: FILE SUBSTUDY's erasure-condition strings
+("Delete conversation containing file", "Maximal combination (all
+erasure mechanisms)") don't match any platform's existing
+`ERASURE_DISPATCH` keys -- added two aliased entries per platform
+pointing at the same existing methods (no new erasure logic). Where a
+platform's MAXIMAL already depends on a blocked cross-domain/tier-gated
+method (Gemini, Copilot, Perplexity), the FILE-substudy alias correctly
+inherits that same block rather than silently working around it.
+
+**Verified end-to-end for all 5** (`inject`/`erase`/`recall`, `--force`
+to bypass the real 48h/31d waits, one real cell per platform: `CL-IF-E-
+CONV`, `CH-IF-E-CONV`, `GE-IF-E-CONV`, `CO-IF-E-CONV`, `DE-IF-E-CONV`),
+each cell's test data reverted afterward and each account's leftover
+conversations/memory cleaned up. Real, sensible-in-hindsight outcomes
+observed: Claude/Copilot leaked (both had saved to persistent memory,
+and the FILE substudy's own erasure conditions only delete the
+conversation, not memory -- same E1-vs-E2/E3 distinction already
+documented for the main battery); ChatGPT/DeepSeek showed
+`ERASURE PERSISTED` (neither platform had saved the token to any
+memory system in the first place, so deleting the conversation removed
+everything there was).
+
+**Perplexity: paused, not resolved.** `upload_file()` mechanically
+attaches and sends fine (confirmed once cleanly), but the very next
+step -- `_verify_file_injection()`'s forced-read follow-up message in
+the same conversation -- failed twice in a row with the identical
+`_wait_for_reply(): no new reply appeared within 60s`, then a third
+attempt (a targeted diagnostic, not a full pipeline run) failed even
+earlier with the Submit button itself becoming unreachable. That
+escalation shape (slow reply -> no reply -> can't even find the control)
+matches this project's own earlier-documented Perplexity Cloudflare/
+rate-limit pattern precisely, not a selector bug -- confirmed no
+Cloudflare block text was visible on a single gentle state check in
+between attempts, but the account had also had `2` real `PE-IF-E-CONV.pdf`
+upload attempts and this many browser-session launches within a short
+window today already. Stopped rather than continuing to retry, per this
+project's standing discipline on that platform. `PE-IF-E-CONV`'s
+`upload_file()` code is written and believed correct (same pattern as
+the other 5, confirmed working in isolation) but not yet verified
+through a full inject/erase/recall pass. Resume later after a longer
+cooldown, same as the original Perplexity build's rate-limit pause.
+
+**An xlsx-corruption incident happened and was recovered from during
+this work**: killing a `recall` task that turned out to be mid-`wb.save()`
+truncated `RTBF Experiments.xlsx` to an unreadable ~14KB file. Recovered
+by restoring the last git-committed version and manually re-applying
+every edit made since that commit from the session's own record (this
+section's own findings included). **Lesson applied for the rest of this
+session and worth keeping**: never kill a background task that might be
+mid-write to this file, no matter how long it appears to hang -- every
+`inject`/`erase`/`recall` call's own internal timeouts (60-120s) mean it
+will finish or raise on its own; killing it externally is the actual
+risk, not waiting.
+
+### Per-cell screenshots + transcripts + per-platform reports, 2026-08-28 (`../tester`)
+
+Requested ahead of the real study runs, not for this session's own
+verification purposes: reviewers will need to see what actually happened
+for a given cell, and the pipeline previously captured this
+inconsistently (`inject_cell()`'s chat-based branch saved nothing at
+all; `erase_cell()` saved nothing at all; `recall_cell()` saved one flat
+un-organized file with no screenshots; no screenshots existed anywhere
+in the production pipeline). `run_cell.py`'s `inject`/`erase`/`recall`
+now all save both a JSON transcript and a full-page screenshot at every
+step, under a folder layout organized so images and transcripts are
+never mixed together and each platform's evidence can be handed to a
+reviewer independently:
+
+```
+tester/transcripts/<platform>/<cell_id>/json/
+    01_inject.json
+    02_erase.json
+    03_recall_same_session.json
+    04_recall_cross_session.json
+tester/transcripts/<platform>/<cell_id>/screenshots/
+    01_inject.png
+    02_erase.png
+    03_recall_same_session_r1_open.png
+    03_recall_same_session_r1_choice.png   (only if the forced-choice follow-up ran)
+    03_recall_same_session_r2.png           (only if HAS_MEMORY_UI)
+    03_recall_same_session_r3.png
+    04_recall_cross_session_r1_open.png / _r1_choice.png / _r2.png / _r3.png
+```
+
+Stays under the existing `tester/transcripts/` root, already gitignored;
+no new top-level directory or `.gitignore` change needed. Applies
+uniformly to MASTER cells and FILE SUBSTUDY cells (same tree, no
+special-casing). Screenshots use `full_page=True` so a long reply isn't
+cropped to the viewport. Three small helpers do the work
+(`_cell_dir()`/`_save_json()`/`_save_screenshot()`); `_run_recall_probes()`
+now takes `platform`/`cell_id`/`session_label` and saves its own
+transcript directly instead of returning it for the caller to save.
+Verified end-to-end against a real cell (`CL-I1-E1`, full
+inject/erase/recall pass): all 4 expected JSON files present with real
+sent/reply content, all expected screenshots present and readable,
+`_r1_choice`/`_r2` correctly absent when those branches didn't fire for
+that run. Test data reverted afterward (MASTER row back to `NOT RUN`,
+`tracking.json` cleared).
+
+**Follow-up feature: `generate_platform_reports.py` (new, on-demand)** --
+reads that tree and markdownifies it into one `REPORT.md` per platform
+(`python generate_platform_reports.py [platform ...]`, no args = all
+platforms), so a reviewer scrolls one document per platform instead of
+opening dozens of individual JSON/PNG files chronologically ordered by
+the `01_`/`02_`/`03_`/`04_` phase prefixes, with screenshots embedded
+inline via filename-prefix matching. Doesn't hardcode field names per
+phase type (inject/erase/recall JSON shapes genuinely differ across
+chat-based vs. field-based injection, FILE-substudy verification, and
+recall probes) -- renders whatever keys are actually present. Not
+auto-run on every `inject`/`erase`/`recall` call; rerun by hand after new
+cells have been run.
+
+**A real report-quality fix, not just formatting**: `read_memory_settings()`
+on platforms with a real memory UI returns a full
+`page.inner_text("body")`-style dump -- sidebar nav, the conversation
+sitting behind the settings overlay, footer/model chrome -- with the
+actual memory-panel content appended last in DOM order (confirmed live
+against Claude: ~30 lines of nav boilerplate before the one relevant
+line). Report-only fix (the underlying JSON transcript keeps the full
+raw dump for audit purposes): `_extract_memory_section()` anchors on the
+last line that's exactly a `"Memory"` heading and keeps only what
+follows -- the nav sidebar also has a "Memory" link, but the real panel
+heading is reliably the *last* such line since the settings dialog is
+appended after the page it covers. Falls back to the unmodified full
+text if no such line is found (a different platform's dump shape, or a
+genuinely empty panel), rather than guessing. Scoped to the three JSON
+keys that actually hold this kind of dump: `r2_reply`,
+`memory_settings_reply`, `memory_settings_reply_after_forced`.
 
 ## Working style notes
 
