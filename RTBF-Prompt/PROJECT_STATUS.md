@@ -1116,6 +1116,80 @@ genuinely empty panel), rather than guessing. Scoped to the three JSON
 keys that actually hold this kind of dump: `r2_reply`,
 `memory_settings_reply`, `memory_settings_reply_after_forced`.
 
+### Gemini/Copilot cross-domain gap revisited, 2026-08-28 (`../tester`)
+
+Both platforms' cross-domain erasure surfaces (Gemini's E3 "Delete all
+activity" -> myactivity.google.com; Copilot's E5 "Privacy Dashboard" ->
+account.microsoft.com/privacy/copilot) were left `MANUAL` in MASTER as of
+2026-08-27, each for the same underlying reason: the platform's own
+session capture (cookies scoped to gemini.google.com /
+copilot.microsoft.com) doesn't carry over to the second domain, so an
+automated browser hits a sign-in wall there. Revisited both today with
+the same fix attempt -- a second cookie export taken directly from the
+cross-domain surface (logged into the same account, Cookie-Editor export
+on that specific tab), merged into the existing `sessions/<platform>.json`
+via a new `merge()` function in `import_exported_cookies.py` (additive:
+keeps the existing session's cookies, adds/overrides only the new
+domain's, keyed by name+domain+path -- see its docstring for the CLI:
+`python import_exported_cookies.py <platform> --merge <label>`).
+
+**Copilot: resolved.** The merged session authenticates cleanly on
+account.microsoft.com/privacy/copilot -- confirmed live end-to-end:
+`_delete_via_privacy_dashboard()` navigates there, clicks the "Copilot
+apps" section's "Delete all activity history" (the page has 3 near-
+identical buttons across sections -- Copilot apps / Copilot in Microsoft
+365 apps / Copilot in Windows apps; `.first` picks the one this study
+actually tests), confirms through the "Are you sure..." dialog's "Clear"
+button, and lands on a "Your Copilot activity history data has been
+cleared" success dialog. `_erase_maximal()` now calls it too. MASTER's
+`CO-I1-E5/E6`/`CO-I2-E5/E6` reverted from `MANUAL` to `NOT RUN` --
+these cells run through `run_cell.py` normally now.
+
+**Gemini: confirmed dead end via exhaustive live testing, not just "not
+built yet."** Five independent attempts, all failed identically (full
+logged-out "Sign In" page on `myactivity.google.com`):
+
+1. Cold `goto()` with a merged myactivity.google.com cookie export.
+2. Gemini's own in-app Settings -> Activity click-through (rules out a
+   missing URL-embedded auth-handoff param as the cause -- a genuine
+   in-app click hit the identical wall).
+3. `playwright-stealth` applied to the whole context (rules out a bot-
+   fingerprint/`navigator.webdriver`-style check -- this is exactly what
+   fixed Claude's and Perplexity's Cloudflare checks elsewhere in this
+   project; it did nothing here).
+4. An alternate in-product path (Settings -> Personal Intelligence ->
+   Memory -> "Manage and delete") -- turned out to just link out to a
+   Google support article, not an in-page action; not a usable
+   alternative route.
+5. A second cookie export merged and tested within ~1 minute of being
+   taken, to rule out Google's known short-lived/rotating SIDTS-family
+   cookies going stale between export and use -- still failed
+   identically.
+
+`gemini.google.com`'s own session was spot-checked as unaffected
+throughout. This doesn't match the Cloudflare/rate-limit pattern already
+documented for Claude/Perplexity elsewhere in this project -- ruling out
+both cookie staleness and bot-fingerprinting leaves session/cookie
+validity itself as the cause, matching the pattern already documented for
+ChatGPT's Google OAuth ("Google's OAuth rejects any Playwright/CDP-driven
+browser... regardless of browser binary") -- current best read is
+`myactivity.google.com` enforces the same kind of rejection on any
+CDP-driven browser, independent of cookie validity. `GE-I1-E3/E6`/
+`GE-I2-E3/E6` stay `MANUAL` in MASTER permanently, with an updated Notes
+breadcrumb summarizing the investigation so it reads as "confirmed
+blocked," not "never attempted" -- not revisit-worthy without a
+genuinely new automation approach (non-Playwright). DECISIONS Q20/Q21
+both updated with this outcome.
+
+**Operational note volunteered by the user during this work, worth
+keeping for the real runs**: any account-wide/broad destructive erasure
+action (MAXIMAL, bulk "delete all activity" style actions) should be
+scheduled LAST among an account's pending cells during real runs, not
+interleaved with other cells sharing that same account -- since accounts
+are reused across cells now (see "Unique anchor + token per experiment"
+above), a broad wipe run mid-sequence would corrupt other still-pending
+cells' anchors/tokens on that account.
+
 ## Working style notes
 
 The user prefers direct, plain restatements of their own points, not added

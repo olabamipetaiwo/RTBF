@@ -24,12 +24,14 @@ before touching this file further:
 2. E3 ("Delete all activity") is confirmed genuinely cross-domain: Settings
    -> Activity opens a NEW TAB to myactivity.google.com/product/gemini, not
    an in-page navigation. That tab hit a Google sign-in wall using the
-   cookie-export session captured from gemini.google.com alone -- would
-   need a SECOND cookie export taken while actually on myactivity.google.com
-   to automate. DECISION (2026-08-27, user): not worth it -- E3/E6 cells
-   get run manually instead. _delete_all_activity() stays NotImplementedError
-   on purpose; don't build it without checking DECISIONS Q20 first in case
-   that decision changes.
+   cookie-export session captured from gemini.google.com alone. **Retried
+   2026-08-28** with a second cookie export taken directly from
+   myactivity.google.com, merged into sessions/gemini.json -- still hit
+   the same sign-in wall (confirmed two ways, see _delete_all_activity()'s
+   own docstring). Unlike Copilot's equivalent gap (resolved the same day,
+   same technique), this one looks like a genuine session-binding defense
+   on Google's account-activity surface, not just a missing cookie. E3/E6
+   cells stay manual -- see DECISIONS Q20.
 """
 
 from __future__ import annotations
@@ -209,15 +211,42 @@ class GeminiFlow(PlatformFlow):
 
     def _delete_all_activity(self) -> None:
         """E3: confirmed cross-domain (opens a new tab to
-        myactivity.google.com/product/gemini) -- currently blocked on the
-        Gemini session-capture step not covering that origin's cookies.
-        See module docstring before implementing further; don't guess a
-        same-tab goto() here, the real flow opens a new tab and a fresh
-        sign-in wall appeared with only gemini.google.com's cookies."""
+        myactivity.google.com/product/gemini). Exhaustively retried
+        2026-08-28 -- five independent attempts, all failed identically
+        (full logged-out "Sign In" page):
+          1. Cold goto() with a merged myactivity.google.com cookie export.
+          2. The genuine in-app Settings -> Activity click-through (rules
+             out a missing URL-embedded auth-handoff param).
+          3. playwright-stealth applied to the whole context (rules out a
+             bot-fingerprint/navigator.webdriver-style check -- Claude and
+             Perplexity's Cloudflare checks were exactly this kind of
+             thing and stealth fixed those; it does nothing here).
+          4. An alternate in-product path (Settings -> Personal
+             Intelligence -> Memory -> "Manage and delete") -- turned out
+             to just link to a Google support article, not an in-page
+             action; dead end, not an automatable alternative route.
+          5. A second cookie export taken and merged within ~1 minute of
+             testing, to rule out Google's known short-lived/rotating
+             SIDTS-family cookies going stale between export and use --
+             still failed identically.
+        gemini.google.com's own session was spot-checked as unaffected
+        throughout. This matches the pattern already documented elsewhere
+        in this project (see ChatGPT's Google-OAuth investigation in
+        PROJECT_STATUS.md: "Google's OAuth rejects any Playwright/CDP-
+        driven browser during 'Continue with Google' regardless of browser
+        binary") -- current best read is that myactivity.google.com
+        enforces the same kind of rejection on ANY CDP-driven browser
+        (which Playwright always is, real Chrome channel or not),
+        independent of cookie validity. Treated as a confirmed dead end
+        for this project's available techniques, not an unbuilt feature --
+        don't retry the same approaches again without a genuinely new
+        idea (e.g. a non-Playwright automation layer)."""
         raise NotImplementedError(
-            "E3 needs a myactivity.google.com-scoped cookie export before "
-            "this can be implemented -- confirmed live 2026-08-27 that "
-            "gemini.google.com's cookies alone hit a sign-in wall there."
+            "E3: myactivity.google.com rejects any CDP-driven browser "
+            "regardless of cookie freshness/validity or stealth patching "
+            "-- 5 independent live attempts 2026-08-28, all failed "
+            "identically. Confirmed dead end, not a missing-cookie gap. "
+            "Run this cell by hand. See DECISIONS Q20."
         )
 
     def _delete_saved_info_item(self) -> None:

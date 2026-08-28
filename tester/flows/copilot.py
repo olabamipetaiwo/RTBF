@@ -50,12 +50,17 @@ Findings that shaped the design below:
    right than the button element's own box) works. If this ever breaks,
    re-derive the offset live rather than reusing the magic number blindly.
 
-E5 (Privacy Dashboard) is deliberately left unautomated -- same standing
-decision as Gemini's E3 (Delete all activity): confirmed live it's cross-
-domain (account.microsoft.com/privacy) and hits a sign-in wall with only
-copilot.microsoft.com's session captured. Not worth a second cross-domain
-cookie+localStorage export for one erasure surface. Run E5/E6 cells
-manually instead of through run_cell.py.
+E5 (Privacy Dashboard) was originally left unautomated (2026-08-27) for the
+same reason as Gemini's E3: cross-domain (account.microsoft.com/privacy/
+copilot), sign-in wall with only copilot.microsoft.com's session captured.
+**Resolved 2026-08-28** -- unlike Gemini's myactivity.google.com (which
+still hits a hard sign-in wall even with a matching cookie export, likely a
+stronger session-binding defense on that Google surface), Copilot's Privacy
+Dashboard authenticates fine once a second cookie export taken directly
+from account.microsoft.com/privacy/copilot is merged into sessions/
+copilot.json (`python import_exported_cookies.py copilot --merge privacy`).
+_delete_via_privacy_dashboard() is implemented and confirmed live -- see
+its own docstring below. E5/E6 no longer need to be run manually.
 """
 
 from __future__ import annotations
@@ -75,15 +80,15 @@ class CopilotFlow(PlatformFlow):
     ERASURE_DISPATCH = {
         "Conversation history deletion": "_delete_conversation_history",
         # FILE-substudy aliases -- see flows/claude.py's ERASURE_DISPATCH
-        # for why these exist. MAXIMAL's alias still hits the same
-        # cross-domain _delete_via_privacy_dashboard() block as the main
-        # battery's CO-*-E6 cells -- not resolved by this alias.
+        # for why these exist. MAXIMAL's alias hits the same
+        # _erase_maximal() as the main battery's CO-*-E6 cells (now
+        # including _delete_via_privacy_dashboard() -- see below).
         "Delete conversation containing file": "_delete_conversation_history",
         "Maximal combination (all erasure mechanisms)": "_erase_maximal",
         "Delete all memory": "_delete_all_memory",
         "NL forget command": "_send_nl_forget",  # chat message, not a UI click
         "Granular facts editor": "_delete_via_facts_editor",
-        "Privacy Dashboard": "_delete_via_privacy_dashboard",  # deliberately manual, see module docstring
+        "Privacy Dashboard": "_delete_via_privacy_dashboard",  # cross-domain, resolved 2026-08-28 -- see module docstring
         "MAXIMAL": "_erase_maximal",
     }
 
@@ -295,21 +300,37 @@ class CopilotFlow(PlatformFlow):
         self.page.wait_for_timeout(1500)
 
     def _delete_via_privacy_dashboard(self) -> None:
-        """E5: deliberately left manual (2026-08-27 decision, same as
-        Gemini's E3) -- confirmed live it's cross-domain
-        (account.microsoft.com/privacy) and hits a sign-in wall with only
-        copilot.microsoft.com's session captured. Run these cells by hand."""
-        raise NotImplementedError(
-            "E5 (Privacy Dashboard) is deliberately manual -- run this cell "
-            "by hand rather than through run_cell.py, per the standing "
-            "decision on cross-domain erasure surfaces (see Gemini's E3)."
-        )
+        """E5: cross-domain (account.microsoft.com/privacy/copilot, not
+        copilot.microsoft.com) -- originally left manual (2026-08-27
+        decision) because the copilot.microsoft.com-only session hit a
+        sign-in wall there. Revisited 2026-08-28 (DECISIONS Q21) after
+        merging a second cookie export taken directly from
+        account.microsoft.com/privacy/copilot into sessions/copilot.json
+        (see import_exported_cookies.py's `merge()`) -- that session
+        authenticates fine on this domain, confirmed live.
+
+        The page lists activity history under three separate sections
+        (Copilot apps / Copilot in Microsoft 365 apps / Copilot in Windows
+        apps), each with its own "Delete all activity history" control --
+        `.first` is deliberate: it's the "Copilot apps" section, i.e. plain
+        copilot.microsoft.com chat activity, which is what this study
+        actually tests. Confirmed live 2026-08-28: click -> confirm dialog
+        ("Are you sure you want to clear your Copilot activity history?")
+        -> Clear -> a second dialog reports "Your Copilot activity history
+        data has been cleared." -> Close."""
+        self.page.goto("https://account.microsoft.com/privacy/copilot")
+        self.page.wait_for_timeout(2500)
+        self.page.get_by_text("Delete all activity history", exact=True).first.click()
+        self.page.wait_for_timeout(1000)
+        self.page.get_by_role("button", name="Clear", exact=True).click()
+        self.page.wait_for_timeout(2000)
+        self.page.get_by_role("button", name="Close", exact=True).click()
+        self.page.wait_for_timeout(500)
 
     def _erase_maximal(self) -> None:
-        """E6: all singles combined in one setup (design rule). Will raise
-        on _delete_via_privacy_dashboard() until/unless that decision
-        changes."""
+        """E6: all singles combined in one setup (design rule)."""
         self._delete_conversation_history()
         self._delete_all_memory()
         self._delete_via_facts_editor()
+        self._delete_via_privacy_dashboard()
         self._delete_via_privacy_dashboard()
