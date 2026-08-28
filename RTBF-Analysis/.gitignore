@@ -1,0 +1,18 @@
+# Raw data is read-only and not tracked (large export files)
+data/raw/*
+!data/raw/.gitkeep
+
+# Project instructions / secrets
+CLAUDE.md
+.env
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+.venv/
+*.egg-info/
+
+# OS
+.DS_Store

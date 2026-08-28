@@ -1,0 +1,15 @@
+CLAUDE.md
+.env
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+
+# account credentials / persisted browser session state -- never commit
+sessions/*
+!sessions/.gitkeep
+
+# raw conversation transcripts and screenshots may contain injected
+# anchors and account details; keep local unless explicitly reviewed
+transcripts/*
+!transcripts/.gitkeep

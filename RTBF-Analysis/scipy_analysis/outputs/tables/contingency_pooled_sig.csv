@@ -1,0 +1,8 @@
+option,test,p_raw,p_holm,cramers_v,sig
+permanently deleted (DB+backups),chi2,0.7091,1.0,0.08,
+made invisible / hidden,chi2,0.0491,0.3435,0.192,
+not referenced in current convo,chi2,0.1449,0.8695,0.159,
+not referenced in future convo,chi2,0.542,1.0,0.1,
+no longer used for training,chi2,0.3176,1.0,0.128,
+not sure what happens,fisher,0.92,1.0,0.057,
+other,fisher,0.5051,1.0,0.124,

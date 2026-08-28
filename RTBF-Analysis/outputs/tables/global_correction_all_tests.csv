@@ -1,0 +1,102 @@
+family,label,p_raw,p_holm_global,p_fdr_global,sig_raw,sig_holm_global,sig_fdr_global
+calibration.used_vs_ideal,[less] Ask to forget,0.0,0.0,0.0,True,True,True
+calibration.used_vs_ideal,[more] Clear all memories,0.0,0.0,0.0,True,True,True
+calibration.used_vs_ideal,[less] Delete specific mem,0.0,0.0,0.0,True,True,True
+calibration.used_vs_ideal,[more] Clear all history,0.0,0.0,0.0,True,True,True
+calibration.used_vs_ideal,[less] Clear all history,0.0,0.0,0.0,True,True,True
+calibration.used_vs_ideal,[less] Privacy dashboard,0.0,0.0,0.0,True,True,True
+calibration.used_vs_ideal,[more] Delete specific mem,0.0,0.0,0.0,True,True,True
+calibration.used_vs_ideal,[more] Ask to forget,0.0,0.0,0.0,True,True,True
+willingness.scenario_shift,[scenario shift] willingness,1.211294014914133e-05,0.0011265034338701436,0.00013593410611814158,True,True,True
+calibration.used_vs_ideal,[less] Delete single conv,0.0001,0.0092,0.0008416666666666668,True,True,True
+calibration.used_vs_ideal,[less] Clear all memories,0.0001,0.0092,0.0008416666666666668,True,True,True
+calibration.used_vs_ideal,[more] Privacy dashboard,0.0001,0.0092,0.0008416666666666668,True,True,True
+verify.verification,[less] asked same convo,0.0003,0.026699999999999998,0.0023307692307692304,True,True,True
+stats.between_method,[less|effort] method KW,0.0003606853724168921,0.031740312772686505,0.002602087329579007,True,True,True
+stats.between_scenario_likert,[protection] scenario Wilcoxon,0.0006110686987829347,0.05316297679411532,0.004114529238471761,True,False,True
+stats.between_method,[more|effort] method KW,0.0007147731242342263,0.06147048868414347,0.004512005346728553,True,False,True
+verify.verification,[less] asked new convo,0.0008,0.068,0.004752941176470588,True,False,True
+calibration.used_vs_ideal,[more] Delete single conv,0.001,0.084,0.005611111111111112,True,False,True
+verify.verification,[less] did NOT know how,0.0011,0.0913,0.0058473684210526315,True,False,True
+verify.verification,[more] asked same convo,0.006,0.492,0.0303,True,False,True
+verify.verification,[more] checked settings,0.0066,0.5346,0.03174285714285714,True,False,True
+verify.expectation,[more] not ref. current,0.0077,0.616,0.03535,True,False,True
+calibration.confidence_trend,[less],0.012351865438211493,0.975797369618708,0.054240800402580905,True,False,False
+moderators.method_choice,[more] chatgpt_tenure->method,0.0135,1.0,0.0568125,True,False,False
+moderators.method_choice,[less] age_group->method,0.0168,1.0,0.067872,True,False,False
+mcnemar.per_method_shift,Type a message asking the AI Chatb,0.0192,1.0,0.07458461538461537,True,False,False
+calibration.used_vs_ideal,[more] Delete account,0.0215,1.0,0.08042592592592591,True,False,False
+calibration.confidence_trend,[more],0.02597925208315739,1.0,0.09371087358567486,True,False,False
+verify.expectation,[more] not ref. future,0.0295,1.0,0.10274137931034483,True,False,False
+stats.between_scenario_binary,[scenario shift] expectation (Q4.4/Q5.4) opt1,0.031141210595796734,1.0,0.10484207567251567,True,False,False
+verify.verification,[more] did NOT know how,0.0437,1.0,0.14237741935483872,True,False,False
+calibration.used_vs_ideal,[less] Delete account,0.0703,1.0,0.221884375,False,False,False
+verify.verification,[less] checked settings,0.0761,1.0,0.2329121212121212,False,False,False
+moderators.method_choice,[more] age_group->method,0.0834,1.0,0.2477470588235294,False,False,False
+moderators.method_choice,[less] chatgpt_tenure->method,0.1225,1.0,0.35350000000000004,False,False,False
+verify.expectation,[more] made invisible,0.1275,1.0,0.35770833333333335,False,False,False
+verify.expectation,[less] made invisible,0.1435,1.0,0.384585343878684,False,False,False
+moderators.continuous,[more] age_group->effort,0.146,1.0,0.384585343878684,False,False,False
+stats.between_method,[less|benefit_loss] method KW,0.15154316597751138,1.0,0.384585343878684,False,False,False
+stats.between_scenario_binary,[scenario shift] expectation (Q4.4/Q5.4) opt3,0.15472892348537434,1.0,0.384585343878684,False,False,False
+stats.between_method,[less|protection] method KW,0.1592742907775839,1.0,0.384585343878684,False,False,False
+willingness.by_method,[more] willingness by method KW,0.16313295485160914,1.0,0.384585343878684,False,False,False
+stats.between_scenario_binary,[scenario shift] expectation (Q4.4/Q5.4) opt2,0.16373435432458822,1.0,0.384585343878684,False,False,False
+verify.verification,[more] privacy-portal request,0.201,1.0,0.4597695652173913,False,False,False
+moderators.continuous,[less] age_group->effort,0.2072,1.0,0.4597695652173913,False,False,False
+verify.verification,[more] checked UI,0.2094,1.0,0.4597695652173913,False,False,False
+mcnemar.per_method_shift,Clear all conversation history,0.2482,1.0,0.514069387755102,False,False,False
+stats.between_scenario_binary,[scenario shift] verification (Q4.5/Q5.5) opt2,0.24821307898992026,1.0,0.514069387755102,False,False,False
+verify.expectation,[less] not used for training,0.2494,1.0,0.514069387755102,False,False,False
+verify.verification,[more] asked new convo,0.2693,1.0,0.543986,False,False,False
+moderators.continuous,[more] age_group->willingness,0.2815,1.0,0.5574803921568627,False,False,False
+stats.between_scenario_likert,[benefit_loss] scenario Wilcoxon,0.2976153382654104,1.0,0.5780605608616626,False,False,False
+verify.verification,[less] other,0.3481,1.0,0.6633603773584906,False,False,False
+willingness.by_method,[less] willingness by method KW,0.3585655065261566,1.0,0.6706502992433669,False,False,False
+stats.method_switching,[method switching] Stuart-Maxwell,0.3929611268254054,1.0,0.7132465085641027,False,False,False
+verify.expectation,[more] not used for training,0.4039,1.0,0.7132465085641027,False,False,False
+stats.between_method,[more|benefit_loss] method KW,0.40884961584918156,1.0,0.7132465085641027,False,False,False
+moderators.continuous,[more] chatgpt_tenure->willingness,0.4108,1.0,0.7132465085641027,False,False,False
+moderators.continuous,[less] chatgpt_tenure->willingness,0.4186,1.0,0.7132465085641027,False,False,False
+stats.between_scenario_binary,[scenario shift] verification (Q4.5/Q5.5) opt4,0.4237107971667936,1.0,0.7132465085641027,False,False,False
+verify.expectation,[less] not ref. current,0.4372,1.0,0.7166112903225806,False,False,False
+verify.expectation,[less] not sure,0.4399,1.0,0.7166112903225806,False,False,False
+mcnemar.per_method_shift,Privacy dashboard or account-level,0.4531,1.0,0.7263984126984127,False,False,False
+verify.expectation,[more] other,0.4788,1.0,0.7336833776372192,False,False,False
+verify.expectation,[less] other,0.4791,1.0,0.7336833776372192,False,False,False
+verify.verification,[less] did NOT want to,0.4854,1.0,0.7336833776372192,False,False,False
+stats.between_scenario_likert,[effort] scenario Wilcoxon,0.4867008544722148,1.0,0.7336833776372192,False,False,False
+stats.between_scenario_binary,[scenario shift] expectation (Q4.4/Q5.4) opt5,0.5707503880581739,1.0,0.8477321940275818,False,False,False
+stats.between_scenario_binary,[scenario shift] expectation (Q4.4/Q5.4) opt6,0.6072387695312499,1.0,0.865583116883117,False,False,False
+verify.verification,[less] checked UI,0.6127,1.0,0.865583116883117,False,False,False
+verify.expectation,[more] permanently deleted,0.6299,1.0,0.865583116883117,False,False,False
+moderators.continuous,[more] chatgpt_tenure->benefit_loss,0.6439,1.0,0.865583116883117,False,False,False
+mcnemar.per_method_shift,Delete a specific saved memory or ,0.6476,1.0,0.865583116883117,False,False,False
+verify.verification,[less] privacy-portal request,0.6581,1.0,0.865583116883117,False,False,False
+mcnemar.per_method_shift,Delete this single conversation,0.6583,1.0,0.865583116883117,False,False,False
+moderators.continuous,[less] age_group->willingness,0.6591,1.0,0.865583116883117,False,False,False
+verify.verification,[more] other,0.6599,1.0,0.865583116883117,False,False,False
+moderators.continuous,[less] chatgpt_tenure->benefit_loss,0.7055,1.0,0.9081646008677497,False,False,False
+stats.between_scenario_binary,[scenario shift] verification (Q4.5/Q5.5) opt1,0.7103465689955667,1.0,0.9081646008677497,False,False,False
+verify.expectation,[less] permanently deleted,0.7261,1.0,0.9167012499999999,False,False,False
+moderators.continuous,[more] age_group->benefit_loss,0.7453,1.0,0.9293246913580246,False,False,False
+stats.between_scenario_binary,[scenario shift] verification (Q4.5/Q5.5) opt7,0.7744140625,1.0,0.9538514672256097,False,False,False
+moderators.continuous,[more] age_group->protection,0.8089,1.0,0.9843240963855422,False,False,False
+stats.between_scenario_binary,[scenario shift] verification (Q4.5/Q5.5) opt3,0.8318119049072266,1.0,1.0,False,False,False
+stats.between_scenario_binary,[scenario shift] verification (Q4.5/Q5.5) opt6,0.8445192674729399,1.0,1.0,False,False,False
+stats.between_scenario_binary,[scenario shift] expectation (Q4.4/Q5.4) opt4,0.8676323347781927,1.0,1.0,False,False,False
+moderators.continuous,[less] chatgpt_tenure->protection,0.87,1.0,1.0,False,False,False
+verify.verification,[more] did NOT want to,0.8934,1.0,1.0,False,False,False
+stats.between_method,[more|protection] method KW,0.910557372431509,1.0,1.0,False,False,False
+moderators.continuous,[less] age_group->protection,0.9286,1.0,1.0,False,False,False
+moderators.continuous,[more] chatgpt_tenure->protection,0.9466,1.0,1.0,False,False,False
+moderators.continuous,[less] chatgpt_tenure->effort,0.9467,1.0,1.0,False,False,False
+moderators.continuous,[more] chatgpt_tenure->effort,0.9478,1.0,1.0,False,False,False
+verify.expectation,[less] not ref. future,0.9893,1.0,1.0,False,False,False
+moderators.continuous,[less] age_group->benefit_loss,0.9915,1.0,1.0,False,False,False
+mcnemar.per_method_shift,Delete my account entirely,1.0,1.0,1.0,False,False,False
+stats.between_scenario_binary,[scenario shift] verification (Q4.5/Q5.5) opt5,1.0,1.0,1.0,False,False,False
+verify.expectation,[more] not sure,1.0,1.0,1.0,False,False,False
+stats.between_scenario_binary,[scenario shift] expectation (Q4.4/Q5.4) opt7,1.0,1.0,1.0,False,False,False
+stats.between_scenario_binary,[scenario shift] verification (Q4.5/Q5.5) opt8,1.0,1.0,1.0,False,False,False
+mcnemar.per_method_shift,Clear all saved memories,1.0,1.0,1.0,False,False,False

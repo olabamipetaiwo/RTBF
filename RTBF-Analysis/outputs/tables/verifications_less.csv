@@ -1,0 +1,8 @@
+method,n,asked in same conversation,asked in new conversation,checked memory/data settings,checked UI visibility,submitted privacy-portal request,did NOT know how to check,did NOT want to check,other,flag
+Delete this single conversation.,84,10.7,8.3,11.9,17.9,3.6,59.5,14.3,1.2,
+Clear all conversation history.,33,27.3,18.2,12.1,21.2,6.1,42.4,9.1,0.0,
+Type a message asking the AI Chatbot to forget it.,25,52.0,40.0,16.0,8.0,0.0,24.0,4.0,0.0,
+Delete a specific saved memory or fact.,19,26.3,31.6,36.8,15.8,5.3,21.1,15.8,5.3,
+Clear all saved memories.,7,14.3,42.9,28.6,28.6,14.3,28.6,0.0,0.0,n<14
+Privacy dashboard or account-level data management page.,6,0.0,50.0,50.0,0.0,16.7,33.3,0.0,0.0,n<14
+Delete my account entirely.,2,50.0,0.0,100.0,100.0,50.0,0.0,0.0,0.0,n<14

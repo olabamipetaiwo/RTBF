@@ -1,0 +1,8 @@
+expectation,Delete this single conversation.,Clear all conversation history.,Type a message asking the AI Chatbot to forget it.,Delete a specific saved memory or fact.,Clear all saved memories.,Privacy dashboard or account-level data management page.,Delete my account entirely.,Total
+permanently deleted (DB+backups),47,16,15,12,2,4,1,97
+made invisible / hidden,23,12,3,3,1,2,2,46
+not referenced in current convo,39,18,15,12,3,4,1,92
+not referenced in future convo,45,17,14,10,4,5,0,95
+no longer used for training,22,5,9,3,3,3,2,47
+not sure what happens,12,2,1,1,0,1,0,17
+other,0,1,0,0,0,1,0,2

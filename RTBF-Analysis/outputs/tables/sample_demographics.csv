@@ -1,0 +1,9 @@
+variable,question_text,response,n,pct
+Age,How old are you?,25-34 years old,56,31.6
+Age,How old are you?,35-44 years old,45,25.4
+Age,How old are you?,18-24 years old,29,16.4
+Age,How old are you?,45-54 years old,27,15.3
+Age,How old are you?,55-64 years old,17,9.6
+Age,How old are you?,65+ years old,3,1.7
+Lives in US,Are you currently living in the United States?,Yes,177,100.0
+Ever used a chatbot,"Have you ever used at least one of the following AI Chatbots: Claude, ChatGPT, Gemini, Perplexity, Deepseek and Microsoft Copilot?",Yes,177,100.0

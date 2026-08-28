@@ -1,0 +1,29 @@
+# Project instructions / secrets
+CLAUDE.md
+.env
+
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+*.egg-info/
+
+# Account credentials / persisted browser session state -- never commit
+# (tester/sessions)
+**/sessions/*
+!**/sessions/.gitkeep
+
+# Raw conversation transcripts -- may contain injected anchors/tokens and
+# account-identifying detail; keep local unless explicitly reviewed
+# (tester/transcripts)
+**/transcripts/*
+!**/transcripts/.gitkeep
+
+# Raw data exports -- read-only, large, not tracked (RTBF-Analysis/data/raw)
+**/data/raw/*
+!**/data/raw/.gitkeep

@@ -1,0 +1,16 @@
+# reliability
+
+_Run at 2026-08-07T14:24:14_
+
+```text
+=== Cronbach's alpha (>=0.70 = acceptable) ===
+scenario        scale  items  n_complete  alpha         ci95  unmapped_values verdict
+    less   protection      5         177  0.893 [0.86, 0.92]                0      OK
+    less       effort      4         177  0.921 [0.90, 0.94]                0      OK
+    less benefit_loss      3         177  0.870 [0.83, 0.90]                0      OK
+    more   protection      5         177  0.900 [0.88, 0.92]                0      OK
+    more       effort      4         177  0.923 [0.90, 0.94]                0      OK
+    more benefit_loss      3         177  0.872 [0.84, 0.90]                0      OK
+
+saved -> scipy_analysis/outputs/tables/scale_reliability.csv
+```

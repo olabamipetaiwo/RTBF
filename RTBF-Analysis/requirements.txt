@@ -1,0 +1,9 @@
+pandas
+numpy
+scipy
+statsmodels
+pingouin
+scikit-posthocs
+matplotlib
+openpyxl
+jupyter
