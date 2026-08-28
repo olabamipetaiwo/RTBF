@@ -759,6 +759,104 @@ pipeline-wiring blocker as every platform: `erasure_request_sentence()`
 isn't connected to `token_generator.py`'s output yet), `_erase_maximal`
 (E5 -- depends on E4, though its other three components already work).
 
+### Inject/erase/recall scheduling pipeline, 2026-08-28 (`../tester`)
+
+With all 6 platform flows live-verified, `run_cell.py` needed to stop
+doing injection immediately followed by erasure in one script run --
+that's fine for selector smoke tests, but wrong for real data collection.
+This study's actual design runs each cell as three genuinely separate
+events on separate days: **erasure 48 hours after injection, recall 31
+days after erasure** (confirmed with the user 2026-08-28: the recall
+clock starts at erasure, not injection). Nothing previously tracked
+*when* a cell was injected/erased, and `run_cell.py` never ran the R1/R2/
+R3 recall probes at all (a literal `# TODO` in the code) or recorded any
+outcome back into MASTER.
+
+**Restructured `run_cell.py` into four subcommands**: `inject <cell_id>`,
+`erase <cell_id> [--force]`, `recall <cell_id> [--force]`,
+`status [cell_id]`. `erase`/`recall` refuse to run before their due date
+unless `--force` is passed (used only for this session's own mechanics
+verification, never for real cells). New `tester/tracking.py` holds the
+scheduling state (`tester/data/run_tracking.json`, local to tester, not
+committed into the shared xlsx) -- injected/erasure_due/erased/
+recall_due/recalled timestamps per cell, UTC ISO 8601. Human-relevant
+results still land in MASTER: Run status (`NOT RUN` -> `INJECTED` ->
+`ERASED` -> `RECALLED`), a timestamp breadcrumb appended to the existing
+Notes column (non-destructive -- appends, doesn't overwrite), and for
+recall specifically the R1/R2/R3 same-session/cross-session columns plus
+a rollup Observed-outcome column.
+
+**Confirmed with the user before building**: same-session and
+cross-session recall are NOT staggered across two different calendar
+times -- same-session recall does not happen immediately after erasure.
+*All* recall (both styles) is deferred to the single 31-day-post-erasure
+recall phase; "same-session" vs "cross-session" describes two different
+probing conditions run *within* that one phase (same-session: one
+continuous browser session, `new_conversation()` before each probe;
+cross-session: a second, fully separate `with flow_cls()` browser launch
+against the same stored cookies, repeating the identical R1->R2->R3
+sequence). R1's two stages (open question, then forced-choice only if
+the open question didn't surface the token) stay in one conversation
+since the forced-choice question is a genuine follow-up; R3 gets its own
+fresh conversation so R1's direct probing can't bias its leakage test.
+
+**New `tester/recall_probes_loader.py`** parses
+`RTBF-Prompt/recall_probes.md`'s existing, already-generated per-cell
+probe table (confirmed live: a clean pipe-delimited markdown table, no
+embedded `|` characters) rather than regenerating probes in tester --
+regenerating would mean reconstructing `token_generator.py`'s exact
+`assigned`/`distractors_by_token` ordering. Also confirmed live while
+building this: `erasure_request_sentence()` in `token_generator.py` is a
+genuine dead-end draft, not "not wired up yet" -- its own module
+docstring (`write_recall_probes_md()`) says NL-forget erasure text comes
+from the qualitative-coding pipeline (RTBF-Prompt Step 1-6), not this
+script. Every platform's `_send_nl_forget()` stays untouched.
+
+**A real auto-scoring bug found and fixed during verification**: R1/R3
+get auto-scored (case-insensitive exact-token substring match against
+the reply, tagged `(auto)` for human review, per the user's explicit
+choice to auto-score as a first-pass flag rather than capture-only) --
+but the R1 forced-choice probe text itself embeds all 4 options
+(including the correct token), so a plain substring match produced a
+false positive whenever the model hedged/refused by echoing the option
+list back rather than genuinely selecting one. Caught live testing
+against `DE-I1-E1`: DeepSeek (confirmed to have zero memory/persistence
+features) explicitly said "I don't have access to a personal memory of
+what you named..." in both the same-session and cross-session replies,
+yet the naive scorer still flagged "TOKEN FOUND" because the model's
+hedge mentioned the correct option alongside the 3 distractors while
+explaining why it couldn't pick one. Fixed: forced-choice only scores
+`TOKEN FOUND` if the token appears **and** at most 1 of the 3 distractor
+tokens also appears in the reply; otherwise scored `AMBIGUOUS (auto,
+forced-choice -- mentions multiple options, see transcript)`, which
+correctly does not count as a "leak" in the Observed-outcome rollup.
+Re-verified after the fix: `DE-I1-E1` correctly scored `ERASURE
+PERSISTED (auto)`.
+
+**Verified end-to-end** (via `--force`, timestamps confirmed exactly 48h/
+31d apart, `DE-I1-E1` used since DeepSeek is simplest and fully
+verified): `inject` -> tracking + MASTER written correctly; `erase`
+refuses without `--force`, succeeds with it; `recall` runs both
+sub-phases, writes all 6 R1-R3 columns + Observed outcome + Run status,
+saves a full transcript to `tester/transcripts/<cell_id>_recall.json`;
+`status` reports phase + due date correctly, both for one cell and for
+all tracked cells. Also incidentally hit and worked around a pre-existing,
+separate flakiness bug in `deepseek.py`'s conversation-row hover/options-
+button visibility (unrelated to this pipeline -- needed for post-test
+cleanup, not fixed at the root, just retried defensively) while cleaning
+up test conversations afterward. `DE-I1-E1`'s MASTER row and tracking
+entry were reverted to their pre-test state afterward since this was a
+mechanics verification, not a real study run.
+
+**Deliberate behavior change from the old single-`run()` script, flagged
+for visibility**: `inject` now runs even for `blocked_on_prompt_set =
+YES` cells (the 13 NL-forget cells) -- previously these were skipped
+entirely before injection was even attempted. Rationale: injection
+doesn't depend on the qualitative-coding pipeline, only the erasure text
+does, so banking the injection timestamp now means the 48h clock is
+already running by the time that pipeline's output is ready. `erase`
+still refuses for these cells, same as before.
+
 ## Working style notes
 
 The user prefers direct, plain restatements of their own points, not added
