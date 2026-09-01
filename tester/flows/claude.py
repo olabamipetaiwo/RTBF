@@ -168,14 +168,25 @@ class ClaudeFlow(PlatformFlow):
 
     def _open_memory_settings(self) -> None:
         """Idempotent by design -- confirmed live 2026-08-27 that calling
-        the naive anchor->Settings->Memory click sequence a second time
-        (e.g. two set_memory_field() calls in a row) breaks: the Settings
-        modal is left open on the Memory tab after a submit, so the next
-        force=True click on "text=anchor" lands on the modal's backdrop
-        instead (since the modal now covers the sidebar) and closes it,
-        leaving nothing for the following "text=Settings" click to find.
-        Check current state first and only do the navigation that's
-        actually needed from here."""
+        the naive account-switcher->Settings->Memory click sequence a
+        second time (e.g. two set_memory_field() calls in a row) breaks:
+        the Settings modal is left open on the Memory tab after a submit,
+        so the next force=True click on the account switcher lands on the
+        modal's backdrop instead (since the modal now covers the sidebar)
+        and closes it, leaving nothing for the following "text=Settings"
+        click to find. Check current state first and only do the
+        navigation that's actually needed from here.
+
+        The account-switcher click used to be hardcoded to "text=anchor"
+        -- that's the MAIN account's own org/display name, not present on
+        any dedicated MAXIMAL account (each has its own name, e.g.
+        "T,Ola", "Tee"). Confirmed live 2026-09-01 this silently times out
+        on every account except main. "text=Free" is the actually stable,
+        portable label across every account's plan badge -- use that
+        instead. It can match 2+ elements and land slightly outside the
+        viewport depending on window size, so click via JS (bypasses
+        Playwright's viewport-visibility check) rather than a normal
+        click()."""
         if self.page.query_selector('[placeholder="Tell Claude what to change or remove"]'):
             return  # already on the Memory panel
         dialog = self.page.query_selector('[role="dialog"]')
@@ -184,7 +195,24 @@ class ClaudeFlow(PlatformFlow):
             self.page.get_by_role("button", name="Memory", exact=True).click()
             self.page.wait_for_timeout(1500)
             return
-        self.page.click("text=anchor", force=True)
+
+        # Direct deep-link first -- confirmed live 2026-09-01 that the
+        # click-through path (account-switcher -> Settings -> Memory tab)
+        # intermittently crashes the whole page ("This page ran into a
+        # problem") on at least one dedicated MAXIMAL account, while
+        # goto()'ing the route directly loads cleanly every time on that
+        # same account. Falls back to the click-through path only if the
+        # direct nav doesn't land on the panel (e.g. an account/session
+        # state where the deep link redirects elsewhere).
+        self.page.goto("https://claude.ai/new#settings/memory")
+        self.page.wait_for_timeout(2000)
+        if self.page.query_selector('[placeholder="Tell Claude what to change or remove"]'):
+            return
+
+        free_el = self.page.query_selector("text=Free")
+        if free_el is None:
+            raise RuntimeError("_open_memory_settings: account-switcher 'Free' label not found")
+        free_el.evaluate("el => el.click()")
         self.page.wait_for_timeout(800)
         self.page.click("text=Settings", force=True)
         self.page.wait_for_timeout(1500)
@@ -202,12 +230,34 @@ class ClaudeFlow(PlatformFlow):
         self.page.keyboard.press("Enter")
         self.page.wait_for_timeout(6000)
 
-    def set_memory_field(self, text: str) -> None:
+    def set_memory_field(self, text: str) -> str | None:
         """I3: Settings > Memory's command box. Confirmed live it accepts
         genuinely new facts, not just edits/removals of existing ones --
-        see module docstring (Q3)."""
+        see module docstring (Q3).
+
+        Returns the newly-created Topic row's exact aria-label suffix
+        (e.g. "Jigsaw Puzzle"), captured by diffing the Delete-button list
+        before/after submitting -- needed because Claude's Topic rows show
+        an AI-generated paraphrase ("The user's jigsaw puzzle... and its
+        name"), never the literal injected token (confirmed live
+        2026-08-31), so later erasure can't find this cell's own row by
+        substring-matching the token the way ChatGPT's custom-instructions
+        field allows. Returns None if the fact merged into an EXISTING
+        topic instead of creating a new one (module docstring's "Hobbies"
+        merge finding) -- that case has no clean single-row target and
+        must be surfaced, not guessed at."""
         self._open_memory_settings()
+        before = {
+            b.get_attribute("aria-label")
+            for b in self.page.query_selector_all('button[aria-label^="Delete "]')
+        }
         self._submit_memory_command(text)
+        self._open_memory_settings()
+        after = self.page.query_selector_all('button[aria-label^="Delete "]')
+        new_labels = [b.get_attribute("aria-label") for b in after if b.get_attribute("aria-label") not in before]
+        if len(new_labels) == 1:
+            return new_labels[0]
+        return None  # no new topic row (likely merged into an existing one) -- erasure must be told explicitly
 
     def read_memory_settings(self) -> str:
         """R2: the Memory settings panel. Note Claude clusters facts into
@@ -218,19 +268,52 @@ class ClaudeFlow(PlatformFlow):
 
     # --- ERASURE_DISPATCH targets ---
 
-    def _send_nl_forget(self) -> None:
+    def _send_nl_forget(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
         """Not a UI click -- routes back through send_message() with the
         erasure_request_sentence() text once that's wired in
         (RTBF-Prompt/token_generator.py). Placeholder here for now since
         that's still explicitly not wired into the pipeline."""
         raise NotImplementedError
 
-    def _delete_conversation(self) -> None:
-        """Deletes the most recently opened/first conversation from the
-        sidebar."""
+    def _delete_conversation(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
+        """Deletes THIS cell's own conversation, identified by `ref` (the
+        exact conversation URL captured at injection time). Confirmed live
+        2026-08-31 that grabbing "whatever's topmost in the sidebar" (the
+        old behavior) deletes a sibling cell's conversation instead,
+        whenever this account has been used more recently for another
+        cell -- always true once cells share an account. The sidebar's
+        "More options for <title>" button has no href of its own, so it's
+        found by walking up from the matching conversation link to its row
+        container (verified live: 2 levels up from the `<a>`) and querying
+        within that specific row, not page-wide. When `ref` is missing
+        (legacy tracking data from before ref capture existed), searches
+        every conversation's content for `token` instead of guessing --
+        see _find_conversation_by_token(). Falls back to topmost only if
+        that search also finds nothing (a cell with no owned conversation
+        at all, e.g. an I3 cell using a conversation-delete as a cross-
+        mechanism probe)."""
         self.page.goto("https://claude.ai/new")
         self.page.wait_for_timeout(1500)
-        btn = self.page.query_selector('button[aria-label^="More options for"]')
+        if not ref:
+            ref = self._find_conversation_by_token(token, "https://claude.ai", 'a[href^="/chat/"]')
+        if ref:
+            from urllib.parse import urlsplit
+            link = self.page.query_selector(f'a[href="{urlsplit(ref).path}"]')
+            if link is None:
+                raise RuntimeError(f"_delete_conversation: expected conversation {ref!r} not found in sidebar")
+            btn = link.evaluate_handle(
+                """el => {
+                    let cur = el;
+                    for (let i = 0; i < 6 && cur; i++) {
+                        const b = cur.querySelector && cur.querySelector('button[aria-label^="More options for"]');
+                        if (b) return b;
+                        cur = cur.parentElement;
+                    }
+                    return null;
+                }"""
+            ).as_element()
+        else:
+            btn = self.page.query_selector('button[aria-label^="More options for"]')
         if btn is None:
             raise RuntimeError("_delete_conversation: no conversation found in sidebar")
         btn.click(force=True)
@@ -242,26 +325,57 @@ class ClaudeFlow(PlatformFlow):
         ).click(force=True)
         self.page.wait_for_timeout(1500)
 
-    def _delete_individual_memory_edit(self) -> None:
-        """E2: deletes the first Topic/Area row in the Memory settings list.
-        Confirmed live as a genuine per-item action (Q4) -- see module
-        docstring.
+    def _delete_individual_memory_edit(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
+        """E2: deletes THIS cell's own Topic/Area row, identified by `ref`
+        (the exact "Delete <Topic Name>" aria-label captured at injection
+        time by set_memory_field()'s before/after diff). Confirmed live
+        2026-08-31 that grabbing "the first Topic row" (the old behavior)
+        can just as easily delete an unrelated sibling cell's topic --
+        Claude's Topic rows never show the literal injected token (an
+        AI-generated paraphrase instead, e.g. "The user's jigsaw puzzle...
+        and its name"), so there's no safe way to guess the right row
+        without the diff-captured ref. Raises if `ref` is None (the fact
+        merged into an existing topic at injection time, or this is
+        stale pre-fix tracking data) rather than guessing.
 
-        Correction from an earlier, wrong assumption: there is no separate
-        "detail view" to click into. Each row in the Topics/Areas table has
-        its own inline icon buttons in an Actions column, with real
-        accessible names -- `aria-label="Delete <Topic Name>"` and
-        `aria-label="Edit memory <Topic Name>"` -- discovered live
-        2026-08-27 via a full button/role dump after the previous
+        Confirmed live as a genuine per-item action (Q4) -- see module
+        docstring. Correction from an earlier, wrong assumption: there is
+        no separate "detail view" to click into. Each row in the
+        Topics/Areas table has its own inline icon buttons in an Actions
+        column, with real accessible names -- `aria-label="Delete <Topic
+        Name>"` and `aria-label="Edit memory <Topic Name>"` -- discovered
+        live 2026-08-27 via a full button/role dump after the previous
         JS-row-click approach silently did nothing (it was clicking on a
         table row that isn't itself interactive). Clicking that inline
         Delete button opens a genuine second confirm dialog ("Delete this
         memory? ... Cancel / Delete"), same two-step shape the earlier code
         already expected -- only the first click target was wrong."""
         self._open_memory_settings()
-        delete_btn = self.page.query_selector('button[aria-label^="Delete "]')
+        if ref is None and injection_text:
+            # Fallback for legacy tracking data (pre-dates ref capture):
+            # Claude's Topic label (e.g. "Jigsaw Puzzle") is never the
+            # literal token, but is reliably a substring of this cell's
+            # own injection_text (e.g. "a jigsaw puzzle on the coffee
+            # table is called ..." -- confirmed live 2026-08-31 across
+            # every I3 cell checked). Match on that instead of guessing.
+            candidates = [
+                b.get_attribute("aria-label")
+                for b in self.page.query_selector_all('button[aria-label^="Delete "]')
+                if b.get_attribute("aria-label")[len("Delete "):].lower() in injection_text.lower()
+            ]
+            if len(candidates) == 1:
+                ref = candidates[0]
+        if ref is None:
+            raise RuntimeError(
+                "_delete_individual_memory_edit: no injection-time ref for this cell's "
+                "own Topic row, and no unambiguous label match against injection_text "
+                "(either it merged into an existing topic, or this is stale pre-fix "
+                "tracking data with no injection_text label match) -- can't safely "
+                "pick a row without one."
+            )
+        delete_btn = self.page.query_selector(f'button[aria-label="{ref}"]')
         if delete_btn is None:
-            raise RuntimeError("_delete_individual_memory_edit: no memory topics exist to delete")
+            raise RuntimeError(f"_delete_individual_memory_edit: expected topic {ref!r} not found")
         delete_btn.click(force=True)
         self.page.wait_for_timeout(800)
         self.page.locator('[role="dialog"], [role="alertdialog"]').last.get_by_role(
@@ -269,19 +383,22 @@ class ClaudeFlow(PlatformFlow):
         ).click(force=True)
         self.page.wait_for_timeout(1500)
 
-    def _clear_all_memories(self) -> None:
-        """E3: no dedicated bulk-delete button exists even with a
+    def _clear_all_memories(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
+        """Deliberately account-wide/blanket -- see [[project-destructive-actions-run-last]].
+        `token`/`injection_text`/`ref` accepted for interface consistency
+        but unused: this mechanism has no narrower real-product equivalent.
+        E3: no dedicated bulk-delete button exists even with a
         populated list (checked live) -- works through the same
         natural-language command box as set_memory_field(). See module
         docstring."""
         self._open_memory_settings()
         self._submit_memory_command("Please delete all of my memories.")
 
-    def _erase_maximal(self) -> None:
+    def _erase_maximal(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
         """E5: E1+E2+E3+E4 combined in one setup (design rule: diligent-user
         ceiling) -- calls the other four in sequence. Will raise on
         _send_nl_forget() until that's wired in."""
-        self._delete_conversation()
-        self._delete_individual_memory_edit()
-        self._clear_all_memories()
+        self._delete_conversation(token=token, injection_text=injection_text, ref=ref)
+        self._delete_individual_memory_edit(token=token, injection_text=injection_text, ref=ref)
+        self._clear_all_memories(token=token, injection_text=injection_text, ref=ref)
         self._send_nl_forget()

@@ -54,7 +54,15 @@ def get(cell_id: str) -> dict | None:
     return load().get(cell_id)
 
 
-def mark_injected(cell_id: str, ts: datetime | None = None) -> dict:
+def mark_injected(cell_id: str, ts: datetime | None = None, ref: str | None = None) -> dict:
+    """`ref` is the cell's own durable target identifier -- the exact
+    conversation URL for a chat-based injection, or None for a settings-
+    field injection (those are targeted by token/text match at erasure
+    time instead, see each flow's erasure methods). Without this, erasure
+    has no way to distinguish this cell's own conversation/entry from a
+    sibling cell's sharing the same account -- confirmed live 2026-08-31
+    that grabbing "whatever's topmost in the sidebar" silently deletes
+    the wrong cell's data when multiple cells share an account."""
     ts = ts or _now()
     data = load()
     data[cell_id] = {
@@ -64,6 +72,7 @@ def mark_injected(cell_id: str, ts: datetime | None = None) -> dict:
         "erased_at": None,
         "recall_due_at": None,
         "recalled_at": None,
+        "injection_ref": ref,
     }
     save(data)
     return data[cell_id]

@@ -160,7 +160,7 @@ class DeepSeekFlow(PlatformFlow):
 
     # --- ERASURE_DISPATCH targets ---
 
-    def _send_nl_forget(self) -> None:
+    def _send_nl_forget(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
         """Not a UI click -- routes back through send_message() with the
         erasure_request_sentence() text once that's wired in
         (RTBF-Prompt/token_generator.py). Expected-null by architecture:
@@ -168,12 +168,25 @@ class DeepSeekFlow(PlatformFlow):
         pre-registered to fail -- run it anyway, don't skip it."""
         raise NotImplementedError
 
-    def _delete_single_conversation(self) -> None:
-        """E1: deletes the most recently opened/first conversation from
-        the sidebar."""
+    def _delete_single_conversation(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
+        """E1: deletes THIS cell's own conversation, identified by `ref`
+        (the exact conversation URL captured at injection time). Changed
+        2026-08-31 from always grabbing the first sidebar conversation --
+        that silently deletes a sibling cell's conversation once this
+        account has been used for anything more recent, which is always
+        true once cells share an account. Falls back to topmost only when
+        `ref` is None."""
         self.page.goto("https://chat.deepseek.com/")
         self.page.wait_for_timeout(1500)
-        convo = self.page.query_selector('a[href^="/a/chat/s/"]')
+        if not ref:
+            ref = self._find_conversation_by_token(token, "https://chat.deepseek.com", 'a[href^="/a/chat/s/"]')
+        if ref:
+            from urllib.parse import urlsplit
+            convo = self.page.query_selector(f'a[href="{urlsplit(ref).path}"]')
+            if convo is None:
+                raise RuntimeError(f"_delete_single_conversation: expected conversation {ref!r} not found in sidebar")
+        else:
+            convo = self.page.query_selector('a[href^="/a/chat/s/"]')
         if convo is None:
             raise RuntimeError("_delete_single_conversation: no conversation found in sidebar")
         convo.hover()
@@ -194,8 +207,11 @@ class DeepSeekFlow(PlatformFlow):
             else self.page.locator('[role="dialog"] [role="button"]', has_text="Delete").click(force=True)
         self.page.wait_for_timeout(1000)
 
-    def _delete_all_history(self) -> None:
-        """E2: confirmed live via Multi-select mode -- select every
+    def _delete_all_history(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
+        """Deliberately account-wide/blanket -- see [[project-destructive-actions-run-last]].
+        `token`/`injection_text`/`ref` accepted for interface consistency
+        but unused.
+        E2: confirmed live via Multi-select mode -- select every
         conversation row, then the bottom-bar "Delete" button, then
         confirm. See module docstring for why row-selection needs
         coordinate clicks rather than a locator-based click."""
@@ -236,7 +252,7 @@ class DeepSeekFlow(PlatformFlow):
         self.page.locator('[role="dialog"] [role="button"]', has_text="Delete").click(force=True)
         self.page.wait_for_timeout(1500)
 
-    def _erase_maximal(self) -> None:
+    def _erase_maximal(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
         """E4: singles combined in one setup (design rule)."""
-        self._delete_single_conversation()
-        self._delete_all_history()
+        self._delete_single_conversation(token=token, injection_text=injection_text, ref=ref)
+        self._delete_all_history(token=token, injection_text=injection_text, ref=ref)

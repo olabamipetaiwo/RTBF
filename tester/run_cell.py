@@ -61,6 +61,7 @@ COL_R2_CROSS = 14
 COL_R3_CROSS = 15
 COL_NOTES = 16
 COL_OBSERVED_OUTCOME = 19
+COL_EMAIL = 22  # added 2026-09-01 -- which account ran this cell, see config.account_email()
 
 # FILE SUBSTUDY sheet column indices (1-indexed) -- a different layout
 # than MASTER: no R1-R3 same/cross-session columns (Q16's verification
@@ -71,6 +72,7 @@ FS_COL_RUN_STATUS = 9
 FS_COL_EXTRACTION_OBSERVED_AT = 10
 FS_COL_RESULTS_NOTES = 11
 FS_COL_OBSERVED_OUTCOME = 12
+FS_COL_EMAIL = 14  # added 2026-09-01 -- which account ran this cell, see config.account_email()
 
 
 @dataclass
@@ -309,6 +311,11 @@ def inject_cell(cell_id: str) -> None:
     print(f"Injection text: {plan.injection_text!r}")
 
     flow_cls = FLOW_REGISTRY[plan.platform]
+    # MAXIMAL cells that would otherwise share an account with a sibling
+    # MAXIMAL cell get a dedicated account instead (see config.py's
+    # MAXIMAL_ACCOUNT_LABEL docstring) -- None for every other cell, which
+    # uses the platform's usual main session as always.
+    session_label = config.MAXIMAL_ACCOUNT_LABEL.get(cell_id)
 
     if plan.injection_type == "FILE":
         pdf_path = config.TESTER_ROOT / "data" / "file_substudy_pdfs" / f"{cell_id}.pdf"
@@ -317,24 +324,34 @@ def inject_cell(cell_id: str) -> None:
                 f"{cell_id}: no PDF found at {pdf_path} -- run "
                 f"generate_file_substudy_pdfs.py first"
             )
-        with flow_cls() as flow:
+        with flow_cls(session_label=session_label) as flow:
             upload_reply = flow.upload_file(str(pdf_path))
+            conversation_ref = flow.page.url
             condition, verify_transcript = _verify_file_injection(flow, upload_reply, plan.token)
             _save_json(plan.platform, cell_id, "01_inject", verify_transcript)
             _save_screenshot(flow, plan.platform, cell_id, "01_inject")
 
-        entry = tracking.mark_injected(cell_id)
+        entry = tracking.mark_injected(cell_id, ref=conversation_ref)
         _update_file_substudy_row(
             cell_id,
-            {FS_COL_RUN_STATUS: "INJECTED", FS_COL_EXTRACTION_OBSERVED_AT: condition},
+            {
+                FS_COL_RUN_STATUS: "INJECTED",
+                FS_COL_EXTRACTION_OBSERVED_AT: condition,
+                FS_COL_EMAIL: config.account_email(cell_id, plan.platform),
+            },
         )
         print(f"Injected (file upload). Extraction observed: {condition}.")
         print(f"Erasure due at {entry['erasure_due_at']}.")
         return
 
-    with flow_cls() as flow:
+    with flow_cls(session_label=session_label) as flow:
+        conversation_ref = None
         if plan.injection_type in flow.MEMORY_FIELD_INJECTION_TYPES:
-            flow.set_memory_field(plan.injection_text)
+            # Settings-field injection (e.g. ChatGPT/Claude I3, Gemini I2)
+            # has no conversation to record -- erasure targets it by
+            # matching the cell's own token/text instead, see each flow's
+            # erasure methods.
+            conversation_ref = flow.set_memory_field(plan.injection_text)
             inject_transcript = {"sent": plan.injection_text}
         else:
             reply = flow.send_message(plan.injection_text)
@@ -348,14 +365,15 @@ def inject_cell(cell_id: str) -> None:
             # retrying would corrupt that cell's design.
             if plan.platform == "copilot" and plan.injection_type == "I2" and "memory saved" not in reply.lower():
                 reply = flow.send_message(plan.injection_text)
+            conversation_ref = flow.page.url
             inject_transcript = {"sent": plan.injection_text, "reply": reply}
         _save_json(plan.platform, cell_id, "01_inject", inject_transcript)
         _save_screenshot(flow, plan.platform, cell_id, "01_inject")
 
-    entry = tracking.mark_injected(cell_id)
+    entry = tracking.mark_injected(cell_id, ref=conversation_ref)
     _update_master_row(
         cell_id,
-        {COL_RUN_STATUS: "INJECTED"},
+        {COL_RUN_STATUS: "INJECTED", COL_EMAIL: config.account_email(cell_id, plan.platform)},
         note_breadcrumb=f"auto-injected {entry['injected_at']}",
     )
     print(f"Injected. Erasure due at {entry['erasure_due_at']}.")
@@ -389,8 +407,14 @@ def erase_cell(cell_id: str, force: bool = False) -> None:
         )
 
     flow_cls = FLOW_REGISTRY[plan.platform]
-    with flow_cls() as flow:
-        flow.erase_via_ui(plan.erasure_type_text)
+    session_label = config.MAXIMAL_ACCOUNT_LABEL.get(cell_id)
+    with flow_cls(session_label=session_label) as flow:
+        flow.erase_via_ui(
+            plan.erasure_type_text,
+            token=plan.token,
+            injection_text=plan.injection_text,
+            ref=entry.get("injection_ref"),
+        )
         _save_json(plan.platform, cell_id, "02_erase", {"erasure_type_text": plan.erasure_type_text})
         _save_screenshot(flow, plan.platform, cell_id, "02_erase")
 
@@ -428,13 +452,14 @@ def recall_cell(cell_id: str, force: bool = False) -> None:
     token = probes["answer"]
 
     flow_cls = FLOW_REGISTRY[plan.platform]
+    session_label = config.MAXIMAL_ACCOUNT_LABEL.get(cell_id)
 
-    with flow_cls() as flow:
+    with flow_cls(session_label=session_label) as flow:
         same_scores = _run_recall_probes(
             flow, probes, token, plan.platform, cell_id, "03_recall_same_session"
         )
 
-    with flow_cls() as flow:
+    with flow_cls(session_label=session_label) as flow:
         cross_scores = _run_recall_probes(
             flow, probes, token, plan.platform, cell_id, "04_recall_cross_session"
         )

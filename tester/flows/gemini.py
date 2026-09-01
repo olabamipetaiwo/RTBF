@@ -187,17 +187,33 @@ class GeminiFlow(PlatformFlow):
 
     # --- ERASURE_DISPATCH targets ---
 
-    def _send_nl_forget(self) -> None:
+    def _send_nl_forget(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
         """Not a UI click -- routes back through send_message() with the
         erasure_request_sentence() text once that's wired in
         (RTBF-Prompt/token_generator.py). Placeholder for now, same as
         Claude/ChatGPT's equivalent method."""
         raise NotImplementedError
 
-    def _delete_conversation(self) -> None:
-        """Deletes the most recently opened conversation from the sidebar."""
+    def _delete_conversation(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
+        """Deletes THIS cell's own conversation, identified by `ref` (the
+        exact conversation URL captured at injection time) -- same fix as
+        ChatGPT/Claude/DeepSeek, applied here 2026-08-31 for consistency
+        (grabbing "whatever's topmost" silently deletes a sibling cell's
+        conversation on a shared account). NOTE: unverified live against
+        this platform specifically -- Gemini's session was logged out
+        when this was written (see PROJECT_STATUS/memory), re-verify once
+        re-authenticated, before trusting this on a real cell. Falls back
+        to topmost only when `ref` is None."""
         self._goto_fresh("https://gemini.google.com/app")
-        convo = self.page.query_selector('a[href^="/app/"]')
+        if not ref:
+            ref = self._find_conversation_by_token(token, "https://gemini.google.com", 'a[href^="/app/"]')
+        if ref:
+            from urllib.parse import urlsplit
+            convo = self.page.query_selector(f'a[href="{urlsplit(ref).path}"]')
+            if convo is None:
+                raise RuntimeError(f"_delete_conversation: expected conversation {ref!r} not found in sidebar")
+        else:
+            convo = self.page.query_selector('a[href^="/app/"]')
         if convo is None:
             raise RuntimeError("_delete_conversation: no conversation found in sidebar")
         convo.hover()
@@ -209,7 +225,7 @@ class GeminiFlow(PlatformFlow):
         self.page.get_by_role("button", name="Delete", exact=True).click()
         self.page.wait_for_timeout(1000)
 
-    def _delete_all_activity(self) -> None:
+    def _delete_all_activity(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
         """E3: confirmed cross-domain (opens a new tab to
         myactivity.google.com/product/gemini). Exhaustively retried
         2026-08-28 -- five independent attempts, all failed identically
@@ -249,9 +265,18 @@ class GeminiFlow(PlatformFlow):
             "Run this cell by hand. See DECISIONS Q20."
         )
 
-    def _delete_saved_info_item(self) -> None:
-        """Deletes the first Saved-info item via its per-item context menu
-        ("Opens a context menu for the info." -> "Delete").
+    def _delete_saved_info_item(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
+        """Deletes THIS cell's own Saved-info item, identified by finding
+        the context-menu button whose enclosing row contains `token` --
+        confirmed live 2026-08-27 (module docstring finding 1) that Saved-
+        info items store the literal injected sentence verbatim, unlike
+        Claude's paraphrased Topics, so a substring match against the
+        cell's own token is reliable here (no diff-capture needed).
+        Changed 2026-08-31 from grabbing the first item unconditionally --
+        that silently deleted a sibling cell's saved fact on a shared
+        account. NOTE: unverified live against this platform specifically
+        -- Gemini's session was logged out when this was written, re-
+        verify once re-authenticated before trusting this on a real cell.
 
         Uses a raw [role="menuitem"] query + manual text match instead of
         get_by_role() here specifically -- confirmed live 2026-08-27 that
@@ -264,9 +289,24 @@ class GeminiFlow(PlatformFlow):
         doesn't hit this -- get_by_role works fine there -- so this is
         scoped to this one menu, not a project-wide rule.)"""
         self._goto_fresh("https://gemini.google.com/saved-info")
-        menu_btn = self.page.query_selector('button[aria-label*="Opens a context menu for the info"]')
+        menu_btns = self.page.query_selector_all('button[aria-label*="Opens a context menu for the info"]')
+        menu_btn = None
+        for btn in menu_btns:
+            row_text = btn.evaluate(
+                """el => {
+                    let cur = el;
+                    for (let i = 0; i < 6 && cur; i++) {
+                        if (cur.innerText && cur.innerText.trim().length > 10) return cur.innerText;
+                        cur = cur.parentElement;
+                    }
+                    return "";
+                }"""
+            )
+            if token.strip().lower() in row_text.lower():
+                menu_btn = btn
+                break
         if menu_btn is None:
-            raise RuntimeError("_delete_saved_info_item: no saved-info item found")
+            raise RuntimeError(f"_delete_saved_info_item: no saved-info item found containing {token!r}")
         menu_btn.click()
         self.page.wait_for_timeout(600)
         delete_item = next(
@@ -285,7 +325,10 @@ class GeminiFlow(PlatformFlow):
         dialog.get_by_role("button", name="Delete", exact=True).click()
         self.page.wait_for_timeout(1000)
 
-    def _delete_all_saved_info(self) -> None:
+    def _delete_all_saved_info(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
+        """Deliberately account-wide/blanket -- see [[project-destructive-actions-run-last]].
+        `token`/`injection_text`/`ref` accepted for interface consistency
+        but unused."""
         self._goto_fresh("https://gemini.google.com/saved-info")
         self.page.get_by_role("button", name="Delete all", exact=True).click()
         self.page.wait_for_timeout(800)
@@ -293,10 +336,10 @@ class GeminiFlow(PlatformFlow):
         dialog.get_by_role("button", name="Delete all", exact=True).click()
         self.page.wait_for_timeout(1000)
 
-    def _erase_maximal(self) -> None:
+    def _erase_maximal(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
         """E6: E1+E2+E3+E4+E5 combined in one setup (design rule). E3 will
         raise until its session-capture gap is resolved -- see
         _delete_all_activity()."""
-        self._delete_conversation()
-        self._delete_all_activity()
-        self._delete_all_saved_info()
+        self._delete_conversation(token=token, injection_text=injection_text, ref=ref)
+        self._delete_all_activity(token=token, injection_text=injection_text, ref=ref)
+        self._delete_all_saved_info(token=token, injection_text=injection_text, ref=ref)

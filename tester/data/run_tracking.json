@@ -1,1 +1,604 @@
-{}
+{
+  "CH-I1-E1": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:20:41.805949+00:00",
+    "injected_at": "2026-09-01T07:20:41.805949+00:00",
+    "injection_ref": "https://chatgpt.com/c/6a967d2e-3a80-83e9-96b2-8d709b1240fd",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I1-E2": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-02T06:09:52.050089+00:00",
+    "injected_at": "2026-08-31T06:09:52.050089+00:00",
+    "injection_ref": "https://chatgpt.com/c/6a914dc7-25c8-83ea-be63-09179f93476b",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I1-E4": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T08:57:25.216866+00:00",
+    "injected_at": "2026-08-28T08:57:25.216866+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I1-E5": {
+    "erased_at": "2026-08-31T05:28:32.702299+00:00",
+    "erasure_due_at": "2026-08-30T08:57:39.796004+00:00",
+    "injected_at": "2026-08-28T08:57:39.796004+00:00",
+    "recall_due_at": "2026-10-01T05:28:32.702299+00:00",
+    "recalled_at": null,
+    "status": "erased"
+  },
+  "CH-I1-E6": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T08:57:54.599232+00:00",
+    "injected_at": "2026-08-28T08:57:54.599232+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I1-E7": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T04:57:33.708144+00:00",
+    "injected_at": "2026-09-01T04:57:33.708144+00:00",
+    "injection_ref": "https://chatgpt.com/c/6a965ba6-49f4-83ea-a87b-0de61b2e1d6b",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I2-E1": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:20:59.758460+00:00",
+    "injected_at": "2026-09-01T07:20:59.758460+00:00",
+    "injection_ref": "https://chatgpt.com/c/6a967d42-1740-83ea-a066-5424b9114add",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I2-E2": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-02T06:09:52.051729+00:00",
+    "injected_at": "2026-08-31T06:09:52.051729+00:00",
+    "injection_ref": "https://chatgpt.com/c/6a914e17-2dd8-83ea-97e3-1e3507d82ad3",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I2-E4": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T08:58:41.053858+00:00",
+    "injected_at": "2026-08-28T08:58:41.053858+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I2-E5": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T08:58:55.273241+00:00",
+    "injected_at": "2026-08-28T08:58:55.273241+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I2-E6": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T08:59:09.539180+00:00",
+    "injected_at": "2026-08-28T08:59:09.539180+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I2-E7": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T06:52:16.636505+00:00",
+    "injected_at": "2026-09-01T06:52:16.636505+00:00",
+    "injection_ref": "https://chatgpt.com/c/6a96764e-cef8-83ea-a462-c525320bef70",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I3-E1": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:21:14.731576+00:00",
+    "injected_at": "2026-09-01T07:21:14.731576+00:00",
+    "injection_ref": null,
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I3-E2": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-02T06:11:10.959928+00:00",
+    "injected_at": "2026-08-31T06:11:10.959928+00:00",
+    "injection_ref": null,
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I3-E4": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-02T06:11:23.705916+00:00",
+    "injected_at": "2026-08-31T06:11:23.705916+00:00",
+    "injection_ref": null,
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I3-E5": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-02T06:11:35.662279+00:00",
+    "injected_at": "2026-08-31T06:11:35.662279+00:00",
+    "injection_ref": null,
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I3-E6": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-02T06:11:48.023112+00:00",
+    "injected_at": "2026-08-31T06:11:48.023112+00:00",
+    "injection_ref": null,
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-I3-E7": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T06:52:48.819159+00:00",
+    "injected_at": "2026-09-01T06:52:48.819159+00:00",
+    "injection_ref": null,
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-IF-E-CONV": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-02T06:10:19.830827+00:00",
+    "injected_at": "2026-08-31T06:10:19.830827+00:00",
+    "injection_ref": "https://chatgpt.com/c/6a951b2b-2b5c-83ea-91f6-d908997df672",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CH-IF-E-MAX": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T06:53:37.303840+00:00",
+    "injected_at": "2026-09-01T06:53:37.303840+00:00",
+    "injection_ref": "https://chatgpt.com/c/6a9676ce-d54c-83ea-8b6e-cae8b832bd0e",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I1-E1": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T08:53:43.629559+00:00",
+    "injected_at": "2026-08-28T08:53:43.629559+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I1-E2": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T08:53:56.253866+00:00",
+    "injected_at": "2026-08-28T08:53:56.253866+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I1-E3": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T08:54:14.798306+00:00",
+    "injected_at": "2026-08-28T08:54:14.798306+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I1-E4": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:14:40.309609+00:00",
+    "injected_at": "2026-09-01T07:14:40.309609+00:00",
+    "injection_ref": "https://claude.ai/chat/6480a8a9-bd7b-4172-a0fa-687584e31628",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I1-E5": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T06:24:30.447738+00:00",
+    "injected_at": "2026-09-01T06:24:30.447738+00:00",
+    "injection_ref": "https://claude.ai/chat/e8cae9da-48cb-44c6-8cae-88a78f6bfc0c",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I2-E1": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T08:54:50.937169+00:00",
+    "injected_at": "2026-08-28T08:54:50.937169+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I2-E2": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T08:55:07.512750+00:00",
+    "injected_at": "2026-08-28T08:55:07.512750+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I2-E3": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T08:55:23.997196+00:00",
+    "injected_at": "2026-08-28T08:55:23.997196+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I2-E4": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:15:01.141610+00:00",
+    "injected_at": "2026-09-01T07:15:01.141610+00:00",
+    "injection_ref": "https://claude.ai/chat/da27373c-e5cc-42cc-b65b-f3f851c5794f",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I2-E5": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T06:32:53.310499+00:00",
+    "injected_at": "2026-09-01T06:32:53.310499+00:00",
+    "injection_ref": "https://claude.ai/chat/db7a41eb-f6c6-423f-946d-d3ca43ed08eb",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I3-E1": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T08:55:59.810797+00:00",
+    "injected_at": "2026-08-28T08:55:59.810797+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I3-E2": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T08:56:17.610743+00:00",
+    "injected_at": "2026-08-28T08:56:17.610743+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I3-E3": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T08:56:35.456265+00:00",
+    "injected_at": "2026-08-28T08:56:35.456265+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I3-E4": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:15:43.096114+00:00",
+    "injected_at": "2026-09-01T07:15:43.096114+00:00",
+    "injection_ref": null,
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-I3-E5": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T06:46:28.093785+00:00",
+    "injected_at": "2026-09-01T06:46:28.093785+00:00",
+    "injection_ref": null,
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-IF-E-CONV": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:14:51.619793+00:00",
+    "injected_at": "2026-08-28T09:14:51.619793+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CL-IF-E-MAX": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T06:50:45.313633+00:00",
+    "injected_at": "2026-09-01T06:50:45.313633+00:00",
+    "injection_ref": "https://claude.ai/chat/24c4e956-4b64-4853-a392-3b093d7e9668",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CO-I1-E1": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:04:02.626721+00:00",
+    "injected_at": "2026-08-28T09:04:02.626721+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CO-I1-E2": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:04:20.182417+00:00",
+    "injected_at": "2026-08-28T09:04:20.182417+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CO-I1-E3": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:24:57.002737+00:00",
+    "injected_at": "2026-09-01T07:24:57.002737+00:00",
+    "injection_ref": "https://copilot.microsoft.com/chats/CJqShpDoLhvZNdyj51F95",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CO-I1-E4": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:04:36.509077+00:00",
+    "injected_at": "2026-08-28T09:04:36.509077+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CO-I1-E5": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:04:53.111466+00:00",
+    "injected_at": "2026-08-28T09:04:53.111466+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CO-I1-E6": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:06:25.298557+00:00",
+    "injected_at": "2026-09-01T07:06:25.298557+00:00",
+    "injection_ref": "https://copilot.microsoft.com/chats/Q9b17MQJSLMMuhNq1rQ2H",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CO-I2-E1": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:05:25.583715+00:00",
+    "injected_at": "2026-08-28T09:05:25.583715+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CO-I2-E2": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:05:40.855686+00:00",
+    "injected_at": "2026-08-28T09:05:40.855686+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CO-I2-E3": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:25:17.506418+00:00",
+    "injected_at": "2026-09-01T07:25:17.506418+00:00",
+    "injection_ref": "https://copilot.microsoft.com/chats/b42Q5kwsxo54Tap6U1TpG",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CO-I2-E4": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:05:55.601584+00:00",
+    "injected_at": "2026-08-28T09:05:55.601584+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CO-I2-E5": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:06:10.776052+00:00",
+    "injected_at": "2026-08-28T09:06:10.776052+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CO-I2-E6": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:07:05.886528+00:00",
+    "injected_at": "2026-09-01T07:07:05.886528+00:00",
+    "injection_ref": "https://copilot.microsoft.com/chats/owt8b4xpHxby2A7NNVm4A",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CO-IF-E-CONV": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:18:11.200643+00:00",
+    "injected_at": "2026-08-28T09:18:11.200643+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "CO-IF-E-MAX": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:07:55.761483+00:00",
+    "injected_at": "2026-09-01T07:07:55.761483+00:00",
+    "injection_ref": "https://copilot.microsoft.com/chats/uTF1cu1TDC1uY1tH9koNe",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "DE-I1-E1": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:06:39.645605+00:00",
+    "injected_at": "2026-08-28T09:06:39.645605+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "DE-I1-E2": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:06:56.551374+00:00",
+    "injected_at": "2026-08-28T09:06:56.551374+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "DE-I1-E3": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:25:37.698223+00:00",
+    "injected_at": "2026-09-01T07:25:37.698223+00:00",
+    "injection_ref": "https://chat.deepseek.com/a/chat/s/e33896fd-92ec-43b8-a310-5aab95ab4c54",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "DE-I1-E4": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:08:32.324300+00:00",
+    "injected_at": "2026-09-01T07:08:32.324300+00:00",
+    "injection_ref": "https://chat.deepseek.com/a/chat/s/32c2b36e-9763-4385-8628-72115d1f213e",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "DE-IF-E-CONV": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:18:53.607218+00:00",
+    "injected_at": "2026-08-28T09:18:53.607218+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "DE-IF-E-MAX": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:09:05.201231+00:00",
+    "injected_at": "2026-09-01T07:09:05.201231+00:00",
+    "injection_ref": "https://chat.deepseek.com/a/chat/s/ad1f7728-aa6a-4aa2-a83a-d2f3c26b04d5",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "GE-I1-E1": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:21:51.710790+00:00",
+    "injected_at": "2026-09-01T07:21:51.710790+00:00",
+    "injection_ref": "https://gemini.google.com/app/d1c57852203f1bf0",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "GE-I1-E2": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:00:30.982335+00:00",
+    "injected_at": "2026-08-28T09:00:30.982335+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "GE-I1-E3": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:00:44.049128+00:00",
+    "injected_at": "2026-08-28T09:00:44.049128+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "GE-I1-E4": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:10:48.234542+00:00",
+    "injected_at": "2026-08-28T09:10:48.234542+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "GE-I1-E5": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:02:07.936597+00:00",
+    "injected_at": "2026-08-28T09:02:07.936597+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "GE-I1-E6": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T06:54:27.486439+00:00",
+    "injected_at": "2026-09-01T06:54:27.486439+00:00",
+    "injection_ref": "https://gemini.google.com/app/d6f87896460f6c8e",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "GE-I2-E1": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:24:32.717087+00:00",
+    "injected_at": "2026-09-01T07:24:32.717087+00:00",
+    "injection_ref": null,
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "GE-I2-E2": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:02:37.221770+00:00",
+    "injected_at": "2026-08-28T09:02:37.221770+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "GE-I2-E3": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:02:52.446711+00:00",
+    "injected_at": "2026-08-28T09:02:52.446711+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "GE-I2-E4": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:11:04.755366+00:00",
+    "injected_at": "2026-08-28T09:11:04.755366+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "GE-I2-E5": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:03:26.250818+00:00",
+    "injected_at": "2026-08-28T09:03:26.250818+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "GE-I2-E6": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:00:52.550677+00:00",
+    "injected_at": "2026-09-01T07:00:52.550677+00:00",
+    "injection_ref": null,
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "GE-IF-E-CONV": {
+    "erased_at": null,
+    "erasure_due_at": "2026-08-30T09:17:16.577686+00:00",
+    "injected_at": "2026-08-28T09:17:16.577686+00:00",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  },
+  "GE-IF-E-MAX": {
+    "erased_at": null,
+    "erasure_due_at": "2026-09-03T07:04:56.927191+00:00",
+    "injected_at": "2026-09-01T07:04:56.927191+00:00",
+    "injection_ref": "https://gemini.google.com/app/3254c1ea6296789f",
+    "recall_due_at": null,
+    "recalled_at": null,
+    "status": "injected"
+  }
+}

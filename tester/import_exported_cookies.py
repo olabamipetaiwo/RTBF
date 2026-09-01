@@ -88,7 +88,7 @@ def _report(cookies: list[dict], out_path) -> None:
         print("WARNING: no cookie name looks like a session/auth token -- verify before trusting this.")
 
 
-def convert(platform: str, origin: str | None = None) -> None:
+def convert(platform: str, origin: str | None = None, account_label: str | None = None) -> None:
     """origin: if a localStorage dump exists at
     sessions/_manual_localstorage_<platform>.json (see module docstring),
     it gets attached to storage_state's "origins" for this URL -- needed
@@ -98,8 +98,23 @@ def convert(platform: str, origin: str | None = None) -> None:
     "@@auth0spajs@@..." key, cookies alone weren't enough to load an
     authenticated session). Defaults to config.PLATFORMS[platform]. Fully
     replaces the existing session file -- use `merge()` instead when adding
-    a second domain's cookies to an already-working session."""
-    export_path = config.SESSIONS_DIR / f"_manual_export_{platform}.json"
+    a second domain's cookies to an already-working session.
+
+    `account_label` saves to a SEPARATE dedicated account's session file
+    (sessions/<platform>__<account_label>.json, via config.session_path)
+    instead of the main sessions/<platform>.json -- added 2026-08-31 for
+    MAXIMAL cells that must not share an account with a sibling MAXIMAL
+    cell (see config.py's MAXIMAL_ACCOUNT_LABEL). NOT the same thing as
+    `merge()`'s `label` -- that's a second DOMAIN of the SAME account
+    (e.g. myactivity.google.com), this is a wholly separate account.
+    Reads from a differently-named export file
+    (sessions/_manual_export_<platform>__<account_label>.json) so
+    exporting a new account's cookies never overwrites the main account's
+    already-saved export -- export the NEW account's cookies (logged into
+    it in your everyday Chrome, same Cookie-Editor flow as usual) to that
+    path first."""
+    suffix = f"__{account_label}" if account_label else ""
+    export_path = config.SESSIONS_DIR / f"_manual_export_{platform}{suffix}.json"
     if not export_path.exists():
         raise FileNotFoundError(
             f"Expected the extension's exported JSON at {export_path} -- save it there first."
@@ -108,7 +123,7 @@ def convert(platform: str, origin: str | None = None) -> None:
     cookies = _load_cookies(export_path)
 
     origins = []
-    ls_path = config.SESSIONS_DIR / f"_manual_localstorage_{platform}.json"
+    ls_path = config.SESSIONS_DIR / f"_manual_localstorage_{platform}{suffix}.json"
     if ls_path.exists():
         ls_raw = json.loads(ls_path.read_text())
         # Accept either {"key": "value", ...} or [["key", "value"], ...]
@@ -121,32 +136,42 @@ def convert(platform: str, origin: str | None = None) -> None:
         })
         print(f"Attached {len(origins[0]['localStorage'])} localStorage entries from {ls_path}")
 
-    out_path = config.session_path(platform)
+    out_path = config.session_path(platform, account_label)
     config.SESSIONS_DIR.mkdir(exist_ok=True)
     out_path.write_text(json.dumps({"cookies": cookies, "origins": origins}, indent=2))
     print(f"Converted {len(cookies)} cookies")
     _report(cookies, out_path)
 
 
-def merge(platform: str, label: str, origin: str | None = None) -> None:
+def merge(platform: str, label: str, origin: str | None = None, account_label: str | None = None) -> None:
     """Adds a second domain's cookies (and optionally localStorage) into
-    the EXISTING sessions/<platform>.json, for platforms whose erasure
+    the EXISTING sessions/<platform>.json (or a dedicated account's
+    session, see `account_label` below), for platforms whose erasure
     action is cross-domain (see module docstring). Reads
     sessions/_manual_export_<platform>_<label>.json and
     sessions/_manual_localstorage_<platform>_<label>.json (same shape as
     convert()'s inputs, just domain-scoped and labeled). Cookies are keyed
     by (name, domain, path) -- a cookie already in the session with the
     same key gets replaced by the new export's version, everything else
-    from the existing session is kept as-is."""
+    from the existing session is kept as-is.
+
+    `account_label` merges into a SEPARATE dedicated account's session
+    (sessions/<platform>__<account_label>.json) instead of the main one --
+    needed for MAXIMAL cells on a dedicated account whose own erasure also
+    needs a cross-domain surface (e.g. Gemini's GE-I2-E6/GE-IF-E-MAX still
+    need myactivity.google.com merged in even though they're not on the
+    main gemini.json). Distinct from `label`, which names the DOMAIN being
+    merged, not the account."""
     export_path = config.SESSIONS_DIR / f"_manual_export_{platform}_{label}.json"
     if not export_path.exists():
         raise FileNotFoundError(
             f"Expected the extension's exported JSON at {export_path} -- save it there first."
         )
-    out_path = config.session_path(platform)
+    out_path = config.session_path(platform, account_label)
     if not out_path.exists():
         raise FileNotFoundError(
-            f"{out_path} doesn't exist yet -- run `convert` for {platform} first, "
+            f"{out_path} doesn't exist yet -- run `convert` for {platform} "
+            f"{f'(--account {account_label}) ' if account_label else ''}first, "
             f"merge only adds to an existing session."
         )
 
@@ -176,8 +201,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("platform", choices=list(config.PLATFORMS))
     parser.add_argument("--merge", metavar="LABEL", help="merge a second domain's export into the existing session instead of replacing it")
+    parser.add_argument(
+        "--account", metavar="LABEL",
+        help="save/merge into a SEPARATE dedicated account (e.g. --account maximal_i2) instead of "
+             "the main session -- see config.py's MAXIMAL_ACCOUNT_LABEL for which cells need one.",
+    )
     args = parser.parse_args()
     if args.merge:
-        merge(args.platform, args.merge)
+        merge(args.platform, args.merge, account_label=args.account)
     else:
-        convert(args.platform)
+        convert(args.platform, account_label=args.account)

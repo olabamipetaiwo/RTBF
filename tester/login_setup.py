@@ -116,13 +116,19 @@ def _prepare_chrome_profile_copy(source_profile: str = "Default") -> Path:
 
 
 def capture_session_from_chrome_profile(
-    platform: str, source_profile: str = "Profile 7", auto: bool = False
+    platform: str, source_profile: str = "Profile 7", auto: bool = False, label: str | None = None
 ) -> None:
     """auto=True skips the input() prompts (for driving this from a tool that
     can't relay a live terminal) -- instead it waits for the page to settle,
     takes a screenshot to sessions/_check_<platform>.png for visual
     verification, and saves storage_state unconditionally. Check the
-    screenshot before trusting the saved session."""
+    screenshot before trusting the saved session.
+
+    `label` saves to sessions/<platform>__<label>.json instead of the main
+    sessions/<platform>.json -- use this for a SEPARATE, independently
+    logged-in account (e.g. --label maximal_i2), not the platform's usual
+    one. Added 2026-08-31 for MAXIMAL cells that must not share an account
+    with a sibling MAXIMAL cell -- see config.py's MAXIMAL_ACCOUNT_LABEL."""
     if not auto:
         print(
             "This copies only Cookies/Local Storage/Preferences from your real "
@@ -130,13 +136,15 @@ def capture_session_from_chrome_profile(
             "is FULLY QUIT (Cmd+Q, not just closed) before continuing, so the "
             "files aren't being written to mid-copy."
         )
+        if label:
+            print(f"NOTE: saving as a SEPARATE account (label={label!r}) -- log into a DIFFERENT account than usual.")
         input("Chrome fully quit? Press Enter to continue... ")
 
     profile_dir = _prepare_chrome_profile_copy(source_profile)
     print(f"Profile pieces copied -> {profile_dir}")
 
     url = config.PLATFORMS[platform]
-    out_path = config.session_path(platform)
+    out_path = config.session_path(platform, label)
 
     with sync_playwright() as p:
         context = p.chromium.launch_persistent_context(
@@ -192,11 +200,16 @@ def _wait_for_signal(signal_path: Path, timeout_s: int = 900) -> bool:
     return True
 
 
-def capture_session(platform: str, wait_for_signal: bool = False) -> None:
+def capture_session(platform: str, wait_for_signal: bool = False, label: str | None = None) -> None:
+    """`label` saves to sessions/<platform>__<label>.json instead of the
+    main sessions/<platform>.json -- use for a SEPARATE, independently
+    logged-in account (e.g. --label maximal_i2). See config.py's
+    MAXIMAL_ACCOUNT_LABEL for which cells need one and why."""
     url = config.PLATFORMS[platform]
-    out_path = config.session_path(platform)
+    out_path = config.session_path(platform, label)
     config.SESSIONS_DIR.mkdir(exist_ok=True)
-    signal_path = config.SESSIONS_DIR / f".continue_{platform}"
+    signal_key = f"{platform}__{label}" if label else platform
+    signal_path = config.SESSIONS_DIR / f".continue_{signal_key}"
     signal_path.unlink(missing_ok=True)
 
     with sync_playwright() as p:
@@ -211,6 +224,8 @@ def capture_session(platform: str, wait_for_signal: bool = False) -> None:
         page.goto(url)
 
         print(f"\nOpened {url}")
+        if label:
+            print(f"NOTE: saving as a SEPARATE account (label={label!r}) -- log into a DIFFERENT account than usual.")
         print("Log in manually (handle CAPTCHA/verification/2FA as needed).")
         print("If Google rejects sign-in ('browser or app may not be secure'),")
         print(f"stop and re-run with: python login_setup.py {platform} --from-chrome-profile")
@@ -229,7 +244,7 @@ def capture_session(platform: str, wait_for_signal: bool = False) -> None:
             page.goto(secondary)
             print(f"\nAlso opened {secondary} (needed for this platform's cross-domain erasure surface).")
             if wait_for_signal:
-                secondary_signal = config.SESSIONS_DIR / f".continue_{platform}_secondary"
+                secondary_signal = config.SESSIONS_DIR / f".continue_{signal_key}_secondary"
                 secondary_signal.unlink(missing_ok=True)
                 print(f"Waiting for signal file {secondary_signal}...")
                 _wait_for_signal(secondary_signal)
@@ -245,15 +260,22 @@ if __name__ == "__main__":
     args = sys.argv[1:]
     from_profile = "--from-chrome-profile" in args
     auto = "--auto" in args
+    label = None
+    if "--label" in args:
+        i = args.index("--label")
+        label = args[i + 1]
+        args = args[:i] + args[i + 2:]
     args = [a for a in args if a not in ("--from-chrome-profile", "--auto")]
 
     if len(args) != 1 or args[0] not in config.PLATFORMS:
-        print(f"Usage: python login_setup.py <platform> [--from-chrome-profile] [--auto]")
+        print(f"Usage: python login_setup.py <platform> [--from-chrome-profile] [--auto] [--label <name>]")
         print(f"Platforms: {list(config.PLATFORMS)}")
+        print(f"--label is for a SEPARATE dedicated account (e.g. --label maximal_i2) --")
+        print(f"see config.py's MAXIMAL_ACCOUNT_LABEL for which cells need one and why.")
         sys.exit(1)
 
     config.SESSIONS_DIR.mkdir(exist_ok=True)
     if from_profile:
-        capture_session_from_chrome_profile(args[0], auto=auto)
+        capture_session_from_chrome_profile(args[0], auto=auto, label=label)
     else:
-        capture_session(args[0], wait_for_signal=auto)
+        capture_session(args[0], wait_for_signal=auto, label=label)

@@ -47,12 +47,14 @@ class PlatformFlow:
     # blanket "just in case."
     USE_STEALTH: bool = False
 
-    def __init__(self, headless: bool = False):
-        session = config.session_path(self.platform)
+    def __init__(self, headless: bool = False, session_label: str | None = None):
+        session = config.session_path(self.platform, session_label)
         if not session.exists():
+            label_hint = f" --label {session_label}" if session_label else ""
             raise FileNotFoundError(
-                f"No saved session for {self.platform!r} -- run "
-                f"`python login_setup.py {self.platform}` first."
+                f"No saved session for {self.platform!r}"
+                f"{f' (label {session_label!r})' if session_label else ''} -- run "
+                f"`python login_setup.py {self.platform}{label_hint}` first."
             )
         self._session_path = session
         self._headless = headless
@@ -107,28 +109,72 @@ class PlatformFlow:
         mechanical action, different text."""
         raise NotImplementedError
 
-    def set_memory_field(self, text: str) -> None:
+    def set_memory_field(self, text: str) -> str | None:
         """I3 cells: fill the settings/custom-instructions field instead of
-        the chat stream."""
+        the chat stream. Returns a durable ref identifying THIS cell's own
+        entry for later targeted erasure (e.g. the exact new list-item
+        label), or None when the surface is a single free-text field where
+        the cell's own token is enough to find its line later (see
+        ChatGPT's implementation) -- required wherever the visible entry
+        doesn't literally contain the injected token (see Claude's
+        implementation, whose Memory UI shows an AI-generated paraphrase,
+        never the verbatim text)."""
         raise NotImplementedError
 
     def upload_file(self, file_path: str, caption: str | None = None) -> str:
         """FILE-substudy cells: attach a document instead of typing."""
         raise NotImplementedError
 
-    def erase_via_ui(self, erasure_desc: str) -> None:
+    def erase_via_ui(self, erasure_desc: str, token: str, injection_text: str, ref: str | None = None) -> None:
         """Dispatches to the matching method in ERASURE_DISPATCH by the
         exact erasure_desc string (e.g. "Delete conversation") -- shared
         base implementation, subclasses populate ERASURE_DISPATCH instead
         of overriding this. Many cells share the same erasure action, so
-        this is one lookup, not one branch per cell_id."""
+        this is one lookup, not one branch per cell_id.
+
+        `token` (this cell's own anchor text) and `ref` (this cell's own
+        conversation URL, captured at injection time -- None for a
+        settings-field injection) are forwarded to every dispatched
+        method so a "delete THIS cell's own conversation/entry" method can
+        target precisely instead of grabbing whatever's topmost/first on
+        a shared account. Confirmed live 2026-08-31 that grabbing
+        "topmost in sidebar" silently deletes a sibling cell's data
+        instead -- every narrow (non-account-wide) erasure method must
+        accept and use these, even if a given platform's method doesn't
+        need one of them. Broad/account-wide methods (Clear all memories,
+        MAXIMAL, etc.) may ignore both -- they're deliberately blanket."""
         method_name = self.ERASURE_DISPATCH.get(erasure_desc)
         if method_name is None:
             raise NotImplementedError(
                 f"{type(self).__name__} has no ERASURE_DISPATCH entry for "
                 f"{erasure_desc!r}. Known: {list(self.ERASURE_DISPATCH)}"
             )
-        getattr(self, method_name)()
+        getattr(self, method_name)(token=token, injection_text=injection_text, ref=ref)
+
+    def _find_conversation_by_token(self, token: str, base_url: str, link_selector: str) -> str | None:
+        """Fallback for erasure methods when `ref` is missing (legacy
+        tracking data from before injection-time ref capture existed,
+        2026-08-31) -- searches every sidebar conversation's actual
+        content for `token` instead of defaulting to "whatever's topmost"
+        (confirmed live that guessing wrong silently deletes a sibling
+        cell's conversation). Opens each conversation in turn and checks
+        its visible text, since sidebar titles alone aren't reliably
+        verbatim across platforms (Claude paraphrases; Copilot sometimes
+        does, sometimes doesn't). Returns the first matching conversation's
+        full URL, or None if none contain the token (e.g. a cross-
+        mechanism cell with no owned conversation at all) -- callers
+        should fall back to explicit topmost-conversation behavior only in
+        that case, not silently here."""
+        links = self.page.query_selector_all(link_selector)
+        for link in links:
+            href = link.get_attribute("href")
+            if not href:
+                continue
+            self.page.goto(f"{base_url}{href}" if href.startswith("/") else href)
+            self.page.wait_for_timeout(1200)
+            if token.strip().lower() in self.page.inner_text("body").lower():
+                return self.page.url
+        return None
 
     def read_memory_settings(self) -> str:
         """R2 probe: navigate to the memory/personalization settings page

@@ -123,13 +123,31 @@ class ChatGPTFlow(PlatformFlow):
 
         self.page.set_input_files('#upload-files', file_path)
         self.page.wait_for_timeout(2000)
+        # Confirmed live 2026-08-28 (CH-IF-E-MAX, 3 consecutive attempts):
+        # set_input_files() occasionally doesn't register at all -- no
+        # attachment chip, no send-button, no error, nothing -- while an
+        # identical call for a different cell/file succeeds immediately.
+        # No selector/timing cause found (file itself was verified intact);
+        # reads as the same class of real nondeterminism already documented
+        # for Copilot's chat-based memory save. One retry, same as that
+        # fix, rather than chasing a root cause further.
+        if self.page.locator('[data-testid="send-button"]').count() == 0:
+            self.page.set_input_files('#upload-files', file_path)
+            self.page.wait_for_timeout(3000)
 
         if caption:
             self.page.locator("#prompt-textarea").click(force=True, timeout=10000)
             self.page.keyboard.type(caption)
             self.page.wait_for_timeout(500)
 
-        self.page.locator('[data-testid="send-button"]').click(force=True, timeout=10000)
+        # Widened from a flat 10s after two real-batch failures 2026-08-28
+        # (CH-IF-E-CONV, CH-IF-E-MAX) both timed out waiting for
+        # send-button here -- same selector/flow that passed cleanly in
+        # isolated verification earlier, so this reads as real-world file-
+        # upload-processing variance (PDF size/network/server load), not a
+        # selector regression. 25s gives ChatGPT's client-side upload
+        # processing more headroom before giving up.
+        self.page.locator('[data-testid="send-button"]').click(force=True, timeout=25000)
         return self._wait_for_reply(before)
 
     def _open_settings_personalization(self) -> None:
@@ -139,24 +157,47 @@ class ChatGPTFlow(PlatformFlow):
 
     def _fill_custom_instructions(self, text: str) -> None:
         """Shared by set_memory_field() and _clear_custom_instructions() --
-        same field, save mechanism, just different target text (empty for
-        clear). Confirmed live 2026-08-27: this field does NOT autosave on
-        blur/Tab -- it silently discards on reload unless the explicit
-        "Save" button (role=button, name="Save") is clicked. Also confirmed
-        .fill() alone reaches the field's value fine (React picks it up),
-        so the earlier autosave assumption, not the fill mechanism, was
-        the bug."""
+        same field, save mechanism, just different target text. Confirmed
+        live 2026-08-27: this field does NOT autosave on blur/Tab -- it
+        silently discards on reload unless the explicit "Save" button
+        (role=button, name="Save") is clicked. Also confirmed .fill()
+        alone reaches the field's value fine (React picks it up), so the
+        earlier autosave assumption, not the fill mechanism, was the bug.
+
+        `text` is the FULL new value to save, not a delta -- callers
+        (set_memory_field's append, _clear_custom_instructions's own-line
+        removal) compute the complete resulting text themselves before
+        calling this. Confirmed live: if the resulting value equals the
+        field's current value (nothing changed), ChatGPT never enables the
+        Save button, so this waits for it to be visible+enabled with a
+        short timeout instead of assuming it's always clickable -- a
+        no-op call is treated as success, not a hang."""
         field = self.page.get_by_placeholder("Additional behavior, style, and tone preferences")
         field.click()
         field.fill(text)
-        self.page.get_by_role("button", name="Save", exact=True).click(timeout=10000)
-        self.page.wait_for_timeout(1500)
+        save_btn = self.page.get_by_role("button", name="Save", exact=True)
+        try:
+            save_btn.click(timeout=5000)
+            self.page.wait_for_timeout(1500)
+        except Exception:
+            pass  # no-op edit (resulting text == current text) -- nothing to save
 
     def set_memory_field(self, text: str) -> None:
         """I3: ChatGPT's Custom Instructions settings field (Settings ->
-        Personalization -> "Custom instructions" text box)."""
+        Personalization -> "Custom instructions" text box). APPENDS `text`
+        as its own new line instead of overwriting the field -- confirmed
+        live 2026-08-31 (CH-I3-E4/E5/E6/E7) that the field is a genuine
+        multi-line textarea, not a single-value slot: overwriting silently
+        destroyed every sibling I3 cell's anchor except whichever was
+        injected last, since they all share one ChatGPT account. Each
+        cell's line must stay independently identifiable (by its own
+        token) so _clear_custom_instructions() can later remove only this
+        cell's line without touching siblings'."""
         self._open_settings_personalization()
-        self._fill_custom_instructions(text)
+        field = self.page.get_by_placeholder("Additional behavior, style, and tone preferences")
+        current = field.input_value()
+        new_value = f"{current}\n{text}" if current.strip() else text
+        self._fill_custom_instructions(new_value)
 
     def read_memory_settings(self) -> str:
         """R2 probe: opens the "Memory summary" panel and returns its
@@ -187,16 +228,30 @@ class ChatGPTFlow(PlatformFlow):
 
     # --- ERASURE_DISPATCH targets ---
 
-    def _send_nl_forget(self) -> None:
+    def _send_nl_forget(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
         """Not a UI click -- routes back through send_message() with the
         erasure_request_sentence() text once that's wired in
         (RTBF-Prompt/token_generator.py). Placeholder for now."""
         raise NotImplementedError
 
-    def _delete_conversation(self) -> None:
-        """Deletes the most recently opened conversation from the sidebar
-        (the one the caller was just working in)."""
-        convo = self.page.query_selector('a[href^="/c/"]')
+    def _delete_conversation(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
+        """Deletes THIS cell's own conversation, identified by `ref` (the
+        exact conversation URL captured at injection time). Confirmed live
+        2026-08-31 that grabbing "whatever's topmost in the sidebar"
+        (the old behavior) silently deletes a completely unrelated cell's
+        conversation whenever this account has been used for other cells
+        more recently -- always true once cells share an account. Falls
+        back to topmost only when `ref` is None (e.g. an I3 cell whose own
+        injection lives in a settings field, not a conversation, so
+        "Delete conversation" is deliberately testing an arbitrary/most-
+        recent conversation as a cross-mechanism probe)."""
+        if ref:
+            from urllib.parse import urlsplit
+            convo = self.page.query_selector(f'a[href="{urlsplit(ref).path}"]')
+            if convo is None:
+                raise RuntimeError(f"_delete_conversation: expected conversation {ref!r} not found in sidebar")
+        else:
+            convo = self.page.query_selector('a[href^="/c/"]')
         if convo is None:
             raise RuntimeError("_delete_conversation: no conversation found in sidebar")
         convo.hover()
@@ -208,7 +263,7 @@ class ChatGPTFlow(PlatformFlow):
         self.page.click('[data-testid="delete-conversation-confirm-button"]')
         self.page.wait_for_timeout(1000)
 
-    def _delete_individual_memory_entry(self) -> None:
+    def _delete_individual_memory_entry(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
         """No longer exists as ENUMERATION described it -- see module
         docstring. The current UI has no per-item delete; the closest
         analogue is typing a correction into the Memory summary's
@@ -221,8 +276,11 @@ class ChatGPTFlow(PlatformFlow):
             "how/whether to adapt this cell before implementing further."
         )
 
-    def _clear_all_memories(self) -> None:
-        """Settings -> Personalization -> Manage (saved memories) -> "..."
+    def _clear_all_memories(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
+        """Deliberately account-wide/blanket -- see [[project-destructive-actions-run-last]].
+        `token`/`ref` accepted for interface consistency but unused: this
+        mechanism has no narrower real-product equivalent to target with.
+        Settings -> Personalization -> Manage (saved memories) -> "..."
         (aria-label "About You menu") -> "Delete and turn off memory".
         Note the real UI combines clear + disable in one action -- there is
         no clear-without-disabling variant, worth noting as a caveat on
@@ -251,15 +309,29 @@ class ChatGPTFlow(PlatformFlow):
         self.page.keyboard.press("Escape")
         self.page.wait_for_timeout(500)
 
-    def _clear_custom_instructions(self) -> None:
-        """Confirmed live 2026-08-27: this is a genuine text field, not a
-        toggle -- Q6 is resolved, no toggle-vs-field ambiguity exists.
-        Clears the same field set_memory_field() fills."""
+    def _clear_custom_instructions(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
+        """Removes only THIS cell's own line (the one containing `token`)
+        from the custom-instructions field, leaving any sibling cells'
+        lines intact -- matches what a real user would actually do
+        (selectively edit out one note), and mirrors set_memory_field()'s
+        append-not-overwrite fix. Changed from a full-field blank
+        2026-08-31 after confirming live that the old blanket-clear
+        destroyed sibling I3 cells' anchors (e.g. CH-I3-E7's) days before
+        their own scheduled erasure. Confirmed live 2026-08-27 this field
+        is a genuine text field, not a toggle -- Q6 is resolved, no
+        toggle-vs-field ambiguity exists."""
         self._open_settings_personalization()
-        self._fill_custom_instructions("")
+        field = self.page.get_by_placeholder("Additional behavior, style, and tone preferences")
+        current = field.input_value()
+        remaining = "\n".join(
+            line for line in current.split("\n") if token.strip().lower() not in line.lower()
+        )
+        self._fill_custom_instructions(remaining)
 
-    def _clear_all_chat_history_bulk(self) -> None:
-        """E6: confirmed live 2026-08-28 (DECISIONS Q5) -- genuinely
+    def _clear_all_chat_history_bulk(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
+        """Deliberately account-wide/blanket -- see [[project-destructive-actions-run-last]].
+        `token`/`ref` accepted for interface consistency but unused.
+        E6: confirmed live 2026-08-28 (DECISIONS Q5) -- genuinely
         exists as a real "Delete all chats" action, under Settings > Data
         controls (not Personalization, and not the Archive-all button
         right above it -- easy to mix up, "Archive all" is a different
@@ -288,8 +360,8 @@ class ChatGPTFlow(PlatformFlow):
         self.page.keyboard.press("Escape")
         self.page.wait_for_timeout(500)
 
-    def _erase_maximal(self) -> None:
+    def _erase_maximal(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
         """E7: all singles combined in one setup (design rule)."""
-        self._delete_conversation()
-        self._clear_all_memories()
-        self._clear_custom_instructions()
+        self._delete_conversation(token=token, ref=ref)
+        self._clear_all_memories(token=token, ref=ref)
+        self._clear_custom_instructions(token=token, ref=ref)
