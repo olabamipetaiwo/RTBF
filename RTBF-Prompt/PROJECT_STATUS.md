@@ -288,6 +288,34 @@ limitation. The other 5 platforms' memory/erasure surfaces were all
 reachable on their respective free tiers -- Perplexity is the one
 exception found, not a general pattern across all 6.
 
+**No plan to upgrade off free tier, confirmed 2026-09-07 (user)**: this
+closes the loop on Q7's original "revisit if/when the account is
+upgraded" wording for the genuinely memory-dependent surfaces --
+`_delete_individual_memory` (E4), `_clear_all_memories` (E5),
+`read_memory_settings` (R2), and field-based I2 injection (moot here
+since `MEMORY_FIELD_INJECTION_TYPES` is empty on this platform) stay
+permanently unbuilt, real 403s confirmed live, not a pending TODO.
+
+**Correction, 2026-09-07**: an earlier pass in this same session
+wrongly folded `PE-I1-E1`/`PE-I2-E1` (erasure method E1, "NL forget
+prompt") into that same tier-gate finding and marked them `LOCKED`/
+out-of-scope in MASTER. That was wrong and has been reverted (back to
+`VERIFY`/no Notes) -- checked directly against `flows/perplexity.py`:
+`_send_nl_forget()`'s own docstring says it "routes back through
+send_message() with the erasure_request_sentence() text once that's
+wired in ... same as every other platform's equivalent method" -- i.e.
+it's blocked by the universal erasure-text pipeline-wiring gap (same as
+all 13 `blocked_on_prompt_set` cells everywhere), not by Q7's tier gate.
+Injection itself (I1/I2, plain `send_message()`) has no memory-API
+dependency either -- confirmed by `PE-I1-E2` having actually been run
+for real during 2026-08-27's mechanics verification. So `PE-I1-E1`/
+`PE-I2-E1` are in the same state as the other 11 already-injected
+blocked cells: injectable now, just waiting on the same erasure-text
+wiring as everyone else. No confirmed reason they were left out of the
+2026-09-01 batch that injected those other 11 -- looks like an
+operational gap in that run, not a deliberate block; worth including
+them next time cells get injected.
+
 ### ChatGPT live selector work, 2026-08-27 (`../tester`)
 
 First platform driven against a real, logged-in session (`../tester/flows/
@@ -1189,6 +1217,695 @@ interleaved with other cells sharing that same account -- since accounts
 are reused across cells now (see "Unique anchor + token per experiment"
 above), a broad wipe run mid-sequence would corrupt other still-pending
 cells' anchors/tokens on that account.
+
+### NL-forget-prompt factorial study: scope and account policy, 2026-09-07
+
+**Framing correction (user, 2026-09-07)**: this study is NOT "a phrasing-
+sensitivity experiment." The core research question stays the same as
+the rest of the technical audit -- whether these platforms actually honor
+a data-deletion/erasure request -- same as every other MASTER cell.
+Location/Extent/Form/Tone/Verb are just the specific dimensions being
+varied across the 270 cells, the same way the existing battery varies
+injection type/platform/erasure method to get broad, realistic coverage
+of "an erasure request," not because phrasing sensitivity is itself the
+hypothesis being tested. Any finding that phrasing *does* predict outcome
+would emerge inductively from the results afterward (something to notice
+and backtrack into new questions from), not something pre-registered as
+what this study is confirmatorily testing for. Correct this framing
+anywhere it reads otherwise, including the "Still open" scoping questions
+below -- they're about which conditions to run, not about a phrasing
+hypothesis.
+
+**Scope reversed**: the professor wants the phrasing factorial (Location x
+Extent x Form x Tone x Verb, from the coded survey corpus -- see
+`Compare/First Pass/formal_comparison.md` and `Compare/codebook.md` /
+`results/codebook/step6_codebook.md`) run live as actual test conditions --
+up to 270 combinations before any fractioning. This supersedes the
+2026-08-26 decision (above, "Progress 2026-08-26") to use 1-3 fixed
+representative erasure-request prompts -- that decision was made because
+none of the paper's 5 RQs ask about phrasing sensitivity, but the
+professor wants it treated as a live variable for this study regardless.
+Does NOT change the 13 existing MASTER cells flagged
+`blocked_on_prompt_set = YES` -- those stay on the old fixed-prompt plan
+unless separately revisited; this is a new, additional study.
+
+**Account policy decided, 2026-09-07**: this study uses NEW, dedicated
+account(s) per platform -- explicitly NOT the existing battery's accounts.
+Reasoning:
+- The existing accounts already carry the original battery's live,
+  unerased cells (as of this writing, 70 of the 71 injected MASTER cells
+  are still past their 48h erasure_due_at and not yet erased -- see
+  `tester/data/run_tracking.json`). Adding 270 more entries onto those
+  same accounts before that backlog clears risks an untested free-tier
+  memory/conversation-history capacity limit forcing the platform to
+  evict/summarize its oldest entries -- which would be the ALREADY-pending
+  original-battery cells, corrupting the primary study's data, not just
+  this study's.
+- Reduces the chance of manually erasing (or failing to erase) the wrong
+  entry when two studies' data is mixed in one account's memory/history.
+
+**Within the new account(s): ONE account per platform for all 270 cells**
+(the professor's explicit call, 2026-09-07) -- no per-condition or
+multi-account isolation needed. Same rationale as the original battery's
+2026-08-26 "Unique anchor + token per experiment" decision above:
+contamination is handled by giving each of the 270 cells its own unique
+referent + token, not by account separation.
+
+**Flagged, not yet verified**: no live data exists on any platform's
+actual memory/conversation-history capacity on the free tier (all 6 test
+accounts are confirmed free-tier, DECISIONS Q18). Putting 270 entries in
+one account is untested at that scale. Not a blocker on the decision
+itself -- just an open item worth a live spot-check on one platform before
+running the full 270 for real.
+
+**Token/referent pool generated in advance**: `nl_forget_token_generator.py`
+(new script, 2026-09-07) produced 270 new (referent, token) pairs,
+entirely disjoint from the existing 88-cell battery's pool by
+construction -- tokens continue `token_generator.py`'s exact seeded draw
+past its existing `N_TOKENS=250` cutoff (collision with an
+already-assigned/reserved token is impossible by construction, not just
+unlikely); referents are newly authored (own noun banks) and deduplicated
+against the existing `REFERENTS` list. Neither `token.md`,
+`data/token_assignment.csv`, nor `data/RTBF Experiments.xlsx` was read
+for writing or modified. Output: `nl_forget_tokens.md`,
+`data/nl_forget_token_assignment.csv`. This is a flat, unassigned pool of
+270 pairs -- not yet mapped to specific cell IDs, the new account(s), or
+the actual factorial conditions/erasure-request text per condition.
+
+**Still open** (unchanged from prior discussion): full 270 vs. a
+fractioned subset (~16-32, see `formal_comparison.md`'s factor-reduction
+note); additive to the 13 existing blocked MASTER cells or a fully
+separate sheet/cell-ID range (FILE SUBSTUDY's pattern is the likely
+template, per prior discussion); exact cell-ID naming scheme for the new
+270.
+
+### NL-forget erasure text wired in, real Perplexity bugs found and fixed, 2026-09-07
+
+**Full pipeline for the 13 `blocked_on_prompt_set = YES` cells' erasure
+step is wired in end-to-end** -- `_send_nl_forget()` is no longer a stub
+on any of the 6 platforms. `token_generator.py`'s new
+`write_erasure_request_text_to_xlsx()` writes the single-representative-
+style text (`ERASURE_REQUEST_TEMPLATES`, unchanged since 2026-08-26) into
+a new MASTER column 23; `tester/run_cell.py`'s `CellPlan` reads it into
+`erasure_request_text`; `flows/base.py`'s `erase_via_ui()` forwards it
+conditionally (only when non-None, so no other erasure method's
+signature needed to change); each platform's `_send_nl_forget()`
+navigates to the cell's own conversation via `ref` (or opens a fresh one
+if `ref` is missing -- true for `CL-I3-E4`/`CH-I3-E1`/`GE-I2-E1`, all
+field/settings-based injections with no owned conversation) and sends
+the text via `send_message()`. `erase_cell()`'s hard
+`blocked_on_prompt_set` refusal is now conditional on the text actually
+being present, not a blanket block. **No erasure was run this session**
+-- wiring only, per explicit instruction.
+
+**Real bug caught before it could corrupt anything**: the first version
+of `write_erasure_request_text_to_xlsx()` recomputed a fresh
+cell_id -> REFERENTS index from `load_cell_ids(XLSX_PATH)` re-sorted,
+assuming it would reproduce the original 2026-08-26 assignment. It
+didn't -- 3 MASTER cells (`CH-I1-E3`/`CH-I2-E3`/`CH-I3-E3`) were archived
+out since then (see ARCHIVED CELLS sheet), shifting every subsequent
+cell's position in a freshly re-sorted list. First attempt wrote e.g.
+`PE-I1-E1`'s erasure text referencing "a sneaker collection" when its
+actual injected referent was "a reading list for the year" -- wrong
+referent, would have sent a nonsensical erasure request. Caught by
+diffing against the real injected disclosure text before trusting it.
+Fixed by reading each blocked cell's referent straight back out of its
+own already-written Disclosure sentence (col U) via substring match
+against `REFERENTS`, instead of recomputing an index -- immune to any
+future archiving/reordering. Verified all 13 now match their real
+injected referent exactly; MASTER cols H/U (Anchor/Disclosure) confirmed
+byte-identical before/after (diffed the whole sheet, 0 drift).
+
+**Separate, pre-existing bug fixed while wiring Perplexity's
+`_send_nl_forget()`**: every one of Perplexity's `ERASURE_DISPATCH`
+methods (`_delete_single_thread`, `_delete_all_threads`,
+`_delete_individual_memory`, `_clear_all_memories`, `_erase_maximal`)
+still had bare `(self) -> None` signatures -- built 2026-08-27, before
+the 2026-08-31 `token`/`injection_text`/`ref` forwarding convention
+(above, "Operational note...") was added to every other platform.
+`erase_via_ui()` calls every dispatched method with those three kwargs
+unconditionally, so calling ANY real Perplexity erasure (not just
+NL-forget) would have raised `TypeError` on first attempt. Fixed by
+adding the same signature to all five methods. **Not fixed, flagged
+instead**: `_delete_single_thread()` still deletes whatever's topmost in
+`/library` (`opt_btns[0]`) rather than the conversation identified by
+`token`/`ref` -- the exact "grab topmost" anti-pattern the 2026-08-31
+finding warned about on other platforms, and now a real risk since this
+account is shared across 6 live Perplexity cells (injected 2026-09-07).
+Left as a documented gap (see the NOTE in `flows/perplexity.py` above
+`_delete_single_thread`), not fixed in this pass -- needs the same
+ref-based targeting pattern already proven in
+`claude.py`/`chatgpt.py`'s `_delete_conversation` before any real
+Perplexity E2 erasure is run for a cell sharing that account.
+
+### "Structural conflict" cells identified -- dedicated accounts required, same fix as MAXIMAL, 2026-09-07
+
+**What "structural conflict" means**: a cell whose OWN erasure method is
+genuinely account-wide/blanket ("no narrower real-product equivalent" --
+e.g. ChatGPT's "Clear all memories", "Clear all chat history (bulk)";
+Claude's "Clear all memories"; Copilot's "Delete all memory", "Privacy
+Dashboard"; Gemini's "Delete all Saved info", "Delete all activity";
+DeepSeek's "Delete all history") AND shares its account with at least one
+OTHER cell testing that SAME blanket action (different injection type,
+same platform). This is distinct from the existing narrow-vs-broad
+ordering rule (destructive-actions-run-last, above): here, the conflict
+is BETWEEN two or more broad cells, not between a broad cell and a
+narrower one. Whichever of the group runs first legitimately wipes the
+shared surface as its own valid test; every other cell in that group then
+finds nothing of its own left to erase when its turn comes, since the
+first cell's action already cleared it -- that cell's later "success"
+would not actually be evidence its own erasure step worked.
+
+**How this was found**: retroactively, after `CH-I1-E4` ("Clear all
+memories") had already run and `CH-I2-E4`/`CH-I3-E4` (same action, same
+account) were still pending -- the user asked directly whether any
+already-erased cell could have wiped another cell's data. Auditing all 88
+cells for (platform, blanket-erasure-desc) pairs with 2+ non-MAXIMAL
+cells sharing them surfaced 8 such groups, 19 cells total:
+
+| Platform | Blanket action | Cells | Status as of 2026-09-07 |
+|---|---|---|---|
+| ChatGPT | Clear all memories | CH-I1-E4, CH-I2-E4, CH-I3-E4 | 1st erased; other 2 re-injected on shared account (needs redo, see below) |
+| ChatGPT | Clear all chat history (bulk) | CH-I1-E6, CH-I2-E6, CH-I3-E6 | none run yet |
+| Claude | Clear all memories | CL-I1-E3, CL-I2-E3, CL-I3-E3 | 1st erased; other 2 re-injected on shared account (needs redo) |
+| Copilot | Delete all memory | CO-I1-E2, CO-I2-E2 | 1st erased; CO-I2-E2 not yet re-injected |
+| Copilot | Privacy Dashboard | CO-I1-E5, CO-I2-E5 | neither run yet |
+| Gemini | Delete all Saved info | GE-I1-E5, GE-I2-E5 | neither run yet |
+| Gemini | Delete all activity | GE-I1-E3, GE-I2-E3 | moot -- permanently blocked (myactivity.google.com CDP rejection), will never execute |
+| Perplexity | Clear all memories | PE-I1-E5, PE-I2-E5 | moot -- permanently out of scope (Pro-tier-gated, see [[project_perplexity_free_tier_scope]]) |
+
+**Decision (2026-09-07, user)**: same fix as the existing MAXIMAL policy
+(README, "Unique anchor + token per experiment" / config.py's
+`MAXIMAL_ACCOUNT_LABEL`) -- within each conflict group, the first cell
+stays on the shared/main account (already run or already the design), and
+every OTHER cell in that group gets its own dedicated account, so its
+blanket erasure action can't collide with a sibling's. This is a genuine
+extension of the MAXIMAL precedent to a case MAXIMAL's own design didn't
+originally cover: MAXIMAL cells were isolated from EVERYTHING else
+sharing an account; these blanket-but-not-MAXIMAL cells only needed
+isolating from EACH OTHER (same blanket surface), which wasn't caught
+until this audit.
+
+**9 cells need a new dedicated account** (the "first" cell in each live
+group stays put): `CH-I2-E4`, `CH-I3-E4`, `CH-I2-E6`, `CH-I3-E6`,
+`CL-I2-E3`, `CL-I3-E3`, `CO-I2-E2`, `CO-I2-E5`, `GE-I2-E5`. Provisioning
+(new emails, real logins, cookie export) works exactly like the existing
+MAXIMAL accounts.
+
+**7 of 9 done, 2026-09-07**: `CH-I2-E4`/`CH-I2-E6` share one new account
+(`conflict_i2`, ChatGPT -- confirmed safe since they don't conflict with
+EACH OTHER, only individually with `CH-I1-E4`/`CH-I1-E6` already on main);
+same reasoning for `CH-I3-E4`/`CH-I3-E6` sharing `conflict_i3`.
+`CL-I2-E3`, `CL-I3-E3`, `GE-I2-E5` each got their own account. All 7 real
+accounts set up (Cookie-Editor export -> `import_exported_cookies.py`,
+verified live logged in with distinct real identities) and all 7 cells
+freshly injected on their correct account -- see `accounts.md`'s
+"STRUCTURAL CONFLICT" section for the final email/session-file mapping.
+The earlier same-day re-injection of `CH-I2-E4`/`CH-I3-E4`/`CL-I2-E3`/
+`CL-I3-E3` on the shared main account (done before this fix existed) has
+been superseded by this properly-isolated injection -- no longer live
+anywhere on the shared accounts.
+
+**All 9 done, 2026-09-07**: `CO-I2-E2`/`CO-I2-E5` (Copilot, sharing
+`conflict_i2`, `dummybox90@gmail.com`) closed out the set -- needed both
+cookies AND a localStorage export (Copilot's Auth0 SPA tokens live there,
+same requirement as every other Copilot account in this project) before
+the session authenticated; a first attempt at the localStorage file had
+corrupted escape sequences (likely from copying the console's displayed
+string rather than the raw value) and had to be redone with
+`copy(JSON.stringify(localStorage))` to get a clean copy. Both cells
+injected and verified afterward. Every structural-conflict cell now has
+its own working, isolated account -- see `accounts.md`'s "STRUCTURAL
+CONFLICT" section for the final mapping.
+
+### GE-I1-E5 marked erased with a real attribution caveat, 2026-09-07
+
+`GE-I1-E5` ("Delete all Saved info") is marked `ERASED` in tracking and
+MASTER, but **not with normal confidence**. Its own erasure method
+(`_delete_all_saved_info()`) failed identically on all 3 live attempts
+today -- a 30s timeout on the very first click (the "Delete all" button
+itself), before ever reaching the confirm dialog. This happened despite
+confirming, moments before each attempt, that the account was logged in
+and the button genuinely existed on the page.
+
+Checked live immediately afterward: the Saved-info list is now genuinely
+empty ("You haven't asked Gemini to save anything about you yet"),
+matching the intended end state of this cell's erasure action. On the
+user's direction, marked erased on that basis -- but this is NOT a
+verified causal link. Two live possibilities, neither confirmed: (a) one
+of the repeated failed click attempts partially registered despite
+Playwright reporting failure, or (b) this is the same unexplained
+account-wipe pattern seen earlier today on this same Gemini main account
+(see the Saved-info/conversation-history mystery discussed earlier this
+session -- never fully explained either). Also relevant context: this
+account has needed re-authentication **four separate times** in one
+session today, more than any other account in this project -- see the
+live-login-vs-cookie-export discussion (both blocked: live login hits
+Google's robot-check, cookie export authenticates but expires within
+minutes).
+
+**Implication for the paper**: this cell's Observed-outcome should be
+flagged as lower-confidence than a normal erasure result when writing up
+results -- the erasure was recorded as successful based on end-state
+observation, not a clean, attributable execution of the tested mechanism.
+
+### Copilot sidebar lazy-load bug fixed; CO-IF-E-MAX re-injected, 2026-09-07
+
+**Real bug found and fixed**: `_find_conversation_row_index()`/
+`_find_conversation_row_index_by_token()` (`tester/flows/copilot.py`)
+only ever checked the sidebar rows rendered on initial load -- confirmed
+live that Copilot's sidebar lazy-loads more as you scroll (20 rows
+initially, growing to 63+ on this account after repeated scrolling).
+`CO-IF-E-MAX`'s own conversation was past the first 20, so
+`_delete_conversation_history()` was reporting "not found" for an
+account that, once fully scrolled, turned out to genuinely not have it
+either -- but the pagination gap itself was real and would silently
+cause false negatives for any future cell whose conversation happens to
+sit past the first page in a busy account. Fixed via a shared
+`_scroll_and_find_row_index()` helper: checks currently-loaded rows,
+scrolls to load more if no match, repeats until either found or a scroll
+produces no new rows (the true end of the list).
+
+**`CO-IF-E-MAX` was genuine data loss, not a pagination artifact**:
+verified against all 63 conversations on the account (post-fix), the
+target conversation wasn't among any of them. Re-injected with a fresh
+token from the reserve pool (same referent, "a meal plan I'm following"),
+PDF regenerated, `recall_probes.md` updated. Confirmed live: "extracted
+into both" (conversation and memory), due for erasure 2026-09-09.
+
+### Real mistake: CH-I1-E6 run before its narrower main-account siblings finished, 2026-09-07
+
+**What happened**: `CH-I1-E6` ("Clear all chat history (bulk)", ChatGPT
+main account) was run and successfully erased while `CH-I1-E2`,
+`CH-I2-E2`, and `CH-IF-E-CONV` (each "Delete conversation"/"Delete
+conversation containing file" on that SAME account) were still pending,
+unerased. The bulk clear wiped every conversation on the account,
+including theirs. Confirmed live afterward: the account's conversation
+list is completely empty, not a UI/pagination issue.
+
+**Why this wasn't caught by the structural-conflict fix**: `CH-I1-E6`'s
+same-surface siblings (`CH-I2-E6`/`CH-I3-E6`, also "Clear all chat
+history (bulk)") were already correctly isolated onto their own
+dedicated accounts earlier the same day -- that protection worked exactly
+as designed. This was a DIFFERENT failure: `CH-I1-E6`'s scope ("all chat
+history") is a superset of what narrower cells on the same account
+target (one single conversation each), even though they aren't
+same-surface "structural conflict" siblings. This is precisely what the
+ORIGINAL narrow-before-broad rule (`[[project_destructive_actions_run_last]]`,
+the very first ordering rule established this project) exists to prevent
+-- it was simply not re-checked before running `CH-I1-E6` this time.
+
+**Not fixed by moving `CH-I1-E6` to a dedicated account** -- that
+wouldn't address the actual cause (ordering, not account-sharing), and
+`CH-I1-E6` already completed its own test correctly as the group's
+"first" cell per the structural-conflict design.
+
+**Rule going forward, to not repeat this**: before running ANY
+broad/account-wide erasure action, explicitly check tracking for every
+OTHER cell that shares that account (not just its literal
+structural-conflict sibling on the identical surface) and confirm they
+are already `erased`, not just `injected`. A broader action's scope can
+overlap with a narrower cell's target even when they're testing
+different-named erasure mechanisms.
+
+**Fix**: `CH-I1-E2`, `CH-I2-E2`, `CH-IF-E-CONV` need fresh re-injection
+(same process as the earlier Copilot/Gemini data-loss cells) -- see below
+for the actual re-injection once done.
+
+**Done 2026-09-08**: re-injected all 3 with fresh tokens ("Tattoo Ducky
+Impurity", "Frolic Reshuffle Faction Nape", "Duvet Acre"), confirmed
+live -- `run_cell.py status` shows all 3 `injected`, erasure due
+2026-09-10.
+
+## Claude memory-system migration discovered live, 2026-09-08 -- 17 cells re-injected
+
+While investigating `CL-I3-E5`'s erasure failure ("no injection-time ref
+... and no unambiguous label match against injection_text"), found the
+actual cause live: **Claude has migrated to an entirely new memory
+architecture**, not a selector bug. Settings > Memory no longer shows
+the old Topics/Areas table (individual rows with "Delete <Topic Name>"
+buttons, which `_delete_individual_memory_edit()` depends on) -- it now
+shows a file-based system with "No files yet" and a banner: "We've
+migrated to a new memory system. You have 3 days left if you'd like to
+export legacy memory." Settings > Capabilities (where the legacy
+experience keeps its Memory section per Anthropic's own help article)
+has no Memory section at all for this account, confirming full
+migration, no legacy fallback view.
+
+**Live-tested whether old memory is still operationally live despite the
+UI change** (not just cosmetically hidden): opened a brand-new
+conversation and asked about `CL-I2-E3`'s injected fact (a quilt named
+"Clerk Moisture Recoil", not yet erased, well within its normal memory
+lifetime) -- Claude replied "I don't have anything saved about a quilt
+project ... this might be the first time it's come up." Confirms the
+migration has already functionally erased every not-yet-recalled Claude
+cell's cross-conversation memory access, independent of anything this
+study's own erasure actions do. (Side effect of this test: an
+auto-titled "Quilt project name" chat was created on the main account --
+harmless, noted for the record.)
+
+**Decision (user, 2026-09-08)**: fresh-inject ALL 17 non-recalled Claude
+cells, not just the 6 still sitting `injected` at time of discovery --
+because even the 10 already-`erased` cells' pending recall checks (due
+~2026-10-08) would run against a platform that had independently wiped
+the same memory in the interim, making "forgotten at recall" ambiguous
+between "the study's erasure action worked" and "the platform's own
+migration would have erased it regardless." Discards those 10 cells'
+completed-but-now-uninterpretable results in favor of a clean run
+entirely on the post-migration system. All 17 re-injected same day with
+fresh tokens (reserve pool indices 110-126), same referents, same
+templates as each cell originally used -- see `token.md`/`recall_probes.md`
+for the new token/distractor set. FILE cells (`CL-IF-E-CONV`,
+`CL-IF-E-MAX`) had their PDFs regenerated via
+`generate_file_substudy_pdfs.py` and verified via `pdftotext`. All 17
+confirmed `injected` via `run_cell.py status`, erasure due 2026-09-10.
+
+**Code fix**: `_erase_maximal()` (flows/claude.py) now wraps the
+`_delete_individual_memory_edit()` step in try/except -- on failure
+(no topic table exists anymore), logs as N/A and continues to
+`_clear_all_memories()` (NL command box, unaffected by the UI change)
+and `_send_nl_forget()`, rather than aborting the whole E5/MAXIMAL
+sequence over a sub-action the platform no longer has a surface for.
+
+**Left alone deliberately**: did not touch "Start import"/export-legacy-
+memory anywhere in this investigation. Exporting isn't part of any
+cell's defined erasure or recall action, and doing so would introduce an
+out-of-protocol action into the audit.
+
+**Limitations/write-up note**: this is a genuine platform-driven
+confound, not something fixed around silently. Document the exact
+migration date (discovered 2026-09-08) in the paper -- any Claude result
+whose window would have straddled this date was re-run cleanly instead
+of being reported with a caveat, precisely to avoid a mixed-attribution
+result in the dataset.
+
+## DeepSeek `_delete_all_history()` (E2) cookie-banner bug, fixed 2026-09-08
+
+`DE-I1-E2` failed twice, reproducibly, with the exact same timeout:
+`Locator.click: Timeout 30000ms exceeded ... waiting for locator("[role=\"dialog\"] [role=\"button\"]").filter(has_text="Delete")`
+after the multi-select "Delete" click. Live investigation (a plain,
+non-force click instead of the code's `force=True`) surfaced Playwright's
+own diagnostic: `<div class="ds-button__background"></div> from <div
+class="cookie_banner-wrap undefined">...</div> subtree intercepts
+pointer`. The multi-select action bar's bottom-left "Delete" button
+renders in the exact same screen position as the cookie-consent banner
+on a fresh browser context -- `force=True` was masking this by
+dispatching the click at the coordinate regardless of what else was on
+top, so it silently landed on the banner instead of the real button, and
+no confirm dialog ever opened.
+
+Root cause: `_delete_all_history()` and `_delete_single_conversation()`
+were both missing the `_dismiss_cookie_banner()` call every OTHER
+navigating method in `flows/deepseek.py` already has (`new_conversation`,
+`send_message`, `upload_file`). `_delete_single_conversation` (E1)
+happened not to hit this in practice because a single conversation's
+row-level menu isn't pinned to the bottom of the viewport, only the
+multi-select bar is. Fixed by adding the missing dismiss call to both,
+plus `_send_nl_forget()`'s `ref` branch for consistency. `DE-I1-E2`
+re-run and erased successfully after the fix.
+
+## Copilot `CO-I1-E5` (Privacy Dashboard) -- blocked on TWO independent things, 2026-09-08
+
+Investigated `CO-I1-E5`'s reproducible timeout (`waiting for
+get_by_text("Delete all activity history", exact=True).first`). Two
+separate findings, neither is a selector bug:
+
+1. **Ordering**: `_delete_via_privacy_dashboard()` is account-wide/
+   blanket. Checked the full Copilot main-account roster before running
+   anything (per [[feedback_check_all_account_mates_before_broad_erasure]])
+   -- `CO-I1-E4` and `CO-I2-E4` ("Granular facts editor", confirmed
+   token-scoped/safe, not a blanket action) are still `injected` on the
+   same main account, not due until 2026-09-09T20:20/21 UTC. `CO-I1-E5`
+   must not run until both of those have erased cleanly, regardless of
+   anything else -- this alone rules out running it today even if the
+   other issue below were already fixed.
+
+2. **Stale cross-domain session**: live-checked `account.microsoft.com/
+   privacy/copilot` directly -- it redirects straight to a Microsoft
+   sign-in page (`login.live.com/login.srf?...`), confirming the merged
+   cross-domain cookies (originally captured 2026-08-28 per this file's
+   "Copilot cross-domain gap resolved" section) have gone stale. Same
+   decay pattern as Gemini's `myactivity.google.com` cross-domain
+   surface, just not a permanent dead end here -- Copilot's cross-domain
+   auth has worked via cookie merge before, it just needs a fresh export.
+
+**Next steps, in order**: (a) once 2026-09-09 arrives, run `CO-I1-E4`
+and `CO-I2-E4` and confirm both erased; (b) get a fresh
+`account.microsoft.com/privacy/copilot` Cookie-Editor export merged in
+via `import_exported_cookies.py copilot --merge <label>` before
+attempting `CO-I1-E5`; (c) only then run `CO-I1-E5`.
+
+## Gemini main-account instability -- retry threshold set, 2026-09-08
+
+`anchorexperiment@gmail.com` (Gemini main account) has been intermittently
+unusable this session -- "Something went wrong (7)" errors, sidebar/
+saved-info lists inconsistently empty across identical calls seconds
+apart, a reload throwing the account into a broken state. Affects 4
+still-`injected` cells on that account: `GE-I1-E2`, `GE-I1-E4`,
+`GE-I2-E2`, `GE-IF-E-CONV`. (NOT `GE-I1-E3`/`GE-I2-E3` -- those are a
+separate, already-confirmed permanent block: myactivity.google.com
+rejects any CDP-driven browser outright, account-independent, a fresh
+account won't help there.)
+
+**User-set threshold, 2026-09-08**: retry the current account up to 2
+more times (fresh cookie export + immediate action each time). If still
+unusable after that, move ONLY those 4 affected cells to a new dedicated
+Gemini account and re-inject fresh there (same procedure as the
+Claude/ChatGPT data-loss recoveries this session) -- do not touch
+`GE-I1-E1`/`GE-I1-E5`/`GE-I2-E1`/`GE-I2-E4` (already erased cleanly
+before instability got bad) or the permanently-blocked E3 cells.
+Planned to attempt later today (2026-09-08).
+
+**Resolved 2026-09-09**: retry attempted first, per the threshold above --
+a live check of the saved-info page (before touching anything) showed the
+main account's cookie session had expired (page rendered logged-out,
+"Sign in to save activity"), not just an app-level glitch, so the retry
+didn't count against the 2-attempt budget and migration proceeded
+directly. `GE-I1-E4`/`GE-I2-E2` moved to a new dedicated account
+(`dummybox90@gmail.com`, label `instability` in `config.py`'s
+`MAXIMAL_ACCOUNT_LABEL`/`MAXIMAL_ACCOUNT_EMAIL` -- reused an existing
+"dummy" account already set up for other platforms rather than creating a
+new one, confirmed this doesn't cause cross-platform contamination since
+each platform's memory/conversation store is fully separate regardless of
+shared Google login identity). Both fresh-injected with new tokens from
+the reserve pool, same referents as before ("a hiking trail I want to
+do" -> "Trimming Brink"; "a rock and mineral collection" -> "Yodel Scheme
+Cinema"), confirmed via `run_cell.py status`: both `injected`, erasure due
+2026-09-11.
+
+**Real doc-drift found during this fix, worth flagging**: `RTBF-Prompt/
+token.md` and `data/token_assignment.csv` are stale relative to the live
+xlsx for at least 5 cells re-injected in prior sessions (`CH-I1-E2`,
+`CH-I2-E2`, `CH-IF-E-CONV`, and apparently `GE-I1-E4`/`GE-I2-E2` even
+before this fix) -- they still show each cell's ORIGINAL token, not the
+fresh reserve token actually live on the platform. `run_cell.py` reads
+token/disclosure text directly from the xlsx (the true source of truth,
+per `tester/CLAUDE.md`), so this didn't affect any live run, but it means
+`token.md`/`token_assignment.csv` can't be trusted for "what's currently
+live on this cell" going forward -- check the xlsx directly instead.
+Also confirmed `token_generator.py`'s `disclosure_sentence()`/`REFERENTS`
+indexing is no longer safe to call directly for a re-injection: it derives
+each cell's referent from `sorted(load_cell_ids(xlsx))[i]`, and that sort
+order has drifted from generation time (ChatGPT's 3 archived cells
+changed the count/order), so calling it now returns a WRONG referent for
+some cells (confirmed live: computed "a language app streak I'm keeping
+up" for `GE-I1-E4` when its real, already-disclosed referent is "a hiking
+trail I want to do"). Fixed for this session by manually substituting
+just the token string into the cell's existing disclosure sentence
+instead of recomputing from scratch -- do the same for any future
+re-injection rather than calling `disclosure_sentence()` fresh.
+
+## No topmost-fallback policy set project-wide, 2026-09-09
+
+While confirming `GE-I1-E4`/`GE-I2-E2` (now sharing the new `dummybox90@
+gmail.com` account) couldn't contaminate each other, found that
+`GE-I2-E2` (I2 injects into Saved-info, never creates a conversation) is
+assigned erasure method "Delete single conversation" -- and
+`_delete_conversation()`'s old fallback, when it can't find `ref` or a
+token match, was to grab whatever conversation is topmost in the
+sidebar. On this shared account that would very likely have deleted
+`GE-I1-E4`'s real conversation instead of correctly finding nothing to
+delete for `GE-I2-E2`.
+
+This same "fall back to topmost when a cell legitimately has no owned
+entry" reasoning turned out to be baked into the ORIGINAL design of every
+platform's equivalent method (`chatgpt.py`, `claude.py`, `copilot.py`,
+`deepseek.py`, `gemini.py`'s `_delete_conversation`/
+`_delete_conversation_history`/`_delete_single_conversation`, plus
+`base.py`'s shared `_find_conversation_by_token()` docstring) --
+explicitly framed as an intentional "cross-mechanism probe" for cells
+like this, not a bug being tolerated. **Reverted per direct instruction,
+2026-09-09**: a cell must only ever delete its own entry, never fall back
+to another cell's as a "best guess." All six methods now raise
+`RuntimeError` instead of falling back to topmost/row-0 when neither
+`ref` nor a token/content search finds a match. Perplexity's
+`_delete_single_thread()` already worked this way (fixed 2026-09-08,
+independently) and needed no change.
+
+**Practical effect on `GE-I2-E2` specifically**: once this cell's real
+erasure runs, it will now raise "no owned conversation to delete" instead
+of silently deleting something -- which is the CORRECT observed outcome
+for this cell (I2's fact lives in Saved-info, "delete conversation"
+doesn't reach it), and should be recorded as such rather than treated as
+a script failure to retry.
+
+## Full doc-drift sweep, 2026-09-09
+
+The drift found earlier while fixing `GE-I1-E4`/`GE-I2-E2` turned out to
+be much bigger than one-off: a full audit found **34 of 85 live cells**
+(40%) had a stale token in `token.md`/`data/token_assignment.csv` --
+essentially every cell touched by any re-injection event since the
+original 2026-08-26 `token_generator.py` run (the 17-cell Claude
+migration, the 9-cell structural-conflict fix, MAXIMAL account setup,
+data-loss recoveries, today's Gemini-instability migration) had its docs
+silently fall behind the live xlsx. Direct instruction from the user:
+there should be no doc drift anywhere, fix it fully, now.
+
+Built `sync_docs_from_xlsx.py` (new script) to regenerate `token.md`,
+`data/token_assignment.csv`, and `recall_probes.md` from the live xlsx in
+one pass rather than hand-patching cells as they're noticed. Key design
+point: it does NOT call `token_generator.py`'s own `disclosure_sentence()`/
+`recall_probes()` to regenerate referent-bearing text, since those derive
+each cell's referent from `REFERENTS[sorted(load_cell_ids(xlsx)).index(
+cell_id)]` -- an index that has drifted from original-generation time (3
+archived ChatGPT cells shifted every later cell's sorted position), so
+calling them fresh now would silently reassign a DIFFERENT referent than
+what's already been disclosed live on each platform. Instead, the script
+reverse-parses each cell's true referent directly out of its live,
+already-disclosed disclosure sentence (regex-matches each injection-type
+template against the known token, extracts what filled `{referent}`) --
+grounded in what's actually sitting in each account's memory, not
+recomputed. Verified this recovers the correct, already-known referent
+for spot-checked cells (e.g. `GE-I1-E4` -> "a hiking trail I want to do",
+matching what was already confirmed live in this session).
+
+Distractors were regenerated for all 85 live cells (not just the 34
+drifted ones) via the same seeded draw sequence `token_generator.py`
+uses, excluding the full 250-token pool throughout -- safe because 0 of
+78 tracked cells have been recalled yet (confirmed via
+`tester/data/run_tracking.json`), so no R1 forced-choice text was ever
+shown to a live probe that would need to stay fixed. R1-open/R3-indirect
+phrasing variant per cell is likewise freshly (but deterministically)
+chosen here, same reasoning.
+
+**Verified after running**: 0 drift remaining in either `token.md` or
+`data/token_assignment.csv` against the live xlsx (automated recheck);
+no collisions between the 85 live tokens and their 255 fresh distractors
+(340 unique strings total). Reserve pool now correctly excludes every
+currently-live token (165 remaining of the original 250).
+
+**Going forward**: re-run `python sync_docs_from_xlsx.py` after any
+re-injection (account migration, data-loss recovery, deviating-cell
+rerun) so these three docs never drift again -- don't hand-patch
+token.md/token_assignment.csv/recall_probes.md directly.
+
+## GE-I2-E6's account mapping was wrong, corrected 2026-09-09
+
+While preparing to fix `GE-I1-E6`/`GE-I2-E6` (both MAXIMAL, blocked on a
+stale/erroring Gemini session), `tester/accounts.md`/`config.py` recorded
+`GE-I2-E6`'s dedicated `maximal_i2` account as `olacoderpad@gmail.com`.
+Live-checking that session showed a logged-in account with a genuinely
+empty saved-info list -- initially read as a possible repeat of the
+`GE-I1-E5` mystery-wipe pattern, but the user directly confirmed
+`olacoderpad@gmail.com` was never used for any Gemini experiment at all.
+So the empty list was almost certainly just the wrong account, not data
+loss -- the real original `GE-I2-E6` injection's account is now unknown/
+unverifiable, and rather than hunt for it, moved to a fresh dedicated
+account instead (same approach as the `GE-I1-E4`/`GE-I2-E2` instability
+migration two exchanges earlier).
+
+**Corrected to `olataiwo839@gmail.com`** -- `theexperimentdummy@gmail.com`
+was briefly considered (already set up for ChatGPT's `conflict_i3`
+group) but the user opted for a genuinely brand-new dedicated account
+instead. `config.py`'s `("gemini", "maximal_i2")` entry and
+`accounts.md`'s `GE-I2-E6` row both updated.
+
+**Done same day**: live identity confirmed ("Taiwo Ola",
+`olataiwo839@gmail.com`, via the account dropdown) before touching
+anything. Fresh-injected with a new reserve-pool token ("Essay Segment",
+same referent as before -- "a sneaker collection"), confirmed via
+`run_cell.py status`: `injected`, erasure due 2026-09-11. Docs re-synced
+via `sync_docs_from_xlsx.py` immediately after. Still needs a
+`myactivity.google.com` cookie merge before `GE-I2-E6`'s MAXIMAL
+activity-delete component can run (same permanent-automation-block
+caveat as every other Gemini MAXIMAL/E3 cell -- that specific component
+stays a manual step regardless).
+
+## theexperimentdummy@gmail.com blocked by Google, 2026-09-09
+
+The user reported this account (used for ChatGPT's `conflict_i3` group --
+`CH-I3-E4`/`CH-I3-E6`) has been blocked by Google. Real risk flagged by
+the user: even if it weren't fully blocked, a disposable dummy account
+with no recovery email/phone has no path back if a cookie export ever
+expires either -- same underlying fragility as every other throwaway
+account in this project, just the first one to actually fail.
+
+Both cells were still `injected` (not yet erased), so nothing was lost --
+just needs a fresh re-injection before their original 22:06/22:07 UTC
+erasure deadline (moot now, resets on re-injection anyway). Moved to
+`olataiwo839@gmail.com` (the user's choice, already set up for Gemini's
+`maximal_i2` group) -- `config.py`'s `("chatgpt", "conflict_i3")` entry
+and `accounts.md`'s `CH-I3-E4`/`CH-I3-E6` rows updated.
+
+**Done same day**: live identity confirmed (`olataiwo839@gmail.com` found
+in the page HTML) before touching anything. Fresh-injected with new
+reserve-pool tokens ("Starting Quantum Rescuer" for `CH-I3-E4`, "Jaundice
+Supper Gauntlet" for `CH-I3-E6`, same referents as before). Verification
+note: `read_memory_settings()` checks ChatGPT's separate "Memory summary"
+panel, NOT the Custom Instructions field I3 actually writes to -- checked
+the wrong surface first, found nothing, then read the actual `Additional
+behavior, style, and tone preferences` field directly and confirmed both
+new lines present (append-not-overwrite, per `set_memory_field()`'s
+existing design for shared I3 accounts). Docs re-synced via
+`sync_docs_from_xlsx.py` immediately after.
+
+**Open question worth raising with the user later**: whether any OTHER
+disposable dummy account in this project (`dummybox90@gmail.com`,
+`experimenttt62@gmail.com`, etc.) is at the same risk of a Google block
+with no recovery path -- not urgent to preemptively migrate everything,
+but worth knowing before relying on them for a critical late-stage cell.
+
+## All 7 Perplexity cells erased, 2026-09-09 -- real cookie-banner bug found and fixed
+
+Ran the full Perplexity erasure batch (`PE-I1-E1/E2/E3`, `PE-I2-E1/E2/E3`,
+`PE-IF-E-CONV`), narrow actions first (E1 NL-forget, E2 single-thread,
+IF-E-CONV), blanket E3 last, per the narrow-before-broad rule.
+
+**Real bug found on the first attempt (`PE-I1-E1`)**: `_send_nl_forget()`
+timed out waiting for a reply that never came. Live investigation showed
+Perplexity changed its cookie-consent banner's wording since 2026-08-27
+(now "Decline optional"/"Got it", not "Allow all") --
+`_dismiss_cookie_banner()`'s old selector matched nothing, silently
+no-op'd, left the banner up, and the `force=True` Submit click landed on
+the banner instead of the real button -- same collision class as
+DeepSeek's cookie-banner/send-button bug. Fixed to match "Got it" (kept
+"Allow all" as a fallback in case the wording reverts). Re-ran
+`PE-I1-E1` after the fix -- confirmed live the erasure request now
+actually sends and gets a real reply. **Real finding, not just a
+mechanics fix**: Perplexity's reply to the NL-forget request was an
+explicit refusal ("I can't delete or edit past messages in this chat"),
+pointing the user to the platform UI instead -- a genuine, recordable
+outcome for E1 on this platform.
+
+**Verified each narrow deletion targeted the right conversation**
+(checked the full library listing before/after `PE-I1-E2`/`PE-I2-E2`):
+only the two intended conversations disappeared, everything else
+(including the still-pending `PE-I1-E3`/`PE-I2-E3` conversations)
+survived untouched.
+
+**`PE-I1-E3`/`PE-I2-E3` share the identical blanket "Delete all
+threads" action**, same pattern as Gemini's `GE-I1-E3`/`GE-I2-E3`.
+Running it once for `PE-I1-E3` genuinely satisfied both (confirmed live,
+library showed "No sessions yet" afterward) -- but running it a second
+time for `PE-I2-E3` hit an already-empty account with no button to
+click, which the old code treated as a hard failure. Fixed
+`_delete_all_threads()` the same way as Gemini's `_delete_all_saved_info`
+fix earlier this session: check for the empty-state message first and
+treat it as a legitimate no-op, not an error. `PE-I2-E3` then ran
+cleanly through the normal pipeline (not hand-edited into tracking).
+
+All 7 cells confirmed `erased` via `run_cell.py status`, recall due
+2026-10-10.
 
 ## Working style notes
 

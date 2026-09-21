@@ -1,0 +1,122 @@
+% References for paper.tex.
+% TODO(authors): add Background/Related Work citations here as the
+% literature review is written; keep BibTeX keys stable once cited.
+
+@misc{gdpr2016,
+  title        = {Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data (General Data Protection Regulation)},
+  author       = {{European Parliament and Council of the European Union}},
+  year         = {2016},
+  howpublished = {Official Journal of the European Union, L 119},
+  note         = {Article 17: Right to erasure (`right to be forgotten')}
+}
+
+% --- Background/Related Work citations ---------------------------
+% Verified 2026-09-09 via web search + primary-source fetch (ACM DL /
+% USENIX / Google Research / arXiv) per the project guardrail: every
+% entry below is a real, published paper -- none fabricated.
+
+@inproceedings{bertram2019five,
+  title     = {Five Years of the Right to be Forgotten},
+  author    = {Bertram, Theo and Bursztein, Elie and Caro, Stephanie and Chao, Hubert and Chin Feman, Rutledge and Fleischer, Peter and Gustafsson, Albin and Hemerly, Jess and Hibbert, Chris and Invernizzi, Luca and Kammourieh Donnelly, Lanah and Ketover, Jason and Laefer, Jay and Nicholas, Paul and Niu, Yuan and Obhi, Harjinder and Price, David and Strait, Andrew and Thomas, Kurt and Verney, Al},
+  booktitle = {Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security (CCS)},
+  year      = {2019},
+  doi       = {10.1145/3319535.3354208}
+}
+
+@inproceedings{bourtoule2021machine,
+  title     = {Machine Unlearning},
+  author    = {Bourtoule, Lucas and Chandrasekaran, Varun and Choquette-Choo, Christopher A. and Jia, Hengrui and Travers, Adelin and Zhang, Baiwu and Lie, David and Papernot, Nicolas},
+  booktitle = {Proceedings of the 2021 IEEE Symposium on Security and Privacy (S\&P)},
+  year      = {2021},
+  doi       = {10.1109/SP40001.2021.00019}
+}
+
+@inproceedings{kang2015mydata,
+  title     = {``My Data Just Goes Everywhere:'' User Mental Models of the Internet and Implications for Privacy and Security},
+  author    = {Kang, Ruogu and Dabbish, Laura and Fruchter, Nathaniel and Kiesler, Sara},
+  booktitle = {Proceedings of the Eleventh Symposium On Usable Privacy and Security (SOUPS)},
+  year      = {2015},
+  pages     = {39--52}
+}
+
+@inproceedings{ramokapane2017stupid,
+  title     = {``I feel stupid I can't delete...'': A Study of Users' Cloud Deletion Practices and Coping Strategies},
+  author    = {Ramokapane, Kopo Marvin and Rashid, Awais and Such, Jose M.},
+  booktitle = {Proceedings of the Thirteenth Symposium on Usable Privacy and Security (SOUPS)},
+  year      = {2017},
+  pages     = {241--256}
+}
+
+@inproceedings{habib2019empirical,
+  title     = {An Empirical Analysis of Data Deletion and Opt-Out Choices on 150 Websites},
+  author    = {Habib, Hana and Zou, Yixin and Jannu, Aditi and Sridhar, Neha and Swoopes, Chelse and Acquisti, Alessandro and Cranor, Lorrie Faith and Sadeh, Norman and Schaub, Florian},
+  booktitle = {Proceedings of the Fifteenth Symposium on Usable Privacy and Security (SOUPS)},
+  year      = {2019}
+}
+
+@inproceedings{zhang2025understanding,
+  title     = {Understanding Users' Privacy Perceptions Towards LLM's RAG-based Memory},
+  author    = {Zhang, Shuning and Ma, Rongjun and Ma, Ying and Li, Shixuan and Xu, Yiqun and Yi, Xin and Li, Hewu},
+  booktitle = {Proceedings of the 1st Workshop on Human-Centered AI Privacy and Security (HAIPS), co-located with ACM CCS},
+  year      = {2025},
+  doi       = {10.1145/3733816.3760750}
+}
+
+@inproceedings{carlini2021extracting,
+  title     = {Extracting Training Data from Large Language Models},
+  author    = {Carlini, Nicolas and Tram\`er, Florian and Wallace, Eric and Jagielski, Matthew and Herbert-Voss, Ariel and Lee, Katherine and Roberts, Adam and Brown, Tom and Song, Dawn and Erlingsson, {\'U}lfar and Oprea, Alina and Raffel, Colin},
+  booktitle = {Proceedings of the 30th USENIX Security Symposium},
+  year      = {2021}
+}
+
+% Prior work by a co-author of this submission (per IEEE S&P anonymous-
+% submission rules, cited in the third person like any other reference --
+% not framed as "our prior work").
+@inproceedings{li2026privacy,
+  title     = {Privacy Control in Conversational LLM Platforms: A Walkthrough Study},
+  author    = {Li, Zhuoyang and Wu, Yanlai and Li, Yao and Gui, Xinning and Luo, Yuhan},
+  booktitle = {Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems (CHI)},
+  year      = {2026},
+  doi       = {10.1145/3772318.3791054}
+}
+
+% --- Technical audit (Methodology) citations ----------------------
+% Verified 2026-09-09 via web search + primary-source fetch.
+
+@inproceedings{carlini2019secret,
+  title     = {The Secret Sharer: Evaluating and Testing Unintended Memorization in Neural Networks},
+  author    = {Carlini, Nicolas and Liu, Chang and Erlingsson, {\'U}lfar and Kos, Jernej and Song, Dawn},
+  booktitle = {Proceedings of the 28th USENIX Security Symposium},
+  year      = {2019},
+  pages     = {267--284}
+}
+
+@inproceedings{staufer2025wikimem,
+  title     = {What Should LLMs Forget? Quantifying Personal Data in LLMs for Right-to-Be-Forgotten Requests},
+  author    = {Staufer, Dimitri},
+  booktitle = {Proceedings of the 7th Workshop on eXplainable Knowledge Discovery in Data Mining (XKDD), co-located with ECML PKDD},
+  year      = {2025}
+}
+
+% --- Prompt corpus / coding reliability (Methodology) citations --
+% Verified 2026-09-18 via web search + primary-source fetch.
+
+@article{gwet2008ac1,
+  title   = {Computing Inter-Rater Reliability and Its Variance in the Presence of High Agreement},
+  author  = {Gwet, Kilem L.},
+  journal = {British Journal of Mathematical and Statistical Psychology},
+  volume  = {61},
+  number  = {1},
+  pages   = {29--48},
+  year    = {2008},
+  doi     = {10.1348/000711006X126600}
+}
+
+@article{wongpakaran2013comparison,
+  title   = {A Comparison of Cohen's Kappa and Gwet's AC1 When Calculating Inter-Rater Reliability Coefficients: A Study Conducted with Personality Disorder Samples},
+  author  = {Wongpakaran, Nahathai and Wongpakaran, Tinakon and Wedding, Danny and Gwet, Kilem L.},
+  journal = {BMC Medical Research Methodology},
+  volume  = {13},
+  pages   = {61},
+  year    = {2013}
+}

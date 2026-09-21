@@ -1,9 +1,12 @@
-"""Parses RTBF-Prompt/recall_probes.md's per-cell probe table -- the real,
-already-generated R1/R2/R3 probe text for all 88 cells -- rather than
-regenerating it here. Regenerating would mean reconstructing
-token_generator.py's exact `assigned`/`distractors_by_token` ordering;
-parsing the file it already writes is simpler and can't drift from the
-canonical source.
+"""Parses RTBF-Prompt/recall_probes.md's per-cell probe table(s) -- the real,
+already-generated R1/R2/R3 probe text for all 88 main-battery cells plus
+(added 2026-09-11) the 828 NL-forget-prompt-study cells, each in their own
+table under their own heading -- rather than regenerating it here.
+Regenerating would mean reconstructing token_generator.py's exact
+`assigned`/`distractors_by_token` ordering (or nl_forget_cell_generator.py's
+equivalent); parsing the file it already writes is simpler and can't drift
+from the canonical source. Reads every table in the file, not just the
+first -- see the in_table reset below.
 
 The file is a clean pipe-delimited markdown table (confirmed live
 2026-08-28: no embedded `|` characters in cell content), so a plain
@@ -51,7 +54,12 @@ def load_recall_probes() -> dict[str, dict[str, str]]:
         if line.startswith(_SEPARATOR_PREFIX):
             continue
         if not line.startswith("|"):
-            break  # table ended
+            # table ended -- don't stop scanning the whole file: a later
+            # section (e.g. the NL-forget-prompt study's own table, added
+            # 2026-09-11) can start a fresh table with its own
+            # _HEADER_PREFIX line further down.
+            in_table = False
+            continue
         cols = _parse_row(line)
         if len(cols) < 8:
             continue

@@ -268,12 +268,35 @@ class ClaudeFlow(PlatformFlow):
 
     # --- ERASURE_DISPATCH targets ---
 
-    def _send_nl_forget(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
+    def _send_nl_forget(
+        self,
+        token: str | None = None,
+        injection_text: str = "",
+        ref: str | None = None,
+        erasure_request_text: str | None = None,
+    ) -> None:
         """Not a UI click -- routes back through send_message() with the
-        erasure_request_sentence() text once that's wired in
-        (RTBF-Prompt/token_generator.py). Placeholder here for now since
-        that's still explicitly not wired into the pipeline."""
-        raise NotImplementedError
+        erasure_request_sentence() text (RTBF-Prompt/token_generator.py),
+        wired in 2026-09-07. `erasure_request_text` is precomputed per
+        cell (only the 13 blocked_on_prompt_set cells get one, written to
+        MASTER by token_generator.py) and forwarded here by base.py's
+        erase_via_ui(). Navigates to this cell's own conversation via
+        `ref` (captured at injection time) so the erasure request lands
+        in the same conversation as the disclosure. If `ref` is missing,
+        this cell's injection was field/settings-based (I3), which has no
+        owned conversation -- falls back to a fresh conversation instead,
+        same rationale as _delete_conversation's no-ref fallback above."""
+        if not erasure_request_text:
+            raise RuntimeError(
+                "_send_nl_forget: no erasure_request_text provided -- "
+                "this cell's prompt-set text isn't wired in"
+            )
+        if ref:
+            self.page.goto(ref)
+            self.page.wait_for_timeout(1500)
+        else:
+            self.new_conversation()
+        self.assert_real_answer(self.send_message(erasure_request_text))
 
     def _delete_conversation(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
         """Deletes THIS cell's own conversation, identified by `ref` (the
@@ -288,32 +311,45 @@ class ClaudeFlow(PlatformFlow):
         within that specific row, not page-wide. When `ref` is missing
         (legacy tracking data from before ref capture existed), searches
         every conversation's content for `token` instead of guessing --
-        see _find_conversation_by_token(). Falls back to topmost only if
-        that search also finds nothing (a cell with no owned conversation
-        at all, e.g. an I3 cell using a conversation-delete as a cross-
-        mechanism probe)."""
+        see _find_conversation_by_token(). **No topmost fallback, ever,
+        as of 2026-09-09**: an earlier version fell back to "the first
+        More-options button on the page" (effectively topmost) whenever
+        both `ref` and the token search came up empty, on the reasoning
+        that this only happens for a cell with no owned conversation at
+        all (e.g. an I3 cell using a conversation-delete as a deliberate
+        cross-mechanism probe). Reverted per direct instruction -- a cell
+        must only ever delete its own entry, never a sibling's as a
+        fallback. If nothing matches, raise instead of guessing. Also
+        falls back to the token search when `ref` IS given but doesn't
+        match anything (a stale ref) -- confirmed live 2026-09-09 on
+        Gemini's equivalent method that a stale ref can coexist with a
+        real, still-present conversation, so a hard fail there would have
+        wrongly reported "nothing to delete"."""
         self.page.goto("https://claude.ai/new")
         self.page.wait_for_timeout(1500)
-        if not ref:
-            ref = self._find_conversation_by_token(token, "https://claude.ai", 'a[href^="/chat/"]')
-        if ref:
-            from urllib.parse import urlsplit
-            link = self.page.query_selector(f'a[href="{urlsplit(ref).path}"]')
-            if link is None:
-                raise RuntimeError(f"_delete_conversation: expected conversation {ref!r} not found in sidebar")
-            btn = link.evaluate_handle(
-                """el => {
-                    let cur = el;
-                    for (let i = 0; i < 6 && cur; i++) {
-                        const b = cur.querySelector && cur.querySelector('button[aria-label^="More options for"]');
-                        if (b) return b;
-                        cur = cur.parentElement;
-                    }
-                    return null;
-                }"""
-            ).as_element()
-        else:
-            btn = self.page.query_selector('button[aria-label^="More options for"]')
+        from urllib.parse import urlsplit
+        link = self.page.query_selector(f'a[href="{urlsplit(ref).path}"]') if ref else None
+        if link is None:
+            found_ref = self._find_conversation_by_token(token, "https://claude.ai", 'a[href^="/chat/"]')
+            if not found_ref:
+                raise RuntimeError(
+                    f"_delete_conversation: no conversation matches ref={ref!r} or token {token!r} "
+                    "-- this cell has no owned conversation to delete (refusing to guess/delete topmost)"
+                )
+            link = self.page.query_selector(f'a[href="{urlsplit(found_ref).path}"]')
+        if link is None:
+            raise RuntimeError(f"_delete_conversation: expected conversation {ref!r} not found in sidebar")
+        btn = link.evaluate_handle(
+            """el => {
+                let cur = el;
+                for (let i = 0; i < 6 && cur; i++) {
+                    const b = cur.querySelector && cur.querySelector('button[aria-label^="More options for"]');
+                    if (b) return b;
+                    cur = cur.parentElement;
+                }
+                return null;
+            }"""
+        ).as_element()
         if btn is None:
             raise RuntimeError("_delete_conversation: no conversation found in sidebar")
         btn.click(force=True)
@@ -351,6 +387,15 @@ class ClaudeFlow(PlatformFlow):
         memory? ... Cancel / Delete"), same two-step shape the earlier code
         already expected -- only the first click target was wrong."""
         self._open_memory_settings()
+        # A `ref` that isn't a "Delete <Topic Name>" aria-label is useless
+        # here regardless of whether it's None -- confirmed live 2026-09-10
+        # on CL-I1-E2 (an I1 cell) that injection_ref is the generic chat
+        # conversation URL captured for every cell, not the memory-field
+        # diff this method actually needs (that diff only happens for I3
+        # cells, via set_memory_field()). Treat any non-label ref the same
+        # as no ref at all, and fall through to the injection_text match.
+        if ref is not None and not ref.startswith("Delete "):
+            ref = None
         if ref is None and injection_text:
             # Fallback for legacy tracking data (pre-dates ref capture):
             # Claude's Topic label (e.g. "Jigsaw Puzzle") is never the
@@ -358,10 +403,25 @@ class ClaudeFlow(PlatformFlow):
             # own injection_text (e.g. "a jigsaw puzzle on the coffee
             # table is called ..." -- confirmed live 2026-08-31 across
             # every I3 cell checked). Match on that instead of guessing.
+            def _stem(word: str) -> str:
+                # Claude's topic labels are sometimes inflected relative to
+                # the injection text's wording (e.g. "Scrapbooking" label
+                # vs. "a scrapbook I'm making" -- confirmed live 2026-09-10
+                # on CL-I3-E2), so a literal substring check misses real
+                # matches. Stripping a trailing "ing"/"s" before comparing
+                # catches this without needing a real stemmer.
+                for suffix in ("ing", "s"):
+                    if word.endswith(suffix) and len(word) > len(suffix) + 2:
+                        return word[: -len(suffix)]
+                return word
+
+            text_lower = injection_text.lower()
             candidates = [
                 b.get_attribute("aria-label")
                 for b in self.page.query_selector_all('button[aria-label^="Delete "]')
-                if b.get_attribute("aria-label")[len("Delete "):].lower() in injection_text.lower()
+                if (lambda label: label in text_lower or _stem(label) in text_lower)(
+                    b.get_attribute("aria-label")[len("Delete "):].lower()
+                )
             ]
             if len(candidates) == 1:
                 ref = candidates[0]
@@ -394,11 +454,69 @@ class ClaudeFlow(PlatformFlow):
         self._open_memory_settings()
         self._submit_memory_command("Please delete all of my memories.")
 
-    def _erase_maximal(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
+    def _erase_maximal(
+        self,
+        token: str,
+        injection_text: str = "",
+        ref: str | None = None,
+        erasure_request_text: str | None = None,
+    ) -> None:
         """E5: E1+E2+E3+E4 combined in one setup (design rule: diligent-user
-        ceiling) -- calls the other four in sequence. Will raise on
-        _send_nl_forget() until that's wired in."""
-        self._delete_conversation(token=token, injection_text=injection_text, ref=ref)
-        self._delete_individual_memory_edit(token=token, injection_text=injection_text, ref=ref)
+        ceiling) -- calls the other four in sequence.
+
+        Fixed 2026-09-07 (two real bugs, both live-confirmed before this
+        fix, not just theorized):
+
+        1. Used to pass the SAME `ref` (this cell's conversation URL,
+           captured for chat-based I1/I2 injections) to
+           _delete_individual_memory_edit(), which needs a completely
+           different kind of ref -- the "Delete <Topic Name>" aria-label
+           from the memory panel, only ever captured for settings-field
+           (I3) injections. A conversation URL can never match a topic
+           aria-label, so this always failed with "expected topic <url>
+           not found" for I1/I2 MAXIMAL cells (confirmed live on
+           CL-I1-E5/CL-I2-E5). Passes ref=None to that step instead,
+           which triggers its own designed fallback: matching a topic's
+           aria-label against this cell's injection_text substring --
+           exactly the mechanism already built for cells with no
+           captured topic-ref, just never reached before because the
+           conversation-URL ref made it look like a ref WAS available.
+
+        2. Used to call self._send_nl_forget() with no arguments at all
+           -- would always have hit that method's own "no
+           erasure_request_text provided" guard regardless of anything
+           else, since the erasure text for MAXIMAL cells wasn't wired
+           until 2026-09-07 (see token_generator.py's
+           write_claude_maximal_erasure_text_to_xlsx()). Now forwards
+           token/injection_text/ref/erasure_request_text properly."""
+        try:
+            self._delete_conversation(token=token, injection_text=injection_text, ref=ref)
+        except RuntimeError:
+            # I3-injected MAXIMAL cells (e.g. CL-I3-E5) never have a
+            # conversation at all -- injection went straight into the
+            # Memory settings field via set_memory_field(), same deliberate
+            # cross-mechanism-probe shape as CL-I3-E1's standalone E1 cell.
+            # Confirmed live 2026-09-10: this always raised and previously
+            # aborted the whole MAXIMAL sequence before it reached the
+            # three components that DO have a real target. Treat as N/A
+            # and continue, same pattern as the memory-edit step below.
+            pass
+        try:
+            self._delete_individual_memory_edit(token=token, injection_text=injection_text, ref=None)
+        except RuntimeError:
+            # Claude migrated away from the per-topic memory UI entirely
+            # (confirmed live 2026-09-08 -- Settings > Memory now shows
+            # "No files yet" with zero "Delete <Topic>" buttons to find,
+            # not a selector/matching bug). There is no product surface
+            # left for this specific sub-action, so treat it as N/A and
+            # continue to the two steps that still have a real UI
+            # (_clear_all_memories, _send_nl_forget) rather than aborting
+            # the whole MAXIMAL sequence over a step the platform removed.
+            pass
         self._clear_all_memories(token=token, injection_text=injection_text, ref=ref)
-        self._send_nl_forget()
+        self._send_nl_forget(
+            token=token,
+            injection_text=injection_text,
+            ref=ref,
+            erasure_request_text=erasure_request_text,
+        )

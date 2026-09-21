@@ -1,0 +1,1375 @@
+[2026-09-17T03:48:04] === erasure scheduler start, state={'claude': {'batch_size': 40, 'next_ready_at': 1789631284.755863}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789631284.755863}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789631284.755863}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789631284.755863}, 'copilot': {'batch_size': 40, 'next_ready_at': 1789631284.755863}, 'gemini': {'batch_size': 40, 'next_ready_at': 1789631284.755863}} ===
+[2026-09-17T03:48:04] claude: starting erasure batch, ceiling=40, 120 total due, planning up to 40 this batch, order=['CL-NLF-I0000', 'CL-NLF-I0001', 'CL-NLF-I0002', 'CL-NLF-I0004', 'CL-NLF-I0005', 'CL-NLF-I0010', 'CL-NLF-I0012', 'CL-NLF-I0018', 'CL-NLF-I0023', 'CL-NLF-I0024', 'CL-NLF-I0026', 'CL-NLF-I0027', 'CL-NLF-I0028', 'CL-NLF-I0030', 'CL-NLF-I0035', 'CL-NLF-I0036', 'CL-NLF-I0041', 'CL-NLF-I0042', 'CL-NLF-I0043', 'CL-NLF-I0044', 'CL-NLF-I0047', 'CL-NLF-I0049', 'CL-NLF-I0051', 'CL-NLF-I0053', 'CL-NLF-I0059', 'CL-NLF-I0062', 'CL-NLF-I0067', 'CL-NLF-I0068', 'CL-NLF-I0070', 'CL-NLF-I0077', 'CL-NLF-I0085', 'CL-NLF-I0086', 'CL-NLF-I0089', 'CL-NLF-I0092', 'CL-NLF-I0095', 'CL-NLF-I0096', 'CL-NLF-I0099', 'CL-NLF-I0105', 'CL-NLF-I0106', 'CL-NLF-I0115']
+[2026-09-17T03:48:22] claude: OK erased CL-NLF-I0000 (1/40)
+[2026-09-17T03:49:18] claude: OK erased CL-NLF-I0001 (2/40)
+[2026-09-17T03:50:14] claude: OK erased CL-NLF-I0002 (3/40)
+[2026-09-17T03:51:39] claude: OK erased CL-NLF-I0004 (4/40)
+[2026-09-17T03:52:27] claude: OK erased CL-NLF-I0005 (5/40)
+[2026-09-17T03:53:51] claude: OK erased CL-NLF-I0010 (6/40)
+[2026-09-17T03:55:01] claude: OK erased CL-NLF-I0012 (7/40)
+[2026-09-17T03:56:35] claude: OK erased CL-NLF-I0018 (8/40)
+[2026-09-17T03:57:50] claude: OK erased CL-NLF-I0023 (9/40)
+[2026-09-17T03:59:08] claude: OK erased CL-NLF-I0024 (10/40)
+[2026-09-17T04:00:22] claude: OK erased CL-NLF-I0026 (11/40)
+[2026-09-17T04:01:03] claude: OK erased CL-NLF-I0027 (12/40)
+[2026-09-17T04:02:18] claude: OK erased CL-NLF-I0028 (13/40)
+[2026-09-17T04:03:07] claude: OK erased CL-NLF-I0030 (14/40)
+[2026-09-17T04:04:03] claude: OK erased CL-NLF-I0035 (15/40)
+[2026-09-17T04:04:44] claude: OK erased CL-NLF-I0036 (16/40)
+[2026-09-17T04:05:38] claude: OK erased CL-NLF-I0041 (17/40)
+[2026-09-17T04:06:36] claude: OK erased CL-NLF-I0042 (18/40)
+[2026-09-17T04:07:29] claude: OK erased CL-NLF-I0043 (19/40)
+[2026-09-17T04:08:43] claude: OK erased CL-NLF-I0044 (20/40)
+[2026-09-17T04:09:25] claude: OK erased CL-NLF-I0047 (21/40)
+[2026-09-17T04:10:05] claude: OK erased CL-NLF-I0049 (22/40)
+[2026-09-17T04:10:57] claude: OK erased CL-NLF-I0051 (23/40)
+[2026-09-17T04:12:13] claude: OK erased CL-NLF-I0053 (24/40)
+[2026-09-17T04:12:44] claude: OK erased CL-NLF-I0059 (25/40)
+[2026-09-17T04:14:01] claude: OK erased CL-NLF-I0062 (26/40)
+[2026-09-17T04:15:20] claude: OK erased CL-NLF-I0067 (27/40)
+[2026-09-17T04:16:34] claude: OK erased CL-NLF-I0068 (28/40)
+[2026-09-17T04:17:29] claude: OK erased CL-NLF-I0070 (29/40)
+[2026-09-17T04:18:30] claude: OK erased CL-NLF-I0077 (30/40)
+[2026-09-17T04:19:47] claude: OK erased CL-NLF-I0085 (31/40)
+[2026-09-17T04:20:47] claude: OK erased CL-NLF-I0086 (32/40)
+[2026-09-17T04:21:49] claude: OK erased CL-NLF-I0089 (33/40)
+[2026-09-17T04:22:30] claude: OK erased CL-NLF-I0092 (34/40)
+[2026-09-17T04:23:15] claude: OK erased CL-NLF-I0095 (35/40)
+[2026-09-17T04:24:00] claude: OK erased CL-NLF-I0096 (36/40)
+[2026-09-17T04:24:36] claude: OK erased CL-NLF-I0099 (37/40)
+[2026-09-17T04:25:09] claude: OK erased CL-NLF-I0105 (38/40)
+[2026-09-17T04:25:42] claude: OK erased CL-NLF-I0106 (39/40)
+[2026-09-17T04:26:47] claude: OK erased CL-NLF-I0115 (40/40)
+[2026-09-17T04:26:47] claude: batch completed in full (40/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-17T04:26:47] claude: batch done, next ready at 2026-09-17T04:26:47
+[2026-09-17T04:26:47] perplexity: starting erasure batch, ceiling=40, 120 total due, planning up to 40 this batch, order=['PE-NLF-I0000', 'PE-NLF-I0001', 'PE-NLF-I0002', 'PE-NLF-I0004', 'PE-NLF-I0005', 'PE-NLF-I0010', 'PE-NLF-I0012', 'PE-NLF-I0018', 'PE-NLF-I0023', 'PE-NLF-I0024', 'PE-NLF-I0026', 'PE-NLF-I0027', 'PE-NLF-I0028', 'PE-NLF-I0030', 'PE-NLF-I0035', 'PE-NLF-I0036', 'PE-NLF-I0041', 'PE-NLF-I0042', 'PE-NLF-I0043', 'PE-NLF-I0044', 'PE-NLF-I0047', 'PE-NLF-I0049', 'PE-NLF-I0051', 'PE-NLF-I0053', 'PE-NLF-I0059', 'PE-NLF-I0062', 'PE-NLF-I0067', 'PE-NLF-I0068', 'PE-NLF-I0070', 'PE-NLF-I0077', 'PE-NLF-I0085', 'PE-NLF-I0086', 'PE-NLF-I0089', 'PE-NLF-I0092', 'PE-NLF-I0095', 'PE-NLF-I0096', 'PE-NLF-I0099', 'PE-NLF-I0105', 'PE-NLF-I0106', 'PE-NLF-I0115']
+[2026-09-17T04:27:01] perplexity: OK erased PE-NLF-I0000 (1/40)
+[2026-09-17T04:28:02] perplexity: OK erased PE-NLF-I0001 (2/40)
+[2026-09-17T04:29:09] perplexity: OK erased PE-NLF-I0002 (3/40)
+[2026-09-17T04:30:07] perplexity: OK erased PE-NLF-I0004 (4/40)
+[2026-09-17T04:31:22] perplexity: OK erased PE-NLF-I0005 (5/40)
+[2026-09-17T04:32:27] perplexity: OK erased PE-NLF-I0010 (6/40)
+[2026-09-17T04:33:16] perplexity: OK erased PE-NLF-I0012 (7/40)
+[2026-09-17T04:34:24] perplexity: OK erased PE-NLF-I0018 (8/40)
+[2026-09-17T04:35:34] perplexity: OK erased PE-NLF-I0023 (9/40)
+[2026-09-17T04:36:30] perplexity: OK erased PE-NLF-I0024 (10/40)
+[2026-09-17T04:37:34] perplexity: OK erased PE-NLF-I0026 (11/40)
+[2026-09-17T04:38:37] perplexity: OK erased PE-NLF-I0027 (12/40)
+[2026-09-17T04:39:28] perplexity: OK erased PE-NLF-I0028 (13/40)
+[2026-09-17T04:40:07] perplexity: OK erased PE-NLF-I0030 (14/40)
+[2026-09-17T04:41:06] perplexity: OK erased PE-NLF-I0035 (15/40)
+[2026-09-17T04:42:07] perplexity: OK erased PE-NLF-I0036 (16/40)
+[2026-09-17T04:43:13] perplexity: OK erased PE-NLF-I0041 (17/40)
+[2026-09-17T04:44:23] perplexity: OK erased PE-NLF-I0042 (18/40)
+[2026-09-17T04:45:35] perplexity: OK erased PE-NLF-I0043 (19/40)
+[2026-09-17T04:46:45] perplexity: OK erased PE-NLF-I0044 (20/40)
+[2026-09-17T04:47:27] perplexity: OK erased PE-NLF-I0047 (21/40)
+[2026-09-17T04:48:40] perplexity: OK erased PE-NLF-I0049 (22/40)
+[2026-09-17T04:49:19] perplexity: OK erased PE-NLF-I0051 (23/40)
+[2026-09-17T04:50:08] perplexity: OK erased PE-NLF-I0053 (24/40)
+[2026-09-17T04:51:24] perplexity: OK erased PE-NLF-I0059 (25/40)
+[2026-09-17T04:52:13] perplexity: OK erased PE-NLF-I0062 (26/40)
+[2026-09-17T04:52:54] perplexity: OK erased PE-NLF-I0067 (27/40)
+[2026-09-17T04:54:02] perplexity: OK erased PE-NLF-I0068 (28/40)
+[2026-09-17T04:55:21] perplexity: OK erased PE-NLF-I0070 (29/40)
+[2026-09-17T04:56:45] perplexity: OK erased PE-NLF-I0077 (30/40)
+[2026-09-17T04:57:55] perplexity: OK erased PE-NLF-I0085 (31/40)
+[2026-09-17T04:58:48] perplexity: OK erased PE-NLF-I0086 (32/40)
+[2026-09-17T05:00:03] perplexity: OK erased PE-NLF-I0089 (33/40)
+[2026-09-17T05:01:07] perplexity: OK erased PE-NLF-I0092 (34/40)
+[2026-09-17T05:02:16] perplexity: OK erased PE-NLF-I0095 (35/40)
+[2026-09-17T05:02:49] perplexity: OK erased PE-NLF-I0096 (36/40)
+[2026-09-17T05:03:39] perplexity: OK erased PE-NLF-I0099 (37/40)
+[2026-09-17T05:04:39] perplexity: OK erased PE-NLF-I0105 (38/40)
+[2026-09-17T05:05:31] perplexity: OK erased PE-NLF-I0106 (39/40)
+[2026-09-17T05:06:48] perplexity: OK erased PE-NLF-I0115 (40/40)
+[2026-09-17T05:06:48] perplexity: batch completed in full (40/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-17T05:06:48] perplexity: batch done, next ready at 2026-09-17T05:06:48
+[2026-09-17T05:06:48] deepseek: starting erasure batch, ceiling=40, 120 total due, planning up to 40 this batch, order=['DE-NLF-I0000', 'DE-NLF-I0001', 'DE-NLF-I0002', 'DE-NLF-I0004', 'DE-NLF-I0005', 'DE-NLF-I0010', 'DE-NLF-I0012', 'DE-NLF-I0018', 'DE-NLF-I0023', 'DE-NLF-I0024', 'DE-NLF-I0026', 'DE-NLF-I0027', 'DE-NLF-I0028', 'DE-NLF-I0030', 'DE-NLF-I0035', 'DE-NLF-I0036', 'DE-NLF-I0041', 'DE-NLF-I0042', 'DE-NLF-I0043', 'DE-NLF-I0044', 'DE-NLF-I0047', 'DE-NLF-I0049', 'DE-NLF-I0051', 'DE-NLF-I0053', 'DE-NLF-I0059', 'DE-NLF-I0062', 'DE-NLF-I0067', 'DE-NLF-I0068', 'DE-NLF-I0070', 'DE-NLF-I0077', 'DE-NLF-I0085', 'DE-NLF-I0086', 'DE-NLF-I0089', 'DE-NLF-I0092', 'DE-NLF-I0095', 'DE-NLF-I0096', 'DE-NLF-I0099', 'DE-NLF-I0105', 'DE-NLF-I0106', 'DE-NLF-I0115']
+[2026-09-17T05:07:00] deepseek: OK erased DE-NLF-I0000 (1/40)
+[2026-09-17T05:07:46] deepseek: OK erased DE-NLF-I0001 (2/40)
+[2026-09-17T05:08:26] deepseek: OK erased DE-NLF-I0002 (3/40)
+[2026-09-17T05:09:24] deepseek: OK erased DE-NLF-I0004 (4/40)
+[2026-09-17T05:10:42] deepseek: OK erased DE-NLF-I0005 (5/40)
+[2026-09-17T05:11:28] deepseek: OK erased DE-NLF-I0010 (6/40)
+[2026-09-17T05:12:22] deepseek: OK erased DE-NLF-I0012 (7/40)
+[2026-09-17T05:13:07] deepseek: OK erased DE-NLF-I0018 (8/40)
+[2026-09-17T05:14:07] deepseek: OK erased DE-NLF-I0023 (9/40)
+[2026-09-17T05:14:48] deepseek: OK erased DE-NLF-I0024 (10/40)
+[2026-09-17T05:15:34] deepseek: OK erased DE-NLF-I0026 (11/40)
+[2026-09-17T05:16:12] deepseek: OK erased DE-NLF-I0027 (12/40)
+[2026-09-17T05:17:34] deepseek: OK erased DE-NLF-I0028 (13/40)
+[2026-09-17T05:18:10] deepseek: OK erased DE-NLF-I0030 (14/40)
+[2026-09-17T05:19:29] deepseek: OK erased DE-NLF-I0035 (15/40)
+[2026-09-17T05:20:37] deepseek: OK erased DE-NLF-I0036 (16/40)
+[2026-09-17T05:21:09] deepseek: OK erased DE-NLF-I0041 (17/40)
+[2026-09-17T05:22:00] deepseek: OK erased DE-NLF-I0042 (18/40)
+[2026-09-17T05:23:00] deepseek: OK erased DE-NLF-I0043 (19/40)
+[2026-09-17T05:23:43] deepseek: OK erased DE-NLF-I0044 (20/40)
+[2026-09-17T05:24:29] deepseek: OK erased DE-NLF-I0047 (21/40)
+[2026-09-17T05:25:39] deepseek: OK erased DE-NLF-I0049 (22/40)
+[2026-09-17T05:26:37] deepseek: OK erased DE-NLF-I0051 (23/40)
+[2026-09-17T05:27:28] deepseek: OK erased DE-NLF-I0053 (24/40)
+[2026-09-17T05:28:01] deepseek: OK erased DE-NLF-I0059 (25/40)
+[2026-09-17T05:28:16] === erasure scheduler start, state={'claude': {'batch_size': 40, 'next_ready_at': 1789633607.8858528}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789636008.0464692}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789631284.755863}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789631284.755863}, 'copilot': {'batch_size': 40, 'next_ready_at': 1789631284.755863}, 'gemini': {'batch_size': 40, 'next_ready_at': 1789631284.755863}} ===
+[2026-09-17T05:28:16] deepseek: starting erasure batch, ceiling=40, 95 total due, planning up to 40 this batch, order=['DE-NLF-I0062', 'DE-NLF-I0067', 'DE-NLF-I0068', 'DE-NLF-I0070', 'DE-NLF-I0077', 'DE-NLF-I0085', 'DE-NLF-I0086', 'DE-NLF-I0089', 'DE-NLF-I0092', 'DE-NLF-I0095', 'DE-NLF-I0096', 'DE-NLF-I0099', 'DE-NLF-I0105', 'DE-NLF-I0106', 'DE-NLF-I0115', 'DE-NLF-I0118', 'DE-NLF-I0121', 'DE-NLF-I0124', 'DE-NLF-I0125', 'DE-NLF-I0126', 'DE-NLF-I0128', 'DE-NLF-I0131', 'DE-NLF-I0132', 'DE-NLF-I0133', 'DE-NLF-I0137', 'DE-NLF-I0140', 'DE-NLF-I0149', 'DE-NLF-I0153', 'DE-NLF-I0159', 'DE-NLF-I0161', 'DE-NLF-I0163', 'DE-NLF-I0165', 'DE-NLF-I0166', 'DE-NLF-I0169', 'DE-NLF-I0170', 'DE-NLF-I0176', 'DE-NLF-I0177', 'DE-NLF-I0181', 'DE-NLF-I0185', 'DE-NLF-I0187']
+[2026-09-17T05:28:28] deepseek: OK erased DE-NLF-I0062 (1/40)
+[2026-09-17T05:29:24] deepseek: OK erased DE-NLF-I0067 (2/40)
+[2026-09-17T05:30:13] deepseek: OK erased DE-NLF-I0068 (3/40)
+[2026-09-17T05:30:50] deepseek: OK erased DE-NLF-I0070 (4/40)
+[2026-09-17T05:31:20] deepseek: OK erased DE-NLF-I0077 (5/40)
+[2026-09-17T05:32:17] deepseek: OK erased DE-NLF-I0085 (6/40)
+[2026-09-17T05:33:10] deepseek: OK erased DE-NLF-I0086 (7/40)
+[2026-09-17T05:33:56] deepseek: OK erased DE-NLF-I0089 (8/40)
+[2026-09-17T05:35:16] deepseek: OK erased DE-NLF-I0092 (9/40)
+[2026-09-17T10:39:57] === erasure scheduler start, state={'claude': {'batch_size': 40, 'next_ready_at': 1789633607.8858528}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789636008.0464692}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789631284.755863}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789631284.755863}, 'copilot': {'batch_size': 40, 'next_ready_at': 1789631284.755863}, 'gemini': {'batch_size': 40, 'next_ready_at': 1789631284.755863}} ===
+[2026-09-17T10:39:57] deepseek: starting erasure batch, ceiling=40, 86 total due, planning up to 40 this batch, order=['DE-NLF-I0095', 'DE-NLF-I0096', 'DE-NLF-I0099', 'DE-NLF-I0105', 'DE-NLF-I0106', 'DE-NLF-I0115', 'DE-NLF-I0118', 'DE-NLF-I0121', 'DE-NLF-I0124', 'DE-NLF-I0125', 'DE-NLF-I0126', 'DE-NLF-I0128', 'DE-NLF-I0131', 'DE-NLF-I0132', 'DE-NLF-I0133', 'DE-NLF-I0137', 'DE-NLF-I0140', 'DE-NLF-I0149', 'DE-NLF-I0153', 'DE-NLF-I0159', 'DE-NLF-I0161', 'DE-NLF-I0163', 'DE-NLF-I0165', 'DE-NLF-I0166', 'DE-NLF-I0169', 'DE-NLF-I0170', 'DE-NLF-I0176', 'DE-NLF-I0177', 'DE-NLF-I0181', 'DE-NLF-I0185', 'DE-NLF-I0187', 'DE-NLF-I0188', 'DE-NLF-I0191', 'DE-NLF-I0195', 'DE-NLF-I0200', 'DE-NLF-I0201', 'DE-NLF-I0209', 'DE-NLF-I0215', 'DE-NLF-I0216', 'DE-NLF-I0220']
+[2026-09-17T10:40:09] deepseek: OK erased DE-NLF-I0095 (1/40)
+[2026-09-17T10:41:16] deepseek: OK erased DE-NLF-I0096 (2/40)
+[2026-09-17T10:41:49] deepseek: OK erased DE-NLF-I0099 (3/40)
+[2026-09-17T10:43:11] deepseek: OK erased DE-NLF-I0105 (4/40)
+[2026-09-17T10:43:57] deepseek: OK erased DE-NLF-I0106 (5/40)
+[2026-09-17T10:44:26] deepseek: OK erased DE-NLF-I0115 (6/40)
+[2026-09-17T10:45:33] deepseek: OK erased DE-NLF-I0118 (7/40)
+[2026-09-17T10:46:17] deepseek: OK erased DE-NLF-I0121 (8/40)
+[2026-09-17T10:47:21] deepseek: OK erased DE-NLF-I0124 (9/40)
+[2026-09-17T10:48:06] deepseek: OK erased DE-NLF-I0125 (10/40)
+[2026-09-17T10:48:56] deepseek: OK erased DE-NLF-I0126 (11/40)
+[2026-09-17T10:50:05] deepseek: OK erased DE-NLF-I0128 (12/40)
+[2026-09-17T10:50:37] deepseek: OK erased DE-NLF-I0131 (13/40)
+[2026-09-17T10:51:49] deepseek: OK erased DE-NLF-I0132 (14/40)
+[2026-09-17T10:52:36] deepseek: OK erased DE-NLF-I0133 (15/40)
+[2026-09-17T10:53:55] deepseek: OK erased DE-NLF-I0137 (16/40)
+[2026-09-17T10:55:00] deepseek: OK erased DE-NLF-I0140 (17/40)
+[2026-09-17T10:55:37] deepseek: OK erased DE-NLF-I0149 (18/40)
+[2026-09-17T10:56:19] deepseek: OK erased DE-NLF-I0153 (19/40)
+[2026-09-17T10:57:38] deepseek: OK erased DE-NLF-I0159 (20/40)
+[2026-09-17T10:58:40] deepseek: OK erased DE-NLF-I0161 (21/40)
+[2026-09-17T10:59:12] deepseek: OK erased DE-NLF-I0163 (22/40)
+[2026-09-17T11:00:05] deepseek: OK erased DE-NLF-I0165 (23/40)
+[2026-09-17T11:00:52] deepseek: OK erased DE-NLF-I0166 (24/40)
+[2026-09-17T11:01:32] deepseek: OK erased DE-NLF-I0169 (25/40)
+[2026-09-17T11:02:02] deepseek: OK erased DE-NLF-I0170 (26/40)
+[2026-09-17T11:02:37] deepseek: OK erased DE-NLF-I0176 (27/40)
+[2026-09-17T11:03:39] deepseek: OK erased DE-NLF-I0177 (28/40)
+[2026-09-17T11:04:37] deepseek: OK erased DE-NLF-I0181 (29/40)
+[2026-09-17T11:05:43] deepseek: OK erased DE-NLF-I0185 (30/40)
+[2026-09-17T11:06:21] deepseek: OK erased DE-NLF-I0187 (31/40)
+[2026-09-17T11:07:17] deepseek: OK erased DE-NLF-I0188 (32/40)
+[2026-09-17T11:07:52] deepseek: OK erased DE-NLF-I0191 (33/40)
+[2026-09-17T11:09:08] deepseek: OK erased DE-NLF-I0195 (34/40)
+[2026-09-17T11:09:47] deepseek: OK erased DE-NLF-I0200 (35/40)
+[2026-09-17T11:10:30] deepseek: OK erased DE-NLF-I0201 (36/40)
+[2026-09-17T11:11:39] deepseek: OK erased DE-NLF-I0209 (37/40)
+[2026-09-17T11:12:45] deepseek: OK erased DE-NLF-I0215 (38/40)
+[2026-09-17T11:13:58] deepseek: OK erased DE-NLF-I0216 (39/40)
+[2026-09-17T11:14:37] deepseek: OK erased DE-NLF-I0220 (40/40)
+[2026-09-17T11:14:37] deepseek: batch completed in full (40/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-17T11:14:37] deepseek: batch done, next ready at 2026-09-17T11:14:37
+[2026-09-17T11:14:37] chatgpt: starting erasure batch, ceiling=35, 120 total due, planning up to 35 this batch, order=['CH-NLF-I0000', 'CH-NLF-I0001', 'CH-NLF-I0002', 'CH-NLF-I0004', 'CH-NLF-I0005', 'CH-NLF-I0010', 'CH-NLF-I0012', 'CH-NLF-I0018', 'CH-NLF-I0023', 'CH-NLF-I0024', 'CH-NLF-I0026', 'CH-NLF-I0027', 'CH-NLF-I0028', 'CH-NLF-I0030', 'CH-NLF-I0035', 'CH-NLF-I0036', 'CH-NLF-I0041', 'CH-NLF-I0042', 'CH-NLF-I0043', 'CH-NLF-I0044', 'CH-NLF-I0047', 'CH-NLF-I0049', 'CH-NLF-I0051', 'CH-NLF-I0053', 'CH-NLF-I0059', 'CH-NLF-I0062', 'CH-NLF-I0067', 'CH-NLF-I0068', 'CH-NLF-I0070', 'CH-NLF-I0077', 'CH-NLF-I0085', 'CH-NLF-I0086', 'CH-NLF-I0089', 'CH-NLF-I0092', 'CH-NLF-I0095']
+[2026-09-17T11:14:57] chatgpt: OK erased CH-NLF-I0000 (1/35)
+[2026-09-17T11:15:33] chatgpt: OK erased CH-NLF-I0001 (2/35)
+[2026-09-17T11:16:28] chatgpt: OK erased CH-NLF-I0002 (3/35)
+[2026-09-17T11:17:50] chatgpt: OK erased CH-NLF-I0004 (4/35)
+[2026-09-17T11:19:07] chatgpt: OK erased CH-NLF-I0005 (5/35)
+[2026-09-17T11:20:36] chatgpt: OK erased CH-NLF-I0010 (6/35)
+[2026-09-17T11:21:40] chatgpt: OK erased CH-NLF-I0012 (7/35)
+[2026-09-17T11:23:07] chatgpt: OK erased CH-NLF-I0018 (8/35)
+[2026-09-17T11:23:54] chatgpt: OK erased CH-NLF-I0023 (9/35)
+[2026-09-17T11:24:30] chatgpt: OK erased CH-NLF-I0024 (10/35)
+[2026-09-17T11:25:03] chatgpt: OK erased CH-NLF-I0026 (11/35)
+[2026-09-17T11:26:31] chatgpt: OK erased CH-NLF-I0027 (12/35)
+[2026-09-17T11:27:59] chatgpt: OK erased CH-NLF-I0028 (13/35)
+[2026-09-17T11:29:17] chatgpt: OK erased CH-NLF-I0030 (14/35)
+[2026-09-17T11:30:35] chatgpt: OK erased CH-NLF-I0035 (15/35)
+[2026-09-17T11:31:13] chatgpt: OK erased CH-NLF-I0036 (16/35)
+[2026-09-17T11:32:32] chatgpt: OK erased CH-NLF-I0041 (17/35)
+[2026-09-17T11:33:15] chatgpt: OK erased CH-NLF-I0042 (18/35)
+[2026-09-17T11:34:11] chatgpt: OK erased CH-NLF-I0043 (19/35)
+[2026-09-17T11:34:51] chatgpt: OK erased CH-NLF-I0044 (20/35)
+[2026-09-17T11:35:36] chatgpt: OK erased CH-NLF-I0047 (21/35)
+[2026-09-17T11:36:41] chatgpt: OK erased CH-NLF-I0049 (22/35)
+[2026-09-17T11:38:06] chatgpt: OK erased CH-NLF-I0051 (23/35)
+[2026-09-17T11:39:00] chatgpt: OK erased CH-NLF-I0053 (24/35)
+[2026-09-17T11:39:33] chatgpt: OK erased CH-NLF-I0059 (25/35)
+[2026-09-17T11:40:44] chatgpt: OK erased CH-NLF-I0062 (26/35)
+[2026-09-17T11:42:09] chatgpt: OK erased CH-NLF-I0067 (27/35)
+[2026-09-17T11:43:38] chatgpt: OK erased CH-NLF-I0068 (28/35)
+[2026-09-17T11:44:38] chatgpt: OK erased CH-NLF-I0070 (29/35)
+[2026-09-17T11:45:22] chatgpt: OK erased CH-NLF-I0077 (30/35)
+[2026-09-17T11:45:56] chatgpt: OK erased CH-NLF-I0085 (31/35)
+[2026-09-17T11:47:08] chatgpt: OK erased CH-NLF-I0086 (32/35)
+[2026-09-17T11:48:14] chatgpt: OK erased CH-NLF-I0089 (33/35)
+[2026-09-17T11:48:57] chatgpt: OK erased CH-NLF-I0092 (34/35)
+[2026-09-17T11:50:07] chatgpt: OK erased CH-NLF-I0095 (35/35)
+[2026-09-17T11:50:07] chatgpt: batch completed in full (35/35 succeeded) without tripping the throttle window -- ceiling stays at 35
+[2026-09-17T11:50:07] chatgpt: batch done, next ready at 2026-09-17T11:50:07
+[2026-09-17T11:50:07] copilot: starting erasure batch, ceiling=40, 120 total due, planning up to 40 this batch, order=['CO-NLF-I0000', 'CO-NLF-I0001', 'CO-NLF-I0002', 'CO-NLF-I0004', 'CO-NLF-I0005', 'CO-NLF-I0010', 'CO-NLF-I0012', 'CO-NLF-I0018', 'CO-NLF-I0023', 'CO-NLF-I0024', 'CO-NLF-I0026', 'CO-NLF-I0027', 'CO-NLF-I0028', 'CO-NLF-I0030', 'CO-NLF-I0035', 'CO-NLF-I0036', 'CO-NLF-I0041', 'CO-NLF-I0042', 'CO-NLF-I0043', 'CO-NLF-I0044', 'CO-NLF-I0047', 'CO-NLF-I0049', 'CO-NLF-I0051', 'CO-NLF-I0053', 'CO-NLF-I0059', 'CO-NLF-I0062', 'CO-NLF-I0067', 'CO-NLF-I0068', 'CO-NLF-I0070', 'CO-NLF-I0077', 'CO-NLF-I0085', 'CO-NLF-I0086', 'CO-NLF-I0089', 'CO-NLF-I0092', 'CO-NLF-I0095', 'CO-NLF-I0096', 'CO-NLF-I0099', 'CO-NLF-I0105', 'CO-NLF-I0106', 'CO-NLF-I0115']
+[2026-09-17T11:50:19] copilot: OK erased CO-NLF-I0000 (1/40)
+[2026-09-17T11:52:14] copilot: OK erased CO-NLF-I0001 (2/40)
+[2026-09-17T11:53:16] copilot: OK erased CO-NLF-I0002 (3/40)
+[2026-09-17T11:54:22] copilot: OK erased CO-NLF-I0004 (4/40)
+[2026-09-17T11:55:54] copilot: OK erased CO-NLF-I0005 (5/40)
+[2026-09-17T11:57:33] copilot: OK erased CO-NLF-I0010 (6/40)
+[2026-09-17T11:58:00] copilot: OK erased CO-NLF-I0012 (7/40)
+[2026-09-17T11:59:09] copilot: OK erased CO-NLF-I0018 (8/40)
+[2026-09-17T12:00:27] copilot: OK erased CO-NLF-I0023 (9/40)
+[2026-09-17T12:01:45] copilot: OK erased CO-NLF-I0024 (10/40)
+[2026-09-17T12:02:59] copilot: OK erased CO-NLF-I0026 (11/40)
+[2026-09-17T12:04:52] copilot: OK erased CO-NLF-I0027 (12/40)
+[2026-09-17T12:06:19] copilot: OK erased CO-NLF-I0028 (13/40)
+[2026-09-17T12:07:56] copilot: OK erased CO-NLF-I0030 (14/40)
+[2026-09-17T12:10:07] copilot: OK erased CO-NLF-I0035 (15/40)
+[2026-09-17T12:12:16] copilot: OK erased CO-NLF-I0036 (16/40)
+[2026-09-17T12:13:10] copilot: OK erased CO-NLF-I0041 (17/40)
+[2026-09-17T12:15:18] copilot: OK erased CO-NLF-I0042 (18/40)
+[2026-09-17T12:15:59] copilot: OK erased CO-NLF-I0043 (19/40)
+[2026-09-17T12:16:29] copilot: OK erased CO-NLF-I0044 (20/40)
+[2026-09-17T12:17:33] copilot: OK erased CO-NLF-I0047 (21/40)
+[2026-09-17T12:19:28] copilot: OK erased CO-NLF-I0049 (22/40)
+[2026-09-17T12:20:18] copilot: OK erased CO-NLF-I0051 (23/40)
+[2026-09-17T12:20:59] copilot: OK erased CO-NLF-I0053 (24/40)
+[2026-09-17T12:22:34] copilot: OK erased CO-NLF-I0059 (25/40)
+[2026-09-17T12:24:22] copilot: OK erased CO-NLF-I0062 (26/40)
+[2026-09-17T12:26:14] copilot: OK erased CO-NLF-I0067 (27/40)
+[2026-09-17T12:26:49] copilot: OK erased CO-NLF-I0068 (28/40)
+[2026-09-17T12:29:00] copilot: OK erased CO-NLF-I0070 (29/40)
+[2026-09-17T12:30:04] copilot: OK erased CO-NLF-I0077 (30/40)
+[2026-09-17T12:32:22] copilot: OK erased CO-NLF-I0085 (31/40)
+[2026-09-17T12:34:27] copilot: OK erased CO-NLF-I0086 (32/40)
+[2026-09-17T12:35:26] copilot: OK erased CO-NLF-I0089 (33/40)
+[2026-09-17T12:37:22] copilot: OK erased CO-NLF-I0092 (34/40)
+[2026-09-17T12:38:58] copilot: OK erased CO-NLF-I0095 (35/40)
+[2026-09-17T12:40:17] copilot: OK erased CO-NLF-I0096 (36/40)
+[2026-09-17T12:40:54] copilot: OK erased CO-NLF-I0099 (37/40)
+[2026-09-17T12:42:36] copilot: OK erased CO-NLF-I0105 (38/40)
+[2026-09-17T12:43:48] copilot: OK erased CO-NLF-I0106 (39/40)
+[2026-09-17T12:45:23] copilot: OK erased CO-NLF-I0115 (40/40)
+[2026-09-17T12:45:23] copilot: batch completed in full (40/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-17T12:45:23] copilot: batch done, next ready at 2026-09-17T12:45:23
+[2026-09-17T12:45:23] gemini: starting erasure batch, ceiling=40, 120 total due, planning up to 40 this batch, order=['GE-NLF-I0000', 'GE-NLF-I0001', 'GE-NLF-I0002', 'GE-NLF-I0004', 'GE-NLF-I0005', 'GE-NLF-I0010', 'GE-NLF-I0012', 'GE-NLF-I0018', 'GE-NLF-I0023', 'GE-NLF-I0024', 'GE-NLF-I0026', 'GE-NLF-I0027', 'GE-NLF-I0028', 'GE-NLF-I0030', 'GE-NLF-I0035', 'GE-NLF-I0036', 'GE-NLF-I0041', 'GE-NLF-I0042', 'GE-NLF-I0043', 'GE-NLF-I0044', 'GE-NLF-I0047', 'GE-NLF-I0049', 'GE-NLF-I0051', 'GE-NLF-I0053', 'GE-NLF-I0059', 'GE-NLF-I0062', 'GE-NLF-I0067', 'GE-NLF-I0068', 'GE-NLF-I0070', 'GE-NLF-I0077', 'GE-NLF-I0085', 'GE-NLF-I0086', 'GE-NLF-I0089', 'GE-NLF-I0092', 'GE-NLF-I0095', 'GE-NLF-I0096', 'GE-NLF-I0099', 'GE-NLF-I0105', 'GE-NLF-I0106', 'GE-NLF-I0115']
+[2026-09-17T12:45:37] gemini: OK erased GE-NLF-I0000 (1/40)
+[2026-09-17T12:46:52] gemini: OK erased GE-NLF-I0001 (2/40)
+[2026-09-17T12:47:46] gemini: OK erased GE-NLF-I0002 (3/40)
+[2026-09-17T12:48:51] gemini: OK erased GE-NLF-I0004 (4/40)
+[2026-09-17T12:49:26] gemini: OK erased GE-NLF-I0005 (5/40)
+[2026-09-17T12:50:11] gemini: OK erased GE-NLF-I0010 (6/40)
+[2026-09-17T12:51:23] gemini: OK erased GE-NLF-I0012 (7/40)
+[2026-09-17T12:51:54] gemini: OK erased GE-NLF-I0018 (8/40)
+[2026-09-17T12:52:30] gemini: OK erased GE-NLF-I0023 (9/40)
+[2026-09-17T12:53:12] gemini: OK erased GE-NLF-I0024 (10/40)
+[2026-09-17T12:54:28] gemini: OK erased GE-NLF-I0026 (11/40)
+[2026-09-17T12:54:59] gemini: OK erased GE-NLF-I0027 (12/40)
+[2026-09-17T12:56:12] gemini: OK erased GE-NLF-I0028 (13/40)
+[2026-09-17T12:57:30] gemini: OK erased GE-NLF-I0030 (14/40)
+[2026-09-17T12:57:58] gemini: OK erased GE-NLF-I0035 (15/40)
+[2026-09-17T12:58:58] gemini: OK erased GE-NLF-I0036 (16/40)
+[2026-09-17T13:00:11] gemini: OK erased GE-NLF-I0041 (17/40)
+[2026-09-17T13:01:05] gemini: OK erased GE-NLF-I0042 (18/40)
+[2026-09-17T13:01:45] gemini: OK erased GE-NLF-I0043 (19/40)
+[2026-09-17T13:02:35] gemini: OK erased GE-NLF-I0044 (20/40)
+[2026-09-17T13:07:07] === erasure scheduler start, state={'claude': {'batch_size': 40, 'next_ready_at': 1789633607.8858528}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789636008.0464692}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789658077.184521}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789660207.3274581}, 'copilot': {'batch_size': 40, 'next_ready_at': 1789663523.881522}, 'gemini': {'batch_size': 40, 'next_ready_at': 1789631284.755863}} ===
+[2026-09-17T13:07:07] gemini: starting erasure batch, ceiling=40, 120 total due, planning up to 40 this batch, order=['GE-NLF-I0000', 'GE-NLF-I0001', 'GE-NLF-I0002', 'GE-NLF-I0004', 'GE-NLF-I0005', 'GE-NLF-I0010', 'GE-NLF-I0012', 'GE-NLF-I0018', 'GE-NLF-I0023', 'GE-NLF-I0024', 'GE-NLF-I0026', 'GE-NLF-I0027', 'GE-NLF-I0028', 'GE-NLF-I0030', 'GE-NLF-I0035', 'GE-NLF-I0036', 'GE-NLF-I0041', 'GE-NLF-I0042', 'GE-NLF-I0043', 'GE-NLF-I0044', 'GE-NLF-I0047', 'GE-NLF-I0049', 'GE-NLF-I0051', 'GE-NLF-I0053', 'GE-NLF-I0059', 'GE-NLF-I0062', 'GE-NLF-I0067', 'GE-NLF-I0068', 'GE-NLF-I0070', 'GE-NLF-I0077', 'GE-NLF-I0085', 'GE-NLF-I0086', 'GE-NLF-I0089', 'GE-NLF-I0092', 'GE-NLF-I0095', 'GE-NLF-I0096', 'GE-NLF-I0099', 'GE-NLF-I0105', 'GE-NLF-I0106', 'GE-NLF-I0115']
+[2026-09-17T13:07:11] gemini: FAIL GE-NLF-I0000 (1/40): gemini session (label=PosixPath('/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/sessions/gemini__nlforget.json')) is logged out -- 'Sign in' button present. Needs a fresh cookie export before this account can run.
+[2026-09-17T13:07:11] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 270, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 87, in __enter__
+    self._verify_logged_in()
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 77, in _verify_logged_in
+    raise RuntimeError(
+RuntimeError: gemini session (label=PosixPath('/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/sessions/gemini__nlforget.json')) is logged out -- 'Sign in' button present. Needs a fresh cookie export before this account can run.
+
+[2026-09-17T13:07:34] gemini: ENVIRONMENT ERROR (not a platform throttle) on GE-NLF-I0001: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+[2026-09-17T13:07:34] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 270, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 67, in __enter__
+    self._playwright = sync_playwright().start()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+           ^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+[2026-09-17T13:07:34] Process-local Playwright corruption detected -- aborting scheduler so a fresh process can be started (do NOT let this count toward any platform's throttle window or ceiling; that cell is untouched/unmarked and will retry normally).
+[2026-09-17T13:07:54] === erasure scheduler start, state={'claude': {'batch_size': 40, 'next_ready_at': 1789633607.8858528}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789636008.0464692}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789658077.184521}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789660207.3274581}, 'copilot': {'batch_size': 40, 'next_ready_at': 1789663523.881522}, 'gemini': {'batch_size': 40, 'next_ready_at': 1789631284.755863}} ===
+[2026-09-17T13:07:54] gemini: starting erasure batch, ceiling=40, 120 total due, planning up to 40 this batch, order=['GE-NLF-I0000', 'GE-NLF-I0001', 'GE-NLF-I0002', 'GE-NLF-I0004', 'GE-NLF-I0005', 'GE-NLF-I0010', 'GE-NLF-I0012', 'GE-NLF-I0018', 'GE-NLF-I0023', 'GE-NLF-I0024', 'GE-NLF-I0026', 'GE-NLF-I0027', 'GE-NLF-I0028', 'GE-NLF-I0030', 'GE-NLF-I0035', 'GE-NLF-I0036', 'GE-NLF-I0041', 'GE-NLF-I0042', 'GE-NLF-I0043', 'GE-NLF-I0044', 'GE-NLF-I0047', 'GE-NLF-I0049', 'GE-NLF-I0051', 'GE-NLF-I0053', 'GE-NLF-I0059', 'GE-NLF-I0062', 'GE-NLF-I0067', 'GE-NLF-I0068', 'GE-NLF-I0070', 'GE-NLF-I0077', 'GE-NLF-I0085', 'GE-NLF-I0086', 'GE-NLF-I0089', 'GE-NLF-I0092', 'GE-NLF-I0095', 'GE-NLF-I0096', 'GE-NLF-I0099', 'GE-NLF-I0105', 'GE-NLF-I0106', 'GE-NLF-I0115']
+[2026-09-17T13:07:58] gemini: FAIL GE-NLF-I0000 (1/40): gemini session (label=PosixPath('/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/sessions/gemini__nlforget.json')) is logged out -- 'Sign in' button present. Needs a fresh cookie export before this account can run.
+[2026-09-17T13:07:58] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 270, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 87, in __enter__
+    self._verify_logged_in()
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 77, in _verify_logged_in
+    raise RuntimeError(
+RuntimeError: gemini session (label=PosixPath('/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/sessions/gemini__nlforget.json')) is logged out -- 'Sign in' button present. Needs a fresh cookie export before this account can run.
+
+[2026-09-17T13:08:56] gemini: ENVIRONMENT ERROR (not a platform throttle) on GE-NLF-I0001: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+[2026-09-17T13:08:56] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 270, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 67, in __enter__
+    self._playwright = sync_playwright().start()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+           ^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+[2026-09-17T13:08:56] Process-local Playwright corruption detected -- aborting scheduler so a fresh process can be started (do NOT let this count toward any platform's throttle window or ceiling; that cell is untouched/unmarked and will retry normally).
+[2026-09-17T13:10:19] === erasure scheduler start, state={'claude': {'batch_size': 40, 'next_ready_at': 1789633607.8858528}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789636008.0464692}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789658077.184521}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789660207.3274581}, 'copilot': {'batch_size': 40, 'next_ready_at': 1789663523.881522}, 'gemini': {'batch_size': 40, 'next_ready_at': 1789631284.755863}} ===
+[2026-09-17T13:10:19] claude: starting erasure batch, ceiling=40, 80 total due, planning up to 40 this batch, order=['CL-NLF-I0118', 'CL-NLF-I0121', 'CL-NLF-I0124', 'CL-NLF-I0125', 'CL-NLF-I0126', 'CL-NLF-I0128', 'CL-NLF-I0131', 'CL-NLF-I0132', 'CL-NLF-I0133', 'CL-NLF-I0137', 'CL-NLF-I0140', 'CL-NLF-I0149', 'CL-NLF-I0153', 'CL-NLF-I0159', 'CL-NLF-I0161', 'CL-NLF-I0163', 'CL-NLF-I0165', 'CL-NLF-I0166', 'CL-NLF-I0169', 'CL-NLF-I0170', 'CL-NLF-I0176', 'CL-NLF-I0177', 'CL-NLF-I0181', 'CL-NLF-I0185', 'CL-NLF-I0187', 'CL-NLF-I0188', 'CL-NLF-I0191', 'CL-NLF-I0195', 'CL-NLF-I0200', 'CL-NLF-I0201', 'CL-NLF-I0209', 'CL-NLF-I0215', 'CL-NLF-I0216', 'CL-NLF-I0220', 'CL-NLF-I0224', 'CL-NLF-I0226', 'CL-NLF-I0228', 'CL-NLF-I0233', 'CL-NLF-I0236', 'CL-NLF-I0239']
+[2026-09-17T13:10:35] claude: OK erased CL-NLF-I0118 (1/40)
+[2026-09-17T13:11:17] claude: OK erased CL-NLF-I0121 (2/40)
+[2026-09-17T13:12:39] claude: OK erased CL-NLF-I0124 (3/40)
+[2026-09-17T13:13:12] claude: OK erased CL-NLF-I0125 (4/40)
+[2026-09-17T13:14:20] claude: OK erased CL-NLF-I0126 (5/40)
+[2026-09-17T13:15:27] claude: OK erased CL-NLF-I0128 (6/40)
+[2026-09-17T13:16:13] claude: OK erased CL-NLF-I0131 (7/40)
+[2026-09-17T13:17:10] claude: OK erased CL-NLF-I0132 (8/40)
+[2026-09-17T13:18:14] claude: OK erased CL-NLF-I0133 (9/40)
+[2026-09-17T13:18:47] claude: OK erased CL-NLF-I0137 (10/40)
+[2026-09-17T13:19:29] claude: OK erased CL-NLF-I0140 (11/40)
+[2026-09-17T13:20:02] claude: OK erased CL-NLF-I0149 (12/40)
+[2026-09-17T13:21:25] claude: OK erased CL-NLF-I0153 (13/40)
+[2026-09-17T13:22:20] claude: OK erased CL-NLF-I0159 (14/40)
+[2026-09-17T13:22:55] claude: OK erased CL-NLF-I0161 (15/40)
+[2026-09-17T13:24:09] claude: OK erased CL-NLF-I0163 (16/40)
+[2026-09-17T13:24:56] claude: OK erased CL-NLF-I0165 (17/40)
+[2026-09-17T13:49:17] claude: FAIL CL-NLF-I0166 (18/40): Page.goto: net::ERR_INTERNET_DISCONNECTED at https://claude.ai/login
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-09-17T13:49:17] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 80, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://claude.ai/login
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-09-17T13:50:56] claude: OK erased CL-NLF-I0169 (19/40)
+[2026-09-17T13:51:35] claude: OK erased CL-NLF-I0170 (20/40)
+[2026-09-17T13:52:53] claude: OK erased CL-NLF-I0176 (21/40)
+[2026-09-17T13:54:05] claude: OK erased CL-NLF-I0177 (22/40)
+[2026-09-17T13:55:28] claude: OK erased CL-NLF-I0181 (23/40)
+[2026-09-17T13:56:21] claude: OK erased CL-NLF-I0185 (24/40)
+[2026-09-17T13:57:18] claude: OK erased CL-NLF-I0187 (25/40)
+[2026-09-17T13:57:54] claude: OK erased CL-NLF-I0188 (26/40)
+[2026-09-17T13:58:00] === erasure scheduler start, state={'claude': {'batch_size': 40, 'next_ready_at': 1789633607.8858528}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789636008.0464692}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789658077.184521}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789660207.3274581}, 'copilot': {'batch_size': 40, 'next_ready_at': 1789663523.881522}, 'gemini': {'batch_size': 40, 'next_ready_at': 1789631284.755863}} ===
+[2026-09-17T13:58:00] gemini: starting erasure batch, ceiling=40, 120 total due, planning up to 40 this batch, order=['GE-NLF-I0000', 'GE-NLF-I0001', 'GE-NLF-I0002', 'GE-NLF-I0004', 'GE-NLF-I0005', 'GE-NLF-I0010', 'GE-NLF-I0012', 'GE-NLF-I0018', 'GE-NLF-I0023', 'GE-NLF-I0024', 'GE-NLF-I0026', 'GE-NLF-I0027', 'GE-NLF-I0028', 'GE-NLF-I0030', 'GE-NLF-I0035', 'GE-NLF-I0036', 'GE-NLF-I0041', 'GE-NLF-I0042', 'GE-NLF-I0043', 'GE-NLF-I0044', 'GE-NLF-I0047', 'GE-NLF-I0049', 'GE-NLF-I0051', 'GE-NLF-I0053', 'GE-NLF-I0059', 'GE-NLF-I0062', 'GE-NLF-I0067', 'GE-NLF-I0068', 'GE-NLF-I0070', 'GE-NLF-I0077', 'GE-NLF-I0085', 'GE-NLF-I0086', 'GE-NLF-I0089', 'GE-NLF-I0092', 'GE-NLF-I0095', 'GE-NLF-I0096', 'GE-NLF-I0099', 'GE-NLF-I0105', 'GE-NLF-I0106', 'GE-NLF-I0115']
+[2026-09-17T13:58:14] gemini: OK erased GE-NLF-I0000 (1/40)
+[2026-09-17T13:59:19] gemini: OK erased GE-NLF-I0001 (2/40)
+[2026-09-17T13:59:52] gemini: OK erased GE-NLF-I0002 (3/40)
+[2026-09-17T14:00:29] gemini: OK erased GE-NLF-I0004 (4/40)
+[2026-09-17T14:01:35] gemini: OK erased GE-NLF-I0005 (5/40)
+[2026-09-17T14:03:36] gemini: FAIL GE-NLF-I0010 (6/40): _wait_for_reply: no new response appeared within 60s
+[2026-09-17T14:03:36] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 541, in erase_cell
+    flow.erase_via_ui(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 203, in erase_via_ui
+    getattr(self, method_name)(**kwargs)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 233, in _send_nl_forget
+    self.send_message(erasure_request_text)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 142, in send_message
+    return self._wait_for_reply(before)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 116, in _wait_for_reply
+    raise RuntimeError("_wait_for_reply: no new response appeared within 60s")
+RuntimeError: _wait_for_reply: no new response appeared within 60s
+
+[2026-09-17T14:04:15] gemini: OK erased GE-NLF-I0012 (7/40)
+[2026-09-17T14:05:31] gemini: OK erased GE-NLF-I0018 (8/40)
+[2026-09-17T14:06:30] gemini: OK erased GE-NLF-I0023 (9/40)
+[2026-09-17T14:08:16] gemini: FAIL GE-NLF-I0024 (10/40): _wait_for_reply: no new response appeared within 60s
+[2026-09-17T14:08:16] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 541, in erase_cell
+    flow.erase_via_ui(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 203, in erase_via_ui
+    getattr(self, method_name)(**kwargs)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 233, in _send_nl_forget
+    self.send_message(erasure_request_text)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 142, in send_message
+    return self._wait_for_reply(before)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 116, in _wait_for_reply
+    raise RuntimeError("_wait_for_reply: no new response appeared within 60s")
+RuntimeError: _wait_for_reply: no new response appeared within 60s
+
+[2026-09-17T14:08:16] gemini: THROTTLE DETECTED -- 2/5 failures in last 5 attempts, stopping batch early after 8 successful erasures (planned 40)
+[2026-09-17T14:08:16] gemini: lowering batch-size ceiling 40 -> 8 based on this batch's observed throttle point
+[2026-09-17T14:08:16] gemini: batch done, next ready at 2026-09-17T14:08:16
+[2026-09-17T14:08:16] claude: starting erasure batch, ceiling=40, 55 total due, planning up to 40 this batch, order=['CL-NLF-I0166', 'CL-NLF-I0191', 'CL-NLF-I0195', 'CL-NLF-I0200', 'CL-NLF-I0201', 'CL-NLF-I0209', 'CL-NLF-I0215', 'CL-NLF-I0216', 'CL-NLF-I0220', 'CL-NLF-I0224', 'CL-NLF-I0226', 'CL-NLF-I0228', 'CL-NLF-I0233', 'CL-NLF-I0236', 'CL-NLF-I0239', 'CL-NLF-I0240', 'CL-NLF-I0252', 'CL-NLF-I0259', 'CL-NLF-I0260', 'CL-NLF-I0262', 'CL-NLF-I0264', 'CL-NLF-I0269', 'CL-NLF-I0271', 'CL-NLF-I0272', 'CL-NLF-I0273', 'CL-NLF-I0279', 'CL-NLF-I0281', 'CL-NLF-I0282', 'CL-NLF-I0287', 'CL-NLF-I0293', 'CL-NLF-I0297', 'CL-NLF-I0302', 'CL-NLF-I0304', 'CL-NLF-I0305', 'CL-NLF-I0309', 'CL-NLF-I0314', 'CL-NLF-I0315', 'CL-NLF-I0319', 'CL-NLF-I0322', 'CL-NLF-I0327']
+[2026-09-17T14:08:29] claude: OK erased CL-NLF-I0166 (1/40)
+[2026-09-17T14:09:15] claude: OK erased CL-NLF-I0191 (2/40)
+[2026-09-17T14:10:04] claude: OK erased CL-NLF-I0195 (3/40)
+[2026-09-17T14:11:01] claude: OK erased CL-NLF-I0200 (4/40)
+[2026-09-17T14:11:44] claude: OK erased CL-NLF-I0201 (5/40)
+[2026-09-17T14:12:55] claude: OK erased CL-NLF-I0209 (6/40)
+[2026-09-17T14:14:20] claude: OK erased CL-NLF-I0215 (7/40)
+[2026-09-17T14:15:18] claude: OK erased CL-NLF-I0216 (8/40)
+[2026-09-17T14:15:56] claude: OK erased CL-NLF-I0220 (9/40)
+[2026-09-17T14:17:04] claude: OK erased CL-NLF-I0224 (10/40)
+[2026-09-17T14:17:39] claude: OK erased CL-NLF-I0226 (11/40)
+[2026-09-17T14:18:09] claude: OK erased CL-NLF-I0228 (12/40)
+[2026-09-17T14:19:30] claude: OK erased CL-NLF-I0233 (13/40)
+[2026-09-17T14:20:19] claude: OK erased CL-NLF-I0236 (14/40)
+[2026-09-17T14:21:33] claude: OK erased CL-NLF-I0239 (15/40)
+[2026-09-17T14:22:33] claude: OK erased CL-NLF-I0240 (16/40)
+[2026-09-17T14:23:24] claude: OK erased CL-NLF-I0252 (17/40)
+[2026-09-17T14:24:35] claude: OK erased CL-NLF-I0259 (18/40)
+[2026-09-17T14:25:11] claude: OK erased CL-NLF-I0260 (19/40)
+[2026-09-17T14:26:32] claude: OK erased CL-NLF-I0262 (20/40)
+[2026-09-17T14:27:17] claude: OK erased CL-NLF-I0264 (21/40)
+[2026-09-17T14:28:06] claude: OK erased CL-NLF-I0269 (22/40)
+[2026-09-17T14:29:18] claude: OK erased CL-NLF-I0271 (23/40)
+[2026-09-17T14:29:53] claude: OK erased CL-NLF-I0272 (24/40)
+[2026-09-17T14:30:58] claude: OK erased CL-NLF-I0273 (25/40)
+[2026-09-17T14:31:51] claude: OK erased CL-NLF-I0279 (26/40)
+[2026-09-17T14:32:26] claude: OK erased CL-NLF-I0281 (27/40)
+[2026-09-17T14:33:06] claude: OK erased CL-NLF-I0282 (28/40)
+[2026-09-17T14:34:05] claude: OK erased CL-NLF-I0287 (29/40)
+[2026-09-17T14:35:20] claude: OK erased CL-NLF-I0293 (30/40)
+[2026-09-17T14:36:24] claude: OK erased CL-NLF-I0297 (31/40)
+[2026-09-17T14:37:22] claude: OK erased CL-NLF-I0302 (32/40)
+[2026-09-17T14:37:59] claude: OK erased CL-NLF-I0304 (33/40)
+[2026-09-17T14:39:15] claude: OK erased CL-NLF-I0305 (34/40)
+[2026-09-17T14:40:40] claude: OK erased CL-NLF-I0309 (35/40)
+[2026-09-17T14:42:30] claude: FAIL CL-NLF-I0314 (36/40): _wait_for_reply: no new reply appeared within 60s
+[2026-09-17T14:42:30] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 541, in erase_cell
+    flow.erase_via_ui(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 203, in erase_via_ui
+    getattr(self, method_name)(**kwargs)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 299, in _send_nl_forget
+    self.send_message(erasure_request_text)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 143, in send_message
+    return self._wait_for_reply(before)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 109, in _wait_for_reply
+    raise RuntimeError("_wait_for_reply: no new reply appeared within 60s")
+RuntimeError: _wait_for_reply: no new reply appeared within 60s
+
+[2026-09-17T14:44:27] claude: FAIL CL-NLF-I0315 (37/40): _wait_for_reply: no new reply appeared within 60s
+[2026-09-17T14:44:27] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 541, in erase_cell
+    flow.erase_via_ui(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 203, in erase_via_ui
+    getattr(self, method_name)(**kwargs)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 299, in _send_nl_forget
+    self.send_message(erasure_request_text)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 143, in send_message
+    return self._wait_for_reply(before)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 109, in _wait_for_reply
+    raise RuntimeError("_wait_for_reply: no new reply appeared within 60s")
+RuntimeError: _wait_for_reply: no new reply appeared within 60s
+
+[2026-09-17T14:44:27] claude: THROTTLE DETECTED -- 2/5 failures in last 5 attempts, stopping batch early after 35 successful erasures (planned 40)
+[2026-09-17T14:44:27] claude: lowering batch-size ceiling 40 -> 35 based on this batch's observed throttle point
+[2026-09-17T14:44:27] claude: batch done, next ready at 2026-09-17T14:44:27
+[2026-09-17T14:44:27] perplexity: starting erasure batch, ceiling=40, 80 total due, planning up to 40 this batch, order=['PE-NLF-I0118', 'PE-NLF-I0121', 'PE-NLF-I0124', 'PE-NLF-I0125', 'PE-NLF-I0126', 'PE-NLF-I0128', 'PE-NLF-I0131', 'PE-NLF-I0132', 'PE-NLF-I0133', 'PE-NLF-I0137', 'PE-NLF-I0140', 'PE-NLF-I0149', 'PE-NLF-I0153', 'PE-NLF-I0159', 'PE-NLF-I0161', 'PE-NLF-I0163', 'PE-NLF-I0165', 'PE-NLF-I0166', 'PE-NLF-I0169', 'PE-NLF-I0170', 'PE-NLF-I0176', 'PE-NLF-I0177', 'PE-NLF-I0181', 'PE-NLF-I0185', 'PE-NLF-I0187', 'PE-NLF-I0188', 'PE-NLF-I0191', 'PE-NLF-I0195', 'PE-NLF-I0200', 'PE-NLF-I0201', 'PE-NLF-I0209', 'PE-NLF-I0215', 'PE-NLF-I0216', 'PE-NLF-I0220', 'PE-NLF-I0224', 'PE-NLF-I0226', 'PE-NLF-I0228', 'PE-NLF-I0233', 'PE-NLF-I0236', 'PE-NLF-I0239']
+[2026-09-17T14:44:42] perplexity: OK erased PE-NLF-I0118 (1/40)
+[2026-09-17T14:45:53] perplexity: OK erased PE-NLF-I0121 (2/40)
+[2026-09-17T14:46:28] perplexity: OK erased PE-NLF-I0124 (3/40)
+[2026-09-17T14:47:21] perplexity: OK erased PE-NLF-I0125 (4/40)
+[2026-09-17T14:48:33] perplexity: OK erased PE-NLF-I0126 (5/40)
+[2026-09-17T14:49:22] perplexity: OK erased PE-NLF-I0128 (6/40)
+[2026-09-17T14:50:10] perplexity: OK erased PE-NLF-I0131 (7/40)
+[2026-09-17T14:50:55] perplexity: OK erased PE-NLF-I0132 (8/40)
+[2026-09-17T14:51:33] perplexity: OK erased PE-NLF-I0133 (9/40)
+[2026-09-17T14:52:51] perplexity: OK erased PE-NLF-I0137 (10/40)
+[2026-09-17T14:53:26] perplexity: OK erased PE-NLF-I0140 (11/40)
+[2026-09-17T14:54:22] perplexity: OK erased PE-NLF-I0149 (12/40)
+[2026-09-17T14:55:08] perplexity: OK erased PE-NLF-I0153 (13/40)
+[2026-09-17T14:55:57] perplexity: OK erased PE-NLF-I0159 (14/40)
+[2026-09-17T14:57:16] perplexity: OK erased PE-NLF-I0161 (15/40)
+[2026-09-17T14:58:11] perplexity: OK erased PE-NLF-I0163 (16/40)
+[2026-09-17T14:58:46] perplexity: OK erased PE-NLF-I0165 (17/40)
+[2026-09-17T15:00:08] perplexity: OK erased PE-NLF-I0166 (18/40)
+[2026-09-17T15:00:39] perplexity: OK erased PE-NLF-I0169 (19/40)
+[2026-09-17T15:01:57] perplexity: OK erased PE-NLF-I0170 (20/40)
+[2026-09-17T15:02:39] perplexity: OK erased PE-NLF-I0176 (21/40)
+[2026-09-17T15:03:34] perplexity: OK erased PE-NLF-I0177 (22/40)
+[2026-09-17T15:05:17] === erasure scheduler start, state={'claude': {'batch_size': 35, 'next_ready_at': 1789670667.4022772}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789636008.0464692}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789658077.184521}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789660207.3274581}, 'copilot': {'batch_size': 40, 'next_ready_at': 1789663523.881522}, 'gemini': {'batch_size': 8, 'next_ready_at': 1789668496.096965}} ===
+[2026-09-17T15:05:17] perplexity: starting erasure batch, ceiling=40, 58 total due, planning up to 40 this batch, order=['PE-NLF-I0181', 'PE-NLF-I0185', 'PE-NLF-I0187', 'PE-NLF-I0188', 'PE-NLF-I0191', 'PE-NLF-I0195', 'PE-NLF-I0200', 'PE-NLF-I0201', 'PE-NLF-I0209', 'PE-NLF-I0215', 'PE-NLF-I0216', 'PE-NLF-I0220', 'PE-NLF-I0224', 'PE-NLF-I0226', 'PE-NLF-I0228', 'PE-NLF-I0233', 'PE-NLF-I0236', 'PE-NLF-I0239', 'PE-NLF-I0240', 'PE-NLF-I0252', 'PE-NLF-I0259', 'PE-NLF-I0260', 'PE-NLF-I0262', 'PE-NLF-I0264', 'PE-NLF-I0269', 'PE-NLF-I0271', 'PE-NLF-I0272', 'PE-NLF-I0273', 'PE-NLF-I0279', 'PE-NLF-I0281', 'PE-NLF-I0282', 'PE-NLF-I0287', 'PE-NLF-I0293', 'PE-NLF-I0297', 'PE-NLF-I0302', 'PE-NLF-I0304', 'PE-NLF-I0305', 'PE-NLF-I0309', 'PE-NLF-I0314', 'PE-NLF-I0315']
+[2026-09-17T15:05:34] perplexity: OK erased PE-NLF-I0181 (1/40)
+[2026-09-17T15:06:20] perplexity: OK erased PE-NLF-I0185 (2/40)
+[2026-09-17T15:07:31] perplexity: OK erased PE-NLF-I0187 (3/40)
+[2026-09-17T15:08:15] perplexity: OK erased PE-NLF-I0188 (4/40)
+[2026-09-17T15:09:35] perplexity: OK erased PE-NLF-I0191 (5/40)
+[2026-09-17T15:10:59] perplexity: OK erased PE-NLF-I0195 (6/40)
+[2026-09-17T15:11:41] perplexity: OK erased PE-NLF-I0200 (7/40)
+[2026-09-17T15:13:00] perplexity: OK erased PE-NLF-I0201 (8/40)
+[2026-09-17T15:14:21] perplexity: OK erased PE-NLF-I0209 (9/40)
+[2026-09-17T15:15:03] perplexity: OK erased PE-NLF-I0215 (10/40)
+[2026-09-17T15:15:51] perplexity: OK erased PE-NLF-I0216 (11/40)
+[2026-09-17T15:17:15] perplexity: OK erased PE-NLF-I0220 (12/40)
+[2026-09-17T15:18:24] perplexity: OK erased PE-NLF-I0224 (13/40)
+[2026-09-17T15:19:26] perplexity: OK erased PE-NLF-I0226 (14/40)
+[2026-09-17T15:20:18] perplexity: OK erased PE-NLF-I0228 (15/40)
+[2026-09-17T15:21:35] perplexity: OK erased PE-NLF-I0233 (16/40)
+[2026-09-17T15:22:18] perplexity: OK erased PE-NLF-I0236 (17/40)
+[2026-09-17T15:23:31] perplexity: OK erased PE-NLF-I0239 (18/40)
+[2026-09-17T15:24:02] perplexity: OK erased PE-NLF-I0240 (19/40)
+[2026-09-17T15:25:28] perplexity: OK erased PE-NLF-I0252 (20/40)
+[2026-09-17T15:26:38] perplexity: OK erased PE-NLF-I0259 (21/40)
+[2026-09-17T15:27:58] perplexity: OK erased PE-NLF-I0260 (22/40)
+[2026-09-17T15:28:37] perplexity: OK erased PE-NLF-I0262 (23/40)
+[2026-09-17T15:29:37] perplexity: OK erased PE-NLF-I0264 (24/40)
+[2026-09-17T15:30:10] perplexity: OK erased PE-NLF-I0269 (25/40)
+[2026-09-17T15:31:00] perplexity: OK erased PE-NLF-I0271 (26/40)
+[2026-09-17T15:32:10] perplexity: OK erased PE-NLF-I0272 (27/40)
+[2026-09-17T15:32:44] perplexity: OK erased PE-NLF-I0273 (28/40)
+[2026-09-17T15:33:52] perplexity: OK erased PE-NLF-I0279 (29/40)
+[2026-09-17T15:34:49] perplexity: OK erased PE-NLF-I0281 (30/40)
+[2026-09-17T15:35:34] perplexity: OK erased PE-NLF-I0282 (31/40)
+[2026-09-17T15:36:19] perplexity: OK erased PE-NLF-I0287 (32/40)
+[2026-09-17T15:37:20] perplexity: OK erased PE-NLF-I0293 (33/40)
+[2026-09-17T15:38:30] perplexity: OK erased PE-NLF-I0297 (34/40)
+[2026-09-17T15:39:51] perplexity: OK erased PE-NLF-I0302 (35/40)
+[2026-09-17T15:40:24] perplexity: OK erased PE-NLF-I0304 (36/40)
+[2026-09-17T15:41:31] perplexity: OK erased PE-NLF-I0305 (37/40)
+[2026-09-17T15:42:05] perplexity: OK erased PE-NLF-I0309 (38/40)
+[2026-09-17T15:42:50] perplexity: OK erased PE-NLF-I0314 (39/40)
+[2026-09-17T15:43:40] perplexity: OK erased PE-NLF-I0315 (40/40)
+[2026-09-17T15:43:40] perplexity: batch completed in full (40/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-17T15:43:40] perplexity: batch done, next ready at 2026-09-17T15:43:40
+[2026-09-17T15:43:40] deepseek: starting erasure batch, ceiling=40, 46 total due, planning up to 40 this batch, order=['DE-NLF-I0224', 'DE-NLF-I0226', 'DE-NLF-I0228', 'DE-NLF-I0233', 'DE-NLF-I0236', 'DE-NLF-I0239', 'DE-NLF-I0240', 'DE-NLF-I0252', 'DE-NLF-I0259', 'DE-NLF-I0260', 'DE-NLF-I0262', 'DE-NLF-I0264', 'DE-NLF-I0269', 'DE-NLF-I0271', 'DE-NLF-I0272', 'DE-NLF-I0273', 'DE-NLF-I0279', 'DE-NLF-I0281', 'DE-NLF-I0282', 'DE-NLF-I0287', 'DE-NLF-I0293', 'DE-NLF-I0297', 'DE-NLF-I0302', 'DE-NLF-I0304', 'DE-NLF-I0305', 'DE-NLF-I0309', 'DE-NLF-I0314', 'DE-NLF-I0315', 'DE-NLF-I0319', 'DE-NLF-I0322', 'DE-NLF-I0327', 'DE-NLF-I0334', 'DE-NLF-I0339', 'DE-NLF-I0345', 'DE-NLF-I0348', 'DE-NLF-I0351', 'DE-NLF-I0355', 'DE-NLF-I0357', 'DE-NLF-I0361', 'DE-NLF-I0363']
+[2026-09-17T15:44:11] deepseek: FAIL DE-NLF-I0224 (1/40): Page.goto: net::ERR_TIMED_OUT at https://chat.deepseek.com/sign_in
+Call log:
+  - navigating to "https://chat.deepseek.com/sign_in", waiting until "domcontentloaded"
+
+[2026-09-17T15:44:11] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 80, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_TIMED_OUT at https://chat.deepseek.com/sign_in
+Call log:
+  - navigating to "https://chat.deepseek.com/sign_in", waiting until "domcontentloaded"
+
+
+[2026-09-17T15:45:45] deepseek: FAIL DE-NLF-I0226 (2/40): Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://chat.deepseek.com/sign_in", waiting until "domcontentloaded"
+
+[2026-09-17T15:45:45] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 80, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://chat.deepseek.com/sign_in", waiting until "domcontentloaded"
+
+
+[2026-09-17T15:47:01] deepseek: FAIL DE-NLF-I0228 (3/40): Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://chat.deepseek.com/sign_in", waiting until "domcontentloaded"
+
+[2026-09-17T15:47:01] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 80, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://chat.deepseek.com/sign_in", waiting until "domcontentloaded"
+
+
+[2026-09-17T15:48:18] deepseek: FAIL DE-NLF-I0233 (4/40): Page.goto: net::ERR_TIMED_OUT at https://chat.deepseek.com/sign_in
+Call log:
+  - navigating to "https://chat.deepseek.com/sign_in", waiting until "domcontentloaded"
+
+[2026-09-17T15:48:18] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 80, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_TIMED_OUT at https://chat.deepseek.com/sign_in
+Call log:
+  - navigating to "https://chat.deepseek.com/sign_in", waiting until "domcontentloaded"
+
+
+[2026-09-17T15:49:21] deepseek: FAIL DE-NLF-I0236 (5/40): Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://chat.deepseek.com/sign_in", waiting until "domcontentloaded"
+
+[2026-09-17T15:49:21] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 80, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://chat.deepseek.com/sign_in", waiting until "domcontentloaded"
+
+
+[2026-09-17T15:49:21] deepseek: THROTTLE DETECTED -- 5/5 failures in last 5 attempts, stopping batch early after 0 successful erasures (planned 40)
+[2026-09-17T15:49:21] deepseek: 0/40 succeeded before throttle-detect tripped -- looks like a dead session or hard block, not ordinary rate-limiting. SKIPPING deepseek for the rest of this run (other platforms continue). Check sessions/deepseek__nlforget.json before the next run.
+[2026-09-17T15:49:21] deepseek: lowering batch-size ceiling 40 -> 5 based on this batch's observed throttle point
+[2026-09-17T15:49:21] deepseek: batch done, next ready at 2026-09-17T15:49:21
+[2026-09-17T15:49:21] chatgpt: starting erasure batch, ceiling=35, 85 total due, planning up to 35 this batch, order=['CH-NLF-I0096', 'CH-NLF-I0099', 'CH-NLF-I0105', 'CH-NLF-I0106', 'CH-NLF-I0115', 'CH-NLF-I0118', 'CH-NLF-I0121', 'CH-NLF-I0124', 'CH-NLF-I0125', 'CH-NLF-I0126', 'CH-NLF-I0128', 'CH-NLF-I0131', 'CH-NLF-I0132', 'CH-NLF-I0133', 'CH-NLF-I0137', 'CH-NLF-I0140', 'CH-NLF-I0149', 'CH-NLF-I0153', 'CH-NLF-I0159', 'CH-NLF-I0161', 'CH-NLF-I0163', 'CH-NLF-I0165', 'CH-NLF-I0166', 'CH-NLF-I0169', 'CH-NLF-I0170', 'CH-NLF-I0176', 'CH-NLF-I0177', 'CH-NLF-I0181', 'CH-NLF-I0185', 'CH-NLF-I0187', 'CH-NLF-I0188', 'CH-NLF-I0191', 'CH-NLF-I0195', 'CH-NLF-I0200', 'CH-NLF-I0201']
+[2026-09-17T15:49:44] chatgpt: OK erased CH-NLF-I0096 (1/35)
+[2026-09-17T15:50:33] chatgpt: OK erased CH-NLF-I0099 (2/35)
+[2026-09-17T15:51:13] chatgpt: OK erased CH-NLF-I0105 (3/35)
+[2026-09-17T15:52:14] chatgpt: OK erased CH-NLF-I0106 (4/35)
+[2026-09-17T15:53:01] chatgpt: OK erased CH-NLF-I0115 (5/35)
+[2026-09-17T15:54:21] chatgpt: OK erased CH-NLF-I0118 (6/35)
+[2026-09-17T15:54:56] chatgpt: OK erased CH-NLF-I0121 (7/35)
+[2026-09-17T15:55:44] chatgpt: OK erased CH-NLF-I0124 (8/35)
+[2026-09-17T15:56:34] chatgpt: OK erased CH-NLF-I0125 (9/35)
+[2026-09-17T15:57:33] chatgpt: OK erased CH-NLF-I0126 (10/35)
+[2026-09-17T15:58:18] chatgpt: OK erased CH-NLF-I0128 (11/35)
+[2026-09-17T15:59:12] chatgpt: OK erased CH-NLF-I0131 (12/35)
+[2026-09-17T16:00:14] chatgpt: OK erased CH-NLF-I0132 (13/35)
+[2026-09-17T16:01:21] chatgpt: OK erased CH-NLF-I0133 (14/35)
+[2026-09-17T16:02:17] chatgpt: OK erased CH-NLF-I0137 (15/35)
+[2026-09-17T16:02:59] chatgpt: OK erased CH-NLF-I0140 (16/35)
+[2026-09-17T16:04:24] chatgpt: OK erased CH-NLF-I0149 (17/35)
+[2026-09-17T16:05:03] chatgpt: OK erased CH-NLF-I0153 (18/35)
+[2026-09-17T16:05:52] chatgpt: OK erased CH-NLF-I0159 (19/35)
+[2026-09-17T16:06:45] chatgpt: OK erased CH-NLF-I0161 (20/35)
+[2026-09-17T16:07:47] chatgpt: OK erased CH-NLF-I0163 (21/35)
+[2026-09-17T16:08:19] chatgpt: OK erased CH-NLF-I0165 (22/35)
+[2026-09-17T16:09:20] chatgpt: OK erased CH-NLF-I0166 (23/35)
+[2026-09-17T16:10:08] chatgpt: OK erased CH-NLF-I0169 (24/35)
+[2026-09-17T16:10:42] chatgpt: OK erased CH-NLF-I0170 (25/35)
+[2026-09-17T18:13:06] === erasure scheduler start, state={'claude': {'batch_size': 35, 'next_ready_at': 1789670667.4022772}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789674220.244763}, 'deepseek': {'batch_size': 5, 'next_ready_at': 1789674561.256007}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789660207.3274581}, 'copilot': {'batch_size': 40, 'next_ready_at': 1789663523.881522}, 'gemini': {'batch_size': 8, 'next_ready_at': 1789668496.096965}} ===
+[2026-09-17T18:13:06] chatgpt: starting erasure batch, ceiling=35, 61 total due, planning up to 35 this batch, order=['CH-NLF-I0004', 'CH-NLF-I0176', 'CH-NLF-I0177', 'CH-NLF-I0181', 'CH-NLF-I0185', 'CH-NLF-I0187', 'CH-NLF-I0188', 'CH-NLF-I0191', 'CH-NLF-I0195', 'CH-NLF-I0200', 'CH-NLF-I0201', 'CH-NLF-I0209', 'CH-NLF-I0215', 'CH-NLF-I0216', 'CH-NLF-I0220', 'CH-NLF-I0224', 'CH-NLF-I0226', 'CH-NLF-I0228', 'CH-NLF-I0233', 'CH-NLF-I0236', 'CH-NLF-I0239', 'CH-NLF-I0240', 'CH-NLF-I0252', 'CH-NLF-I0259', 'CH-NLF-I0260', 'CH-NLF-I0262', 'CH-NLF-I0264', 'CH-NLF-I0269', 'CH-NLF-I0271', 'CH-NLF-I0272', 'CH-NLF-I0273', 'CH-NLF-I0279', 'CH-NLF-I0281', 'CH-NLF-I0282', 'CH-NLF-I0287']
+[2026-09-17T18:13:31] chatgpt: OK erased CH-NLF-I0004 (1/35)
+[2026-09-17T18:14:04] chatgpt: OK erased CH-NLF-I0176 (2/35)
+[2026-09-17T18:15:10] chatgpt: OK erased CH-NLF-I0177 (3/35)
+[2026-09-17T18:16:08] chatgpt: OK erased CH-NLF-I0181 (4/35)
+[2026-09-17T18:16:50] chatgpt: OK erased CH-NLF-I0185 (5/35)
+[2026-09-17T18:18:13] chatgpt: OK erased CH-NLF-I0187 (6/35)
+[2026-09-17T18:19:38] chatgpt: OK erased CH-NLF-I0188 (7/35)
+[2026-09-17T18:21:00] chatgpt: OK erased CH-NLF-I0191 (8/35)
+[2026-09-17T18:22:08] chatgpt: OK erased CH-NLF-I0195 (9/35)
+[2026-09-17T18:22:39] chatgpt: OK erased CH-NLF-I0200 (10/35)
+[2026-09-17T18:23:44] chatgpt: OK erased CH-NLF-I0201 (11/35)
+[2026-09-17T18:24:45] chatgpt: OK erased CH-NLF-I0209 (12/35)
+[2026-09-17T18:25:37] chatgpt: OK erased CH-NLF-I0215 (13/35)
+[2026-09-17T18:26:23] chatgpt: OK erased CH-NLF-I0216 (14/35)
+[2026-09-17T18:27:02] chatgpt: OK erased CH-NLF-I0220 (15/35)
+[2026-09-17T18:27:55] chatgpt: OK erased CH-NLF-I0224 (16/35)
+[2026-09-17T18:29:19] chatgpt: OK erased CH-NLF-I0226 (17/35)
+[2026-09-17T18:29:52] chatgpt: OK erased CH-NLF-I0228 (18/35)
+[2026-09-17T18:30:33] chatgpt: OK erased CH-NLF-I0233 (19/35)
+[2026-09-17T18:31:58] chatgpt: OK erased CH-NLF-I0236 (20/35)
+[2026-09-17T18:33:15] chatgpt: OK erased CH-NLF-I0239 (21/35)
+[2026-09-17T18:34:13] === erasure scheduler start, state={'claude': {'batch_size': 35, 'next_ready_at': 1789670667.4022772}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789674220.244763}, 'deepseek': {'batch_size': 5, 'next_ready_at': 1789674561.256007}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789660207.3274581}, 'copilot': {'batch_size': 40, 'next_ready_at': 1789663523.881522}, 'gemini': {'batch_size': 8, 'next_ready_at': 1789668496.096965}} ===
+[2026-09-17T18:34:13] chatgpt: starting erasure batch, ceiling=35, 40 total due, planning up to 35 this batch, order=['CH-NLF-I0240', 'CH-NLF-I0252', 'CH-NLF-I0259', 'CH-NLF-I0260', 'CH-NLF-I0262', 'CH-NLF-I0264', 'CH-NLF-I0269', 'CH-NLF-I0271', 'CH-NLF-I0272', 'CH-NLF-I0273', 'CH-NLF-I0279', 'CH-NLF-I0281', 'CH-NLF-I0282', 'CH-NLF-I0287', 'CH-NLF-I0293', 'CH-NLF-I0297', 'CH-NLF-I0302', 'CH-NLF-I0304', 'CH-NLF-I0305', 'CH-NLF-I0309', 'CH-NLF-I0314', 'CH-NLF-I0315', 'CH-NLF-I0319', 'CH-NLF-I0322', 'CH-NLF-I0327', 'CH-NLF-I0334', 'CH-NLF-I0339', 'CH-NLF-I0345', 'CH-NLF-I0348', 'CH-NLF-I0351', 'CH-NLF-I0355', 'CH-NLF-I0357', 'CH-NLF-I0361', 'CH-NLF-I0363', 'CH-NLF-I0364']
+[2026-09-17T18:34:27] chatgpt: OK erased CH-NLF-I0240 (1/35)
+[2026-09-17T18:34:57] chatgpt: OK erased CH-NLF-I0252 (2/35)
+[2026-09-17T18:36:00] chatgpt: OK erased CH-NLF-I0259 (3/35)
+[2026-09-17T18:36:34] chatgpt: OK erased CH-NLF-I0260 (4/35)
+[2026-09-17T18:37:27] chatgpt: OK erased CH-NLF-I0262 (5/35)
+[2026-09-17T18:38:43] chatgpt: OK erased CH-NLF-I0264 (6/35)
+[2026-09-17T18:40:03] chatgpt: OK erased CH-NLF-I0269 (7/35)
+[2026-09-17T18:40:39] chatgpt: OK erased CH-NLF-I0271 (8/35)
+[2026-09-17T18:41:20] chatgpt: OK erased CH-NLF-I0272 (9/35)
+[2026-09-17T18:41:54] chatgpt: OK erased CH-NLF-I0273 (10/35)
+[2026-09-17T18:43:10] chatgpt: OK erased CH-NLF-I0279 (11/35)
+[2026-09-17T18:43:58] chatgpt: OK erased CH-NLF-I0281 (12/35)
+[2026-09-17T18:45:07] chatgpt: OK erased CH-NLF-I0282 (13/35)
+[2026-09-17T18:46:17] chatgpt: OK erased CH-NLF-I0287 (14/35)
+[2026-09-17T18:47:13] chatgpt: OK erased CH-NLF-I0293 (15/35)
+[2026-09-17T18:48:06] chatgpt: OK erased CH-NLF-I0297 (16/35)
+[2026-09-17T18:48:50] chatgpt: OK erased CH-NLF-I0302 (17/35)
+[2026-09-17T18:49:36] chatgpt: OK erased CH-NLF-I0304 (18/35)
+[2026-09-17T18:50:10] chatgpt: OK erased CH-NLF-I0305 (19/35)
+[2026-09-17T18:51:13] chatgpt: OK erased CH-NLF-I0309 (20/35)
+[2026-09-17T18:52:34] chatgpt: OK erased CH-NLF-I0314 (21/35)
+[2026-09-17T18:53:26] chatgpt: OK erased CH-NLF-I0315 (22/35)
+[2026-09-17T18:54:40] chatgpt: OK erased CH-NLF-I0319 (23/35)
+[2026-09-17T18:55:38] chatgpt: OK erased CH-NLF-I0322 (24/35)
+[2026-09-17T18:56:55] chatgpt: OK erased CH-NLF-I0327 (25/35)
+[2026-09-17T18:57:38] chatgpt: OK erased CH-NLF-I0334 (26/35)
+[2026-09-17T18:58:39] chatgpt: OK erased CH-NLF-I0339 (27/35)
+[2026-09-17T18:59:36] chatgpt: OK erased CH-NLF-I0345 (28/35)
+[2026-09-17T19:00:43] chatgpt: OK erased CH-NLF-I0348 (29/35)
+[2026-09-17T19:01:55] chatgpt: OK erased CH-NLF-I0351 (30/35)
+[2026-09-17T19:03:03] chatgpt: OK erased CH-NLF-I0355 (31/35)
+[2026-09-17T19:03:42] chatgpt: OK erased CH-NLF-I0357 (32/35)
+[2026-09-17T19:04:52] chatgpt: OK erased CH-NLF-I0361 (33/35)
+[2026-09-17T19:06:06] chatgpt: OK erased CH-NLF-I0363 (34/35)
+[2026-09-17T19:07:28] chatgpt: OK erased CH-NLF-I0364 (35/35)
+[2026-09-17T19:07:28] chatgpt: batch completed in full (35/35 succeeded) without tripping the throttle window -- ceiling stays at 35
+[2026-09-17T19:07:28] chatgpt: batch done, next ready at 2026-09-17T19:07:28
+[2026-09-17T19:07:28] claude: starting erasure batch, ceiling=35, 20 total due, planning up to 20 this batch, order=['CL-NLF-I0314', 'CL-NLF-I0315', 'CL-NLF-I0319', 'CL-NLF-I0322', 'CL-NLF-I0327', 'CL-NLF-I0334', 'CL-NLF-I0339', 'CL-NLF-I0345', 'CL-NLF-I0348', 'CL-NLF-I0351', 'CL-NLF-I0355', 'CL-NLF-I0357', 'CL-NLF-I0361', 'CL-NLF-I0363', 'CL-NLF-I0364', 'CL-NLF-I0365', 'CL-NLF-I0367', 'CL-NLF-I0368', 'CL-NLF-I0371', 'CL-NLF-I0372']
+[2026-09-17T19:07:43] claude: OK erased CL-NLF-I0314 (1/20)
+[2026-09-17T19:08:34] claude: OK erased CL-NLF-I0315 (2/20)
+[2026-09-17T19:09:23] claude: OK erased CL-NLF-I0319 (3/20)
+[2026-09-17T19:10:04] claude: OK erased CL-NLF-I0322 (4/20)
+[2026-09-17T19:11:24] claude: OK erased CL-NLF-I0327 (5/20)
+[2026-09-17T19:12:10] claude: OK erased CL-NLF-I0334 (6/20)
+[2026-09-17T19:13:35] claude: OK erased CL-NLF-I0339 (7/20)
+[2026-09-17T19:14:22] claude: OK erased CL-NLF-I0345 (8/20)
+[2026-09-17T19:15:07] claude: OK erased CL-NLF-I0348 (9/20)
+[2026-09-17T19:15:47] claude: OK erased CL-NLF-I0351 (10/20)
+[2026-09-17T19:16:36] claude: OK erased CL-NLF-I0355 (11/20)
+[2026-09-17T19:17:46] claude: OK erased CL-NLF-I0357 (12/20)
+[2026-09-17T19:19:43] claude: OK erased CL-NLF-I0361 (13/20)
+[2026-09-17T19:20:40] claude: OK erased CL-NLF-I0363 (14/20)
+[2026-09-17T19:21:51] claude: OK erased CL-NLF-I0364 (15/20)
+[2026-09-17T19:23:02] claude: OK erased CL-NLF-I0365 (16/20)
+[2026-09-17T19:24:07] claude: OK erased CL-NLF-I0367 (17/20)
+[2026-09-17T19:24:55] claude: OK erased CL-NLF-I0368 (18/20)
+[2026-09-17T19:25:57] claude: OK erased CL-NLF-I0371 (19/20)
+[2026-09-17T19:27:15] claude: OK erased CL-NLF-I0372 (20/20)
+[2026-09-17T19:27:15] claude: batch completed in full (20/20 succeeded) without tripping the throttle window -- ceiling stays at 35
+[2026-09-17T19:27:15] claude: batch done, next ready at 2026-09-17T19:27:15
+[2026-09-17T19:27:15] perplexity: starting erasure batch, ceiling=40, 18 total due, planning up to 18 this batch, order=['PE-NLF-I0319', 'PE-NLF-I0322', 'PE-NLF-I0327', 'PE-NLF-I0334', 'PE-NLF-I0339', 'PE-NLF-I0345', 'PE-NLF-I0348', 'PE-NLF-I0351', 'PE-NLF-I0355', 'PE-NLF-I0357', 'PE-NLF-I0361', 'PE-NLF-I0363', 'PE-NLF-I0364', 'PE-NLF-I0365', 'PE-NLF-I0367', 'PE-NLF-I0368', 'PE-NLF-I0371', 'PE-NLF-I0372']
+[2026-09-17T19:27:29] perplexity: OK erased PE-NLF-I0319 (1/18)
+[2026-09-17T19:28:37] perplexity: OK erased PE-NLF-I0322 (2/18)
+[2026-09-17T19:29:23] perplexity: OK erased PE-NLF-I0327 (3/18)
+[2026-09-17T19:29:59] perplexity: OK erased PE-NLF-I0334 (4/18)
+[2026-09-17T19:31:11] perplexity: OK erased PE-NLF-I0339 (5/18)
+[2026-09-17T19:32:05] perplexity: OK erased PE-NLF-I0345 (6/18)
+[2026-09-17T19:32:39] perplexity: OK erased PE-NLF-I0348 (7/18)
+[2026-09-17T19:33:43] perplexity: OK erased PE-NLF-I0351 (8/18)
+[2026-09-17T19:34:30] perplexity: OK erased PE-NLF-I0355 (9/18)
+[2026-09-17T19:35:22] perplexity: OK erased PE-NLF-I0357 (10/18)
+[2026-09-17T19:36:27] perplexity: OK erased PE-NLF-I0361 (11/18)
+[2026-09-17T19:37:05] perplexity: OK erased PE-NLF-I0363 (12/18)
+[2026-09-17T19:37:42] perplexity: OK erased PE-NLF-I0364 (13/18)
+[2026-09-17T19:38:47] perplexity: OK erased PE-NLF-I0365 (14/18)
+[2026-09-17T19:39:55] perplexity: OK erased PE-NLF-I0367 (15/18)
+[2026-09-17T19:40:55] perplexity: OK erased PE-NLF-I0368 (16/18)
+[2026-09-17T19:42:14] perplexity: OK erased PE-NLF-I0371 (17/18)
+[2026-09-17T19:43:35] perplexity: OK erased PE-NLF-I0372 (18/18)
+[2026-09-17T19:43:35] perplexity: batch completed in full (18/18 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-17T19:43:35] perplexity: batch done, next ready at 2026-09-17T19:43:35
+[2026-09-17T19:43:35] deepseek: starting erasure batch, ceiling=5, 46 total due, planning up to 5 this batch, order=['DE-NLF-I0224', 'DE-NLF-I0226', 'DE-NLF-I0228', 'DE-NLF-I0233', 'DE-NLF-I0236']
+[2026-09-17T19:43:47] deepseek: OK erased DE-NLF-I0224 (1/5)
+[2026-09-17T19:45:05] deepseek: OK erased DE-NLF-I0226 (2/5)
+[2026-09-17T19:46:18] deepseek: OK erased DE-NLF-I0228 (3/5)
+[2026-09-17T19:47:27] deepseek: OK erased DE-NLF-I0233 (4/5)
+[2026-09-17T19:48:42] deepseek: OK erased DE-NLF-I0236 (5/5)
+[2026-09-17T19:48:42] deepseek: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-17T19:48:42] deepseek: batch done, next ready at 2026-09-17T19:48:42
+[2026-09-17T19:48:42] chatgpt: starting erasure batch, ceiling=35, 5 total due, planning up to 5 this batch, order=['CH-NLF-I0365', 'CH-NLF-I0367', 'CH-NLF-I0368', 'CH-NLF-I0371', 'CH-NLF-I0372']
+[2026-09-17T19:48:56] chatgpt: OK erased CH-NLF-I0365 (1/5)
+[2026-09-17T19:49:40] chatgpt: OK erased CH-NLF-I0367 (2/5)
+[2026-09-17T19:50:13] chatgpt: OK erased CH-NLF-I0368 (3/5)
+[2026-09-17T19:51:28] chatgpt: OK erased CH-NLF-I0371 (4/5)
+[2026-09-17T19:52:47] chatgpt: OK erased CH-NLF-I0372 (5/5)
+[2026-09-17T19:52:47] chatgpt: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 35
+[2026-09-17T19:52:47] chatgpt: batch done, next ready at 2026-09-17T19:52:47
+[2026-09-17T19:52:47] deepseek: starting erasure batch, ceiling=5, 41 total due, planning up to 5 this batch, order=['DE-NLF-I0239', 'DE-NLF-I0240', 'DE-NLF-I0252', 'DE-NLF-I0259', 'DE-NLF-I0260']
+[2026-09-17T19:53:00] deepseek: OK erased DE-NLF-I0239 (1/5)
+[2026-09-17T19:53:39] deepseek: OK erased DE-NLF-I0240 (2/5)
+[2026-09-17T19:54:42] deepseek: OK erased DE-NLF-I0252 (3/5)
+[2026-09-17T19:55:21] deepseek: OK erased DE-NLF-I0259 (4/5)
+[2026-09-17T19:56:39] deepseek: OK erased DE-NLF-I0260 (5/5)
+[2026-09-17T19:56:39] deepseek: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-17T19:56:39] deepseek: batch done, next ready at 2026-09-17T19:56:39
+[2026-09-17T19:56:39] deepseek: starting erasure batch, ceiling=5, 36 total due, planning up to 5 this batch, order=['DE-NLF-I0262', 'DE-NLF-I0264', 'DE-NLF-I0269', 'DE-NLF-I0271', 'DE-NLF-I0272']
+[2026-09-17T19:56:52] deepseek: OK erased DE-NLF-I0262 (1/5)
+[2026-09-17T19:57:40] deepseek: OK erased DE-NLF-I0264 (2/5)
+[2026-09-17T19:59:01] deepseek: OK erased DE-NLF-I0269 (3/5)
+[2026-09-17T19:59:58] deepseek: OK erased DE-NLF-I0271 (4/5)
+[2026-09-17T20:01:18] deepseek: OK erased DE-NLF-I0272 (5/5)
+[2026-09-17T20:01:18] deepseek: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-17T20:01:18] deepseek: batch done, next ready at 2026-09-17T20:01:18
+[2026-09-17T20:01:18] deepseek: starting erasure batch, ceiling=5, 31 total due, planning up to 5 this batch, order=['DE-NLF-I0273', 'DE-NLF-I0279', 'DE-NLF-I0281', 'DE-NLF-I0282', 'DE-NLF-I0287']
+[2026-09-17T20:01:31] deepseek: OK erased DE-NLF-I0273 (1/5)
+[2026-09-17T20:02:38] deepseek: OK erased DE-NLF-I0279 (2/5)
+[2026-09-17T20:03:33] deepseek: OK erased DE-NLF-I0281 (3/5)
+[2026-09-17T20:04:47] deepseek: OK erased DE-NLF-I0282 (4/5)
+[2026-09-17T20:05:50] deepseek: OK erased DE-NLF-I0287 (5/5)
+[2026-09-17T20:05:50] deepseek: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-17T20:05:50] deepseek: batch done, next ready at 2026-09-17T20:05:50
+[2026-09-17T20:05:50] deepseek: starting erasure batch, ceiling=5, 26 total due, planning up to 5 this batch, order=['DE-NLF-I0293', 'DE-NLF-I0297', 'DE-NLF-I0302', 'DE-NLF-I0304', 'DE-NLF-I0305']
+[2026-09-17T20:06:01] deepseek: OK erased DE-NLF-I0293 (1/5)
+[2026-09-17T20:07:09] deepseek: OK erased DE-NLF-I0297 (2/5)
+[2026-09-17T20:08:16] deepseek: OK erased DE-NLF-I0302 (3/5)
+[2026-09-17T20:09:10] deepseek: OK erased DE-NLF-I0304 (4/5)
+[2026-09-17T20:09:45] deepseek: OK erased DE-NLF-I0305 (5/5)
+[2026-09-17T20:09:45] deepseek: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-17T20:09:45] deepseek: batch done, next ready at 2026-09-17T20:09:45
+[2026-09-17T20:09:45] deepseek: starting erasure batch, ceiling=5, 21 total due, planning up to 5 this batch, order=['DE-NLF-I0309', 'DE-NLF-I0314', 'DE-NLF-I0315', 'DE-NLF-I0319', 'DE-NLF-I0322']
+[2026-09-17T20:09:56] deepseek: OK erased DE-NLF-I0309 (1/5)
+[2026-09-17T20:11:05] deepseek: OK erased DE-NLF-I0314 (2/5)
+[2026-09-17T20:11:41] deepseek: OK erased DE-NLF-I0315 (3/5)
+[2026-09-17T20:12:35] deepseek: OK erased DE-NLF-I0319 (4/5)
+[2026-09-17T20:13:40] deepseek: OK erased DE-NLF-I0322 (5/5)
+[2026-09-17T20:13:40] deepseek: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-17T20:13:40] deepseek: batch done, next ready at 2026-09-17T20:13:40
+[2026-09-17T20:13:40] deepseek: starting erasure batch, ceiling=5, 16 total due, planning up to 5 this batch, order=['DE-NLF-I0327', 'DE-NLF-I0334', 'DE-NLF-I0339', 'DE-NLF-I0345', 'DE-NLF-I0348']
+[2026-09-17T20:13:52] deepseek: OK erased DE-NLF-I0327 (1/5)
+[2026-09-17T20:15:13] deepseek: OK erased DE-NLF-I0334 (2/5)
+[2026-09-17T20:16:33] deepseek: OK erased DE-NLF-I0339 (3/5)
+[2026-09-17T20:17:32] deepseek: OK erased DE-NLF-I0345 (4/5)
+[2026-09-17T20:18:12] deepseek: OK erased DE-NLF-I0348 (5/5)
+[2026-09-17T20:18:12] deepseek: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-17T20:18:12] deepseek: batch done, next ready at 2026-09-17T20:18:12
+[2026-09-17T20:18:12] deepseek: starting erasure batch, ceiling=5, 11 total due, planning up to 5 this batch, order=['DE-NLF-I0351', 'DE-NLF-I0355', 'DE-NLF-I0357', 'DE-NLF-I0361', 'DE-NLF-I0363']
+[2026-09-17T20:18:24] deepseek: OK erased DE-NLF-I0351 (1/5)
+[2026-09-17T20:19:27] deepseek: OK erased DE-NLF-I0355 (2/5)
+[2026-09-17T20:20:26] deepseek: OK erased DE-NLF-I0357 (3/5)
+[2026-09-17T20:21:32] deepseek: OK erased DE-NLF-I0361 (4/5)
+[2026-09-17T20:22:48] deepseek: OK erased DE-NLF-I0363 (5/5)
+[2026-09-17T20:22:48] deepseek: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-17T20:22:48] deepseek: batch done, next ready at 2026-09-17T20:22:48
+[2026-09-17T20:22:48] deepseek: starting erasure batch, ceiling=5, 6 total due, planning up to 5 this batch, order=['DE-NLF-I0364', 'DE-NLF-I0365', 'DE-NLF-I0367', 'DE-NLF-I0368', 'DE-NLF-I0371']
+[2026-09-17T20:23:00] deepseek: OK erased DE-NLF-I0364 (1/5)
+[2026-09-17T20:24:19] deepseek: OK erased DE-NLF-I0365 (2/5)
+[2026-09-17T20:25:41] deepseek: OK erased DE-NLF-I0367 (3/5)
+[2026-09-17T20:26:47] deepseek: OK erased DE-NLF-I0368 (4/5)
+[2026-09-17T20:27:50] deepseek: OK erased DE-NLF-I0371 (5/5)
+[2026-09-17T20:27:50] deepseek: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-17T20:27:50] deepseek: batch done, next ready at 2026-09-17T20:27:50
+[2026-09-17T20:27:50] deepseek: starting erasure batch, ceiling=5, 1 total due, planning up to 1 this batch, order=['DE-NLF-I0372']
+[2026-09-17T20:28:01] deepseek: OK erased DE-NLF-I0372 (1/1)
+[2026-09-17T20:28:01] deepseek: batch completed in full (1/1 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-17T20:28:01] deepseek: batch done, next ready at 2026-09-17T20:28:01
+[2026-09-17T20:28:01] === all due cells erased -- scheduler exiting ===
+[2026-09-17T20:35:28] === erasure scheduler start, state={'claude': {'batch_size': 35, 'next_ready_at': 1789687635.9438999}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789688615.199135}, 'deepseek': {'batch_size': 5, 'next_ready_at': 1789691281.973377}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789689167.8179379}, 'copilot': {'batch_size': 20, 'next_ready_at': 1789663523.881522}, 'gemini': {'batch_size': 8, 'next_ready_at': 1789668496.096965}} ===
+[2026-09-17T20:35:28] copilot: starting erasure batch, ceiling=20, 118 total due, planning up to 20 this batch, order=['CO-NLF-I0002', 'CO-NLF-I0004', 'CO-NLF-I0005', 'CO-NLF-I0010', 'CO-NLF-I0012', 'CO-NLF-I0018', 'CO-NLF-I0023', 'CO-NLF-I0024', 'CO-NLF-I0026', 'CO-NLF-I0027', 'CO-NLF-I0028', 'CO-NLF-I0030', 'CO-NLF-I0035', 'CO-NLF-I0036', 'CO-NLF-I0041', 'CO-NLF-I0042', 'CO-NLF-I0043', 'CO-NLF-I0044', 'CO-NLF-I0047', 'CO-NLF-I0049']
+[2026-09-17T20:35:54] copilot: OK erased CO-NLF-I0002 (1/20)
+[2026-09-17T20:36:47] copilot: OK erased CO-NLF-I0004 (2/20)
+[2026-09-17T20:38:22] copilot: OK erased CO-NLF-I0005 (3/20)
+[2026-09-17T20:39:43] copilot: OK erased CO-NLF-I0010 (4/20)
+[2026-09-17T20:40:45] copilot: OK erased CO-NLF-I0012 (5/20)
+[2026-09-17T20:41:40] copilot: OK erased CO-NLF-I0018 (6/20)
+[2026-09-17T20:42:31] copilot: OK erased CO-NLF-I0023 (7/20)
+[2026-09-17T20:43:36] copilot: OK erased CO-NLF-I0024 (8/20)
+[2026-09-17T20:44:30] copilot: OK erased CO-NLF-I0026 (9/20)
+[2026-09-17T20:45:24] copilot: OK erased CO-NLF-I0027 (10/20)
+[2026-09-17T20:46:44] copilot: OK erased CO-NLF-I0028 (11/20)
+[2026-09-17T20:47:27] copilot: OK erased CO-NLF-I0030 (12/20)
+[2026-09-17T20:48:33] copilot: OK erased CO-NLF-I0035 (13/20)
+[2026-09-17T20:49:34] copilot: OK erased CO-NLF-I0036 (14/20)
+[2026-09-17T20:50:34] copilot: OK erased CO-NLF-I0041 (15/20)
+[2026-09-17T20:52:07] copilot: OK erased CO-NLF-I0042 (16/20)
+[2026-09-17T20:52:59] copilot: OK erased CO-NLF-I0043 (17/20)
+[2026-09-17T20:53:41] copilot: OK erased CO-NLF-I0044 (18/20)
+[2026-09-17T20:55:02] copilot: OK erased CO-NLF-I0047 (19/20)
+[2026-09-17T20:55:24] === erasure scheduler start, state={'claude': {'batch_size': 35, 'next_ready_at': 1789687635.9438999}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789688615.199135}, 'deepseek': {'batch_size': 5, 'next_ready_at': 1789691281.973377}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789689167.8179379}, 'copilot': {'batch_size': 20, 'next_ready_at': 1789663523.881522}, 'gemini': {'batch_size': 8, 'next_ready_at': 1789668496.096965}} ===
+[2026-09-17T20:55:24] copilot: starting erasure batch, ceiling=20, 99 total due, planning up to 20 this batch, order=['CO-NLF-I0049', 'CO-NLF-I0051', 'CO-NLF-I0053', 'CO-NLF-I0059', 'CO-NLF-I0062', 'CO-NLF-I0067', 'CO-NLF-I0068', 'CO-NLF-I0070', 'CO-NLF-I0077', 'CO-NLF-I0085', 'CO-NLF-I0086', 'CO-NLF-I0089', 'CO-NLF-I0092', 'CO-NLF-I0095', 'CO-NLF-I0096', 'CO-NLF-I0099', 'CO-NLF-I0105', 'CO-NLF-I0106', 'CO-NLF-I0115', 'CO-NLF-I0118']
+[2026-09-17T20:55:48] copilot: OK erased CO-NLF-I0049 (1/20)
+[2026-09-17T20:56:53] copilot: OK erased CO-NLF-I0051 (2/20)
+[2026-09-17T20:57:59] copilot: OK erased CO-NLF-I0053 (3/20)
+[2026-09-17T20:58:54] copilot: OK erased CO-NLF-I0059 (4/20)
+[2026-09-17T21:00:29] copilot: OK erased CO-NLF-I0062 (5/20)
+[2026-09-17T21:01:16] copilot: OK erased CO-NLF-I0067 (6/20)
+[2026-09-17T21:02:10] copilot: OK erased CO-NLF-I0068 (7/20)
+[2026-09-17T21:03:31] copilot: OK erased CO-NLF-I0070 (8/20)
+[2026-09-17T21:04:12] copilot: OK erased CO-NLF-I0077 (9/20)
+[2026-09-17T21:04:53] copilot: OK erased CO-NLF-I0085 (10/20)
+[2026-09-17T21:06:05] copilot: OK erased CO-NLF-I0086 (11/20)
+[2026-09-17T21:06:42] copilot: OK erased CO-NLF-I0089 (12/20)
+[2026-09-17T21:07:16] copilot: OK erased CO-NLF-I0092 (13/20)
+[2026-09-17T21:08:02] copilot: OK erased CO-NLF-I0095 (14/20)
+[2026-09-17T21:09:26] copilot: OK erased CO-NLF-I0096 (15/20)
+[2026-09-17T21:10:13] copilot: OK erased CO-NLF-I0099 (16/20)
+[2026-09-17T21:11:06] copilot: OK erased CO-NLF-I0105 (17/20)
+[2026-09-17T21:12:18] copilot: OK erased CO-NLF-I0106 (18/20)
+[2026-09-17T21:13:37] copilot: OK erased CO-NLF-I0115 (19/20)
+[2026-09-17T21:14:06] copilot: OK erased CO-NLF-I0118 (20/20)
+[2026-09-17T21:14:06] copilot: batch completed in full (20/20 succeeded) without tripping the throttle window -- ceiling stays at 20
+[2026-09-17T21:14:06] copilot: batch done, next ready at 2026-09-17T21:14:06
+[2026-09-17T21:14:06] gemini: starting erasure batch, ceiling=8, 112 total due, planning up to 8 this batch, order=['GE-NLF-I0010', 'GE-NLF-I0024', 'GE-NLF-I0026', 'GE-NLF-I0027', 'GE-NLF-I0028', 'GE-NLF-I0030', 'GE-NLF-I0035', 'GE-NLF-I0036']
+[2026-09-17T21:14:19] gemini: OK erased GE-NLF-I0010 (1/8)
+[2026-09-17T21:15:23] gemini: OK erased GE-NLF-I0024 (2/8)
+[2026-09-17T21:16:15] gemini: OK erased GE-NLF-I0026 (3/8)
+[2026-09-17T21:17:19] gemini: OK erased GE-NLF-I0027 (4/8)
+[2026-09-17T21:18:13] gemini: OK erased GE-NLF-I0028 (5/8)
+[2026-09-17T21:18:50] gemini: OK erased GE-NLF-I0030 (6/8)
+[2026-09-17T21:20:12] gemini: OK erased GE-NLF-I0035 (7/8)
+[2026-09-17T21:21:35] gemini: OK erased GE-NLF-I0036 (8/8)
+[2026-09-17T21:21:35] gemini: batch completed in full (8/8 succeeded) without tripping the throttle window -- ceiling stays at 8
+[2026-09-17T21:21:35] gemini: batch done, next ready at 2026-09-17T21:21:35
+[2026-09-17T21:21:35] copilot: starting erasure batch, ceiling=20, 79 total due, planning up to 20 this batch, order=['CO-NLF-I0121', 'CO-NLF-I0124', 'CO-NLF-I0125', 'CO-NLF-I0126', 'CO-NLF-I0128', 'CO-NLF-I0131', 'CO-NLF-I0132', 'CO-NLF-I0133', 'CO-NLF-I0137', 'CO-NLF-I0140', 'CO-NLF-I0149', 'CO-NLF-I0153', 'CO-NLF-I0159', 'CO-NLF-I0161', 'CO-NLF-I0163', 'CO-NLF-I0165', 'CO-NLF-I0166', 'CO-NLF-I0169', 'CO-NLF-I0170', 'CO-NLF-I0176']
+[2026-09-17T21:21:51] copilot: OK erased CO-NLF-I0121 (1/20)
+[2026-09-17T21:22:28] copilot: OK erased CO-NLF-I0124 (2/20)
+[2026-09-17T21:23:20] copilot: OK erased CO-NLF-I0125 (3/20)
+[2026-09-17T21:24:45] copilot: OK erased CO-NLF-I0126 (4/20)
+[2026-09-17T21:25:19] copilot: OK erased CO-NLF-I0128 (5/20)
+[2026-09-17T21:26:01] copilot: OK erased CO-NLF-I0131 (6/20)
+[2026-09-17T21:27:11] copilot: OK erased CO-NLF-I0132 (7/20)
+[2026-09-17T21:28:13] copilot: OK erased CO-NLF-I0133 (8/20)
+[2026-09-17T21:29:12] copilot: OK erased CO-NLF-I0137 (9/20)
+[2026-09-17T21:30:11] copilot: OK erased CO-NLF-I0140 (10/20)
+[2026-09-17T21:31:13] copilot: OK erased CO-NLF-I0149 (11/20)
+[2026-09-17T21:32:07] copilot: OK erased CO-NLF-I0153 (12/20)
+[2026-09-17T21:33:09] copilot: OK erased CO-NLF-I0159 (13/20)
+[2026-09-17T21:34:23] copilot: OK erased CO-NLF-I0161 (14/20)
+[2026-09-17T21:35:09] copilot: OK erased CO-NLF-I0163 (15/20)
+[2026-09-17T21:36:10] copilot: OK erased CO-NLF-I0165 (16/20)
+[2026-09-17T21:36:54] copilot: OK erased CO-NLF-I0166 (17/20)
+[2026-09-17T21:38:16] copilot: OK erased CO-NLF-I0169 (18/20)
+[2026-09-17T21:39:12] copilot: OK erased CO-NLF-I0170 (19/20)
+[2026-09-17T21:40:35] copilot: OK erased CO-NLF-I0176 (20/20)
+[2026-09-17T21:40:35] copilot: batch completed in full (20/20 succeeded) without tripping the throttle window -- ceiling stays at 20
+[2026-09-17T21:40:35] copilot: batch done, next ready at 2026-09-17T21:40:35
+[2026-09-17T21:40:35] gemini: starting erasure batch, ceiling=8, 104 total due, planning up to 8 this batch, order=['GE-NLF-I0041', 'GE-NLF-I0042', 'GE-NLF-I0043', 'GE-NLF-I0044', 'GE-NLF-I0047', 'GE-NLF-I0049', 'GE-NLF-I0051', 'GE-NLF-I0053']
+[2026-09-17T21:40:49] gemini: OK erased GE-NLF-I0041 (1/8)
+[2026-09-17T21:41:40] gemini: OK erased GE-NLF-I0042 (2/8)
+[2026-09-17T21:42:15] gemini: OK erased GE-NLF-I0043 (3/8)
+[2026-09-17T21:43:40] gemini: OK erased GE-NLF-I0044 (4/8)
+[2026-09-17T21:44:47] gemini: OK erased GE-NLF-I0047 (5/8)
+[2026-09-17T21:45:53] gemini: OK erased GE-NLF-I0049 (6/8)
+[2026-09-17T21:46:47] gemini: OK erased GE-NLF-I0051 (7/8)
+[2026-09-17T21:47:48] gemini: OK erased GE-NLF-I0053 (8/8)
+[2026-09-17T21:47:48] gemini: batch completed in full (8/8 succeeded) without tripping the throttle window -- ceiling stays at 8
+[2026-09-17T21:47:48] gemini: batch done, next ready at 2026-09-17T21:47:48
+[2026-09-17T21:47:48] copilot: starting erasure batch, ceiling=20, 59 total due, planning up to 20 this batch, order=['CO-NLF-I0177', 'CO-NLF-I0181', 'CO-NLF-I0185', 'CO-NLF-I0187', 'CO-NLF-I0188', 'CO-NLF-I0191', 'CO-NLF-I0195', 'CO-NLF-I0200', 'CO-NLF-I0201', 'CO-NLF-I0209', 'CO-NLF-I0215', 'CO-NLF-I0216', 'CO-NLF-I0220', 'CO-NLF-I0224', 'CO-NLF-I0226', 'CO-NLF-I0228', 'CO-NLF-I0233', 'CO-NLF-I0236', 'CO-NLF-I0239', 'CO-NLF-I0240']
+[2026-09-17T21:48:02] copilot: OK erased CO-NLF-I0177 (1/20)
+[2026-09-17T21:48:50] copilot: OK erased CO-NLF-I0181 (2/20)
+[2026-09-17T21:50:10] copilot: OK erased CO-NLF-I0185 (3/20)
+[2026-09-17T21:51:28] copilot: OK erased CO-NLF-I0187 (4/20)
+[2026-09-17T21:52:37] copilot: OK erased CO-NLF-I0188 (5/20)
+[2026-09-17T21:53:52] copilot: OK erased CO-NLF-I0191 (6/20)
+[2026-09-17T21:55:13] copilot: OK erased CO-NLF-I0195 (7/20)
+[2026-09-17T21:55:59] copilot: OK erased CO-NLF-I0200 (8/20)
+[2026-09-17T21:56:38] copilot: OK erased CO-NLF-I0201 (9/20)
+[2026-09-17T21:57:32] copilot: OK erased CO-NLF-I0209 (10/20)
+[2026-09-17T21:58:54] copilot: OK erased CO-NLF-I0215 (11/20)
+[2026-09-17T22:00:07] copilot: OK erased CO-NLF-I0216 (12/20)
+[2026-09-17T22:00:40] copilot: OK erased CO-NLF-I0220 (13/20)
+[2026-09-17T22:01:36] copilot: OK erased CO-NLF-I0224 (14/20)
+[2026-09-17T22:02:33] copilot: OK erased CO-NLF-I0226 (15/20)
+[2026-09-17T22:03:23] copilot: OK erased CO-NLF-I0228 (16/20)
+[2026-09-17T22:04:36] copilot: OK erased CO-NLF-I0233 (17/20)
+[2026-09-17T22:05:43] copilot: OK erased CO-NLF-I0236 (18/20)
+[2026-09-17T22:06:49] copilot: OK erased CO-NLF-I0239 (19/20)
+[2026-09-17T22:07:54] copilot: OK erased CO-NLF-I0240 (20/20)
+[2026-09-17T22:07:54] copilot: batch completed in full (20/20 succeeded) without tripping the throttle window -- ceiling stays at 20
+[2026-09-17T22:07:54] copilot: batch done, next ready at 2026-09-17T22:07:54
+[2026-09-17T22:07:54] gemini: starting erasure batch, ceiling=8, 96 total due, planning up to 8 this batch, order=['GE-NLF-I0059', 'GE-NLF-I0062', 'GE-NLF-I0067', 'GE-NLF-I0068', 'GE-NLF-I0070', 'GE-NLF-I0077', 'GE-NLF-I0085', 'GE-NLF-I0086']
+[2026-09-17T22:08:09] gemini: OK erased GE-NLF-I0059 (1/8)
+[2026-09-17T22:09:07] gemini: OK erased GE-NLF-I0062 (2/8)
+[2026-09-17T22:10:13] gemini: OK erased GE-NLF-I0067 (3/8)
+[2026-09-17T22:11:18] gemini: OK erased GE-NLF-I0068 (4/8)
+[2026-09-17T22:12:07] gemini: OK erased GE-NLF-I0070 (5/8)
+[2026-09-17T22:12:46] gemini: OK erased GE-NLF-I0077 (6/8)
+[2026-09-17T22:13:22] gemini: OK erased GE-NLF-I0085 (7/8)
+[2026-09-17T22:14:45] gemini: OK erased GE-NLF-I0086 (8/8)
+[2026-09-17T22:14:45] gemini: batch completed in full (8/8 succeeded) without tripping the throttle window -- ceiling stays at 8
+[2026-09-17T22:14:45] gemini: batch done, next ready at 2026-09-17T22:14:45
+[2026-09-17T22:14:45] copilot: starting erasure batch, ceiling=20, 39 total due, planning up to 20 this batch, order=['CO-NLF-I0252', 'CO-NLF-I0259', 'CO-NLF-I0260', 'CO-NLF-I0262', 'CO-NLF-I0264', 'CO-NLF-I0269', 'CO-NLF-I0271', 'CO-NLF-I0272', 'CO-NLF-I0273', 'CO-NLF-I0279', 'CO-NLF-I0281', 'CO-NLF-I0282', 'CO-NLF-I0287', 'CO-NLF-I0293', 'CO-NLF-I0297', 'CO-NLF-I0302', 'CO-NLF-I0304', 'CO-NLF-I0305', 'CO-NLF-I0309', 'CO-NLF-I0314']
+[2026-09-17T22:14:59] copilot: OK erased CO-NLF-I0252 (1/20)
+[2026-09-17T22:15:52] copilot: OK erased CO-NLF-I0259 (2/20)
+[2026-09-17T22:17:18] copilot: OK erased CO-NLF-I0260 (3/20)
+[2026-09-17T22:18:29] copilot: OK erased CO-NLF-I0262 (4/20)
+[2026-09-17T22:19:04] copilot: OK erased CO-NLF-I0264 (5/20)
+[2026-09-17T22:20:18] copilot: OK erased CO-NLF-I0269 (6/20)
+[2026-09-17T22:21:36] copilot: OK erased CO-NLF-I0271 (7/20)
+[2026-09-17T22:22:17] copilot: OK erased CO-NLF-I0272 (8/20)
+[2026-09-17T22:22:52] copilot: OK erased CO-NLF-I0273 (9/20)
+[2026-09-17T22:23:51] copilot: OK erased CO-NLF-I0279 (10/20)
+[2026-09-17T22:24:55] copilot: OK erased CO-NLF-I0281 (11/20)
+[2026-09-17T22:25:37] copilot: OK erased CO-NLF-I0282 (12/20)
+[2026-09-17T22:26:19] copilot: OK erased CO-NLF-I0287 (13/20)
+[2026-09-17T22:27:13] copilot: OK erased CO-NLF-I0293 (14/20)
+[2026-09-17T22:28:14] copilot: OK erased CO-NLF-I0297 (15/20)
+[2026-09-17T22:29:34] copilot: OK erased CO-NLF-I0302 (16/20)
+[2026-09-17T22:30:07] copilot: OK erased CO-NLF-I0304 (17/20)
+[2026-09-17T22:30:51] copilot: OK erased CO-NLF-I0305 (18/20)
+[2026-09-17T22:31:33] copilot: OK erased CO-NLF-I0309 (19/20)
+[2026-09-17T22:32:36] copilot: OK erased CO-NLF-I0314 (20/20)
+[2026-09-17T22:32:36] copilot: batch completed in full (20/20 succeeded) without tripping the throttle window -- ceiling stays at 20
+[2026-09-17T22:32:36] copilot: batch done, next ready at 2026-09-17T22:32:36
+[2026-09-17T22:32:36] gemini: starting erasure batch, ceiling=8, 88 total due, planning up to 8 this batch, order=['GE-NLF-I0089', 'GE-NLF-I0092', 'GE-NLF-I0095', 'GE-NLF-I0096', 'GE-NLF-I0099', 'GE-NLF-I0105', 'GE-NLF-I0106', 'GE-NLF-I0115']
+[2026-09-17T22:32:52] gemini: OK erased GE-NLF-I0089 (1/8)
+[2026-09-17T22:33:43] gemini: OK erased GE-NLF-I0092 (2/8)
+[2026-09-17T22:34:33] gemini: OK erased GE-NLF-I0095 (3/8)
+[2026-09-17T22:35:27] gemini: OK erased GE-NLF-I0096 (4/8)
+[2026-09-17T22:36:52] gemini: OK erased GE-NLF-I0099 (5/8)
+[2026-09-17T22:38:01] gemini: OK erased GE-NLF-I0105 (6/8)
+[2026-09-17T22:39:02] gemini: OK erased GE-NLF-I0106 (7/8)
+[2026-09-17T22:40:10] gemini: OK erased GE-NLF-I0115 (8/8)
+[2026-09-17T22:40:10] gemini: batch completed in full (8/8 succeeded) without tripping the throttle window -- ceiling stays at 8
+[2026-09-17T22:40:10] gemini: batch done, next ready at 2026-09-17T22:40:10
+[2026-09-17T22:40:10] copilot: starting erasure batch, ceiling=20, 19 total due, planning up to 19 this batch, order=['CO-NLF-I0315', 'CO-NLF-I0319', 'CO-NLF-I0322', 'CO-NLF-I0327', 'CO-NLF-I0334', 'CO-NLF-I0339', 'CO-NLF-I0345', 'CO-NLF-I0348', 'CO-NLF-I0351', 'CO-NLF-I0355', 'CO-NLF-I0357', 'CO-NLF-I0361', 'CO-NLF-I0363', 'CO-NLF-I0364', 'CO-NLF-I0365', 'CO-NLF-I0367', 'CO-NLF-I0368', 'CO-NLF-I0371', 'CO-NLF-I0372']
+[2026-09-17T22:40:25] copilot: OK erased CO-NLF-I0315 (1/19)
+[2026-09-17T22:41:01] copilot: OK erased CO-NLF-I0319 (2/19)
+[2026-09-17T22:42:21] copilot: OK erased CO-NLF-I0322 (3/19)
+[2026-09-17T22:43:40] copilot: OK erased CO-NLF-I0327 (4/19)
+[2026-09-17T22:44:59] copilot: OK erased CO-NLF-I0334 (5/19)
+[2026-09-17T22:45:53] copilot: OK erased CO-NLF-I0339 (6/19)
+[2026-09-17T22:46:46] copilot: OK erased CO-NLF-I0345 (7/19)
+[2026-09-17T22:47:26] copilot: OK erased CO-NLF-I0348 (8/19)
+[2026-09-17T22:48:28] copilot: OK erased CO-NLF-I0351 (9/19)
+[2026-09-17T22:49:00] === erasure scheduler start, state={'claude': {'batch_size': 35, 'next_ready_at': 1789687635.9438999}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789688615.199135}, 'deepseek': {'batch_size': 5, 'next_ready_at': 1789691281.973377}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789689167.8179379}, 'copilot': {'batch_size': 20, 'next_ready_at': 1789698756.629596}, 'gemini': {'batch_size': 8, 'next_ready_at': 1789699210.145534}} ===
+[2026-09-17T22:49:00] copilot: starting erasure batch, ceiling=20, 10 total due, planning up to 10 this batch, order=['CO-NLF-I0355', 'CO-NLF-I0357', 'CO-NLF-I0361', 'CO-NLF-I0363', 'CO-NLF-I0364', 'CO-NLF-I0365', 'CO-NLF-I0367', 'CO-NLF-I0368', 'CO-NLF-I0371', 'CO-NLF-I0372']
+[2026-09-17T22:49:15] copilot: OK erased CO-NLF-I0355 (1/10)
+[2026-09-17T22:50:30] copilot: OK erased CO-NLF-I0357 (2/10)
+[2026-09-17T22:51:41] copilot: OK erased CO-NLF-I0361 (3/10)
+[2026-09-17T22:52:30] copilot: OK erased CO-NLF-I0363 (4/10)
+[2026-09-17T22:53:23] copilot: OK erased CO-NLF-I0364 (5/10)
+[2026-09-17T22:54:46] copilot: OK erased CO-NLF-I0365 (6/10)
+[2026-09-17T22:55:34] copilot: OK erased CO-NLF-I0367 (7/10)
+[2026-09-17T22:56:28] copilot: OK erased CO-NLF-I0368 (8/10)
+[2026-09-17T22:57:31] copilot: OK erased CO-NLF-I0371 (9/10)
+[2026-09-17T22:58:02] copilot: OK erased CO-NLF-I0372 (10/10)
+[2026-09-17T22:58:02] copilot: batch completed in full (10/10 succeeded) without tripping the throttle window -- ceiling stays at 20
+[2026-09-17T22:58:02] copilot: batch done, next ready at 2026-09-17T22:58:02
+[2026-09-17T22:58:02] gemini: starting erasure batch, ceiling=8, 80 total due, planning up to 8 this batch, order=['GE-NLF-I0118', 'GE-NLF-I0121', 'GE-NLF-I0124', 'GE-NLF-I0125', 'GE-NLF-I0126', 'GE-NLF-I0128', 'GE-NLF-I0131', 'GE-NLF-I0132']
+[2026-09-17T22:58:06] gemini: FAIL GE-NLF-I0118 (1/8): gemini session (label=PosixPath('/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/sessions/gemini__nlforget.json')) is logged out -- 'Sign in' button present. Needs a fresh cookie export before this account can run.
+[2026-09-17T22:58:06] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 88, in __enter__
+    self._verify_logged_in()
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 77, in _verify_logged_in
+    raise RuntimeError(
+RuntimeError: gemini session (label=PosixPath('/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/sessions/gemini__nlforget.json')) is logged out -- 'Sign in' button present. Needs a fresh cookie export before this account can run.
+
+[2026-09-17T22:58:53] gemini: FAIL GE-NLF-I0121 (2/8): gemini session (label=PosixPath('/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/sessions/gemini__nlforget.json')) is logged out -- 'Sign in' button present. Needs a fresh cookie export before this account can run.
+[2026-09-17T22:58:53] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 88, in __enter__
+    self._verify_logged_in()
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 77, in _verify_logged_in
+    raise RuntimeError(
+RuntimeError: gemini session (label=PosixPath('/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/sessions/gemini__nlforget.json')) is logged out -- 'Sign in' button present. Needs a fresh cookie export before this account can run.
+
+[2026-09-17T22:59:59] gemini: FAIL GE-NLF-I0124 (3/8): gemini session (label=PosixPath('/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/sessions/gemini__nlforget.json')) is logged out -- 'Sign in' button present. Needs a fresh cookie export before this account can run.
+[2026-09-17T22:59:59] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 88, in __enter__
+    self._verify_logged_in()
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 77, in _verify_logged_in
+    raise RuntimeError(
+RuntimeError: gemini session (label=PosixPath('/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/sessions/gemini__nlforget.json')) is logged out -- 'Sign in' button present. Needs a fresh cookie export before this account can run.
+
+[2026-09-17T23:00:58] gemini: FAIL GE-NLF-I0125 (4/8): gemini session (label=PosixPath('/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/sessions/gemini__nlforget.json')) is logged out -- 'Sign in' button present. Needs a fresh cookie export before this account can run.
+[2026-09-17T23:00:58] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 88, in __enter__
+    self._verify_logged_in()
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 77, in _verify_logged_in
+    raise RuntimeError(
+RuntimeError: gemini session (label=PosixPath('/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/sessions/gemini__nlforget.json')) is logged out -- 'Sign in' button present. Needs a fresh cookie export before this account can run.
+
+[2026-09-17T23:01:41] gemini: FAIL GE-NLF-I0126 (5/8): gemini session (label=PosixPath('/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/sessions/gemini__nlforget.json')) is logged out -- 'Sign in' button present. Needs a fresh cookie export before this account can run.
+[2026-09-17T23:01:41] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 540, in erase_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 88, in __enter__
+    self._verify_logged_in()
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 77, in _verify_logged_in
+    raise RuntimeError(
+RuntimeError: gemini session (label=PosixPath('/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/sessions/gemini__nlforget.json')) is logged out -- 'Sign in' button present. Needs a fresh cookie export before this account can run.
+
+[2026-09-17T23:01:41] gemini: THROTTLE DETECTED -- 5/5 failures in last 5 attempts, stopping batch early after 0 successful erasures (planned 8)
+[2026-09-17T23:01:41] gemini: 0/8 succeeded before throttle-detect tripped -- looks like a dead session or hard block, not ordinary rate-limiting. SKIPPING gemini for the rest of this run (other platforms continue). Check sessions/gemini__nlforget.json before the next run.
+[2026-09-17T23:01:41] gemini: lowering batch-size ceiling 8 -> 5 based on this batch's observed throttle point
+[2026-09-17T23:01:41] gemini: batch done, next ready at 2026-09-17T23:01:41
+[2026-09-17T23:01:41] === no live platforms left -- ['gemini'] marked dead this run with cells still due, everyone else is done. Exiting; re-run after fixing those sessions. ===
+[2026-09-18T00:24:16] === erasure scheduler start, state={'claude': {'batch_size': 35, 'next_ready_at': 1789687635.9438999}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789688615.199135}, 'deepseek': {'batch_size': 5, 'next_ready_at': 1789691281.973377}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789689167.8179379}, 'copilot': {'batch_size': 20, 'next_ready_at': 1789700282.496536}, 'gemini': {'batch_size': 5, 'next_ready_at': 1789700501.018532}} ===
+[2026-09-18T00:24:16] gemini: starting erasure batch, ceiling=5, 80 total due, planning up to 5 this batch, order=['GE-NLF-I0118', 'GE-NLF-I0121', 'GE-NLF-I0124', 'GE-NLF-I0125', 'GE-NLF-I0126']
+[2026-09-18T00:24:31] gemini: OK erased GE-NLF-I0118 (1/5)
+[2026-09-18T00:25:05] gemini: OK erased GE-NLF-I0121 (2/5)
+[2026-09-18T00:26:26] gemini: OK erased GE-NLF-I0124 (3/5)
+[2026-09-18T00:27:14] gemini: OK erased GE-NLF-I0125 (4/5)
+[2026-09-18T00:28:09] gemini: OK erased GE-NLF-I0126 (5/5)
+[2026-09-18T00:28:09] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T00:28:09] gemini: batch done, next ready at 2026-09-18T00:28:09
+[2026-09-18T00:28:09] gemini: starting erasure batch, ceiling=5, 75 total due, planning up to 5 this batch, order=['GE-NLF-I0128', 'GE-NLF-I0131', 'GE-NLF-I0132', 'GE-NLF-I0133', 'GE-NLF-I0137']
+[2026-09-18T00:28:24] gemini: OK erased GE-NLF-I0128 (1/5)
+[2026-09-18T00:29:14] gemini: OK erased GE-NLF-I0131 (2/5)
+[2026-09-18T00:30:25] gemini: OK erased GE-NLF-I0132 (3/5)
+[2026-09-18T00:30:58] gemini: OK erased GE-NLF-I0133 (4/5)
+[2026-09-18T00:31:50] gemini: OK erased GE-NLF-I0137 (5/5)
+[2026-09-18T00:31:50] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T00:31:50] gemini: batch done, next ready at 2026-09-18T00:31:50
+[2026-09-18T00:31:50] gemini: starting erasure batch, ceiling=5, 70 total due, planning up to 5 this batch, order=['GE-NLF-I0140', 'GE-NLF-I0149', 'GE-NLF-I0153', 'GE-NLF-I0159', 'GE-NLF-I0161']
+[2026-09-18T00:32:04] gemini: OK erased GE-NLF-I0140 (1/5)
+[2026-09-18T00:33:13] gemini: OK erased GE-NLF-I0149 (2/5)
+[2026-09-18T00:33:59] gemini: OK erased GE-NLF-I0153 (3/5)
+[2026-09-18T00:34:33] gemini: OK erased GE-NLF-I0159 (4/5)
+[2026-09-18T00:35:33] gemini: OK erased GE-NLF-I0161 (5/5)
+[2026-09-18T00:35:33] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T00:35:33] gemini: batch done, next ready at 2026-09-18T00:35:33
+[2026-09-18T00:35:33] gemini: starting erasure batch, ceiling=5, 65 total due, planning up to 5 this batch, order=['GE-NLF-I0163', 'GE-NLF-I0165', 'GE-NLF-I0166', 'GE-NLF-I0169', 'GE-NLF-I0170']
+[2026-09-18T00:35:46] gemini: OK erased GE-NLF-I0163 (1/5)
+[2026-09-18T00:36:45] gemini: OK erased GE-NLF-I0165 (2/5)
+[2026-09-18T00:37:27] gemini: OK erased GE-NLF-I0166 (3/5)
+[2026-09-18T00:38:27] gemini: OK erased GE-NLF-I0169 (4/5)
+[2026-09-18T00:39:18] gemini: OK erased GE-NLF-I0170 (5/5)
+[2026-09-18T00:39:18] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T00:39:18] gemini: batch done, next ready at 2026-09-18T00:39:18
+[2026-09-18T00:39:18] gemini: starting erasure batch, ceiling=5, 60 total due, planning up to 5 this batch, order=['GE-NLF-I0176', 'GE-NLF-I0177', 'GE-NLF-I0181', 'GE-NLF-I0185', 'GE-NLF-I0187']
+[2026-09-18T00:39:31] gemini: OK erased GE-NLF-I0176 (1/5)
+[2026-09-18T00:40:49] gemini: OK erased GE-NLF-I0177 (2/5)
+[2026-09-18T00:41:52] gemini: OK erased GE-NLF-I0181 (3/5)
+[2026-09-18T00:42:54] gemini: OK erased GE-NLF-I0185 (4/5)
+[2026-09-18T00:44:12] gemini: OK erased GE-NLF-I0187 (5/5)
+[2026-09-18T00:44:12] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T00:44:12] gemini: batch done, next ready at 2026-09-18T00:44:12
+[2026-09-18T00:44:12] gemini: starting erasure batch, ceiling=5, 55 total due, planning up to 5 this batch, order=['GE-NLF-I0188', 'GE-NLF-I0191', 'GE-NLF-I0195', 'GE-NLF-I0200', 'GE-NLF-I0201']
+[2026-09-18T00:44:27] gemini: OK erased GE-NLF-I0188 (1/5)
+[2026-09-18T00:45:30] gemini: OK erased GE-NLF-I0191 (2/5)
+[2026-09-18T00:46:33] gemini: OK erased GE-NLF-I0195 (3/5)
+[2026-09-18T00:47:53] gemini: OK erased GE-NLF-I0200 (4/5)
+[2026-09-18T00:48:26] gemini: OK erased GE-NLF-I0201 (5/5)
+[2026-09-18T00:48:26] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T00:48:26] gemini: batch done, next ready at 2026-09-18T00:48:26
+[2026-09-18T00:48:26] gemini: starting erasure batch, ceiling=5, 50 total due, planning up to 5 this batch, order=['GE-NLF-I0209', 'GE-NLF-I0215', 'GE-NLF-I0216', 'GE-NLF-I0220', 'GE-NLF-I0224']
+[2026-09-18T00:48:41] gemini: OK erased GE-NLF-I0209 (1/5)
+[2026-09-18T00:49:28] gemini: OK erased GE-NLF-I0215 (2/5)
+[2026-09-18T00:50:40] gemini: OK erased GE-NLF-I0216 (3/5)
+[2026-09-18T00:51:28] gemini: OK erased GE-NLF-I0220 (4/5)
+[2026-09-18T00:52:50] gemini: OK erased GE-NLF-I0224 (5/5)
+[2026-09-18T00:52:50] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T00:52:50] gemini: batch done, next ready at 2026-09-18T00:52:50
+[2026-09-18T00:52:50] gemini: starting erasure batch, ceiling=5, 45 total due, planning up to 5 this batch, order=['GE-NLF-I0226', 'GE-NLF-I0228', 'GE-NLF-I0233', 'GE-NLF-I0236', 'GE-NLF-I0239']
+[2026-09-18T00:53:07] gemini: FAIL GE-NLF-I0226 (1/5): Locator.click: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("[aria-label=\"Enter a prompt for Gemini\"]")
+
+[2026-09-18T00:53:07] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/erasure_scheduler.py", line 273, in run_one_batch
+    rc.erase_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 541, in erase_cell
+    flow.erase_via_ui(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 248, in erase_via_ui
+    getattr(self, method_name)(**kwargs)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 233, in _send_nl_forget
+    self.assert_real_answer(self.send_message(erasure_request_text))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini.py", line 138, in send_message
+    self.page.locator('[aria-label="Enter a prompt for Gemini"]').click(force=True, timeout=10000)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 17876, in click
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_locator.py", line 165, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 593, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("[aria-label=\"Enter a prompt for Gemini\"]")
+
+
+[2026-09-18T00:54:31] gemini: OK erased GE-NLF-I0228 (2/5)
+[2026-09-18T00:55:47] gemini: OK erased GE-NLF-I0233 (3/5)
+[2026-09-18T00:56:28] gemini: OK erased GE-NLF-I0236 (4/5)
+[2026-09-18T00:56:59] gemini: OK erased GE-NLF-I0239 (5/5)
+[2026-09-18T00:56:59] gemini: batch completed in full (4/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T00:56:59] gemini: batch done, next ready at 2026-09-18T00:56:59
+[2026-09-18T00:56:59] gemini: starting erasure batch, ceiling=5, 41 total due, planning up to 5 this batch, order=['GE-NLF-I0226', 'GE-NLF-I0240', 'GE-NLF-I0252', 'GE-NLF-I0259', 'GE-NLF-I0260']
+[2026-09-18T00:57:13] gemini: OK erased GE-NLF-I0226 (1/5)
+[2026-09-18T00:58:21] gemini: OK erased GE-NLF-I0240 (2/5)
+[2026-09-18T00:59:32] gemini: OK erased GE-NLF-I0252 (3/5)
+[2026-09-18T01:00:41] gemini: OK erased GE-NLF-I0259 (4/5)
+[2026-09-18T01:01:20] gemini: OK erased GE-NLF-I0260 (5/5)
+[2026-09-18T01:01:20] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T01:01:20] gemini: batch done, next ready at 2026-09-18T01:01:20
+[2026-09-18T01:01:20] gemini: starting erasure batch, ceiling=5, 36 total due, planning up to 5 this batch, order=['GE-NLF-I0262', 'GE-NLF-I0264', 'GE-NLF-I0269', 'GE-NLF-I0271', 'GE-NLF-I0272']
+[2026-09-18T01:01:34] gemini: OK erased GE-NLF-I0262 (1/5)
+[2026-09-18T01:02:16] gemini: OK erased GE-NLF-I0264 (2/5)
+[2026-09-18T01:03:04] gemini: OK erased GE-NLF-I0269 (3/5)
+[2026-09-18T01:04:21] gemini: OK erased GE-NLF-I0271 (4/5)
+[2026-09-18T01:05:26] gemini: OK erased GE-NLF-I0272 (5/5)
+[2026-09-18T01:05:26] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T01:05:26] gemini: batch done, next ready at 2026-09-18T01:05:26
+[2026-09-18T01:05:26] gemini: starting erasure batch, ceiling=5, 31 total due, planning up to 5 this batch, order=['GE-NLF-I0273', 'GE-NLF-I0279', 'GE-NLF-I0281', 'GE-NLF-I0282', 'GE-NLF-I0287']
+[2026-09-18T01:05:44] gemini: OK erased GE-NLF-I0273 (1/5)
+[2026-09-18T01:06:15] gemini: OK erased GE-NLF-I0279 (2/5)
+[2026-09-18T01:07:24] gemini: OK erased GE-NLF-I0281 (3/5)
+[2026-09-18T01:08:15] gemini: OK erased GE-NLF-I0282 (4/5)
+[2026-09-18T01:09:13] gemini: OK erased GE-NLF-I0287 (5/5)
+[2026-09-18T01:09:13] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T01:09:13] gemini: batch done, next ready at 2026-09-18T01:09:13
+[2026-09-18T01:09:13] gemini: starting erasure batch, ceiling=5, 26 total due, planning up to 5 this batch, order=['GE-NLF-I0293', 'GE-NLF-I0297', 'GE-NLF-I0302', 'GE-NLF-I0304', 'GE-NLF-I0305']
+[2026-09-18T01:09:27] gemini: OK erased GE-NLF-I0293 (1/5)
+[2026-09-18T01:10:43] gemini: OK erased GE-NLF-I0297 (2/5)
+[2026-09-18T01:12:03] gemini: OK erased GE-NLF-I0302 (3/5)
+[2026-09-18T01:12:42] gemini: OK erased GE-NLF-I0304 (4/5)
+[2026-09-18T01:13:35] gemini: OK erased GE-NLF-I0305 (5/5)
+[2026-09-18T01:13:35] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T01:13:35] gemini: batch done, next ready at 2026-09-18T01:13:35
+[2026-09-18T01:13:35] gemini: starting erasure batch, ceiling=5, 21 total due, planning up to 5 this batch, order=['GE-NLF-I0309', 'GE-NLF-I0314', 'GE-NLF-I0315', 'GE-NLF-I0319', 'GE-NLF-I0322']
+[2026-09-18T01:13:49] gemini: OK erased GE-NLF-I0309 (1/5)
+[2026-09-18T01:15:23] gemini: OK erased GE-NLF-I0314 (2/5)
+[2026-09-18T01:16:12] gemini: OK erased GE-NLF-I0315 (3/5)
+[2026-09-18T01:17:34] gemini: OK erased GE-NLF-I0319 (4/5)
+[2026-09-18T01:18:33] gemini: OK erased GE-NLF-I0322 (5/5)
+[2026-09-18T01:18:33] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T01:18:33] gemini: batch done, next ready at 2026-09-18T01:18:33
+[2026-09-18T01:18:33] gemini: starting erasure batch, ceiling=5, 16 total due, planning up to 5 this batch, order=['GE-NLF-I0327', 'GE-NLF-I0334', 'GE-NLF-I0339', 'GE-NLF-I0345', 'GE-NLF-I0348']
+[2026-09-18T01:18:47] gemini: OK erased GE-NLF-I0327 (1/5)
+[2026-09-18T01:19:31] gemini: OK erased GE-NLF-I0334 (2/5)
+[2026-09-18T01:20:55] gemini: OK erased GE-NLF-I0339 (3/5)
+[2026-09-18T01:21:42] gemini: OK erased GE-NLF-I0345 (4/5)
+[2026-09-18T01:22:42] gemini: OK erased GE-NLF-I0348 (5/5)
+[2026-09-18T01:22:42] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T01:22:42] gemini: batch done, next ready at 2026-09-18T01:22:42
+[2026-09-18T01:22:42] gemini: starting erasure batch, ceiling=5, 11 total due, planning up to 5 this batch, order=['GE-NLF-I0351', 'GE-NLF-I0355', 'GE-NLF-I0357', 'GE-NLF-I0361', 'GE-NLF-I0363']
+[2026-09-18T01:22:57] gemini: OK erased GE-NLF-I0351 (1/5)
+[2026-09-18T01:23:57] gemini: OK erased GE-NLF-I0355 (2/5)
+[2026-09-18T01:25:13] gemini: OK erased GE-NLF-I0357 (3/5)
+[2026-09-18T01:26:20] gemini: OK erased GE-NLF-I0361 (4/5)
+[2026-09-18T01:27:05] gemini: OK erased GE-NLF-I0363 (5/5)
+[2026-09-18T01:27:05] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T01:27:05] gemini: batch done, next ready at 2026-09-18T01:27:05
+[2026-09-18T01:27:05] gemini: starting erasure batch, ceiling=5, 6 total due, planning up to 5 this batch, order=['GE-NLF-I0364', 'GE-NLF-I0365', 'GE-NLF-I0367', 'GE-NLF-I0368', 'GE-NLF-I0371']
+[2026-09-18T01:27:18] gemini: OK erased GE-NLF-I0364 (1/5)
+[2026-09-18T01:28:26] gemini: OK erased GE-NLF-I0365 (2/5)
+[2026-09-18T01:29:02] gemini: OK erased GE-NLF-I0367 (3/5)
+[2026-09-18T01:29:50] gemini: OK erased GE-NLF-I0368 (4/5)
+[2026-09-18T01:30:47] gemini: OK erased GE-NLF-I0371 (5/5)
+[2026-09-18T01:30:47] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T01:30:47] gemini: batch done, next ready at 2026-09-18T01:30:47
+[2026-09-18T01:30:47] gemini: starting erasure batch, ceiling=5, 1 total due, planning up to 1 this batch, order=['GE-NLF-I0372']
+[2026-09-18T01:31:00] gemini: OK erased GE-NLF-I0372 (1/1)
+[2026-09-18T01:31:00] gemini: batch completed in full (1/1 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-18T01:31:00] gemini: batch done, next ready at 2026-09-18T01:31:00
+[2026-09-18T01:31:00] === all due cells erased -- scheduler exiting ===

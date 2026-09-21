@@ -22,6 +22,7 @@ from pathlib import Path
 import config
 
 TRACKING_PATH = config.TESTER_ROOT / "data" / "run_tracking.json"
+PENDING_UPLOADS_PATH = config.TESTER_ROOT / "data" / "pending_file_uploads.json"
 
 ERASURE_DELAY = timedelta(hours=48)
 RECALL_DELAY = timedelta(days=31)
@@ -97,6 +98,40 @@ def mark_recalled(cell_id: str, ts: datetime | None = None) -> dict:
     entry["recalled_at"] = _iso(ts)
     save(data)
     return entry
+
+
+def get_pending_upload(cell_id: str) -> dict | None:
+    """Added 2026-09-07: a FILE-injection cell's upload_file() can succeed
+    while the LATER forced-read verification step still fails (observed
+    live on PE-IF-E-CONV, then again on CL-IF-E-MAX/CH-IF-E-MAX/
+    GE-IF-E-MAX) -- before this, that successfully-uploaded conversation's
+    URL only ever lived in a local variable inside inject_cell(), so a
+    retry had no way to know it already existed and just re-uploaded a
+    fresh duplicate every time, leaving stray unverified conversations on
+    the account. This persists {ref, upload_reply} the moment upload_file()
+    succeeds, separate from run_tracking.json (that file only records a
+    cell once it's FULLY injected+verified) -- see inject_cell()'s FILE
+    branch for how a retry resumes from this instead of re-uploading."""
+    if not PENDING_UPLOADS_PATH.exists():
+        return None
+    return json.loads(PENDING_UPLOADS_PATH.read_text()).get(cell_id)
+
+
+def mark_pending_upload(cell_id: str, ref: str, upload_reply: str) -> None:
+    data = {}
+    if PENDING_UPLOADS_PATH.exists():
+        data = json.loads(PENDING_UPLOADS_PATH.read_text())
+    data[cell_id] = {"ref": ref, "upload_reply": upload_reply, "recorded_at": _iso(_now())}
+    PENDING_UPLOADS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PENDING_UPLOADS_PATH.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n")
+
+
+def clear_pending_upload(cell_id: str) -> None:
+    if not PENDING_UPLOADS_PATH.exists():
+        return
+    data = json.loads(PENDING_UPLOADS_PATH.read_text())
+    if data.pop(cell_id, None) is not None:
+        PENDING_UPLOADS_PATH.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n")
 
 
 def due_for_erasure(now: datetime | None = None) -> list[str]:

@@ -65,6 +65,20 @@ class GeminiFlow(PlatformFlow):
         "MAXIMAL": "_erase_maximal",
     }
 
+    def _verify_logged_in(self) -> None:
+        """Logged-out Gemini renders a full, plausible-looking chat UI --
+        it even answers messages (sometimes with a fabricated "I've
+        cleared that" reply) -- with the only tell being a "Sign in"
+        button in the top-right nav (confirmed live 2026-09-17, see
+        base.py's docstring for the incident this fixes). Checked with a
+        short timeout since this runs on every session start and a
+        logged-in session never shows this button at all."""
+        if self.page.get_by_role("button", name="Sign in", exact=True).count() > 0:
+            raise RuntimeError(
+                f"gemini session (label={getattr(self, '_session_path', '?')!r}) is logged out -- "
+                f"'Sign in' button present. Needs a fresh cookie export before this account can run."
+            )
+
     def _goto_fresh(self, url: str) -> None:
         """goto() to a URL you're already on can no-op in this Angular
         SPA -- the router sees no URL change and skips re-rendering,
@@ -187,38 +201,92 @@ class GeminiFlow(PlatformFlow):
 
     # --- ERASURE_DISPATCH targets ---
 
-    def _send_nl_forget(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
+    def _send_nl_forget(
+        self,
+        token: str | None = None,
+        injection_text: str = "",
+        ref: str | None = None,
+        erasure_request_text: str | None = None,
+    ) -> None:
         """Not a UI click -- routes back through send_message() with the
-        erasure_request_sentence() text once that's wired in
-        (RTBF-Prompt/token_generator.py). Placeholder for now, same as
-        Claude/ChatGPT's equivalent method."""
-        raise NotImplementedError
+        erasure_request_sentence() text (RTBF-Prompt/token_generator.py),
+        wired in 2026-09-07. `erasure_request_text` is precomputed per
+        cell (only the 13 blocked_on_prompt_set cells get one, written to
+        MASTER by token_generator.py) and forwarded here by base.py's
+        erase_via_ui(). Navigates to this cell's own conversation via
+        `ref` (captured at injection time) so the erasure request lands
+        in the same conversation as the disclosure. If `ref` is missing,
+        this cell's injection was field-routed (I2 targets a dedicated
+        field on this platform, see MEMORY_FIELD_INJECTION_TYPES), which
+        has no owned conversation -- falls back to a fresh conversation
+        instead, same rationale as _delete_conversation's no-ref fallback
+        above."""
+        if not erasure_request_text:
+            raise RuntimeError(
+                "_send_nl_forget: no erasure_request_text provided -- "
+                "this cell's prompt-set text isn't wired in"
+            )
+        if ref:
+            self._goto_fresh(ref)  # plain goto() can no-op on this Angular SPA, see _goto_fresh
+        else:
+            self.new_conversation()
+        self.assert_real_answer(self.send_message(erasure_request_text))
 
     def _delete_conversation(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
         """Deletes THIS cell's own conversation, identified by `ref` (the
         exact conversation URL captured at injection time) -- same fix as
-        ChatGPT/Claude/DeepSeek, applied here 2026-08-31 for consistency
-        (grabbing "whatever's topmost" silently deletes a sibling cell's
-        conversation on a shared account). NOTE: unverified live against
-        this platform specifically -- Gemini's session was logged out
-        when this was written (see PROJECT_STATUS/memory), re-verify once
-        re-authenticated, before trusting this on a real cell. Falls back
-        to topmost only when `ref` is None."""
+        ChatGPT/Claude/DeepSeek. NOTE: unverified live against this
+        platform specifically -- Gemini's session was logged out when this
+        was written (see PROJECT_STATUS/memory), re-verify once
+        re-authenticated, before trusting this on a real cell.
+
+        **No topmost fallback, ever, as of 2026-09-09**: an earlier
+        version fell back to topmost whenever `ref` was missing and the
+        token search found nothing -- real risk surfaced live for
+        `GE-I2-E2` (I2 injects into the Saved-info field, not chat, so it
+        has NO owned conversation at all; this method would have silently
+        deleted whatever conversation was topmost on the shared account,
+        e.g. a sibling I1 cell's real conversation). Reverted per direct
+        instruction -- a cell must only ever delete its own entry, never a
+        sibling's as a fallback. If nothing matches, raise instead of
+        guessing (which correctly surfaces "this cell has no conversation
+        to delete" as an error, not a silent wrong deletion)."""
         self._goto_fresh("https://gemini.google.com/app")
-        if not ref:
-            ref = self._find_conversation_by_token(token, "https://gemini.google.com", 'a[href^="/app/"]')
-        if ref:
-            from urllib.parse import urlsplit
-            convo = self.page.query_selector(f'a[href="{urlsplit(ref).path}"]')
-            if convo is None:
-                raise RuntimeError(f"_delete_conversation: expected conversation {ref!r} not found in sidebar")
-        else:
-            convo = self.page.query_selector('a[href^="/app/"]')
+        from urllib.parse import urlsplit
+        convo = self.page.query_selector(f'a[href="{urlsplit(ref).path}"]') if ref else None
+        if convo is None:
+            # Either no ref was given, or the given ref is stale (confirmed
+            # live 2026-09-09 on GE-I1-E6: a 2026-09-01 ref no longer
+            # matched anything, even though the conversation genuinely
+            # still existed in the sidebar, auto-titled from its token) --
+            # both cases get the same token-content search before giving
+            # up, never a topmost guess.
+            found_ref = self._find_conversation_by_token(token, "https://gemini.google.com", 'a[href^="/app/"]')
+            if not found_ref:
+                raise RuntimeError(
+                    f"_delete_conversation: no conversation matches ref={ref!r} or token {token!r} "
+                    "-- this cell has no owned conversation to delete (refusing to guess/delete topmost)"
+                )
+            convo = self.page.query_selector(f'a[href="{urlsplit(found_ref).path}"]')
         if convo is None:
             raise RuntimeError("_delete_conversation: no conversation found in sidebar")
         convo.hover()
         self.page.wait_for_timeout(400)
-        self.page.click('button[aria-label*="More options for"]')
+        # Scoped to the row container, not page-wide -- an unscoped click
+        # always grabs the topmost row's options button regardless of which
+        # row was hovered. Same bug found and fixed on chatgpt.py's
+        # equivalent method 2026-09-09. Note: the options button is a
+        # SIBLING of the <a> (both children of <gem-nav-list-item>), not a
+        # descendant of it -- confirmed live 2026-09-09 that convo.query_selector
+        # itself always returns None here, unlike chatgpt.py's DOM shape.
+        # No force=True here -- confirmed live 2026-09-09 that a forced
+        # click on this specific button opens nothing (Angular Material's
+        # menu-trigger overlay needs a real actionability-checked click;
+        # force skips that and the event falls through to the sidebar link
+        # underneath, navigating into the conversation instead of opening
+        # the options menu).
+        row = convo.evaluate_handle('el => el.closest("gem-nav-list-item")').as_element()
+        row.query_selector('button[aria-label*="More options for"]').click()
         self.page.wait_for_timeout(600)
         self.page.get_by_role("menuitem", name="Delete", exact=True).click()
         self.page.wait_for_timeout(600)
@@ -328,8 +396,20 @@ class GeminiFlow(PlatformFlow):
     def _delete_all_saved_info(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
         """Deliberately account-wide/blanket -- see [[project-destructive-actions-run-last]].
         `token`/`injection_text`/`ref` accepted for interface consistency
-        but unused."""
+        but unused.
+
+        Fixed 2026-09-09: an empty Saved-info list (e.g. an I1 MAXIMAL
+        cell, which never wrote anything into Saved-info in the first
+        place -- injection went into chat, not this field) has no
+        "Delete all" button at all, and the old code just timed out
+        waiting for one, indistinguishable from a real failure. Checks
+        for the empty-state message first and treats it as a legitimate
+        no-op (nothing to delete is a valid, correct outcome here), not
+        an error."""
         self._goto_fresh("https://gemini.google.com/saved-info")
+        if self.page.query_selector("text=You haven't asked Gemini to save anything about you yet"):
+            print("_delete_all_saved_info: Saved-info list already empty -- nothing to delete")
+            return
         self.page.get_by_role("button", name="Delete all", exact=True).click()
         self.page.wait_for_timeout(800)
         dialog = self.page.locator('[role="dialog"], [role="alertdialog"]').first
@@ -337,9 +417,35 @@ class GeminiFlow(PlatformFlow):
         self.page.wait_for_timeout(1000)
 
     def _erase_maximal(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
-        """E6: E1+E2+E3+E4+E5 combined in one setup (design rule). E3 will
-        raise until its session-capture gap is resolved -- see
-        _delete_all_activity()."""
-        self._delete_conversation(token=token, injection_text=injection_text, ref=ref)
-        self._delete_all_activity(token=token, injection_text=injection_text, ref=ref)
+        """E6: E1+E2+E3+E4+E5 combined in one setup (design rule).
+
+        Fixed 2026-09-09 (same pattern as claude.py's _erase_maximal fix
+        2026-09-07): used to run all three sub-steps with no error
+        handling, so a step with nothing real to act on aborted the whole
+        sequence before ever reaching _delete_all_saved_info -- the one
+        component that actually matters for this cell. Two sub-steps are
+        expected to legitimately have nothing to act on / no automatable
+        surface, and are now caught and logged as N/A instead of fatal:
+
+        1. _delete_conversation(): for an I2 MAXIMAL cell (injection goes
+           into the Saved-info field, not chat -- see
+           MEMORY_FIELD_INJECTION_TYPES), there is no owned conversation
+           at all, so this correctly raises "no owned conversation to
+           delete" under the 2026-09-09 no-topmost-fallback policy. That's
+           the right outcome for this cell, not a bug.
+        2. _delete_all_activity(): confirmed permanent dead end (5
+           independent live attempts 2026-08-28, see its own docstring)
+           -- myactivity.google.com rejects any CDP-driven browser
+           regardless of cookie freshness. Always raises
+           NotImplementedError. Run this component by hand if full
+           MAXIMAL coverage matters for a given cell; this method can't
+           do it."""
+        try:
+            self._delete_conversation(token=token, injection_text=injection_text, ref=ref)
+        except RuntimeError as e:
+            print(f"_erase_maximal: _delete_conversation N/A ({e}) -- continuing")
+        try:
+            self._delete_all_activity(token=token, injection_text=injection_text, ref=ref)
+        except NotImplementedError as e:
+            print(f"_erase_maximal: _delete_all_activity N/A ({e}) -- continuing")
         self._delete_all_saved_info(token=token, injection_text=injection_text, ref=ref)

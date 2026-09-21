@@ -1,60 +1,124 @@
-\documentclass[10pt,twocolumn]{article}
-\usepackage{times}
-\usepackage[margin=0.75in,top=1in]{geometry}
+% IEEE S&P 2027 submission format.
+% Per the CFP: "LaTeX submissions using the IEEE templates must use
+% IEEEtran.cls version 1.8b with options 'conference,compsoc'."
+% Do NOT add packages/options that change margins, fonts, or line
+% spacing (e.g. geometry, usenix): the CFP explicitly flags this as
+% grounds for rejection without review.
+\documentclass[conference,compsoc]{IEEEtran}
+
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{hyperref}
 \usepackage{microtype}
 \usepackage{xcolor}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{enumitem}
 \usepackage{multirow}
+\usepackage{hyperref}
 
-\setlength{\columnsep}{0.25in}
+% Strip PDF metadata that could deanonymize the submission (author,
+% affiliation leaking through document properties rather than the
+% visible title page).
+\hypersetup{hidelinks,pdfauthor={},pdftitle={Right to Be Forgotten in LLMs: An Empirical Audit of Data Deletion Methods Across Six Platforms},pdfsubject={},pdfkeywords={}}
 
-\title{\textbf{Right to Be Forgotten in LLMs: A Cross-Platform Empirical Audit of Erasure Control Failures}}
+\title{Right to Be Forgotten in LLMs: An Empirical Audit of Data Deletion Methods Across Six Platforms}
 
-\author{
-  Taiwo Olabamipe \\
-  University of Central Florida \\
-  \texttt{tal17847@ucf.edu}
-  \and
-  Xueqiang Wang \\
-  University of Central Florida \\
-  \texttt{xueqiang.wang@ucf.edu}
-  \and
-  Yao Li   \\
-  University of Central Florida \\
-  \texttt{yao.li@ucf.edu}
-}
-
-\date{}
+% ANONYMOUS SUBMISSION
+% IEEE S&P requires no author names/affiliations on the title page and
+% no identity-revealing text in the body (CFP "Anonymous Submission").
+% Replace \#XXX with the HotCRP submission number once assigned, and
+% swap this block back to the real author list ONLY in the camera-ready
+% version after acceptance.
+\author{\IEEEauthorblockN{Anonymous Author(s)}
+\IEEEauthorblockA{Submission \#XXX}}
+% Real authors (restore at camera-ready; do not include in the
+% anonymous submission PDF):
+% \author{
+%   Taiwo Olabamipe \\
+%   University of Central Florida \\
+%   \texttt{tal17847@ucf.edu}
+%   \and
+%   Xueqiang Wang \\
+%   University of Central Florida \\
+%   \texttt{xueqiang.wang@ucf.edu}
+%   \and
+%   Yao Li \\
+%   University of Central Florida \\
+%   \texttt{yao.li@ucf.edu}
+% }
 
 \begin{document}
 
 \maketitle
 
 % ----------------------------------------------------------------
+% TODO(authors): abstract is a summary of the whole paper (motivation,
+% method, top findings, implication); write last, once Discussion/
+% Conclusion are final. IEEE S&P abstracts run ~150-250 words, plain
+% text (no \textit wrapper needed/expected).
 \begin{abstract}
-\textit{
-This study presents }
+TBWL
 \end{abstract}
 % ----------------------------------------------------------------
 
 \section{Introduction}
+\label{sec:intro}
 
-The right to erasure, enshrined in Article 17 of the General Data
+Hundreds of millions of people now share personal, and often sensitive,
+information with commercial large language model (LLM) chatbots as part
+of daily use. The right to erasure, enshrined in Article 17 of the
+General Data Protection Regulation (GDPR), entitles individuals to
+request that personal data concerning them be deleted under certain
+conditions \cite{gdpr2016}. Commercial LLM chatbots such as ChatGPT,
+Gemini, Claude, Copilot, Perplexity, and DeepSeek retain user data in
+several, distinct forms: raw conversation history, chatbot-extracted
+``memories'' or saved facts that persist across sessions, and, per each
+platform's own privacy policy, conversation content that may be used to
+train future models, a risk made concrete by work showing that LLMs can
+memorize and later regurgitate verbatim fragments of their training
+data~\cite{carlini2021extracting}. Each retention surface exposes its own,
+differently labeled deletion control: deleting a single conversation,
+clearing all conversation history, deleting one saved memory, or asking
+the chatbot in natural language to ``forget'' something. No
+evidence establishes whether invoking any of these controls satisfies an
+RTBF-style erasure request across every form in which that data persists.
+
+Closest to this setting, Li et al.\ audit the stated privacy controls of
+six conversational LLM platforms and find them inconsistently
+implemented; most do not support deleting an individual
+message~\cite{li2026privacy}. That walkthrough characterizes what each
+platform's interface exposes, but does not test whether invoking a
+control on a live account removes the data it names, nor survey users
+about what those controls are believed to accomplish; \S\ref{sec:background}
+situates it fully relative to this paper's contribution.
+
+Whether the same expectation-behavior divergence documented for other
+deletion mechanisms (search delisting at
+scale~\cite{bertram2019five}, and cloud-storage and website opt-out
+controls~\cite{kang2015mydata,ramokapane2017stupid,habib2019empirical})
+holds for LLM chatbots' several, differently labeled deletion controls is
+largely untested; \S\ref{sec:background} reviews that literature in full.
+
+This ambiguity sits on both sides of the interaction. On the system
+side, it is unclear whether a given deletion control removes data from
+the surface it names, and whether that removal extends to derived
+retention such as training data. On the user side, it is unclear
+whether people select deletion methods that match what they believe
+those methods accomplish, and whether they ever verify that outcome. A
+mismatch on either side undermines a de facto right to erasure: for
+users who cannot control data they do not know persists, or who choose
+a lighter-weight action while believing it accomplishes more than it
+does.
 
 This study addresses the following research questions, split by system and
 user side, plus their divergence:
 
 \begin{itemize}[leftmargin=*]
   \item[] \textbf{RQ1} (system, behavior): How do commercial LLM chatbots
-    actually handle data erasure requests?
-  \item[] \textbf{RQ2} (system, policy gap): Where does observed erasure
+    actually handle data deletion requests?
+  \item[] \textbf{RQ2} (system, policy gap): Where does observed deletion
     behavior contradict each platform's stated policy?
   \item[] \textbf{RQ3} (user, expectation \& verification): What do users
     believe deletion accomplishes, and do they verify that it worked?
@@ -64,39 +128,356 @@ user side, plus their divergence:
     most from audited platform behavior, and who bears that gap?
 \end{itemize}
 
-The participatory survey reported in this paper addresses RQ3 and RQ4; RQ1,
-RQ2, and RQ5 require the companion technical audit across six commercial
-platforms, reported separately.
+This paper reports two paired components addressing all five: a
+participatory survey (RQ3, RQ4) and a technical audit of deletion
+controls across the same six commercial platforms (RQ1, RQ2, RQ5).
 
 \section{Background and Related Work}
+\label{sec:background}
 
-\section{Participatory Study}
+\textbf{Right to erasure, at scale.} The GDPR's Article 17 right to
+erasure~\cite{gdpr2016} has mostly been studied through its search-engine
+delisting mechanism: Bertram et al.\ analyze five years and 3.2 million
+URLs submitted to Google for right-to-be-forgotten delisting, finding
+requests concentrated on a small number of sites and requesters, and
+documenting the operational difficulty of adjudicating erasure at
+scale~\cite{bertram2019five}. That line of work audits a single,
+well-defined deletion mechanism (search delisting) end to end. Commercial
+LLM chatbots instead expose several, informally specified deletion
+controls over the same underlying account (conversation-level deletion,
+memory-level deletion, natural-language ``forget'' requests, and
+account-level deletion), which is the gap this paper's technical audit
+(RQ1/RQ2/RQ5) targets.
+
+\textbf{Auditing LLM platform controls.} Closest to this paper, Li et
+al.\ walk through the stated access/edit/delete/share
+controls of six conversational LLM platforms (a partially overlapping
+set with the six audited here; see \S\ref{sec:intro}) and find them inconsistently
+implemented, with most platforms not supporting deletion of an individual
+message~\cite{li2026privacy}. That audit characterizes what controls each
+platform's interface exposes; it stops short of testing, on live
+accounts, whether invoking a given control actually removes the data it
+names (the system-side gap RQ1/RQ2 target), and it does not survey users
+about those controls. This paper's technical audit and participatory
+survey close these two gaps respectively.
+
+\textbf{Machine unlearning.} A deletion request that only removes a
+record from a database does not, by itself, remove that record's
+influence on a model already trained on it. Bourtoule et al.\ formalize
+this distinction and propose \textit{SISA} training to make exact
+unlearning practical, framing verifiable removal of a data point's
+influence as a distinct technical problem from simply deleting the
+underlying record~\cite{bourtoule2021machine}.
+
+\textbf{User mental models of deletion.} Usable-privacy research has
+repeatedly found that people's mental models of ``deletion'' do not
+match how deletion is actually implemented. Kang et al.\ show that many
+users hold incomplete or inaccurate models of how the internet handles
+their data generally, with direct consequences for the privacy decisions
+they make~\cite{kang2015mydata}. Ramokapane et al.\ study cloud-storage
+deletion specifically and find users often cannot tell whether a delete
+action removed data locally, from the cloud, or from other synced
+devices, and adopt ad hoc coping strategies (e.g., deleting the same
+item multiple times) in response to that uncertainty~\cite{ramokapane2017stupid}.
+Habib et al.\ audit the deletion and opt-out controls of 150 websites
+directly and find that even when a control exists, it is often
+inconsistently located, under-explained, or effectively non-functional --
+an interface-level failure mode distinct from, but compounding, any
+backend failure to actually delete data~\cite{habib2019empirical}.
+
+\textbf{LLM memory specifically.} On the user side specifically, Zhang
+et al.\ interview 18 users of LLM chatbots with retrieval-augmented-
+generation-based ``memory'' features and find diverse, often incomplete
+mental models of what the memory stores and how it is used, alongside an
+explicit desire for finer-grained control over reviewing, editing, and
+deleting individual memories~\cite{zhang2025understanding}.
+
+\textbf{Positioning.} Li et al.\ show that LLM platforms' stated
+deletion controls are inconsistent by design~\cite{li2026privacy}; no
+identified prior work tests whether those (or comparable) controls
+work as stated on live accounts, or pairs such a test with a matched
+participant survey of what the same controls are believed and used to
+accomplish. This paper reports both halves of that pairing: a technical
+audit of whether six commercial platforms' deletion controls remove the
+data they claim to (RQ1, RQ2), and a participatory survey of which
+deletion methods people actually choose, how those choices and their
+perceived cost/protection change with data sensitivity, and where
+expectation and verification behavior part ways with what the methods
+are actually likely to do (RQ3, RQ4;
+\S\ref{sec:sample-knowledge}), which allows the two to be compared directly
+against each other (RQ5).
+
+\section{Methodology}
+\label{sec:methodology}
+
+\subsection{Participatory Survey}
+\label{sec:survey-methodology}
+
+The survey uses a within-subject design: the same participants rate two
+scenario blocks in fixed order, a less-sensitive and a more-sensitive
+data-deletion vignette, each repeating an identical question battery so
+scenario is the only manipulated factor. Each scenario battery includes
+three multi-item Likert scales (perceived protection with 5 items, effort
+with 4 items, and benefit loss with 3 items) plus single-item measures of
+deletion method choice, willingness to delete, deletion expectations, and
+verification behavior. All six scale-by-scenario combinations meet
+conventional reliability thresholds (Cronbach's $\alpha=0.87$--$0.92$),
+confirmed identically by both analysis pipelines described in
+\S\ref{sec:sample-knowledge}.
+% TODO(authors): recruitment platform, sample-size target/power
+% rationale, compensation, consent process, and IRB approval/exemption
+% number; the Ethics Considerations section (before the references)
+% covers the IRB/consent disclosure the CFP requires, so do not
+% duplicate that text here; this subsection should cover instrument
+% design only (scale item wording/anchors, the two scenario vignettes'
+% exact text, and the attention-check item's wording). Screening/
+% exclusion counts (219 raw -> 182 eligible -> n=177 paired) are already
+% reported in \S\ref{sec:sample-knowledge}; describe *how* those numbers
+% were produced (survey platform, screening logic) rather than repeat
+% them.
+
+\subsection{Deletion-Request Prompt Corpus}
+\label{sec:prompt-corpus}
+
+One arm of the technical audit (\S\ref{sec:audit-methodology}) types real
+deletion requests into each platform rather than researcher-authored
+phrasings. Those requests originate in the same instrument described in
+\S\ref{sec:survey-methodology}: after selecting a deletion method within
+each scenario block, participants typed the exact message they would send
+the assistant to carry it out and stated their rationale for that
+phrasing. Across both scenario blocks this yielded 415 raw responses from
+209 participants; after removing blank/unusable entries and within- and
+cross-participant duplicates, 375 distinct prompts remained. Each was
+scrubbed of residual personally identifying text (32 of 375 prompts
+altered: 20 organization-name, 12 location-name, and 3 person-name
+redactions) and passed through an
+automated feature-extraction pass labeling candidate dimensions including
+a coarse deletion-location category, used only to stratify the sampling
+step below, not as the reliability-bearing codes reported next.
+
+\textbf{Coding and reliability.} Two coders hand-coded prompts against a
+seven-dimension codebook: deletion location (the storage surface the
+request names: the current conversation, the assistant's persistent
+memory, the account as a whole, a named backend or database, or a
+forward-looking ``stop using this'' instruction that names no location),
+justification, data type (\emph{what}), grammatical mood, tone, verb
+register, and any accompanying secondary request (for example, asking for
+confirmation, or asking the assistant to preserve everything else the
+deletion target excludes). Each dimension was coded on 50 items.
+Inter-rater reliability was computed with Gwet's $AC_1$~\cite{gwet2008ac1}
+rather than Cohen's $\kappa$: several dimensions have highly skewed
+category distributions (one label covering 88--96\% of items), under which
+$\kappa$'s chance-agreement term is known to understate true
+agreement~\cite{gwet2008ac1,wongpakaran2013comparison}.
+Table~\ref{tab:ac1} reports the final values. All seven dimensions reached
+$AC_1\geq0.807$, and pooled across all 350 ratings, agreement was 90.9\%
+($AC_1=0.905$).
+
+Deletion location initially agreed least, so the coders met to resolve
+its disagreements and tightened its definition. A location counts only
+when the prompt names it with an explicit referent (conversation or chat,
+memory, account, or a database, server, or training data); quantifiers
+such as ``all'' and generic containers such as ``history'' or
+``messages'' do not qualify. When a prompt names several locations, a
+named database governs over a conversation or memory, and a
+forward-looking clause governs over a named conversation. Deletion
+location was then coded on a fresh set of 50 items under the revised
+definition, and the value in Table~\ref{tab:ac1} comes from that set,
+after the coders compared their codes and revised four of them. The other
+six dimensions were coded once, on the original 50 items.
+% TODO(authors): items 101-138 (Fourth Pass) once the second coder
+% finishes; add their agreement here. Also state the pre-revision AC1 for
+% deletion location if that record exists; do not describe the re-test as
+% fully independent, since four codes (items 58, 81, 83, 96) were revised
+% after comparison.
+
+\begin{table}[t]
+\centering
+\caption{Inter-Rater Reliability, $n=50$ per Dimension}
+\label{tab:ac1}
+\small
+\begin{tabular}{lccc}
+\toprule
+Dimension & Agreement & \% & Gwet's $AC_1$ \\
+\midrule
+Deletion location      & 44/50 & 88.0 & 0.862 \\
+Justification           & 47/50 & 94.0 & 0.931 \\
+What (data type)        & 43/50 & 86.0 & 0.826 \\
+Mood                     & 48/50 & 96.0 & 0.955 \\
+Tone                     & 43/50 & 86.0 & 0.807 \\
+Verb register            & 47/50 & 94.0 & 0.938 \\
+Accompanying request     & 46/50 & 92.0 & 0.917 \\
+\midrule
+Pooled (350 ratings)     & 318/350 & 90.9 & 0.905 \\
+\bottomrule
+\end{tabular}
+\end{table}
+% TODO(authors): confirm whether the automated first-pass deletion-locus
+% labels above were rule-based/regex or LLM-assisted; described here
+% only as "automated" pending that confirmation, since the exact method
+% was not independently verified.
+
+\textbf{Sampling for the technical audit.} A 138-item sample was drawn
+from the 375-item corpus by proportional stratified sampling on the
+automated first-pass deletion-location label (a floor was applied so that
+low-frequency categories were not eliminated from the draw), for use
+verbatim as the chat-typed erasure request in the technical audit's
+NL-forget-prompt cells (\S\ref{sec:audit-methodology}). This sample was
+fixed as a specific item list once distributed to both coders for the
+reliability pass above, rather than regenerable by rerunning the sampling
+step under a different random seed, since redrawing would have
+desynchronized the sampled items from the completed coding.
+
+\subsection{Technical Audit}
+\label{sec:audit-methodology}
+
+The technical audit is a black-box behavioral test of six commercial LLM
+chatbot platforms' consumer-facing deletion controls (Claude, ChatGPT,
+Gemini, Copilot, Perplexity, and DeepSeek), conducted against each
+platform's live web interface rather than its API, since the API does
+not expose the memory, settings, and deletion surfaces the study's
+research questions concern. Each platform is tested through a
+researcher-controlled account under browser automation
+(Playwright)\footnote{Two of the six platforms additionally require a
+stealth plugin to pass Cloudflare bot-detection checks that otherwise
+block any automation-driven session; see the Ethics Considerations
+section.}, driven by an orchestrator that loads each test cell's
+parameters from a pre-registered experiment design and dispatches it to
+the matching platform-specific implementation.
+
+\textbf{Design.} A \textit{cell} pairs one injection method with one
+erasure method on one platform. Three injection methods test distinct
+memory-formation pathways: \textit{I1}, an offhand conversational mention
+with no explicit request to remember it, testing whether a platform
+infers memory-worthiness on its own; \textit{I2}, an explicit
+``please remember'' instruction in conversation; and \textit{I3}, a
+direct entry into a platform's memory/settings field where one exists. A
+fourth condition, \textit{FILE}, tests document-based disclosure by
+uploading a PDF containing the same disclosure content instead of typing
+it. Erasure methods are drawn from each platform's own available
+controls and range from conversation-level deletion, through per-item and
+bulk memory deletion, to account- or privacy-dashboard-level erasure,
+reflecting that no two platforms expose an identical set of deletion
+surfaces. The full design comprises 88 cells: 76 platform/injection/
+erasure combinations plus 12 file-upload cells, distributed unevenly
+across platforms in proportion to how many memory and deletion surfaces
+each one actually exposes.
+
+\textbf{NL-forget-prompt extension.} The 138-item prompt sample described
+in \S\ref{sec:prompt-corpus} is run as an additional, additive set of 828
+cells (138 prompts $\times$ 6 platforms), appended to rather than
+replacing the 88-cell design above. Each prompt is typed verbatim, with
+only its disclosed referent substituted in, as the erasure request against
+every platform, using the fixed I1 (offhand conversational) injection
+method for every cell in this extension: the erasure action here is
+already a typed chat message, so injection type is held constant to
+isolate erasure-phrasing coverage as the varying factor. This extension
+tests a broader, participant-authored sample of real erasure phrasing
+against the same three-probe recall design (R1/R2/R3) as the 88-cell
+battery, rather than the small number of researcher-authored
+representative phrasings a fixed-prompt design would require.
+
+\textbf{Contamination control.} Accounts are reused across cells rather
+than provisioned fresh per cell; attribution across cells sharing an
+account is instead secured by giving every cell a unique \textit{referent}
+(the conversational topic disclosed, e.g. a hobby or habit) and a unique
+\textit{token} (a distinctive codename attached to that referent, 2--4
+words, drawn to give each token a quantifiable, individually low guess
+probability, following the canary-design rationale of prior work on
+measuring unintended memorization~\cite{carlini2019secret}). A recall
+probe that surfaces a cell's token is attributable to that cell alone.
+Disclosure content is restricted by a narrow exclusion list (weapons,
+drugs, sexual content, profanity, and a slur/explicit-term denylist)
+chosen to avoid triggering platform content filters without otherwise
+constraining topic naturalism.
+
+Token uniqueness alone is not sufficient where a cell's own erasure
+action is not scoped to that cell's referent at all: an account-wide or
+``clear everything'' action reaches every other cell sharing that
+account regardless of referent. Two further account-provisioning rules
+address this. First, within the 88-cell battery, any cell whose erasure
+action shares an account with a sibling cell testing the same
+account-wide surface, or with a cell still inside its 31-day post-erasure
+recall window, is moved to its own dedicated account before either cell
+runs, so that a ``confirmed erased'' or ``not found'' recall outcome can
+be attributed to the mechanism under test rather than an unrelated
+blanket action that happened to share its account. Second, cross-platform
+account reuse does not require this isolation: the same login credential
+is deliberately reused across multiple platforms because each platform's
+memory and conversation history is siloed to its own backend, confirmed
+directly in this study: an account-wide erasure action executed on one
+platform had no observed reach into a different platform sharing the
+same login credential. For the NL-forget-prompt extension specifically,
+each platform's 138 cells share a single dedicated account (distinct from
+the 88-cell battery's accounts) rather than one account per cell, since
+per-cell token uniqueness is sufficient for the subset of prompts whose
+coded deletion location (\S\ref{sec:prompt-corpus}) names a narrower
+surface than the account itself. The remaining subset, whose deletion
+location codes as account-wide, is excluded from that shared account and
+held pending provisioning of a dedicated account per item, since running
+an account-wide request there would erase every other cell's
+still-untested content sharing that account.
+
+\textbf{Temporal design.} Each cell runs as three separately scheduled
+events rather than in immediate succession: erasure occurs 48 hours
+after injection, and recall occurs 31 days after erasure. This window is
+sourced from the platforms' own stated data-deletion completion
+commitments, not an arbitrary delay. Recall is tested two ways within
+that single 31-day-post-erasure phase: \textit{same-session} (probing
+within one continuous browser session) and \textit{cross-session} (a
+separate session against the same account), both run back to back rather
+than at separately staggered times.
+
+\textbf{Recall probes.} Three probe types run at each recall point.
+\textit{R1} (direct) first asks an open question about the disclosed
+referent, then, only if the open question fails to surface the token,
+follows up with a forced-choice question against three
+length-matched distractor tokens, a design informed by prior
+ranking-against-counterfactuals approaches to quantifying personal-data
+memorization~\cite{staufer2025wikimem}. \textit{R2} (settings) directly
+inspects the platform's own memory-listing interface where one exists.
+\textit{R3} (indirect) sends an unrelated task that never mentions the
+token, testing whether the disclosed content leaks into unrelated
+generation rather than only being recoverable when directly asked about.
+R1 and R3 responses are auto-scored by case-insensitive token match, with
+a validated correction: a forced-choice reply counts as a genuine
+recovery only if it names the correct token while mentioning at most one
+of the three distractors, since a hedge or refusal that restates the
+full option list otherwise produces a false-positive match.
+
+\textbf{Outcome recording and repetition.} Every cell's erasure and
+recall outcome is pre-registered against a fixed taxonomy (complied /
+partial / refused / deflected / silently ignored for erasure; token
+found / not found / ambiguous, auto-scored with a human-review flag, for
+recall) before full-battery runs begin. Each cell runs once; a cell is
+rerun only if its observed outcome deviates from its pre-registered
+expected outcome, before that deviation is recorded as a finding. Every
+phase of every cell (injection, erasure, same-session recall,
+cross-session recall) saves a full transcript and a full-page screenshot,
+retained per platform and cell for independent review. All six accounts
+are provisioned on each platform's free, no-cost tier; where a platform
+gates a tested surface behind a paid tier, that is recorded as a result
+rather than treated as a methodology gap. File-upload cells (\textit{FILE})
+use a distinct, more granular verification taxonomy reflecting that a
+document can be read into a conversation, into persistent memory, into
+both, or into neither without a follow-up request. Extraction is
+checked passively first (does the platform's own unprompted reply or
+memory listing surface the token) and, only if neither does, once more
+after an explicit follow-up request to summarize the document.
+
+\section{Results}
+\label{sec:results}
 
 \subsection{What Users Know About Memory and Deletion}
+\label{sec:sample-knowledge}
 
-Of 219 raw responses, 1 was dropped for failing the attention check and 36
-were excluded for never having deleted data from an AI chatbot before,
-leaving 182 eligible participants and a paired analysis base of $n=177$ who
-completed both the less-sensitive and more-sensitive scenario blocks.
+Of 219 responses, 37 were excluded: 1 for failing the attention check and 36 for having never deleted chatbot data. This left 182 eligible participants, including $n=177$ who completed both sensitivity scenarios.
 
-\textbf{The sample skews young, educated, and experienced with AI chatbots.}
-Table~\ref{tab:demographics} summarizes demographics: 73\% of participants
-are under 45, the majority identify as male (58.8\%), and 62.1\% hold a
-bachelor's degree or higher. All participants were US-based with prior
-chatbot experience, per the study's eligibility criteria. As shown in
-Figure~\ref{fig:ai-tenure}, ChatGPT (99.4\%) and Gemini (92.7\%) are
-near-universal among participants, Claude and Copilot are each used by
-two-thirds (67.8\%), and Perplexity and Deepseek are both the least-used and
-most recently adopted platforms.
+\textbf{Participants were young, educated, and experienced chatbot users.}
+Seventy-three percent were under 45, 58.8\% identified as male, and 62.1\% held at least a bachelor's degree (Table~\ref{tab:demographics}). All were US-based with prior chatbot experience. ChatGPT (99.4\%) and Gemini (92.7\%) were nearly universal, while Claude and Copilot were each used by 67.8\%. Perplexity and DeepSeek were the least used and most recently adopted platforms (Figure~\ref{fig:ai-tenure}).
 
-\textbf{Participants show strong baseline privacy knowledge, with one
-consistent blind spot.} On a 6-item objective knowledge check spanning the
-right to be forgotten, chatbot memory, and training data, participants
-averaged 5.06/6 correct (median 5.0/6; Table~\ref{tab:demographics}), and
-46.3\% answered all six items correctly. The weakest item was whether
-chatbots access only public user data (70.1\% correct; 29.9\% incorrectly
-believe they do). The strongest was recognizing that conversations may be
-used to train future models (93.8\% correct).
+\textbf{Privacy knowledge was high, with one notable gap.}
+Participants averaged 5.06/6 correct on questions covering the right to be forgotten, chatbot memory, and training data; 46.3\% answered all six correctly. Accuracy was lowest for whether chatbots access only public user data (70.1\%) and highest for whether conversations may be used for future model training (93.8\%).
 
 \begin{table}[t]
 \centering
@@ -132,7 +513,7 @@ Variable & Response & $n$ & \% \\
  & High school/GED        & 15 & 8.5 \\
  & Some high school or less & 3 & 1.7 \\
 \midrule
-Privacy Knowledge (0--6) & $M=5.06$, $Mdn=5.0$ & --- & --- \\
+Privacy Knowledge (0--6) & $M=5.06$, $Mdn=5.0$ & n/a & n/a \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -147,18 +528,11 @@ adopted.}
 \end{figure}
 
 \subsection{Deletion Expectations and the Sensitivity Effect}
+\label{sec:sensitivity-effect}
 
-\textbf{``Delete this single conversation'' dominates method selection in
-both scenarios, but the shift with sensitivity is not statistically
-significant.} As shown in Figure~\ref{fig:method-selection}, it accounts for
-84/177 (47.5\%) of choices in the less-sensitive scenario and 80/177 (45.2\%)
-in the more-sensitive one -- roughly three times the next most common method,
-``Clear all conversation history'' (33 and 40, respectively). Only four of
-the seven offered methods clear the $n\geq14$ reporting floor used for
-inferential testing in every scope; the remaining three (Clear all saved
-memories, Privacy dashboard, Delete my account) are reported descriptively
-only. The overall distribution shift across all seven methods is not
-statistically significant (Stuart-Maxwell, $p=.393$).
+\textbf{Deleting a single conversation was the dominant choice regardless of sensitivity.}
+It was selected by 84/177 (47.5\%) participants in the less-sensitive scenario and 80/177 (45.2\%) in the more-sensitive scenario, compared with 33 and 40 selecting ``Clear all conversation history,'' respectively (Figure~\ref{fig:method-selection}). Only four methods met the $n\geq14$ threshold for inferential testing across both scenarios; the remaining three are reported descriptively. Overall method selection did not differ significantly by sensitivity (Stuart-Maxwell, $p=.393$).
+
 
 \begin{figure}[t]
 \centering
@@ -170,32 +544,9 @@ $p=.393$).}
 \label{fig:method-selection}
 \end{figure}
 
-\textbf{Methods separate clearly on effort, but barely on protection or
-benefit loss.} ``Delete a specific saved memory or fact'' is rated
-highest-effort and highest-benefit-loss in every scope (pooled $M=2.45$
-effort, $M=3.43$ benefit loss), while ``Delete this single conversation'' is
-rated lowest-effort throughout (pooled $M=1.68$). Protection ratings are far
-more compressed across methods (pooled range 3.65--3.80); see
-Figure~\ref{fig:crowning-combined} below for the median-based, significance-
-annotated version of this comparison.
+\textbf{Methods differ in effort, but not in protection or benefit loss.} ``Delete a specific saved memory or fact'' had the highest pooled effort ($M=2.45$) and benefit-loss ($M=3.43$) ratings, whereas ``Delete this single conversation'' had the lowest pooled effort ($M=1.68$). Protection ratings varied little across methods (pooled range: 3.65--3.80; Figure~\ref{fig:crowning-combined}).
 
-\textbf{No deletion method is ever the single statistically best choice on
-any scale.} Kruskal-Wallis tests find no significant difference between
-methods on protection or benefit loss, in any scope -- pooled, less-, or
-more-sensitive (all $p>.15$, 6/6 tests null). Effort is the only scale with
-a significant omnibus difference in every scope (pooled $H=19.54$, $p<.001$;
-less $H=18.42$, $p<.001$; more $H=16.98$, $p<.001$; Figure~\ref{fig:crowning-combined}),
-but even there no method clears every pairwise post-hoc comparison.
-``Delete this single conversation'' has the best (lowest) effort point
-estimate in the pooled and less-sensitive scopes and significantly
-outperforms ``Delete a specific saved memory or fact'' ($p<.001$ both), but
-is statistically indistinguishable from ``Clear all conversation history''
-and ``Type a message asking the AI Chatbot to forget it.'' In the
-more-sensitive scope the ranking flips -- ``Type a message...'' has the
-lowest raw mean -- but it does not significantly beat any other method
-there. The data support a narrow claim only: ``Delete this single
-conversation'' is reliably lower-effort than ``Delete a specific saved
-memory,'' not that it is the single lowest-effort method overall.
+\textbf{No method was statistically superior across any outcome.} Kruskal-Wallis tests found no differences in protection or benefit loss in the pooled, less-sensitive, or more-sensitive analyses (all $p>.15$). Effort differed significantly across methods in all three scopes (pooled $H=19.54$, $p<.001$; less-sensitive $H=18.42$, $p<.001$; more-sensitive $H=16.98$, $p<.001$), but no method outperformed all others in pairwise comparisons. ``Delete this single conversation'' required significantly less effort than ``Delete a specific saved memory or fact'' in the pooled and less-sensitive analyses ($p<.001$), but did not differ from ``Clear all conversation history'' or asking the chatbot to forget the information. In the more-sensitive scenario, asking the chatbot to forget had the lowest mean effort, but no pairwise differences were significant. Thus, the data support only that deleting a single conversation is lower-effort than deleting a specific saved memory, not that it is universally the lowest-effort method.
 
 \begin{figure}[t]
 \centering
@@ -208,48 +559,11 @@ pooled and less-sensitive scopes ($p<.001$).}
 \label{fig:crowning-combined}
 \end{figure}
 
-\textbf{Willingness to delete and perceived protection both rise
-significantly as data sensitivity increases; effort and perceived loss do
-not.} This is a different question from method choice above -- it asks
-whether sensitivity itself, independent of which method someone uses, moves
-these ratings. Paired comparison of the same $n=177$ participants across the
-less- and more-sensitive scenarios (Wilcoxon signed-rank) shows willingness
-to delete rising from $M=3.98$ to $M=4.37$ ($+0.39$, $p<.001$, $r=.55$, the
-largest effect in this study) and perceived protection rising from $M=3.66$
-to $M=3.79$ ($+0.13$, $p<.001$, $r=.38$). Effort ($+0.03$) and benefit loss
-($+0.04$) show no significant change (both ns). Protection is the notable
-case: \emph{which method} someone uses has no effect on perceived
-protection in any scope (above), yet \emph{how sensitive the data feels}
-moves it significantly -- two independent findings about protection, not a
-contradiction. Benefit loss is the one scale unmoved on either axis.
+\textbf{Greater data sensitivity increases willingness to delete and perceived protection, but not effort or benefit loss.} Among the same $n=177$ participants, willingness to delete increased from $M=3.98$ to $M=4.37$ ($\Delta=+0.39$, $p<.001$, $r=.55$), the largest effect observed, while perceived protection increased from $M=3.66$ to $M=3.79$ ($\Delta=+0.13$, $p<.001$, $r=.38$). Effort ($\Delta=+0.03$) and benefit loss ($\Delta=+0.04$) did not change significantly. Thus, although protection ratings do not differ across deletion methods, they increase when the data is more sensitive. 
 
-\textbf{Method switching is common overall, and one method shows a
-significant decline under higher sensitivity.} 64\% of participants
-(113/176) select the same deletion method in both scenarios, while 36\%
-(63/176) switch. The aggregate 7-category distribution does not shift
-significantly (Stuart-Maxwell, stat$=6.28$, $df=6$, $p=.393$). Ranked by
-raw net change (added minus dropped), ``Clear all conversation history''
-gains the most adopters ($+7$) as sensitivity rises, while ``Type a message
-asking the AI Chatbot to forget it'' loses the most ($-11$; 15 dropped vs.\
-4 added, $p=.019$) -- participants become significantly less likely to rely
-on a conversational request when the data feels more sensitive. Every other
-individual method's shift is non-significant. Individual-level churn is
-real -- over a third of participants change their answer -- but only this
-one method shows a clean, significant directional pattern.
+\textbf{More than one-third of participants switch deletion methods as sensitivity increases.} While 64\% (113/176) selected the same method across scenarios, 36\% (63/176) switched. The overall distribution remained unchanged (Stuart-Maxwell, stat$=6.28$, $df=6$, $p=.393$). ``Clear all conversation history'' gained the most users ($+7$), whereas asking the chatbot to forget the information lost the most ($-11$; 15 dropped vs.\ 4 added, $p=.019$). No other method changed significantly, suggesting that greater sensitivity specifically reduces reliance on conversational deletion requests.
 
-\textbf{Beliefs about what deletion does and how people verify it form a
-genuine hierarchy within each scenario, dominated by a training-data blind
-spot.} Cochran's Q confirms both rankings are far from a flat distribution
-(expectation: $Q=245.25$, $p<.001$; verification: $Q=142.99$, $p<.001$,
-less-sensitive scenario; both replicate in the more-sensitive scenario).
-``Permanently deleted'' is the most commonly held belief (55.4\% less,
-62.4\% more), while ``not used for training'' is the least- or near-least-
-endorsed belief for every reportable method in both scenarios (15--37\%) --
-roughly two-thirds to five-sixths of participants do not expect deletion to
-stop their data from training the model, regardless of which method they
-use. On verification, ``did NOT know how to check'' is the single most
-common response in both scenarios ($\approx$45\%), well ahead of any active
-verification behavior (Figure~\ref{fig:expectation-verification}).
+\textbf{Participants expect deletion to remove data, but rarely expect it to prevent training use or know how to verify deletion.} Deletion expectations and verification behaviors differed significantly within each scenario (less-sensitive: expectation $Q=245.25$, $p<.001$; verification $Q=142.99$, $p<.001$; both patterns replicated in the more-sensitive scenario). ``Permanently deleted'' was the most common expectation (55.4\% less-sensitive; 62.4\% more-sensitive), whereas only 15--37\% expected deletion to prevent future training use. Approximately 45\% did not know how to verify deletion, making this the most common verification response in both scenarios (Figure~\ref{fig:expectation-verification}).
 
 \begin{figure}[t]
 \centering
@@ -261,18 +575,16 @@ common verification response, in every scope.}
 \label{fig:expectation-verification}
 \end{figure}
 
-\textbf{Deletion method has no significant association with stated
-expectation, pooled across both scenarios.} Table~\ref{tab:contingency}
-breaks down the same four qualifying methods against the top expectation
-options, as \% of each method's own $n$ (comparable across methods; raw
-counts scale with method popularity and are not). Testing all seven
-expectation options against method choice (chi-square where all expected
-counts $\geq5$, Fisher's exact otherwise, Holm-corrected within the family
-of seven), none survive correction -- closest is ``made invisible/hidden''
-($p_{raw}=.049$, $p_{holm}=.344$) -- and effect sizes are uniformly small
-(Cram\'er's $V\leq.19$). Which method someone picks predicts nothing
-statistically about what they expect it to do, matching the per-scenario
-tests below.
+\textbf{Deletion method is not significantly associated with deletion
+expectations.}
+Table~\ref{tab:contingency} compares the four qualifying methods across the
+most common expectation options, reported as within-method percentages.
+Across all seven expectations, no association with method choice remained
+significant after Holm correction; the closest was ``made invisible/hidden''
+($p_{\mathrm{raw}}=.049$, $p_{\mathrm{Holm}}=.344$). Effect sizes were small
+throughout (Cram\'er's $V\leq.19$), indicating that method choice does not
+meaningfully predict what participants expect deletion to accomplish.
+
 
 \begin{table}[t]
 \centering
@@ -294,81 +606,58 @@ Specific memory (30) & 65.0 & 63.3 & 58.3 & 16.7 \\
 \end{tabular}
 \vspace{4pt}
 
-\footnotesize{\textbf{Concise conclusion:} no significant association
-between deletion method and expectation (all $p_{holm}\geq.344$; Cram\'er's
-$V\leq.19$ throughout) -- method choice does not predict what a user expects
-deletion to accomplish. Columns shown are the three dominant expectations
-(top-3 for every method) plus the training-data blind spot; ``made
-invisible/hidden'' and ``not sure/other'' omitted for space, included in the
-significance test above.}
+\footnotesize{\textbf{Conclusion:} Deletion method was not significantly
+associated with expectations 
+% (all $p_{\mathrm{Holm}}\geq.344$; Cram\'er's
+% $V\leq.19$). 
+Columns show the three most common expectations plus the
+training-data blind spot; ``made invisible/hidden'' and ``not sure/other''
+are omitted for space but included in the significance tests.}
 \end{table}
 
-\textbf{Verification behavior differs significantly by method; beliefs
-about what deletion does mostly do not.} In the less-sensitive scenario,
-three verification behaviors vary significantly by method: ``asked in same
-conversation'' ($p<.001$), ``asked in new conversation'' ($p=.002$), and
-``did NOT know how to check'' ($p=.001$). The same three verification
-behaviors, with ``checked settings'' replacing ``asked in new
-conversation,'' vary significantly by method in the more-sensitive scenario
-(``asked in same conversation'' $p=.005$, ``checked settings'' $p=.006$,
-``did NOT know how to check'' $p=.044$). Expectations are far more stable
-across methods: no expectation option varies significantly by method in the
-less-sensitive scenario, though two do in the more-sensitive one --
-``not referenced in current conversation'' ($p=.008$) and ``not referenced
-in future conversation'' ($p=.030$). This mirrors the earlier effort
-finding: the easiest methods to invoke (lowest effort, Figure~\ref{fig:crowning-combined}) are
-also the ones users are least equipped to verify.
+\textbf{Verification behavior varies by deletion method, while expectations
+largely do not.}
+In the less-sensitive scenario, method choice was associated with asking in
+the same conversation ($p<.001$), asking in a new conversation ($p=.002$),
+and not knowing how to verify deletion ($p=.001$). In the more-sensitive
+scenario, significant differences appeared for asking in the same
+conversation ($p=.005$), checking settings ($p=.006$), and not knowing how
+to verify ($p=.044$). Expectations were comparatively stable: none differed
+by method in the less-sensitive scenario, while two did in the
+more-sensitive scenario: whether deleted information would be referenced
+in the current ($p=.008$) or future conversation ($p=.030$). Together with
+the effort results (Figure~\ref{fig:crowning-combined}), these findings
+suggest that lower-effort deletion methods are not necessarily easier for
+users to verify.
 
-\textbf{Verification tracks stated confidence, but miscalibration remains
-severe and does not improve when stakes rise.} An ordinal trend test
-confirms that participants reporting higher confidence a deletion worked
-were more likely to have verified it, in both scenarios (less: $z=2.50$,
-$p=.012$; more: $z=2.23$, $p=.026$). Even so, base rates of verification
-are low throughout: among participants ``not at all confident'' the
-deletion worked, 81.8\% never verified in the less-sensitive scenario and
-88.9\% never verified in the more-sensitive one -- if anything slightly
-worse, not better, when the data is more sensitive.
+\textbf{Verification increases with confidence, but remains uncommon.}
+Higher confidence was associated with greater verification in both scenarios
+(less-sensitive: $z=2.50$, $p=.012$; more-sensitive: $z=2.23$, $p=.026$).
+Yet among participants ``not at all confident,'' 81.8\% and 88.9\%,
+respectively, never verified deletion, showing no improvement with greater
+sensitivity.
 
-\textbf{Participants consistently report an ideal method different from
-the one they actually used, and this gap widens as sensitivity rises.}
-Paired comparison of used-vs-ideal method selection is significant for
-every method except ``Delete my account entirely'' in the less-sensitive
-scenario (all $p<.001$; e.g., ``Ask chatbot to forget'': 6 used-only vs.\
-64 ideal-only). In the more-sensitive scenario all seven methods reach
-significance, including ``Delete my account'' ($p=.022$). The gap is
-directional throughout -- far more participants nominate a method as ideal
-than actually use it, never the reverse -- and widens under higher
-sensitivity for the largest methods: ``Ask chatbot to forget'' grows from
-32.8 to 42.1 percentage points, ``Delete a specific saved memory'' from
-20.3 to 29.2. The disconnect between stated preference and actual behavior
-is largest exactly when the stakes are highest.
+\textbf{Ideal deletion methods differ substantially from those actually used.}
+Used-versus-ideal choices differed for nearly every method in the
+less-sensitive scenario (all $p<.001$ except ``Delete my account'') and all
+seven methods in the more-sensitive scenario ($p\leq.022$). Participants
+consistently selected more methods as ideal than they actually used, with
+the gap widening for ``Ask chatbot to forget'' (32.8 to 42.1 percentage
+points) and ``Delete a specific saved memory'' (20.3 to 29.2).
 
-\textbf{Neither age nor chatbot tenure moderates the rating scales in
-either scenario; each predicts method choice in one scenario only.}
-Kruskal-Wallis tests find no significant effect of age group or ChatGPT
-tenure on protection, effort, benefit loss, or willingness to delete, in
-either scenario (all $p>.14$, 16/16 tests null). Age group significantly
-predicts \emph{which method} someone selects in the less-sensitive scenario
-(Fisher's exact, $p=.015$, Cram\'er's $V=.229$) but not in the
-more-sensitive one ($p=.080$); ChatGPT tenure shows the reverse pattern,
-predicting method choice in the more-sensitive scenario ($p=.013$,
-$V=.207$) but not the less-sensitive one ($p=.121$). Both associations are
-modest in size ($V\approx.21$--$.23$) -- real but not large -- and neither
-demographic variable moderates how protective, effortful, or costly a
-method feels to use.
+\textbf{Age and chatbot tenure affect method choice, but not deletion ratings.}
+Neither age nor ChatGPT tenure was associated with protection, effort,
+benefit loss, or willingness to delete (all $p>.14$). Age predicted method
+choice only in the less-sensitive scenario ($p=.015$, $V=.229$), while
+ChatGPT tenure did so only in the more-sensitive scenario ($p=.013$,
+$V=.207$).
 
-\textbf{Protection, effort, and benefit loss are statistically distinct
-constructs, justifying their treatment as three separate outcomes above.}
-Table~\ref{tab:discriminant-validity} reports pooled pairwise Spearman
-correlations among the three scales. All three pairs fall well below the
-$|\rho|\geq0.8$ threshold conventionally used to flag construct redundancy.
-Protection is essentially uncorrelated with the other two scales
-($\rho=-0.057$ with effort, $\rho=0.129$ with benefit loss, both ns).
-Effort and benefit loss show the one significant relationship in the data
-($\rho=0.305$, $p<.001$) -- a small-to-moderate positive association, not
-redundancy: participants who rate a method as more effortful also tend to
-rate it as costing them more, consistent with the pattern above where
-``Delete a specific saved memory'' rates highest on both.
+\textbf{Protection, effort, and benefit loss capture distinct constructs.}
+Pairwise correlations were below the $|\rho|\geq.8$ redundancy threshold
+(Table~\ref{tab:discriminant-validity}). Protection was unrelated to effort
+($\rho=-.057$) and benefit loss ($\rho=.129$), while effort and benefit loss
+were modestly correlated ($\rho=.305$, $p<.001$).
+
 
 \begin{table}[t]
 \centering
@@ -378,27 +667,178 @@ rate it as costing them more, consistent with the pattern above where
 \toprule
  & Protection & Effort & Benefit Loss \\
 \midrule
-Protection   & --- & $-0.057$ & $0.129$ \\
-Effort       & $-0.057$ & --- & $0.305^{***}$ \\
-Benefit Loss & $0.129$ & $0.305^{***}$ & --- \\
+Protection   & n/a & $-0.057$ & $0.129$ \\
+Effort       & $-0.057$ & n/a & $0.305^{***}$ \\
+Benefit Loss & $0.129$ & $0.305^{***}$ & n/a \\
 \bottomrule
 \end{tabular}
 \vspace{4pt}
 
 \footnotesize{Cell values are Spearman's $\rho$ (correlation strength) between
 each pair, pooled across both scenarios. $^{*}p<.05$, $^{**}p<.01$,
-$^{***}p<.001$. Only effort--benefit loss is statistically significant.}
+$^{***}p<.001$. Only the effort and benefit loss pair is statistically significant.}
 \end{table}
 
-\section*{Discussion}
+\subsection{Technical Audit}
+\label{sec:audit-results}
+% TODO(authors): drives RQ1 (observed deletion-control behavior per
+% platform/cell, against \S\ref{sec:audit-methodology}'s pre-registered
+% compliance taxonomy), RQ2 (where observed behavior contradicts each
+% platform's stated policy), and, together with \S\ref{sec:sample-knowledge}
+% and \S\ref{sec:sensitivity-effect}, feeds RQ5 (Discussion) once real
+% per-cell outcome data exists to report. Draft from MASTER/FILE SUBSTUDY's
+% Run status/Observed outcome columns and tester/transcripts/ once the
+% audit reaches a reportable stopping point (either full completion or a
+% pre-registered interim cut), not before; do not draft this from
+% partial/in-progress data presented as final.
+TBWL
 
+\section{Discussion}
+\label{sec:discussion}
 
+\textbf{The training-data blind spot mirrors a real technical
+distinction.} Deletion that removes a record does not, by itself, remove
+that record's influence on a model already trained on it; this is the
+gap machine-unlearning research treats as a distinct, harder technical
+problem from record-level deletion~\cite{bourtoule2021machine}.
+Participants collapse that distinction: most expect a deletion action to
+leave data ``permanently deleted,'' while 65--85\% do not expect it to
+stop that data from being used in future model training
+(\S\ref{sec:sample-knowledge}). Whether that expectation gap reflects an
+accurate reading of what today's chatbot deletion controls actually
+guarantee, or a mismatch between user belief and platform behavior, is a
+question this paper's technical audit (RQ2/RQ5) takes up directly; either way, the
+policy language on which participants would have to rely to form this
+belief does not appear to resolve the distinction for them.
 
+\textbf{Low verification is a recurring failure mode, not a new one.}
+Usable-privacy work on other deletion surfaces has repeatedly found that
+a deletion control's existence does not guarantee it is understood,
+locatable, or actually checked. This holds for cloud-storage
+deletion~\cite{ramokapane2017stupid} and for website data-deletion and
+opt-out controls audited directly~\cite{habib2019empirical}.
+Participants' verification behavior fits the same pattern in a new
+setting: roughly 45\% did not know how to check whether a chatbot
+deletion worked, and confidence in a method did not translate into
+higher sensitivity-scenario verification rates
+(\S\ref{sec:sample-knowledge}). This suggests the verification gap is a
+property of how deletion controls are generally designed and explained,
+not something specific to any one platform's implementation.
 
-\section*{Limitations}
+\textbf{The memory-deletion cost matches a known mental-model gap.}
+Interview work on LLM chatbot memory features finds that users hold
+diverse, often incomplete models of what a stored ``memory'' represents
+and how it was formed, and want finer-grained control over
+it~\cite{zhang2025understanding}. That gives a plausible mechanism for
+this paper's own finding that ``delete a specific saved memory'' is both
+the highest-effort and highest-benefit-loss method participants
+rated (\S\ref{sec:sample-knowledge}): if a user is unsure what a memory
+entry represents or how it was derived, deciding whether and how to
+delete it is harder than deleting a single conversation turn, independent
+of how many clicks either action actually takes.
 
-\section*{Conclusion}
+\textbf{Demand for heavier controls rises with sensitivity faster than
+platforms (or users' own behavior) keep up.} Willingness to delete and
+perceived protection both increase significantly with data sensitivity,
+but the gap between participants' used and ideal deletion methods widens
+rather than narrows in the more-sensitive scenario
+(\S\ref{sec:sample-knowledge}). Li et al.'s walkthrough finds that
+LLM platforms' deletion controls are already inconsistently implemented
+across accounts and message types~\cite{li2026privacy}; taken together,
+these results suggest that exactly when users want more control, the
+controls available to exercise, and the ones users actually reach for,
+both lag behind that demand, for reasons this paper's user-side data
+alone cannot fully separate (control availability vs. control
+discoverability vs. user effort tolerance).
 
+\textbf{Implication.} Across all four points above, the same shape
+recurs: participants' beliefs about deletion are neither random nor
+uniformly wrong, but systematically optimistic about scope (assuming
+permanence and training exclusion) and systematically under-informed
+about verification. A chatbot platform that wants its deletion controls
+to function as a real right-to-erasure mechanism, rather than a
+lightweight convenience action, would need to close both gaps
+concurrently: stating plainly what a given control does and does not
+remove, and making it possible to confirm the outcome. Closing
+only one leaves the other to keep producing the mismatch RQ5 is designed
+to measure directly.
+
+\section{Limitations}
+% TODO(authors): survey-side limitations: sample skew (young, US-only,
+% high baseline privacy knowledge, \S\ref{sec:sample-knowledge}),
+% self-report of past deletion behavior/expectations, underpowered
+% subgroup tests (McNemar per-method power caveats noted in the results,
+% e.g. \S~B9/global.md). Technical-audit-side limitations (once its
+% Results are drafted), e.g. all 6 test accounts are free/no-cost tier
+% (Perplexity's Memory feature, and everything depending on it, is
+% inaccessible on that tier, a real access finding, not just a testing
+% gap, but still worth naming as a scope limitation here too), accounts
+% reused across cells with contamination controlled via unique per-cell
+% anchor+token rather than fresh-account isolation, n=1 trial baseline
+% (rerun once only on deviation from expected outcome), and platform UI
+% changes during the study window (e.g. ChatGPT's memory redesign
+% removing per-item deletion mid-study) limiting how directly results
+% generalize forward in time.
+TBWL
+
+\section{Conclusion}
+% TODO(authors): 1-2 paragraphs restating the core contribution and
+% takeaway without re-deriving statistics already given in Results.
+TBWL
+
+% ----------------------------------------------------------------
+\section*{Ethics Considerations}
+% Required disclosure per the IEEE S&P 2027 CFP for work involving
+% human-subjects data. Fill in the bracketed items before submission --
+% do not leave placeholders in the submitted PDF. This section is also
+% requested as a separate field on HotCRP at registration; keep the two
+% consistent. At camera-ready this section is added/finalized without
+% counting against the page limit, but reviewers see whatever is here
+% at submission time, so complete it now rather than deferring it.
+This study was reviewed by [INSTITUTION]'s Institutional Review Board
+and received [APPROVAL / EXEMPTION], protocol \#[IRB PROTOCOL NUMBER].
+% TODO(authors): confirm IRB status/number and fill in above; if not
+% yet obtained, state current status and target date instead.
+Participants were recruited via [RECRUITMENT PLATFORM/METHOD] and gave
+[informed consent / consent language] before beginning the survey; they
+were compensated [COMPENSATION AMOUNT/METHOD] and were free to withdraw
+at any point without penalty. No directly identifying information
+(name, email, IP address) was collected with survey responses; [DESCRIBE
+ANY ADDITIONAL DE-IDENTIFICATION / DATA RETENTION STEPS]. Two attention
+and eligibility checks (failed the attention check; had never deleted
+chatbot data before) were applied prior to analysis, excluding 37 of
+219 raw responses (\S\ref{sec:sample-knowledge}), so that only eligible,
+attentive respondents' data is analyzed and reported.
+
+The technical audit (RQ1, RQ2, RQ5) interacted with six commercial LLM
+chatbot platforms (Claude, ChatGPT, Gemini, Copilot, Perplexity,
+DeepSeek) using researcher-controlled accounts created for this study,
+not third-party or compromised accounts. Every action (sending messages,
+uploading documents, invoking each platform's own memory, settings, and
+deletion controls) used standard, publicly available account
+functionality; no vulnerability was exploited, no access control was
+bypassed, and no other user's data was accessed at any point. Potential
+harm is confined to the researchers' own test-account data; the study
+does not disrupt other users, access confidential information, or alter
+shared infrastructure.
+% TODO(authors): the CFP's live-systems disclosure additionally requires
+% stating (a) whether permission was sought from each platform and, if
+% not, why it was not needed or feasible, and (b) an explicit
+% harms-vs-benefits weighing statement; both need the authors' own
+% position, not an inferred one. Browser automation here uses
+% playwright-stealth on 2 of 6 platforms specifically to pass Cloudflare
+% bot-detection checks (see tester/CLAUDE.md); that detail belongs in
+% this disclosure and should be addressed directly rather than omitted,
+% since a reviewer could read it as circumventing an anti-automation
+% control.
+
+% ----------------------------------------------------------------
+% TODO(authors): populate refs.bib further as the Background/Related
+% Work literature review is written (a GDPR Art. 17 entry is already
+% in refs.bib so \cite{gdpr2016} above resolves). IEEEtran bibliography
+% style is required by the CFP template; do not substitute another.
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
 
 
 \end{document}

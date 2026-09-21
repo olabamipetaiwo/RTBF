@@ -46,3 +46,9 @@ outputs/figures/  Generated figures
 - The raw export has **2 metadata header rows** (question ID, full question text), not the standard 3-row Qualtrics format — there's no ImportId-JSON row. Data starts at row 2 (0-indexed). See `src/config.py`.
 - The scenario mapping (`Q4` = less sensitive, `Q5` = more sensitive) is **not encoded in the export** — it's hard-coded in `src/config.py` from the survey design.
 - Analysis base is currently gated only on the `Q6.5` attention check (205 retained / 14 dropped as of the last raw export). A second gate — restricting to respondents who have deleted data before — is a `TODO` in `src/screen.py`, pending confirmation of the exact column (`Q3.2_1`..`Q3.2_9` / `Q3.2_13` is the current best candidate).
+
+
+
+
+
+<!-- Not done — and this is the gap: paper.tex has zero mention of the coding comparison or AC1 anywhere (I grepped for kappa/AC1/Gwet/agreement/inter-rater — nothing). The Methodology section only covers the technical audit (injection/erasure/recall); the qualitative prompt-coding study (deletion_location/justification/what/mood/tone/verb/accompanying_request, 138 items, two coders) isn't written up at all yet, and Results §"Technical Audit" (line 549) is still a TODO stub. -->

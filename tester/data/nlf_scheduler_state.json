@@ -1,0 +1,26 @@
+{
+  "chatgpt": {
+    "batch_size": 35,
+    "next_ready_at": 1789216065.713006
+  },
+  "claude": {
+    "batch_size": 40,
+    "next_ready_at": 1789216044.143755
+  },
+  "perplexity": {
+    "batch_size": 40,
+    "next_ready_at": 1789212113.060736
+  },
+  "deepseek": {
+    "batch_size": 40,
+    "next_ready_at": 1789213185.041431
+  },
+  "copilot": {
+    "batch_size": 40,
+    "next_ready_at": 1789230106.970104
+  },
+  "gemini": {
+    "batch_size": 5,
+    "next_ready_at": 1789275257.0945559
+  }
+}

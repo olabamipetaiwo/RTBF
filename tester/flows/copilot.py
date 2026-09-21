@@ -207,12 +207,35 @@ class CopilotFlow(PlatformFlow):
 
     # --- ERASURE_DISPATCH targets ---
 
-    def _send_nl_forget(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
+    def _send_nl_forget(
+        self,
+        token: str | None = None,
+        injection_text: str = "",
+        ref: str | None = None,
+        erasure_request_text: str | None = None,
+    ) -> None:
         """Not a UI click -- routes back through send_message() with the
-        erasure_request_sentence() text once that's wired in
-        (RTBF-Prompt/token_generator.py). Placeholder for now, same as
-        every other platform's equivalent method."""
-        raise NotImplementedError
+        erasure_request_sentence() text (RTBF-Prompt/token_generator.py),
+        wired in 2026-09-07. `erasure_request_text` is precomputed per
+        cell (only the 13 blocked_on_prompt_set cells get one, written to
+        MASTER by token_generator.py) and forwarded here by base.py's
+        erase_via_ui(). Navigates to this cell's own conversation via
+        `ref` (captured at injection time) so the erasure request lands
+        in the same conversation as the disclosure. If `ref` is missing,
+        this cell's injection was field/settings-based, which has no
+        owned conversation -- falls back to a fresh conversation
+        instead."""
+        if not erasure_request_text:
+            raise RuntimeError(
+                "_send_nl_forget: no erasure_request_text provided -- "
+                "this cell's prompt-set text isn't wired in"
+            )
+        if ref:
+            self.page.goto(ref)
+            self.page.wait_for_timeout(1500)
+        else:
+            self.new_conversation()
+        self.assert_real_answer(self.send_message(erasure_request_text))
 
     def _open_sidebar_conversation_rows(self):
         """Shared by _delete_conversation_history()/_find_conversation_row_index().
@@ -230,6 +253,37 @@ class CopilotFlow(PlatformFlow):
             self.page.wait_for_timeout(1000)
         return self.page.query_selector_all('[aria-label="View Options"]')
 
+    def _scroll_and_find_row_index(self, is_match) -> int | None:
+        """Shared by _find_conversation_row_index()/
+        _find_conversation_row_index_by_token(). Bug fixed 2026-09-07:
+        Copilot's sidebar lazy-loads more conversations as you scroll --
+        confirmed live only 20 rows render initially, growing to 63+ after
+        repeated scrolling. CO-IF-E-MAX's own conversation was past that
+        first 20, which is exactly why _delete_conversation_history() was
+        reporting "not found" for an account that genuinely had the
+        conversation (confirmed separately: it was there, just further
+        down the lazy-loaded list). Clicks each row in turn (read-only/
+        non-destructive, just switches which conversation is open),
+        calling `is_match()` after each click; if nothing in the
+        currently-loaded rows matches, scrolls to the last one to trigger
+        loading more and keeps going -- stops only once a scroll produces
+        no new rows (the true end of the list)."""
+        checked = 0
+        while True:
+            opts = self._open_sidebar_conversation_rows()
+            for i in range(checked, len(opts)):
+                row = opts[i].evaluate_handle('el => el.closest("li") || el.parentElement.parentElement').as_element()
+                row.click(force=True)
+                self.page.wait_for_timeout(800)
+                if is_match():
+                    return i
+            checked = len(opts)
+            if opts:
+                opts[-1].evaluate_handle('el => el.scrollIntoView()')
+            self.page.wait_for_timeout(1000)
+            if len(self._open_sidebar_conversation_rows()) <= checked:
+                return None
+
     def _find_conversation_row_index(self, ref: str) -> int | None:
         """Copilot's sidebar rows have no href of their own (confirmed live
         2026-08-31: `a[href]` in the sidebar only matches unrelated nav
@@ -243,14 +297,9 @@ class CopilotFlow(PlatformFlow):
         non-destructive (just switches which conversation is open)."""
         from urllib.parse import urlsplit
         target_path = urlsplit(ref).path.rstrip("/")
-        opts = self._open_sidebar_conversation_rows()
-        for i, opt in enumerate(opts):
-            row = opt.evaluate_handle('el => el.closest("li") || el.parentElement.parentElement').as_element()
-            row.click(force=True)
-            self.page.wait_for_timeout(800)
-            if urlsplit(self.page.url).path.rstrip("/") == target_path:
-                return i
-        return None
+        return self._scroll_and_find_row_index(
+            lambda: urlsplit(self.page.url).path.rstrip("/") == target_path
+        )
 
     def _find_conversation_row_index_by_token(self, token: str) -> int | None:
         """Fallback for _delete_conversation_history() when `ref` is
@@ -259,14 +308,9 @@ class CopilotFlow(PlatformFlow):
         `token`, same idea as base.py's _find_conversation_by_token() but
         via click-and-check since Copilot rows have no href to read
         directly. Read-only/non-destructive."""
-        opts = self._open_sidebar_conversation_rows()
-        for i, opt in enumerate(opts):
-            row = opt.evaluate_handle('el => el.closest("li") || el.parentElement.parentElement').as_element()
-            row.click(force=True)
-            self.page.wait_for_timeout(1000)
-            if token.strip().lower() in self.page.inner_text("body").lower():
-                return i
-        return None
+        return self._scroll_and_find_row_index(
+            lambda: token.strip().lower() in self.page.inner_text("body").lower()
+        )
 
     def _delete_conversation_history(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
         """E1: deletes THIS cell's own conversation, identified by `ref`
@@ -274,23 +318,30 @@ class CopilotFlow(PlatformFlow):
         against `token` when `ref` is missing (legacy tracking data).
         Changed 2026-08-31 from always operating on row 0 -- that silently
         deleted whichever conversation happened to be most recently active
-        on this shared account, not necessarily this cell's own. Falls
-        back to row 0 only if neither `ref` nor the content search finds a
-        match (a cell with no owned conversation at all). See module
-        docstring finding 5 for why the click position is offset from the
-        button's own bounding_box()."""
+        on this shared account, not necessarily this cell's own.
+
+        **No row-0 fallback, ever, as of 2026-09-09**: an earlier version
+        fell back to row 0 (topmost) whenever neither `ref` nor the
+        content search found a match, on the reasoning that this only
+        happens for a cell with no owned conversation at all. Reverted per
+        direct instruction -- a cell must only ever delete its own entry,
+        never a sibling's as a fallback. See module docstring finding 5
+        for why the click position is offset from the button's own
+        bounding_box(). Also falls back to the token search when `ref` IS
+        given but doesn't match anything (a stale ref) -- confirmed live
+        2026-09-09 on Gemini's equivalent method that a stale ref can
+        coexist with a real, still-present conversation, so a hard fail
+        there would have wrongly reported "nothing to delete"."""
         self.page.goto("https://copilot.microsoft.com/")
         self.page.wait_for_timeout(1500)
-        row_index = 0
-        if ref:
-            found = self._find_conversation_row_index(ref)
-            if found is None:
-                raise RuntimeError(f"_delete_conversation_history: expected conversation {ref!r} not found in sidebar")
-            row_index = found
-        else:
-            found = self._find_conversation_row_index_by_token(token)
-            if found is not None:
-                row_index = found
+        row_index = self._find_conversation_row_index(ref) if ref else None
+        if row_index is None:
+            row_index = self._find_conversation_row_index_by_token(token)
+            if row_index is None:
+                raise RuntimeError(
+                    f"_delete_conversation_history: no conversation matches ref={ref!r} or token {token!r} "
+                    "-- this cell has no owned conversation to delete (refusing to guess/delete row 0)"
+                )
 
         opts = self._open_sidebar_conversation_rows()
         if not opts or row_index >= len(opts):
@@ -312,9 +363,25 @@ class CopilotFlow(PlatformFlow):
         E2: "Delete all memory" button on the View memory page. Only
         appears once there are 2+ facts -- see module docstring finding 2.
         Do NOT use the "Personalization and memory" toggle for this --
-        confirmed live it doesn't delete existing facts (finding 3)."""
+        confirmed live it doesn't delete existing facts (finding 3).
+
+        Treats an empty memory list as a legitimate no-op rather than an
+        error -- confirmed live 2026-09-09 on CO-I1-E6 (and CO-I1-E4's
+        equivalent facts-editor finding) that Copilot doesn't reliably
+        infer memory-worthiness from a passive I1 disclosure, so "nothing
+        to delete" is a real, recordable outcome here, not a bug. Same
+        empty-state-as-no-op pattern already applied to Gemini's
+        _delete_all_saved_info and Perplexity's _delete_all_threads."""
         self._open_view_memory()
-        self.page.get_by_role("button", name="Delete all memory", exact=True).click()
+        delete_all_btn = self.page.get_by_role("button", name="Delete all memory", exact=True)
+        if delete_all_btn.count() == 0:
+            if self.page.get_by_text("Add a fact", exact=True).count() == 0:
+                raise RuntimeError(
+                    "_delete_all_memory: 'Delete all memory' button not found and "
+                    "memory list doesn't look empty either -- unexpected page state"
+                )
+            return
+        delete_all_btn.click()
         # Wait for the "Delete all memory?" confirm dialog to actually
         # appear before clicking its Delete button -- confirmed live
         # 2026-08-27 this is flaky with a fixed short wait: sometimes the
@@ -364,10 +431,20 @@ class CopilotFlow(PlatformFlow):
             raise RuntimeError("_delete_via_facts_editor: no fact row found")
         trash_icons.sort(key=lambda pair: pair[0])
 
+        # Scoped to the settings dialog's content pane (the sidebar <nav>'s
+        # sibling <div>), not the whole dialog -- an unscoped dialog.inner_text()
+        # also picks up the Settings sidebar's own tab labels (Preferences,
+        # Shopping, Wallet, etc.), which silently shifted every fact's line
+        # index relative to trash_icons and broke this on any account whose
+        # settings sidebar has grown since 2026-08-27. Confirmed live
+        # 2026-09-09 on CO-I2-E4 (1 real fact, but matching_line_idx landed
+        # on index 9 -- the 9 sidebar labels -- instead of 0).
         dialog_text = None
         for d in self.page.query_selector_all('[role="dialog"]'):
             if "View memory" in d.inner_text():
-                dialog_text = d.inner_text()
+                nav = d.query_selector('nav[aria-label="Settings"]')
+                content = nav.evaluate_handle("el => el.nextElementSibling").as_element() if nav else None
+                dialog_text = content.inner_text() if content else d.inner_text()
                 break
         fact_lines = [
             line for line in (dialog_text or "").split("\n")
@@ -420,8 +497,22 @@ class CopilotFlow(PlatformFlow):
         removed 2026-08-31: every other platform's MAXIMAL runs each
         single mechanism exactly once, and a second call risks throwing
         (the "Clear" confirm button may not exist once history's already
-        empty from the first call) rather than doing anything useful."""
+        empty from the first call) rather than doing anything useful.
+
+        Fixed 2026-09-13 (same pattern as claude.py's/gemini.py's
+        _erase_maximal fixes, 2026-09-07/09): this used to run all four
+        sub-steps with no error handling, so a step with nothing real to
+        act on (confirmed live on CO-I1-E6: _delete_via_facts_editor
+        raised "no fact row found", the same genuine I1-chat-memory-save
+        non-determinism already documented on CO-I1-E4) aborted the whole
+        sequence before ever reaching _delete_via_privacy_dashboard --
+        the MAXIMAL cell's Privacy Dashboard component silently never ran
+        at all. Now caught and logged as N/A instead of fatal, matching
+        every other platform's MAXIMAL."""
         self._delete_conversation_history(token=token, injection_text=injection_text, ref=ref)
         self._delete_all_memory(token=token, injection_text=injection_text, ref=ref)
-        self._delete_via_facts_editor(token=token, injection_text=injection_text, ref=ref)
+        try:
+            self._delete_via_facts_editor(token=token, injection_text=injection_text, ref=ref)
+        except RuntimeError as e:
+            print(f"_erase_maximal: _delete_via_facts_editor N/A ({e}) -- continuing")
         self._delete_via_privacy_dashboard(token=token, injection_text=injection_text, ref=ref)

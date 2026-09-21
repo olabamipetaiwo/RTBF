@@ -160,13 +160,37 @@ class DeepSeekFlow(PlatformFlow):
 
     # --- ERASURE_DISPATCH targets ---
 
-    def _send_nl_forget(self, token: str | None = None, injection_text: str = "", ref: str | None = None) -> None:
+    def _send_nl_forget(
+        self,
+        token: str | None = None,
+        injection_text: str = "",
+        ref: str | None = None,
+        erasure_request_text: str | None = None,
+    ) -> None:
         """Not a UI click -- routes back through send_message() with the
-        erasure_request_sentence() text once that's wired in
-        (RTBF-Prompt/token_generator.py). Expected-null by architecture:
-        DeepSeek is claimed to have no persistence layer, so this cell is
-        pre-registered to fail -- run it anyway, don't skip it."""
-        raise NotImplementedError
+        erasure_request_sentence() text (RTBF-Prompt/token_generator.py),
+        wired in 2026-09-07. `erasure_request_text` is precomputed per
+        cell (only the 13 blocked_on_prompt_set cells get one, written to
+        MASTER by token_generator.py) and forwarded here by base.py's
+        erase_via_ui(). Navigates to this cell's own conversation via
+        `ref` (captured at injection time) so the erasure request lands
+        in the same conversation as the disclosure. Expected-null by
+        architecture: DeepSeek is claimed to have no persistence layer,
+        so this cell is pre-registered to fail (ERASURE PERSISTED, since
+        there was nothing to erase in the first place) -- run it anyway,
+        don't skip it."""
+        if not erasure_request_text:
+            raise RuntimeError(
+                "_send_nl_forget: no erasure_request_text provided -- "
+                "this cell's prompt-set text isn't wired in"
+            )
+        if ref:
+            self.page.goto(ref)
+            self.page.wait_for_timeout(1500)
+            self._dismiss_cookie_banner()
+        else:
+            self.new_conversation()
+        self.assert_real_answer(self.send_message(erasure_request_text))
 
     def _delete_single_conversation(self, token: str, injection_text: str = "", ref: str | None = None) -> None:
         """E1: deletes THIS cell's own conversation, identified by `ref`
@@ -174,21 +198,33 @@ class DeepSeekFlow(PlatformFlow):
         2026-08-31 from always grabbing the first sidebar conversation --
         that silently deletes a sibling cell's conversation once this
         account has been used for anything more recent, which is always
-        true once cells share an account. Falls back to topmost only when
-        `ref` is None."""
+        true once cells share an account.
+
+        **No topmost fallback, ever, as of 2026-09-09**: an earlier
+        version fell back to topmost whenever `ref` was missing and the
+        token search found nothing. Reverted per direct instruction -- a
+        cell must only ever delete its own entry, never a sibling's as a
+        fallback. If nothing matches, raise instead of guessing. Also
+        falls back to the token search when `ref` IS given but doesn't
+        match anything (a stale ref) -- confirmed live 2026-09-09 on
+        Gemini's equivalent method that a stale ref can coexist with a
+        real, still-present conversation, so a hard fail there would have
+        wrongly reported "nothing to delete"."""
         self.page.goto("https://chat.deepseek.com/")
         self.page.wait_for_timeout(1500)
-        if not ref:
-            ref = self._find_conversation_by_token(token, "https://chat.deepseek.com", 'a[href^="/a/chat/s/"]')
-        if ref:
-            from urllib.parse import urlsplit
-            convo = self.page.query_selector(f'a[href="{urlsplit(ref).path}"]')
-            if convo is None:
-                raise RuntimeError(f"_delete_single_conversation: expected conversation {ref!r} not found in sidebar")
-        else:
-            convo = self.page.query_selector('a[href^="/a/chat/s/"]')
+        self._dismiss_cookie_banner()
+        from urllib.parse import urlsplit
+        convo = self.page.query_selector(f'a[href="{urlsplit(ref).path}"]') if ref else None
         if convo is None:
-            raise RuntimeError("_delete_single_conversation: no conversation found in sidebar")
+            found_ref = self._find_conversation_by_token(token, "https://chat.deepseek.com", 'a[href^="/a/chat/s/"]')
+            if not found_ref:
+                raise RuntimeError(
+                    f"_delete_single_conversation: no conversation matches ref={ref!r} or token {token!r} "
+                    "-- this cell has no owned conversation to delete (refusing to guess/delete topmost)"
+                )
+            convo = self.page.query_selector(f'a[href="{urlsplit(found_ref).path}"]')
+        if convo is None:
+            raise RuntimeError(f"_delete_single_conversation: expected conversation {ref!r} not found in sidebar")
         convo.hover()
         self.page.wait_for_timeout(400)
         options_btn = convo.query_selector('[role="button"]')
@@ -214,9 +250,20 @@ class DeepSeekFlow(PlatformFlow):
         E2: confirmed live via Multi-select mode -- select every
         conversation row, then the bottom-bar "Delete" button, then
         confirm. See module docstring for why row-selection needs
-        coordinate clicks rather than a locator-based click."""
+        coordinate clicks rather than a locator-based click.
+
+        Fixed 2026-09-08: was missing the `_dismiss_cookie_banner()` call
+        every other navigating method here already has. The multi-select
+        action bar's "Delete" button renders bottom-left, exactly where
+        the cookie-consent banner sits on a fresh context -- with
+        force=True masking it, the click silently landed on the banner's
+        subtree instead (confirmed live via a plain, non-force click,
+        which surfaced Playwright's own "intercepts pointer" diagnostic).
+        E1 (`_delete_single_conversation`) didn't hit this because its
+        row-level menu isn't pinned to the bottom of the viewport."""
         self.page.goto("https://chat.deepseek.com/")
         self.page.wait_for_timeout(1500)
+        self._dismiss_cookie_banner()
         convo = self.page.query_selector('a[href^="/a/chat/s/"]')
         if convo is None:
             return  # nothing to delete

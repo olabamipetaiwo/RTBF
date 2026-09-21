@@ -112,15 +112,29 @@ class PerplexityFlow(PlatformFlow):
     }
 
     def _dismiss_cookie_banner(self) -> None:
-        """A cookie-consent banner ("Allow all" / "Only necessary") renders
-        on top of the composer on a freshly loaded session -- confirmed
-        live 2026-08-27 it can intercept clicks if not dismissed first.
-        Defensive no-op if already dismissed (matches deepseek.py's
-        pattern for the same kind of banner)."""
-        btn = self.page.query_selector('button:has-text("Allow all")')
-        if btn:
-            btn.click(force=True)
-            self.page.wait_for_timeout(500)
+        """A cookie-consent banner renders on top of the composer on a
+        freshly loaded session -- confirmed live 2026-08-27 it can
+        intercept clicks if not dismissed first. Defensive no-op if
+        already dismissed (matches deepseek.py's pattern for the same
+        kind of banner).
+
+        Fixed 2026-09-09: Perplexity changed the banner's wording since
+        2026-08-27 -- confirmed live it now reads "Decline optional" /
+        "Got it", not "Allow all". The old selector matched nothing, so
+        this silently no-op'd, leaving the banner up -- confirmed live
+        this caused `_send_nl_forget()`/`send_message()`'s `force=True`
+        Submit click to land on the banner instead of the real button
+        (same collision class as DeepSeek's cookie-banner/send-button
+        bug): the erasure message never actually sent, and
+        `_wait_for_reply()` correctly timed out waiting for a reply that
+        was never going to come. Matches on "Got it" now; kept "Allow
+        all" too in case the wording reverts or A/B-tests back."""
+        for text in ("Got it", "Allow all"):
+            btn = self.page.query_selector(f'button:has-text("{text}")')
+            if btn:
+                btn.click(force=True)
+                self.page.wait_for_timeout(500)
+                return
 
     def new_conversation(self) -> None:
         self.page.goto("https://www.perplexity.ai/")
@@ -137,7 +151,7 @@ class PerplexityFlow(PlatformFlow):
         for that count to increase, then for its text to stabilize,
         mirrors the pattern already proven on claude.py/chatgpt.py."""
         self._dismiss_cookie_banner()
-        before = len(self.page.query_selector_all('[class*="prose"]'))
+        before = len(self._top_level_reply_texts())
 
         self.page.locator('#ask-input').click(force=True)
         self.page.keyboard.type(text)
@@ -146,16 +160,41 @@ class PerplexityFlow(PlatformFlow):
 
         return self._wait_for_reply(before)
 
+    # Bug found live 2026-09-07: `[class*="prose"]` matches nested elements
+    # too, not just the top-level answer container -- a single multi-item
+    # answer (e.g. a bulleted list read back from an uploaded file) renders
+    # as ONE outer match plus one match per list item, all sharing a class
+    # containing "prose". The old `els[-1]` picked the LAST of that flat
+    # list, which for a multi-item answer is just the tail list item, not
+    # the full answer -- silently truncating captured replies whenever an
+    # answer has more than one paragraph/list item. Caught on `PE-IF-E-CONV`:
+    # the real answer contained the injected token, but `_last_reply_text()`
+    # returned only "Look into new phone case options." (the last list
+    # item), producing a false-negative token-not-found and triggering an
+    # unnecessary (and separately broken) forced-read fallback. Fixed by
+    # filtering to only elements not contained within another match, then
+    # taking the last of those -- the actual top-level answer container.
+    def _top_level_reply_texts(self) -> list[str]:
+        return self.page.evaluate(
+            """() => {
+                const matches = Array.from(document.querySelectorAll('[class*="prose"]'));
+                const topLevel = matches.filter(
+                    el => !matches.some(other => other !== el && other.contains(el))
+                );
+                return topLevel.map(el => el.innerText);
+            }"""
+        )
+
     def _last_reply_text(self) -> str:
-        els = self.page.query_selector_all('[class*="prose"]')
-        return els[-1].inner_text() if els else ""
+        texts = self._top_level_reply_texts()
+        return texts[-1] if texts else ""
 
     def _wait_for_reply(self, before_count: int) -> str:
         """Shared by send_message() and upload_file()."""
         deadline_ms = 60000
         waited_ms = 0
         while waited_ms < deadline_ms:
-            if len(self.page.query_selector_all('[class*="prose"]')) > before_count:
+            if len(self._top_level_reply_texts()) > before_count:
                 break
             self.page.wait_for_timeout(1000)
             waited_ms += 1000
@@ -189,7 +228,7 @@ class PerplexityFlow(PlatformFlow):
         confirm live whether attaching a file alone is enough before
         trusting caption=None works the same way here."""
         self._dismiss_cookie_banner()
-        before = len(self.page.query_selector_all('[class*="prose"]'))
+        before = len(self._top_level_reply_texts())
 
         self.page.locator('input[type="file"]').first.set_input_files(file_path)
         self.page.wait_for_timeout(2000)
@@ -219,27 +258,100 @@ class PerplexityFlow(PlatformFlow):
 
     # --- ERASURE_DISPATCH targets ---
 
-    def _send_nl_forget(self) -> None:
+    def _send_nl_forget(
+        self,
+        token: str | None = None,
+        injection_text: str = "",
+        ref: str | None = None,
+        erasure_request_text: str | None = None,
+    ) -> None:
         """Not a UI click -- routes back through send_message() with the
-        erasure_request_sentence() text once that's wired in
-        (RTBF-Prompt/token_generator.py). Placeholder for now, same as
-        every other platform's equivalent method."""
-        raise NotImplementedError
+        erasure_request_sentence() text (RTBF-Prompt/token_generator.py),
+        wired in 2026-09-07. `erasure_request_text` is precomputed per
+        cell (only the 13 blocked_on_prompt_set cells get one, written to
+        MASTER by token_generator.py) and forwarded here by base.py's
+        erase_via_ui(). Navigates to this cell's own conversation via
+        `ref` (captured at injection time) so the erasure request lands
+        in the same conversation as the disclosure. Not blocked by Q7's
+        tier gate -- this is a plain chat message, no memory-API call."""
+        if not erasure_request_text:
+            raise RuntimeError(
+                "_send_nl_forget: no erasure_request_text provided -- "
+                "this cell's prompt-set text isn't wired in"
+            )
+        if ref:
+            self.page.goto(ref)
+            self.page.wait_for_timeout(1500)
+        else:
+            self.new_conversation()
+        self.assert_real_answer(self.send_message(erasure_request_text))
 
-    def _delete_single_thread(self) -> None:
+    def _delete_single_thread(
+        self, token: str | None = None, injection_text: str = "", ref: str | None = None
+    ) -> None:
         """E2: confirmed live 2026-08-27, genuinely distinct from
-        _delete_all_threads() (Q11) -- see module docstring. Deletes the
-        most recent thread ("Session" in the UI's own terminology) from
+        _delete_all_threads() (Q11) -- see module docstring. Deletes THIS
+        cell's own thread ("Session" in the UI's own terminology) from
         /library via its per-row "Session options" menu -> Delete, then a
         real confirm dialog ("Delete session? ... Delete/Cancel").
-        Verified with a persistence check (thread count decreased by
-        exactly 1 across a reload)."""
+
+        Fixed 2026-09-08 (was topmost-only, opt_btns[0], since 2026-08-27
+        -- flagged but not fixed at the time since no erasure had run yet
+        on this now-shared account; see PROJECT_STATUS.md/memory for the
+        "genuinely deletes whatever's topmost" writeup). Same ref-then-
+        token pattern as claude.py/chatgpt.py's _delete_conversation:
+        `ref` (the exact /search/<uuid> URL captured at injection) is
+        matched against each row's own link href first -- confirmed live
+        2026-09-08 this is NECESSARY, not just tidier, for the FILE
+        substudy cell specifically: /library shows several identically-
+        titled "PE-IF-E-CONV.pdf" rows (stray conversations from earlier
+        upload retries), so title-text matching alone can't disambiguate
+        them, only the ref URL can. Falls back to a token/injection_text
+        substring match against each row's own visible title text (shown
+        verbatim in /library, confirmed live -- unlike Claude's
+        paraphrased Topics) only when `ref` is None (legacy tracking
+        data), same as every other platform's equivalent method."""
         self.page.goto("https://www.perplexity.ai/library")
         self.page.wait_for_timeout(2000)
+        self._dismiss_cookie_banner()
         opt_btns = self.page.query_selector_all('button[aria-label="Session options"]')
         if not opt_btns:
             raise RuntimeError("_delete_single_thread: no sessions found to delete")
-        opt_btns[0].click(force=True)
+        links = self.page.query_selector_all('a[href*="/search/"]')
+        hrefs = [link.get_attribute("href") for link in links]
+
+        idx = None
+        if ref:
+            from urllib.parse import urlsplit
+            ref_path = urlsplit(ref).path
+            matches = [i for i, href in enumerate(hrefs) if href == ref_path]
+            if not matches:
+                raise RuntimeError(f"_delete_single_thread: expected session {ref!r} not found in /library")
+            idx = matches[0]
+        elif token or injection_text:
+            row_texts = self.page.evaluate("""() => {
+                const btns = [...document.querySelectorAll('button[aria-label="Session options"]')];
+                return btns.map(b => {
+                    let el = b;
+                    for (let i = 0; i < 6; i++) {
+                        el = el.parentElement;
+                        if (el && el.innerText && el.innerText.length > 5) return el.innerText;
+                    }
+                    return "";
+                });
+            }""")
+            needle = (token or injection_text).lower()
+            matches = [i for i, t in enumerate(row_texts) if needle in t.lower()]
+            if len(matches) != 1:
+                raise RuntimeError(
+                    f"_delete_single_thread: expected exactly 1 row containing {needle!r}, "
+                    f"found {len(matches)} -- can't safely pick one without a ref."
+                )
+            idx = matches[0]
+        else:
+            raise RuntimeError("_delete_single_thread: no ref or token/injection_text to target a row with")
+
+        opt_btns[idx].click(force=True)
         self.page.wait_for_timeout(500)
         self.page.get_by_role("menuitem", name="Delete", exact=True).click()
         self.page.wait_for_timeout(800)
@@ -248,7 +360,9 @@ class PerplexityFlow(PlatformFlow):
         ).click(force=True)
         self.page.wait_for_timeout(1000)
 
-    def _delete_all_threads(self) -> None:
+    def _delete_all_threads(
+        self, token: str | None = None, injection_text: str = "", ref: str | None = None
+    ) -> None:
         """E3: confirmed live 2026-08-27, genuinely distinct from
         _delete_single_thread() (Q11) -- see module docstring. Selects
         every thread via /library's bulk "Session selection options" menu
@@ -256,9 +370,23 @@ class PerplexityFlow(PlatformFlow):
         the resulting selection toolbar's "Delete" button, then a real
         confirm dialog ("Delete N sessions? ... Delete/Cancel"). Verified
         with a persistence check (all threads gone, "No sessions yet"
-        after a reload)."""
+        after a reload).
+
+        Fixed 2026-09-09: PE-I1-E3/PE-I2-E3 share this identical blanket
+        action on the same account, so running it once for real (via
+        PE-I1-E3) genuinely satisfies both -- confirmed live, "No sessions
+        yet" afterward. Running it a second time for PE-I2-E3 hit an
+        already-empty account with no "Session selection options" button
+        to click, indistinguishable from a real failure until now. Checks
+        for the empty-state message first and treats it as a legitimate
+        no-op (nothing to delete IS the correct outcome here, same as
+        Gemini's _delete_all_saved_info fix), not an error."""
         self.page.goto("https://www.perplexity.ai/library")
         self.page.wait_for_timeout(2000)
+        self._dismiss_cookie_banner()
+        if self.page.query_selector("text=No sessions yet"):
+            print("_delete_all_threads: library already empty -- nothing to delete")
+            return
         sel_btn = self.page.query_selector('button[aria-label="Session selection options"]')
         if sel_btn is None:
             raise RuntimeError("_delete_all_threads: no sessions found to delete")
@@ -273,21 +401,30 @@ class PerplexityFlow(PlatformFlow):
         ).click(force=True)
         self.page.wait_for_timeout(1500)
 
-    def _delete_individual_memory(self) -> None:
+    def _delete_individual_memory(
+        self, token: str | None = None, injection_text: str = "", ref: str | None = None
+    ) -> None:
         """E4: blocked, not just unimplemented -- DECISIONS Q7 confirmed
         live 2026-08-27 that this Free-plan test account can't reach
         Memory at all (403 Forbidden on the underlying settings requests).
-        See read_memory_settings()."""
+        See read_memory_settings(). Permanently out of scope, confirmed
+        2026-09-07 -- no plan to upgrade off free tier."""
         raise NotImplementedError
 
-    def _clear_all_memories(self) -> None:
+    def _clear_all_memories(
+        self, token: str | None = None, injection_text: str = "", ref: str | None = None
+    ) -> None:
         """E5: same Q7 tier-gate block as _delete_individual_memory() --
-        see read_memory_settings()."""
+        see read_memory_settings(). Permanently out of scope, confirmed
+        2026-09-07."""
         raise NotImplementedError
 
-    def _erase_maximal(self) -> None:
+    def _erase_maximal(
+        self, token: str | None = None, injection_text: str = "", ref: str | None = None
+    ) -> None:
         """E6: all singles combined in one setup (design rule). Will raise
-        on both the Q7-tier-gated memory steps and _send_nl_forget() (pipeline
-        wiring) until those are resolved -- E2/E3 (thread deletion) are the
-        only pieces of this that currently work standalone."""
+        on the Q7-tier-gated memory steps (E4/E5, permanently out of
+        scope) -- E2/E3 (thread deletion) and E1 (_send_nl_forget, now
+        wired) are the pieces of this that work standalone; the whole
+        combination still can't complete while E4/E5 are blocked."""
         raise NotImplementedError

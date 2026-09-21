@@ -390,8 +390,12 @@ ERASURE_REQUEST_TEMPLATES = [
 
 
 def erasure_request_sentence(cell_index: int) -> str:
-    """Draft only -- see ERASURE_REQUEST_TEMPLATES comment. Not called from
-    main() yet; nothing is written to the xlsx by this function."""
+    """See ERASURE_REQUEST_TEMPLATES comment. Not called from main() itself --
+    write_erasure_request_text_to_xlsx() and write_claude_maximal_erasure_text_to_xlsx()
+    reimplement this same template-cycling logic inline (referent resolved by
+    substring match against a cell's own disclosure text, not by index) and are
+    what actually write MASTER col 23. This function is unused by the wired-in
+    path; kept only as a simpler reference for the templates."""
     referent = REFERENTS[cell_index]  # direct index -- referent is unique per cell, not cycled
     template = ERASURE_REQUEST_TEMPLATES[cell_index % len(ERASURE_REQUEST_TEMPLATES)]
     return template.format(referent=referent)
@@ -719,6 +723,140 @@ def write_tokens_to_xlsx(assigned, injection_types, xlsx_path: Path) -> None:
     wb.save(xlsx_path)
 
 
+def write_erasure_request_text_to_xlsx(xlsx_path: Path) -> int:
+    """Wires the erasure-request text into the shared xlsx for the 13
+    MASTER cells flagged "Blocked on prompt set?" = YES (col T) --
+    2026-09-07, per the professor confirming a single representative
+    style (the 4 ERASURE_REQUEST_TEMPLATES, cycled for variety) is fine,
+    same corpus-derived cluster as before, not a phrasing factorial for
+    these 13 cells specifically. Writes to a new MASTER column (23,
+    "Erasure request text") -- read by tester/run_cell.py's load_cell()
+    into CellPlan.erasure_request_text, forwarded through
+    flows/base.py's erase_via_ui() to each platform's _send_nl_forget().
+
+    Deliberately does NOT recompute a fresh cell_id -> REFERENTS index
+    (the first version of this function did, and produced WRONG,
+    mismatched referents -- caught before anything was injected with
+    them: 3 MASTER cells were archived out since the original 2026-08-26
+    token assignment, see the ARCHIVED CELLS sheet, which shifts every
+    subsequent cell's position in a freshly re-sorted cell-ID list.
+    Instead, each blocked cell's referent is read straight back out of
+    its OWN already-written Disclosure sentence (col U) by substring
+    match against REFERENTS -- disclosure_sentence() embeds the referent
+    verbatim, so this always names the same referent that cell's actual
+    injection used, independent of any index drift. Only touches rows
+    already flagged blocked_on_prompt_set = YES; every other row's new
+    column stays blank. Returns the count written, so callers can
+    sanity-check against the expected 13."""
+    wb = openpyxl.load_workbook(xlsx_path)
+    ws = wb["MASTER "]
+
+    written = 0
+    template_i = 0
+    for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
+        cell_id = row[0].value
+        blocked = row[19].value  # col T, "Blocked on prompt set?"
+        if cell_id and blocked == "YES":
+            disclosure = row[20].value or ""  # col U, this cell's OWN injection text
+            referent = next((r for r in REFERENTS if r in disclosure), None)
+            if referent is None:
+                raise RuntimeError(
+                    f"{cell_id}: no REFERENTS entry found in its own Disclosure "
+                    f"sentence {disclosure!r} -- refusing to guess an erasure-text "
+                    f"referent"
+                )
+            template = ERASURE_REQUEST_TEMPLATES[template_i % len(ERASURE_REQUEST_TEMPLATES)]
+            ws.cell(row=row[0].row, column=23, value=template.format(referent=referent))
+            written += 1
+            template_i += 1
+
+    if ws.cell(row=1, column=23).value is None:
+        ws.cell(
+            row=1,
+            column=23,
+            value="Erasure request text (NL-forget, single representative style, 2026-09-07)",
+        )
+
+    wb.save(xlsx_path)
+    return written
+
+
+def _referent_from_text(text: str, cell_id: str) -> str:
+    """Shared substring-match helper -- see write_erasure_request_text_to_xlsx()'s
+    docstring for why this is index-free by design."""
+    referent = next((r for r in REFERENTS if r in text), None)
+    if referent is None:
+        raise RuntimeError(
+            f"{cell_id}: no REFERENTS entry found in its own injection text "
+            f"{text!r} -- refusing to guess an erasure-text referent"
+        )
+    return referent
+
+
+def write_claude_maximal_erasure_text_to_xlsx(xlsx_path: Path) -> int:
+    """Claude's _erase_maximal() (E5, "MAXIMAL"/"Maximal combination (all
+    erasure mechanisms)") calls _send_nl_forget() as its last step -- the
+    only platform whose MAXIMAL combo does (checked live 2026-09-07: none
+    of ChatGPT/Gemini/Copilot/DeepSeek's _erase_maximal() call it). That
+    call was always going to fail until _send_nl_forget() itself was
+    wired in (its own docstring said so); now that it is, these 4 cells
+    need their own erasure text too, same as the 13 blocked_on_prompt_set
+    cells -- MAXIMAL cells were never part of that set (they're not
+    prompt-set-dependent by design, just incidentally need this one piece
+    of text for their combo). Writes MASTER col 23 (same column as
+    write_erasure_request_text_to_xlsx(), for CL-I1-E5/CL-I2-E5/CL-I3-E5)
+    and FILE SUBSTUDY's own new col 15 (for CL-IF-E-MAX) -- read by
+    tester/run_cell.py's load_cell() into CellPlan.erasure_request_text
+    for both sheets. Same referent-substring-match approach, same
+    ERASURE_REQUEST_TEMPLATES, cycled independently of the 13 blocked
+    cells' own counter."""
+    wb = openpyxl.load_workbook(xlsx_path)
+    ws = wb["MASTER "]
+
+    written = 0
+    template_i = 0
+    for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
+        cell_id = row[0].value
+        platform = row[1].value
+        erasure_desc = row[5].value
+        if cell_id and platform == "Claude" and erasure_desc == "MAXIMAL":
+            disclosure = row[20].value or ""
+            referent = _referent_from_text(disclosure, cell_id)
+            template = ERASURE_REQUEST_TEMPLATES[template_i % len(ERASURE_REQUEST_TEMPLATES)]
+            ws.cell(row=row[0].row, column=23, value=template.format(referent=referent))
+            written += 1
+            template_i += 1
+
+    ws2 = wb["FILE SUBSTUDY"]
+    for row in ws2.iter_rows(min_row=2, max_row=ws2.max_row):
+        cell_id = row[0].value
+        platform = row[1].value
+        erasure_desc = row[3].value
+        if cell_id and platform == "Claude" and erasure_desc == "Maximal combination (all erasure mechanisms)":
+            file_text = row[12].value or ""
+            referent = _referent_from_text(file_text, cell_id)
+            template = ERASURE_REQUEST_TEMPLATES[template_i % len(ERASURE_REQUEST_TEMPLATES)]
+            ws2.cell(row=row[0].row, column=15, value=template.format(referent=referent))
+            written += 1
+            template_i += 1
+
+    if ws.cell(row=1, column=23).value is None:
+        ws.cell(
+            row=1,
+            column=23,
+            value="Erasure request text (NL-forget, single representative style, 2026-09-07)",
+        )
+    if ws2.cell(row=1, column=15).value is None:
+        ws2.cell(
+            row=1,
+            column=15,
+            value="Erasure request text (NL-forget, single representative style, 2026-09-07)",
+        )
+
+    wb.save(xlsx_path)
+    return written
+
+
 def write_token_md(assigned, reserve, distractors_by_token, injection_types, path: Path) -> None:
     lines = []
     lines.append("# RTBF Technical Audit -- Injected Anchor Tokens")
@@ -871,11 +1009,15 @@ def main() -> None:
     write_tokens_to_xlsx(assigned, injection_types, XLSX_PATH)
     write_token_md(assigned, reserve, distractors_by_token, injection_types, TOKEN_MD_PATH)
     write_recall_probes_md(assigned, distractors_by_token, injection_types, erasure_desc, RECALL_PROBES_MD_PATH)
+    n_erasure_written = write_erasure_request_text_to_xlsx(XLSX_PATH)
+    n_maximal_erasure_written = write_claude_maximal_erasure_text_to_xlsx(XLSX_PATH)
 
     print(f"\nWrote {len(assigned)} assigned + {len(reserve)} reserve tokens to {TOKEN_MD_PATH}")
     print(f"Wrote recall-probe runbook to {RECALL_PROBES_MD_PATH}")
     print(f"Wrote machine-readable mapping to {MAPPING_CSV_PATH}")
     print(f"Wrote tokens into {XLSX_PATH} (MASTER cols H/U, FILE SUBSTUDY cols F/M)")
+    print(f"Wrote erasure request text into {XLSX_PATH} MASTER col 23 for {n_erasure_written} blocked_on_prompt_set cells")
+    print(f"Wrote erasure request text for {n_maximal_erasure_written} Claude MAXIMAL cells (MASTER col 23 / FILE SUBSTUDY col 15)")
     print("\nFirst 8 assignments:")
     for i, (cell_id, tok_tuple) in enumerate(assigned[:8]):
         cw = token(tok_tuple)

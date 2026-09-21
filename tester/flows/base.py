@@ -64,27 +64,104 @@ class PlatformFlow:
         self.page = None
 
     def __enter__(self):
-        self._playwright = sync_playwright().start()
-        # headless=False + channel="chrome" (real Chrome, not bundled
-        # Chromium) by default -- confirmed live 2026-08-27 on ChatGPT that
-        # bundled headless Chromium gets stuck on Cloudflare's "verify you
-        # are human" check even with valid session cookies, while real
-        # Chrome headed passes straight through. Don't flip this to
-        # headless=True without re-verifying per platform.
-        self._browser = self._playwright.chromium.launch(headless=self._headless, channel="chrome")
-        self._context = self._browser.new_context(storage_state=str(self._session_path))
-        if self.USE_STEALTH:
-            Stealth().apply_stealth_sync(self._context)
-        self.page = self._context.new_page()
-        self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
-        # The sidebar/layout has an opacity+width transition on load that
-        # intercepts pointer events on anything underneath it even after
-        # Playwright reports the target as visible/stable -- confirmed live
-        # 2026-08-27 (both the account-menu button and the composer's send
-        # button got hit by this). Let it finish before any subclass method
-        # tries to click something.
-        self.page.wait_for_timeout(2500)
+        try:
+            self._playwright = sync_playwright().start()
+            # headless=False + channel="chrome" (real Chrome, not bundled
+            # Chromium) by default -- confirmed live 2026-08-27 on ChatGPT that
+            # bundled headless Chromium gets stuck on Cloudflare's "verify you
+            # are human" check even with valid session cookies, while real
+            # Chrome headed passes straight through. Don't flip this to
+            # headless=True without re-verifying per platform.
+            self._browser = self._playwright.chromium.launch(headless=self._headless, channel="chrome")
+            self._context = self._browser.new_context(storage_state=str(self._session_path))
+            if self.USE_STEALTH:
+                Stealth().apply_stealth_sync(self._context)
+            self.page = self._context.new_page()
+            self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+            # The sidebar/layout has an opacity+width transition on load that
+            # intercepts pointer events on anything underneath it even after
+            # Playwright reports the target as visible/stable -- confirmed live
+            # 2026-08-27 (both the account-menu button and the composer's send
+            # button got hit by this). Let it finish before any subclass method
+            # tries to click something.
+            self.page.wait_for_timeout(2500)
+            self._verify_logged_in()
+        except Exception:
+            # __exit__ is never called if __enter__ raises (context-manager
+            # protocol), so anything already launched above (browser,
+            # playwright driver) would otherwise leak for the rest of this
+            # process's life. Confirmed live 2026-09-17: a leaked driver
+            # from a _verify_logged_in() failure corrupted the very next
+            # sync_playwright().start() call in the same process ("using
+            # Playwright Sync API inside the asyncio loop"), crashing the
+            # whole scheduler. Clean up whatever got created before
+            # re-raising so the caller sees a normal failure, not a
+            # process-wide corruption.
+            if self._browser:
+                self._browser.close()
+            if self._playwright:
+                self._playwright.stop()
+            raise
         return self
+
+    def _verify_logged_in(self) -> None:
+        """No-op by default -- override per platform once its logged-out
+        state's selector is confirmed live. Without this, a dead/expired
+        session silently runs every action as an anonymous user: the page
+        loads fine, the UI responds (sometimes even with a plausible-
+        looking fabricated "success" reply), and nothing raises -- so the
+        scheduler logs a false OK instead of a failure, and the real
+        account is never touched. Confirmed live 2026-09-17 on Gemini:
+        20 NL-forget erasure cells ran clean against a logged-out session
+        before anyone noticed, each one scored as erased when none of them
+        touched the real account at all. See `tester/accounts.md`'s
+        nlforget section."""
+        pass
+
+    # Substrings that mean the platform never actually engaged with the
+    # erasure request -- a rate limit, a paywall, or a generic service
+    # hiccup, not a real answer (even a refusal like "I can't delete that"
+    # is a real answer and must NOT match here -- see the docstring on
+    # assert_real_answer()). Lowercased, checked as substrings. Confirmed
+    # live 2026-09-17: Claude hit a hard session-limit paywall
+    # ("Upgrade to keep chatting") on one NL-forget cell and Copilot
+    # returned "I'm sorry, I'm having trouble responding to requests right
+    # now" on several -- both got silently logged as a successful erasure
+    # before this check existed, because send_message() only confirms
+    # SOME reply text appeared and stabilized, never what it says.
+    NON_ANSWER_SUBSTRINGS: tuple[str, ...] = (
+        "having trouble responding",
+        "try again in a bit",
+        "try this again in a bit",
+        "upgrade to keep chatting",
+        "message limit",
+        "session limit",
+        "rate limit",
+        "too many requests",
+        "you've reached your limit",
+        "hit your",
+        "high demand",
+        "over capacity",
+        "at capacity",
+        "something went wrong",
+    )
+
+    def assert_real_answer(self, reply: str) -> None:
+        """Call this on every reply captured for an erasure action before
+        treating it as a success. A REFUSAL ("I don't have the ability to
+        delete stored data") is a real answer -- that's genuine data about
+        how the platform handles the request, and must be counted as
+        erased/attempted, not retried. Only a non-answer (rate limit,
+        paywall, generic service error, or no text captured at all) fails
+        this check, because there the platform never actually processed
+        the request -- retry later, don't score it either way."""
+        text = (reply or "").strip()
+        if not text:
+            raise RuntimeError("assert_real_answer: no reply text captured -- not a real answer")
+        lower = text.lower()
+        hit = next((s for s in self.NON_ANSWER_SUBSTRINGS if s in lower), None)
+        if hit:
+            raise RuntimeError(f"assert_real_answer: reply looks like a non-answer (matched {hit!r}), not a real answer: {text[:200]!r}")
 
     def __exit__(self, *exc):
         if self._browser:
@@ -125,7 +202,14 @@ class PlatformFlow:
         """FILE-substudy cells: attach a document instead of typing."""
         raise NotImplementedError
 
-    def erase_via_ui(self, erasure_desc: str, token: str, injection_text: str, ref: str | None = None) -> None:
+    def erase_via_ui(
+        self,
+        erasure_desc: str,
+        token: str,
+        injection_text: str,
+        ref: str | None = None,
+        erasure_request_text: str | None = None,
+    ) -> None:
         """Dispatches to the matching method in ERASURE_DISPATCH by the
         exact erasure_desc string (e.g. "Delete conversation") -- shared
         base implementation, subclasses populate ERASURE_DISPATCH instead
@@ -142,14 +226,26 @@ class PlatformFlow:
         instead -- every narrow (non-account-wide) erasure method must
         accept and use these, even if a given platform's method doesn't
         need one of them. Broad/account-wide methods (Clear all memories,
-        MAXIMAL, etc.) may ignore both -- they're deliberately blanket."""
+        MAXIMAL, etc.) may ignore both -- they're deliberately blanket.
+
+        `erasure_request_text` (added 2026-09-07, wiring in the
+        NL-forget-prompt cells) is only non-None for the 13
+        blocked_on_prompt_set cells' "NL forget prompt"/"NL forget
+        command" erasure_desc -- precomputed by token_generator.py,
+        forwarded only to _send_nl_forget(). Passed conditionally, not
+        unconditionally like token/injection_text/ref, so every OTHER
+        erasure method across all 6 platforms keeps its existing
+        signature unchanged -- they'd never receive it anyway."""
         method_name = self.ERASURE_DISPATCH.get(erasure_desc)
         if method_name is None:
             raise NotImplementedError(
                 f"{type(self).__name__} has no ERASURE_DISPATCH entry for "
                 f"{erasure_desc!r}. Known: {list(self.ERASURE_DISPATCH)}"
             )
-        getattr(self, method_name)(token=token, injection_text=injection_text, ref=ref)
+        kwargs = {"token": token, "injection_text": injection_text, "ref": ref}
+        if erasure_request_text is not None:
+            kwargs["erasure_request_text"] = erasure_request_text
+        getattr(self, method_name)(**kwargs)
 
     def _find_conversation_by_token(self, token: str, base_url: str, link_selector: str) -> str | None:
         """Fallback for erasure methods when `ref` is missing (legacy
@@ -162,12 +258,31 @@ class PlatformFlow:
         verbatim across platforms (Claude paraphrases; Copilot sometimes
         does, sometimes doesn't). Returns the first matching conversation's
         full URL, or None if none contain the token (e.g. a cross-
-        mechanism cell with no owned conversation at all) -- callers
-        should fall back to explicit topmost-conversation behavior only in
-        that case, not silently here."""
+        mechanism cell with no owned conversation at all).
+
+        As of 2026-09-09, EVERY caller must raise when this returns None,
+        rather than falling back to "whatever's topmost" (the earlier
+        guidance here endorsed exactly that fallback for a no-owned-
+        conversation cell -- reverted per direct instruction after the
+        same bug pattern surfaced live in gemini.py's _delete_conversation
+        for GE-I2-E2, a cell with genuinely no owned conversation at all).
+        A cell must only ever touch its own entry, never a sibling's as a
+        fallback.
+
+        Bug fixed 2026-09-07: used to hold live ElementHandle references
+        across the loop's own page.goto() call -- Playwright invalidates
+        those handles the instant the page navigates, so reading
+        link.get_attribute("href") on any handle after the first
+        navigation raised "Execution context was destroyed." Confirmed
+        live on Claude (CL-I1-E1/CL-I3-E1/CL-IF-E-CONV, all legacy cells
+        with no injection-time ref, all three hitting this exact fallback
+        and failing identically). Fixed by extracting every href as a
+        plain string up front, before any navigation happens -- plain
+        strings can't be invalidated by a later page navigation the way a
+        live DOM handle can."""
         links = self.page.query_selector_all(link_selector)
-        for link in links:
-            href = link.get_attribute("href")
+        hrefs = [link.get_attribute("href") for link in links]
+        for href in hrefs:
             if not href:
                 continue
             self.page.goto(f"{base_url}{href}" if href.startswith("/") else href)

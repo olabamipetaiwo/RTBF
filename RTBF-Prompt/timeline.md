@@ -22,6 +22,11 @@ Two studies, one paper:
 About 12 days between Oct 30 (extraction done) and the Nov 11 abstract deadline for writing/finalizing.
 
 
+- Finsh with the coding
+- Do the factorial Design
+- Extract Final propmts and test prompt cells
+
+ALL - before Spetember 15
 
 <!-- Abstract registration deadline: May 29, 2025 mandatory
 Paper submission deadline: June 5, 2025

@@ -62,6 +62,9 @@ COL_R3_CROSS = 15
 COL_NOTES = 16
 COL_OBSERVED_OUTCOME = 19
 COL_EMAIL = 22  # added 2026-09-01 -- which account ran this cell, see config.account_email()
+COL_ERASURE_REQUEST_TEXT = 23  # added 2026-09-07 -- the 13 blocked_on_prompt_set
+# cells' actual NL-forget erasure text, written by RTBF-Prompt/token_generator.py's
+# erasure_request_sentence(), empty for every other row.
 
 # FILE SUBSTUDY sheet column indices (1-indexed) -- a different layout
 # than MASTER: no R1-R3 same/cross-session columns (Q16's verification
@@ -73,6 +76,8 @@ FS_COL_EXTRACTION_OBSERVED_AT = 10
 FS_COL_RESULTS_NOTES = 11
 FS_COL_OBSERVED_OUTCOME = 12
 FS_COL_EMAIL = 14  # added 2026-09-01 -- which account ran this cell, see config.account_email()
+FS_COL_ERASURE_REQUEST_TEXT = 15  # added 2026-09-07 -- only CL-IF-E-MAX has one so far,
+# see RTBF-Prompt/token_generator.py's write_claude_maximal_erasure_text_to_xlsx()
 
 
 @dataclass
@@ -85,6 +90,8 @@ class CellPlan:
     erasure_desc: str  # display form, e.g. "E1 (NL forget prompt)"
     erasure_type_text: str  # dispatch-key form, e.g. "NL forget prompt" -- matches ERASURE_DISPATCH / ENUMERATION description text
     blocked_on_prompt_set: bool
+    erasure_request_text: str | None = None  # only set for the 13 blocked_on_prompt_set cells, see COL_ERASURE_REQUEST_TEXT
+    sheet: str = "MASTER"  # "MASTER" / "FILE" / "NLFORGET" -- which sheet this cell's row lives in, for write-back routing
 
 
 def load_cell(cell_id: str) -> CellPlan:
@@ -103,6 +110,7 @@ def load_cell(cell_id: str) -> CellPlan:
                 erasure_desc=f"{row[4]} ({row[5]})" if row[4] else "",
                 erasure_type_text=row[5] or "",  # bare description, matches ERASURE_DISPATCH keys
                 blocked_on_prompt_set=(row[19] == "YES"),  # col T
+                erasure_request_text=row[22] if len(row) > 22 else None,  # col 23
             )
 
     ws2 = wb["FILE SUBSTUDY"]
@@ -118,9 +126,45 @@ def load_cell(cell_id: str) -> CellPlan:
                 erasure_desc=row[3] or "",
                 erasure_type_text=row[3] or "",
                 blocked_on_prompt_set=False,
+                erasure_request_text=row[14] if len(row) > 14 else None,  # col 15
+                sheet="FILE",
             )
 
-    raise ValueError(f"cell_id {cell_id!r} not found in MASTER or FILE SUBSTUDY")
+    # NL FORGET sheet (added 2026-09-11) -- the 828 NL-forget-prompt-study
+    # cells (138 authoritative prompts x 6 platforms), see
+    # nl_forget_cell_generator.py. Injection is fixed I1-style chat
+    # disclosure for every cell; erasure is always "NL forget prompt"
+    # (dispatches to the already-wired _send_nl_forget() on every
+    # platform), with erasure_request_text always populated straight from
+    # the sheet -- these cells were never blocked_on_prompt_set, that flag
+    # only ever applied to the original 13 MASTER cells.
+    if "NL FORGET" in wb.sheetnames:
+        ws3 = wb["NL FORGET"]
+        for row in ws3.iter_rows(min_row=2, max_row=ws3.max_row, values_only=True):
+            if row[0] == cell_id:
+                platform = PLATFORM_PREFIX[cell_id[:2]]
+                # Dispatch-key wording differs per platform even though the
+                # method is identical everywhere (_send_nl_forget) --
+                # Claude/Copilot's ERASURE_DISPATCH key is "NL forget
+                # command", ChatGPT/Gemini/DeepSeek/Perplexity's is "NL
+                # forget prompt". Confirmed live 2026-09-11 while wiring
+                # this sheet in -- must match verbatim or erase_via_ui's
+                # dispatch lookup raises KeyError.
+                erasure_key = "NL forget command" if platform in ("claude", "copilot") else "NL forget prompt"
+                return CellPlan(
+                    cell_id=cell_id,
+                    platform=platform,
+                    injection_type="I1",
+                    token=row[5],  # Anchor
+                    injection_text=row[16],  # Disclosure sentence
+                    erasure_desc=erasure_key,
+                    erasure_type_text=erasure_key,
+                    blocked_on_prompt_set=False,
+                    erasure_request_text=row[18],  # Erasure request text
+                    sheet="NLFORGET",
+                )
+
+    raise ValueError(f"cell_id {cell_id!r} not found in MASTER, FILE SUBSTUDY, or NL FORGET")
 
 
 def _update_master_row(cell_id: str, field_updates: dict[int, str], note_breadcrumb: str | None = None) -> None:
@@ -155,6 +199,37 @@ def _update_file_substudy_row(cell_id: str, field_updates: dict[int, str]) -> No
             wb.save(config.MASTER_XLSX_PATH)
             return
     raise ValueError(f"cell_id {cell_id!r} not found in FILE SUBSTUDY for writing")
+
+
+# NL FORGET sheet column indices (1-indexed) -- see nl_forget_cell_generator.py
+# for the writer that created this sheet's header/rows.
+NLF_COL_RUN_STATUS = 8
+NLF_COL_R1_SAME = 9
+NLF_COL_R2_SAME = 10
+NLF_COL_R3_SAME = 11
+NLF_COL_R1_CROSS = 12
+NLF_COL_R2_CROSS = 13
+NLF_COL_R3_CROSS = 14
+NLF_COL_NOTES = 15
+NLF_COL_OBSERVED_OUTCOME = 16
+
+
+def _update_nlforget_row(cell_id: str, field_updates: dict[int, str], note_breadcrumb: str | None = None) -> None:
+    """NL FORGET sheet's counterpart to _update_master_row() -- same
+    breadcrumb-append behavior for Notes, different column layout."""
+    wb = openpyxl.load_workbook(config.MASTER_XLSX_PATH)
+    ws = wb["NL FORGET"]
+    for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
+        if row[0].value == cell_id:
+            for col, val in field_updates.items():
+                ws.cell(row=row[0].row, column=col, value=val)
+            if note_breadcrumb:
+                existing = row[NLF_COL_NOTES - 1].value
+                new_note = f"{existing} | {note_breadcrumb}" if existing else note_breadcrumb
+                ws.cell(row=row[0].row, column=NLF_COL_NOTES, value=new_note)
+            wb.save(config.MASTER_XLSX_PATH)
+            return
+    raise ValueError(f"cell_id {cell_id!r} not found in NL FORGET for writing")
 
 
 def _cell_dir(platform: str, cell_id: str) -> tuple[Path, Path]:
@@ -315,7 +390,7 @@ def inject_cell(cell_id: str) -> None:
     # MAXIMAL cell get a dedicated account instead (see config.py's
     # MAXIMAL_ACCOUNT_LABEL docstring) -- None for every other cell, which
     # uses the platform's usual main session as always.
-    session_label = config.MAXIMAL_ACCOUNT_LABEL.get(cell_id)
+    session_label = config.MAXIMAL_ACCOUNT_LABEL.get(cell_id) or ("nlforget" if plan.sheet == "NLFORGET" else None)
 
     if plan.injection_type == "FILE":
         pdf_path = config.TESTER_ROOT / "data" / "file_substudy_pdfs" / f"{cell_id}.pdf"
@@ -324,13 +399,33 @@ def inject_cell(cell_id: str) -> None:
                 f"{cell_id}: no PDF found at {pdf_path} -- run "
                 f"generate_file_substudy_pdfs.py first"
             )
+        pending = tracking.get_pending_upload(cell_id)
         with flow_cls(session_label=session_label) as flow:
-            upload_reply = flow.upload_file(str(pdf_path))
-            conversation_ref = flow.page.url
+            if pending:
+                # A prior attempt's upload_file() succeeded but the later
+                # verification step failed (e.g. the forced-read follow-up
+                # timing out) -- resume on that SAME conversation instead
+                # of uploading a fresh duplicate PDF (see
+                # tracking.get_pending_upload()'s docstring for why this
+                # exists -- confirmed live 2026-09-07 across
+                # PE-IF-E-CONV/CL-IF-E-MAX/CH-IF-E-MAX/GE-IF-E-MAX that
+                # naive retries were each leaving another stray unverified
+                # conversation on the account).
+                print(f"Resuming previously uploaded file at {pending['ref']} (not re-uploading)")
+                flow.page.goto(pending["ref"])
+                flow.page.wait_for_timeout(1500)
+                upload_reply = pending["upload_reply"]
+                conversation_ref = pending["ref"]
+            else:
+                upload_reply = flow.upload_file(str(pdf_path))
+                conversation_ref = flow.page.url
+                tracking.mark_pending_upload(cell_id, conversation_ref, upload_reply)
+
             condition, verify_transcript = _verify_file_injection(flow, upload_reply, plan.token)
             _save_json(plan.platform, cell_id, "01_inject", verify_transcript)
             _save_screenshot(flow, plan.platform, cell_id, "01_inject")
 
+        tracking.clear_pending_upload(cell_id)
         entry = tracking.mark_injected(cell_id, ref=conversation_ref)
         _update_file_substudy_row(
             cell_id,
@@ -367,15 +462,49 @@ def inject_cell(cell_id: str) -> None:
                 reply = flow.send_message(plan.injection_text)
             conversation_ref = flow.page.url
             inject_transcript = {"sent": plan.injection_text, "reply": reply}
+
+            # Verify conversation_ref actually resolves before trusting it
+            # -- added 2026-09-07 after GE-I1-E2 reported success (a real,
+            # complete reply was received and saved -- the message
+            # genuinely sent) but its captured conversation_ref didn't
+            # resolve to that content on a later, independent check. A URL
+            # that looks right immediately after sending isn't proof it'll
+            # still resolve on a fresh navigation, which is exactly what
+            # erasure needs to do 48h later. Navigate away first so this
+            # is a genuine fresh navigation, not a no-op (see
+            # GeminiFlow._goto_fresh's docstring for why that distinction
+            # matters on at least one platform), then confirm the token is
+            # actually present.
+            flow.new_conversation()
+            flow.page.goto(conversation_ref)
+            flow.page.wait_for_timeout(2000)
+            verify_body = flow.page.locator("body").inner_text()
+            if plan.token.lower() not in verify_body.lower():
+                raise RuntimeError(
+                    f"{cell_id}: conversation_ref {conversation_ref!r} does not "
+                    f"resolve to a page containing the token on a fresh "
+                    f"navigation -- refusing to mark as injected. (The "
+                    f"message may have genuinely sent -- see the saved reply "
+                    f"in inject_transcript -- but the conversation isn't "
+                    f"independently retrievable, which erasure requires.)"
+                )
+            inject_transcript["ref_verified"] = True
         _save_json(plan.platform, cell_id, "01_inject", inject_transcript)
         _save_screenshot(flow, plan.platform, cell_id, "01_inject")
 
     entry = tracking.mark_injected(cell_id, ref=conversation_ref)
-    _update_master_row(
-        cell_id,
-        {COL_RUN_STATUS: "INJECTED", COL_EMAIL: config.account_email(cell_id, plan.platform)},
-        note_breadcrumb=f"auto-injected {entry['injected_at']}",
-    )
+    if plan.sheet == "NLFORGET":
+        _update_nlforget_row(
+            cell_id,
+            {NLF_COL_RUN_STATUS: "INJECTED"},
+            note_breadcrumb=f"auto-injected {entry['injected_at']}",
+        )
+    else:
+        _update_master_row(
+            cell_id,
+            {COL_RUN_STATUS: "INJECTED", COL_EMAIL: config.account_email(cell_id, plan.platform)},
+            note_breadcrumb=f"auto-injected {entry['injected_at']}",
+        )
     print(f"Injected. Erasure due at {entry['erasure_due_at']}.")
     if plan.blocked_on_prompt_set:
         print(
@@ -392,7 +521,7 @@ def erase_cell(cell_id: str, force: bool = False) -> None:
         raise RuntimeError(f"{cell_id}: not injected yet -- run `inject` first.")
     if entry.get("status") != "injected":
         raise RuntimeError(f"{cell_id}: already at status {entry.get('status')!r}, refusing to erase again.")
-    if plan.blocked_on_prompt_set:
+    if plan.blocked_on_prompt_set and not plan.erasure_request_text:
         raise RuntimeError(
             f"{cell_id}: erasure blocked -- depends on the qualitative-coding "
             f"prompt set (not finalized)."
@@ -407,13 +536,14 @@ def erase_cell(cell_id: str, force: bool = False) -> None:
         )
 
     flow_cls = FLOW_REGISTRY[plan.platform]
-    session_label = config.MAXIMAL_ACCOUNT_LABEL.get(cell_id)
+    session_label = config.MAXIMAL_ACCOUNT_LABEL.get(cell_id) or ("nlforget" if plan.sheet == "NLFORGET" else None)
     with flow_cls(session_label=session_label) as flow:
         flow.erase_via_ui(
             plan.erasure_type_text,
             token=plan.token,
             injection_text=plan.injection_text,
             ref=entry.get("injection_ref"),
+            erasure_request_text=plan.erasure_request_text,
         )
         _save_json(plan.platform, cell_id, "02_erase", {"erasure_type_text": plan.erasure_type_text})
         _save_screenshot(flow, plan.platform, cell_id, "02_erase")
@@ -421,6 +551,12 @@ def erase_cell(cell_id: str, force: bool = False) -> None:
     entry = tracking.mark_erased(cell_id)
     if plan.injection_type == "FILE":
         _update_file_substudy_row(cell_id, {FS_COL_RUN_STATUS: "ERASED"})
+    elif plan.sheet == "NLFORGET":
+        _update_nlforget_row(
+            cell_id,
+            {NLF_COL_RUN_STATUS: "ERASED"},
+            note_breadcrumb=f"auto-erased {entry['erased_at']}",
+        )
     else:
         _update_master_row(
             cell_id,
@@ -452,7 +588,7 @@ def recall_cell(cell_id: str, force: bool = False) -> None:
     token = probes["answer"]
 
     flow_cls = FLOW_REGISTRY[plan.platform]
-    session_label = config.MAXIMAL_ACCOUNT_LABEL.get(cell_id)
+    session_label = config.MAXIMAL_ACCOUNT_LABEL.get(cell_id) or ("nlforget" if plan.sheet == "NLFORGET" else None)
 
     with flow_cls(session_label=session_label) as flow:
         same_scores = _run_recall_probes(
@@ -492,6 +628,21 @@ def recall_cell(cell_id: str, force: bool = False) -> None:
                 FS_COL_RESULTS_NOTES: results_summary,
                 FS_COL_OBSERVED_OUTCOME: observed,
             },
+        )
+    elif plan.sheet == "NLFORGET":
+        _update_nlforget_row(
+            cell_id,
+            {
+                NLF_COL_RUN_STATUS: "RECALLED",
+                NLF_COL_R1_SAME: same_scores["r1"],
+                NLF_COL_R2_SAME: same_scores["r2"],
+                NLF_COL_R3_SAME: same_scores["r3"],
+                NLF_COL_R1_CROSS: cross_scores["r1"],
+                NLF_COL_R2_CROSS: cross_scores["r2"],
+                NLF_COL_R3_CROSS: cross_scores["r3"],
+                NLF_COL_OBSERVED_OUTCOME: observed,
+            },
+            note_breadcrumb=f"auto-recalled {entry['recalled_at']}",
         )
     else:
         _update_master_row(

@@ -1,0 +1,1375 @@
+[2026-09-11T21:49:19] === scheduler start, state={'chatgpt': {'batch_size': 35, 'next_ready_at': 1789177759.939254}, 'claude': {'batch_size': 40, 'next_ready_at': 1789177759.939254}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789177759.939254}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789177759.939254}} ===
+[2026-09-11T21:49:21] claude: starting batch, ceiling=40, 137 total remaining, planning up to 40 this batch
+[2026-09-11T21:49:48] claude: OK CL-NLF-I0001 (1/40)
+[2026-09-11T21:50:36] claude: OK CL-NLF-I0002 (2/40)
+[2026-09-11T21:51:31] claude: OK CL-NLF-I0004 (3/40)
+[2026-09-11T21:52:57] claude: OK CL-NLF-I0005 (4/40)
+[2026-09-11T21:54:07] claude: OK CL-NLF-I0010 (5/40)
+[2026-09-11T21:55:26] claude: OK CL-NLF-I0012 (6/40)
+[2026-09-11T21:56:38] claude: OK CL-NLF-I0018 (7/40)
+[2026-09-11T21:57:24] claude: OK CL-NLF-I0023 (8/40)
+[2026-09-11T21:58:05] claude: OK CL-NLF-I0024 (9/40)
+[2026-09-11T21:59:04] claude: OK CL-NLF-I0026 (10/40)
+[2026-09-11T21:59:41] claude: OK CL-NLF-I0027 (11/40)
+[2026-09-11T22:00:59] claude: OK CL-NLF-I0028 (12/40)
+[2026-09-11T22:02:11] claude: OK CL-NLF-I0030 (13/40)
+[2026-09-11T22:03:36] claude: OK CL-NLF-I0032 (14/40)
+[2026-09-11T22:05:03] claude: OK CL-NLF-I0035 (15/40)
+[2026-09-11T22:06:18] claude: OK CL-NLF-I0036 (16/40)
+[2026-09-11T22:07:06] claude: OK CL-NLF-I0041 (17/40)
+[2026-09-11T22:08:01] claude: OK CL-NLF-I0042 (18/40)
+[2026-09-11T22:08:43] claude: OK CL-NLF-I0043 (19/40)
+[2026-09-11T22:10:10] claude: OK CL-NLF-I0044 (20/40)
+[2026-09-11T22:10:55] claude: OK CL-NLF-I0045 (21/40)
+[2026-09-11T22:12:12] claude: OK CL-NLF-I0047 (22/40)
+[2026-09-11T22:12:50] claude: OK CL-NLF-I0049 (23/40)
+[2026-09-11T22:14:04] claude: OK CL-NLF-I0051 (24/40)
+[2026-09-11T22:15:26] claude: OK CL-NLF-I0053 (25/40)
+[2026-09-11T22:16:43] claude: OK CL-NLF-I0056 (26/40)
+[2026-09-11T22:17:45] claude: OK CL-NLF-I0059 (27/40)
+[2026-09-11T22:19:11] claude: OK CL-NLF-I0060 (28/40)
+[2026-09-11T22:20:36] claude: OK CL-NLF-I0062 (29/40)
+[2026-09-11T22:21:57] claude: OK CL-NLF-I0064 (30/40)
+[2026-09-11T22:22:37] claude: OK CL-NLF-I0067 (31/40)
+[2026-09-11T22:23:18] claude: OK CL-NLF-I0068 (32/40)
+[2026-09-11T22:24:35] claude: OK CL-NLF-I0070 (33/40)
+[2026-09-11T22:25:38] claude: OK CL-NLF-I0077 (34/40)
+[2026-09-11T22:26:37] claude: OK CL-NLF-I0085 (35/40)
+[2026-09-11T22:27:24] claude: OK CL-NLF-I0086 (36/40)
+[2026-09-11T22:28:22] claude: OK CL-NLF-I0088 (37/40)
+[2026-09-11T22:29:22] claude: OK CL-NLF-I0089 (38/40)
+[2026-09-12T00:00:11] === scheduler start, state={'chatgpt': {'batch_size': 35, 'next_ready_at': 1789198860.0}, 'claude': {'batch_size': 40, 'next_ready_at': 1789201762.0}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789185606.5567381}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789185606.5567381}} ===
+[2026-09-12T00:00:12] perplexity: starting batch, ceiling=40, 137 total remaining, planning up to 40 this batch
+[2026-09-12T00:00:30] perplexity: OK PE-NLF-I0001 (1/40)
+[2026-09-12T00:01:43] perplexity: OK PE-NLF-I0002 (2/40)
+[2026-09-12T00:02:25] perplexity: OK PE-NLF-I0004 (3/40)
+[2026-09-12T00:03:16] perplexity: OK PE-NLF-I0005 (4/40)
+[2026-09-12T00:04:10] perplexity: OK PE-NLF-I0010 (5/40)
+[2026-09-12T00:05:06] perplexity: OK PE-NLF-I0012 (6/40)
+[2026-09-12T00:06:15] perplexity: OK PE-NLF-I0018 (7/40)
+[2026-09-12T00:07:29] perplexity: OK PE-NLF-I0023 (8/40)
+[2026-09-12T00:08:52] perplexity: OK PE-NLF-I0024 (9/40)
+[2026-09-12T00:10:15] perplexity: OK PE-NLF-I0026 (10/40)
+[2026-09-12T00:11:37] perplexity: OK PE-NLF-I0027 (11/40)
+[2026-09-12T00:12:51] perplexity: OK PE-NLF-I0028 (12/40)
+[2026-09-12T00:13:39] perplexity: OK PE-NLF-I0030 (13/40)
+[2026-09-12T00:14:16] perplexity: OK PE-NLF-I0032 (14/40)
+[2026-09-12T00:15:35] perplexity: OK PE-NLF-I0035 (15/40)
+[2026-09-12T00:16:45] perplexity: OK PE-NLF-I0036 (16/40)
+[2026-09-12T00:17:29] perplexity: OK PE-NLF-I0041 (17/40)
+[2026-09-12T00:18:17] perplexity: OK PE-NLF-I0042 (18/40)
+[2026-09-12T00:19:13] perplexity: OK PE-NLF-I0043 (19/40)
+[2026-09-12T00:20:22] perplexity: OK PE-NLF-I0044 (20/40)
+[2026-09-12T00:21:11] perplexity: OK PE-NLF-I0045 (21/40)
+[2026-09-12T00:22:24] perplexity: OK PE-NLF-I0047 (22/40)
+[2026-09-12T00:22:57] perplexity: OK PE-NLF-I0049 (23/40)
+[2026-09-12T00:24:10] perplexity: OK PE-NLF-I0051 (24/40)
+[2026-09-12T00:25:06] perplexity: OK PE-NLF-I0053 (25/40)
+[2026-09-12T00:26:13] perplexity: OK PE-NLF-I0056 (26/40)
+[2026-09-12T00:27:30] perplexity: OK PE-NLF-I0059 (27/40)
+[2026-09-12T00:28:51] perplexity: OK PE-NLF-I0060 (28/40)
+[2026-09-12T00:30:07] perplexity: OK PE-NLF-I0062 (29/40)
+[2026-09-12T00:31:15] perplexity: OK PE-NLF-I0064 (30/40)
+[2026-09-12T00:32:36] perplexity: OK PE-NLF-I0067 (31/40)
+[2026-09-12T00:33:52] perplexity: OK PE-NLF-I0068 (32/40)
+[2026-09-12T00:34:27] perplexity: OK PE-NLF-I0070 (33/40)
+[2026-09-12T00:35:07] perplexity: OK PE-NLF-I0077 (34/40)
+[2026-09-12T01:11:18] === scheduler start, state={'chatgpt': {'batch_size': 35, 'next_ready_at': 1789198860.0}, 'claude': {'batch_size': 40, 'next_ready_at': 1789201762.0}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789209307.0}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789185606.5567381}} ===
+[2026-09-12T01:11:19] deepseek: starting batch, ceiling=40, 137 total remaining, planning up to 40 this batch
+[2026-09-12T01:11:35] deepseek: OK DE-NLF-I0001 (1/40)
+[2026-09-12T01:12:36] deepseek: OK DE-NLF-I0002 (2/40)
+[2026-09-12T01:13:35] deepseek: OK DE-NLF-I0004 (3/40)
+[2026-09-12T01:14:48] deepseek: OK DE-NLF-I0005 (4/40)
+[2026-09-12T01:16:08] deepseek: OK DE-NLF-I0010 (5/40)
+[2026-09-12T01:17:24] deepseek: OK DE-NLF-I0012 (6/40)
+[2026-09-12T01:18:23] deepseek: OK DE-NLF-I0018 (7/40)
+[2026-09-12T01:19:10] deepseek: OK DE-NLF-I0023 (8/40)
+[2026-09-12T01:20:05] deepseek: OK DE-NLF-I0024 (9/40)
+[2026-09-12T01:21:03] deepseek: OK DE-NLF-I0026 (10/40)
+[2026-09-12T01:21:54] deepseek: OK DE-NLF-I0027 (11/40)
+[2026-09-12T01:22:44] deepseek: OK DE-NLF-I0028 (12/40)
+[2026-09-12T01:23:46] deepseek: OK DE-NLF-I0030 (13/40)
+[2026-09-12T01:24:59] deepseek: OK DE-NLF-I0032 (14/40)
+[2026-09-12T01:25:43] deepseek: OK DE-NLF-I0035 (15/40)
+[2026-09-12T01:26:20] deepseek: OK DE-NLF-I0036 (16/40)
+[2026-09-12T01:27:19] deepseek: OK DE-NLF-I0041 (17/40)
+[2026-09-12T01:28:41] deepseek: OK DE-NLF-I0042 (18/40)
+[2026-09-12T01:29:40] deepseek: OK DE-NLF-I0043 (19/40)
+[2026-09-12T01:30:17] deepseek: OK DE-NLF-I0044 (20/40)
+[2026-09-12T01:31:33] deepseek: OK DE-NLF-I0045 (21/40)
+[2026-09-12T01:32:38] deepseek: OK DE-NLF-I0047 (22/40)
+[2026-09-12T01:34:04] deepseek: OK DE-NLF-I0049 (23/40)
+[2026-09-12T01:35:16] deepseek: OK DE-NLF-I0051 (24/40)
+[2026-09-12T01:36:16] deepseek: OK DE-NLF-I0053 (25/40)
+[2026-09-12T01:37:39] deepseek: OK DE-NLF-I0056 (26/40)
+[2026-09-12T01:38:58] deepseek: OK DE-NLF-I0059 (27/40)
+[2026-09-12T01:39:29] deepseek: OK DE-NLF-I0060 (28/40)
+[2026-09-12T01:40:13] deepseek: OK DE-NLF-I0062 (29/40)
+[2026-09-12T01:41:09] deepseek: OK DE-NLF-I0064 (30/40)
+[2026-09-12T01:42:04] deepseek: OK DE-NLF-I0067 (31/40)
+[2026-09-12T01:42:46] deepseek: OK DE-NLF-I0068 (32/40)
+[2026-09-12T01:43:58] deepseek: OK DE-NLF-I0070 (33/40)
+[2026-09-12T01:44:45] deepseek: OK DE-NLF-I0077 (34/40)
+[2026-09-12T01:45:19] deepseek: OK DE-NLF-I0085 (35/40)
+[2026-09-12T01:46:19] deepseek: OK DE-NLF-I0086 (36/40)
+[2026-09-12T01:47:10] deepseek: OK DE-NLF-I0088 (37/40)
+[2026-09-12T01:48:15] deepseek: OK DE-NLF-I0089 (38/40)
+[2026-09-12T01:49:23] deepseek: OK DE-NLF-I0090 (39/40)
+[2026-09-12T01:50:22] deepseek: OK DE-NLF-I0092 (40/40)
+[2026-09-12T01:50:22] deepseek: batch completed in full (40/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-12T01:50:22] deepseek: batch done, next ready at 2026-09-12T07:50:22
+[2026-09-12T01:50:23] no platform ready -- sleeping 6636s until chatgpt is ready
+[2026-09-12T01:57:14] === scheduler start, state={'chatgpt': {'batch_size': 35, 'next_ready_at': 1789192629.8282151}, 'claude': {'batch_size': 40, 'next_ready_at': 1789192630.8282151}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789192631.8282151}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789192632.8282151}} ===
+[2026-09-12T01:57:15] chatgpt: starting batch, ceiling=35, 81 total remaining, planning up to 35 this batch
+[2026-09-12T01:57:38] chatgpt: OK CH-NLF-I0010 (1/35)
+[2026-09-12T01:58:53] chatgpt: FAIL CH-NLF-I0106 (2/35): Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+  - waiting for fonts to load...
+  - fonts loaded
+
+[2026-09-12T01:58:53] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 178, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 493, in inject_cell
+    _save_screenshot(flow, plan.platform, cell_id, "01_inject")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 254, in _save_screenshot
+    flow.page.screenshot(path=str(shots_dir / f"{name}.png"), full_page=True)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 10872, in screenshot
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 828, in screenshot
+    encoded_binary = await self._channel.send(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+  - waiting for fonts to load...
+  - fonts loaded
+
+
+[2026-09-12T01:59:31] chatgpt: OK CH-NLF-I0118 (3/35)
+[2026-09-12T02:00:50] chatgpt: OK CH-NLF-I0121 (4/35)
+[2026-09-12T02:02:15] chatgpt: OK CH-NLF-I0124 (5/35)
+[2026-09-12T02:03:16] chatgpt: OK CH-NLF-I0126 (6/35)
+[2026-09-12T02:03:58] chatgpt: OK CH-NLF-I0128 (7/35)
+[2026-09-12T02:05:11] chatgpt: OK CH-NLF-I0132 (8/35)
+[2026-09-12T02:06:43] chatgpt: OK CH-NLF-I0133 (9/35)
+[2026-09-12T02:08:14] chatgpt: OK CH-NLF-I0137 (10/35)
+[2026-09-12T02:09:42] chatgpt: OK CH-NLF-I0141 (11/35)
+[2026-09-12T02:10:44] chatgpt: OK CH-NLF-I0146 (12/35)
+[2026-09-12T02:11:26] chatgpt: OK CH-NLF-I0149 (13/35)
+[2026-09-12T02:12:21] chatgpt: OK CH-NLF-I0159 (14/35)
+[2026-09-12T02:13:23] chatgpt: OK CH-NLF-I0161 (15/35)
+[2026-09-12T02:14:54] chatgpt: OK CH-NLF-I0163 (16/35)
+[2026-09-12T02:15:36] chatgpt: OK CH-NLF-I0166 (17/35)
+[2026-09-12T02:16:26] chatgpt: OK CH-NLF-I0169 (18/35)
+[2026-09-12T02:17:14] chatgpt: OK CH-NLF-I0170 (19/35)
+[2026-09-12T02:18:24] chatgpt: OK CH-NLF-I0177 (20/35)
+[2026-09-12T02:19:30] chatgpt: OK CH-NLF-I0181 (21/35)
+[2026-09-12T02:20:34] chatgpt: OK CH-NLF-I0182 (22/35)
+[2026-09-12T02:21:29] chatgpt: OK CH-NLF-I0187 (23/35)
+[2026-09-12T02:22:51] chatgpt: OK CH-NLF-I0188 (24/35)
+[2026-09-12T02:24:19] chatgpt: OK CH-NLF-I0191 (25/35)
+[2026-09-12T02:25:37] chatgpt: OK CH-NLF-I0200 (26/35)
+[2026-09-12T02:26:32] chatgpt: OK CH-NLF-I0201 (27/35)
+[2026-09-12T02:28:05] chatgpt: OK CH-NLF-I0209 (28/35)
+[2026-09-12T02:29:07] chatgpt: OK CH-NLF-I0216 (29/35)
+[2026-09-12T02:30:22] chatgpt: OK CH-NLF-I0220 (30/35)
+[2026-09-12T02:31:23] chatgpt: OK CH-NLF-I0224 (31/35)
+[2026-09-12T02:32:19] chatgpt: OK CH-NLF-I0228 (32/35)
+[2026-09-12T02:33:26] chatgpt: OK CH-NLF-I0230 (33/35)
+[2026-09-12T02:34:57] chatgpt: OK CH-NLF-I0233 (34/35)
+[2026-09-12T02:35:55] chatgpt: OK CH-NLF-I0237 (35/35)
+[2026-09-12T02:35:55] chatgpt: batch completed in full (34/35 succeeded) without tripping the throttle window -- ceiling stays at 35
+[2026-09-12T02:35:55] chatgpt: batch done, next ready at 2026-09-12T02:35:55
+[2026-09-12T02:35:57] claude: starting batch, ceiling=40, 99 total remaining, planning up to 40 this batch
+[2026-09-12T02:36:13] claude: OK CL-NLF-I0090 (1/40)
+[2026-09-12T02:37:21] claude: OK CL-NLF-I0092 (2/40)
+[2026-09-12T02:38:41] claude: OK CL-NLF-I0095 (3/40)
+[2026-09-12T02:39:17] claude: OK CL-NLF-I0096 (4/40)
+[2026-09-12T02:40:38] claude: OK CL-NLF-I0099 (5/40)
+[2026-09-12T02:41:37] claude: OK CL-NLF-I0105 (6/40)
+[2026-09-12T02:42:48] claude: OK CL-NLF-I0106 (7/40)
+[2026-09-12T02:43:51] claude: OK CL-NLF-I0115 (8/40)
+[2026-09-12T02:45:16] claude: OK CL-NLF-I0118 (9/40)
+[2026-09-12T02:46:14] claude: OK CL-NLF-I0121 (10/40)
+[2026-09-12T02:47:42] claude: OK CL-NLF-I0124 (11/40)
+[2026-09-12T02:48:39] claude: OK CL-NLF-I0125 (12/40)
+[2026-09-12T02:49:48] claude: OK CL-NLF-I0126 (13/40)
+[2026-09-12T02:50:39] claude: OK CL-NLF-I0128 (14/40)
+[2026-09-12T02:51:41] claude: OK CL-NLF-I0131 (15/40)
+[2026-09-12T02:52:59] claude: OK CL-NLF-I0132 (16/40)
+[2026-09-12T02:53:58] claude: OK CL-NLF-I0133 (17/40)
+[2026-09-12T02:54:31] claude: OK CL-NLF-I0137 (18/40)
+[2026-09-12T02:55:25] claude: OK CL-NLF-I0140 (19/40)
+[2026-09-12T02:56:43] claude: OK CL-NLF-I0141 (20/40)
+[2026-09-12T02:57:46] === scheduler start, state={'chatgpt': {'batch_size': 35, 'next_ready_at': 1789194955.891478}, 'claude': {'batch_size': 40, 'next_ready_at': 1789192630.8282151}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789192631.8282151}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789192632.8282151}} ===
+[2026-09-12T02:57:47] claude: starting batch, ceiling=40, 79 total remaining, planning up to 40 this batch
+[2026-09-12T02:58:05] claude: OK CL-NLF-I0146 (1/40)
+[2026-09-12T02:59:03] claude: OK CL-NLF-I0149 (2/40)
+[2026-09-12T03:00:01] claude: OK CL-NLF-I0153 (3/40)
+[2026-09-12T03:01:27] claude: OK CL-NLF-I0159 (4/40)
+[2026-09-12T03:02:16] claude: OK CL-NLF-I0161 (5/40)
+[2026-09-12T03:03:21] claude: OK CL-NLF-I0163 (6/40)
+[2026-09-12T03:04:29] claude: OK CL-NLF-I0165 (7/40)
+[2026-09-12T03:05:41] claude: OK CL-NLF-I0166 (8/40)
+[2026-09-12T03:06:21] claude: OK CL-NLF-I0169 (9/40)
+[2026-09-12T03:07:18] claude: OK CL-NLF-I0170 (10/40)
+[2026-09-12T03:08:10] claude: OK CL-NLF-I0176 (11/40)
+[2026-09-12T03:08:49] claude: OK CL-NLF-I0177 (12/40)
+[2026-09-12T03:10:14] claude: OK CL-NLF-I0181 (13/40)
+[2026-09-12T03:11:19] claude: OK CL-NLF-I0182 (14/40)
+[2026-09-12T03:12:39] claude: OK CL-NLF-I0185 (15/40)
+[2026-09-12T03:13:33] claude: OK CL-NLF-I0187 (16/40)
+[2026-09-12T03:14:46] claude: OK CL-NLF-I0188 (17/40)
+[2026-09-12T03:15:29] claude: OK CL-NLF-I0191 (18/40)
+[2026-09-12T03:16:10] claude: OK CL-NLF-I0195 (19/40)
+[2026-09-12T03:16:54] claude: OK CL-NLF-I0200 (20/40)
+[2026-09-12T03:18:15] claude: OK CL-NLF-I0201 (21/40)
+[2026-09-12T03:21:13] === scheduler start, state={'chatgpt': {'batch_size': 35, 'next_ready_at': 1789194955.891478}, 'claude': {'batch_size': 40, 'next_ready_at': 1789192630.8282151}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789192631.8282151}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789192632.8282151}} ===
+[2026-09-12T03:21:15] claude: starting batch, ceiling=40, 58 total remaining, planning up to 40 this batch
+[2026-09-12T03:21:31] claude: OK CL-NLF-I0209 (1/40)
+[2026-09-12T03:22:23] claude: OK CL-NLF-I0215 (2/40)
+[2026-09-12T03:23:09] claude: OK CL-NLF-I0216 (3/40)
+[2026-09-12T03:24:08] claude: OK CL-NLF-I0220 (4/40)
+[2026-09-12T03:25:31] claude: OK CL-NLF-I0224 (5/40)
+[2026-09-12T03:26:52] claude: OK CL-NLF-I0226 (6/40)
+[2026-09-12T03:28:05] claude: OK CL-NLF-I0228 (7/40)
+[2026-09-12T03:29:24] claude: OK CL-NLF-I0230 (8/40)
+[2026-09-12T03:30:23] claude: OK CL-NLF-I0233 (9/40)
+[2026-09-12T03:31:02] claude: OK CL-NLF-I0236 (10/40)
+[2026-09-12T03:32:01] claude: OK CL-NLF-I0237 (11/40)
+[2026-09-12T03:32:37] claude: OK CL-NLF-I0239 (12/40)
+[2026-09-12T03:33:48] claude: OK CL-NLF-I0240 (13/40)
+[2026-09-12T03:34:33] claude: OK CL-NLF-I0241 (14/40)
+[2026-09-12T03:35:11] claude: OK CL-NLF-I0249 (15/40)
+[2026-09-12T03:36:27] claude: OK CL-NLF-I0252 (16/40)
+[2026-09-12T03:37:33] claude: OK CL-NLF-I0259 (17/40)
+[2026-09-12T03:38:55] claude: OK CL-NLF-I0260 (18/40)
+[2026-09-12T03:39:47] claude: OK CL-NLF-I0262 (19/40)
+[2026-09-12T03:40:28] claude: OK CL-NLF-I0264 (20/40)
+[2026-09-12T03:42:33] claude: FAIL CL-NLF-I0269 (21/40): _wait_for_reply: no new reply appeared within 60s
+[2026-09-12T03:42:33] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 178, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 452, in inject_cell
+    reply = flow.send_message(plan.injection_text)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 143, in send_message
+    return self._wait_for_reply(before)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 109, in _wait_for_reply
+    raise RuntimeError("_wait_for_reply: no new reply appeared within 60s")
+RuntimeError: _wait_for_reply: no new reply appeared within 60s
+
+[2026-09-12T03:43:00] === scheduler start, state={'chatgpt': {'batch_size': 35, 'next_ready_at': 1789198976.31425}, 'claude': {'batch_size': 40, 'next_ready_at': 1789212600.0}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789198976.31425}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789198976.31425}} ===
+[2026-09-12T03:43:01] perplexity: starting batch, ceiling=40, 103 total remaining, planning up to 40 this batch
+[2026-09-12T03:43:17] perplexity: OK PE-NLF-I0085 (1/40)
+[2026-09-12T03:43:50] perplexity: OK PE-NLF-I0086 (2/40)
+[2026-09-12T03:44:49] perplexity: OK PE-NLF-I0088 (3/40)
+[2026-09-12T03:45:44] perplexity: OK PE-NLF-I0089 (4/40)
+[2026-09-12T03:47:04] perplexity: OK PE-NLF-I0090 (5/40)
+[2026-09-12T03:48:07] perplexity: OK PE-NLF-I0092 (6/40)
+[2026-09-12T03:49:25] perplexity: OK PE-NLF-I0095 (7/40)
+[2026-09-12T03:50:06] perplexity: OK PE-NLF-I0096 (8/40)
+[2026-09-12T03:51:14] perplexity: OK PE-NLF-I0099 (9/40)
+[2026-09-12T03:52:16] perplexity: OK PE-NLF-I0105 (10/40)
+[2026-09-12T03:53:25] perplexity: OK PE-NLF-I0106 (11/40)
+[2026-09-12T03:54:49] perplexity: OK PE-NLF-I0115 (12/40)
+[2026-09-12T03:56:13] perplexity: OK PE-NLF-I0118 (13/40)
+[2026-09-12T03:56:49] perplexity: OK PE-NLF-I0121 (14/40)
+[2026-09-12T03:57:43] perplexity: OK PE-NLF-I0124 (15/40)
+[2026-09-12T03:58:24] perplexity: OK PE-NLF-I0125 (16/40)
+[2026-09-12T03:59:09] perplexity: OK PE-NLF-I0126 (17/40)
+[2026-09-12T04:00:11] perplexity: OK PE-NLF-I0128 (18/40)
+[2026-09-12T04:01:29] perplexity: OK PE-NLF-I0131 (19/40)
+[2026-09-12T04:02:46] perplexity: OK PE-NLF-I0132 (20/40)
+[2026-09-12T04:03:51] perplexity: OK PE-NLF-I0133 (21/40)
+[2026-09-12T04:05:02] perplexity: OK PE-NLF-I0137 (22/40)
+[2026-09-12T04:06:07] perplexity: OK PE-NLF-I0140 (23/40)
+[2026-09-12T04:07:32] perplexity: OK PE-NLF-I0141 (24/40)
+[2026-09-12T04:08:42] perplexity: OK PE-NLF-I0146 (25/40)
+[2026-09-12T04:09:43] perplexity: OK PE-NLF-I0149 (26/40)
+[2026-09-12T04:10:34] perplexity: OK PE-NLF-I0153 (27/40)
+[2026-09-12T04:11:49] perplexity: OK PE-NLF-I0159 (28/40)
+[2026-09-12T04:12:35] perplexity: OK PE-NLF-I0161 (29/40)
+[2026-09-12T04:13:56] perplexity: OK PE-NLF-I0163 (30/40)
+[2026-09-12T04:15:01] perplexity: OK PE-NLF-I0165 (31/40)
+[2026-09-12T04:16:23] perplexity: OK PE-NLF-I0166 (32/40)
+[2026-09-12T04:17:30] perplexity: OK PE-NLF-I0169 (33/40)
+[2026-09-12T04:18:15] perplexity: OK PE-NLF-I0170 (34/40)
+[2026-09-12T04:19:40] perplexity: OK PE-NLF-I0176 (35/40)
+[2026-09-12T04:20:44] perplexity: OK PE-NLF-I0177 (36/40)
+[2026-09-12T04:21:28] perplexity: OK PE-NLF-I0181 (37/40)
+[2026-09-12T04:22:39] perplexity: OK PE-NLF-I0182 (38/40)
+[2026-09-12T04:23:32] perplexity: OK PE-NLF-I0185 (39/40)
+[2026-09-12T04:24:13] perplexity: OK PE-NLF-I0187 (40/40)
+[2026-09-12T04:24:13] perplexity: batch completed in full (40/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-12T04:24:13] perplexity: batch done, next ready at 2026-09-12T04:24:13
+[2026-09-12T04:24:15] deepseek: starting batch, ceiling=40, 97 total remaining, planning up to 40 this batch
+[2026-09-12T04:24:29] deepseek: OK DE-NLF-I0095 (1/40)
+[2026-09-12T04:25:23] deepseek: OK DE-NLF-I0096 (2/40)
+[2026-09-12T04:26:02] deepseek: OK DE-NLF-I0099 (3/40)
+[2026-09-12T04:26:33] deepseek: OK DE-NLF-I0105 (4/40)
+[2026-09-12T04:27:40] deepseek: OK DE-NLF-I0106 (5/40)
+[2026-09-12T04:28:38] deepseek: OK DE-NLF-I0115 (6/40)
+[2026-09-12T04:30:03] deepseek: OK DE-NLF-I0118 (7/40)
+[2026-09-12T04:30:34] deepseek: OK DE-NLF-I0121 (8/40)
+[2026-09-12T04:31:08] deepseek: OK DE-NLF-I0124 (9/40)
+[2026-09-12T04:31:53] deepseek: OK DE-NLF-I0125 (10/40)
+[2026-09-12T04:33:11] deepseek: OK DE-NLF-I0126 (11/40)
+[2026-09-12T04:34:22] deepseek: OK DE-NLF-I0128 (12/40)
+[2026-09-12T04:35:17] deepseek: OK DE-NLF-I0131 (13/40)
+[2026-09-12T04:36:32] deepseek: OK DE-NLF-I0132 (14/40)
+[2026-09-12T04:37:23] deepseek: OK DE-NLF-I0133 (15/40)
+[2026-09-12T04:38:19] deepseek: OK DE-NLF-I0137 (16/40)
+[2026-09-12T04:39:44] deepseek: OK DE-NLF-I0140 (17/40)
+[2026-09-12T04:41:03] deepseek: OK DE-NLF-I0141 (18/40)
+[2026-09-12T04:41:34] deepseek: OK DE-NLF-I0146 (19/40)
+[2026-09-12T04:42:26] deepseek: OK DE-NLF-I0149 (20/40)
+[2026-09-12T04:43:11] deepseek: OK DE-NLF-I0153 (21/40)
+[2026-09-12T04:43:44] deepseek: OK DE-NLF-I0159 (22/40)
+[2026-09-12T04:44:26] deepseek: OK DE-NLF-I0161 (23/40)
+[2026-09-12T04:45:15] deepseek: OK DE-NLF-I0163 (24/40)
+[2026-09-12T04:46:24] deepseek: OK DE-NLF-I0165 (25/40)
+[2026-09-12T04:47:04] deepseek: OK DE-NLF-I0166 (26/40)
+[2026-09-12T04:48:11] deepseek: OK DE-NLF-I0169 (27/40)
+[2026-09-12T04:49:30] deepseek: OK DE-NLF-I0170 (28/40)
+[2026-09-12T04:50:25] deepseek: OK DE-NLF-I0176 (29/40)
+[2026-09-12T04:51:35] deepseek: OK DE-NLF-I0177 (30/40)
+[2026-09-12T04:52:45] deepseek: OK DE-NLF-I0181 (31/40)
+[2026-09-12T04:53:34] deepseek: OK DE-NLF-I0182 (32/40)
+[2026-09-12T04:54:25] deepseek: OK DE-NLF-I0185 (33/40)
+[2026-09-12T04:55:36] deepseek: OK DE-NLF-I0187 (34/40)
+[2026-09-12T04:56:42] deepseek: OK DE-NLF-I0188 (35/40)
+[2026-09-12T04:57:51] deepseek: OK DE-NLF-I0191 (36/40)
+[2026-09-12T04:59:02] deepseek: OK DE-NLF-I0195 (37/40)
+[2026-09-12T05:00:14] deepseek: OK DE-NLF-I0200 (38/40)
+[2026-09-12T05:01:04] deepseek: OK DE-NLF-I0201 (39/40)
+[2026-09-12T05:01:55] deepseek: OK DE-NLF-I0209 (40/40)
+[2026-09-12T05:01:55] deepseek: batch completed in full (40/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-12T05:01:55] deepseek: batch done, next ready at 2026-09-12T05:01:55
+[2026-09-12T05:01:56] chatgpt: starting batch, ceiling=35, 47 total remaining, planning up to 35 this batch
+[2026-09-12T05:02:14] chatgpt: OK CH-NLF-I0106 (1/35)
+[2026-09-12T05:03:44] chatgpt: OK CH-NLF-I0239 (2/35)
+[2026-09-12T05:05:01] chatgpt: OK CH-NLF-I0241 (3/35)
+[2026-09-12T05:05:46] chatgpt: FAIL CH-NLF-I0249 (4/35): Page.goto: net::ERR_ABORTED at https://chatgpt.com/auth/login
+Call log:
+  - navigating to "https://chatgpt.com/auth/login", waiting until "domcontentloaded"
+
+[2026-09-12T05:05:46] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 178, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 442, in inject_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 79, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_ABORTED at https://chatgpt.com/auth/login
+Call log:
+  - navigating to "https://chatgpt.com/auth/login", waiting until "domcontentloaded"
+
+
+[2026-09-12T05:06:54] chatgpt: FAIL CH-NLF-I0252 (5/35): It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+[2026-09-12T05:06:54] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 178, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 442, in inject_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 67, in __enter__
+    self._playwright = sync_playwright().start()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+           ^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+[2026-09-12T05:06:54] chatgpt: THROTTLE DETECTED -- 2/5 failures in last 5 attempts, stopping batch early after 3 successful injections (planned 35)
+[2026-09-12T05:06:54] chatgpt: lowering batch-size ceiling 35 -> 5 based on this batch's observed throttle point
+[2026-09-12T05:06:54] chatgpt: batch done, next ready at 2026-09-12T05:06:54
+[2026-09-12T05:06:55] perplexity: starting batch, ceiling=40, 63 total remaining, planning up to 40 this batch
+[2026-09-12T05:06:55] perplexity: FAIL PE-NLF-I0188 (1/40): It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+[2026-09-12T05:06:55] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 178, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 442, in inject_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 67, in __enter__
+    self._playwright = sync_playwright().start()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+           ^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+[2026-09-12T05:07:58] perplexity: FAIL PE-NLF-I0191 (2/40): It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+[2026-09-12T05:07:58] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 178, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 442, in inject_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 67, in __enter__
+    self._playwright = sync_playwright().start()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+           ^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+[2026-09-12T05:08:19] perplexity: FAIL PE-NLF-I0195 (3/40): It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+[2026-09-12T05:08:19] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 178, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 442, in inject_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 67, in __enter__
+    self._playwright = sync_playwright().start()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+           ^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+[2026-09-12T05:08:40] perplexity: FAIL PE-NLF-I0200 (4/40): It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+[2026-09-12T05:08:40] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 178, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 442, in inject_cell
+    with flow_cls(session_label=session_label) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 67, in __enter__
+    self._playwright = sync_playwright().start()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_context_manager.py", line 84, in start
+    return self.__enter__()
+           ^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_context_manager.py", line 47, in __enter__
+    raise Error(
+playwright._impl._errors.Error: It looks like you are using Playwright Sync API inside the asyncio loop.
+Please use the Async API instead.
+
+[2026-09-12T05:09:19] === scheduler start, state={'chatgpt': {'batch_size': 35, 'next_ready_at': 1789204155.805331}, 'claude': {'batch_size': 40, 'next_ready_at': 1789212600.0}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789204155.805331}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789204155.805331}} ===
+[2026-09-12T05:09:21] perplexity: starting batch, ceiling=40, 63 total remaining, planning up to 40 this batch
+[2026-09-12T05:09:37] perplexity: OK PE-NLF-I0188 (1/40)
+[2026-09-12T05:10:13] perplexity: OK PE-NLF-I0191 (2/40)
+[2026-09-12T05:11:06] perplexity: OK PE-NLF-I0195 (3/40)
+[2026-09-12T05:12:19] perplexity: OK PE-NLF-I0200 (4/40)
+[2026-09-12T05:13:31] perplexity: OK PE-NLF-I0201 (5/40)
+[2026-09-12T05:14:38] perplexity: OK PE-NLF-I0209 (6/40)
+[2026-09-12T05:15:52] perplexity: OK PE-NLF-I0215 (7/40)
+[2026-09-12T05:17:16] perplexity: OK PE-NLF-I0216 (8/40)
+[2026-09-12T05:17:50] perplexity: OK PE-NLF-I0220 (9/40)
+[2026-09-12T05:19:00] perplexity: OK PE-NLF-I0224 (10/40)
+[2026-09-12T05:19:39] perplexity: OK PE-NLF-I0226 (11/40)
+[2026-09-12T05:20:21] perplexity: OK PE-NLF-I0228 (12/40)
+[2026-09-12T05:21:20] perplexity: OK PE-NLF-I0230 (13/40)
+[2026-09-12T05:22:13] perplexity: OK PE-NLF-I0233 (14/40)
+[2026-09-12T05:23:17] perplexity: OK PE-NLF-I0236 (15/40)
+[2026-09-12T05:24:08] perplexity: OK PE-NLF-I0237 (16/40)
+[2026-09-12T05:25:15] perplexity: OK PE-NLF-I0239 (17/40)
+[2026-09-12T05:26:30] perplexity: OK PE-NLF-I0240 (18/40)
+[2026-09-12T05:27:28] perplexity: OK PE-NLF-I0241 (19/40)
+[2026-09-12T05:28:53] perplexity: OK PE-NLF-I0249 (20/40)
+[2026-09-12T05:30:13] perplexity: OK PE-NLF-I0252 (21/40)
+[2026-09-12T05:31:31] perplexity: OK PE-NLF-I0259 (22/40)
+[2026-09-12T05:32:28] perplexity: OK PE-NLF-I0260 (23/40)
+[2026-09-12T05:33:30] perplexity: OK PE-NLF-I0262 (24/40)
+[2026-09-12T05:34:16] perplexity: OK PE-NLF-I0264 (25/40)
+[2026-09-12T05:35:24] perplexity: OK PE-NLF-I0269 (26/40)
+[2026-09-12T05:36:08] perplexity: OK PE-NLF-I0271 (27/40)
+[2026-09-12T05:36:55] perplexity: OK PE-NLF-I0272 (28/40)
+[2026-09-12T05:37:33] perplexity: OK PE-NLF-I0273 (29/40)
+[2026-09-12T05:38:37] perplexity: OK PE-NLF-I0279 (30/40)
+[2026-09-12T05:39:48] perplexity: OK PE-NLF-I0280 (31/40)
+[2026-09-12T05:40:57] perplexity: OK PE-NLF-I0281 (32/40)
+[2026-09-12T05:41:35] perplexity: OK PE-NLF-I0282 (33/40)
+[2026-09-12T05:42:29] perplexity: OK PE-NLF-I0287 (34/40)
+[2026-09-12T05:43:28] perplexity: OK PE-NLF-I0293 (35/40)
+[2026-09-12T05:44:29] perplexity: OK PE-NLF-I0296 (36/40)
+[2026-09-12T05:45:50] perplexity: OK PE-NLF-I0297 (37/40)
+[2026-09-12T05:46:58] perplexity: OK PE-NLF-I0302 (38/40)
+[2026-09-12T05:47:48] perplexity: OK PE-NLF-I0304 (39/40)
+[2026-09-12T05:48:34] perplexity: OK PE-NLF-I0305 (40/40)
+[2026-09-12T05:48:34] perplexity: batch completed in full (40/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-12T05:48:34] perplexity: batch done, next ready at 2026-09-12T05:48:34
+[2026-09-12T05:48:35] deepseek: starting batch, ceiling=40, 57 total remaining, planning up to 40 this batch
+[2026-09-12T05:48:50] deepseek: OK DE-NLF-I0215 (1/40)
+[2026-09-12T05:50:04] deepseek: OK DE-NLF-I0216 (2/40)
+[2026-09-12T05:50:51] deepseek: OK DE-NLF-I0220 (3/40)
+[2026-09-12T05:52:08] deepseek: OK DE-NLF-I0224 (4/40)
+[2026-09-12T05:53:07] deepseek: OK DE-NLF-I0226 (5/40)
+[2026-09-12T05:54:16] deepseek: OK DE-NLF-I0228 (6/40)
+[2026-09-12T05:55:13] deepseek: OK DE-NLF-I0230 (7/40)
+[2026-09-12T05:56:11] deepseek: OK DE-NLF-I0233 (8/40)
+[2026-09-12T05:56:57] deepseek: OK DE-NLF-I0236 (9/40)
+[2026-09-12T05:57:57] deepseek: OK DE-NLF-I0237 (10/40)
+[2026-09-12T05:58:40] deepseek: OK DE-NLF-I0239 (11/40)
+[2026-09-12T05:59:29] deepseek: OK DE-NLF-I0240 (12/40)
+[2026-09-12T06:00:53] deepseek: OK DE-NLF-I0241 (13/40)
+[2026-09-12T06:02:15] deepseek: OK DE-NLF-I0249 (14/40)
+[2026-09-12T06:03:00] deepseek: OK DE-NLF-I0252 (15/40)
+[2026-09-12T06:03:31] deepseek: OK DE-NLF-I0259 (16/40)
+[2026-09-12T06:04:31] deepseek: OK DE-NLF-I0260 (17/40)
+[2026-09-12T06:05:41] deepseek: OK DE-NLF-I0262 (18/40)
+[2026-09-12T06:06:43] deepseek: OK DE-NLF-I0264 (19/40)
+[2026-09-12T06:07:16] deepseek: OK DE-NLF-I0269 (20/40)
+[2026-09-12T06:08:24] deepseek: OK DE-NLF-I0271 (21/40)
+[2026-09-12T06:09:35] deepseek: OK DE-NLF-I0272 (22/40)
+[2026-09-12T06:10:34] deepseek: OK DE-NLF-I0273 (23/40)
+[2026-09-12T06:11:12] deepseek: OK DE-NLF-I0279 (24/40)
+[2026-09-12T06:12:18] deepseek: OK DE-NLF-I0280 (25/40)
+[2026-09-12T06:13:25] deepseek: OK DE-NLF-I0281 (26/40)
+[2026-09-12T06:14:15] deepseek: OK DE-NLF-I0282 (27/40)
+[2026-09-12T06:15:27] deepseek: OK DE-NLF-I0287 (28/40)
+[2026-09-12T06:16:20] deepseek: OK DE-NLF-I0293 (29/40)
+[2026-09-12T06:17:13] deepseek: OK DE-NLF-I0296 (30/40)
+[2026-09-12T06:18:37] deepseek: OK DE-NLF-I0297 (31/40)
+[2026-09-12T06:19:23] deepseek: OK DE-NLF-I0302 (32/40)
+[2026-09-12T06:20:37] deepseek: OK DE-NLF-I0304 (33/40)
+[2026-09-12T06:21:15] deepseek: OK DE-NLF-I0305 (34/40)
+[2026-09-12T06:22:03] deepseek: OK DE-NLF-I0309 (35/40)
+[2026-09-12T06:23:04] deepseek: OK DE-NLF-I0314 (36/40)
+[2026-09-12T06:24:20] deepseek: OK DE-NLF-I0315 (37/40)
+[2026-09-12T06:25:15] deepseek: OK DE-NLF-I0319 (38/40)
+[2026-09-12T06:26:21] deepseek: OK DE-NLF-I0322 (39/40)
+[2026-09-12T06:27:26] deepseek: OK DE-NLF-I0326 (40/40)
+[2026-09-12T06:27:26] deepseek: batch completed in full (40/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-12T06:27:26] deepseek: batch done, next ready at 2026-09-12T06:27:26
+[2026-09-12T06:27:27] chatgpt: starting batch, ceiling=35, 44 total remaining, planning up to 35 this batch
+[2026-09-12T06:27:43] chatgpt: OK CH-NLF-I0249 (1/35)
+[2026-09-12T06:29:03] chatgpt: OK CH-NLF-I0252 (2/35)
+[2026-09-12T06:30:18] chatgpt: OK CH-NLF-I0259 (3/35)
+[2026-09-12T06:31:29] chatgpt: OK CH-NLF-I0260 (4/35)
+[2026-09-12T06:32:37] chatgpt: OK CH-NLF-I0262 (5/35)
+[2026-09-12T06:33:26] chatgpt: OK CH-NLF-I0264 (6/35)
+[2026-09-12T06:34:16] chatgpt: OK CH-NLF-I0269 (7/35)
+[2026-09-12T06:34:51] chatgpt: OK CH-NLF-I0271 (8/35)
+[2026-09-12T06:36:16] chatgpt: OK CH-NLF-I0272 (9/35)
+[2026-09-12T06:37:36] chatgpt: OK CH-NLF-I0273 (10/35)
+[2026-09-12T06:38:55] chatgpt: OK CH-NLF-I0279 (11/35)
+[2026-09-12T06:39:50] chatgpt: FAIL CH-NLF-I0280 (12/35): CH-NLF-I0280: conversation_ref 'https://chatgpt.com/c/6aa52c5e-9254-83e9-a9ed-85d515f0071e' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-12T06:39:50] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 178, in run_one_batch
+    """Runs up to state[platform]['batch_size'] cells for this platform,
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: CH-NLF-I0280: conversation_ref 'https://chatgpt.com/c/6aa52c5e-9254-83e9-a9ed-85d515f0071e' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-12T06:41:08] chatgpt: OK CH-NLF-I0281 (13/35)
+[2026-09-12T06:41:55] chatgpt: OK CH-NLF-I0282 (14/35)
+[2026-09-12T06:42:38] chatgpt: OK CH-NLF-I0287 (15/35)
+[2026-09-12T06:43:15] chatgpt: OK CH-NLF-I0293 (16/35)
+[2026-09-12T06:44:16] chatgpt: OK CH-NLF-I0296 (17/35)
+[2026-09-12T06:45:06] chatgpt: OK CH-NLF-I0297 (18/35)
+[2026-09-12T06:46:14] chatgpt: OK CH-NLF-I0302 (19/35)
+[2026-09-12T06:47:21] chatgpt: OK CH-NLF-I0304 (20/35)
+[2026-09-12T06:48:03] chatgpt: OK CH-NLF-I0305 (21/35)
+[2026-09-12T06:49:16] chatgpt: OK CH-NLF-I0309 (22/35)
+[2026-09-12T06:50:06] chatgpt: OK CH-NLF-I0314 (23/35)
+[2026-09-12T06:50:48] chatgpt: OK CH-NLF-I0315 (24/35)
+[2026-09-12T06:51:21] chatgpt: OK CH-NLF-I0319 (25/35)
+[2026-09-12T06:52:30] chatgpt: OK CH-NLF-I0322 (26/35)
+[2026-09-12T06:53:22] chatgpt: OK CH-NLF-I0326 (27/35)
+[2026-09-12T06:54:26] chatgpt: OK CH-NLF-I0327 (28/35)
+[2026-09-12T06:55:32] chatgpt: OK CH-NLF-I0334 (29/35)
+[2026-09-12T06:56:20] chatgpt: OK CH-NLF-I0339 (30/35)
+[2026-09-12T06:57:33] chatgpt: OK CH-NLF-I0345 (31/35)
+[2026-09-12T06:58:21] chatgpt: OK CH-NLF-I0348 (32/35)
+[2026-09-12T06:58:53] chatgpt: OK CH-NLF-I0350 (33/35)
+[2026-09-12T07:00:06] chatgpt: OK CH-NLF-I0351 (34/35)
+[2026-09-12T07:00:59] chatgpt: OK CH-NLF-I0355 (35/35)
+[2026-09-12T07:00:59] chatgpt: batch completed in full (34/35 succeeded) without tripping the throttle window -- ceiling stays at 35
+[2026-09-12T07:00:59] chatgpt: batch done, next ready at 2026-09-12T07:00:59
+[2026-09-12T07:01:00] perplexity: starting batch, ceiling=40, 23 total remaining, planning up to 23 this batch
+[2026-09-12T07:01:17] perplexity: OK PE-NLF-I0309 (1/23)
+[2026-09-12T07:02:02] perplexity: OK PE-NLF-I0314 (2/23)
+[2026-09-12T07:02:34] perplexity: OK PE-NLF-I0315 (3/23)
+[2026-09-12T07:04:00] perplexity: OK PE-NLF-I0319 (4/23)
+[2026-09-12T07:05:04] perplexity: OK PE-NLF-I0322 (5/23)
+[2026-09-12T07:05:48] perplexity: OK PE-NLF-I0326 (6/23)
+[2026-09-12T07:07:03] perplexity: OK PE-NLF-I0327 (7/23)
+[2026-09-12T07:07:54] perplexity: OK PE-NLF-I0334 (8/23)
+[2026-09-12T07:08:50] perplexity: OK PE-NLF-I0339 (9/23)
+[2026-09-12T07:10:07] perplexity: OK PE-NLF-I0345 (10/23)
+[2026-09-12T07:10:47] perplexity: OK PE-NLF-I0348 (11/23)
+[2026-09-12T07:11:45] perplexity: OK PE-NLF-I0350 (12/23)
+[2026-09-12T07:13:01] perplexity: OK PE-NLF-I0351 (13/23)
+[2026-09-12T07:13:32] perplexity: OK PE-NLF-I0355 (14/23)
+[2026-09-12T07:14:26] perplexity: OK PE-NLF-I0357 (15/23)
+[2026-09-12T07:15:28] perplexity: OK PE-NLF-I0361 (16/23)
+[2026-09-12T07:16:20] perplexity: OK PE-NLF-I0363 (17/23)
+[2026-09-12T07:17:04] perplexity: OK PE-NLF-I0364 (18/23)
+[2026-09-12T07:17:42] perplexity: OK PE-NLF-I0365 (19/23)
+[2026-09-12T07:18:44] perplexity: OK PE-NLF-I0367 (20/23)
+[2026-09-12T07:19:32] perplexity: OK PE-NLF-I0368 (21/23)
+[2026-09-12T07:20:50] perplexity: OK PE-NLF-I0371 (22/23)
+[2026-09-12T07:21:53] perplexity: OK PE-NLF-I0372 (23/23)
+[2026-09-12T07:21:53] perplexity: batch completed in full (23/23 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-12T07:21:53] perplexity: batch done, next ready at 2026-09-12T07:21:53
+[2026-09-12T07:21:54] deepseek: starting batch, ceiling=40, 17 total remaining, planning up to 17 this batch
+[2026-09-12T07:22:08] deepseek: OK DE-NLF-I0327 (1/17)
+[2026-09-12T07:23:26] deepseek: OK DE-NLF-I0334 (2/17)
+[2026-09-12T07:24:41] deepseek: OK DE-NLF-I0339 (3/17)
+[2026-09-12T07:25:43] deepseek: OK DE-NLF-I0345 (4/17)
+[2026-09-12T07:26:59] deepseek: OK DE-NLF-I0348 (5/17)
+[2026-09-12T07:27:57] deepseek: OK DE-NLF-I0350 (6/17)
+[2026-09-12T07:29:16] deepseek: OK DE-NLF-I0351 (7/17)
+[2026-09-12T07:30:21] deepseek: OK DE-NLF-I0355 (8/17)
+[2026-09-12T07:31:23] deepseek: OK DE-NLF-I0357 (9/17)
+[2026-09-12T07:32:18] deepseek: OK DE-NLF-I0361 (10/17)
+[2026-09-12T07:33:40] deepseek: OK DE-NLF-I0363 (11/17)
+[2026-09-12T07:34:42] deepseek: OK DE-NLF-I0364 (12/17)
+[2026-09-12T07:35:25] deepseek: OK DE-NLF-I0365 (13/17)
+[2026-09-12T07:36:11] deepseek: OK DE-NLF-I0367 (14/17)
+[2026-09-12T07:37:15] deepseek: OK DE-NLF-I0368 (15/17)
+[2026-09-12T07:38:27] deepseek: OK DE-NLF-I0371 (16/17)
+[2026-09-12T07:39:45] deepseek: OK DE-NLF-I0372 (17/17)
+[2026-09-12T07:39:45] deepseek: batch completed in full (17/17 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-12T07:39:45] deepseek: batch done, next ready at 2026-09-12T07:39:45
+[2026-09-12T07:39:46] chatgpt: starting batch, ceiling=35, 10 total remaining, planning up to 10 this batch
+[2026-09-12T07:40:02] chatgpt: OK CH-NLF-I0280 (1/10)
+[2026-09-12T07:41:12] chatgpt: OK CH-NLF-I0357 (2/10)
+[2026-09-12T07:42:36] chatgpt: OK CH-NLF-I0361 (3/10)
+[2026-09-12T07:43:40] chatgpt: OK CH-NLF-I0363 (4/10)
+[2026-09-12T07:44:23] chatgpt: OK CH-NLF-I0364 (5/10)
+[2026-09-12T07:45:06] chatgpt: OK CH-NLF-I0365 (6/10)
+[2026-09-12T07:45:48] chatgpt: OK CH-NLF-I0367 (7/10)
+[2026-09-12T07:47:07] chatgpt: OK CH-NLF-I0368 (8/10)
+[2026-09-12T07:48:06] chatgpt: FAIL CH-NLF-I0371 (9/10): CH-NLF-I0371: conversation_ref 'https://chatgpt.com/c/6aa53c60-921c-83e9-876a-1d22327cad48' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-12T07:48:06] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 178, in run_one_batch
+    """Runs up to state[platform]['batch_size'] cells for this platform,
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: CH-NLF-I0371: conversation_ref 'https://chatgpt.com/c/6aa53c60-921c-83e9-876a-1d22327cad48' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-12T07:49:19] chatgpt: OK CH-NLF-I0372 (10/10)
+[2026-09-12T07:49:19] chatgpt: batch completed in full (9/10 succeeded) without tripping the throttle window -- ceiling stays at 35
+[2026-09-12T07:49:19] chatgpt: batch done, next ready at 2026-09-12T07:49:19
+[2026-09-12T07:49:20] claude: starting batch, ceiling=40, 38 total remaining, planning up to 38 this batch
+[2026-09-12T07:49:38] claude: OK CL-NLF-I0269 (1/38)
+[2026-09-12T07:50:35] claude: OK CL-NLF-I0271 (2/38)
+[2026-09-12T07:51:31] claude: OK CL-NLF-I0272 (3/38)
+[2026-09-12T07:52:50] claude: OK CL-NLF-I0273 (4/38)
+[2026-09-12T07:54:14] claude: OK CL-NLF-I0279 (5/38)
+[2026-09-12T07:54:58] claude: OK CL-NLF-I0280 (6/38)
+[2026-09-12T07:55:38] claude: OK CL-NLF-I0281 (7/38)
+[2026-09-12T07:56:42] claude: OK CL-NLF-I0282 (8/38)
+[2026-09-12T07:58:14] claude: OK CL-NLF-I0287 (9/38)
+[2026-09-12T07:59:06] claude: OK CL-NLF-I0293 (10/38)
+[2026-09-12T07:59:59] claude: OK CL-NLF-I0296 (11/38)
+[2026-09-12T08:01:19] claude: OK CL-NLF-I0297 (12/38)
+[2026-09-12T08:02:06] claude: OK CL-NLF-I0302 (13/38)
+[2026-09-12T08:03:09] claude: OK CL-NLF-I0304 (14/38)
+[2026-09-12T08:04:19] claude: OK CL-NLF-I0305 (15/38)
+[2026-09-12T08:04:57] claude: OK CL-NLF-I0309 (16/38)
+[2026-09-12T08:05:50] claude: OK CL-NLF-I0314 (17/38)
+[2026-09-12T08:06:39] claude: OK CL-NLF-I0315 (18/38)
+[2026-09-12T08:07:37] claude: OK CL-NLF-I0319 (19/38)
+[2026-09-12T08:08:43] claude: OK CL-NLF-I0322 (20/38)
+[2026-09-12T08:09:59] claude: OK CL-NLF-I0326 (21/38)
+[2026-09-12T08:11:17] claude: OK CL-NLF-I0327 (22/38)
+[2026-09-12T08:12:45] claude: OK CL-NLF-I0334 (23/38)
+[2026-09-12T08:13:44] claude: OK CL-NLF-I0339 (24/38)
+[2026-09-12T08:14:36] claude: OK CL-NLF-I0345 (25/38)
+[2026-09-12T08:15:18] claude: OK CL-NLF-I0348 (26/38)
+[2026-09-12T08:16:40] claude: OK CL-NLF-I0350 (27/38)
+[2026-09-12T08:17:16] claude: OK CL-NLF-I0351 (28/38)
+[2026-09-12T08:18:34] claude: OK CL-NLF-I0355 (29/38)
+[2026-09-12T08:19:52] claude: OK CL-NLF-I0357 (30/38)
+[2026-09-12T08:20:25] claude: OK CL-NLF-I0361 (31/38)
+[2026-09-12T08:21:16] claude: OK CL-NLF-I0363 (32/38)
+[2026-09-12T08:22:13] claude: OK CL-NLF-I0364 (33/38)
+[2026-09-12T08:23:25] claude: OK CL-NLF-I0365 (34/38)
+[2026-09-12T08:24:34] claude: OK CL-NLF-I0367 (35/38)
+[2026-09-12T08:25:10] claude: OK CL-NLF-I0368 (36/38)
+[2026-09-12T08:26:37] claude: OK CL-NLF-I0371 (37/38)
+[2026-09-12T08:27:24] claude: OK CL-NLF-I0372 (38/38)
+[2026-09-12T08:27:24] claude: batch completed in full (38/38 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-12T08:27:24] claude: batch done, next ready at 2026-09-12T08:27:24
+[2026-09-12T08:27:25] chatgpt: starting batch, ceiling=35, 1 total remaining, planning up to 1 this batch
+[2026-09-12T08:27:45] chatgpt: OK CH-NLF-I0371 (1/1)
+[2026-09-12T08:27:45] chatgpt: batch completed in full (1/1 succeeded) without tripping the throttle window -- ceiling stays at 35
+[2026-09-12T08:27:45] chatgpt: batch done, next ready at 2026-09-12T08:27:45
+[2026-09-12T08:27:46] === all platforms complete -- scheduler exiting ===
+[2026-09-12T09:58:55] === scheduler start, state={'chatgpt': {'batch_size': 35, 'next_ready_at': 1789216065.713006}, 'claude': {'batch_size': 40, 'next_ready_at': 1789216044.143755}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789212113.060736}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789213185.041431}, 'copilot': {'batch_size': 40, 'next_ready_at': 1789221511.936435}} ===
+[2026-09-12T09:58:57] copilot: starting batch, ceiling=40, 138 total remaining, planning up to 40 this batch
+[2026-09-12T09:59:16] copilot: OK CO-NLF-I0000 (1/40)
+[2026-09-12T10:00:33] copilot: OK CO-NLF-I0001 (2/40)
+[2026-09-12T10:01:23] copilot: OK CO-NLF-I0002 (3/40)
+[2026-09-12T10:02:06] copilot: OK CO-NLF-I0004 (4/40)
+[2026-09-12T10:03:14] copilot: OK CO-NLF-I0005 (5/40)
+[2026-09-12T10:04:13] copilot: OK CO-NLF-I0010 (6/40)
+[2026-09-12T10:05:19] copilot: OK CO-NLF-I0012 (7/40)
+[2026-09-12T10:06:26] copilot: OK CO-NLF-I0018 (8/40)
+[2026-09-12T10:07:54] copilot: OK CO-NLF-I0023 (9/40)
+[2026-09-12T10:08:55] copilot: OK CO-NLF-I0024 (10/40)
+[2026-09-12T10:10:23] copilot: OK CO-NLF-I0026 (11/40)
+[2026-09-12T10:11:53] copilot: OK CO-NLF-I0027 (12/40)
+[2026-09-12T10:13:07] copilot: OK CO-NLF-I0028 (13/40)
+[2026-09-12T10:13:46] copilot: OK CO-NLF-I0030 (14/40)
+[2026-09-12T10:14:24] copilot: OK CO-NLF-I0032 (15/40)
+[2026-09-12T10:15:11] copilot: OK CO-NLF-I0035 (16/40)
+[2026-09-12T10:16:37] copilot: OK CO-NLF-I0036 (17/40)
+[2026-09-12T10:17:50] copilot: OK CO-NLF-I0041 (18/40)
+[2026-09-12T10:19:03] copilot: OK CO-NLF-I0042 (19/40)
+[2026-09-12T10:19:54] copilot: OK CO-NLF-I0043 (20/40)
+[2026-09-12T10:20:46] copilot: OK CO-NLF-I0044 (21/40)
+[2026-09-12T10:21:44] copilot: OK CO-NLF-I0045 (22/40)
+[2026-09-12T10:22:23] copilot: OK CO-NLF-I0047 (23/40)
+[2026-09-12T10:23:42] copilot: OK CO-NLF-I0049 (24/40)
+[2026-09-12T10:24:27] copilot: OK CO-NLF-I0051 (25/40)
+[2026-09-12T10:25:46] copilot: OK CO-NLF-I0053 (26/40)
+[2026-09-12T10:26:59] copilot: OK CO-NLF-I0056 (27/40)
+[2026-09-12T10:28:05] copilot: OK CO-NLF-I0059 (28/40)
+[2026-09-12T10:29:33] copilot: OK CO-NLF-I0060 (29/40)
+[2026-09-12T10:30:14] copilot: OK CO-NLF-I0062 (30/40)
+[2026-09-12T10:31:28] copilot: OK CO-NLF-I0064 (31/40)
+[2026-09-12T10:33:02] copilot: OK CO-NLF-I0067 (32/40)
+[2026-09-12T10:33:38] copilot: OK CO-NLF-I0068 (33/40)
+[2026-09-12T10:35:09] copilot: OK CO-NLF-I0070 (34/40)
+[2026-09-12T10:36:01] copilot: OK CO-NLF-I0077 (35/40)
+[2026-09-12T10:37:29] copilot: OK CO-NLF-I0085 (36/40)
+[2026-09-12T10:38:35] copilot: OK CO-NLF-I0086 (37/40)
+[2026-09-12T10:39:44] copilot: OK CO-NLF-I0088 (38/40)
+[2026-09-12T10:40:39] copilot: OK CO-NLF-I0089 (39/40)
+[2026-09-12T10:41:50] copilot: OK CO-NLF-I0090 (40/40)
+[2026-09-12T10:41:50] copilot: batch completed in full (40/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-12T10:41:50] copilot: batch done, next ready at 2026-09-12T10:41:50
+[2026-09-12T10:41:51] copilot: starting batch, ceiling=40, 98 total remaining, planning up to 40 this batch
+[2026-09-12T10:42:09] copilot: OK CO-NLF-I0092 (1/40)
+[2026-09-12T10:43:35] copilot: OK CO-NLF-I0095 (2/40)
+[2026-09-12T10:44:47] copilot: OK CO-NLF-I0096 (3/40)
+[2026-09-12T10:45:57] copilot: OK CO-NLF-I0099 (4/40)
+[2026-09-12T10:46:47] copilot: OK CO-NLF-I0105 (5/40)
+[2026-09-12T10:47:59] copilot: OK CO-NLF-I0106 (6/40)
+[2026-09-12T10:48:42] copilot: OK CO-NLF-I0115 (7/40)
+[2026-09-12T10:49:34] copilot: OK CO-NLF-I0118 (8/40)
+[2026-09-12T10:50:48] copilot: OK CO-NLF-I0121 (9/40)
+[2026-09-12T10:52:05] copilot: OK CO-NLF-I0124 (10/40)
+[2026-09-12T10:53:14] copilot: OK CO-NLF-I0125 (11/40)
+[2026-09-12T10:54:40] copilot: OK CO-NLF-I0126 (12/40)
+[2026-09-12T10:55:31] copilot: OK CO-NLF-I0128 (13/40)
+[2026-09-12T10:56:13] copilot: OK CO-NLF-I0131 (14/40)
+[2026-09-12T10:56:47] copilot: OK CO-NLF-I0132 (15/40)
+[2026-09-12T10:57:51] copilot: OK CO-NLF-I0133 (16/40)
+[2026-09-12T10:58:55] copilot: OK CO-NLF-I0137 (17/40)
+[2026-09-12T11:00:15] copilot: OK CO-NLF-I0140 (18/40)
+[2026-09-12T11:01:43] copilot: OK CO-NLF-I0141 (19/40)
+[2026-09-12T11:02:35] copilot: OK CO-NLF-I0146 (20/40)
+[2026-09-12T11:03:47] copilot: OK CO-NLF-I0149 (21/40)
+[2026-09-12T11:04:39] copilot: OK CO-NLF-I0153 (22/40)
+[2026-09-12T11:05:44] copilot: OK CO-NLF-I0159 (23/40)
+[2026-09-12T11:06:28] copilot: OK CO-NLF-I0161 (24/40)
+[2026-09-12T11:07:45] copilot: OK CO-NLF-I0163 (25/40)
+[2026-09-12T11:08:42] copilot: OK CO-NLF-I0165 (26/40)
+[2026-09-12T11:10:07] copilot: OK CO-NLF-I0166 (27/40)
+[2026-09-12T11:11:03] copilot: OK CO-NLF-I0169 (28/40)
+[2026-09-12T11:12:08] copilot: OK CO-NLF-I0170 (29/40)
+[2026-09-12T11:13:43] copilot: OK CO-NLF-I0176 (30/40)
+[2026-09-12T11:14:22] copilot: OK CO-NLF-I0177 (31/40)
+[2026-09-12T11:15:43] copilot: OK CO-NLF-I0181 (32/40)
+[2026-09-12T11:16:38] copilot: OK CO-NLF-I0182 (33/40)
+[2026-09-12T11:17:39] copilot: OK CO-NLF-I0185 (34/40)
+[2026-09-12T11:18:17] copilot: OK CO-NLF-I0187 (35/40)
+[2026-09-12T11:19:30] copilot: OK CO-NLF-I0188 (36/40)
+[2026-09-12T11:20:23] copilot: OK CO-NLF-I0191 (37/40)
+[2026-09-12T11:21:02] copilot: OK CO-NLF-I0195 (38/40)
+[2026-09-12T11:22:11] copilot: OK CO-NLF-I0200 (39/40)
+[2026-09-12T11:24:20] copilot: FAIL CO-NLF-I0201 (40/40): _wait_for_reply: no new reply appeared within 60s
+[2026-09-12T11:24:20] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 452, in inject_cell
+    reply = flow.send_message(plan.injection_text)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/copilot.py", line 139, in send_message
+    return self._wait_for_reply(before)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/copilot.py", line 113, in _wait_for_reply
+    raise RuntimeError("_wait_for_reply: no new reply appeared within 60s")
+RuntimeError: _wait_for_reply: no new reply appeared within 60s
+
+[2026-09-12T11:24:20] copilot: batch completed in full (39/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-12T11:24:20] copilot: batch done, next ready at 2026-09-12T11:24:20
+[2026-09-12T11:24:22] copilot: starting batch, ceiling=40, 59 total remaining, planning up to 40 this batch
+[2026-09-12T11:24:42] copilot: OK CO-NLF-I0201 (1/40)
+[2026-09-12T11:26:08] copilot: OK CO-NLF-I0209 (2/40)
+[2026-09-12T11:26:53] copilot: OK CO-NLF-I0215 (3/40)
+[2026-09-12T11:27:58] copilot: OK CO-NLF-I0216 (4/40)
+[2026-09-12T11:29:01] copilot: OK CO-NLF-I0220 (5/40)
+[2026-09-12T11:29:33] copilot: OK CO-NLF-I0224 (6/40)
+[2026-09-12T11:30:51] copilot: OK CO-NLF-I0226 (7/40)
+[2026-09-12T11:32:18] copilot: OK CO-NLF-I0228 (8/40)
+[2026-09-12T11:33:11] copilot: OK CO-NLF-I0230 (9/40)
+[2026-09-12T11:33:46] copilot: OK CO-NLF-I0233 (10/40)
+[2026-09-12T11:34:28] copilot: OK CO-NLF-I0236 (11/40)
+[2026-09-12T11:35:23] copilot: OK CO-NLF-I0237 (12/40)
+[2026-09-12T11:36:18] copilot: OK CO-NLF-I0239 (13/40)
+[2026-09-12T11:37:45] copilot: OK CO-NLF-I0240 (14/40)
+[2026-09-12T11:39:12] copilot: OK CO-NLF-I0241 (15/40)
+[2026-09-12T11:40:21] copilot: OK CO-NLF-I0249 (16/40)
+[2026-09-12T11:41:45] copilot: OK CO-NLF-I0252 (17/40)
+[2026-09-12T11:42:22] copilot: OK CO-NLF-I0259 (18/40)
+[2026-09-12T11:43:23] copilot: OK CO-NLF-I0260 (19/40)
+[2026-09-12T11:44:40] copilot: OK CO-NLF-I0262 (20/40)
+[2026-09-12T11:45:55] copilot: OK CO-NLF-I0264 (21/40)
+[2026-09-12T11:47:04] copilot: OK CO-NLF-I0269 (22/40)
+[2026-09-12T11:48:00] copilot: OK CO-NLF-I0271 (23/40)
+[2026-09-12T11:48:58] copilot: OK CO-NLF-I0272 (24/40)
+[2026-09-12T11:49:51] copilot: OK CO-NLF-I0273 (25/40)
+[2026-09-12T11:50:25] copilot: OK CO-NLF-I0279 (26/40)
+[2026-09-12T11:51:46] copilot: OK CO-NLF-I0280 (27/40)
+[2026-09-12T11:52:50] copilot: OK CO-NLF-I0281 (28/40)
+[2026-09-12T11:53:48] copilot: OK CO-NLF-I0282 (29/40)
+[2026-09-12T11:54:22] copilot: OK CO-NLF-I0287 (30/40)
+[2026-09-12T11:55:43] copilot: OK CO-NLF-I0293 (31/40)
+[2026-09-12T11:56:28] copilot: OK CO-NLF-I0296 (32/40)
+[2026-09-12T11:57:10] copilot: OK CO-NLF-I0297 (33/40)
+[2026-09-12T11:57:56] copilot: OK CO-NLF-I0302 (34/40)
+[2026-09-12T11:59:20] copilot: OK CO-NLF-I0304 (35/40)
+[2026-09-12T12:00:25] copilot: OK CO-NLF-I0305 (36/40)
+[2026-09-12T12:01:05] copilot: OK CO-NLF-I0309 (37/40)
+[2026-09-12T12:02:27] copilot: OK CO-NLF-I0314 (38/40)
+[2026-09-12T12:03:18] copilot: OK CO-NLF-I0315 (39/40)
+[2026-09-12T12:04:33] copilot: OK CO-NLF-I0319 (40/40)
+[2026-09-12T12:04:33] copilot: batch completed in full (40/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-12T12:04:33] copilot: batch done, next ready at 2026-09-12T12:04:33
+[2026-09-12T12:04:34] copilot: starting batch, ceiling=40, 19 total remaining, planning up to 19 this batch
+[2026-09-12T12:04:53] copilot: OK CO-NLF-I0322 (1/19)
+[2026-09-12T12:06:02] copilot: OK CO-NLF-I0326 (2/19)
+[2026-09-12T12:06:53] copilot: OK CO-NLF-I0327 (3/19)
+[2026-09-12T12:07:28] copilot: OK CO-NLF-I0334 (4/19)
+[2026-09-12T12:08:04] copilot: OK CO-NLF-I0339 (5/19)
+[2026-09-12T12:09:08] copilot: OK CO-NLF-I0345 (6/19)
+[2026-09-12T12:09:54] copilot: OK CO-NLF-I0348 (7/19)
+[2026-09-12T12:10:34] copilot: OK CO-NLF-I0350 (8/19)
+[2026-09-12T12:11:29] copilot: OK CO-NLF-I0351 (9/19)
+[2026-09-12T12:12:23] copilot: OK CO-NLF-I0355 (10/19)
+[2026-09-12T12:13:20] copilot: OK CO-NLF-I0357 (11/19)
+[2026-09-12T12:14:22] copilot: OK CO-NLF-I0361 (12/19)
+[2026-09-12T12:15:16] copilot: OK CO-NLF-I0363 (13/19)
+[2026-09-12T12:16:07] copilot: OK CO-NLF-I0364 (14/19)
+[2026-09-12T12:17:25] copilot: OK CO-NLF-I0365 (15/19)
+[2026-09-12T12:18:11] copilot: OK CO-NLF-I0367 (16/19)
+[2026-09-12T12:19:27] copilot: OK CO-NLF-I0368 (17/19)
+[2026-09-12T12:20:44] copilot: OK CO-NLF-I0371 (18/19)
+[2026-09-12T12:21:46] copilot: OK CO-NLF-I0372 (19/19)
+[2026-09-12T12:21:46] copilot: batch completed in full (19/19 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-12T12:21:46] copilot: batch done, next ready at 2026-09-12T12:21:46
+[2026-09-12T12:21:48] === all platforms complete -- scheduler exiting ===
+[2026-09-12T22:01:14] === scheduler start, state={'chatgpt': {'batch_size': 35, 'next_ready_at': 1789216065.713006}, 'claude': {'batch_size': 40, 'next_ready_at': 1789216044.143755}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789212113.060736}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789213185.041431}, 'copilot': {'batch_size': 40, 'next_ready_at': 1789230106.970104}, 'gemini': {'batch_size': 40, 'next_ready_at': 1789264874.528029}} ===
+[2026-09-12T22:01:16] gemini: starting batch, ceiling=40, 138 total remaining, planning up to 40 this batch
+[2026-09-12T22:01:33] gemini: FAIL GE-NLF-I0000 (1/40): GE-NLF-I0000: conversation_ref 'https://gemini.google.com/app/887451f958e7e377' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-12T22:01:33] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0000: conversation_ref 'https://gemini.google.com/app/887451f958e7e377' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-12T22:02:48] gemini: FAIL GE-NLF-I0001 (2/40): GE-NLF-I0001: conversation_ref 'https://gemini.google.com/app/4297ddb087ef64cb' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-12T22:02:48] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0001: conversation_ref 'https://gemini.google.com/app/4297ddb087ef64cb' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-12T22:03:19] gemini: FAIL GE-NLF-I0002 (3/40): GE-NLF-I0002: conversation_ref 'https://gemini.google.com/app/ca4609a43f64eb97' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-12T22:03:19] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0002: conversation_ref 'https://gemini.google.com/app/ca4609a43f64eb97' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-12T22:04:07] gemini: FAIL GE-NLF-I0004 (4/40): GE-NLF-I0004: conversation_ref 'https://gemini.google.com/app/c70bc7a727adeeee' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-12T22:04:07] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0004: conversation_ref 'https://gemini.google.com/app/c70bc7a727adeeee' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-12T22:05:24] gemini: FAIL GE-NLF-I0005 (5/40): GE-NLF-I0005: conversation_ref 'https://gemini.google.com/app/5a7ac53b334c908e' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-12T22:05:24] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0005: conversation_ref 'https://gemini.google.com/app/5a7ac53b334c908e' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-12T22:05:24] gemini: THROTTLE DETECTED -- 5/5 failures in last 5 attempts, stopping batch early after 0 successful injections (planned 40)
+[2026-09-12T22:05:24] gemini: lowering batch-size ceiling 40 -> 5 based on this batch's observed throttle point
+[2026-09-12T22:05:24] gemini: batch done, next ready at 2026-09-12T22:05:24
+[2026-09-12T22:05:27] gemini: starting batch, ceiling=5, 138 total remaining, planning up to 5 this batch
+[2026-09-12T22:05:42] gemini: FAIL GE-NLF-I0000 (1/5): GE-NLF-I0000: conversation_ref 'https://gemini.google.com/app/6dea7a2034d69acd' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-12T22:05:42] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0000: conversation_ref 'https://gemini.google.com/app/6dea7a2034d69acd' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-12T22:09:52] === scheduler start, state={'chatgpt': {'batch_size': 35, 'next_ready_at': 1789216065.713006}, 'claude': {'batch_size': 40, 'next_ready_at': 1789216044.143755}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789212113.060736}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789213185.041431}, 'copilot': {'batch_size': 40, 'next_ready_at': 1789230106.970104}, 'gemini': {'batch_size': 40, 'next_ready_at': 1789265124.884754}} ===
+[2026-09-12T22:09:54] gemini: starting batch, ceiling=40, 138 total remaining, planning up to 40 this batch
+[2026-09-12T22:10:10] gemini: OK GE-NLF-I0000 (1/40)
+[2026-09-12T22:11:07] gemini: OK GE-NLF-I0001 (2/40)
+[2026-09-12T22:12:29] gemini: OK GE-NLF-I0002 (3/40)
+[2026-09-12T22:13:23] gemini: OK GE-NLF-I0004 (4/40)
+[2026-09-12T22:14:29] gemini: OK GE-NLF-I0005 (5/40)
+[2026-09-12T22:15:44] gemini: OK GE-NLF-I0010 (6/40)
+[2026-09-12T22:16:44] gemini: OK GE-NLF-I0012 (7/40)
+[2026-09-12T22:18:08] gemini: OK GE-NLF-I0018 (8/40)
+[2026-09-12T22:18:51] gemini: OK GE-NLF-I0023 (9/40)
+[2026-09-12T22:19:59] gemini: OK GE-NLF-I0024 (10/40)
+[2026-09-12T22:21:06] gemini: OK GE-NLF-I0026 (11/40)
+[2026-09-12T22:22:21] gemini: OK GE-NLF-I0027 (12/40)
+[2026-09-12T22:23:11] gemini: OK GE-NLF-I0028 (13/40)
+[2026-09-12T22:24:25] gemini: OK GE-NLF-I0030 (14/40)
+[2026-09-12T22:25:49] gemini: OK GE-NLF-I0032 (15/40)
+[2026-09-12T22:26:42] gemini: OK GE-NLF-I0035 (16/40)
+[2026-09-12T22:27:54] gemini: OK GE-NLF-I0036 (17/40)
+[2026-09-12T22:28:50] gemini: OK GE-NLF-I0041 (18/40)
+[2026-09-12T22:29:47] gemini: OK GE-NLF-I0042 (19/40)
+[2026-09-12T22:30:38] gemini: OK GE-NLF-I0043 (20/40)
+[2026-09-12T22:31:46] gemini: OK GE-NLF-I0044 (21/40)
+[2026-09-12T22:33:08] gemini: OK GE-NLF-I0045 (22/40)
+[2026-09-12T22:33:42] gemini: OK GE-NLF-I0047 (23/40)
+[2026-09-12T22:34:34] gemini: FAIL GE-NLF-I0049 (24/40): GE-NLF-I0049: conversation_ref 'https://gemini.google.com/app/0939b8b04faae557' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-12T22:34:34] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0049: conversation_ref 'https://gemini.google.com/app/0939b8b04faae557' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-12T22:36:00] gemini: OK GE-NLF-I0051 (25/40)
+[2026-09-12T22:36:54] gemini: OK GE-NLF-I0053 (26/40)
+[2026-09-12T22:38:17] gemini: OK GE-NLF-I0056 (27/40)
+[2026-09-12T22:39:04] gemini: OK GE-NLF-I0059 (28/40)
+[2026-09-12T22:39:49] gemini: OK GE-NLF-I0060 (29/40)
+[2026-09-12T22:40:34] gemini: OK GE-NLF-I0062 (30/40)
+[2026-09-12T22:41:56] gemini: OK GE-NLF-I0064 (31/40)
+[2026-09-12T22:43:05] gemini: OK GE-NLF-I0067 (32/40)
+[2026-09-12T22:44:17] gemini: OK GE-NLF-I0068 (33/40)
+[2026-09-12T22:45:29] gemini: OK GE-NLF-I0070 (34/40)
+[2026-09-12T22:46:34] gemini: OK GE-NLF-I0077 (35/40)
+[2026-09-12T22:47:45] gemini: OK GE-NLF-I0085 (36/40)
+[2026-09-12T22:48:51] gemini: OK GE-NLF-I0086 (37/40)
+[2026-09-12T22:49:42] gemini: OK GE-NLF-I0088 (38/40)
+[2026-09-12T22:50:31] gemini: OK GE-NLF-I0089 (39/40)
+[2026-09-12T22:51:23] gemini: OK GE-NLF-I0090 (40/40)
+[2026-09-12T22:51:23] gemini: batch completed in full (39/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-12T22:51:23] gemini: batch done, next ready at 2026-09-12T22:51:23
+[2026-09-12T22:51:25] gemini: starting batch, ceiling=40, 99 total remaining, planning up to 40 this batch
+[2026-09-12T22:51:40] gemini: OK GE-NLF-I0049 (1/40)
+[2026-09-12T22:52:47] gemini: OK GE-NLF-I0092 (2/40)
+[2026-09-12T22:53:52] gemini: OK GE-NLF-I0095 (3/40)
+[2026-09-12T22:54:40] gemini: OK GE-NLF-I0096 (4/40)
+[2026-09-12T22:55:54] gemini: OK GE-NLF-I0099 (5/40)
+[2026-09-12T22:57:16] gemini: OK GE-NLF-I0105 (6/40)
+[2026-09-12T22:58:37] gemini: OK GE-NLF-I0106 (7/40)
+[2026-09-12T22:59:41] gemini: OK GE-NLF-I0115 (8/40)
+[2026-09-12T23:01:06] gemini: FAIL GE-NLF-I0118 (9/40): GE-NLF-I0118: conversation_ref 'https://gemini.google.com/app/e723470634d6b499' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-12T23:01:06] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0118: conversation_ref 'https://gemini.google.com/app/e723470634d6b499' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-12T23:02:02] gemini: OK GE-NLF-I0121 (10/40)
+[2026-09-12T23:03:27] gemini: OK GE-NLF-I0124 (11/40)
+[2026-09-12T23:04:07] gemini: OK GE-NLF-I0125 (12/40)
+[2026-09-12T23:04:43] gemini: OK GE-NLF-I0126 (13/40)
+[2026-09-12T23:05:33] gemini: OK GE-NLF-I0128 (14/40)
+[2026-09-12T23:06:56] gemini: OK GE-NLF-I0131 (15/40)
+[2026-09-12T23:07:53] gemini: OK GE-NLF-I0132 (16/40)
+[2026-09-12T23:08:57] gemini: OK GE-NLF-I0133 (17/40)
+[2026-09-12T23:10:14] gemini: OK GE-NLF-I0137 (18/40)
+[2026-09-12T23:11:14] gemini: OK GE-NLF-I0140 (19/40)
+[2026-09-12T23:12:16] gemini: OK GE-NLF-I0141 (20/40)
+[2026-09-12T23:13:11] gemini: OK GE-NLF-I0146 (21/40)
+[2026-09-12T23:14:10] gemini: OK GE-NLF-I0149 (22/40)
+[2026-09-12T23:14:44] gemini: OK GE-NLF-I0153 (23/40)
+[2026-09-12T23:15:56] gemini: OK GE-NLF-I0159 (24/40)
+[2026-09-12T23:17:17] gemini: OK GE-NLF-I0161 (25/40)
+[2026-09-12T23:17:48] gemini: OK GE-NLF-I0163 (26/40)
+[2026-09-12T23:18:51] gemini: OK GE-NLF-I0165 (27/40)
+[2026-09-12T23:19:25] gemini: OK GE-NLF-I0166 (28/40)
+[2026-09-12T23:20:46] gemini: OK GE-NLF-I0169 (29/40)
+[2026-09-12T23:21:37] gemini: OK GE-NLF-I0170 (30/40)
+[2026-09-12T23:22:42] gemini: OK GE-NLF-I0176 (31/40)
+[2026-09-12T23:23:27] gemini: FAIL GE-NLF-I0177 (32/40): GE-NLF-I0177: conversation_ref 'https://gemini.google.com/app/c894d402f9ae980b' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-12T23:23:27] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0177: conversation_ref 'https://gemini.google.com/app/c894d402f9ae980b' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-12T23:24:36] gemini: OK GE-NLF-I0181 (33/40)
+[2026-09-12T23:25:45] gemini: OK GE-NLF-I0182 (34/40)
+[2026-09-12T23:26:20] gemini: OK GE-NLF-I0185 (35/40)
+[2026-09-12T23:27:17] gemini: OK GE-NLF-I0187 (36/40)
+[2026-09-12T23:28:27] gemini: OK GE-NLF-I0188 (37/40)
+[2026-09-12T23:29:32] gemini: OK GE-NLF-I0191 (38/40)
+[2026-09-12T23:30:56] gemini: OK GE-NLF-I0195 (39/40)
+[2026-09-12T23:31:38] gemini: OK GE-NLF-I0200 (40/40)
+[2026-09-12T23:31:38] gemini: batch completed in full (38/40 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-12T23:31:38] gemini: batch done, next ready at 2026-09-12T23:31:38
+[2026-09-12T23:31:40] gemini: starting batch, ceiling=40, 61 total remaining, planning up to 40 this batch
+[2026-09-12T23:31:54] gemini: OK GE-NLF-I0118 (1/40)
+[2026-09-12T23:33:10] gemini: OK GE-NLF-I0177 (2/40)
+[2026-09-12T23:33:57] gemini: OK GE-NLF-I0201 (3/40)
+[2026-09-12T23:35:21] gemini: OK GE-NLF-I0209 (4/40)
+[2026-09-12T23:36:12] gemini: OK GE-NLF-I0215 (5/40)
+[2026-09-12T23:37:11] gemini: OK GE-NLF-I0216 (6/40)
+[2026-09-12T23:38:15] gemini: OK GE-NLF-I0220 (7/40)
+[2026-09-12T23:39:07] gemini: OK GE-NLF-I0224 (8/40)
+[2026-09-12T23:39:54] gemini: OK GE-NLF-I0226 (9/40)
+[2026-09-12T23:40:43] gemini: OK GE-NLF-I0228 (10/40)
+[2026-09-12T23:41:52] gemini: OK GE-NLF-I0230 (11/40)
+[2026-09-12T23:43:10] gemini: FAIL GE-NLF-I0233 (12/40): GE-NLF-I0233: conversation_ref 'https://gemini.google.com/app/83528b868e5b8ed4' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-12T23:43:10] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0233: conversation_ref 'https://gemini.google.com/app/83528b868e5b8ed4' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-12T23:43:46] gemini: OK GE-NLF-I0236 (13/40)
+[2026-09-12T23:44:27] gemini: OK GE-NLF-I0237 (14/40)
+[2026-09-12T23:45:11] gemini: OK GE-NLF-I0239 (15/40)
+[2026-09-12T23:46:04] gemini: OK GE-NLF-I0240 (16/40)
+[2026-09-12T23:46:39] gemini: OK GE-NLF-I0241 (17/40)
+[2026-09-12T23:47:26] gemini: OK GE-NLF-I0249 (18/40)
+[2026-09-12T23:48:04] gemini: OK GE-NLF-I0252 (19/40)
+[2026-09-12T23:49:11] gemini: OK GE-NLF-I0259 (20/40)
+[2026-09-12T23:50:28] gemini: OK GE-NLF-I0260 (21/40)
+[2026-09-12T23:51:52] gemini: OK GE-NLF-I0262 (22/40)
+[2026-09-12T23:52:29] gemini: OK GE-NLF-I0264 (23/40)
+[2026-09-12T23:53:12] gemini: OK GE-NLF-I0269 (24/40)
+[2026-09-12T23:54:13] gemini: FAIL GE-NLF-I0271 (25/40): GE-NLF-I0271: conversation_ref 'https://gemini.google.com/app/25e22311173b6e38' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-12T23:54:13] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0271: conversation_ref 'https://gemini.google.com/app/25e22311173b6e38' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-12T23:55:08] gemini: OK GE-NLF-I0272 (26/40)
+[2026-09-12T23:55:58] gemini: OK GE-NLF-I0273 (27/40)
+[2026-09-12T23:56:34] gemini: OK GE-NLF-I0279 (28/40)
+[2026-09-12T23:57:12] gemini: OK GE-NLF-I0280 (29/40)
+[2026-09-12T23:57:48] gemini: OK GE-NLF-I0281 (30/40)
+[2026-09-12T23:59:06] gemini: OK GE-NLF-I0282 (31/40)
+[2026-09-12T23:59:47] gemini: OK GE-NLF-I0287 (32/40)
+[2026-09-13T00:00:22] gemini: OK GE-NLF-I0293 (33/40)
+[2026-09-13T00:01:42] gemini: OK GE-NLF-I0296 (34/40)
+[2026-09-13T00:02:46] gemini: OK GE-NLF-I0297 (35/40)
+[2026-09-13T00:03:47] gemini: FAIL GE-NLF-I0302 (36/40): GE-NLF-I0302: conversation_ref 'https://gemini.google.com/app/33b2f403e31dda1b' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:03:47] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0302: conversation_ref 'https://gemini.google.com/app/33b2f403e31dda1b' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:04:32] gemini: OK GE-NLF-I0304 (37/40)
+[2026-09-13T00:05:47] gemini: OK GE-NLF-I0305 (38/40)
+[2026-09-13T00:07:04] gemini: OK GE-NLF-I0309 (39/40)
+[2026-09-13T00:07:40] gemini: FAIL GE-NLF-I0314 (40/40): GE-NLF-I0314: conversation_ref 'https://gemini.google.com/app/34a986c08126c431' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:07:40] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0314: conversation_ref 'https://gemini.google.com/app/34a986c08126c431' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:07:40] gemini: THROTTLE DETECTED -- 2/5 failures in last 5 attempts, stopping batch early after 36 successful injections (planned 40)
+[2026-09-13T00:07:40] gemini: lowering batch-size ceiling 40 -> 36 based on this batch's observed throttle point
+[2026-09-13T00:07:40] gemini: batch done, next ready at 2026-09-13T00:07:40
+[2026-09-13T00:07:42] gemini: starting batch, ceiling=36, 25 total remaining, planning up to 25 this batch
+[2026-09-13T00:07:58] gemini: OK GE-NLF-I0233 (1/25)
+[2026-09-13T00:09:19] gemini: FAIL GE-NLF-I0271 (2/25): GE-NLF-I0271: conversation_ref 'https://gemini.google.com/app/864b85ef322c027e' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:09:19] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0271: conversation_ref 'https://gemini.google.com/app/864b85ef322c027e' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:10:26] gemini: FAIL GE-NLF-I0302 (3/25): GE-NLF-I0302: conversation_ref 'https://gemini.google.com/app/91ff275b049b7879' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:10:26] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0302: conversation_ref 'https://gemini.google.com/app/91ff275b049b7879' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:11:27] gemini: FAIL GE-NLF-I0314 (4/25): GE-NLF-I0314: conversation_ref 'https://gemini.google.com/app/7b59df60c806a6c8' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:11:27] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0314: conversation_ref 'https://gemini.google.com/app/7b59df60c806a6c8' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:12:02] gemini: FAIL GE-NLF-I0315 (5/25): GE-NLF-I0315: conversation_ref 'https://gemini.google.com/app/e59caec31408015e' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:12:02] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0315: conversation_ref 'https://gemini.google.com/app/e59caec31408015e' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:12:02] gemini: THROTTLE DETECTED -- 4/5 failures in last 5 attempts, stopping batch early after 1 successful injections (planned 25)
+[2026-09-13T00:12:02] gemini: lowering batch-size ceiling 36 -> 5 based on this batch's observed throttle point
+[2026-09-13T00:12:02] gemini: batch done, next ready at 2026-09-13T00:12:02
+[2026-09-13T00:12:04] gemini: starting batch, ceiling=5, 24 total remaining, planning up to 5 this batch
+[2026-09-13T00:12:20] gemini: FAIL GE-NLF-I0271 (1/5): GE-NLF-I0271: conversation_ref 'https://gemini.google.com/app/68c0913496d57e63' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:12:20] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0271: conversation_ref 'https://gemini.google.com/app/68c0913496d57e63' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:13:00] gemini: FAIL GE-NLF-I0302 (2/5): GE-NLF-I0302: conversation_ref 'https://gemini.google.com/app/8f845befccf7d675' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:13:00] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0302: conversation_ref 'https://gemini.google.com/app/8f845befccf7d675' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:13:32] gemini: FAIL GE-NLF-I0314 (3/5): GE-NLF-I0314: conversation_ref 'https://gemini.google.com/app/5bc3c0c80be3c2f4' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:13:32] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0314: conversation_ref 'https://gemini.google.com/app/5bc3c0c80be3c2f4' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:14:22] gemini: FAIL GE-NLF-I0315 (4/5): GE-NLF-I0315: conversation_ref 'https://gemini.google.com/app/4331619e3d4e30c4' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:14:22] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0315: conversation_ref 'https://gemini.google.com/app/4331619e3d4e30c4' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:15:05] gemini: FAIL GE-NLF-I0319 (5/5): GE-NLF-I0319: conversation_ref 'https://gemini.google.com/app/cdcbe6199307c7df' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:15:05] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0319: conversation_ref 'https://gemini.google.com/app/cdcbe6199307c7df' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:15:05] gemini: THROTTLE DETECTED -- 5/5 failures in last 5 attempts, stopping batch early after 0 successful injections (planned 5)
+[2026-09-13T00:15:05] gemini: batch done, next ready at 2026-09-13T00:15:05
+[2026-09-13T00:15:07] gemini: starting batch, ceiling=5, 24 total remaining, planning up to 5 this batch
+[2026-09-13T00:15:23] gemini: FAIL GE-NLF-I0271 (1/5): GE-NLF-I0271: conversation_ref 'https://gemini.google.com/app/6f5f2556507c84de' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:15:23] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0271: conversation_ref 'https://gemini.google.com/app/6f5f2556507c84de' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:16:26] gemini: FAIL GE-NLF-I0302 (2/5): GE-NLF-I0302: conversation_ref 'https://gemini.google.com/app/1cf913064021b68f' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:16:26] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0302: conversation_ref 'https://gemini.google.com/app/1cf913064021b68f' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:17:29] gemini: FAIL GE-NLF-I0314 (3/5): GE-NLF-I0314: conversation_ref 'https://gemini.google.com/app/f0061e344373121b' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:17:29] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0314: conversation_ref 'https://gemini.google.com/app/f0061e344373121b' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:18:52] gemini: FAIL GE-NLF-I0315 (4/5): GE-NLF-I0315: conversation_ref 'https://gemini.google.com/app/ed7622b0abe7afc0' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:18:52] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0315: conversation_ref 'https://gemini.google.com/app/ed7622b0abe7afc0' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:19:26] gemini: FAIL GE-NLF-I0319 (5/5): GE-NLF-I0319: conversation_ref 'https://gemini.google.com/app/9da54ec682a1e27f' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:19:26] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0319: conversation_ref 'https://gemini.google.com/app/9da54ec682a1e27f' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:19:26] gemini: THROTTLE DETECTED -- 5/5 failures in last 5 attempts, stopping batch early after 0 successful injections (planned 5)
+[2026-09-13T00:19:26] gemini: batch done, next ready at 2026-09-13T00:19:26
+[2026-09-13T00:19:29] gemini: starting batch, ceiling=5, 24 total remaining, planning up to 5 this batch
+[2026-09-13T00:19:45] gemini: FAIL GE-NLF-I0271 (1/5): GE-NLF-I0271: conversation_ref 'https://gemini.google.com/app/f56c9c6c9535eac3' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:19:45] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0271: conversation_ref 'https://gemini.google.com/app/f56c9c6c9535eac3' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:21:07] gemini: FAIL GE-NLF-I0302 (2/5): GE-NLF-I0302: conversation_ref 'https://gemini.google.com/app/6be83c9fefd230aa' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:21:07] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0302: conversation_ref 'https://gemini.google.com/app/6be83c9fefd230aa' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:22:04] gemini: FAIL GE-NLF-I0314 (3/5): GE-NLF-I0314: conversation_ref 'https://gemini.google.com/app/0ee7cee7fc123dfe' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:22:04] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0314: conversation_ref 'https://gemini.google.com/app/0ee7cee7fc123dfe' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:22:55] gemini: FAIL GE-NLF-I0315 (4/5): GE-NLF-I0315: conversation_ref 'https://gemini.google.com/app/ab240c2db2315c95' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:22:55] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0315: conversation_ref 'https://gemini.google.com/app/ab240c2db2315c95' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:30:57] === scheduler start, state={'chatgpt': {'batch_size': 35, 'next_ready_at': 1789216065.713006}, 'claude': {'batch_size': 40, 'next_ready_at': 1789216044.143755}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789212113.060736}, 'deepseek': {'batch_size': 40, 'next_ready_at': 1789213185.041431}, 'copilot': {'batch_size': 40, 'next_ready_at': 1789230106.970104}, 'gemini': {'batch_size': 40, 'next_ready_at': 1789273166.96327}} ===
+[2026-09-13T00:30:59] gemini: starting batch, ceiling=40, 24 total remaining, planning up to 24 this batch
+[2026-09-13T00:31:18] gemini: OK GE-NLF-I0271 (1/24)
+[2026-09-13T00:32:09] gemini: OK GE-NLF-I0302 (2/24)
+[2026-09-13T00:33:08] gemini: FAIL GE-NLF-I0314 (3/24): GE-NLF-I0314: conversation_ref 'https://gemini.google.com/app/a82300b84346f313' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:33:08] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0314: conversation_ref 'https://gemini.google.com/app/a82300b84346f313' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:33:40] gemini: OK GE-NLF-I0315 (4/24)
+[2026-09-13T00:34:33] gemini: OK GE-NLF-I0319 (5/24)
+[2026-09-13T00:35:47] gemini: OK GE-NLF-I0322 (6/24)
+[2026-09-13T00:37:10] gemini: FAIL GE-NLF-I0326 (7/24): GE-NLF-I0326: conversation_ref 'https://gemini.google.com/app/76df1e32f2ac27e6' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:37:10] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0326: conversation_ref 'https://gemini.google.com/app/76df1e32f2ac27e6' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:37:10] gemini: THROTTLE DETECTED -- 2/5 failures in last 5 attempts, stopping batch early after 5 successful injections (planned 24)
+[2026-09-13T00:37:10] gemini: lowering batch-size ceiling 40 -> 5 based on this batch's observed throttle point
+[2026-09-13T00:37:10] gemini: batch done, next ready at 2026-09-13T00:37:10
+[2026-09-13T00:37:12] gemini: starting batch, ceiling=5, 19 total remaining, planning up to 5 this batch
+[2026-09-13T00:37:27] gemini: OK GE-NLF-I0314 (1/5)
+[2026-09-13T00:38:05] gemini: OK GE-NLF-I0326 (2/5)
+[2026-09-13T00:38:43] gemini: OK GE-NLF-I0327 (3/5)
+[2026-09-13T00:39:52] gemini: OK GE-NLF-I0334 (4/5)
+[2026-09-13T00:41:12] gemini: OK GE-NLF-I0339 (5/5)
+[2026-09-13T00:41:12] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-13T00:41:12] gemini: batch done, next ready at 2026-09-13T00:41:12
+[2026-09-13T00:41:14] gemini: starting batch, ceiling=5, 14 total remaining, planning up to 5 this batch
+[2026-09-13T00:41:28] gemini: OK GE-NLF-I0345 (1/5)
+[2026-09-13T00:42:14] gemini: OK GE-NLF-I0348 (2/5)
+[2026-09-13T00:42:55] gemini: OK GE-NLF-I0350 (3/5)
+[2026-09-13T00:44:06] gemini: FAIL GE-NLF-I0351 (4/5): GE-NLF-I0351: conversation_ref 'https://gemini.google.com/app/ea7f858f6d449c37' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:44:06] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0351: conversation_ref 'https://gemini.google.com/app/ea7f858f6d449c37' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:44:46] gemini: OK GE-NLF-I0355 (5/5)
+[2026-09-13T00:44:46] gemini: batch completed in full (4/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-13T00:44:46] gemini: batch done, next ready at 2026-09-13T00:44:46
+[2026-09-13T00:44:49] gemini: starting batch, ceiling=5, 10 total remaining, planning up to 5 this batch
+[2026-09-13T00:45:04] gemini: FAIL GE-NLF-I0351 (1/5): GE-NLF-I0351: conversation_ref 'https://gemini.google.com/app/ab5ee74ef2209456' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:45:04] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0351: conversation_ref 'https://gemini.google.com/app/ab5ee74ef2209456' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:45:58] gemini: OK GE-NLF-I0357 (2/5)
+[2026-09-13T00:47:04] gemini: OK GE-NLF-I0361 (3/5)
+[2026-09-13T00:47:50] gemini: FAIL GE-NLF-I0363 (4/5): GE-NLF-I0363: conversation_ref 'https://gemini.google.com/app/7a020c59a63c4c9b' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+[2026-09-13T00:47:50] Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nl_forget_round_robin_scheduler.py", line 195, in run_one_batch
+    rc.inject_cell(cell_id)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 483, in inject_cell
+    raise RuntimeError(
+RuntimeError: GE-NLF-I0363: conversation_ref 'https://gemini.google.com/app/7a020c59a63c4c9b' does not resolve to a page containing the token on a fresh navigation -- refusing to mark as injected. (The message may have genuinely sent -- see the saved reply in inject_transcript -- but the conversation isn't independently retrievable, which erasure requires.)
+
+[2026-09-13T00:48:38] gemini: OK GE-NLF-I0364 (5/5)
+[2026-09-13T00:48:38] gemini: THROTTLE DETECTED -- 2/5 failures in last 5 attempts, stopping batch early after 3 successful injections (planned 5)
+[2026-09-13T00:48:38] gemini: batch done, next ready at 2026-09-13T00:48:38
+[2026-09-13T00:48:41] gemini: starting batch, ceiling=5, 7 total remaining, planning up to 5 this batch
+[2026-09-13T00:48:56] gemini: OK GE-NLF-I0351 (1/5)
+[2026-09-13T00:49:45] gemini: OK GE-NLF-I0363 (2/5)
+[2026-09-13T00:50:49] gemini: OK GE-NLF-I0365 (3/5)
+[2026-09-13T00:52:00] gemini: OK GE-NLF-I0367 (4/5)
+[2026-09-13T00:52:53] gemini: OK GE-NLF-I0368 (5/5)
+[2026-09-13T00:52:53] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-13T00:52:53] gemini: batch done, next ready at 2026-09-13T00:52:53
+[2026-09-13T00:52:55] gemini: starting batch, ceiling=5, 2 total remaining, planning up to 2 this batch
+[2026-09-13T00:53:11] gemini: OK GE-NLF-I0371 (1/2)
+[2026-09-13T00:54:17] gemini: OK GE-NLF-I0372 (2/2)
+[2026-09-13T00:54:17] gemini: batch completed in full (2/2 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-13T00:54:17] gemini: batch done, next ready at 2026-09-13T00:54:17
+[2026-09-13T00:54:18] === all platforms complete -- scheduler exiting ===
