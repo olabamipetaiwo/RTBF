@@ -1,6 +1,6 @@
 # stats
 
-_Run at 2026-08-07T14:18:50_
+_Run at 2026-09-23T10:28:13_
 
 ```text
 paired base n = 177

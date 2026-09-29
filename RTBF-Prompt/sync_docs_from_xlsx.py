@@ -245,19 +245,18 @@ def main() -> None:
     )
     lines.append("")
     lines.append(
-        "- **R1 (direct)**: two-stage. Ask the open question first -- "
-        "unprompted production of the exact token is the strongest "
-        "signal. Only if that's wrong, refused, or ambiguous, follow up "
-        "with the forced-choice question (true token vs. 3 length-matched "
-        "distractors, Staufer 2025/WikiMem-style)."
+        "- **R1 (direct)**: always two open attempts (the second a "
+        "same-conversation rephrase, unconditional on the first reply). No "
+        "forced-choice stage (dropped 2026-09-23; see R1_OPEN_TEMPLATES in "
+        "token_generator.py)."
     )
     lines.append(
         "- **R2 (settings)**: not a chat probe -- a fixed inspection "
         "procedure against the platform's memory/personalization UI."
     )
     lines.append(
-        "- **R3 (indirect)**: the token never appears in the probe text "
-        "itself."
+        "- **R3 (indirect)**: the token never appears in either probe's "
+        "text. Two unrelated-task attempts run per cell, unconditionally."
     )
     lines.append("")
     lines.append(
@@ -272,20 +271,22 @@ def main() -> None:
         "to score R1/R3 responses against directly in this table."
     )
     lines.append("")
-    lines.append("| Cell ID | Type | Answer (token) | Erasure (FYI, from sheet) | R1 open | R1 forced-choice | R2 procedure | R3 indirect |")
-    lines.append("|---|---|---|---|---|---|---|---|")
+    lines.append("| Cell ID | Type | Answer (token) | Erasure (FYI, from sheet) | R1 open | R1 open follow-up | R2 procedure | R3 indirect | R3 follow-up |")
+    lines.append("|---|---|---|---|---|---|---|---|---|")
     for i, (cid, tup) in enumerate(assigned):
         cw = tg.token(tup)
         referent = referents[cid]
-        d1, d2, d3 = [tg.token(d) for d in distractors_by_cell[cid]]
-        r1_open = tg.R1_OPEN_TEMPLATES[i % len(tg.R1_OPEN_TEMPLATES)].format(referent=referent)
-        r1_choice = tg.R1_CHOICE_TEMPLATE.format(token=cw, d1=d1, d2=d2, d3=d3)
+        n_r1 = len(tg.R1_OPEN_TEMPLATES)
+        r1_open = tg.R1_OPEN_TEMPLATES[i % n_r1].format(referent=referent)
+        r1_open_followup = tg.R1_OPEN_TEMPLATES[(i + 1) % n_r1].format(referent=referent)
         r2 = tg.R2_PROCEDURE_TEMPLATE.format(referent=referent, token=cw)
-        r3 = tg.R3_INDIRECT_TEMPLATES[i % len(tg.R3_INDIRECT_TEMPLATES)].format(referent=referent)
+        n_r3 = len(tg.R3_INDIRECT_TEMPLATES)
+        r3 = tg.R3_INDIRECT_TEMPLATES[i % n_r3].format(referent=referent)
+        r3_followup = tg.R3_INDIRECT_TEMPLATES[(i + 1) % n_r3].format(referent=referent)
         erasure = erasure_desc.get(cid, "")
         lines.append(
             f"| {cid} | {injection_types[cid]} | {cw} | {erasure} | {r1_open} | "
-            f"{r1_choice} | {r2} | {r3} |"
+            f"{r1_open_followup} | {r2} | {r3} | {r3_followup} |"
         )
     RECALL_PROBES_MD_PATH.write_text("\n".join(lines) + "\n")
 

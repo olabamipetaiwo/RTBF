@@ -20,6 +20,7 @@ to survive. Nulls at these cell sizes = underpowered, NOT "no difference".
 import numpy as np
 import pandas as pd
 from scipy import stats
+from scipy.special import gammaln, logsumexp
 from statsmodels.stats.multitest import multipletests
 from src.screen import get_bases
 from src.reporting import save_report
@@ -40,10 +41,54 @@ def cramers_v(table):
     return np.sqrt(chi2 / (n * k)) if n and k else np.nan
 
 
+N_RESAMPLES = 500_000        # permutation resamples for tables with more than 2 columns
+PERM_SEED = 0
+MAX_EXACT_TABLES = 5_000_000  # enumeration cap for the exact k x 2 path
+
+
+def _exact_p_kx2(table):
+    """Exact Freeman-Halton p-value for a k x 2 table (rows = method groups,
+    columns = selected / not selected), by enumerating every vector of
+    per-group selected counts that has the observed margins and summing the
+    probability of all tables no more likely than the observed one. Returns
+    None if the enumeration would exceed MAX_EXACT_TABLES."""
+    table = np.asarray(table, dtype=np.int64)
+    sizes = table.sum(axis=1)
+    selected_total = int(table[:, 0].sum())
+    if np.prod(sizes[:-1] + 1, dtype=float) > MAX_EXACT_TABLES:
+        return None
+    grids = np.meshgrid(*[np.arange(n + 1) for n in sizes[:-1]], indexing="ij")
+    head = np.stack([g.ravel() for g in grids], axis=1)      # counts for the first k-1 groups
+    last = selected_total - head.sum(axis=1)                 # the last group's count is then fixed
+    ok = (last >= 0) & (last <= sizes[-1])
+    counts = np.column_stack([head[ok], last[ok]])
+
+    def log_weight(c):
+        return (gammaln(sizes + 1) - gammaln(c + 1) - gammaln(sizes - c + 1)).sum(axis=-1)
+
+    log_w = log_weight(counts)
+    log_total = logsumexp(log_w)
+    log_obs = log_weight(table[:, 0])
+    return float(np.exp(log_w[log_w <= log_obs + 1e-9] - log_total).sum())
+
+
 def rc_exact_p(table):
-    """r x c Fisher (Freeman-Halton); Monte-Carlo permutation fallback."""
+    """r x c Fisher (Freeman-Halton), deterministic.
+
+    Before 2026-09-23 this called scipy's unseeded Monte-Carlo (9,999 draws),
+    so a Holm-adjusted p near .05 moved between runs (e.g. "checked settings",
+    more-sensitive: p_holm .041 to .057 over six runs, straddling the
+    threshold). Now: exact enumeration for k x 2 tables (every table this
+    module's test_family builds), and a seeded 500,000-draw permutation test
+    for larger tables (moderators.py's age/tenure x method tables), which
+    is reproducible and accurate to about +/-0.0002 near p=.007."""
+    if np.asarray(table).shape[1] == 2:
+        p = _exact_p_kx2(table)
+        if p is not None:
+            return p
     try:
-        return stats.fisher_exact(table)[1]     # scipy >=1.15 supports r x c
+        return stats.fisher_exact(
+            table, method=stats.PermutationMethod(n_resamples=N_RESAMPLES, rng=PERM_SEED))[1]
     except Exception:
         # Monte-Carlo: permute the binary column labels, compare chi2 stats
         obs = stats.chi2_contingency(table, correction=False)[0]

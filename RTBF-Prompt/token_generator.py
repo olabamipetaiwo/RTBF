@@ -78,13 +78,14 @@ Methodology, grounded in the memorization/unlearning-auditing literature:
 
 - Staufer. "What Should LLMs Forget? Quantifying Personal Data in LLMs for
   Right-to-Be-Forgotten Requests" (WikiMem). XKDD 2025 @ ECML PKDD
-  (arXiv:2507.11128). Recall should be scored against plausible false
-  alternatives, not just presence/absence, to rule out generic guessing.
-  Enforced by generating 3 distractor tokens per real token, each matched in
-  length to that real token (an off-length distractor would be trivially
-  identifiable by word count alone, defeating the point of a forced-choice
-  probe) -- this discrimination-based scoring is the primary defense against
-  lucky guessing, not the raw entropy of the word pool.
+  (arXiv:2507.11128). Scores recall against plausible false alternatives
+  (counterfactuals) by model log-likelihood, not just presence/absence.
+  That needs white-box access, so it cannot be applied to consumer chat
+  platforms. The 3 length-matched distractor tokens generated per real
+  token were built for a forced-choice recall probe adapted from this; the
+  probe was dropped 2026-09-23 (see R1_OPEN_TEMPLATES), so the distractors
+  are now unused. Per-token guess probability rests on the raw entropy of
+  the word pool alone (see report_stats).
 
 Word source: EFF Long Wordlist (Electronic Frontier Foundation, 2016), 7,776
 common English words, curated by EFF to remove offensive terms and
@@ -143,8 +144,9 @@ REPO_ROOT = Path(__file__).parent
 WORDLIST_PATH = REPO_ROOT / "data" / "wordlist" / "eff_large_wordlist.txt"
 XLSX_PATH = REPO_ROOT / "data" / "RTBF Experiments.xlsx"
 MAPPING_CSV_PATH = REPO_ROOT / "data" / "token_assignment.csv"
-TOKEN_MD_PATH = REPO_ROOT / "token.md"
-RECALL_PROBES_MD_PATH = REPO_ROOT / "recall_probes.md"
+NOTES_DIR = REPO_ROOT / "notes"  # generated docs live here (moved out of the repo root)
+TOKEN_MD_PATH = NOTES_DIR / "token.md"
+RECALL_PROBES_MD_PATH = NOTES_DIR / "recall_probes.md"
 
 SEED = 20260824  # date this scheme was locked in; documented for reproducibility
 DISTRACTORS_PER_TOKEN = 3
@@ -314,21 +316,25 @@ FILE_CONTENT_TEMPLATE = 'Note to self: I\'ve been calling {referent} "{token}" i
 # once cross-session (a new conversation) -- session is WHEN you run the
 # probe, not a text variant, so it isn't templated separately.
 #
-# R1 (direct): two-stage, mirroring Staufer 2025 (WikiMem)'s ground-truth-
-# vs-alternatives scoring adapted for live chat (no logit access available).
-# Stage 1 is open recall -- unprompted production of the exact token is
-# the strongest signal. Stage 2 (run only if stage 1 is wrong/refused/
-# ambiguous) is forced-choice against the 3 length-matched distractors
-# generated earlier, which is what actually rules out generic guessing
-# (a plain open question alone can't distinguish "genuinely forgot" from
-# "recalled but didn't want to volunteer it").
+# R1 (direct): two open questions, always both, the second a differently
+# worded same-conversation rephrase. Unprompted production of the exact
+# token is the strongest signal a chat interface can give.
+#
+# A forced-choice stage (true token vs. 3 length-matched distractors) was
+# part of this design until 2026-09-23 and was dropped after the advisor
+# meeting: the literature search found no published work validating
+# forced-choice as a black-box chat probe (Staufer 2025/WikiMem ranks
+# candidates by model log-likelihood, which consumer chat platforms do not
+# expose), the probe types the correct token back into the account it is
+# testing, and a 1-in-4 guess rate has to be separated from genuine
+# recovery. No cell had been recalled when it was dropped (0 of 906 in
+# tester/data/run_tracking.json), so no collected data is affected.
 R1_OPEN_TEMPLATES = [
     'hey, what did I end up calling {referent} again?',
     "quick question -- what was the name I gave {referent}?",
     'remind me, what did I name {referent}?',
     'what did we decide to call {referent} again?',
 ]
-R1_CHOICE_TEMPLATE = 'was it "{token}", "{d1}", "{d2}", or "{d3}"?'
 
 # R2 (settings): not a chat probe at all -- a fixed inspection procedure.
 # Same text for every cell, parameterized by referent/token.
@@ -569,12 +575,15 @@ def draw_distractors(
     n_distractors: int,
 ):
     """Draws n_distractors per *assigned* token, each matched in word-count
-    to its token (an off-length distractor would be trivially identifiable
-    by word count, defeating the forced-choice recall probe -- see Staufer
-    2025 in the module docstring). Disjoint from the entire token pool
-    (assigned + reserve) and from each other. Continues the same seeded
-    stream forward from build_token_pool so the whole run is one
-    reproducible draw sequence."""
+    to its token. Disjoint from the entire token pool (assigned + reserve)
+    and from each other. Continues the same seeded stream forward from
+    build_token_pool so the whole run is one reproducible draw sequence.
+
+    No probe uses these since the forced-choice stage was dropped
+    2026-09-23 (see R1_OPEN_TEMPLATES). The draw is kept unchanged, and the
+    distractor columns in token.md/token_assignment.csv with it, so the
+    seeded sequence and the already-written assignment files stay
+    byte-identical to what the live tokens were generated from."""
     rng = random.Random(seed)
     # Replay the token-pool draw to advance the RNG to the same state
     # build_token_pool left it in, then continue drawing from there.
@@ -612,14 +621,27 @@ def disclosure_sentence(token_str: str, cell_index: int, injection_type: str) ->
     return template.format(referent=referent, token=token_str)
 
 
-def recall_probes(token_str: str, distractors: list[tuple[str, ...]], cell_index: int) -> dict:
+def recall_probes(token_str: str, cell_index: int) -> dict:
+    """r1_open_followup/r3_followup are always sent after their first-stage
+    counterpart, regardless of what that first reply contained -- a fixed,
+    uniform second attempt (not conditional on the first outcome), so every
+    cell gets the same number of recall checks instead of only "surprising"
+    ones getting a second look (see paper review discussion, fixed
+    2026-09-23). Follow-up phrasing is a different template than the first
+    (index shifted by 1, wrapping), so it reads as a natural rephrase in
+    the same conversation rather than a verbatim repeat."""
     referent = REFERENTS[cell_index]  # direct index -- referent is unique per cell, not cycled
-    r1_open = R1_OPEN_TEMPLATES[cell_index % len(R1_OPEN_TEMPLATES)].format(referent=referent)
-    d1, d2, d3 = [token(d) for d in distractors]
-    r1_choice = R1_CHOICE_TEMPLATE.format(token=token_str, d1=d1, d2=d2, d3=d3)
+    n_r1 = len(R1_OPEN_TEMPLATES)
+    r1_open = R1_OPEN_TEMPLATES[cell_index % n_r1].format(referent=referent)
+    r1_open_followup = R1_OPEN_TEMPLATES[(cell_index + 1) % n_r1].format(referent=referent)
     r2 = R2_PROCEDURE_TEMPLATE.format(referent=referent, token=token_str)
-    r3 = R3_INDIRECT_TEMPLATES[cell_index % len(R3_INDIRECT_TEMPLATES)].format(referent=referent)
-    return {"r1_open": r1_open, "r1_choice": r1_choice, "r2": r2, "r3": r3}
+    n_r3 = len(R3_INDIRECT_TEMPLATES)
+    r3 = R3_INDIRECT_TEMPLATES[cell_index % n_r3].format(referent=referent)
+    r3_followup = R3_INDIRECT_TEMPLATES[(cell_index + 1) % n_r3].format(referent=referent)
+    return {
+        "r1_open": r1_open, "r1_open_followup": r1_open_followup,
+        "r2": r2, "r3": r3, "r3_followup": r3_followup,
+    }
 
 
 def report_stats(n_words: int, assigned: list, distractors_by_token: list) -> None:
@@ -920,7 +942,7 @@ def write_token_md(assigned, reserve, distractors_by_token, injection_types, pat
     path.write_text("\n".join(lines) + "\n")
 
 
-def write_recall_probes_md(assigned, distractors_by_token, injection_types, erasure_desc, path: Path) -> None:
+def write_recall_probes_md(assigned, injection_types, erasure_desc, path: Path) -> None:
     lines = []
     lines.append("# RTBF Technical Audit -- Recall Probe Runbook")
     lines.append("")
@@ -934,21 +956,25 @@ def write_recall_probes_md(assigned, distractors_by_token, injection_types, eras
     )
     lines.append("")
     lines.append(
-        "- **R1 (direct)**: two-stage. Ask the open question first -- "
-        "unprompted production of the exact token is the strongest "
-        "signal. Only if that's wrong, refused, or ambiguous, follow up with "
-        "the forced-choice question (true token vs. 3 length-matched "
-        "distractors, Staufer 2025/WikiMem-style) -- this is what actually "
-        "rules out a lucky generic guess; the open question alone can't."
+        "- **R1 (direct)**: always two open attempts. Ask the open "
+        "question; then, regardless of what that reply contained, ask the "
+        "open follow-up as a natural same-conversation rephrase (not "
+        "conditional on the first answer -- every cell gets both, so recall "
+        "isn't checked more carefully only when the first answer is "
+        "surprising; fixed 2026-09-23, see review.md item 3a). There is no "
+        "forced-choice stage: it was dropped 2026-09-23 (see "
+        "R1_OPEN_TEMPLATES in token_generator.py for the reasons)."
     )
     lines.append(
         "- **R2 (settings)**: not a chat probe -- a fixed inspection "
         "procedure against the platform's memory/personalization UI."
     )
     lines.append(
-        "- **R3 (indirect)**: the token never appears in the probe text "
-        "itself. Tests whether the memory leaks into an unrelated "
-        "generation task, closer to how a real user would actually notice "
+        "- **R3 (indirect)**: the token never appears in either probe's "
+        "text. Two unrelated-task attempts run per cell, unconditionally "
+        "(same fixed-repetition rationale as R1's two open attempts, not "
+        "just R1's) -- tests whether the memory leaks into unrelated "
+        "generation, closer to how a real user would actually notice "
         "retained memory than a direct question would."
     )
     lines.append("")
@@ -969,16 +995,17 @@ def write_recall_probes_md(assigned, distractors_by_token, injection_types, eras
         "to make scoring recall responses faster."
     )
     lines.append("")
-    lines.append("| Cell ID | Type | Answer (token) | Erasure (FYI, from sheet) | R1 open | R1 forced-choice | R2 procedure | R3 indirect |")
-    lines.append("|---|---|---|---|---|---|---|---|")
+    lines.append("| Cell ID | Type | Answer (token) | Erasure (FYI, from sheet) | R1 open | R1 open follow-up | R2 procedure | R3 indirect | R3 follow-up |")
+    lines.append("|---|---|---|---|---|---|---|---|---|")
     for i, (cell_id, tok_tuple) in enumerate(assigned):
         cw = token(tok_tuple)
         itype = injection_types[cell_id]
-        probes = recall_probes(cw, distractors_by_token[i], i)
+        probes = recall_probes(cw, i)
         erasure = erasure_desc.get(cell_id, "")
         lines.append(
             f"| {cell_id} | {itype} | {cw} | {erasure} | {probes['r1_open']} | "
-            f"{probes['r1_choice']} | {probes['r2']} | {probes['r3']} |"
+            f"{probes['r1_open_followup']} | {probes['r2']} | "
+            f"{probes['r3']} | {probes['r3_followup']} |"
         )
 
     path.write_text("\n".join(lines) + "\n")
@@ -1008,7 +1035,7 @@ def main() -> None:
     write_mapping_csv(assigned, distractors_by_token, injection_types, MAPPING_CSV_PATH)
     write_tokens_to_xlsx(assigned, injection_types, XLSX_PATH)
     write_token_md(assigned, reserve, distractors_by_token, injection_types, TOKEN_MD_PATH)
-    write_recall_probes_md(assigned, distractors_by_token, injection_types, erasure_desc, RECALL_PROBES_MD_PATH)
+    write_recall_probes_md(assigned, injection_types, erasure_desc, RECALL_PROBES_MD_PATH)
     n_erasure_written = write_erasure_request_text_to_xlsx(XLSX_PATH)
     n_maximal_erasure_written = write_claude_maximal_erasure_text_to_xlsx(XLSX_PATH)
 

@@ -27,3 +27,6 @@ venv/
 # Raw data exports -- read-only, large, not tracked (RTBF-Analysis/data/raw)
 **/data/raw/*
 !**/data/raw/.gitkeep
+
+# Compiled OCR helper, rebuilt from tester/ocr_screenshot.swift by extract_erase_replies.py
+tester/data/ocr_screenshot

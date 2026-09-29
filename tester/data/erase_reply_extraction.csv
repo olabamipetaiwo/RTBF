@@ -1,0 +1,799 @@
+cell_id,platform,status,flags,chars,request_known
+CH-I1-E1,chatgpt,complete,,56,True
+CH-I2-E1,chatgpt,check,low-confidence OCR line,79,True
+CH-I3-E1,chatgpt,complete,,66,True
+CH-NLF-I0000,chatgpt,complete,,276,True
+CH-NLF-I0001,chatgpt,complete,,420,True
+CH-NLF-I0002,chatgpt,complete,,358,True
+CH-NLF-I0004,chatgpt,complete,,384,True
+CH-NLF-I0005,chatgpt,complete,,267,True
+CH-NLF-I0010,chatgpt,complete,,276,True
+CH-NLF-I0012,chatgpt,complete,,237,True
+CH-NLF-I0018,chatgpt,complete,,279,True
+CH-NLF-I0023,chatgpt,complete,,317,True
+CH-NLF-I0024,chatgpt,complete,,314,True
+CH-NLF-I0026,chatgpt,complete,,296,True
+CH-NLF-I0027,chatgpt,cut_off,reply reaches the input box; low-confidence OCR line,744,True
+CH-NLF-I0028,chatgpt,complete,,463,True
+CH-NLF-I0030,chatgpt,complete,,308,True
+CH-NLF-I0032,chatgpt,complete,,256,True
+CH-NLF-I0035,chatgpt,complete,,426,True
+CH-NLF-I0036,chatgpt,complete,,487,True
+CH-NLF-I0041,chatgpt,complete,,428,True
+CH-NLF-I0042,chatgpt,complete,,501,True
+CH-NLF-I0043,chatgpt,complete,,417,True
+CH-NLF-I0044,chatgpt,complete,,321,True
+CH-NLF-I0045,chatgpt,complete,,268,True
+CH-NLF-I0047,chatgpt,complete,,459,True
+CH-NLF-I0049,chatgpt,complete,,366,True
+CH-NLF-I0051,chatgpt,complete,,326,True
+CH-NLF-I0053,chatgpt,complete,,346,True
+CH-NLF-I0059,chatgpt,cut_off,reply reaches the input box,14,True
+CH-NLF-I0060,chatgpt,complete,,417,True
+CH-NLF-I0062,chatgpt,no_reply_visible,,0,True
+CH-NLF-I0067,chatgpt,complete,,285,True
+CH-NLF-I0068,chatgpt,complete,,287,True
+CH-NLF-I0070,chatgpt,complete,,332,True
+CH-NLF-I0077,chatgpt,complete,,303,True
+CH-NLF-I0085,chatgpt,complete,,246,True
+CH-NLF-I0086,chatgpt,complete,,315,True
+CH-NLF-I0089,chatgpt,cut_off,reply reaches the input box,14,True
+CH-NLF-I0090,chatgpt,complete,,359,True
+CH-NLF-I0092,chatgpt,complete,,331,True
+CH-NLF-I0095,chatgpt,complete,,320,True
+CH-NLF-I0096,chatgpt,complete,,403,True
+CH-NLF-I0099,chatgpt,no_reply_visible,,0,True
+CH-NLF-I0105,chatgpt,no_reply_visible,,0,True
+CH-NLF-I0106,chatgpt,complete,,337,True
+CH-NLF-I0115,chatgpt,complete,,290,True
+CH-NLF-I0118,chatgpt,complete,,293,True
+CH-NLF-I0121,chatgpt,complete,,322,True
+CH-NLF-I0124,chatgpt,cut_off,reply reaches the input box,14,True
+CH-NLF-I0125,chatgpt,complete,,315,True
+CH-NLF-I0126,chatgpt,complete,,310,True
+CH-NLF-I0128,chatgpt,complete,,412,True
+CH-NLF-I0131,chatgpt,complete,,251,True
+CH-NLF-I0132,chatgpt,complete,,372,True
+CH-NLF-I0133,chatgpt,complete,,338,True
+CH-NLF-I0137,chatgpt,complete,,191,True
+CH-NLF-I0140,chatgpt,complete,,161,True
+CH-NLF-I0141,chatgpt,complete,,401,True
+CH-NLF-I0146,chatgpt,complete,,326,True
+CH-NLF-I0149,chatgpt,complete,,20,True
+CH-NLF-I0153,chatgpt,complete,,203,True
+CH-NLF-I0159,chatgpt,complete,,263,True
+CH-NLF-I0161,chatgpt,check,low-confidence OCR line,322,True
+CH-NLF-I0163,chatgpt,complete,,5,True
+CH-NLF-I0165,chatgpt,complete,,5,True
+CH-NLF-I0166,chatgpt,check,low-confidence OCR line,177,True
+CH-NLF-I0169,chatgpt,complete,,102,True
+CH-NLF-I0170,chatgpt,complete,,5,True
+CH-NLF-I0176,chatgpt,complete,,284,True
+CH-NLF-I0177,chatgpt,complete,,348,True
+CH-NLF-I0181,chatgpt,complete,,340,True
+CH-NLF-I0182,chatgpt,complete,,333,True
+CH-NLF-I0185,chatgpt,no_reply_visible,,0,True
+CH-NLF-I0187,chatgpt,no_reply_visible,,0,True
+CH-NLF-I0188,chatgpt,complete,,409,True
+CH-NLF-I0191,chatgpt,complete,,364,True
+CH-NLF-I0195,chatgpt,complete,,294,True
+CH-NLF-I0200,chatgpt,no_reply_visible,,0,True
+CH-NLF-I0201,chatgpt,complete,,337,True
+CH-NLF-I0209,chatgpt,complete,,330,True
+CH-NLF-I0215,chatgpt,complete,,282,True
+CH-NLF-I0216,chatgpt,complete,,327,True
+CH-NLF-I0220,chatgpt,complete,,378,True
+CH-NLF-I0224,chatgpt,complete,,449,True
+CH-NLF-I0226,chatgpt,complete,,388,True
+CH-NLF-I0228,chatgpt,complete,,423,True
+CH-NLF-I0230,chatgpt,complete,,337,True
+CH-NLF-I0233,chatgpt,complete,,363,True
+CH-NLF-I0236,chatgpt,complete,,411,True
+CH-NLF-I0237,chatgpt,complete,,387,True
+CH-NLF-I0239,chatgpt,complete,,325,True
+CH-NLF-I0240,chatgpt,no_reply_visible,,0,True
+CH-NLF-I0241,chatgpt,complete,,342,True
+CH-NLF-I0252,chatgpt,complete,,350,True
+CH-NLF-I0259,chatgpt,complete,,7,True
+CH-NLF-I0260,chatgpt,check,low-confidence OCR line,557,True
+CH-NLF-I0262,chatgpt,complete,,574,True
+CH-NLF-I0264,chatgpt,complete,,381,True
+CH-NLF-I0269,chatgpt,complete,,280,True
+CH-NLF-I0271,chatgpt,complete,,300,True
+CH-NLF-I0272,chatgpt,complete,,424,True
+CH-NLF-I0273,chatgpt,complete,,320,True
+CH-NLF-I0279,chatgpt,complete,,294,True
+CH-NLF-I0281,chatgpt,no_reply_visible,,0,True
+CH-NLF-I0282,chatgpt,complete,,231,True
+CH-NLF-I0287,chatgpt,no_reply_visible,,0,True
+CH-NLF-I0293,chatgpt,complete,,282,True
+CH-NLF-I0296,chatgpt,complete,,8,True
+CH-NLF-I0297,chatgpt,complete,,265,True
+CH-NLF-I0302,chatgpt,start_not_visible,request not visible,281,True
+CH-NLF-I0304,chatgpt,complete,,286,True
+CH-NLF-I0305,chatgpt,cut_off,reply reaches the input box,18,True
+CH-NLF-I0309,chatgpt,complete,,311,True
+CH-NLF-I0314,chatgpt,complete,,351,True
+CH-NLF-I0315,chatgpt,complete,,399,True
+CH-NLF-I0319,chatgpt,complete,,280,True
+CH-NLF-I0322,chatgpt,complete,,275,True
+CH-NLF-I0326,chatgpt,complete,,394,True
+CH-NLF-I0327,chatgpt,cut_off,reply reaches the input box,18,True
+CH-NLF-I0334,chatgpt,complete,,316,True
+CH-NLF-I0339,chatgpt,complete,,266,True
+CH-NLF-I0345,chatgpt,complete,,284,True
+CH-NLF-I0348,chatgpt,complete,,295,True
+CH-NLF-I0350,chatgpt,complete,,310,True
+CH-NLF-I0351,chatgpt,complete,,239,True
+CH-NLF-I0355,chatgpt,complete,,116,True
+CH-NLF-I0357,chatgpt,complete,,202,True
+CH-NLF-I0361,chatgpt,complete,,237,True
+CH-NLF-I0363,chatgpt,complete,,92,True
+CH-NLF-I0364,chatgpt,complete,,102,True
+CH-NLF-I0365,chatgpt,complete,,238,True
+CH-NLF-I0367,chatgpt,complete,,108,True
+CH-NLF-I0368,chatgpt,check,low-confidence OCR line,319,True
+CH-NLF-I0371,chatgpt,complete,,112,True
+CH-NLF-I0372,chatgpt,complete,,102,True
+CL-I1-E4,claude,complete,,219,True
+CL-I2-E4,claude,complete,,22,True
+CL-I3-E4,claude,complete,,65,True
+CL-NLF-I0000,claude,complete,,271,True
+CL-NLF-I0001,claude,complete,,248,True
+CL-NLF-I0002,claude,covered,a modal is over the chat,0,True
+CL-NLF-I0004,claude,complete,,436,True
+CL-NLF-I0005,claude,complete,,22,True
+CL-NLF-I0010,claude,complete,,116,True
+CL-NLF-I0012,claude,complete,,22,True
+CL-NLF-I0018,claude,complete,,217,True
+CL-NLF-I0023,claude,complete,,194,True
+CL-NLF-I0024,claude,complete,,55,True
+CL-NLF-I0026,claude,complete,,22,True
+CL-NLF-I0027,claude,complete,,436,True
+CL-NLF-I0028,claude,complete,,518,True
+CL-NLF-I0030,claude,complete,,15,True
+CL-NLF-I0032,claude,complete,,195,True
+CL-NLF-I0035,claude,complete,,17,True
+CL-NLF-I0036,claude,complete,,258,True
+CL-NLF-I0041,claude,complete,,66,True
+CL-NLF-I0042,claude,cut_off,reply reaches the input box,547,True
+CL-NLF-I0043,claude,complete,,124,True
+CL-NLF-I0044,claude,complete,,103,True
+CL-NLF-I0045,claude,complete,,114,True
+CL-NLF-I0047,claude,complete,,427,True
+CL-NLF-I0049,claude,complete,,32,True
+CL-NLF-I0051,claude,complete,,58,True
+CL-NLF-I0053,claude,cut_off,reply reaches the input box,55,True
+CL-NLF-I0059,claude,complete,,15,True
+CL-NLF-I0060,claude,complete,,121,True
+CL-NLF-I0062,claude,complete,,15,True
+CL-NLF-I0067,claude,complete,,22,True
+CL-NLF-I0068,claude,complete,,22,True
+CL-NLF-I0070,claude,complete,,113,True
+CL-NLF-I0077,claude,complete,,62,True
+CL-NLF-I0085,claude,complete,,24,True
+CL-NLF-I0086,claude,complete,,181,True
+CL-NLF-I0089,claude,cut_off,reply reaches the input box,410,True
+CL-NLF-I0090,claude,complete,,73,True
+CL-NLF-I0092,claude,complete,,200,True
+CL-NLF-I0095,claude,complete,,27,True
+CL-NLF-I0096,claude,complete,,354,True
+CL-NLF-I0099,claude,complete,,82,True
+CL-NLF-I0105,claude,complete,,34,True
+CL-NLF-I0106,claude,complete,,74,True
+CL-NLF-I0115,claude,complete,,59,True
+CL-NLF-I0118,claude,complete,,41,True
+CL-NLF-I0121,claude,complete,,24,True
+CL-NLF-I0124,claude,cut_off,reply reaches the input box,535,True
+CL-NLF-I0125,claude,complete,,60,True
+CL-NLF-I0126,claude,complete,,56,True
+CL-NLF-I0128,claude,complete,,45,True
+CL-NLF-I0131,claude,complete,,65,True
+CL-NLF-I0132,claude,complete,,104,True
+CL-NLF-I0133,claude,complete,,97,True
+CL-NLF-I0137,claude,complete,,52,True
+CL-NLF-I0140,claude,complete,,117,True
+CL-NLF-I0141,claude,complete,,135,True
+CL-NLF-I0146,claude,complete,,142,True
+CL-NLF-I0149,claude,complete,,79,True
+CL-NLF-I0153,claude,complete,,78,True
+CL-NLF-I0159,claude,complete,,259,True
+CL-NLF-I0161,claude,complete,,72,True
+CL-NLF-I0163,claude,complete,,41,True
+CL-NLF-I0165,claude,complete,,15,True
+CL-NLF-I0166,claude,complete,,206,True
+CL-NLF-I0169,claude,complete,,46,True
+CL-NLF-I0170,claude,complete,,32,True
+CL-NLF-I0176,claude,complete,,105,True
+CL-NLF-I0177,claude,complete,,84,True
+CL-NLF-I0181,claude,cut_off,reply reaches the input box,528,True
+CL-NLF-I0182,claude,complete,,58,True
+CL-NLF-I0185,claude,complete,,67,True
+CL-NLF-I0187,claude,complete,,79,True
+CL-NLF-I0188,claude,complete,,72,True
+CL-NLF-I0191,claude,no_reply_visible,,0,True
+CL-NLF-I0195,claude,complete,,32,True
+CL-NLF-I0200,claude,complete,,65,True
+CL-NLF-I0201,claude,complete,,52,True
+CL-NLF-I0209,claude,cut_off,reply reaches the input box,570,True
+CL-NLF-I0215,claude,complete,,15,True
+CL-NLF-I0216,claude,cut_off,reply reaches the input box,507,True
+CL-NLF-I0220,claude,complete,,210,True
+CL-NLF-I0224,claude,complete,,373,True
+CL-NLF-I0226,claude,complete,,272,True
+CL-NLF-I0228,claude,complete,,401,True
+CL-NLF-I0230,claude,complete,,97,True
+CL-NLF-I0233,claude,complete,,61,True
+CL-NLF-I0236,claude,complete,,64,True
+CL-NLF-I0237,claude,complete,,68,True
+CL-NLF-I0239,claude,no_reply_visible,,0,True
+CL-NLF-I0240,claude,complete,,59,True
+CL-NLF-I0241,claude,complete,,135,True
+CL-NLF-I0252,claude,complete,,66,True
+CL-NLF-I0259,claude,complete,,181,True
+CL-NLF-I0260,claude,start_not_visible,request not visible; low-confidence OCR line,274,True
+CL-NLF-I0262,claude,complete,,249,True
+CL-NLF-I0264,claude,complete,,239,True
+CL-NLF-I0269,claude,complete,,49,True
+CL-NLF-I0271,claude,complete,,30,True
+CL-NLF-I0272,claude,complete,,216,True
+CL-NLF-I0273,claude,complete,,69,True
+CL-NLF-I0279,claude,complete,,108,True
+CL-NLF-I0281,claude,complete,,299,True
+CL-NLF-I0282,claude,complete,,140,True
+CL-NLF-I0287,claude,complete,,144,True
+CL-NLF-I0293,claude,complete,,109,True
+CL-NLF-I0296,claude,complete,,275,True
+CL-NLF-I0297,claude,complete,,216,True
+CL-NLF-I0302,claude,complete,,550,True
+CL-NLF-I0304,claude,complete,,287,True
+CL-NLF-I0305,claude,complete,,20,True
+CL-NLF-I0309,claude,covered,a modal is over the chat,0,True
+CL-NLF-I0314,claude,complete,,105,True
+CL-NLF-I0315,claude,complete,,400,True
+CL-NLF-I0319,claude,complete,,86,True
+CL-NLF-I0322,claude,complete,,49,True
+CL-NLF-I0326,claude,complete,,87,True
+CL-NLF-I0327,claude,complete,,439,True
+CL-NLF-I0334,claude,complete,,227,True
+CL-NLF-I0339,claude,complete,,100,True
+CL-NLF-I0345,claude,complete,,98,True
+CL-NLF-I0348,claude,complete,,38,True
+CL-NLF-I0350,claude,complete,,142,True
+CL-NLF-I0351,claude,complete,,104,True
+CL-NLF-I0355,claude,complete,,76,True
+CL-NLF-I0357,claude,complete,,370,True
+CL-NLF-I0361,claude,complete,,111,True
+CL-NLF-I0363,claude,complete,,264,True
+CL-NLF-I0364,claude,complete,,78,True
+CL-NLF-I0365,claude,complete,,100,True
+CL-NLF-I0367,claude,complete,,160,True
+CL-NLF-I0368,claude,complete,,898,True
+CL-NLF-I0371,claude,complete,,145,True
+CL-NLF-I0372,claude,complete,,70,True
+CO-I1-E3,copilot,complete,,401,True
+CO-I2-E3,copilot,complete,,292,True
+CO-NLF-I0000,copilot,complete,,380,True
+CO-NLF-I0001,copilot,complete,,640,True
+CO-NLF-I0002,copilot,complete,,363,True
+CO-NLF-I0004,copilot,complete,,431,True
+CO-NLF-I0005,copilot,complete,,343,True
+CO-NLF-I0010,copilot,complete,,323,True
+CO-NLF-I0012,copilot,complete,,73,True
+CO-NLF-I0018,copilot,complete,,407,True
+CO-NLF-I0023,copilot,complete,,301,True
+CO-NLF-I0024,copilot,complete,,423,True
+CO-NLF-I0026,copilot,complete,,389,True
+CO-NLF-I0027,copilot,complete,,636,True
+CO-NLF-I0028,copilot,complete,,908,True
+CO-NLF-I0030,copilot,complete,,76,True
+CO-NLF-I0035,copilot,no_reply_visible,,0,True
+CO-NLF-I0036,copilot,complete,,339,True
+CO-NLF-I0041,copilot,complete,,415,True
+CO-NLF-I0042,copilot,complete,,295,True
+CO-NLF-I0043,copilot,complete,,244,True
+CO-NLF-I0044,copilot,complete,,584,True
+CO-NLF-I0047,copilot,complete,,173,True
+CO-NLF-I0049,copilot,complete,,460,True
+CO-NLF-I0051,copilot,no_reply_visible,,0,True
+CO-NLF-I0053,copilot,complete,,444,True
+CO-NLF-I0059,copilot,complete,,297,True
+CO-NLF-I0062,copilot,complete,,378,True
+CO-NLF-I0067,copilot,complete,,363,True
+CO-NLF-I0068,copilot,complete,,270,True
+CO-NLF-I0070,copilot,complete,,173,True
+CO-NLF-I0077,copilot,complete,,397,True
+CO-NLF-I0085,copilot,complete,,351,True
+CO-NLF-I0086,copilot,complete,,410,True
+CO-NLF-I0089,copilot,complete,,312,True
+CO-NLF-I0092,copilot,complete,,47,True
+CO-NLF-I0095,copilot,complete,,390,True
+CO-NLF-I0096,copilot,complete,,407,True
+CO-NLF-I0099,copilot,complete,,360,True
+CO-NLF-I0105,copilot,complete,,412,True
+CO-NLF-I0106,copilot,complete,,361,True
+CO-NLF-I0115,copilot,complete,,497,True
+CO-NLF-I0118,copilot,complete,,370,True
+CO-NLF-I0121,copilot,complete,,533,True
+CO-NLF-I0124,copilot,complete,,646,True
+CO-NLF-I0125,copilot,complete,,502,True
+CO-NLF-I0126,copilot,complete,,360,True
+CO-NLF-I0128,copilot,complete,,218,True
+CO-NLF-I0131,copilot,complete,,274,True
+CO-NLF-I0132,copilot,complete,,349,True
+CO-NLF-I0133,copilot,complete,,224,True
+CO-NLF-I0137,copilot,complete,,378,True
+CO-NLF-I0140,copilot,complete,,410,True
+CO-NLF-I0149,copilot,complete,,295,True
+CO-NLF-I0153,copilot,complete,,377,True
+CO-NLF-I0159,copilot,complete,,599,True
+CO-NLF-I0161,copilot,complete,,269,True
+CO-NLF-I0163,copilot,complete,,205,True
+CO-NLF-I0165,copilot,complete,,258,True
+CO-NLF-I0166,copilot,cut_off,reply reaches the input box,819,True
+CO-NLF-I0169,copilot,complete,,341,True
+CO-NLF-I0170,copilot,complete,,234,True
+CO-NLF-I0176,copilot,complete,,309,True
+CO-NLF-I0177,copilot,complete,,369,True
+CO-NLF-I0181,copilot,check,low-confidence OCR line,465,True
+CO-NLF-I0185,copilot,complete,,375,True
+CO-NLF-I0187,copilot,complete,,519,True
+CO-NLF-I0188,copilot,complete,,253,True
+CO-NLF-I0191,copilot,complete,,499,True
+CO-NLF-I0195,copilot,complete,,276,True
+CO-NLF-I0200,copilot,complete,,540,True
+CO-NLF-I0201,copilot,complete,,632,True
+CO-NLF-I0209,copilot,cut_off,reply reaches the input box; low-confidence OCR line,608,True
+CO-NLF-I0215,copilot,complete,,344,True
+CO-NLF-I0216,copilot,complete,,548,True
+CO-NLF-I0220,copilot,complete,,562,True
+CO-NLF-I0224,copilot,cut_off,reply reaches the input box,759,True
+CO-NLF-I0226,copilot,complete,,456,True
+CO-NLF-I0228,copilot,complete,,629,True
+CO-NLF-I0233,copilot,complete,,428,True
+CO-NLF-I0236,copilot,complete,,198,True
+CO-NLF-I0239,copilot,complete,,408,True
+CO-NLF-I0240,copilot,complete,,376,True
+CO-NLF-I0252,copilot,complete,,244,True
+CO-NLF-I0259,copilot,complete,,552,True
+CO-NLF-I0260,copilot,cut_off,reply reaches the input box,681,True
+CO-NLF-I0262,copilot,complete,,485,True
+CO-NLF-I0264,copilot,complete,,457,True
+CO-NLF-I0269,copilot,check,low-confidence OCR line,367,True
+CO-NLF-I0271,copilot,complete,,336,True
+CO-NLF-I0272,copilot,complete,,443,True
+CO-NLF-I0273,copilot,complete,,267,True
+CO-NLF-I0279,copilot,complete,,260,True
+CO-NLF-I0281,copilot,complete,,368,True
+CO-NLF-I0282,copilot,complete,,336,True
+CO-NLF-I0287,copilot,complete,,443,True
+CO-NLF-I0293,copilot,complete,,373,True
+CO-NLF-I0297,copilot,complete,,410,True
+CO-NLF-I0302,copilot,complete,,54,True
+CO-NLF-I0304,copilot,complete,,402,True
+CO-NLF-I0305,copilot,complete,,312,True
+CO-NLF-I0309,copilot,complete,,355,True
+CO-NLF-I0314,copilot,complete,,328,True
+CO-NLF-I0315,copilot,complete,,483,True
+CO-NLF-I0319,copilot,complete,,422,True
+CO-NLF-I0322,copilot,complete,,280,True
+CO-NLF-I0327,copilot,complete,,343,True
+CO-NLF-I0334,copilot,complete,,573,True
+CO-NLF-I0339,copilot,complete,,252,True
+CO-NLF-I0345,copilot,complete,,442,True
+CO-NLF-I0348,copilot,complete,,398,True
+CO-NLF-I0351,copilot,complete,,293,True
+CO-NLF-I0355,copilot,complete,,391,True
+CO-NLF-I0357,copilot,complete,,384,True
+CO-NLF-I0361,copilot,complete,,433,True
+CO-NLF-I0363,copilot,complete,,488,True
+CO-NLF-I0364,copilot,complete,,385,True
+CO-NLF-I0365,copilot,complete,,386,True
+CO-NLF-I0367,copilot,complete,,306,True
+CO-NLF-I0368,copilot,complete,,603,True
+CO-NLF-I0371,copilot,complete,,544,True
+CO-NLF-I0372,copilot,complete,,311,True
+DE-I1-E3,deepseek,start_not_visible,request not visible,920,True
+DE-NLF-I0000,deepseek,complete,,149,True
+DE-NLF-I0001,deepseek,start_not_visible,request not visible,940,True
+DE-NLF-I0002,deepseek,start_not_visible,request not visible,900,True
+DE-NLF-I0004,deepseek,start_not_visible,request not visible,924,True
+DE-NLF-I0005,deepseek,start_not_visible,request not visible,838,True
+DE-NLF-I0010,deepseek,complete,,133,True
+DE-NLF-I0012,deepseek,start_not_visible,request not visible,810,True
+DE-NLF-I0018,deepseek,complete,,158,True
+DE-NLF-I0023,deepseek,complete,,398,True
+DE-NLF-I0024,deepseek,complete,,358,True
+DE-NLF-I0026,deepseek,complete,,591,True
+DE-NLF-I0027,deepseek,start_not_visible,request not visible; reply reaches the input box,1056,True
+DE-NLF-I0028,deepseek,start_not_visible,request not visible,763,True
+DE-NLF-I0030,deepseek,complete,,120,True
+DE-NLF-I0032,deepseek,complete,,106,True
+DE-NLF-I0035,deepseek,start_not_visible,request not visible,1089,True
+DE-NLF-I0036,deepseek,start_not_visible,request not visible; reply reaches the input box,903,True
+DE-NLF-I0041,deepseek,start_not_visible,request not visible; low-confidence OCR line,817,True
+DE-NLF-I0042,deepseek,complete,,699,True
+DE-NLF-I0043,deepseek,start_not_visible,request not visible; reply reaches the input box,1204,True
+DE-NLF-I0044,deepseek,start_not_visible,request not visible,975,True
+DE-NLF-I0045,deepseek,complete,,159,True
+DE-NLF-I0047,deepseek,complete,,418,True
+DE-NLF-I0049,deepseek,start_not_visible,request not visible,956,True
+DE-NLF-I0051,deepseek,start_not_visible,request not visible; low-confidence OCR line,741,True
+DE-NLF-I0053,deepseek,complete,,581,True
+DE-NLF-I0059,deepseek,complete,,115,True
+DE-NLF-I0060,deepseek,start_not_visible,request not visible,987,True
+DE-NLF-I0062,deepseek,complete,,704,True
+DE-NLF-I0067,deepseek,start_not_visible,request not visible,837,True
+DE-NLF-I0068,deepseek,complete,,747,True
+DE-NLF-I0070,deepseek,complete,,75,True
+DE-NLF-I0077,deepseek,complete,,95,True
+DE-NLF-I0085,deepseek,complete,,495,True
+DE-NLF-I0086,deepseek,start_not_visible,request not visible,928,True
+DE-NLF-I0089,deepseek,start_not_visible,request not visible,963,True
+DE-NLF-I0090,deepseek,start_not_visible,request not visible,964,True
+DE-NLF-I0092,deepseek,complete,,67,True
+DE-NLF-I0095,deepseek,start_not_visible,request not visible,785,True
+DE-NLF-I0096,deepseek,start_not_visible,request not visible,985,True
+DE-NLF-I0099,deepseek,start_not_visible,request not visible; reply reaches the input box,954,True
+DE-NLF-I0105,deepseek,start_not_visible,request not visible,890,True
+DE-NLF-I0106,deepseek,start_not_visible,request not visible,1005,True
+DE-NLF-I0115,deepseek,complete,,631,True
+DE-NLF-I0118,deepseek,complete,,147,True
+DE-NLF-I0121,deepseek,complete,,29,True
+DE-NLF-I0124,deepseek,start_not_visible,request not visible; reply reaches the input box; low-confidence OCR line,991,True
+DE-NLF-I0125,deepseek,start_not_visible,request not visible,903,True
+DE-NLF-I0126,deepseek,complete,,62,True
+DE-NLF-I0128,deepseek,start_not_visible,request not visible,864,True
+DE-NLF-I0131,deepseek,complete,,84,True
+DE-NLF-I0132,deepseek,complete,,646,True
+DE-NLF-I0133,deepseek,start_not_visible,request not visible,879,True
+DE-NLF-I0137,deepseek,complete,,455,True
+DE-NLF-I0140,deepseek,complete,,643,True
+DE-NLF-I0141,deepseek,start_not_visible,request not visible; reply reaches the input box,995,True
+DE-NLF-I0146,deepseek,start_not_visible,request not visible,796,True
+DE-NLF-I0149,deepseek,complete,,103,True
+DE-NLF-I0153,deepseek,complete,,116,True
+DE-NLF-I0159,deepseek,complete,,791,True
+DE-NLF-I0161,deepseek,start_not_visible,request not visible; reply reaches the input box,1280,True
+DE-NLF-I0163,deepseek,start_not_visible,request not visible,868,True
+DE-NLF-I0165,deepseek,complete,,629,True
+DE-NLF-I0166,deepseek,start_not_visible,request not visible; reply reaches the input box,795,True
+DE-NLF-I0169,deepseek,complete,,411,True
+DE-NLF-I0170,deepseek,start_not_visible,request not visible,823,True
+DE-NLF-I0176,deepseek,complete,,77,True
+DE-NLF-I0177,deepseek,complete,,86,True
+DE-NLF-I0181,deepseek,start_not_visible,request not visible,797,True
+DE-NLF-I0182,deepseek,complete,,128,True
+DE-NLF-I0185,deepseek,complete,,90,True
+DE-NLF-I0187,deepseek,complete,,131,True
+DE-NLF-I0188,deepseek,start_not_visible,request not visible; reply reaches the input box; low-confidence OCR line,1169,True
+DE-NLF-I0191,deepseek,start_not_visible,request not visible,1050,True
+DE-NLF-I0195,deepseek,start_not_visible,request not visible,748,True
+DE-NLF-I0200,deepseek,start_not_visible,request not visible; reply reaches the input box,1075,True
+DE-NLF-I0201,deepseek,complete,,516,True
+DE-NLF-I0209,deepseek,start_not_visible,request not visible,907,True
+DE-NLF-I0215,deepseek,complete,,114,True
+DE-NLF-I0216,deepseek,complete,,605,True
+DE-NLF-I0220,deepseek,start_not_visible,request not visible,759,True
+DE-NLF-I0224,deepseek,start_not_visible,request not visible; reply reaches the input box,1019,True
+DE-NLF-I0226,deepseek,start_not_visible,request not visible,953,True
+DE-NLF-I0228,deepseek,complete,,737,True
+DE-NLF-I0230,deepseek,complete,,205,True
+DE-NLF-I0233,deepseek,complete,,96,True
+DE-NLF-I0236,deepseek,start_not_visible,request not visible; reply reaches the input box,1146,True
+DE-NLF-I0237,deepseek,start_not_visible,request not visible,961,True
+DE-NLF-I0239,deepseek,complete,,656,True
+DE-NLF-I0240,deepseek,complete,,732,True
+DE-NLF-I0241,deepseek,start_not_visible,request not visible; low-confidence OCR line,916,True
+DE-NLF-I0252,deepseek,start_not_visible,request not visible,1070,True
+DE-NLF-I0259,deepseek,start_not_visible,request not visible,1001,True
+DE-NLF-I0260,deepseek,start_not_visible,request not visible; reply reaches the input box,810,True
+DE-NLF-I0262,deepseek,start_not_visible,request not visible,832,True
+DE-NLF-I0264,deepseek,start_not_visible,request not visible; reply reaches the input box,1087,True
+DE-NLF-I0269,deepseek,complete,,751,True
+DE-NLF-I0271,deepseek,start_not_visible,request not visible,746,True
+DE-NLF-I0272,deepseek,start_not_visible,request not visible,912,True
+DE-NLF-I0273,deepseek,start_not_visible,request not visible,844,True
+DE-NLF-I0279,deepseek,complete,,195,True
+DE-NLF-I0281,deepseek,start_not_visible,request not visible,916,True
+DE-NLF-I0282,deepseek,complete,,164,True
+DE-NLF-I0287,deepseek,start_not_visible,request not visible; reply reaches the input box,998,True
+DE-NLF-I0293,deepseek,complete,,367,True
+DE-NLF-I0296,deepseek,start_not_visible,request not visible; reply reaches the input box,1117,True
+DE-NLF-I0297,deepseek,complete,,523,True
+DE-NLF-I0302,deepseek,start_not_visible,request not visible; reply reaches the input box,1078,True
+DE-NLF-I0304,deepseek,start_not_visible,request not visible,874,True
+DE-NLF-I0305,deepseek,complete,,608,True
+DE-NLF-I0309,deepseek,complete,,240,True
+DE-NLF-I0314,deepseek,start_not_visible,request not visible; low-confidence OCR line,1082,True
+DE-NLF-I0315,deepseek,complete,,482,True
+DE-NLF-I0319,deepseek,start_not_visible,request not visible,913,True
+DE-NLF-I0322,deepseek,complete,,381,True
+DE-NLF-I0326,deepseek,start_not_visible,request not visible; reply reaches the input box,1015,True
+DE-NLF-I0327,deepseek,start_not_visible,request not visible,744,True
+DE-NLF-I0334,deepseek,start_not_visible,request not visible,952,True
+DE-NLF-I0339,deepseek,start_not_visible,request not visible; reply reaches the input box,1018,True
+DE-NLF-I0345,deepseek,complete,,339,True
+DE-NLF-I0348,deepseek,complete,,71,True
+DE-NLF-I0350,deepseek,start_not_visible,request not visible,984,True
+DE-NLF-I0351,deepseek,complete,,121,True
+DE-NLF-I0355,deepseek,start_not_visible,request not visible; reply reaches the input box,1201,True
+DE-NLF-I0357,deepseek,complete,,714,True
+DE-NLF-I0361,deepseek,start_not_visible,request not visible,933,True
+DE-NLF-I0363,deepseek,start_not_visible,request not visible,813,True
+DE-NLF-I0364,deepseek,start_not_visible,request not visible,848,True
+DE-NLF-I0365,deepseek,complete,,530,True
+DE-NLF-I0367,deepseek,complete,,551,True
+DE-NLF-I0368,deepseek,start_not_visible,request not visible; reply reaches the input box,1349,True
+DE-NLF-I0371,deepseek,start_not_visible,request not visible,1065,True
+DE-NLF-I0372,deepseek,complete,,757,True
+GE-I1-E1,gemini,complete,,108,True
+GE-I2-E1,gemini,complete,,350,True
+GE-NLF-I0000,gemini,complete,,70,True
+GE-NLF-I0001,gemini,complete,,405,True
+GE-NLF-I0002,gemini,complete,,460,True
+GE-NLF-I0004,gemini,complete,,336,True
+GE-NLF-I0005,gemini,complete,,191,True
+GE-NLF-I0010,gemini,complete,,66,True
+GE-NLF-I0012,gemini,complete,,447,True
+GE-NLF-I0018,gemini,complete,,78,True
+GE-NLF-I0023,gemini,complete,,81,True
+GE-NLF-I0024,gemini,complete,,440,True
+GE-NLF-I0026,gemini,complete,,140,True
+GE-NLF-I0027,gemini,complete,,597,True
+GE-NLF-I0028,gemini,complete,,434,True
+GE-NLF-I0030,gemini,complete,,143,True
+GE-NLF-I0032,gemini,complete,,127,True
+GE-NLF-I0035,gemini,complete,,429,True
+GE-NLF-I0036,gemini,complete,,461,True
+GE-NLF-I0041,gemini,complete,,371,True
+GE-NLF-I0042,gemini,complete,,359,True
+GE-NLF-I0043,gemini,complete,,183,True
+GE-NLF-I0044,gemini,no_reply_visible,,0,True
+GE-NLF-I0045,gemini,complete,,114,True
+GE-NLF-I0047,gemini,complete,,162,True
+GE-NLF-I0049,gemini,complete,,523,True
+GE-NLF-I0051,gemini,complete,,195,True
+GE-NLF-I0053,gemini,complete,,122,True
+GE-NLF-I0059,gemini,complete,,483,True
+GE-NLF-I0060,gemini,complete,,346,True
+GE-NLF-I0062,gemini,complete,,536,True
+GE-NLF-I0067,gemini,complete,,376,True
+GE-NLF-I0068,gemini,complete,,307,True
+GE-NLF-I0070,gemini,check,low-confidence OCR line,76,True
+GE-NLF-I0077,gemini,complete,,148,True
+GE-NLF-I0085,gemini,complete,,198,True
+GE-NLF-I0086,gemini,complete,,425,True
+GE-NLF-I0089,gemini,complete,,317,True
+GE-NLF-I0090,gemini,complete,,796,True
+GE-NLF-I0092,gemini,complete,,41,True
+GE-NLF-I0095,gemini,complete,,330,True
+GE-NLF-I0096,gemini,complete,,494,True
+GE-NLF-I0099,gemini,cut_off,reply reaches the input box,944,True
+GE-NLF-I0105,gemini,complete,,265,True
+GE-NLF-I0106,gemini,complete,,310,True
+GE-NLF-I0115,gemini,complete,,472,True
+GE-NLF-I0118,gemini,complete,,81,True
+GE-NLF-I0121,gemini,complete,,79,True
+GE-NLF-I0124,gemini,check,low-confidence OCR line,680,True
+GE-NLF-I0125,gemini,complete,,153,True
+GE-NLF-I0126,gemini,complete,,150,True
+GE-NLF-I0128,gemini,complete,,65,True
+GE-NLF-I0131,gemini,complete,,53,True
+GE-NLF-I0132,gemini,complete,,293,True
+GE-NLF-I0133,gemini,complete,,277,True
+GE-NLF-I0137,gemini,complete,,213,True
+GE-NLF-I0140,gemini,complete,,187,True
+GE-NLF-I0141,gemini,complete,,735,True
+GE-NLF-I0146,gemini,complete,,338,True
+GE-NLF-I0149,gemini,complete,,98,True
+GE-NLF-I0153,gemini,complete,,73,True
+GE-NLF-I0159,gemini,complete,,586,True
+GE-NLF-I0161,gemini,complete,,609,True
+GE-NLF-I0163,gemini,complete,,180,True
+GE-NLF-I0165,gemini,complete,,165,True
+GE-NLF-I0166,gemini,complete,,926,True
+GE-NLF-I0169,gemini,complete,,193,True
+GE-NLF-I0170,gemini,complete,,250,True
+GE-NLF-I0176,gemini,complete,,410,True
+GE-NLF-I0177,gemini,complete,,97,True
+GE-NLF-I0181,gemini,complete,,597,True
+GE-NLF-I0182,gemini,complete,,174,True
+GE-NLF-I0185,gemini,complete,,61,True
+GE-NLF-I0187,gemini,complete,,116,True
+GE-NLF-I0188,gemini,complete,,417,True
+GE-NLF-I0191,gemini,complete,,392,True
+GE-NLF-I0195,gemini,complete,,329,True
+GE-NLF-I0200,gemini,complete,,181,True
+GE-NLF-I0201,gemini,complete,,183,True
+GE-NLF-I0209,gemini,complete,,239,True
+GE-NLF-I0215,gemini,complete,,223,True
+GE-NLF-I0216,gemini,complete,,259,True
+GE-NLF-I0220,gemini,complete,,199,True
+GE-NLF-I0224,gemini,complete,,760,True
+GE-NLF-I0226,gemini,complete,,399,True
+GE-NLF-I0228,gemini,complete,,450,True
+GE-NLF-I0230,gemini,complete,,168,True
+GE-NLF-I0233,gemini,complete,,111,True
+GE-NLF-I0236,gemini,complete,,394,True
+GE-NLF-I0237,gemini,check,low-confidence OCR line,654,True
+GE-NLF-I0239,gemini,complete,,270,True
+GE-NLF-I0240,gemini,no_reply_visible,,0,True
+GE-NLF-I0241,gemini,complete,,348,True
+GE-NLF-I0252,gemini,complete,,360,True
+GE-NLF-I0259,gemini,complete,,199,True
+GE-NLF-I0260,gemini,complete,,386,True
+GE-NLF-I0262,gemini,complete,,394,True
+GE-NLF-I0264,gemini,complete,,311,True
+GE-NLF-I0269,gemini,complete,,315,True
+GE-NLF-I0271,gemini,complete,,751,True
+GE-NLF-I0272,gemini,complete,,258,True
+GE-NLF-I0273,gemini,complete,,730,True
+GE-NLF-I0279,gemini,complete,,111,True
+GE-NLF-I0281,gemini,complete,,378,True
+GE-NLF-I0282,gemini,complete,,650,True
+GE-NLF-I0287,gemini,complete,,476,True
+GE-NLF-I0293,gemini,complete,,109,True
+GE-NLF-I0296,gemini,complete,,433,True
+GE-NLF-I0297,gemini,complete,,67,True
+GE-NLF-I0302,gemini,start_not_visible,request not visible; reply reaches the input box,1010,True
+GE-NLF-I0304,gemini,complete,,588,True
+GE-NLF-I0305,gemini,complete,,181,True
+GE-NLF-I0309,gemini,complete,,114,True
+GE-NLF-I0314,gemini,complete,,183,True
+GE-NLF-I0315,gemini,complete,,133,True
+GE-NLF-I0319,gemini,complete,,136,True
+GE-NLF-I0322,gemini,complete,,95,True
+GE-NLF-I0326,gemini,complete,,338,True
+GE-NLF-I0327,gemini,complete,,256,True
+GE-NLF-I0334,gemini,complete,,127,True
+GE-NLF-I0339,gemini,complete,,181,True
+GE-NLF-I0345,gemini,complete,,189,True
+GE-NLF-I0348,gemini,complete,,109,True
+GE-NLF-I0350,gemini,complete,,341,True
+GE-NLF-I0351,gemini,complete,,381,True
+GE-NLF-I0355,gemini,complete,,285,True
+GE-NLF-I0357,gemini,complete,,234,True
+GE-NLF-I0361,gemini,complete,,181,True
+GE-NLF-I0363,gemini,complete,,162,True
+GE-NLF-I0364,gemini,complete,,105,True
+GE-NLF-I0365,gemini,complete,,179,True
+GE-NLF-I0367,gemini,complete,,325,True
+GE-NLF-I0368,gemini,cut_off,reply reaches the input box,764,True
+GE-NLF-I0371,gemini,complete,,167,True
+GE-NLF-I0372,gemini,complete,,319,True
+PE-I1-E1,perplexity,cut_off,reply reaches the input box; a toast overlaps the reply; low-confidence OCR line,312,True
+PE-I2-E1,perplexity,cut_off,reply reaches the input box; a toast overlaps the reply; low-confidence OCR line,379,True
+PE-NLF-I0000,perplexity,cut_off,a toast overlaps the reply,108,True
+PE-NLF-I0001,perplexity,cut_off,reply reaches the input box; a toast overlaps the reply; low-confidence OCR line,364,True
+PE-NLF-I0002,perplexity,cut_off,reply reaches the input box; a toast overlaps the reply; low-confidence OCR line,284,True
+PE-NLF-I0004,perplexity,cut_off,reply reaches the input box; a toast overlaps the reply; low-confidence OCR line,270,True
+PE-NLF-I0005,perplexity,cut_off,a toast overlaps the reply; low-confidence OCR line,102,True
+PE-NLF-I0010,perplexity,complete,,152,True
+PE-NLF-I0012,perplexity,cut_off,a toast overlaps the reply; low-confidence OCR line,274,True
+PE-NLF-I0018,perplexity,check,low-confidence OCR line,181,True
+PE-NLF-I0023,perplexity,complete,,258,True
+PE-NLF-I0024,perplexity,cut_off,reply reaches the input box,294,True
+PE-NLF-I0026,perplexity,complete,,138,True
+PE-NLF-I0027,perplexity,cut_off,reply reaches the input box,327,True
+PE-NLF-I0028,perplexity,cut_off,reply reaches the input box,310,True
+PE-NLF-I0030,perplexity,complete,,102,True
+PE-NLF-I0032,perplexity,cut_off,a toast overlaps the reply,114,True
+PE-NLF-I0035,perplexity,complete,,384,True
+PE-NLF-I0036,perplexity,cut_off,reply reaches the input box,79,True
+PE-NLF-I0041,perplexity,cut_off,reply reaches the input box,346,True
+PE-NLF-I0042,perplexity,cut_off,reply reaches the input box,211,True
+PE-NLF-I0043,perplexity,cut_off,reply reaches the input box,328,True
+PE-NLF-I0044,perplexity,complete,,267,True
+PE-NLF-I0045,perplexity,cut_off,a toast overlaps the reply,256,True
+PE-NLF-I0047,perplexity,complete,,198,True
+PE-NLF-I0049,perplexity,complete,,312,True
+PE-NLF-I0051,perplexity,cut_off,reply reaches the input box,179,True
+PE-NLF-I0053,perplexity,cut_off,reply reaches the input box,73,True
+PE-NLF-I0059,perplexity,check,low-confidence OCR line,97,True
+PE-NLF-I0060,perplexity,cut_off,reply reaches the input box; a toast overlaps the reply; low-confidence OCR line,48,True
+PE-NLF-I0062,perplexity,cut_off,reply reaches the input box,76,True
+PE-NLF-I0067,perplexity,check,low-confidence OCR line,318,True
+PE-NLF-I0068,perplexity,complete,,297,True
+PE-NLF-I0070,perplexity,cut_off,reply reaches the input box,84,True
+PE-NLF-I0077,perplexity,complete,,194,True
+PE-NLF-I0085,perplexity,complete,,196,True
+PE-NLF-I0086,perplexity,cut_off,reply reaches the input box,267,True
+PE-NLF-I0089,perplexity,complete,,178,True
+PE-NLF-I0090,perplexity,cut_off,reply reaches the input box; a toast overlaps the reply,267,True
+PE-NLF-I0092,perplexity,cut_off,reply reaches the input box,80,True
+PE-NLF-I0095,perplexity,cut_off,reply reaches the input box,87,True
+PE-NLF-I0096,perplexity,cut_off,reply reaches the input box,332,True
+PE-NLF-I0099,perplexity,cut_off,reply reaches the input box,433,True
+PE-NLF-I0105,perplexity,cut_off,reply reaches the input box,161,True
+PE-NLF-I0106,perplexity,cut_off,reply reaches the input box,86,True
+PE-NLF-I0115,perplexity,cut_off,reply reaches the input box,85,True
+PE-NLF-I0118,perplexity,cut_off,a toast overlaps the reply,339,True
+PE-NLF-I0121,perplexity,cut_off,a toast overlaps the reply,98,True
+PE-NLF-I0124,perplexity,cut_off,reply reaches the input box; a toast overlaps the reply; low-confidence OCR line,187,True
+PE-NLF-I0125,perplexity,cut_off,reply reaches the input box; a toast overlaps the reply; low-confidence OCR line,250,True
+PE-NLF-I0126,perplexity,complete,,130,True
+PE-NLF-I0128,perplexity,cut_off,reply reaches the input box,287,True
+PE-NLF-I0131,perplexity,cut_off,reply reaches the input box,211,True
+PE-NLF-I0132,perplexity,cut_off,reply reaches the input box,153,True
+PE-NLF-I0133,perplexity,cut_off,reply reaches the input box; low-confidence OCR line,347,True
+PE-NLF-I0137,perplexity,complete,,186,True
+PE-NLF-I0140,perplexity,complete,,340,True
+PE-NLF-I0141,perplexity,cut_off,reply reaches the input box; a toast overlaps the reply; low-confidence OCR line,277,True
+PE-NLF-I0146,perplexity,cut_off,reply reaches the input box,266,True
+PE-NLF-I0149,perplexity,complete,,145,True
+PE-NLF-I0153,perplexity,cut_off,reply reaches the input box,286,True
+PE-NLF-I0159,perplexity,cut_off,reply reaches the input box,204,True
+PE-NLF-I0161,perplexity,cut_off,reply reaches the input box; low-confidence OCR line,223,True
+PE-NLF-I0163,perplexity,complete,,111,True
+PE-NLF-I0165,perplexity,complete,,158,True
+PE-NLF-I0166,perplexity,cut_off,reply reaches the input box; low-confidence OCR line,170,True
+PE-NLF-I0169,perplexity,complete,,132,True
+PE-NLF-I0170,perplexity,cut_off,reply reaches the input box,79,True
+PE-NLF-I0176,perplexity,cut_off,reply reaches the input box,84,True
+PE-NLF-I0177,perplexity,cut_off,reply reaches the input box,164,True
+PE-NLF-I0181,perplexity,cut_off,reply reaches the input box,334,True
+PE-NLF-I0182,perplexity,complete,,180,True
+PE-NLF-I0185,perplexity,check,low-confidence OCR line,148,True
+PE-NLF-I0187,perplexity,complete,,167,True
+PE-NLF-I0188,perplexity,cut_off,reply reaches the input box,227,True
+PE-NLF-I0191,perplexity,cut_off,reply reaches the input box,84,True
+PE-NLF-I0195,perplexity,cut_off,reply reaches the input box,167,True
+PE-NLF-I0200,perplexity,cut_off,reply reaches the input box,255,True
+PE-NLF-I0201,perplexity,check,low-confidence OCR line,249,True
+PE-NLF-I0209,perplexity,cut_off,reply reaches the input box; low-confidence OCR line,289,True
+PE-NLF-I0215,perplexity,cut_off,reply reaches the input box,176,True
+PE-NLF-I0216,perplexity,cut_off,reply reaches the input box,85,True
+PE-NLF-I0220,perplexity,cut_off,reply reaches the input box,412,True
+PE-NLF-I0224,perplexity,cut_off,reply reaches the input box; low-confidence OCR line,286,True
+PE-NLF-I0226,perplexity,cut_off,reply reaches the input box,347,True
+PE-NLF-I0228,perplexity,complete,,231,True
+PE-NLF-I0230,perplexity,complete,,222,True
+PE-NLF-I0233,perplexity,complete,,74,True
+PE-NLF-I0236,perplexity,cut_off,reply reaches the input box,211,True
+PE-NLF-I0237,perplexity,cut_off,reply reaches the input box,217,True
+PE-NLF-I0239,perplexity,complete,,121,True
+PE-NLF-I0240,perplexity,cut_off,reply reaches the input box,88,True
+PE-NLF-I0241,perplexity,cut_off,reply reaches the input box,84,True
+PE-NLF-I0252,perplexity,complete,,346,True
+PE-NLF-I0259,perplexity,cut_off,reply reaches the input box,326,True
+PE-NLF-I0260,perplexity,complete,,165,True
+PE-NLF-I0262,perplexity,cut_off,reply reaches the input box; low-confidence OCR line,179,True
+PE-NLF-I0264,perplexity,cut_off,reply reaches the input box; low-confidence OCR line,363,True
+PE-NLF-I0269,perplexity,check,low-confidence OCR line,159,True
+PE-NLF-I0271,perplexity,cut_off,reply reaches the input box,162,True
+PE-NLF-I0272,perplexity,cut_off,reply reaches the input box,79,True
+PE-NLF-I0273,perplexity,complete,,228,True
+PE-NLF-I0279,perplexity,cut_off,reply reaches the input box,79,True
+PE-NLF-I0281,perplexity,cut_off,reply reaches the input box,396,True
+PE-NLF-I0282,perplexity,cut_off,reply reaches the input box,82,True
+PE-NLF-I0287,perplexity,cut_off,reply reaches the input box,365,True
+PE-NLF-I0293,perplexity,complete,,199,True
+PE-NLF-I0296,perplexity,cut_off,reply reaches the input box,81,True
+PE-NLF-I0297,perplexity,complete,,113,True
+PE-NLF-I0302,perplexity,cut_off,reply reaches the input box,92,True
+PE-NLF-I0304,perplexity,cut_off,reply reaches the input box,328,True
+PE-NLF-I0305,perplexity,complete,,173,True
+PE-NLF-I0309,perplexity,complete,,197,True
+PE-NLF-I0314,perplexity,complete,,200,True
+PE-NLF-I0315,perplexity,complete,,197,True
+PE-NLF-I0319,perplexity,cut_off,reply reaches the input box,309,True
+PE-NLF-I0322,perplexity,complete,,282,True
+PE-NLF-I0326,perplexity,cut_off,reply reaches the input box,104,True
+PE-NLF-I0327,perplexity,cut_off,reply reaches the input box,81,True
+PE-NLF-I0334,perplexity,complete,,206,True
+PE-NLF-I0339,perplexity,complete,,140,True
+PE-NLF-I0345,perplexity,complete,,89,True
+PE-NLF-I0348,perplexity,check,low-confidence OCR line,114,True
+PE-NLF-I0350,perplexity,cut_off,reply reaches the input box,93,True
+PE-NLF-I0351,perplexity,complete,,215,True
+PE-NLF-I0355,perplexity,cut_off,reply reaches the input box,300,True
+PE-NLF-I0357,perplexity,complete,,212,True
+PE-NLF-I0361,perplexity,cut_off,reply reaches the input box,373,True
+PE-NLF-I0363,perplexity,complete,,360,True
+PE-NLF-I0364,perplexity,complete,,63,True
+PE-NLF-I0365,perplexity,cut_off,reply reaches the input box; low-confidence OCR line,269,True
+PE-NLF-I0367,perplexity,complete,,162,True
+PE-NLF-I0368,perplexity,cut_off,reply reaches the input box; low-confidence OCR line,263,True
+PE-NLF-I0371,perplexity,cut_off,reply reaches the input box,152,True
+PE-NLF-I0372,perplexity,cut_off,reply reaches the input box,83,True

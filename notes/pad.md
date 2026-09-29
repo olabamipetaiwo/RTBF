@@ -4,15 +4,6 @@ Taiwo Olabamipe · University of Central Florida
 
 ---
 
-## Where We Are
-
-- Participant survey: **complete**, screened, and fully analyzed (n=177)
-- Statistical results: **cross-validated** across two independent pipelines
-- Paper draft: results section for the survey largely written
-- Technical audit (6 platforms): **not started** — separate workstream
-
----
-
 ## The Data
 
 - 219 raw responses → 177 in the final analysis base
@@ -78,10 +69,3 @@ Taiwo Olabamipe · University of Central Florida
 
 
 ---
-
-## Next Steps
-
-1. Code/analyze the elicited deletion-request prompts participants wrote
-2. Use those prompts to run the technical audit across the 6 platforms
-3. Draft Methodology section
-4. Finish Introduction + Abstract

@@ -172,19 +172,13 @@ _load_cell_cached = functools.lru_cache(maxsize=None)(rc.load_cell)
 # NL-forget cells' erasure_type_text/erasure_desc are always the fixed
 # dispatch key ("NL forget prompt"/"NL forget command") -- the real prompt
 # text never appears there, so the generic BROAD_KEYWORDS text-match below
-# can't see it. The study's own authoritative deletion_locus coding
-# (RTBF-Prompt/data/nl_forget_prompts_138_final.csv, keyed by item_id) is
-# the real signal: 18/138 items are coded account_all -- e.g. "delete all
-# my data", "clear any instance of it in my account". Those are exactly as
-# destructive as MASTER's MAXIMAL cells and must rank last, not first.
-NLF_PROMPTS_CSV = config.RTBF_ROOT / "RTBF-Prompt" / "data" / "nl_forget_prompts_138_final.csv"
-
-
-@functools.lru_cache(maxsize=1)
-def _nlf_deletion_locus_map() -> dict[str, str]:
-    import csv
-    with NLF_PROMPTS_CSV.open() as f:
-        return {row["item_id"]: row["deletion_locus"] for row in csv.DictReader(f)}
+# can't see it. These 5 prompts ask for all of the user's data (or all data
+# in the chat) without naming a referent, so each has a high probability of
+# erasing other cells' content on the shared account and spoiling their
+# attribution. They are held back (see _is_held_back_nlf_prompt). The other
+# 133 prompts each name a single referent and are run as narrow cells. See
+# RTBF-Prompt/nl_forget_prompt_mapping.md.
+NLF_HELD_BACK_ITEM_IDS = frozenset({"I0056", "I0064", "I0088", "I0249", "I0280"})
 
 
 def _breadth_rank(cell_id: str) -> int:
@@ -192,13 +186,9 @@ def _breadth_rank(cell_id: str) -> int:
     module docstring's DESTRUCTIVE-ACTIONS-RUN-LAST section."""
     if "-NLF-" in cell_id:
         item_id = cell_id.split("-NLF-", 1)[1]
-        locus = _nlf_deletion_locus_map().get(item_id)
-        if locus == "account_all":
-            return 100  # account-wide NL-forget request -- as broad as MAXIMAL
-        if locus is None:
-            log(f"WARNING: {cell_id}'s item_id {item_id!r} not found in {NLF_PROMPTS_CSV.name} -- defaulting to a mid rank, safer than assuming narrow")
-            return 50
-        return 1  # conversation/memory/backend_db/prospective/unspecified -- narrow, targets this cell's own token
+        if item_id in NLF_HELD_BACK_ITEM_IDS:
+            return 100  # as broad as MAXIMAL; held back, so never actually scheduled
+        return 1  # names a single referent -- narrow, targets this cell's own token
     try:
         plan = _load_cell_cached(cell_id)
     except Exception as e:
@@ -219,18 +209,16 @@ def _breadth_rank(cell_id: str) -> int:
     return 50
 
 
-def _is_held_back_nlf_account_all(cell_id: str) -> bool:
-    """The 18/138 account_all NL-forget cells (per platform) are held out
-    of every erasure run until each gets its own dedicated account -- even
-    with the destructive-last rank fix, the first of the 18 to run still
-    wipes the shared account and voids the other 17's own attribution (see
-    project memory `deletion-location-reconciliation` follow-up,
-    2026-09-17). Not run at all for now; not a throttle-related skip, so
-    excluded up front rather than via PERMANENTLY_BLOCKED."""
+def _is_held_back_nlf_prompt(cell_id: str) -> bool:
+    """The 5 NL-forget prompts in NLF_HELD_BACK_ITEM_IDS (per platform) are
+    held out of every erasure run: each has a high probability of erasing
+    other cells' content on the shared account, which would spoil their
+    attribution, and no dedicated account is provisioned to isolate them.
+    Not a throttle-related skip, so excluded up front rather than via
+    PERMANENTLY_BLOCKED."""
     if "-NLF-" not in cell_id:
         return False
-    item_id = cell_id.split("-NLF-", 1)[1]
-    return _nlf_deletion_locus_map().get(item_id) == "account_all"
+    return cell_id.split("-NLF-", 1)[1] in NLF_HELD_BACK_ITEM_IDS
 
 
 NLF_ONLY = False  # set via --nlf-only; scopes a run to just the "NL FORGET" sheet's cells, skipping any due MASTER/FILE cell
@@ -244,7 +232,7 @@ def remaining_cell_ids(platform: str) -> list[str]:
         cid for cid in tracking.due_for_erasure()
         if rc.PLATFORM_PREFIX.get(cid[:2]) == platform
         and cid not in PERMANENTLY_BLOCKED
-        and not _is_held_back_nlf_account_all(cid)
+        and not _is_held_back_nlf_prompt(cid)
         and (not NLF_ONLY or "-NLF-" in cid)
     ]
     return sorted(due, key=lambda cid: (_breadth_rank(cid), cid))
@@ -341,10 +329,10 @@ def dry_run() -> None:
         total += len(queue)
         held_back = sorted(
             cid for cid in tracking.due_for_erasure()
-            if rc.PLATFORM_PREFIX.get(cid[:2]) == platform and _is_held_back_nlf_account_all(cid)
+            if rc.PLATFORM_PREFIX.get(cid[:2]) == platform and _is_held_back_nlf_prompt(cid)
         )
         total_held_back += len(held_back)
-        print(f"\n{platform}: {len(queue)} due, {len(held_back)} held back (NLF account_all, no dedicated account yet)")
+        print(f"\n{platform}: {len(queue)} due, {len(held_back)} held back (NL-forget prompts that could erase other cells' content)")
         for cid in queue:
             rank = _breadth_rank(cid)
             print(f"  rank={rank:>3}  {cid}")

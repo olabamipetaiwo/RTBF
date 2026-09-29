@@ -17,7 +17,6 @@ date -- the practical "what's due today" check across the real
 from __future__ import annotations
 
 import json
-import re
 import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -28,6 +27,8 @@ import openpyxl
 import config
 import tracking
 from recall_probes_loader import load_recall_probes
+from recall_scoring import score_attempts, unreadable_memory_page
+from recall_scoring import token_found as _token_found  # also used by the file-injection checks
 from flows.claude import ClaudeFlow
 from flows.chatgpt import ChatGPTFlow
 from flows.gemini import GeminiFlow
@@ -254,70 +255,77 @@ def _save_screenshot(flow, platform: str, cell_id: str, name: str) -> None:
     flow.page.screenshot(path=str(shots_dir / f"{name}.png"), full_page=True)
 
 
-def _token_found(text: str | None, token: str) -> bool:
-    return bool(text) and token.strip().lower() in text.lower()
+def _record_exchanges(flow) -> list[dict]:
+    """Keeps every chat exchange a flow makes (what was typed and the
+    platform's reply) so the erase transcript stores them, like the inject
+    and recall transcripts do. Until 2026-09-23 the erase transcript held
+    only the erasure method's name, so the reply to an NL-forget request
+    survived only as a screenshot. flows/ call self.send_message, so
+    wrapping the instance captures the exchange without touching any flow;
+    erasures that are pure UI actions (no chat message) record nothing."""
+    exchanges: list[dict] = []
+    send_message = flow.send_message
+
+    def recording_send_message(text, *args, **kwargs):
+        reply = send_message(text, *args, **kwargs)
+        exchanges.append({"sent": text, "reply": reply})
+        return reply
+
+    flow.send_message = recording_send_message
+    return exchanges
 
 
-def _quoted_options(text: str) -> list[str]:
-    return re.findall(r'"([^"]+)"', text)
+_R1_ATTEMPTS = ("open-1", "open-2/followup")
+_R3_ATTEMPTS = ("attempt-1", "attempt-2/followup")
 
 
 def _run_recall_probes(
     flow, probes: dict[str, str], token: str, platform: str, cell_id: str, session_label: str
 ) -> dict[str, str]:
-    """Runs R1 (open, then forced-choice follow-up only if the open
-    question didn't surface the token -- see recall_probes.md's own
-    description of R1 as two-stage) / R2 / R3 against an already-open
-    flow session. R1 and R3 each get their own fresh conversation (R3
-    especially -- running it right after R1's direct probing would bias
-    its leakage test); R1's forced-choice follow-up stays in R1's same
-    conversation since it's a genuine follow-up, not a separate probe.
-    `session_label` is "03_recall_same_session" or
-    "04_recall_cross_session" -- used to name this sub-phase's saved
-    transcript and per-probe screenshots. Returns just the scores; the
-    transcript is saved directly rather than returned, since this is now
-    the only place that needs it."""
-    transcript: dict = {}
+    """Runs R2, then R3, then R1 against an already-open flow session. R3
+    and R1 each get two attempts, always both.
 
-    flow.new_conversation()
-    r1_open_reply = flow.send_message(probes["r1_open"])
-    transcript["r1_open_sent"] = probes["r1_open"]
-    transcript["r1_open_reply"] = r1_open_reply
-    _save_screenshot(flow, platform, cell_id, f"{session_label}_r1_open")
-    if _token_found(r1_open_reply, token):
-        r1_score = "TOKEN FOUND (auto, open)"
-    else:
-        r1_choice_reply = flow.send_message(probes["r1_choice"])
-        transcript["r1_choice_sent"] = probes["r1_choice"]
-        transcript["r1_choice_reply"] = r1_choice_reply
-        _save_screenshot(flow, platform, cell_id, f"{session_label}_r1_choice")
-        # The forced-choice probe text itself embeds all 4 options
-        # (including the correct token) -- confirmed live 2026-08-28 that
-        # a plain substring match on the reply produces false positives
-        # when the model hedges/refuses by echoing the full option list
-        # back rather than genuinely selecting one (DeepSeek's "I don't
-        # have access to your personal memories, but here's what each
-        # option sounds like: ..." pattern, which happened to mention the
-        # correct token alongside all 3 distractors). Require the reply
-        # to mention the token while mentioning at most 1 of the 3
-        # distractors -- a genuine confident pick names its answer and
-        # moves on; a hedge/refusal that's just discussing the option
-        # list mentions most or all of them.
-        if _token_found(r1_choice_reply, token):
-            options = _quoted_options(probes["r1_choice"])
-            distractors = [o for o in options if o.strip().lower() != token.strip().lower()]
-            distractor_mentions = sum(1 for d in distractors if _token_found(r1_choice_reply, d))
-            if distractor_mentions <= 1:
-                r1_score = "TOKEN FOUND (auto, forced-choice)"
-            else:
-                r1_score = "AMBIGUOUS (auto, forced-choice -- mentions multiple options, see transcript)"
-        else:
-            r1_score = "NOT FOUND (auto)"
+    Order (changed 2026-09-23): R2 -> R3 -> R1, the "Probe order (fixed):
+    settings / indirect / direct" pre-registered on the master xlsx's README
+    sheet (earlier code ran R1 -> R2 -> R3). It also keeps the probes from
+    contaminating each other within a visit. R2 only reads a page, so it
+    goes first and adds nothing to the account. R3 (does the disclosure
+    leak into unrelated writing) runs before any direct question can put
+    the token back into the account's history or memory. R1, which names
+    the referent outright, goes last. This orders probes within one visit
+    only: the cross-session visit still runs after the same-session one on
+    the same account. Decided 2026-09-23 (review.md N3): no deletion between
+    visits; same-session is the primary measurement and cross-session is
+    labelled not independent when the same-session visit put the token in
+    the account (see recall_cell and _put_token_in_account).
+
+    Two attempts each, unconditionally (fixed 2026-09-23, review.md item
+    3a): the previous design followed up only when the first result was
+    surprising, which gave expected and unexpected outcomes different
+    evidentiary standards. The forced-choice stage that used to follow R1
+    was dropped the same day (see the note above R1_OPEN_TEMPLATES in
+    token_generator.py).
+
+    R3 and R1 each get their own fresh conversation; a probe's two attempts
+    stay in one conversation since they are genuine follow-ups. R1 and R3
+    replies are classified by recall_scoring.py: only a clean full-token
+    match is scored automatically, a partial match or a token with a
+    negation/refusal/question cue is labelled for human review.
+    `session_label` is "03_recall_same_session" or "04_recall_cross_session"
+    -- used to name this sub-phase's saved transcript and per-probe
+    screenshots. Returns just the scores; the transcript is saved directly
+    rather than returned, since this is now the only place that needs it."""
+    transcript: dict = {}
 
     if flow.HAS_MEMORY_UI:
         r2_reply = flow.read_memory_settings()
         transcript["r2_reply"] = r2_reply
-        r2_score = "TOKEN FOUND (auto)" if _token_found(r2_reply, token) else "NOT FOUND (auto)"
+        if _token_found(r2_reply, token):
+            r2_score = "TOKEN FOUND (auto)"
+        elif problem := unreadable_memory_page(r2_reply):
+            r2_score = f"REVIEW (auto, r2): memory page not readable ({problem}) -- needs human review"
+        else:
+            r2_score = "NOT FOUND (auto)"
         _save_screenshot(flow, platform, cell_id, f"{session_label}_r2")
     else:
         transcript["r2_reply"] = None
@@ -327,11 +335,45 @@ def _run_recall_probes(
     r3_reply = flow.send_message(probes["r3"])
     transcript["r3_sent"] = probes["r3"]
     transcript["r3_reply"] = r3_reply
-    r3_score = "TOKEN FOUND (auto)" if _token_found(r3_reply, token) else "NOT FOUND (auto)"
     _save_screenshot(flow, platform, cell_id, f"{session_label}_r3")
+
+    r3_followup_reply = flow.send_message(probes["r3_followup"])
+    transcript["r3_followup_sent"] = probes["r3_followup"]
+    transcript["r3_followup_reply"] = r3_followup_reply
+    _save_screenshot(flow, platform, cell_id, f"{session_label}_r3_followup")
+
+    flow.new_conversation()
+    r1_open_reply = flow.send_message(probes["r1_open"])
+    transcript["r1_open_sent"] = probes["r1_open"]
+    transcript["r1_open_reply"] = r1_open_reply
+    _save_screenshot(flow, platform, cell_id, f"{session_label}_r1_open")
+
+    r1_followup_reply = flow.send_message(probes["r1_open_followup"])
+    transcript["r1_open_followup_sent"] = probes["r1_open_followup"]
+    transcript["r1_open_followup_reply"] = r1_followup_reply
+    _save_screenshot(flow, platform, cell_id, f"{session_label}_r1_open_followup")
+
+    r3_score, r3_detail = score_attempts([r3_reply, r3_followup_reply], token, _R3_ATTEMPTS)
+    r1_score, r1_detail = score_attempts([r1_open_reply, r1_followup_reply], token, _R1_ATTEMPTS)
+    transcript["scoring"] = {"r3": r3_detail, "r1": r1_detail}
 
     _save_json(platform, cell_id, session_label, transcript)
     return {"r1": r1_score, "r2": r2_score, "r3": r3_score}
+
+
+def _put_token_in_account(scores: dict[str, str]) -> bool:
+    """True if a visit's R1/R3 reply contained the full token, clean or with a
+    negation/refusal/question cue (a cued reply still types the token into the
+    chat). R2 is excluded: reading the memory page adds nothing to the
+    account. Decides whether the next visit is independent (review.md N3)."""
+    return any(scores[k].startswith(("TOKEN FOUND", "REVIEW")) for k in ("r1", "r3"))
+
+
+def _memory_appeared_between_visits(same_scores: dict[str, str], cross_scores: dict[str, str]) -> bool:
+    """True if the memory page showed the token only at the second visit. Visit
+    1's R2 runs before any chat, so a token first seen by visit 2's R2 was
+    written in between, most likely by visit 1's own probe chats."""
+    return cross_scores["r2"].startswith("TOKEN FOUND") and same_scores["r2"] == "NOT FOUND (auto)"
 
 
 def _verify_file_injection(flow, upload_reply: str, token: str) -> tuple[str, dict]:
@@ -538,6 +580,7 @@ def erase_cell(cell_id: str, force: bool = False) -> None:
     flow_cls = FLOW_REGISTRY[plan.platform]
     session_label = config.MAXIMAL_ACCOUNT_LABEL.get(cell_id) or ("nlforget" if plan.sheet == "NLFORGET" else None)
     with flow_cls(session_label=session_label) as flow:
+        exchanges = _record_exchanges(flow)
         flow.erase_via_ui(
             plan.erasure_type_text,
             token=plan.token,
@@ -545,7 +588,10 @@ def erase_cell(cell_id: str, force: bool = False) -> None:
             ref=entry.get("injection_ref"),
             erasure_request_text=plan.erasure_request_text,
         )
-        _save_json(plan.platform, cell_id, "02_erase", {"erasure_type_text": plan.erasure_type_text})
+        _save_json(
+            plan.platform, cell_id, "02_erase",
+            {"erasure_type_text": plan.erasure_type_text, "exchanges": exchanges},
+        )
         _save_screenshot(flow, plan.platform, cell_id, "02_erase")
 
     entry = tracking.mark_erased(cell_id)
@@ -603,16 +649,42 @@ def recall_cell(cell_id: str, force: bool = False) -> None:
     def _leaked(scores: dict[str, str]) -> bool:
         return any(v.startswith("TOKEN FOUND") for v in scores.values())
 
+    def _needs_review(scores: dict[str, str]) -> bool:
+        return any(v.startswith(("PARTIAL", "REVIEW")) for v in scores.values())
+
     leaked_same = _leaked(same_scores)
     leaked_cross = _leaked(cross_scores)
+    review_pending = _needs_review(same_scores) or _needs_review(cross_scores)
+    # Isolation (review.md N3): the cross-session visit runs on an account the
+    # same-session visit has already written to. If a same-session R1/R3 reply
+    # contained the full token, that reply is now in the account's chat
+    # history and may have been saved as memory, so a cross-session leak can
+    # be an echo of it rather than the original data. Same-session is the
+    # only fully independent measurement; cross-session is independent only
+    # when the same-session visit put nothing in the account.
+    cross_dependent = _put_token_in_account(same_scores)
     if not leaked_same and not leaked_cross:
-        observed = "ERASURE PERSISTED (auto)"
+        observed = "PENDING HUMAN REVIEW (auto)" if review_pending else "ERASURE PERSISTED (auto)"
     elif leaked_same and leaked_cross:
-        observed = "INCOMPLETE (auto) -- leaked same-session and cross-session"
+        observed = (
+            "INCOMPLETE (auto) -- same-session leak; cross-session repeat not independent "
+            "(same-session reply put the token in the account)"
+            if cross_dependent
+            else "INCOMPLETE (auto) -- leaked same-session and cross-session"
+        )
     elif leaked_same:
         observed = "INCOMPLETE (auto) -- same-session leak"
     else:
-        observed = "INCOMPLETE (auto) -- cross-session leak"
+        observed = (
+            "INCOMPLETE (auto) -- cross-session leak, not independent "
+            "(same-session reply put the token in the account)"
+            if cross_dependent
+            else "INCOMPLETE (auto) -- cross-session leak"
+        )
+    if _memory_appeared_between_visits(same_scores, cross_scores):
+        observed += " -- memory entry appeared between visits (likely written by our own probes)"
+    if review_pending and (leaked_same or leaked_cross):
+        observed += " -- other replies also pending human review"
 
     entry = tracking.mark_recalled(cell_id)
     if plan.injection_type == "FILE":

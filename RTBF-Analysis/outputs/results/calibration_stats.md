@@ -1,6 +1,6 @@
 # calibration_stats
 
-_Run at 2026-08-07T14:21:33_
+_Run at 2026-09-23T10:23:30_
 
 ```text
 
@@ -46,7 +46,7 @@ MORE SENSITIVE — 8b. Used vs ideal, per method: paired McNemar + Holm
              method  used_only  ideal_only  discordant        dir  p_raw  p_holm sig
       Ask to forget          2          77          79 ideal>used 0.0000  0.0000   *
 Delete specific mem          5          57          62 ideal>used 0.0000  0.0000   *
- Delete single conv         16          42          58 ideal>used 0.0010  0.0021   *
+ Delete single conv         15          42          57 ideal>used 0.0006  0.0011   *
   Clear all history          9          41          50 ideal>used 0.0000  0.0000   *
  Clear all memories          3          38          41 ideal>used 0.0000  0.0000   *
   Privacy dashboard          3          25          28 ideal>used 0.0001  0.0002   *

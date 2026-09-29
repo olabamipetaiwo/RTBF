@@ -5,11 +5,11 @@
 
 | Platform | Email | Session file | Status (2026-09-01) |
 |---|---|---|---|
-| ChatGPT | `olacoderpad@gmail.com` | `sessions/chatgpt.json` | Working (re-exported today) |
-| Claude | `anchorexperiment@gmail.com`  | `sessions/claude.json` | Working (re-exported and confirmed today) |
+| ChatGPT | `olacoderpad@gmail.com` | `sessions/chatgpt.json` | Working |
+| Claude | `anchorexperiment@gmail.com`  | `sessions/claude.json` | Working |
 | Gemini | `anchorexperiment@gmail.com` | `sessions/gemini.json` | Working |
-| Copilot | `anchorexperiment@gmail.com`  | `sessions/copilot.json` | Working |
-| Perplexity | `anchorexperiment@gmail.com` | `sessions/perplexity.json` | Not re-checked this session |
+| Copilot | `anchorexperiment@gmail.com`  | `sessions/copilot.json` |  Holds `CO-I1-E4` (chat `831d160b-130e-0064-77ba-a01675aa9828`). Shared: never "Delete all memory". |
+| Perplexity | `anchorexperiment@gmail.com` | `sessions/perplexity.json` | Not re-checked |
 | DeepSeek | `anchorexperiment@gmail.com` | `sessions/deepseek.json` | Working |
 
 
@@ -28,7 +28,7 @@ sibling MAXIMAL cell without wiping each other's anchors first)
 | ChatGPT | `CH-I1-E7` | `olabamipet@gmail.com` | `sessions/chatgpt__maximal_i1.json` | Working |
 | Claude | `CL-I1-E5` | `olabamipet@gmail.com`  | `sessions/claude__maximal_i1.json` | Working |
 | Gemini | `GE-I1-E6` | `olabamipet@gmail.com` | `sessions/gemini__maximal_i1.json` (myactivity merge still pending, see Pending items) | Working |
-| Copilot | `CO-I1-E6` | `olabamipet@gmail.com`  | `sessions/copilot__maximal_i1.json` (+ privacy merge) | Working |
+| Copilot | ~~`CO-I1-E6`~~ | `olabamipet@gmail.com`  | `sessions/copilot__maximal_i1.json` (+ privacy merge) | Stale: `CO-I1-E6` moved to `ui_migration_i1` 2026-09-09. |
 | DeepSeek | `DE-I1-E4` | `olabamipet@gmail.com` | `sessions/deepseek__maximal_i1.json` | Working |
 | Perplexity | `PE-I1-E6` | -- | -- | **Skipped** (tier-blocked, see below) |
 
@@ -39,7 +39,7 @@ sibling MAXIMAL cell without wiping each other's anchors first)
 | ChatGPT | `CH-I2-E7` | `experimentanchor@gmail.com` (confirmed via Settings > Account) | `sessions/chatgpt__maximal_i2.json` | Working |
 | Claude | `CL-I2-E5` | `experimentanchor@gmail.com` (confirmed via account dropdown) | `sessions/claude__maximal_i2.json` | Working |
 | Gemini | `GE-I2-E6` | `olataiwo839@gmail.com` (confirmed via account dropdown, "Taiwo Ola") | `sessions/gemini__maximal_i2.json` (still needs myactivity merge before E6's activity-delete component can run) | Working, re-injected 2026-09-09 (token: "Essay Segment") |
-| Copilot | `CO-I2-E6` | `experimentanchor@gmail.com`  | `sessions/copilot__maximal_i2.json`  | Working |
+| Copilot | ~~`CO-I2-E6`~~ | `experimentanchor@gmail.com`  | `sessions/copilot__maximal_i2.json`  | Stale: `CO-I2-E6` moved to `ui_migration_i2` 2026-09-09. |
 | Perplexity | `PE-I2-E6` | -- | -- | **Skipped** (tier-blocked) |
 
 ### `maximal_i3` (role: I3 MAXIMAL cells -- only Claude/ChatGPT have an I3 condition)
@@ -56,7 +56,7 @@ sibling MAXIMAL cell without wiping each other's anchors first)
 | ChatGPT | `CH-IF-E-MAX` | `participantone@rtbfexperiment.com.ng` (confirmed via Settings > Account) | `sessions/chatgpt__maximal_file.json` | Working |
 | Claude | `CL-IF-E-MAX` | `participantone@rtbfexperiment.com.ng` (confirmed via account dropdown) | `sessions/claude__maximal_file.json` | Working |
 | Gemini | `GE-IF-E-MAX` | `teeola48@gmail.com`  | `sessions/gemini__maximal_file.json` (+ myactivity merge) | Working |
-| Copilot | `CO-IF-E-MAX` | `teeola48@gmail.com`  | `sessions/copilot__maximal_file.json` | Working |
+| Copilot | ~~`CO-IF-E-MAX`~~ | `teeola48@gmail.com`  | `sessions/copilot__maximal_file.json` | Stale: `CO-IF-E-MAX` moved to `ui_migration_file` 2026-09-09. |
 | DeepSeek | `DE-IF-E-MAX` | `experimentanchor@gmail.com`  | `sessions/deepseek__maximal_file.json` | Working |
 | Perplexity | `PE-IF-E-MAX` | -- | -- | **Skipped** (tier-blocked) |
 
@@ -86,8 +86,8 @@ logged into yet.)
 
 | Cell | Conflicts with (already on main) | Erasure action | Email | Session file | Status |
 |---|---|---|---|---|---|
-| `CH-I2-E4` | `CH-I1-E4` | Clear all memories | `noreply.ayodev@gmail.com` (user-supplied, replaced `experimenttt62@gmail.com` -- blocked by Google 2026-09-09) | `sessions/chatgpt__conflict_i2.json` | Was erased 2026-09-09 on the OLD account; that result is now moot. **Re-injected fresh 2026-09-09 on the new account** (not void -- a normal restart, same as every other migration this session): new token "Demeanor Puritan", erasure due 2026-09-12, recall ~31 days after whenever it's erased again. |
-| `CH-I2-E6` | `CH-I1-E6` | Clear all chat history (bulk) | `noreply.ayodev@gmail.com` | `sessions/chatgpt__conflict_i2.json` | Same as CH-I2-E4 above -- re-injected fresh, token "Abacus Engine Backside Kilobyte", erasure due 2026-09-12. |
+| `CH-I2-E4` | `CH-I1-E4` | Clear all memories | `noreply.ayodev@gmail.com`  | `sessions/chatgpt__conflict_i2.json` | Erased 2026-09-09 on the old account (moot). Re-injected 2026-09-09 on the new one, token "Demeanor Puritan", erasure due 2026-09-12. |
+| `CH-I2-E6` | `CH-I1-E6` | Clear all chat history (bulk) | `noreply.ayodev@gmail.com` | `sessions/chatgpt__conflict_i2.json` | Re-injected 2026-09-09, token "Abacus Engine Backside Kilobyte", erasure due 2026-09-12. |
 
 Confirmed safe to share: `CH-I2-E4`/`CH-I2-E6` don't conflict with EACH
 OTHER (different blanket surfaces -- memory vs. chat history), only each
@@ -112,21 +112,21 @@ with its own sibling already on the main account.
 
 | Cell | Conflicts with (already on main) | Erasure action | Email | Session file | Status |
 |---|---|---|---|---|---|
-| `CL-I3-E3` | `CL-I1-E3` | Clear all memories | `noreply.ayodev@gmail.com` (user-supplied, replaced `experimenttt62@gmail.com` -- blocked by Google 2026-09-09) | `sessions/claude__conflict_i3.json` | **Not yet set up** -- needs a fresh cookie export + re-injection. Was still injected (not erased) when the block happened, nothing lost. |
+| `CL-I3-E3` | `CL-I1-E3` | Clear all memories | `noreply.ayodev@gmail.com` | `sessions/claude__conflict_i3.json` | Erased 2026-09-13 (per tracking). |
 
 #### `conflict_i2` (Copilot) -- role: I2 cells conflicting with CO-I1-E2/CO-I1-E5
 
 | Cell | Conflicts with (already on main) | Erasure action | Email | Session file | Status |
 |---|---|---|---|---|---|
 | `CO-I2-E2` | `CO-I1-E2` | Delete all memory | `dummybox90@gmail.com` | `sessions/copilot__conflict_i2.json` | Working, injected 2026-09-07 |
-| `CO-I2-E5` | `CO-I1-E5` | Privacy Dashboard | `dummybox90@gmail.com` | `sessions/copilot__conflict_i2.json` | Working, injected 2026-09-07 |
+| ~~`CO-I2-E5`~~ | `CO-I1-E5` | Privacy Dashboard | `dummybox90@gmail.com` | `sessions/copilot__conflict_i2.json` | Stale: `CO-I2-E5` moved to `recall_conflict` (row below). |
 
 
 #### `conflict_i2` (Gemini) -- role: I2 cell conflicting with GE-I1-E5
 
 | Cell | Conflicts with (already on main) | Erasure action | Email | Session file | Status |
 |---|---|---|---|---|---|
-| `GE-I2-E5` | `GE-I1-E5` | Delete all Saved info | `noreply.ayodev@gmail.com` (user-supplied, replaced `experimenttt62@gmail.com` -- blocked by Google 2026-09-09) | `sessions/gemini__conflict_i2.json` | **Not yet set up** -- session was already dead (confirmed live) when the block was found; needs a fresh cookie export + re-injection. Was still injected (not erased), nothing lost. |
+| `GE-I2-E5` | `GE-I1-E5` | Delete all Saved info | `noreply.ayodev@gmail.com`  | `sessions/gemini__conflict_i2.json` | Erased 2026-09-13 (per tracking). |
 
 ### `instability` (Gemini) -- role: cells migrated off the unstable main account
 
@@ -145,21 +145,21 @@ with its own sibling already on the main account.
 
 | Cell | Erasure action | Email | Session file | Status |
 |---|---|---|---|---|
-| `GE-I1-E3` | Delete all activity | `ogunwalepelumi06@gmail.com` (user-supplied, replaced `olacoderpad@gmail.com` per user 2026-09-09) | `sessions/gemini__recall_conflict.json` | **Not yet set up** -- main account has 5 other cells erased but not yet recalled (GE-I1-E1, GE-I1-E5, GE-I2-E1, GE-I2-E4, GE-IF-E-CONV); running this blanket action there first would risk corrupting their recall results. Needs a fresh cookie export + re-injection. |
-| `GE-I2-E3` | Delete all activity | `ogunwalepelumi06@gmail.com` (user-supplied, replaced `olacoderpad@gmail.com` per user 2026-09-09) | `sessions/gemini__recall_conflict.json` | Same account/reasoning as GE-I1-E3 -- shares the same blanket surface, one account covers both. **Not yet set up** -- needs a fresh cookie export + re-injection. |
+| `GE-I1-E3` | Delete all activity | `ogunwalepelumi06@gmail.com`  | `sessions/gemini__recall_conflict.json` | Erased by hand 2026-09-13 at myactivity.google.com (Google blocks automation); no screenshots on file. |
+| `GE-I2-E3` | Delete all activity | `ogunwalepelumi06@gmail.com` | `sessions/gemini__recall_conflict.json` | Erased by hand 2026-09-13 at myactivity.google.com (Google blocks automation); no screenshots on file. |
 
 ### `recall_conflict` (Copilot) -- role: same pattern -- blanket erasure that would corrupt pending recalls
 
 | Cell | Erasure action | Email | Session file | Status |
 |---|---|---|---|---|
-| `CO-I1-E5` | Privacy Dashboard | `noreply.ayodev@gmail.com` (user-supplied, replaced `experimenttt62@gmail.com` -- blocked by Google 2026-09-09 before this account was ever set up) | `sessions/copilot__recall_conflict.json` | **Not yet set up** -- main account has 7 cells erased but not yet recalled (CO-I1-E1/E2/E3, CO-I2-E1/E3/E4, CO-IF-E-CONV). Needs a fresh cookie export (copilot.microsoft.com + localStorage + the account.microsoft.com/privacy/copilot cross-domain merge) + re-injection. |
-| `CO-I2-E5` | Privacy Dashboard | `noreply.ayodev@gmail.com` | `sessions/copilot__recall_conflict.json` | Was on `conflict_i2` (`dummybox90@gmail.com`), which conflicted with its own group-mate `CO-I2-E2` (erased, recall pending). Same account/reasoning as CO-I1-E5 -- shares the same blanket surface, one account covers both. **Not yet set up**. |
+| `CO-I1-E5` | Privacy Dashboard | `noreply.ayodev@gmail.com`  | `sessions/copilot__recall_conflict.json` | Erased 2026-09-13 (per tracking). |
+| `CO-I2-E5` | Privacy Dashboard | `noreply.ayodev@gmail.com` | `sessions/copilot__recall_conflict.json` | Erased 2026-09-13 (per tracking). |
 
 ### `recall_conflict` (Claude) -- role: same pattern, proactive (not yet materialized)
 
 | Cell | Erasure action | Email | Session file | Status |
 |---|---|---|---|---|
-| `CL-I1-E3` | Clear all memories | `olataiwo839@gmail.com` | `sessions/claude__recall_conflict.json` | **Not yet set up** -- no conflict yet (nothing on the Claude main account has been erased), but will become one once CL-I1-E1/E2/E4, CL-I2-E1/E2/E4, CL-I3-E1/E2/E4 are erased and awaiting recall. Isolating now to avoid hitting this later. Picked over anchorexperiment+001@gmail.com deliberately -- unverified whether Claude's signup normalizes "+"-aliases to the same account. |
+| `CL-I1-E3` | Clear all memories | `olataiwo839@gmail.com` | `sessions/claude__recall_conflict.json` | Erased 2026-09-13 (per tracking). |
 
 ### `ui_migration_i1`/`ui_migration_i2`/`ui_migration_file` (Copilot) -- role: MAXIMAL cells moved off a Copilot new-UI conversation-history migration delay
 
@@ -172,9 +172,9 @@ rechecks. Moved per direct instruction rather than keep waiting.
 
 | Cell | Erasure action | Email | Session file(s) | Status |
 |---|---|---|---|---|
-| `CO-I1-E6` | MAXIMAL | `olataiwo839@gmail.com` | `sessions/copilot__ui_migration_i1.json` | **Not yet set up** -- needs cookies + localStorage (Auth0-based login) for copilot.microsoft.com, plus the account.microsoft.com/privacy/copilot cross-domain merge (MAXIMAL includes the Privacy Dashboard component), + re-injection. |
-| `CO-I2-E6` | MAXIMAL | `olacoderpad@gmail.com` | `sessions/copilot__ui_migration_i2.json` | Same as above, different account. **Not yet set up**. |
-| `CO-IF-E-MAX` | Maximal combination (all erasure mechanisms) | `ogunwalepelumi06@gmail.com` (user-supplied, replaced `noreply.ayodev@gmail.com` per user 2026-09-09) | `sessions/copilot__ui_migration_file.json` | Same as above, different account. **Not yet set up**. |
+| `CO-I1-E6` | MAXIMAL | `olataiwo839@gmail.com` | `sessions/copilot__ui_migration_i1.json` | Injected 2026-09-10. Erased 2026-09-29 16:30 EDT (per tracking). |
+| `CO-I2-E6` | MAXIMAL | `olacoderpad@gmail.com` | `sessions/copilot__ui_migration_i2.json` | Erased 2026-09-13. |
+| `CO-IF-E-MAX` | Maximal combination (all erasure mechanisms) | `ogunwalepelumi06@gmail.com` | `sessions/copilot__ui_migration_file.json` | Erased 2026-09-13. |
 
 ### `nlforget` (5 platforms on one account, Gemini on a separate one) -- role: dedicated account(s) for the NL-forget-prompt study
 
@@ -191,50 +191,29 @@ see project memory `nl-forget-pipeline-built-2026-09-11`); live injection
 run via `tester/nl_forget_round_robin_scheduler.py` (see project memory
 `nl-forget-adaptive-scheduler-2026-09-11` for current status/state file).
 
-**Correction, 2026-09-13**: Gemini does NOT share `astrataiwo@gmail.com`
-with the other 5 platforms -- it's on a separate account,
-`olaoluwaboluwatife001@gmail.com`. This was initially missed: the Gemini
-display name "Olaoluwa Boluwatife" was wrongly assumed 2026-09-12 to just
-be astra's real Google profile name; it's actually a genuinely different
-account. User-confirmed 2026-09-13. Only Gemini deviates from the
-single-shared-account design.
 
 | Platform | Email | Session file | Status |
 |---|---|---|---|
-| ChatGPT | `astrataiwo@gmail.com` | `sessions/chatgpt__nlforget.json` | Working. Injection COMPLETE (138/138), 2026-09-12. |
-| Claude | `astrataiwo@gmail.com` | `sessions/claude__nlforget.json` | Working. Injection COMPLETE (138/138), 2026-09-12. |
-| Gemini | `olaoluwaboluwatife001@gmail.com` | `sessions/gemini__nlforget.json` | Working. Session degraded mid-run twice (2026-09-12 and 2026-09-13), each time needing a fresh cookie export -- resolved. Injection COMPLETE (138/138), confirmed 2026-09-17 via `run_tracking.json` and the NL FORGET sheet's RUN_STATUS column. |
-| Copilot | `astrataiwo@gmail.com` | `sessions/copilot__nlforget.json` | Working. Needed both cookies + localStorage (Auth0-based, same pattern as DeepSeek) -- see `_manual_localstorage_copilot__nlforget.json`. Injection COMPLETE (138/138), 2026-09-12. |
-| Perplexity | `astrataiwo@gmail.com` | `sessions/perplexity__nlforget.json` | Working. Injection COMPLETE (138/138), 2026-09-12. |
-| DeepSeek | `astrataiwo@gmail.com` | `sessions/deepseek__nlforget.json` | Working. Needed both cookies + localStorage (`userToken`/`settingsJwt`/`__appKit_userInfo`) -- cookies alone left it unauthenticated, see `flows/deepseek.py`. Injection COMPLETE (138/138), 2026-09-12. |
+| ChatGPT | `astrataiwo@gmail.com` | `sessions/chatgpt__nlforget.json` | Working. Injected 138/138 2026-09-12. Verified 2026-09-23. |
+| Claude | `astrataiwo@gmail.com` | `sessions/claude__nlforget.json` | Working. Injected 138/138 2026-09-12. Verified 2026-09-23. |
+| Gemini | `olaoluwaboluwatife001@gmail.com` | `sessions/gemini__nlforget.json` | Working. Injected 138/138 (confirmed 2026-09-17). Session degraded 2026-09-12 and 09-13, fresh export each time. Logged out 2026-09-23, re-exported and verified same day (importer reads `_manual_export_gemini__nlforget.json`, with the underscore). |
+| Copilot | `astrataiwo@gmail.com` | `sessions/copilot__nlforget.json` | Session works on `copilot.com` (re-captured 2026-09-23, verified read-only). Sending is blocked by "Verify you are human"; not bypassed, extending stealth is the user's call. `flows/copilot.py` updated for the new site (read-only parts verified); `run_tracking.json` refs converted (old URL in `injection_ref_legacy`). 13 pending cells erased by hand 2026-09-23 (deviation: `CO-NLF-I0060`). Recall probes send messages, so they are at risk (battery 2026-10-08, NL-forget 2026-10-19). |
+| Perplexity | `astrataiwo@gmail.com` | `sessions/perplexity__nlforget.json` | Working. Injected 138/138 2026-09-12. Verified 2026-09-23. |
+| DeepSeek | `astrataiwo@gmail.com` | `sessions/deepseek__nlforget.json` | Working (needs cookies + localStorage, see `flows/deepseek.py`). Injected 138/138 2026-09-12. Verified 2026-09-23. |
 
-#### Testing-input interference mapping (professor asked, 2026-09-17)
+#### Testing-input interference handling (revised 2026-09-23)
 
 All 138 prompts per platform share ONE account (5 platforms on
 `astrataiwo@gmail.com`, Gemini on `olaoluwaboluwatife001@gmail.com`), so
-interference between cells is handled per-cell, not per-account. Each
-cell's own `deletion_locus` (coded in
-`RTBF-Prompt/data/nl_forget_prompts_138_final.csv`, column `deletion_locus`,
-keyed by `item_id` -- that file is the full 138-row mapping, not
-duplicated here) determines its handling at erasure time:
+interference between cells is handled per cell, not per account.
 
-| `deletion_locus` | Count/138 | Scope | Interference handling |
-|---|---:|---|---|
-| `unspecified` | 49 | targets only its own referent | none needed -- unique token/referent per cell is sufficient (baseline design assumption, see `tester/CLAUDE.md`'s "Contamination control" section) |
-| `memory` | 23 | targets only its own referent | same as above |
-| `conversation` | 23 | targets only its own referent | same as above |
-| `backend_db` | 11 | targets only its own referent | same as above |
-| `prospective` | 14 | targets only its own referent | same as above |
-| `account_all` | 18 | whole account | **held back, not run** -- would wipe the other 137 cells' data on the same account. See `tester/erasure_scheduler.py`'s `_is_held_back_nlf_account_all()` (added 2026-09-17). Excluded from every erasure batch until each gets its own dedicated account (still unset up); even destructive-last ordering (`_breadth_rank()`) only protects the other 120 from these 18 -- it doesn't protect the 18 from each other, since the first to run still wipes the shared account before the rest get their turn. |
 
-**Why the 120 don't interfere with each other or the 18**: each targets
-only its own token/referent -- confirmed by design, not yet independently
-verified live per-platform (see project memory
-`deletion-location-reconciliation`'s "handling assumes deletion_locus
-coding is accurate" caveat).
+**Status:** 120 prompts (720 cells) were erased before 2026-09-23. The other 13
+prompts were erased on 2026-09-23 on Claude, ChatGPT, Perplexity, DeepSeek and
+Gemini (65 of 78 cells); Copilot's 13 wait on its login (see the Copilot row).
 
-**Outstanding**: the 18 `account_all` cells need their own dedicated
-accounts before they can run (18 new accounts, reused across all 6
-platforms per the cross-platform-reuse-is-safe finding above -- not
-18-per-platform). Not yet created.
+**Why the run prompts should not interfere with each other:** each typed sentence
+names only its own referent. That is by wording and by design, not yet
+independently verified live per platform; no recall has run yet, so no wide
+deletion could have been observed.
 

@@ -1,0 +1,8 @@
+method,n_obs,n_people,flag,protection_mean,protection_median,protection_sd,effort_mean,effort_median,effort_sd,benefit_loss_mean,benefit_loss_median,benefit_loss_sd
+Delete this single conversation.,164,105,,3.63,3.8,0.88,1.64,1.5,0.76,3.0,3.0,1.03
+Clear all conversation history.,73,50,,3.77,4.0,0.87,2.09,2.0,0.97,3.11,3.33,1.1
+Delete a specific saved memory or fact.,41,30,,3.65,3.8,0.79,2.49,2.25,1.03,3.46,3.67,0.88
+Type a message asking the AI Chatbot to forget it.,39,29,,3.86,4.0,0.65,1.74,1.5,0.79,2.91,3.0,0.95
+Clear all saved memories.,15,11,<14 people,4.09,4.0,0.54,2.03,1.75,1.1,3.49,3.67,1.09
+Privacy dashboard or account-level data management page.,15,11,<14 people,3.92,4.0,0.89,2.43,3.0,1.32,3.24,3.33,1.18
+Delete my account entirely.,5,3,<14 people,4.12,4.2,0.64,3.4,3.25,0.6,3.67,3.33,0.62

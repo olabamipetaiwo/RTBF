@@ -1,6 +1,6 @@
 # expectation
 
-_Run at 2026-08-03T02:44:06_
+_Run at 2026-09-23T10:27:14_
 
 ```text
 
@@ -32,7 +32,7 @@ Privacy dashboard or account-level data management page.  6                     
 MORE SENSITIVE — EXPECTATIONS (Q5.4, % per option)
 ======================================================================
                                                   method  n  permanently deleted (DB+backups)  made invisible / hidden  not referenced in current convo  not referenced in future convo  no longer used for training  not sure what happens  other flag
-                        Delete this single conversation. 81                              60.5                     32.1                             42.0                            54.3                         29.6                   11.1    0.0     
+                        Delete this single conversation. 80                              61.2                     32.5                             42.5                            55.0                         30.0                   11.2    0.0     
                          Clear all conversation history. 40                              55.0                     35.0                             27.5                            35.0                         17.5                   12.5    2.5     
                  Delete a specific saved memory or fact. 22                              68.2                      9.1                             72.7                            72.7                         22.7                    9.1    0.0     
       Type a message asking the AI Chatbot to forget it. 14                              71.4                     28.6                             42.9                            42.9                         35.7                    7.1    0.0     
@@ -44,7 +44,7 @@ Privacy dashboard or account-level data management page.  9                     
 MORE SENSITIVE — VERIFICATIONS (Q5.5, % per option)
 ======================================================================
                                                   method  n  asked in same conversation  asked in new conversation  checked memory/data settings  checked UI visibility  submitted privacy-portal request  did NOT know how to check  did NOT want to check  other flag
-                        Delete this single conversation. 81                        14.8                       17.3                           8.6                   11.1                               1.2                       56.8                    9.9    2.5     
+                        Delete this single conversation. 80                        15.0                       17.5                           8.8                   11.2                               1.2                       57.5                   10.0    2.5     
                          Clear all conversation history. 40                        12.5                       17.5                          15.0                   25.0                               7.5                       42.5                   12.5    0.0     
                  Delete a specific saved memory or fact. 22                        18.2                       36.4                          36.4                    9.1                               0.0                       36.4                    9.1    4.5     
       Type a message asking the AI Chatbot to forget it. 14                        57.1                       21.4                           0.0                   14.3                               0.0                       21.4                   14.3    0.0     

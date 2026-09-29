@@ -1,6 +1,6 @@
 # calibration
 
-_Run at 2026-08-03T03:34:51_
+_Run at 2026-09-23T10:23:47_
 
 ```text
 
@@ -44,12 +44,12 @@ Completely              11        12                        47.8
 MORE SENSITIVE — 8b. Used vs ideal method (Q5.2/Q5.13)
 ============================================================
              method  %used  %ideal  gap (ideal-used)
-      Ask to forget    7.9    50.0              42.1
-Delete specific mem   12.4    41.6              29.2
- Clear all memories    4.5    24.2              19.7
-  Clear all history   22.5    40.4              18.0
- Delete single conv   45.5    60.1              14.6
-  Privacy dashboard    5.1    17.4              12.4
+      Ask to forget    7.9    50.3              42.4
+Delete specific mem   12.4    41.8              29.4
+ Clear all memories    4.5    24.3              19.8
+  Clear all history   22.6    40.7              18.1
+ Delete single conv   45.2    60.5              15.3
+  Privacy dashboard    5.1    17.5              12.4
      Delete account    1.7     6.2               4.5
 
 -- options with no %used counterpart (not in Q4.2/Q5.2) --

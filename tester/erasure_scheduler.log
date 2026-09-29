@@ -1373,3 +1373,99 @@ Call log:
 [2026-09-18T01:31:00] gemini: batch completed in full (1/1 succeeded) without tripping the throttle window -- ceiling stays at 5
 [2026-09-18T01:31:00] gemini: batch done, next ready at 2026-09-18T01:31:00
 [2026-09-18T01:31:00] === all due cells erased -- scheduler exiting ===
+[2026-09-23T18:10:04] === erasure scheduler start, state={'claude': {'batch_size': 35, 'next_ready_at': 1789687635.9438999}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1789688615.199135}, 'deepseek': {'batch_size': 5, 'next_ready_at': 1789691281.973377}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1789689167.8179379}, 'copilot': {'batch_size': 20, 'next_ready_at': 1789700282.496536}, 'gemini': {'batch_size': 5, 'next_ready_at': 1789709460.46291}} ===
+[2026-09-23T18:10:04] claude: starting erasure batch, ceiling=35, 13 total due, planning up to 13 this batch, order=['CL-NLF-I0032', 'CL-NLF-I0045', 'CL-NLF-I0060', 'CL-NLF-I0090', 'CL-NLF-I0141', 'CL-NLF-I0146', 'CL-NLF-I0182', 'CL-NLF-I0230', 'CL-NLF-I0237', 'CL-NLF-I0241', 'CL-NLF-I0296', 'CL-NLF-I0326', 'CL-NLF-I0350']
+[2026-09-23T18:10:20] claude: OK erased CL-NLF-I0032 (1/13)
+[2026-09-23T18:11:20] claude: OK erased CL-NLF-I0045 (2/13)
+[2026-09-23T18:12:41] claude: OK erased CL-NLF-I0060 (3/13)
+[2026-09-23T18:13:54] claude: OK erased CL-NLF-I0090 (4/13)
+[2026-09-23T18:14:55] claude: OK erased CL-NLF-I0141 (5/13)
+[2026-09-23T18:15:40] claude: OK erased CL-NLF-I0146 (6/13)
+[2026-09-23T18:16:43] claude: OK erased CL-NLF-I0182 (7/13)
+[2026-09-23T18:17:57] claude: OK erased CL-NLF-I0230 (8/13)
+[2026-09-23T18:18:51] claude: OK erased CL-NLF-I0237 (9/13)
+[2026-09-23T18:19:53] claude: OK erased CL-NLF-I0241 (10/13)
+[2026-09-23T18:20:31] claude: OK erased CL-NLF-I0296 (11/13)
+[2026-09-23T18:21:08] claude: OK erased CL-NLF-I0326 (12/13)
+[2026-09-23T18:21:43] claude: OK erased CL-NLF-I0350 (13/13)
+[2026-09-23T18:21:43] claude: batch completed in full (13/13 succeeded) without tripping the throttle window -- ceiling stays at 35
+[2026-09-23T18:21:43] claude: batch done, next ready at 2026-09-23T18:21:43
+[2026-09-23T18:21:43] perplexity: starting erasure batch, ceiling=40, 13 total due, planning up to 13 this batch, order=['PE-NLF-I0032', 'PE-NLF-I0045', 'PE-NLF-I0060', 'PE-NLF-I0090', 'PE-NLF-I0141', 'PE-NLF-I0146', 'PE-NLF-I0182', 'PE-NLF-I0230', 'PE-NLF-I0237', 'PE-NLF-I0241', 'PE-NLF-I0296', 'PE-NLF-I0326', 'PE-NLF-I0350']
+[2026-09-23T18:21:56] perplexity: OK erased PE-NLF-I0032 (1/13)
+[2026-09-23T18:22:38] perplexity: OK erased PE-NLF-I0045 (2/13)
+[2026-09-23T18:23:09] perplexity: OK erased PE-NLF-I0060 (3/13)
+[2026-09-23T18:24:04] perplexity: OK erased PE-NLF-I0090 (4/13)
+[2026-09-23T18:24:37] perplexity: OK erased PE-NLF-I0141 (5/13)
+[2026-09-23T18:26:03] perplexity: OK erased PE-NLF-I0146 (6/13)
+[2026-09-23T18:26:48] perplexity: OK erased PE-NLF-I0182 (7/13)
+[2026-09-23T18:27:19] perplexity: OK erased PE-NLF-I0230 (8/13)
+[2026-09-23T18:28:26] perplexity: OK erased PE-NLF-I0237 (9/13)
+[2026-09-23T18:29:17] perplexity: OK erased PE-NLF-I0241 (10/13)
+[2026-09-23T18:30:00] perplexity: OK erased PE-NLF-I0296 (11/13)
+[2026-09-23T18:31:13] perplexity: OK erased PE-NLF-I0326 (12/13)
+[2026-09-23T18:32:34] perplexity: OK erased PE-NLF-I0350 (13/13)
+[2026-09-23T18:32:34] perplexity: batch completed in full (13/13 succeeded) without tripping the throttle window -- ceiling stays at 40
+[2026-09-23T18:32:34] perplexity: batch done, next ready at 2026-09-23T18:32:34
+[2026-09-23T18:32:34] chatgpt: starting erasure batch, ceiling=35, 13 total due, planning up to 13 this batch, order=['CH-NLF-I0032', 'CH-NLF-I0045', 'CH-NLF-I0060', 'CH-NLF-I0090', 'CH-NLF-I0141', 'CH-NLF-I0146', 'CH-NLF-I0182', 'CH-NLF-I0230', 'CH-NLF-I0237', 'CH-NLF-I0241', 'CH-NLF-I0296', 'CH-NLF-I0326', 'CH-NLF-I0350']
+[2026-09-23T18:32:48] chatgpt: OK erased CH-NLF-I0032 (1/13)
+[2026-09-23T18:34:02] chatgpt: OK erased CH-NLF-I0045 (2/13)
+[2026-09-23T18:34:48] chatgpt: OK erased CH-NLF-I0060 (3/13)
+[2026-09-23T18:35:32] chatgpt: OK erased CH-NLF-I0090 (4/13)
+[2026-09-23T18:36:21] chatgpt: OK erased CH-NLF-I0141 (5/13)
+[2026-09-23T18:37:10] chatgpt: OK erased CH-NLF-I0146 (6/13)
+[2026-09-23T18:37:45] chatgpt: OK erased CH-NLF-I0182 (7/13)
+[2026-09-23T18:39:00] chatgpt: OK erased CH-NLF-I0230 (8/13)
+[2026-09-23T18:40:26] chatgpt: OK erased CH-NLF-I0237 (9/13)
+[2026-09-23T18:41:41] chatgpt: OK erased CH-NLF-I0241 (10/13)
+[2026-09-23T18:42:23] chatgpt: OK erased CH-NLF-I0296 (11/13)
+[2026-09-23T18:43:16] chatgpt: OK erased CH-NLF-I0326 (12/13)
+[2026-09-23T18:44:40] chatgpt: OK erased CH-NLF-I0350 (13/13)
+[2026-09-23T18:44:40] chatgpt: batch completed in full (13/13 succeeded) without tripping the throttle window -- ceiling stays at 35
+[2026-09-23T18:44:40] chatgpt: batch done, next ready at 2026-09-23T18:44:40
+[2026-09-23T18:44:40] deepseek: starting erasure batch, ceiling=5, 13 total due, planning up to 5 this batch, order=['DE-NLF-I0032', 'DE-NLF-I0045', 'DE-NLF-I0060', 'DE-NLF-I0090', 'DE-NLF-I0141']
+[2026-09-23T18:44:56] deepseek: OK erased DE-NLF-I0032 (1/5)
+[2026-09-23T18:45:48] deepseek: OK erased DE-NLF-I0045 (2/5)
+[2026-09-23T18:46:28] deepseek: OK erased DE-NLF-I0060 (3/5)
+[2026-09-23T18:47:28] deepseek: OK erased DE-NLF-I0090 (4/5)
+[2026-09-23T18:48:16] deepseek: OK erased DE-NLF-I0141 (5/5)
+[2026-09-23T18:48:16] deepseek: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-23T18:48:16] deepseek: batch done, next ready at 2026-09-23T18:48:16
+[2026-09-23T18:48:16] deepseek: starting erasure batch, ceiling=5, 8 total due, planning up to 5 this batch, order=['DE-NLF-I0146', 'DE-NLF-I0182', 'DE-NLF-I0230', 'DE-NLF-I0237', 'DE-NLF-I0241']
+[2026-09-23T18:48:28] deepseek: OK erased DE-NLF-I0146 (1/5)
+[2026-09-23T18:49:23] deepseek: OK erased DE-NLF-I0182 (2/5)
+[2026-09-23T18:50:10] deepseek: OK erased DE-NLF-I0230 (3/5)
+[2026-09-23T18:51:28] deepseek: OK erased DE-NLF-I0237 (4/5)
+[2026-09-23T18:52:10] deepseek: OK erased DE-NLF-I0241 (5/5)
+[2026-09-23T18:52:10] deepseek: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-23T18:52:10] deepseek: batch done, next ready at 2026-09-23T18:52:10
+[2026-09-23T18:52:10] deepseek: starting erasure batch, ceiling=5, 3 total due, planning up to 3 this batch, order=['DE-NLF-I0296', 'DE-NLF-I0326', 'DE-NLF-I0350']
+[2026-09-23T18:52:23] deepseek: OK erased DE-NLF-I0296 (1/3)
+[2026-09-23T18:53:13] deepseek: OK erased DE-NLF-I0326 (2/3)
+[2026-09-23T18:54:15] deepseek: OK erased DE-NLF-I0350 (3/3)
+[2026-09-23T18:54:15] deepseek: batch completed in full (3/3 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-23T18:54:15] deepseek: batch done, next ready at 2026-09-23T18:54:15
+[2026-09-23T18:54:15] === all due cells erased -- scheduler exiting ===
+[2026-09-23T18:54:40] === erasure scheduler start, state={'claude': {'batch_size': 35, 'next_ready_at': 1790202103.081568}, 'perplexity': {'batch_size': 40, 'next_ready_at': 1790202754.21226}, 'deepseek': {'batch_size': 5, 'next_ready_at': 1790204055.221216}, 'chatgpt': {'batch_size': 35, 'next_ready_at': 1790203480.41923}, 'copilot': {'batch_size': 20, 'next_ready_at': 1789700282.496536}, 'gemini': {'batch_size': 5, 'next_ready_at': 1789709460.46291}} ===
+[2026-09-23T18:54:40] gemini: starting erasure batch, ceiling=5, 13 total due, planning up to 5 this batch, order=['GE-NLF-I0032', 'GE-NLF-I0045', 'GE-NLF-I0060', 'GE-NLF-I0090', 'GE-NLF-I0141']
+[2026-09-23T18:54:55] gemini: OK erased GE-NLF-I0032 (1/5)
+[2026-09-23T18:55:43] gemini: OK erased GE-NLF-I0045 (2/5)
+[2026-09-23T18:56:29] gemini: OK erased GE-NLF-I0060 (3/5)
+[2026-09-23T18:57:54] gemini: OK erased GE-NLF-I0090 (4/5)
+[2026-09-23T18:58:50] gemini: OK erased GE-NLF-I0141 (5/5)
+[2026-09-23T18:58:50] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-23T18:58:51] gemini: batch done, next ready at 2026-09-23T18:58:50
+[2026-09-23T18:58:51] gemini: starting erasure batch, ceiling=5, 8 total due, planning up to 5 this batch, order=['GE-NLF-I0146', 'GE-NLF-I0182', 'GE-NLF-I0230', 'GE-NLF-I0237', 'GE-NLF-I0241']
+[2026-09-23T18:59:04] gemini: OK erased GE-NLF-I0146 (1/5)
+[2026-09-23T19:00:06] gemini: OK erased GE-NLF-I0182 (2/5)
+[2026-09-23T19:01:17] gemini: OK erased GE-NLF-I0230 (3/5)
+[2026-09-23T19:01:56] gemini: OK erased GE-NLF-I0237 (4/5)
+[2026-09-23T19:02:41] gemini: OK erased GE-NLF-I0241 (5/5)
+[2026-09-23T19:02:41] gemini: batch completed in full (5/5 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-23T19:02:41] gemini: batch done, next ready at 2026-09-23T19:02:41
+[2026-09-23T19:02:41] gemini: starting erasure batch, ceiling=5, 3 total due, planning up to 3 this batch, order=['GE-NLF-I0296', 'GE-NLF-I0326', 'GE-NLF-I0350']
+[2026-09-23T19:02:55] gemini: OK erased GE-NLF-I0296 (1/3)
+[2026-09-23T19:03:44] gemini: OK erased GE-NLF-I0326 (2/3)
+[2026-09-23T19:04:37] gemini: OK erased GE-NLF-I0350 (3/3)
+[2026-09-23T19:04:37] gemini: batch completed in full (3/3 succeeded) without tripping the throttle window -- ceiling stays at 5
+[2026-09-23T19:04:37] gemini: batch done, next ready at 2026-09-23T19:04:37
+[2026-09-23T19:04:37] === all due cells erased -- scheduler exiting ===

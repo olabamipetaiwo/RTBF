@@ -1,19 +1,19 @@
 {
   "claude": {
     "batch_size": 35,
-    "next_ready_at": 1789687635.9438999
+    "next_ready_at": 1790202103.081568
   },
   "perplexity": {
     "batch_size": 40,
-    "next_ready_at": 1789688615.199135
+    "next_ready_at": 1790202754.21226
   },
   "deepseek": {
     "batch_size": 5,
-    "next_ready_at": 1789691281.973377
+    "next_ready_at": 1790204055.221216
   },
   "chatgpt": {
     "batch_size": 35,
-    "next_ready_at": 1789689167.8179379
+    "next_ready_at": 1790203480.41923
   },
   "copilot": {
     "batch_size": 20,
@@ -21,6 +21,6 @@
   },
   "gemini": {
     "batch_size": 5,
-    "next_ready_at": 1789709460.46291
+    "next_ready_at": 1790204677.563895
   }
 }

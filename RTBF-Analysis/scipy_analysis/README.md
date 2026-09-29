@@ -45,6 +45,17 @@ flips.** 73 rows match exactly; the other 28 differ by <0.02 for two understood 
 Kruskal-Wallis, Mann-Whitney, Shapiro-Wilk, and paired-t rows (already scipy in `src/`)
 match exactly, as expected.
 
+## Superseded pooled analyses
+
+`pooling.py`, `crowning.py` (scope A, `pooled_crowning`) and `contingency_table.py`
+(`pooled_*`) pool respondents by averaging stayers and putting switchers in two method groups.
+That leaves the groups dependent and mixes averaged with un-averaged values, so their pooled
+Kruskal-Wallis / Dunn / Fisher p-values are not valid. The paper's pooled tests are now the
+participant-clustered GEE in `src/pooled_gee.py` (cross-checked in `src/pooled_gee_crosscheck.py`;
+scipy has no GEE, so there is no scipy counterpart). `fig_crowning.py`'s pooled panel now uses the
+same participant-scenario observations. The old modules stay so earlier outputs are reproducible;
+the three `crowning.pooled` rows in `global_correction.py` are stale.
+
 ## Files
 
 - `reporting.py` -- `save_report()`, same contract as `src/reporting.py` but writing to

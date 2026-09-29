@@ -56,7 +56,12 @@ def contingency(df, method_col, q_prefix, opts):
 
 
 def pooled_expectation_frame(bases):
-    """Deduped pooling -- same per-respondent mechanism as pooling.py's
+    """SUPERSEDED (2026-09-23, paper review item N4) by src/pooled_gee.py; the
+    pooled_test_family() below rounds 0.5-weighted sums and tests groups that
+    share participants, so its p-values are not valid. Kept for reproducing the
+    old output only.
+
+    Deduped pooling -- same per-respondent mechanism as pooling.py's
     pooled_method_scores (task 1/2's convention), adapted from averaging a
     continuous scale score to averaging a binary select-all indicator:
 

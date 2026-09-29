@@ -206,8 +206,13 @@ if __name__ == "__main__":
         help="save/merge into a SEPARATE dedicated account (e.g. --account maximal_i2) instead of "
              "the main session -- see config.py's MAXIMAL_ACCOUNT_LABEL for which cells need one.",
     )
+    parser.add_argument(
+        "--origin", metavar="URL",
+        help="attach the localStorage dump to this origin instead of config.PLATFORMS[platform] -- for a platform that "
+             "moved domains (Copilot: copilot.microsoft.com -> https://copilot.com, 2026-09-23).",
+    )
     args = parser.parse_args()
     if args.merge:
-        merge(args.platform, args.merge, account_label=args.account)
+        merge(args.platform, args.merge, origin=args.origin, account_label=args.account)
     else:
-        convert(args.platform, account_label=args.account)
+        convert(args.platform, origin=args.origin, account_label=args.account)

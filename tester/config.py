@@ -19,7 +19,7 @@ PLATFORMS = {
     "claude": "https://claude.ai/login",
     "chatgpt": "https://chatgpt.com/auth/login",
     "gemini": "https://gemini.google.com/",
-    "copilot": "https://copilot.microsoft.com/",
+    "copilot": "https://copilot.com/",  # moved from copilot.microsoft.com 2026-09-23
     "perplexity": "https://www.perplexity.ai/",
     "deepseek": "https://chat.deepseek.com/sign_in",
 }
@@ -286,7 +286,6 @@ MAXIMAL_ACCOUNT_LABEL: dict[str, str] = {
     "CL-I2-E3": "conflict_i2",
     "CL-I3-E3": "conflict_i3",
     "CO-I2-E2": "conflict_i2",
-    "CO-I2-E5": "conflict_i2",
     "GE-I2-E5": "conflict_i2",
     "GE-I1-E4": "instability",
     "GE-I2-E2": "instability",

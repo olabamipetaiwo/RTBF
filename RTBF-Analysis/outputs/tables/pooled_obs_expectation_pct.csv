@@ -1,0 +1,8 @@
+method,n_obs,n_people,flag,permanently deleted,made invisible / hidden,not referenced in current convo,not referenced in future convo,no longer used for training,not sure what happens,other
+Delete this single conversation.,164,105,,58.5,29.9,44.5,54.3,28.0,12.8,0.0
+Clear all conversation history.,73,50,,52.1,35.6,39.7,42.5,16.4,9.6,2.7
+Delete a specific saved memory or fact.,41,30,,65.9,12.2,68.3,63.4,19.5,7.3,0.0
+Type a message asking the AI Chatbot to forget it.,39,29,,64.1,17.9,53.8,51.3,35.9,5.1,0.0
+Clear all saved memories.,15,11,<14 people,46.7,33.3,66.7,73.3,40.0,6.7,0.0
+Privacy dashboard or account-level data management page.,15,11,<14 people,66.7,33.3,73.3,80.0,53.3,20.0,6.7
+Delete my account entirely.,5,3,<14 people,80.0,80.0,40.0,20.0,80.0,0.0,0.0

@@ -65,7 +65,34 @@ its own docstring below. E5/E6 no longer need to be run manually.
 
 from __future__ import annotations
 
+import re
+from urllib.parse import urlparse
+
+from recall_scoring import token_found
+
 from .base import PlatformFlow
+
+# --- copilot.com migration (2026-09-23) ------------------------------------
+# Microsoft moved Copilot from copilot.microsoft.com to copilot.com (a new
+# origin with a different login: MSAL + OhpAuth/OhpToken cookies, no Auth0).
+# Chats survived; only the URL changed:
+#   https://copilot.microsoft.com/chats/<id>  ->  https://copilot.com/chat/conversation/<id>
+# Updated for the migration so far (needed for the NL-forget erasure and its
+# login check): new_conversation(), the reply/composer/send selectors shared by
+# send_message()/upload_file(), _verify_logged_in(), _send_nl_forget(). The old
+# selectors stay as fallbacks in case an account has not been migrated yet.
+# NOT yet updated (still written for the old UI, each needs live re-checking on
+# copilot.com before its recall/erasure): read_memory_settings(),
+# _open_view_memory(), the sidebar-row methods, _delete_conversation_history(),
+# _delete_all_memory(), _delete_via_facts_editor(), _delete_via_privacy_dashboard(),
+# _erase_maximal(). New-UI selectors were found live 2026-09-23.
+_NEW_COMPOSER = "#m365-chat-editor-target-element"  # contenteditable, aria-label "Message Copilot"
+_OLD_COMPOSER = "#userInput"
+_NEW_SEND = 'button[aria-label="Send"]'  # only appears once text has been typed
+_OLD_SEND = '[aria-label="Submit message"]'
+_NEW_REPLY = '[data-testid="markdown-reply"]'  # Copilot's reply text, without the "Copilot said:" prefix
+_OLD_REPLY = '[data-testid="ai-message-body"]'
+_NEW_USER_MESSAGE = '[data-testid="chatOutput"]'  # the user's own message text, without the "You said:" prefix
 
 
 class CopilotFlow(PlatformFlow):
@@ -92,12 +119,64 @@ class CopilotFlow(PlatformFlow):
         "MAXIMAL": "_erase_maximal",
     }
 
+    BASE_URL = "https://copilot.com/"
+    CHAT_URL_PREFIX = "https://copilot.com/chat/conversation/"
+    LEGACY_CHAT_URL_PREFIX = "https://copilot.microsoft.com/chats/"
+
+    @classmethod
+    def normalize_ref(cls, ref: str) -> str:
+        """run_tracking.json's injection_ref was captured on the old domain;
+        the same chat id opens at the new URL."""
+        if ref.startswith(cls.LEGACY_CHAT_URL_PREFIX):
+            return cls.CHAT_URL_PREFIX + ref[len(cls.LEGACY_CHAT_URL_PREFIX):]
+        return ref
+
+    def _on_new_site(self) -> bool:
+        host = urlparse(self.page.url).hostname or ""
+        return host == "copilot.com" or host.endswith(".copilot.com")
+
+    def _composer_selector(self) -> str:
+        return _NEW_COMPOSER if self._on_new_site() else _OLD_COMPOSER
+
+    def _send_selector(self) -> str:
+        return _NEW_SEND if self._on_new_site() else _OLD_SEND
+
+    def _reply_selector(self) -> str:
+        return _NEW_REPLY if self._on_new_site() else _OLD_REPLY
+
+    def _verify_logged_in(self) -> None:
+        """Copilot had no login check, so a dead session would have run as a
+        signed-out user without failing (the failure that falsely marked 20
+        Gemini cells erased on 2026-09-17, see base.py). A logged-out
+        session either redirects to a Microsoft login page or shows a
+        "Sign in" button."""
+        url = self.page.url
+        try:
+            body = self.page.inner_text("body").lower()
+        except Exception:
+            body = ""
+        walled = (
+            "login.live.com" in url
+            or "login.microsoftonline.com" in url
+            or "get a code to sign in" in body
+            or self.page.get_by_role("button", name="Sign in", exact=True).count() > 0
+        )
+        if walled:
+            raise RuntimeError(
+                f"copilot session (label={getattr(self, '_session_path', '?')!r}) is logged out -- "
+                f"sign-in wall at {url.split('?')[0]}. Needs a fresh cookie export taken from the "
+                f"copilot.com tab (import with --origin https://copilot.com)."
+            )
+
     def new_conversation(self) -> None:
-        self.page.goto("https://copilot.microsoft.com/")
+        self.page.goto(self.BASE_URL + "chat")
         self.page.wait_for_timeout(1500)
 
+    def _reply_count(self) -> int:
+        return len(self.page.query_selector_all(self._reply_selector()))
+
     def _last_reply_text(self) -> str:
-        els = self.page.query_selector_all('[data-testid="ai-message-body"]')
+        els = self.page.query_selector_all(self._reply_selector())
         return els[-1].inner_text() if els else ""
 
     def _wait_for_reply(self, before_count: int) -> str:
@@ -105,7 +184,7 @@ class CopilotFlow(PlatformFlow):
         deadline_ms = 60000
         waited_ms = 0
         while waited_ms < deadline_ms:
-            if len(self.page.query_selector_all('[data-testid="ai-message-body"]')) > before_count:
+            if self._reply_count() > before_count:
                 break
             self.page.wait_for_timeout(1000)
             waited_ms += 1000
@@ -129,13 +208,70 @@ class CopilotFlow(PlatformFlow):
 
         return self._last_reply_text()
 
-    def send_message(self, text: str) -> str:
-        before = len(self.page.query_selector_all('[data-testid="ai-message-body"]'))
+    @staticmethod
+    def _visible_text(text: str) -> str:
+        """Whitespace-normalised text without the zero-width characters the
+        new composer appends (seen live 2026-09-23: U+200B U+200C)."""
+        return " ".join(re.sub("[\u200b-\u200d\ufeff]", "", text).split())
 
-        self.page.locator("#userInput").click(force=True, timeout=10000)
+    def _type_into_composer(self, text: str) -> None:
+        """Types `text` and, on the new site, checks the composer holds exactly
+        it before anything is sent (whitespace-insensitive): a dropped or
+        reordered character in a contenteditable would otherwise go out
+        as a slightly different erasure request."""
+        composer = self.page.locator(self._composer_selector())
+        composer.click(force=True, timeout=10000)
         self.page.keyboard.type(text)
-        self.page.locator('[aria-label="Submit message"]').click(force=True, timeout=10000)
+        if self._on_new_site():
+            self.page.wait_for_timeout(500)
+            typed = self._visible_text(composer.inner_text())
+            if typed != self._visible_text(text):
+                self.page.keyboard.press("Meta+A")
+                self.page.keyboard.press("Backspace")
+                raise RuntimeError(f"_type_into_composer: composer holds {typed!r}, expected {text!r}; nothing was sent")
 
+    def _click_send(self) -> None:
+        self.page.locator(self._send_selector()).click(force=True, timeout=10000)
+        self._wait_for_human_verification()
+
+    def _verification_visible(self) -> bool:
+        return self.page.get_by_text("Verification required").count() > 0
+
+    def _wait_for_human_verification(self, timeout_s: int = 300) -> None:
+        """copilot.com shows a "Verification required / Verify you are human"
+        box when a message is sent from this automated browser (seen live
+        2026-09-23), and the message is NOT sent until it is completed. It is
+        deliberately not bypassed: this prints a notice and waits for a
+        PERSON to tick the box in the browser window, then makes sure the
+        message actually went (re-clicking Send once if the composer still
+        holds it). Raises if nobody completes it, leaving the cell
+        untouched."""
+        self.page.wait_for_timeout(3000)  # the box appears about a second after the click
+        if not self._verification_visible():
+            return
+        print(
+            "\n>>> ACTION NEEDED: tick 'Verify you are human' in the Copilot browser window "
+            f"(waiting up to {timeout_s // 60} min) <<<\n",
+            flush=True,
+        )
+        for _ in range(timeout_s):
+            if not self._verification_visible():
+                break
+            self.page.wait_for_timeout(1000)
+        else:
+            raise RuntimeError(
+                f"_wait_for_human_verification: still 'Verification required' after {timeout_s}s; "
+                "the message was not sent."
+            )
+        self.page.wait_for_timeout(2000)
+        composer = self.page.locator(self._composer_selector())
+        if self._visible_text(composer.inner_text()):  # verification done but the message is still unsent
+            self.page.locator(self._send_selector()).click(force=True, timeout=10000)
+
+    def send_message(self, text: str) -> str:
+        before = self._reply_count()
+        self._type_into_composer(text)
+        self._click_send()
         return self._wait_for_reply(before)
 
     def upload_file(self, file_path: str, caption: str | None = None) -> str:
@@ -145,17 +281,16 @@ class CopilotFlow(PlatformFlow):
         apps, or make something with Copilot" first. .pdf is in its
         accept list. caption=None (default) sends the file with no
         accompanying message."""
-        before = len(self.page.query_selector_all('[data-testid="ai-message-body"]'))
+        before = self._reply_count()
 
         self.page.locator('input[type="file"]').first.set_input_files(file_path)
         self.page.wait_for_timeout(2000)
 
         if caption:
-            self.page.locator("#userInput").click(force=True, timeout=10000)
-            self.page.keyboard.type(caption)
+            self._type_into_composer(caption)
             self.page.wait_for_timeout(500)
 
-        self.page.locator('[aria-label="Submit message"]').click(force=True, timeout=10000)
+        self._click_send()
         return self._wait_for_reply(before)
 
     def set_memory_field(self, text: str) -> None:
@@ -231,11 +366,44 @@ class CopilotFlow(PlatformFlow):
                 "this cell's prompt-set text isn't wired in"
             )
         if ref:
-            self.page.goto(ref)
-            self.page.wait_for_timeout(1500)
+            self.page.goto(self.normalize_ref(ref))
+            self._require_own_token(token)
+            self._refuse_if_already_requested(erasure_request_text)
         else:
             self.new_conversation()
         self.assert_real_answer(self.send_message(erasure_request_text))
+
+    def _refuse_if_already_requested(self, erasure_request_text: str) -> None:
+        """A run interrupted after the request went out (a closed window, a
+        timeout while waiting for the reply) leaves the cell "injected" while
+        its chat already holds the erasure request; retrying blindly would
+        send it a second time. Refuses instead, so a person can look."""
+        if self._visible_text(erasure_request_text) in self._visible_text(self.page.inner_text("body")):
+            raise RuntimeError(
+                f"_send_nl_forget: this chat already contains the erasure request at {self.page.url.split('?')[0]}; "
+                "not sending it a second time. Check the chat by hand, then record it with record_manual_erasure.py."
+            )
+
+    def _require_own_token(self, token: str | None, timeout_s: int = 25) -> None:
+        """The chat that opened must show THIS cell's own token before an
+        erasure request is typed into it. Without this, a redirect to a new
+        chat (as happened when the old-domain URLs stopped resolving) would
+        still get a real-looking reply and be logged as an erasure that
+        touched nothing. Raises instead of falling back to any other chat,
+        per the project-wide no-topmost-fallback rule."""
+        if not token:
+            return
+        for _ in range(timeout_s):
+            try:
+                if token_found(self.page.inner_text("body"), token):
+                    return
+            except Exception:
+                pass
+            self.page.wait_for_timeout(1000)
+        raise RuntimeError(
+            f"_send_nl_forget: this cell's own token is not on the page at {self.page.url.split('?')[0]} "
+            f"after {timeout_s}s; refusing to type the erasure request into the wrong chat."
+        )
 
     def _open_sidebar_conversation_rows(self):
         """Shared by _delete_conversation_history()/_find_conversation_row_index().

@@ -1,6 +1,6 @@
 # moderators
 
-_Run at 2026-08-07T14:20:26_
+_Run at 2026-09-23T10:24:58_
 
 ```text
 
@@ -15,7 +15,7 @@ benefit_loss 0.27 0.9915  1.0000 -0.022
     (dropped groups below n>=14: ['65+ years old'])
 
 [less] age_group (Q2.1) -> method choice (Q4.2)
-    fisher  p=0.0146  cramers_v=0.229  -> SIG
+    fisher  p=0.0161  cramers_v=0.229  -> SIG
     groups tested: ['25-34 years old', '35-44 years old', '18-24 years old', '45-54 years old', '55-64 years old']
 
 ==================================================================
@@ -28,7 +28,7 @@ benefit_loss 1.40 0.7055     1.0 -0.009
  willingness 2.83 0.4186     1.0 -0.001    
 
 [less] chatgpt_tenure (Q3.1_1) -> method choice (Q4.2)
-    fisher  p=0.1222  cramers_v=0.173  -> ns
+    fisher  p=0.1230  cramers_v=0.173  -> ns
     groups tested: ['2+ years', '1 to 2 years', 'Less than 6 months', '6 to 12 months']
 
 ==================================================================
@@ -42,7 +42,7 @@ benefit_loss 1.95 0.7453  1.0000 -0.012
     (dropped groups below n>=14: ['65+ years old'])
 
 [more] age_group (Q2.1) -> method choice (Q5.2)
-    fisher  p=0.0791  cramers_v=0.21  -> ns
+    fisher  p=0.0796  cramers_v=0.21  -> ns
     groups tested: ['25-34 years old', '35-44 years old', '18-24 years old', '45-54 years old', '55-64 years old']
 
 ==================================================================
@@ -55,7 +55,7 @@ benefit_loss 1.67 0.6439     1.0 -0.008
  willingness 2.88 0.4108     1.0 -0.001    
 
 [more] chatgpt_tenure (Q3.1_1) -> method choice (Q5.2)
-    fisher  p=0.0138  cramers_v=0.207  -> SIG
+    fisher  p=0.0094  cramers_v=0.214  -> SIG
     groups tested: ['2+ years', '1 to 2 years', 'Less than 6 months', '6 to 12 months']
 ```
 
@@ -71,3 +71,14 @@ Moderators (moderators.md) — do demographics explain any of this?
   ⚠️ **Per `global_correction.md`, neither of these two "significant" results survives correction against the full ~100-test battery** (both land around p_raw=.014-.017, nowhere near the ~.0005 threshold needed to survive Holm-global, and neither clears BH-FDR-global either). Read both as **not statistically confirmed** — plausible candidates for a study specifically powered to test demographic moderators of method choice, not findings to report from this analysis.
 
 **Bottom line**: demographics are a clean null for every rating-based outcome (good — it means the core findings aren't confounded by age or experience), and the two scattered method-choice associations don't survive scrutiny once tested against the rest of the battery.
+
+**Update 2026-09-23 (deterministic tests, current data).** The method-choice Fisher p-values quoted above
+came from an unseeded Monte-Carlo (they moved between runs: tenure/more was .0138 in the 2026-08-07 run and
+.016 in the notes above) on an older base (`more` n=178; the current 2026-09-09 export gives 177).
+`src/verify.py: rc_exact_p` is now seeded (500,000 permutations for tables this size), and on the current
+data the four method-choice tests are age/less p=.0161, tenure/less .1230, age/more .0796, tenure/more .0094
+(V=.229, .173, .210, .214). Holm across those four: .048, .159, .159, .038, so the two nominal associations do
+pass a four-test Holm correction, narrowly. They still appear in only one scenario each, and at p=.016 and
+.009 neither would clear the ~.0005 Holm-global threshold (the ~100-test global correction was not re-run
+on current data), so the bottom line stands: exploratory leads, not stable findings. The paper reports them
+that way, with the four-test Holm values. All rating-outcome results are unchanged.

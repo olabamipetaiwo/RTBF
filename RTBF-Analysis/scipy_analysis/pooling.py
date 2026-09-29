@@ -1,4 +1,12 @@
 """
+SUPERSEDED for inference (2026-09-23, paper review item N4): do not feed this
+module's pooled frame to Kruskal-Wallis, Dunn, or Fisher. Averaging stayers and
+placing switchers in two groups leaves the method groups dependent and mixes
+averaged with un-averaged values, which those tests do not allow. Pooled
+analyses now use one row per participant-scenario response and a
+participant-clustered GEE: see src/pooled_gee.py (rationale and results in
+outputs/results/pooled_gee.md). Kept only so the old outputs stay reproducible.
+
 Task 2 -- pool each method's respondents across both scenarios into one
 long-format dataset, for the next task's pooled (both-scenarios) Kruskal-
 Wallis. Naive concatenation of less+more would double-count any respondent

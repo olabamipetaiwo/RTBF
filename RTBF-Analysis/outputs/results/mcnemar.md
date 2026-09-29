@@ -1,6 +1,6 @@
 # mcnemar
 
-_Run at 2026-08-07T14:22:23_
+_Run at 2026-09-23T10:28:10_
 
 ```text
 === Per-method choice shift (less -> more): McNemar + Holm ===

@@ -265,10 +265,16 @@ if __name__ == "__main__":
         i = args.index("--label")
         label = args[i + 1]
         args = args[:i] + args[i + 2:]
+    source_profile = None
+    if "--profile" in args:
+        i = args.index("--profile")
+        source_profile = args[i + 1]
+        args = args[:i] + args[i + 2:]
     args = [a for a in args if a not in ("--from-chrome-profile", "--auto")]
 
     if len(args) != 1 or args[0] not in config.PLATFORMS:
-        print(f"Usage: python login_setup.py <platform> [--from-chrome-profile] [--auto] [--label <name>]")
+        print(f"Usage: python login_setup.py <platform> [--from-chrome-profile [--profile <Chrome profile folder>]] [--auto] [--label <name>]")
+        print(f"--profile is the folder name under Chrome's user-data dir that holds your login (see 'Profile Path' at chrome://version); default 'Profile 7'.")
         print(f"Platforms: {list(config.PLATFORMS)}")
         print(f"--label is for a SEPARATE dedicated account (e.g. --label maximal_i2) --")
         print(f"see config.py's MAXIMAL_ACCOUNT_LABEL for which cells need one and why.")
@@ -276,6 +282,8 @@ if __name__ == "__main__":
 
     config.SESSIONS_DIR.mkdir(exist_ok=True)
     if from_profile:
-        capture_session_from_chrome_profile(args[0], auto=auto, label=label)
+        capture_session_from_chrome_profile(
+            args[0], **({"source_profile": source_profile} if source_profile else {}), auto=auto, label=label
+        )
     else:
         capture_session(args[0], wait_for_signal=auto, label=label)

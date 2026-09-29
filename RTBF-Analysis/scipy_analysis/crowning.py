@@ -92,7 +92,13 @@ def _report_scale(lines, scope, scale, direction, r):
 
 
 def pooled_crowning(bases, lines=None):
-    """Scope (a). Returns [(label, p_omnibus)] -- feeds the global registry (NEW tests)."""
+    """Scope (a). Returns [(label, p_omnibus)] -- feeds the global registry (NEW tests).
+
+    SUPERSEDED (2026-09-23, paper review item N4): the pooled frame averages
+    stayers and puts switchers in two groups, so these Kruskal-Wallis p-values
+    are not valid. The paper's pooled tests are the participant-clustered GEE in
+    src/pooled_gee.py. global_correction.py still registers these legacy values
+    under "crowning.pooled"; treat those three rows as stale."""
     pooled = pooled_method_scores(bases)
     if lines is not None:
         lines.append("\n" + "=" * 70)

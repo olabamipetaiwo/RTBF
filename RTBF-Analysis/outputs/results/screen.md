@@ -1,14 +1,14 @@
 # screen
 
-_Run at 2026-08-26T13:23:31_
+_Run at 2026-09-24T01:55:23_
 
 ```text
 === Analysis Base ===
-  raw rows              : 219
+  raw rows              : 218
   dropped (attention)   : 1
   picked never-deleted  : 36
-  eligible              : 182
+  eligible              : 181
   base less (Q4.2)      : 177
-  base more (Q5.2)      : 178
+  base more (Q5.2)      : 177
   base paired (both)    : 177
 ```

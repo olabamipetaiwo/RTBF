@@ -1,0 +1,907 @@
+platform,cell,kind,retention,source,evidence,screenshot_status,ui_pills,erase_signal,pill_possible
+chatgpt,CH-I1-E1,battery,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-I1-E2,battery,no_signal,,,complete,,,True
+chatgpt,CH-I1-E4,battery,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-I1-E5,battery,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-I1-E6,battery,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-I1-E7,battery,no_signal,,,complete,,,True
+chatgpt,CH-I2-E1,battery,shown,screenshot,"U Memory updated Absolutely — saved for later: your new bike is called ""Spinner Follicle.""",complete,,,False
+chatgpt,CH-I2-E2,battery,denied,screenshot+transcript,I can't save new memories right now.,complete,,,True
+chatgpt,CH-I2-E4,battery,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-I2-E5,battery,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-I2-E6,battery,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-I2-E7,battery,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-I3-E1,battery,shown,screenshot,• Custom instructions updated x,settings panel,,,False
+chatgpt,CH-I3-E2,battery,shown,screenshot,• Custom instructions updated x,settings panel,,,False
+chatgpt,CH-I3-E4,battery,shown,screenshot,• Custom instructions updated x,settings panel,,,False
+chatgpt,CH-I3-E5,battery,shown,screenshot,• Custom instructions updated x,settings panel,,,False
+chatgpt,CH-I3-E6,battery,shown,screenshot,• Custom instructions updated x,settings panel,,,False
+chatgpt,CH-I3-E7,battery,shown,screenshot,• Custom instructions updated x,settings panel,,,False
+chatgpt,CH-IF-E-CONV,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
+chatgpt,CH-IF-E-MAX,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
+chatgpt,CH-NLF-I0000,NL-forget,no_signal,,,check,,,True
+chatgpt,CH-NLF-I0001,NL-forget,no_signal,,,check,,,True
+chatgpt,CH-NLF-I0002,NL-forget,no_signal,,,complete,,,True
+chatgpt,CH-NLF-I0004,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-NLF-I0005,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0010,NL-forget,no_signal,,,complete,,,True
+chatgpt,CH-NLF-I0012,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0018,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0023,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-NLF-I0024,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0026,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0027,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0028,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0030,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0032,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0035,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0036,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0041,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0042,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0043,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0044,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0045,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-NLF-I0047,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0049,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0051,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0053,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0056,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0059,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0060,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0062,NL-forget,no_signal,,,complete,,,True
+chatgpt,CH-NLF-I0064,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0067,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0068,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0070,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0077,NL-forget,shown,screenshot,@ Memory updated LMAO Ladle Thrower is spectacularly appropriate for a rain barrel system.,complete,,,False
+chatgpt,CH-NLF-I0085,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-NLF-I0086,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0088,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0089,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0090,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-NLF-I0092,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0095,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0096,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0099,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0105,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0106,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0115,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0118,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0121,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0124,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0125,NL-forget,acknowledged,screenshot,Got it,complete,,,True
+chatgpt,CH-NLF-I0126,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0128,NL-forget,no_signal,,,complete,,,True
+chatgpt,CH-NLF-I0131,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0132,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0133,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0137,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-NLF-I0140,NL-forget,shown,screenshot,00 Memory updated LMAO Scolding Grip is excellent.,complete,,,False
+chatgpt,CH-NLF-I0141,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0146,NL-forget,shown,screenshot,U Memory updated €a Repeal Grader is an outstandingly bureaucratic name for a knife roll.,complete,,,False
+chatgpt,CH-NLF-I0149,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0153,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0159,NL-forget,shown,screenshot,"U Memory updated Oh, Ship Zone Audacity is excellent.",complete,,,False
+chatgpt,CH-NLF-I0161,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0163,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0165,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0166,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0169,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0170,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-NLF-I0176,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0177,NL-forget,shown,screenshot,@ Memory updated cCrowbar Bunch Easel is spectacular.,complete,,,False
+chatgpt,CH-NLF-I0181,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0182,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-NLF-I0185,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0187,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0188,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0191,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0195,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0200,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0201,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0209,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0215,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0216,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0220,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0224,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0226,NL-forget,acknowledged,screenshot,Got it,check,,,True
+chatgpt,CH-NLF-I0228,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0230,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0233,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-NLF-I0236,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0237,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-NLF-I0239,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0240,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0241,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0249,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0252,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-NLF-I0259,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0260,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0262,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-NLF-I0264,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0269,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0271,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0272,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0273,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0279,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0280,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0281,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0282,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0287,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0293,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0296,NL-forget,shown,screenshot,@ Memory updated c Drizzle Hunting is excellent.,complete,,,False
+chatgpt,CH-NLF-I0297,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0302,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0304,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0305,NL-forget,no_signal,,,complete,,,True
+chatgpt,CH-NLF-I0309,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0314,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0315,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0319,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-NLF-I0322,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0326,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0327,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0334,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0339,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0345,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0348,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0350,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0351,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0355,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0357,NL-forget,no_signal,,,no_reply_visible,,,False
+chatgpt,CH-NLF-I0361,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0363,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0364,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0365,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
+chatgpt,CH-NLF-I0367,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0368,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+chatgpt,CH-NLF-I0371,NL-forget,no_signal,,,complete,,,True
+chatgpt,CH-NLF-I0372,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
+claude,CL-I1-E1,battery,shown,screenshot,Saved memory garden.md ›,check,,,False
+claude,CL-I1-E2,battery,shown,screenshot,Updated memory knife-restoration.md ›,complete,,,False
+claude,CL-I1-E3,battery,no_signal,,,complete,,,True
+claude,CL-I1-E4,battery,no_signal,,,check,,"I haven't saved anything about the guitar to memory yet, so there's nothing stored to delete - it only exists in this conversation.",True
+claude,CL-I1-E5,battery,no_signal,,,check,,,True
+claude,CL-I2-E1,battery,shown,screenshot,Saved memory pottery.md ›,check,,,False
+claude,CL-I2-E2,battery,shown,screenshot,Saved memory woodworking.md ›,check,,,False
+claude,CL-I2-E3,battery,no_signal,,,check,,,True
+claude,CL-I2-E4,battery,shown,screenshot,Saved memory knitting.md ›,check,,,False
+claude,CL-I2-E5,battery,claimed,screenshot+transcript,"Got it — ""Subway Coauthor Vibes Dictator"" is saved alongside your other birdhouse names.",check,,,True
+claude,CL-I3-E1,battery,no_signal,,,settings panel,,,False
+claude,CL-I3-E2,battery,no_signal,,,settings panel,,,False
+claude,CL-I3-E3,battery,shown,screenshot,Added to memory in Topics › Household,settings panel,,,False
+claude,CL-I3-E4,battery,no_signal,,,settings panel,,,False
+claude,CL-I3-E5,battery,no_signal,,,settings panel,,,False
+claude,CL-IF-E-CONV,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
+claude,CL-IF-E-MAX,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
+claude,CL-NLF-I0000,NL-forget,no_signal,,,complete,,"Nothing about the synth got filed, so there's nothing to remove — and I won't save it.",True
+claude,CL-NLF-I0001,NL-forget,shown,screenshot,Updated memory cheese-making.md,complete,Updated memory cheese-making.md,,False
+claude,CL-NLF-I0002,NL-forget,no_signal,,,complete,,,True
+claude,CL-NLF-I0004,NL-forget,shown,screenshot,Updated memory kitchen.md,complete,Updated memory kitchen.md,,False
+claude,CL-NLF-I0005,NL-forget,shown,screenshot,Updated memory fence-repair.md ›,complete,,,False
+claude,CL-NLF-I0010,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0012,NL-forget,shown,screenshot,Updated memory cycling-jersey.md,complete,Updated memory cycling-jersey.md,,False
+claude,CL-NLF-I0018,NL-forget,shown,screenshot,Updated memory fishing-rod.md ›,complete,,,False
+claude,CL-NLF-I0023,NL-forget,shown,screenshot,Updated memory beekeeping-log.md,complete,Updated memory beekeeping-log.md,,False
+claude,CL-NLF-I0024,NL-forget,shown,screenshot,Updated memory puzzle-swap.md,complete,Updated memory puzzle-swap.md,,False
+claude,CL-NLF-I0026,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0027,NL-forget,shown,screenshot,Updated memory sourdough-starter.md,complete,Updated memory sourdough-starter.md,,False
+claude,CL-NLF-I0028,NL-forget,shown,screenshot,Updated memory compass.md,complete,Updated memory compass.md,,False
+claude,CL-NLF-I0030,NL-forget,shown,screenshot,Updated memory letterpress-kit.md,complete,Updated memory letterpress-kit.md,,False
+claude,CL-NLF-I0032,NL-forget,shown,screenshot,Updated memory reading-nook.md ›,complete,,,False
+claude,CL-NLF-I0035,NL-forget,shown,screenshot,Updated memory rotary-phone.md,complete,Updated memory rotary-phone.md,,False
+claude,CL-NLF-I0036,NL-forget,shown,screenshot,Updated memory hiking-backpack.md,complete,Updated memory hiking-backpack.md,,False
+claude,CL-NLF-I0041,NL-forget,shown,screenshot,Updated memory bike-helmet.md,complete,Updated memory bike-helmet.md,,False
+claude,CL-NLF-I0042,NL-forget,shown,screenshot,Updated memory trivia-night.md,complete,Updated memory trivia-night.md,,False
+claude,CL-NLF-I0043,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0044,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,There's nothing stored about the fence repair anymore — that file's already gone.,False
+claude,CL-NLF-I0045,NL-forget,shown,screenshot,Updated memory tea-set.md,complete,Updated memory tea-set.md,"There's nothing stored about your tea set — the listing is empty, so there's nothing to delete.",False
+claude,CL-NLF-I0047,NL-forget,shown,screenshot,Read and added to memory ›,complete,,,False
+claude,CL-NLF-I0049,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0051,NL-forget,shown,screenshot,Updated memory closet-remodel.md,complete,Updated memory closet-remodel.md,,False
+claude,CL-NLF-I0053,NL-forget,shown,screenshot,Updated memory ham-radio.md ›,complete,,,False
+claude,CL-NLF-I0056,NL-forget,shown,screenshot,Updated memory vinyl-digitization.md,complete,Updated memory vinyl-digitization.md,,False
+claude,CL-NLF-I0059,NL-forget,shown,screenshot,Updated memory kayak-paddle.md ›,complete,,,False
+claude,CL-NLF-I0060,NL-forget,shown,screenshot,Updated memory mailbox-rebuild.md,complete,Updated memory mailbox-rebuild.md,"There's nothing stored about the mailbox rebuild — the listing is empty, so there's nothing to delete.",False
+claude,CL-NLF-I0062,NL-forget,shown,screenshot,Updated memory video-editing-workflow.md ›,complete,,,False
+claude,CL-NLF-I0064,NL-forget,shown,screenshot,Updated memory longboard.md,complete,Updated memory longboard.md,,False
+claude,CL-NLF-I0067,NL-forget,shown,screenshot,Updated memory kombucha-scoby.md ›,complete,,,False
+claude,CL-NLF-I0068,NL-forget,shown,screenshot,Updated memory embroidery-hoop.md,complete,Updated memory embroidery-hoop.md,,False
+claude,CL-NLF-I0070,NL-forget,shown,screenshot,Updated memory trekking-poles.md,complete,Updated memory trekking-poles.md,,False
+claude,CL-NLF-I0077,NL-forget,shown,screenshot,Updated memory rain-barrel-system.md,complete,Updated memory rain-barrel-system.md,,False
+claude,CL-NLF-I0085,NL-forget,shown,screenshot,Updated memory language-learning-streak.md,complete,Updated memory language-learning-streak.md,,False
+claude,CL-NLF-I0086,NL-forget,shown,screenshot,Updated memory rain-gauge.md ›,complete,,,False
+claude,CL-NLF-I0088,NL-forget,shown,screenshot,Updated memory canoe-paddle.md,complete,Updated memory canoe-paddle.md,,False
+claude,CL-NLF-I0089,NL-forget,shown,screenshot,Updated memory aquaponics-setup.md,complete,Updated memory aquaponics-setup.md,,False
+claude,CL-NLF-I0090,NL-forget,shown,screenshot,Updated memory pocket-knife.md,complete,Updated memory pocket-knife.md,,False
+claude,CL-NLF-I0092,NL-forget,shown,screenshot,Updated memory mechanical-keyboard.md,complete,Updated memory mechanical-keyboard.md,,False
+claude,CL-NLF-I0095,NL-forget,shown,screenshot,Updated memory grocery-budget-tracker.md,complete,Updated memory grocery-budget-tracker.md,,False
+claude,CL-NLF-I0096,NL-forget,shown,screenshot,Updated memory porch-swing.md,complete,Updated memory porch-swing.md,,False
+claude,CL-NLF-I0099,NL-forget,shown,screenshot,Updated memory sundial.md,complete,Updated memory sundial.md,,False
+claude,CL-NLF-I0105,NL-forget,shown,screenshot,Updated memory loom.md ›,complete,,,False
+claude,CL-NLF-I0106,NL-forget,shown,screenshot,Updated memory drone.md,complete,Updated memory drone.md,,False
+claude,CL-NLF-I0115,NL-forget,shown,screenshot,Updated memory streaming-setup.md,complete,Updated memory streaming-setup.md,,False
+claude,CL-NLF-I0118,NL-forget,shown,screenshot,Updated memory dashcam.md,complete,Updated memory dashcam.md,,False
+claude,CL-NLF-I0121,NL-forget,shown,screenshot,Updated memory yoga-studio.md,complete,Updated memory yoga-studio.md,,False
+claude,CL-NLF-I0124,NL-forget,shown,screenshot,Updated memory wildflower-patch.md,complete,Updated memory wildflower-patch.md,,False
+claude,CL-NLF-I0125,NL-forget,shown,screenshot,Updated memory short-film.md,complete,Updated memory short-film.md,,False
+claude,CL-NLF-I0126,NL-forget,shown,screenshot,Updated memory pergola-build.md,complete,Updated memory pergola-build.md,,False
+claude,CL-NLF-I0128,NL-forget,shown,screenshot,Updated memory outdoor-kitchen.md ›,complete,,,False
+claude,CL-NLF-I0131,NL-forget,shown,screenshot,Read and added to memory ›,complete,,,False
+claude,CL-NLF-I0132,NL-forget,shown,screenshot,Updated memory sleeping-bag.md,complete,Updated memory sleeping-bag.md,,False
+claude,CL-NLF-I0133,NL-forget,shown,screenshot,Updated memory grandfather-clock.md ›,complete,,,False
+claude,CL-NLF-I0137,NL-forget,shown,screenshot,Updated memory home-battery-setup.md,complete,Updated memory home-battery-setup.md,,False
+claude,CL-NLF-I0140,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,"It's gone — I have nothing stored about an embroidery hoop, so I can't tell you what was in it.",False
+claude,CL-NLF-I0141,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,"There's nothing currently saved about your ham radio — the listing is empty, so there's nothing to delete.",False
+claude,CL-NLF-I0146,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0149,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0153,NL-forget,shown,screenshot,Updated memory binoculars.md,complete,Updated memory binoculars.md,,False
+claude,CL-NLF-I0159,NL-forget,shown,screenshot,Updated memory drum-kit.md,complete,Updated memory drum-kit.md,,False
+claude,CL-NLF-I0161,NL-forget,shown,screenshot,Updated memory smart-thermostat.md ›,complete,,,False
+claude,CL-NLF-I0163,NL-forget,shown,screenshot,Updated memory car-stereo.md ›,complete,,,False
+claude,CL-NLF-I0165,NL-forget,shown,screenshot,Updated memory snowshoes.md,complete,Updated memory snowshoes.md,,False
+claude,CL-NLF-I0166,NL-forget,shown,screenshot,Updated memory shop-vac.md ›,complete,,,False
+claude,CL-NLF-I0169,NL-forget,shown,screenshot,Updated memory surfboard.md,complete,Updated memory surfboard.md,,False
+claude,CL-NLF-I0170,NL-forget,shown,screenshot,Updated memory family-cookbook.md,complete,Updated memory family-cookbook.md,,False
+claude,CL-NLF-I0176,NL-forget,shown,screenshot,Updated memory chicken-coop-feeder.md,complete,Updated memory chicken-coop-feeder.md,,False
+claude,CL-NLF-I0177,NL-forget,shown,screenshot,Updated memory toolbox.md,complete,Updated memory toolbox.md,,False
+claude,CL-NLF-I0181,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0182,NL-forget,shown,screenshot,Updated memory sawhorse.md,complete,Updated memory sawhorse.md,,False
+claude,CL-NLF-I0185,NL-forget,shown,screenshot,Updated memory succulent-propagation.md,complete,Updated memory succulent-propagation.md,,False
+claude,CL-NLF-I0187,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0188,NL-forget,shown,screenshot,Updated memory welding-rig.md,complete,Updated memory welding-rig.md,,False
+claude,CL-NLF-I0191,NL-forget,shown,screenshot,Updated memory raised-bed-layout.md,complete,Updated memory raised-bed-layout.md,,False
+claude,CL-NLF-I0195,NL-forget,shown,screenshot,Updated memory library-cataloging.md,complete,Updated memory library-cataloging.md,,False
+claude,CL-NLF-I0200,NL-forget,shown,screenshot,Updated memory recipe-blog.md,complete,Updated memory recipe-blog.md,,False
+claude,CL-NLF-I0201,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0209,NL-forget,shown,screenshot,Updated memory drill-press.md,complete,Updated memory drill-press.md,,False
+claude,CL-NLF-I0215,NL-forget,shown,screenshot,Updated memory tackle-box.md,complete,Updated memory tackle-box.md,,False
+claude,CL-NLF-I0216,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0220,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0224,NL-forget,shown,screenshot,Updated memory wetsuit.md,complete,Updated memory wetsuit.md,,False
+claude,CL-NLF-I0226,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0228,NL-forget,shown,screenshot,Updated memory kimchi-batch.md,complete,Updated memory kimchi-batch.md,,False
+claude,CL-NLF-I0230,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0233,NL-forget,shown,screenshot,Updated memory retro-game-console.md ›,complete,,,False
+claude,CL-NLF-I0236,NL-forget,acknowledged,transcript,"Got it — the drill press is now officially ""Hate Epilogue Radial Grip.""",no_reply_visible,,,False
+claude,CL-NLF-I0237,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0239,NL-forget,shown,screenshot,Updated memory home-gym-buildout.md ›,complete,,,False
+claude,CL-NLF-I0240,NL-forget,shown,screenshot,Updated memory woodburning-tool.md ›,complete,,,False
+claude,CL-NLF-I0241,NL-forget,shown,screenshot,Updated memory garden-shed-build.md,complete,Updated memory garden-shed-build.md,There's nothing currently stored about a garden shed build project — so there's nothing to delete.,False
+claude,CL-NLF-I0249,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0252,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0259,NL-forget,shown,screenshot,Updated memory climbing-harness.md,complete,Updated memory climbing-harness.md,,False
+claude,CL-NLF-I0260,NL-forget,shown,screenshot,Read and updated memory ›,check,,,False
+claude,CL-NLF-I0262,NL-forget,shown,screenshot,Updated memory handwriting-practice-log.md,check,Updated memory handwriting-practice-log.md,,False
+claude,CL-NLF-I0264,NL-forget,shown,screenshot,Updated memory server-rack-build.md ›,complete,,,False
+claude,CL-NLF-I0269,NL-forget,shown,screenshot,Updated memory pickle-crock.md,complete,Updated memory pickle-crock.md,,False
+claude,CL-NLF-I0271,NL-forget,shown,screenshot,Updated memory ukulele.md,complete,Updated memory ukulele.md,,False
+claude,CL-NLF-I0272,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,"But the memory file about your closet remodel is already gone, so there's nothing stored about it on my end.",False
+claude,CL-NLF-I0273,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0279,NL-forget,shown,screenshot,Updated memory basement-conversion.md ›,complete,,,False
+claude,CL-NLF-I0280,NL-forget,shown,screenshot,Updated memory worm-bin.md ›,complete,,,False
+claude,CL-NLF-I0281,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0282,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0287,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0293,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0296,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,Good news - there's nothing stored about it.,False
+claude,CL-NLF-I0297,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0302,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0304,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0305,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0309,NL-forget,shown,screenshot,Updated memory sign-language-course.md ›,complete,,,False
+claude,CL-NLF-I0314,NL-forget,shown,screenshot,Updated memory deck-resurfacing.md,complete,Updated memory deck-resurfacing.md,,False
+claude,CL-NLF-I0315,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0319,NL-forget,shown,screenshot,Updated memory family-tree-research.md ›,complete,,,False
+claude,CL-NLF-I0322,NL-forget,shown,screenshot,Updated memory airbrush-kit.md,complete,Updated memory airbrush-kit.md,,False
+claude,CL-NLF-I0326,NL-forget,shown,screenshot,Updated memory record-player.md,complete,Updated memory record-player.md,That's already gone — there's nothing saved about the record player.,False
+claude,CL-NLF-I0327,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0334,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0339,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0345,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0348,NL-forget,shown,screenshot,Updated memory knife-roll.md,complete,Updated memory knife-roll.md,,False
+claude,CL-NLF-I0350,NL-forget,shown,screenshot,Updated memory geocaching-route.md,complete,Updated memory geocaching-route.md,Looks like there's nothing currently saved about a geocaching route project on this account - so there's nothing to delete.,False
+claude,CL-NLF-I0351,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0355,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0357,NL-forget,shown,screenshot,Updated memory maple-syrup-tap.md,complete,Updated memory maple-syrup-tap.md,,False
+claude,CL-NLF-I0361,NL-forget,shown,screenshot,Updated memory canning-rack.md,complete,Updated memory canning-rack.md,,False
+claude,CL-NLF-I0363,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0364,NL-forget,shown,screenshot,Updated memory unicycle.md ›,complete,,,False
+claude,CL-NLF-I0365,NL-forget,shown,screenshot,Read and updated memory,check,Read and updated memory,Looks like that's already gone — there's nothing stored about the ukulele now.,False
+claude,CL-NLF-I0367,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0368,NL-forget,shown,screenshot,Read and updated memory ›,complete,,"Right now, though, there's nothing stored about the letterpress kit - my memory for that area is already empty.",False
+claude,CL-NLF-I0371,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0372,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+copilot,CO-I1-E1,battery,no_signal,,,complete,,,True
+copilot,CO-I1-E2,battery,no_signal,,,complete,,,True
+copilot,CO-I1-E3,battery,no_signal,,,complete,,"Got it - and just to be clear, nothing about Aide Provider Brick Scrounger was ever saved to long-term memory, so there was nothing to delete.",True
+copilot,CO-I1-E4,battery,no_signal,,,complete,,,True
+copilot,CO-I1-E5,battery,no_signal,,,cut_off,,,True
+copilot,CO-I1-E6,battery,no_signal,,,cut_off,,,True
+copilot,CO-I2-E1,battery,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-I2-E2,battery,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-I2-E3,battery,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-I2-E4,battery,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-I2-E5,battery,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-I2-E6,battery,claimed,screenshot+transcript,Your note is already saved — “Nappy Eagle” is now your official term for a batch of homemade jam.,complete,,,True
+copilot,CO-IF-E-CONV,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
+copilot,CO-IF-E-MAX,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
+copilot,CO-NLF-I0000,NL-forget,no_signal,,,cut_off,,"Got it, astra - and just to be clear: I checked, and that synthesizer name was never stored in memory, so there was nothing to delete.",True
+copilot,CO-NLF-I0001,NL-forget,no_signal,,,cut_off,,So there's nothing to delete — but l've honored your request and won't reference it going forward.,True
+copilot,CO-NLF-I0002,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0004,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,,,False
+copilot,CO-NLF-I0005,NL-forget,no_signal,,,complete,,"So there's nothing to delete, and nothing about ""Upstairs Oversight"" will linger in future conversations.",True
+copilot,CO-NLF-I0010,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0012,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0018,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,Memory saved,,False
+copilot,CO-NLF-I0023,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0024,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0026,NL-forget,no_signal,,,complete,,"I've checked your stored memory, and I don't actually have any saved information about a fishing rod you just got - so there's nothing to delete.",True
+copilot,CO-NLF-I0027,NL-forget,no_signal,,,complete,,"I've checked your stored memory, and I don't actually have any information saved about a sourdough starter - so there was nothing to delete.",True
+copilot,CO-NLF-I0028,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0030,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0032,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0035,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0036,NL-forget,no_signal,,,complete,,"I've checked your stored memory, and I don't actually have anything saved about a hiking backpack - so there was nothing to delete.",True
+copilot,CO-NLF-I0041,NL-forget,no_signal,,,complete,,"I've checked your memory, and it turns out I didn't actually have anything stored about your bike helmet - so there was nothing to delete.",True
+copilot,CO-NLF-I0042,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0043,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,Memory saved,,False
+copilot,CO-NLF-I0044,NL-forget,no_signal,,,cut_off,,"So there's nothing to delete, and you're fully clear on that front.",True
+copilot,CO-NLF-I0045,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0047,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0049,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0051,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0053,NL-forget,no_signal,,,complete,,"I've checked your stored memory, and I don't actually have any record of a new ham radio name saved - so there was nothing to delete.",True
+copilot,CO-NLF-I0056,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0059,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,,,False
+copilot,CO-NLF-I0060,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0062,NL-forget,no_signal,,,complete,,"I've checked your stored memory, and I don't actually have anything saved about a video-editing workflow - so there was nothing to delete.",True
+copilot,CO-NLF-I0064,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0067,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,Memory saved,,False
+copilot,CO-NLF-I0068,NL-forget,shown,screenshot+transcript,Memory saved,complete,,"I checked my memory, and I don't actually have anything stored about an embroidery hoop named Spectrum Kennel - so there was nothing to delete.",False
+copilot,CO-NLF-I0070,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0077,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0085,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0086,NL-forget,no_signal,,,complete,,"I checked, astra — and I don't actually have any stored memory about a rain gauge, so there was nothing to delete.",True
+copilot,CO-NLF-I0088,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0089,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0090,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0092,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0095,NL-forget,no_signal,,,cut_off,,"All set - l've checked your stored memory, and I don't actually have anything saved about a grocery budget tracker or the name Rhyme Skier Pork Splice, so there was nothing to delete.",True
+copilot,CO-NLF-I0096,NL-forget,no_signal,,,complete,,"I've checked my stored memory, and I don't actually have anything saved about your porch swing — so there was nothing to delete.",True
+copilot,CO-NLF-I0099,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0105,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,"I've checked my stored memory, and I don't actually have any fact saved about a secondhand loom under that description - so there was nothing to delete.",False
+copilot,CO-NLF-I0106,NL-forget,no_signal,,,complete,,"I've checked your stored memory, astra — there wasn't actually anything saved about a drone, so there was nothing to delete.",True
+copilot,CO-NLF-I0115,NL-forget,no_signal,,,cut_off,,"Nothing was stored, so there's nothing to delete.",True
+copilot,CO-NLF-I0118,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0121,NL-forget,no_signal,,,check,,"I've checked my memory, and I actually didn't have any stored fact about a yoga studio setup you started - so there was nothing to forget.",True
+copilot,CO-NLF-I0124,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0125,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0126,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0128,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0131,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0132,NL-forget,no_signal,,,complete,,"All set - I've checked your stored memory, and I don't actually have anything saved about a sleeping bag, so there was nothing to delete.",True
+copilot,CO-NLF-I0133,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0137,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0140,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0141,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0146,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0149,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0153,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0159,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0161,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0163,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0165,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0166,NL-forget,no_signal,,,cut_off,,And here's the twist — I haven't stored anything.,True
+copilot,CO-NLF-I0169,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0170,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0176,NL-forget,no_signal,,,complete,,"I've checked, and I don't have any memory stored about a chicken coop feeder, so there was nothing to delete.",True
+copilot,CO-NLF-I0177,NL-forget,no_signal,,,cut_off,,"I've checked my memory, and I don't actually have anything stored about your toolbox — so there was nothing to delete.",True
+copilot,CO-NLF-I0181,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0182,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0185,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0187,NL-forget,no_signal,,,complete,,"Got it - and just to be clear, I've checked my memory and I don't actually have anything stored about your toolbox at all, so there was nothing to delete.",True
+copilot,CO-NLF-I0188,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0191,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0195,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0200,NL-forget,no_signal,,,complete,,"So there was nothing to delete, and you're all clear on that front.",True
+copilot,CO-NLF-I0201,NL-forget,no_signal,,,complete,,"I also checked what I do have stored: there is no pergola-related memory saved, so there's nothing to delete.",True
+copilot,CO-NLF-I0209,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0215,NL-forget,no_signal,,,complete,,"I've checked my memory, and I don't actually have Flier Diligence Shelf Pancake stored - so there was nothing to delete.",True
+copilot,CO-NLF-I0216,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0220,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0224,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0226,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0228,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0230,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0233,NL-forget,no_signal,,,complete,,"I've checked your stored memory, and I don't actually have any fact saved about a retro game console named in this conversation, so there's nothing to delete.",True
+copilot,CO-NLF-I0236,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0237,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0239,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,Memory saved,,False
+copilot,CO-NLF-I0240,NL-forget,no_signal,,,cut_off,,"I've checked your stored memory, and I don't actually have anything saved about a woodburning tool - so there was nothing to delete.",True
+copilot,CO-NLF-I0241,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0249,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0252,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0259,NL-forget,shown,screenshot+transcript,Memory saved,check,Memory saved,,False
+copilot,CO-NLF-I0260,NL-forget,no_signal,,,cut_off,,"I've checked your stored memory, and I don't have any saved information about a rain gauge or ""Stopping Sleep Cottage,"" so there's nothing for me to delete from memory.",True
+copilot,CO-NLF-I0262,NL-forget,shown,transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0264,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0269,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0271,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0272,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,Memory saved,,False
+copilot,CO-NLF-I0273,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0279,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0280,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0281,NL-forget,no_signal,,,cut_off,,"I've checked my stored memory, and I don't actually have anything saved about a closet remodel or ""National Squatter,"" so there was nothing to delete.",True
+copilot,CO-NLF-I0282,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0287,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0293,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0296,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0297,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,Memory saved,,False
+copilot,CO-NLF-I0302,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0304,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,Memory saved,,False
+copilot,CO-NLF-I0305,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0309,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0314,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0315,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0319,NL-forget,no_signal,,,cut_off,,"I've checked my stored memory, and I don't actually have anything saved about your family tree research - so there was nothing to delete.",True
+copilot,CO-NLF-I0322,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0326,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0327,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0334,NL-forget,no_signal,,,cut_off,,"Got it - and just so you know, I checked my stored memory and I didn't actually have anything saved about an attic cleanout or Chamber Dispute Payback Stubble, so there was nothing to delete.",True
+copilot,CO-NLF-I0339,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,Memory saved,,False
+copilot,CO-NLF-I0345,NL-forget,no_signal,,,cut_off,,,True
+copilot,CO-NLF-I0348,NL-forget,no_signal,,,complete,,"I've checked your stored memory, and I don't actually have anything saved about a knife roll called Requisite Slaw, so there was nothing to delete.",True
+copilot,CO-NLF-I0350,NL-forget,no_signal,,,complete,,,True
+copilot,CO-NLF-I0351,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0355,NL-forget,no_signal,,,complete,,"All clear - I didn't actually have anything in memory about a yoga studio setup or Paragraph Harmonica, so there was nothing to delete.",True
+copilot,CO-NLF-I0357,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0361,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
+copilot,CO-NLF-I0363,NL-forget,shown,screenshot+transcript,Memory saved,complete,,"Conversation history itself isn't stored, so there's nothing lingering from past chats that could resurface later.",False
+copilot,CO-NLF-I0364,NL-forget,no_signal,,,complete,,"Got it — and just to be clear, I don't have anything about that unicycle stored in memory, so there was nothing to delete.",True
+copilot,CO-NLF-I0365,NL-forget,no_signal,,,check,,,True
+copilot,CO-NLF-I0367,NL-forget,no_signal,,,complete,,"Got it — and just to be clear, I wasn't actually storing Sermon March Aerospace in memory, so there was nothing to delete.",True
+copilot,CO-NLF-I0368,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,Memory saved,"So there was nothing to remove - which means nothing about your kit is stored, referenced, or available for future conversations.",False
+copilot,CO-NLF-I0371,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,"I tried to delete it, but it turns out I didn't actually have that fact stored in memory anymore, so there was nothing to remove.",False
+copilot,CO-NLF-I0372,NL-forget,no_signal,,,complete,,"I've checked, and I don't actually have Masses Thesis stored in memory - so there was nothing to delete.",True
+deepseek,DE-I1-E1,battery,no_signal,,,complete,,,False
+deepseek,DE-I1-E2,battery,no_signal,,,start_not_visible,,,False
+deepseek,DE-I1-E3,battery,no_signal,,,complete,,,False
+deepseek,DE-I1-E4,battery,no_signal,,,start_not_visible,,,False
+deepseek,DE-IF-E-CONV,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
+deepseek,DE-IF-E-MAX,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
+deepseek,DE-NLF-I0000,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0001,NL-forget,no_signal,,,start_not_visible,,"It isn't stored as a fact about you, indexed, or published anywhere.",False
+deepseek,DE-NLF-I0002,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0004,NL-forget,acknowledged,screenshot+transcript,Noted!,complete,,,False
+deepseek,DE-NLF-I0005,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0010,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0012,NL-forget,no_signal,,,start_not_visible,,I don't have any stored information about you or your cycling jersey.,False
+deepseek,DE-NLF-I0018,NL-forget,acknowledged,transcript,"Got it — so as of yesterday, the new fishing rod is officially called ""Pandemic Shortcut Vastness Running.""",start_not_visible,,,False
+deepseek,DE-NLF-I0023,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0024,NL-forget,no_signal,,,complete,,"I don't have any stored memory of our conversation, so there's nothing for me to delete on my end - each conversation starts fresh for me, and I don't retain information between chats.",False
+deepseek,DE-NLF-I0026,NL-forget,no_signal,,,complete,,"I can't delete anything from this conversation—I don't have a memory of past chats unless you're using a feature that explicitly saves info, and even then I can't remove it on my end.",False
+deepseek,DE-NLF-I0027,NL-forget,no_signal,,,complete,,"• I don't have memory of you turned on in this chat, so that sourdough detail isn't being stored as a persistent fact about you that carries into future conversations.",False
+deepseek,DE-NLF-I0028,NL-forget,acknowledged,screenshot+transcript,Okay!,start_not_visible,,There's nothing stored for me to remove.,False
+deepseek,DE-NLF-I0030,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0032,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0035,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0036,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0041,NL-forget,no_signal,,,complete,,• This conversation isn't stored by me long-term.,False
+deepseek,DE-NLF-I0042,NL-forget,no_signal,,,complete,,"I also don't have memory of past conversations unless a memory feature is explicitly turned on, and I can't see or manage any stored data.",False
+deepseek,DE-NLF-I0043,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0044,NL-forget,no_signal,,,complete,,"I don't have any stored memory of your fence repair business - nothing from this conversation is saved on my end beyond our current chat, and I don't have a persistent memory feature that carried it over.",False
+deepseek,DE-NLF-I0045,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0047,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0049,NL-forget,no_signal,,,start_not_visible,,"Each conversation starts fresh for me, and I don't have any record of what you told me once this conversation ends.",False
+deepseek,DE-NLF-I0051,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0053,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0056,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0059,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0060,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0062,NL-forget,no_signal,,,start_not_visible,,I don't have any stored information about you or your video editing workflow.,False
+deepseek,DE-NLF-I0064,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0067,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0068,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0070,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0077,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0085,NL-forget,no_signal,,,complete,,"I should be straight with you about one thing, though: I don't have memory that carries over between separate conversations.",False
+deepseek,DE-NLF-I0086,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0088,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0089,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0090,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0092,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0095,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0096,NL-forget,no_signal,,,start_not_visible,,"I should also note: I don't have any stored memory of the porch swing detail beyond this active conversation, so once this chat is deleted or closed, it isn't something I'll carry forward.",False
+deepseek,DE-NLF-I0099,NL-forget,acknowledged,screenshot+transcript,If you're just sharing: noted.,start_not_visible,,"I don't have any stored memory or persistent files about your sundial - each conversation I have is independent, and I don't retain information between chats unless a specific memory feature is turned on and being used.",False
+deepseek,DE-NLF-I0105,NL-forget,no_signal,,,complete,,I don't have any stored memory of your conversations.,False
+deepseek,DE-NLF-I0106,NL-forget,no_signal,,,complete,,"• I don't have memory of this chat unless memory is explicitly enabled, and even then, I can't retroactively delete specific parts of a conversation on request.",False
+deepseek,DE-NLF-I0115,NL-forget,no_signal,,,start_not_visible,,"I don't have any stored information about your streaming setup beyond this conversation, and I can't delete past messages in a chat — that's not something I'm able to do.",False
+deepseek,DE-NLF-I0118,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0121,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0124,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0125,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0126,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0128,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0131,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0132,NL-forget,no_signal,,,complete,,"I don't have any stored records or memory of our conversation - each chat starts fresh for me, and I don't retain information between sessions or build a profile of you.",False
+deepseek,DE-NLF-I0133,NL-forget,acknowledged,screenshot+transcript,Noted.,complete,,,False
+deepseek,DE-NLF-I0137,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0140,NL-forget,no_signal,,,complete,,"I don't have a memory that persists between chats, and I can't remove or erase things you've told me within this conversation—everything you've shared here stays in the chat history for this session.",False
+deepseek,DE-NLF-I0141,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0146,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0149,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0153,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0159,NL-forget,no_signal,,,complete,,"I don't have any stored history or personal information from you - each conversation I have is independent, and I don't retain memory of past chats unless you're using a specific feature that explicitly enables memory (and even then, it's something you control and can clear).",False
+deepseek,DE-NLF-I0161,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0163,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0165,NL-forget,no_signal,,,complete,,"I can't delete messages from our conversation—I don't have the ability to remove or edit past messages, and I don't have memory of this conversation beyond our current chat.",False
+deepseek,DE-NLF-I0166,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0169,NL-forget,acknowledged,screenshot+transcript,"Got it — noted: ""Purse Smugness"" is the new surfboard name as of yesterday.",complete,,,False
+deepseek,DE-NLF-I0170,NL-forget,no_signal,,,start_not_visible,,I don't have any saved memory about your family cookbook project — or anything else from this conversation.,False
+deepseek,DE-NLF-I0176,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0177,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0181,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0182,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0185,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0187,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0188,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0191,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0195,NL-forget,no_signal,,,complete,,I don't have memory of our conversation beyond this current chat — I can't recall past conversations or store information about you between sessions.,False
+deepseek,DE-NLF-I0200,NL-forget,no_signal,,,start_not_visible,,I don't have any stored memory of your recipe blog name or our conversation beyond this current chat session.,False
+deepseek,DE-NLF-I0201,NL-forget,no_signal,,,start_not_visible,,"I don't have memory on in this chat, and nothing here persists beyond our current exchange or gets used to identify you.",False
+deepseek,DE-NLF-I0209,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0215,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0216,NL-forget,acknowledged,screenshot+transcript,Noted.,complete,,,False
+deepseek,DE-NLF-I0220,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0224,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0226,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0228,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0230,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0233,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0236,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0237,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0239,NL-forget,acknowledged,screenshot+transcript,"Got it — so ""Tremor Botany Scaling"" is now the official working name for the home gym buildout.",complete,,,False
+deepseek,DE-NLF-I0240,NL-forget,no_signal,,,complete,,"I can't delete anything on my end — I don't have memory of past conversations unless it's enabled in this session, and even then I don't have a ""delete"" function.",False
+deepseek,DE-NLF-I0241,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0249,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0252,NL-forget,no_signal,,,complete,,"• Within this conversation, I can't retroactively erase what's already been said—but this chat isn't stored in any database I control or can edit.",False
+deepseek,DE-NLF-I0259,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0260,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0262,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0264,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0269,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0271,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0272,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0273,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0279,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0280,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0281,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0282,NL-forget,acknowledged,screenshot+transcript,"Got it — sounds like the dashcam formerly known as something else is now going by ""Showing Stuffing Olive Geek"" as of yesterday.",complete,,,False
+deepseek,DE-NLF-I0287,NL-forget,no_signal,,,complete,,"What I can tell you: I don't have memory of this conversation beyond our current session, and I don't store your messages to reference later unless you've opted into a memory feature (which you'd control in your settings).",False
+deepseek,DE-NLF-I0293,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0296,NL-forget,no_signal,,,complete,,• What I retain: I don't have memory of past conversations by default.,False
+deepseek,DE-NLF-I0297,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0302,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0304,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0305,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0309,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0314,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0315,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0319,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0322,NL-forget,acknowledged,screenshot+transcript,"Got it — noting the update: the airbrush kit is now called ""Aloe Doubling"" as of yesterday.",complete,,"Just to set expectations: I don't have memory of past conversations unless it's explicitly saved, so there's no persistent record to delete beyond this chat.",False
+deepseek,DE-NLF-I0326,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0327,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0334,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0339,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0345,NL-forget,no_signal,,,complete,,"I don't have any memory of this conversation beyond our current exchange — I can't retain information between separate conversations, and nothing you've told me here is stored or remembered after we finish talking.",False
+deepseek,DE-NLF-I0348,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0350,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0351,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0355,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0357,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0361,NL-forget,no_signal,,,complete,,"I don't have memory of you between conversations (unless you're using a feature that explicitly saves memories, which you'd have opted into).",False
+deepseek,DE-NLF-I0363,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0364,NL-forget,no_signal,,,complete,,• I don't have memory on by default.,False
+deepseek,DE-NLF-I0365,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0367,NL-forget,no_signal,,,start_not_visible,,"I don't have any stored records or memory of this conversation beyond what's in our current chat - each conversation starts fresh for me, and I don't retain information between sessions.",False
+deepseek,DE-NLF-I0368,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0371,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0372,NL-forget,no_signal,,,complete,,,False
+gemini,GE-I1-E1,battery,no_signal,,,complete,,,False
+gemini,GE-I1-E2,battery,no_signal,,,complete,,,False
+gemini,GE-I1-E3,battery,no_signal,,,complete,,,False
+gemini,GE-I1-E4,battery,no_signal,,,check,,,False
+gemini,GE-I1-E5,battery,no_signal,,,check,,,False
+gemini,GE-I1-E6,battery,no_signal,,,check,,,False
+gemini,GE-I2-E1,battery,no_signal,,,start_not_visible,,,False
+gemini,GE-I2-E2,battery,no_signal,,,no_reply_visible,,,False
+gemini,GE-I2-E3,battery,no_signal,,,no_reply_visible,,,False
+gemini,GE-I2-E4,battery,no_signal,,,cut_off,,,False
+gemini,GE-I2-E5,battery,no_signal,,,start_not_visible,,,False
+gemini,GE-I2-E6,battery,no_signal,,,start_not_visible,,,False
+gemini,GE-IF-E-CONV,battery,file,,"FILE cell: classified separately, not coded here",no_reply_visible,,,False
+gemini,GE-IF-E-MAX,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
+gemini,GE-NLF-I0000,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0001,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0002,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0004,NL-forget,acknowledged,screenshot+transcript,Noted!,complete,,,False
+gemini,GE-NLF-I0005,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0010,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0012,NL-forget,no_signal,,,complete,,"I don't actually have memory or long-term storage of our past conversations, so l don't have any saved details about your cycling jersey.",False
+gemini,GE-NLF-I0018,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0023,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0024,NL-forget,no_signal,,,complete,,"I don't have access to your past conversations, stored memory, or personal context from previous sessions, so l don't have any saved details about your puzzle swap project to delete.",False
+gemini,GE-NLF-I0026,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0027,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0028,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0030,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0032,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0035,NL-forget,no_signal,,,cut_off,,,False
+gemini,GE-NLF-I0036,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0041,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0042,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0043,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0044,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0045,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0047,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0049,NL-forget,acknowledged,screenshot+transcript,"Got it—""Salvation Vastness Islamist"" is locked in as the current title for the trivia prep!",complete,,,False
+gemini,GE-NLF-I0051,NL-forget,no_signal,,,complete,,"I don't have a persistent long-term memory across sessions or any stored profile about you, so that detail isn't saved anywhere outside of this current conversation thread.",False
+gemini,GE-NLF-I0053,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0056,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0059,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0060,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0062,NL-forget,no_signal,,,cut_off,,,False
+gemini,GE-NLF-I0064,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0067,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0068,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0070,NL-forget,no_signal,,,cut_off,,,False
+gemini,GE-NLF-I0077,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0085,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0086,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0088,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0089,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0090,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0092,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0095,NL-forget,no_signal,,,complete,,"I haven't saved or stored any details about your grocery budget tracker project in long-term memory, so there is nothing stored to delete.",False
+gemini,GE-NLF-I0096,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0099,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0105,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0106,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0115,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0118,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0121,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0124,NL-forget,no_signal,,,check,,,False
+gemini,GE-NLF-I0125,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0126,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0128,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0131,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0132,NL-forget,no_signal,,,complete,,"I do not have a persistent memory or saved records of our previous turns, so l haven't stored any personal data or information about your sleeping bag.",False
+gemini,GE-NLF-I0133,NL-forget,acknowledged,screenshot+transcript,Noted!,complete,,"Thaven't stored or retained any memory of that grandfather clock name, so there is nothing saved in memory to delete.",False
+gemini,GE-NLF-I0137,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0140,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0141,NL-forget,no_signal,,,complete,,"I don't have access to your past conversation history, memory settings, or account data across sessions, so l haven't stored or saved what you shared about your ham radio.",False
+gemini,GE-NLF-I0146,NL-forget,acknowledged,screenshot+transcript,Noted!,complete,,,False
+gemini,GE-NLF-I0149,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0153,NL-forget,no_signal,,,check,,,False
+gemini,GE-NLF-I0159,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0161,NL-forget,acknowledged,screenshot+transcript,Noted!,complete,,,False
+gemini,GE-NLF-I0163,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0165,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0166,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0169,NL-forget,acknowledged,screenshot+transcript,"Noted—""Purse Smugness"" is officially on the board roster!",complete,,,False
+gemini,GE-NLF-I0170,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0176,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0177,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0181,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0182,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0185,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0187,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0188,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0191,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0195,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0200,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0201,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0209,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0215,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0216,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0220,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0224,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0226,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0228,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0230,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0233,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0236,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0237,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0239,NL-forget,acknowledged,screenshot+transcript,Got it!,complete,,,False
+gemini,GE-NLF-I0240,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0241,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0249,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0252,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0259,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0260,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0262,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0264,NL-forget,acknowledged,screenshot+transcript,Got it.,complete,,,False
+gemini,GE-NLF-I0269,NL-forget,no_signal,,,complete,,"I don't have access to your past chats or a persistent memory bank, so l haven't stored any details about your pickle crock project.",False
+gemini,GE-NLF-I0271,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0272,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0273,NL-forget,acknowledged,screenshot+transcript,Noted!,complete,,,False
+gemini,GE-NLF-I0279,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0280,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0281,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0282,NL-forget,acknowledged,screenshot+transcript,Got it—added to the mental log!,complete,,,False
+gemini,GE-NLF-I0287,NL-forget,no_signal,,,complete,,"Because no record of your pocket knife exists in my memory bank or system context, there is no file, history, or stored data to delete or verify.",False
+gemini,GE-NLF-I0293,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0296,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0297,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0302,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0304,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0305,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0309,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0314,NL-forget,no_signal,,,start_not_visible,,,False
+gemini,GE-NLF-I0315,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0319,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0322,NL-forget,acknowledged,screenshot+transcript,Got it!,complete,,,False
+gemini,GE-NLF-I0326,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0327,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0334,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0339,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0345,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0348,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0350,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0351,NL-forget,no_signal,,,complete,,"Because of this, I haven't stored any details about a knife roll, nor do l have the ability to save information from this chat for future sessions.",False
+gemini,GE-NLF-I0355,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0357,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0361,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0363,NL-forget,acknowledged,screenshot+transcript,Got it!,complete,,,False
+gemini,GE-NLF-I0364,NL-forget,no_signal,,,complete,,"I haven't saved or stored that information anywhere, and it won't be remembered for future conversations.",False
+gemini,GE-NLF-I0365,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0367,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0368,NL-forget,acknowledged,screenshot+transcript,"Got it—adopting ""Caramel Haunt Comment Neurosis"" into the record.",complete,,,False
+gemini,GE-NLF-I0371,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0372,NL-forget,no_signal,,,complete,,,False
+perplexity,PE-I1-E1,battery,no_signal,,,cut_off,,,False
+perplexity,PE-I1-E2,battery,no_signal,,,cut_off,,,False
+perplexity,PE-I1-E3,battery,no_signal,,,cut_off,,,False
+perplexity,PE-I2-E1,battery,denied,screenshot,I can't store arbitrary new facts like camera names in long-term memory on request.,cut_off,,,False
+perplexity,PE-I2-E2,battery,acknowledged,screenshot+transcript (hand-coded),"hand-coded: reply says it noted the name, then that saving needs a note-taking app to be connected first, so it did not say the fact was stored. Quote: If you'd like me to save this to a specific note-taking app, you'll need to connect that service first via the Connectors page in your settings.",cut_off,,,False
+perplexity,PE-I2-E3,battery,claimed,screenshot+transcript,"I've saved that mapping for you: from now on, “Armadillo Shy Cesarean” = your 3D printer project.",cut_off,,,False
+perplexity,PE-IF-E-CONV,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
+perplexity,PE-NLF-I0000,NL-forget,no_signal,,,complete,,,False
+perplexity,PE-NLF-I0001,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0002,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0004,NL-forget,acknowledged,screenshot+transcript,Got it — I'll refer to your mortar and pestle as “Darkness Brunette” going forward.,check,,,False
+perplexity,PE-NLF-I0005,NL-forget,no_signal,,,complete,,,False
+perplexity,PE-NLF-I0010,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0012,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0018,NL-forget,acknowledged,screenshot+transcript,"Got it — as of September 11, 2026, the new fishing rod is called “Pandemic Shortcut Vastness Running.” I'll use that exact name in this conversation.",check,,,False
+perplexity,PE-NLF-I0023,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0024,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0026,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0027,NL-forget,acknowledged,screenshot+transcript,Got it — your sourdough starter is named “Semifinal Reorder Trapeze” as of yesterday.,check,,,False
+perplexity,PE-NLF-I0028,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0030,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0032,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0035,NL-forget,acknowledged,transcript,"Got it — as of yesterday, your rotary phone is called “Concierge Gear.”",no_reply_visible,,,False
+perplexity,PE-NLF-I0036,NL-forget,no_signal,,,complete,,,False
+perplexity,PE-NLF-I0041,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0042,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0043,NL-forget,acknowledged,screenshot+transcript,"Got it — your field journal is now called “Casing Corset Creature Enchilada,” effective yesterday.",check,,,False
+perplexity,PE-NLF-I0044,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0045,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0047,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0049,NL-forget,acknowledged,screenshot+transcript,Got it — I'll refer to your trivia night prep as “Salvation Vastness Islamist” going forward.,check,,,False
+perplexity,PE-NLF-I0051,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0053,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0056,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0059,NL-forget,acknowledged,screenshot+transcript,"Noted — as of September 11, 2026, your kayak paddle is named “Ninetieth Mouth Mushiness.”",check,,,False
+perplexity,PE-NLF-I0060,NL-forget,no_signal,,,complete,,,False
+perplexity,PE-NLF-I0062,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0064,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0067,NL-forget,acknowledged,screenshot+transcript,Got it — your kombucha SCOBY has been named “Rippling Hatbox Snugness” as of yesterday.,check,,,False
+perplexity,PE-NLF-I0068,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0070,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0077,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0085,NL-forget,acknowledged,screenshot+transcript,"Got it — as of yesterday, your language-learning streak is called “Cahoots Nuclei Herbicide.”",check,,,False
+perplexity,PE-NLF-I0086,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0088,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0089,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0090,NL-forget,acknowledged,screenshot+transcript,"Got it — your restored pocket knife is now called “Scrimmage Mutation Premiere Stretch,” as of yesterday.",cut_off,,,False
+perplexity,PE-NLF-I0092,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0095,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0096,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0099,NL-forget,acknowledged,screenshot+transcript,Got it — I'll refer to your sundial as “Revoke Rubbing” going forward.,check,,,False
+perplexity,PE-NLF-I0105,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0106,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0115,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0118,NL-forget,acknowledged,transcript,"Got it — as of yesterday, your new dashcam is called “Flannels Guacamole.”",no_reply_visible,,,False
+perplexity,PE-NLF-I0121,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0124,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0125,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0126,NL-forget,acknowledged,screenshot+transcript,Noted — your planned pergola build is now called “Sludge Chaplain Vocalist” as of yesterday.,complete,,,False
+perplexity,PE-NLF-I0128,NL-forget,no_signal,,,complete,,,False
+perplexity,PE-NLF-I0131,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0132,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0133,NL-forget,acknowledged,screenshot+transcript,"Understood — I'll treat “Frisbee Urology Worshiper” as the name of the new grandfather clock, effective yesterday.",check,,,False
+perplexity,PE-NLF-I0137,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0140,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0141,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0146,NL-forget,acknowledged,screenshot+transcript,"Noted — your knife roll's name is “Repeal Grader” as of September 11, 2026.",check,,,False
+perplexity,PE-NLF-I0149,NL-forget,no_signal,,,complete,,,False
+perplexity,PE-NLF-I0153,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0159,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0161,NL-forget,acknowledged,screenshot+transcript,Noted — I'll refer to the smart thermostat install as “Onslaught Impurity” going forward.,check,,,False
+perplexity,PE-NLF-I0163,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0165,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0166,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0169,NL-forget,acknowledged,screenshot+transcript,Noted — “Purse Smugness” is the name of the new surfboard as of yesterday.,cut_off,,,False
+perplexity,PE-NLF-I0170,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0176,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0177,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0181,NL-forget,acknowledged,screenshot+transcript,"Noted: as of yesterday, your secondhand stand mixer is called “Nuclei Hydroxide Credit Petty.” That is an excellent, extremely overqualified name for a machine whose primary duty is beating butter and sugar into submission.",cut_off,,,False
+perplexity,PE-NLF-I0182,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0185,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0187,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0188,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0191,NL-forget,no_signal,,,complete,,,False
+perplexity,PE-NLF-I0195,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0200,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0201,NL-forget,acknowledged,screenshot+transcript,Got it — I'll refer to your pergola build as “Emcee Violator Capacity Aversion” going forward.,check,,,False
+perplexity,PE-NLF-I0209,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0215,NL-forget,no_signal,,,check,,"I don't have a stored memory of that secondhand tackle box, so there's nothing to delete from memory.",False
+perplexity,PE-NLF-I0216,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0220,NL-forget,acknowledged,transcript,Got it — your tea set is called “Radiator Gains” as of yesterday.,no_reply_visible,,,False
+perplexity,PE-NLF-I0224,NL-forget,no_signal,,,complete,,,False
+perplexity,PE-NLF-I0226,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0228,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0230,NL-forget,acknowledged,transcript,"Noted — as of yesterday, your secondhand fishing rod is called “Crane Spiritism.”",no_reply_visible,,,False
+perplexity,PE-NLF-I0233,NL-forget,no_signal,,,complete,,,False
+perplexity,PE-NLF-I0236,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0237,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0239,NL-forget,acknowledged,screenshot+transcript,"Noted — as of September 11, 2026, the home gym buildout project is called “Tremor Botany Scaling.”",check,,,False
+perplexity,PE-NLF-I0240,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0241,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0249,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0252,NL-forget,acknowledged,screenshot+transcript,Got it — your kimchi batch started yesterday is named “Consonant Rascal.”,check,,,False
+perplexity,PE-NLF-I0259,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0260,NL-forget,no_signal,,,complete,,,False
+perplexity,PE-NLF-I0262,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0264,NL-forget,acknowledged,transcript,"Noted: as of yesterday, the server rack build project is called “Reggae Foe Attic Rethink.”",complete,,,False
+perplexity,PE-NLF-I0269,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0271,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0272,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0273,NL-forget,acknowledged,screenshot+transcript,"Got it — your cutting board is now called “Feast Proton Trading Brim,” effective yesterday.",check,,,False
+perplexity,PE-NLF-I0279,NL-forget,no_signal,,,complete,,,False
+perplexity,PE-NLF-I0280,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0281,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0282,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0287,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0293,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0296,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0297,NL-forget,acknowledged,screenshot+transcript,"Noted: the new mortar and pestle is called “Pantomime Salvation,” effective yesterday.",cut_off,,,False
+perplexity,PE-NLF-I0302,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0304,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0305,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0309,NL-forget,acknowledged,transcript,"Noted: as of yesterday, the sign language course project is called “Patio Crane Mourner.”",complete,,,False
+perplexity,PE-NLF-I0314,NL-forget,no_signal,,,complete,,,False
+perplexity,PE-NLF-I0315,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0319,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0322,NL-forget,acknowledged,screenshot+transcript,Got it — I'll refer to your airbrush kit as “Aloe Doubling” going forward.,complete,,,False
+perplexity,PE-NLF-I0326,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0327,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0334,NL-forget,no_signal,,,check,,I don't have any stored memory from today about an attic cleanout to delete.,False
+perplexity,PE-NLF-I0339,NL-forget,acknowledged,screenshot+transcript,"Got it — as of yesterday, your planned yoga studio setup is called “Counting Galley Gaming Reason.”",complete,,,False
+perplexity,PE-NLF-I0345,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0348,NL-forget,acknowledged,screenshot+transcript,Officially noted in spirit.,cut_off,,,False
+perplexity,PE-NLF-I0350,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0351,NL-forget,acknowledged,screenshot+transcript,Got it — I'll refer to your new knife roll as “Earring Elite Hamburger Chemist.”,check,,,False
+perplexity,PE-NLF-I0355,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0357,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0361,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0363,NL-forget,acknowledged,screenshot+transcript,"Noted — as of yesterday, your newly acquired loom is called “Epidemic Scouring.”",check,,,False
+perplexity,PE-NLF-I0364,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0365,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0367,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0368,NL-forget,acknowledged,screenshot+transcript,Got it — I'll refer to the letterpress kit as “Caramel Haunt Comment Neurosis” going forward.,check,,,False
+perplexity,PE-NLF-I0371,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0372,NL-forget,no_signal,,,check,,,False

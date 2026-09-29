@@ -98,9 +98,8 @@ def _render_phase(cell_dir: Path, phase: str) -> str:
 
     # Pick up every screenshot whose filename starts with this phase's
     # prefix -- handles both the single fixed-name case (01_inject.png,
-    # 02_erase.png) and recall's variable set (some probes conditional:
-    # r1_choice only if the open question needed a follow-up, r2 only if
-    # HAS_MEMORY_UI) without assuming which ones exist.
+    # 02_erase.png) and recall's variable set (r2 only if HAS_MEMORY_UI)
+    # without assuming which ones exist.
     shots = sorted(shots_dir.glob(f"{phase}*.png")) if shots_dir.exists() else []
     for shot in shots:
         rel = f"screenshots/{shot.name}"

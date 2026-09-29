@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1530" height="985" viewBox="0 0 1530 985" font-family="Helvetica, Arial, sans-serif">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5b6472"/></marker></defs>
+<rect width="1530" height="985" fill="#ffffff"/>
+<text x="50" y="42" font-size="26" font-weight="700" fill="#1f2937">Testing pipeline: conceptual overview</text>
+<text x="50" y="101" font-size="13" font-weight="700" letter-spacing="1.5" fill="#5b6472">1  DESIGN</text>
+<text x="50" y="281" font-size="13" font-weight="700" letter-spacing="1.5" fill="#5b6472">2  EXECUTION</text>
+<text x="50" y="461" font-size="13" font-weight="700" letter-spacing="1.5" fill="#5b6472">3  PLATFORMS</text>
+<text x="50" y="641" font-size="13" font-weight="700" letter-spacing="1.5" fill="#5b6472">4  EVIDENCE AND ANALYSIS</text>
+<rect x="50" y="115" width="370" height="120" rx="10" fill="#e8f0fe" stroke="#4a7bd0" stroke-width="2"/>
+<text x="66" y="144" font-size="18" font-weight="700" fill="#1f2937">Survey prompt sample</text>
+<text x="66" y="171" font-size="15" fill="#1f2937">375 participant-written erasure requests</text>
+<text x="66" y="194" font-size="15" fill="#1f2937">138 sampled as the NL-forget erasure wording</text>
+<rect x="550" y="115" width="370" height="120" rx="10" fill="#e8f0fe" stroke="#4a7bd0" stroke-width="2"/>
+<text x="566" y="144" font-size="18" font-weight="700" fill="#1f2937">Cell text generator</text>
+<text x="566" y="171" font-size="15" fill="#1f2937">Unique referent + token for every cell</text>
+<text x="566" y="194" font-size="15" fill="#1f2937">Disclosure (I1, I2, I3, FILE) and erasure text</text>
+<text x="566" y="217" font-size="15" fill="#1f2937">Recall probes R1, R2, R3</text>
+<rect x="1050" y="115" width="370" height="120" rx="10" fill="#e8f0fe" stroke="#4a7bd0" stroke-width="2"/>
+<text x="1066" y="144" font-size="18" font-weight="700" fill="#1f2937">Experiment sheet</text>
+<text x="1066" y="171" font-size="15" fill="#1f2937">88-cell battery + 828 NL-forget cells</text>
+<text x="1066" y="194" font-size="15" fill="#1f2937">Pre-registered expected outcomes</text>
+<text x="1066" y="217" font-size="15" fill="#1f2937">Source of truth; results written back</text>
+<rect x="50" y="295" width="370" height="120" rx="10" fill="#e6f4ea" stroke="#3f9b5f" stroke-width="2"/>
+<text x="66" y="324" font-size="18" font-weight="700" fill="#1f2937">Run tracking</text>
+<text x="66" y="351" font-size="15" fill="#1f2937">Per cell: injected, erase due (+48 h),</text>
+<text x="66" y="374" font-size="15" fill="#1f2937">erased, recall due (+31 days), recalled</text>
+<text x="66" y="397" font-size="15" fill="#1f2937">Local state, separate from the sheet</text>
+<rect x="550" y="295" width="370" height="120" rx="10" fill="#e6f4ea" stroke="#3f9b5f" stroke-width="2"/>
+<text x="566" y="324" font-size="18" font-weight="700" fill="#1f2937">Schedulers</text>
+<text x="566" y="351" font-size="15" fill="#1f2937">Paced, adaptive batches per platform</text>
+<text x="566" y="374" font-size="15" fill="#1f2937">Narrow erasures before broad ones</text>
+<text x="566" y="397" font-size="15" fill="#1f2937">Broad-scope prompts held back</text>
+<rect x="1050" y="295" width="370" height="120" rx="10" fill="#e6f4ea" stroke="#3f9b5f" stroke-width="2"/>
+<text x="1066" y="324" font-size="18" font-weight="700" fill="#1f2937">Orchestrator</text>
+<text x="1066" y="351" font-size="15" fill="#1f2937">Commands: inject, erase, recall, status</text>
+<text x="1066" y="374" font-size="15" fill="#1f2937">Loads one cell from the sheet and runs it</text>
+<text x="1066" y="397" font-size="15" fill="#1f2937">on the matching platform</text>
+<rect x="50" y="475" width="370" height="120" rx="10" fill="#fff1e0" stroke="#d98a2b" stroke-width="2"/>
+<text x="66" y="504" font-size="18" font-weight="700" fill="#1f2937">Accounts and sessions</text>
+<text x="66" y="531" font-size="15" fill="#1f2937">Saved login per platform</text>
+<text x="66" y="554" font-size="15" fill="#1f2937">Main, dedicated and NL-forget accounts</text>
+<rect x="550" y="475" width="370" height="120" rx="10" fill="#fff1e0" stroke="#d98a2b" stroke-width="2"/>
+<text x="566" y="504" font-size="18" font-weight="700" fill="#1f2937">Platform flows (Playwright)</text>
+<text x="566" y="531" font-size="15" fill="#1f2937">One module per platform</text>
+<text x="566" y="554" font-size="15" fill="#1f2937">Chat, file upload, memory settings,</text>
+<text x="566" y="577" font-size="15" fill="#1f2937">and that platform's deletion controls</text>
+<rect x="1050" y="475" width="370" height="120" rx="10" fill="#fff1e0" stroke="#d98a2b" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="1066" y="504" font-size="18" font-weight="700" fill="#1f2937">Six platforms (live web UI)</text>
+<text x="1066" y="531" font-size="15" fill="#1f2937">ChatGPT, Claude, Gemini,</text>
+<text x="1066" y="554" font-size="15" fill="#1f2937">Copilot, Perplexity, DeepSeek</text>
+<text x="1066" y="577" font-size="15" fill="#1f2937">Consumer interface, not the API</text>
+<rect x="50" y="655" width="370" height="120" rx="10" fill="#f0e8fb" stroke="#8558c7" stroke-width="2"/>
+<text x="66" y="684" font-size="18" font-weight="700" fill="#1f2937">Evidence store</text>
+<text x="66" y="711" font-size="15" fill="#1f2937">JSON transcript + screenshot per step</text>
+<text x="66" y="734" font-size="15" fill="#1f2937">Per-platform reports on demand</text>
+<text x="66" y="757" font-size="15" fill="#1f2937">Kept for review and re-checking</text>
+<rect x="550" y="655" width="370" height="120" rx="10" fill="#f0e8fb" stroke="#8558c7" stroke-width="2"/>
+<text x="566" y="684" font-size="18" font-weight="700" fill="#1f2937">Recall scoring</text>
+<text x="566" y="711" font-size="15" fill="#1f2937">R1 direct, R2 settings, R3 indirect</text>
+<text x="566" y="734" font-size="15" fill="#1f2937">Same-session and cross-session</text>
+<text x="566" y="757" font-size="15" fill="#1f2937">R1 and R3 auto-scored by token match</text>
+<rect x="1050" y="655" width="370" height="120" rx="10" fill="#f0e8fb" stroke="#8558c7" stroke-width="2"/>
+<text x="1066" y="684" font-size="18" font-weight="700" fill="#1f2937">Outcome coding and analysis</text>
+<text x="1066" y="711" font-size="15" fill="#1f2937">Erasure and recall coded to a fixed taxonomy</text>
+<text x="1066" y="734" font-size="15" fill="#1f2937">Compared with pre-registered expectations</text>
+<text x="1066" y="757" font-size="15" fill="#1f2937">Departures are the RQ2 contradictions</text>
+<path d="M 420 175 L 550 175" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+<g>
+<rect x="435" y="153" width="100" height="19" fill="#ffffff"/>
+<text x="485.0" y="167" font-size="13" fill="#5b6472" text-anchor="middle">erasure wording</text>
+</g>
+<path d="M 920 175 L 1050 175" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+<g>
+<rect x="929" y="153" width="112" height="19" fill="#ffffff"/>
+<text x="985.0" y="167" font-size="13" fill="#5b6472" text-anchor="middle">cell text, probes</text>
+</g>
+<path d="M 1235 235 L 1235 295" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)" marker-start="url(#ah)"/>
+<g>
+<rect x="1242" y="257" width="130" height="19" fill="#ffffff"/>
+<text x="1247" y="271" font-size="13" fill="#5b6472" text-anchor="start">cell in, results out</text>
+</g>
+<path d="M 420 355 L 550 355" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+<g>
+<rect x="454" y="333" width="63" height="19" fill="#ffffff"/>
+<text x="485.0" y="347" font-size="13" fill="#5b6472" text-anchor="middle">due cells</text>
+</g>
+<path d="M 920 355 L 1050 355" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+<g>
+<rect x="954" y="333" width="63" height="19" fill="#ffffff"/>
+<text x="985.0" y="347" font-size="13" fill="#5b6472" text-anchor="middle">next cell</text>
+</g>
+<path d="M 1125 295 L 1125 265 L 235 265 L 235 295" fill="none" stroke="#5b6472" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#ah)"/>
+<g>
+<rect x="612" y="257" width="136" height="19" fill="#ffffff"/>
+<text x="680.0" y="271" font-size="13" fill="#5b6472" text-anchor="middle">status and timestamps</text>
+</g>
+<path d="M 1175 415 L 1175 445 L 735 445 L 735 475" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+<g>
+<rect x="914" y="425" width="81" height="19" fill="#ffffff"/>
+<text x="955.0" y="439" font-size="13" fill="#5b6472" text-anchor="middle">run one step</text>
+</g>
+<path d="M 420 535 L 550 535" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+<g>
+<rect x="457" y="513" width="57" height="19" fill="#ffffff"/>
+<text x="485.0" y="527" font-size="13" fill="#5b6472" text-anchor="middle">sessions</text>
+</g>
+<path d="M 920 535 L 1050 535" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)" marker-start="url(#ah)"/>
+<g>
+<rect x="926" y="513" width="118" height="19" fill="#ffffff"/>
+<text x="985.0" y="527" font-size="13" fill="#5b6472" text-anchor="middle">requests / replies</text>
+</g>
+<path d="M 635 595 L 635 625 L 360 625 L 360 655" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+<g>
+<rect x="420" y="605" width="154" height="19" fill="#ffffff"/>
+<text x="497.5" y="619" font-size="13" fill="#5b6472" text-anchor="middle">transcripts, screenshots</text>
+</g>
+<path d="M 835 595 L 835 655" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+<g>
+<rect x="842" y="617" width="51" height="19" fill="#ffffff"/>
+<text x="847" y="631" font-size="13" fill="#5b6472" text-anchor="start">replies</text>
+</g>
+<path d="M 920 715 L 1050 715" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+<g>
+<rect x="957" y="693" width="57" height="19" fill="#ffffff"/>
+<text x="985.0" y="707" font-size="13" fill="#5b6472" text-anchor="middle">outcomes</text>
+</g>
+<path d="M 235 775 L 235 803 L 1235 803 L 1235 775" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+<g>
+<rect x="673" y="783" width="124" height="19" fill="#ffffff"/>
+<text x="735.0" y="797" font-size="13" fill="#5b6472" text-anchor="middle">evidence for review</text>
+</g>
+<path d="M 1420 205 L 1465 205 L 1465 745 L 1420 745" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+<g transform="rotate(-90 1489 475.0)">
+<rect x="1406" y="461.0" width="167" height="19" fill="#ffffff"/>
+<text x="1489" y="475.0" font-size="13" fill="#5b6472" text-anchor="middle">expected outcomes, results</text>
+</g>
+<text x="50" y="841" font-size="13" font-weight="700" letter-spacing="1.5" fill="#5b6472">PER-CELL TIMELINE</text>
+<rect x="50" y="855" width="370" height="84" rx="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="2"/>
+<text x="66" y="887" font-size="18" font-weight="700" fill="#1f2937">Inject</text>
+<text x="66" y="913" font-size="15" fill="#1f2937">Disclose a referent + token (I1, I2, I3, FILE)</text>
+<rect x="550" y="855" width="370" height="84" rx="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="2"/>
+<text x="566" y="887" font-size="18" font-weight="700" fill="#1f2937">Erase</text>
+<text x="566" y="913" font-size="15" fill="#1f2937">Typed request or the platform's deletion control</text>
+<rect x="1050" y="855" width="370" height="84" rx="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="2"/>
+<text x="1066" y="887" font-size="18" font-weight="700" fill="#1f2937">Recall</text>
+<text x="1066" y="913" font-size="15" fill="#1f2937">R1, R2, R3; same- and cross-session</text>
+<path d="M 420 897 L 550 897" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+<g>
+<rect x="450" y="875" width="69" height="19" fill="#ffffff"/>
+<text x="485.0" y="889" font-size="13" fill="#5b6472" text-anchor="middle">after 48 h</text>
+</g>
+<path d="M 920 897 L 1050 897" fill="none" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+<g>
+<rect x="941" y="875" width="87" height="19" fill="#ffffff"/>
+<text x="985.0" y="889" font-size="13" fill="#5b6472" text-anchor="middle">after 31 days</text>
+</g>
+</svg>

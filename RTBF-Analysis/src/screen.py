@@ -19,7 +19,7 @@ import pandas as pd
 
 from src.reporting import save_report
 
-RAW_FILE = "data/raw/RTBF_survey_results.xlsx"   # adjust path
+RAW_FILE = "survey/RTBF_September+9,+2026_14.25.xlsx"   # 2026-09-09 Qualtrics export
 SHEET = "Sheet0"
 
 CHECKS = {"Q6.5": "Sometimes", "Q9.3": "Agree"}   # attention checks
@@ -46,11 +46,26 @@ warnings.filterwarnings(
 
 
 def load_raw(path=RAW_FILE):
-    """Respondent data with question-ID column names."""
+    """Respondent data with question-ID column names, restricted to
+    Qualtrics-complete submissions (Finished == "True").
+
+    Found 2026-09-23: a later raw export (235 rows) includes 17
+    incomplete/abandoned attempts that an earlier export used for the
+    paper's originally-reported "219 raw responses" did not -- the
+    Finished filter here was previously missing entirely, so a script
+    reading straight from a later export would silently pull in those 17
+    partial submissions. Confirmed this filter is the right one, not a
+    guess: applying it against the 235-row export reproduces the paper's
+    exact downstream numbers (1 attention-check failure, 36 never-deleted,
+    n=177 paired) -- see outputs/results/screen.md's original 2026-08-26
+    run for the numbers this must match."""
     df = pd.read_excel(path, sheet_name=SHEET, header=None)
     data = df.iloc[2:].copy()
     data.columns = df.iloc[0].tolist()
-    return data.reset_index(drop=True)
+    data = data.reset_index(drop=True)
+    if "Finished" in data.columns:
+        data = data[data["Finished"] == "True"].reset_index(drop=True)
+    return data
 
 
 def load_labels(path=RAW_FILE):

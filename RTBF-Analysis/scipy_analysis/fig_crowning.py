@@ -3,23 +3,33 @@ fig_crowning -- for each scale (protection, effort, benefit_loss), a grouped
 bar chart with one group per qualifying method (n>=N_FLOOR in every scope)
 and 3 bars per group: pooled / less / more (crowning.py's scope A / scope B).
 
-Significance: only effort has ANY confirmed pairwise post-hoc result per
-crowning.md -- "Delete this single conversation" significantly lower-effort
-than "Delete a specific saved memory", in the pooled and less scopes only
-(p_holm=.0002 both; NOT significant in the more scope, p_holm=.0781). That is
-the only annotation drawn. Protection and benefit_loss are ns in every scope
-(6/6 tests null) and get no stars, per crowning.md's own verdict.
+Pooled scope (revised 2026-09-23, paper review item N4): medians are now
+computed over participant-scenario observations (one row per participant per
+scenario, 352 rows, no stayer averaging), the same unit of analysis as the
+pooled GEE tests in src/pooled_gee.py. The earlier version took medians from
+pooling.pooled_method_scores, which averaged stayers' two responses into one
+half-step value and put switchers in two groups; see src/pooled_gee.py for why
+that pooling was replaced.
+
+Significance: only effort has a pairwise post-hoc result that the figure
+annotates -- "Delete this single conversation" significantly lower-effort
+than "Delete a specific saved memory", in the pooled scope (participant-
+clustered GEE contrast, p_holm=.0002; see pooled_gee.md) and the less scope
+(Dunn, p_holm=.0002); NOT significant in the more scope. The pooled GEE also
+finds single-conversation lower-effort than "Clear all history" (p_holm=.019),
+which is reported in the paper text, not drawn here. Protection and
+benefit_loss have no significant omnibus test in any scope and get no stars.
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-from src.screen import get_bases
 from src.methods import SHORT_METHOD
+from src.pooled_gee import SURVEY_XLSX, build_observation_frame, qualifying_methods
+from src.screen import get_bases
 from src.stats import SCEN
 
 from .crowning import crown_scale, _scored, DIRECTION
-from .pooling import pooled_method_scores
 
 # Bumped 2026-08-25, revised four times, checked against an actual
 # print-scale simulation each round (2026-08-26), not just an on-screen PNG
@@ -56,9 +66,11 @@ METHODS_ORDER = [
 def scope_results(bases):
     """{scale: {scope: crown_scale result}} for pooled/less/more."""
     out = {scale: {} for scale in DIRECTION}
-    pooled = pooled_method_scores(bases)
-    for scale, direction in DIRECTION.items():
-        out[scale]["pooled"] = crown_scale(pooled, "method", scale, direction)
+    obs = build_observation_frame(bases["paired"])
+    pooled = obs[obs["method"].isin(qualifying_methods(obs))]
+    for scale in DIRECTION:
+        # Only "medians" is read by _plot_ax; no KW here (the pooled test is the GEE).
+        out[scale]["pooled"] = {"medians": pooled.groupby("method")[scale].median().to_dict()}
 
     for scen, (base, mcol) in SCEN.items():
         df = bases[scen]
@@ -80,12 +92,16 @@ def _plot_ax(ax, scale, results):
 
     if scale == "effort":
         i_single = METHODS_ORDER.index("Delete this single conversation.")
-        for scope in ("pooled", "less"):  # more scope: ns, no star
+        # Stagger the two annotations vertically: adjacent bars are narrower
+        # than a "***" run, and once pooled and less share the same median
+        # (both 1.5 with observation-level pooling) same-height stars merge
+        # into an unreadable "*****".
+        for row, scope in enumerate(("pooled", "less")):  # more scope: ns, no star
             i = SCOPES.index(scope)
             xpos = x[i_single] + (i - 1) * w
             ypos = results[scope]["medians"][METHODS_ORDER[i_single]]
             ax.annotate("***", (xpos, ypos), textcoords="offset points",
-                        xytext=(0, 6), ha="center", fontsize=ANNOTATION_FONTSIZE, fontweight="bold")
+                        xytext=(0, 6 + 24 * row), ha="center", fontsize=ANNOTATION_FONTSIZE, fontweight="bold")
 
     ax.set_xticks(x)
     ax.set_xticklabels([SHORT_METHOD[m] for m in METHODS_ORDER], fontsize=TICK_FONTSIZE,
@@ -119,7 +135,7 @@ def plot_combined(all_results, path="outputs/figures/fig_crowning_combined.png")
 
 
 if __name__ == "__main__":
-    bases = get_bases(verbose=False)
+    bases = get_bases(path=SURVEY_XLSX, verbose=False)
     results = scope_results(bases)
     saved = plot_combined(results)
     print(f"saved -> {saved}")

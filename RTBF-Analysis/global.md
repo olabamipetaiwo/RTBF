@@ -230,6 +230,15 @@ coupled to treat as separate constructs.
 
 ## B3. Pooling methodology (`pooling.md`)
 
+> **SUPERSEDED 2026-09-23 (paper review item N4).** This averaged stayers and put switchers in two
+> method groups, so the pooled KW/Dunn/Fisher tests (B4 means, B5 pooled column, contingency table) ran on
+> dependent groups with mixed averaged/un-averaged values. Pooled analyses now use 352 participant-scenario
+> observations and a participant-clustered GEE: `src/pooled_gee.py`, results and rationale in
+> `outputs/results/pooled_gee.md`, independent check in `pooled_gee_crosscheck.md`. The B3/B4/B5 pooled numbers
+> below are the OLD values, kept for history. Key changes: pooled effort omnibus now Wald chi2(3)=23.05
+> (p_holm=.0001); single conversation vs clear history on effort is now significant (p_holm=.019, was .051 ns)
+> and only in the pooled analysis; means: effort single/specific 1.64/2.49, protection range 3.63-3.86.
+
 Each of the 177 respondents contributes exactly one observation per method group: same-method-
 both-scenarios respondents have their two ratings averaged; method-switchers contribute one point
 to each of the two methods they used (mild, unavoidable non-independence across groups, no
@@ -284,6 +293,14 @@ forget," so no single lowest-effort method can be named.
 Reported once in Part A §A2/A4 — scipy pipeline reproduces identical H/p/Wilcoxon values.
 
 ## B7. Between-method verification/expectation tests (`verify.md`)
+
+> **UPDATED 2026-09-23.** The Holm values below came from an unseeded Monte-Carlo r x c Fisher on the older
+> August base (`more` n=178). Re-run values differed between runs ("checked settings", more-sensitive: p_holm
+> .041 to .057 over six runs, straddling .05). `rc_exact_p` is now exact for k x 2 tables, so these are stable.
+> Current data (n=177/177): less verification: asked same convo p_holm=.0014, asked new convo .0068, did NOT know
+> how .0068; more verification: asked same convo .0385, checked settings .0458 (close to .05), did NOT know how
+> .2184 (ns). More expectation: not ref. current p=.0079, p_holm=.0550 (ns); no expectation significant in either
+> scenario. Values quoted in the list below are the superseded ones.
 
 Significant (Holm-corrected) associations between method and behavior:
 
