@@ -1,6 +1,6 @@
 # reliability
 
-_Run at 2026-08-07T14:24:14_
+_Run at 2026-09-30T15:06:10_
 
 ```text
 === Cronbach's alpha (>=0.70 = acceptable) ===

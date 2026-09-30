@@ -291,7 +291,9 @@ three multi-item Likert scales (perceived protection with 5 items, effort
 with 4 items, and benefit loss with 3 items) plus single-item measures of
 deletion method choice, willingness to delete, deletion expectations, and
 verification behavior. All six scale-by-scenario combinations meet
-conventional reliability thresholds (Cronbach's $\alpha=0.87$--$0.92$).
+conventional reliability thresholds (Cronbach's $\alpha=0.87$--$0.92$),
+confirmed identically by both analysis pipelines described in
+\S\ref{sec:sample-knowledge}.
 
 \textbf{Scenarios and attention checks.} Each scenario is a short
 chatbot conversation followed by the instruction to imagine deleting the
@@ -314,20 +316,16 @@ that scenario's method-choice item, used for between-method comparisons
 within a single scenario) and \textit{paired}, $n=177$ (respondents who
 answered both, used for every within-subject less-vs-more comparison).
 Pooled-across-scenario analyses (e.g.\ Table~\ref{tab:contingency}) treat
-each participant's response in each scenario as its own observation (354
-observations from the 177 paired participants) and account for the repeated
-measures by clustering on participant, as described under Statistical
-analysis below. Descriptive percentages and the factor analysis use all 354
-observations. Method comparisons, including the pooled GEEs, use the 317
-observations of the four methods that meet the participant threshold
-below. Headline paired mean differences
+each participant's response in each scenario as its own observation (352
+observations from the 176 participants who named a method in both
+scenarios) and account for the repeated measures by clustering on
+participant, as described under Statistical analysis below. Headline paired mean differences
 (willingness, protection, effort, benefit loss) are reported with 95\%
 confidence intervals from a percentile bootstrap (10,000 resamples,
 seeded for reproducibility) over the paired-respondent differences, since
 the Wilcoxon signed-rank test used for these comparisons (chosen over a
-paired $t$-test because Shapiro-Wilk rejected normality of the
-difference scores for all three scales, as 40 to 51\% of participants gave the
-same rating in both scenarios) has no closed-form interval for the mean difference
+paired $t$-test per a per-scale Shapiro-Wilk normality check on the
+difference scores) has no closed-form interval for the mean difference
 itself.
 
 \textbf{Sample scope.} The eligibility screen keeps only respondents who
@@ -346,16 +344,10 @@ describe the strength of evidence within a family, not a paper-wide error
 rate. A nonsignificant result is read as ``no association detected,'' with
 the estimate and its uncertainty where available, not as evidence of no
 association: the smallest qualifying method groups contain 14 participants,
-so the tests have limited power to detect small differences. Method
-comparisons on ratings, expectations and verification include the four
-methods chosen by at least 14 participants in a scenario (at least 29
-pooled); every other method was chosen by at most 9 in a scenario (11
-pooled), so the set does not depend on the exact cutoff. The between-scenario
-tests of method choice and of ideal methods cover all listed methods. Fisher
+so the tests have limited power to detect small differences. Only methods
+chosen by at least 14 distinct participants enter inferential tests. Fisher
 exact tests on two-column tables (method by selected or not) are computed by
-exact enumeration, so every reported $p$-value is reproducible. Survey
-tests were computed with SciPy; the GEEs, factor analysis and regressions
-with statsmodels.
+exact enumeration, so every reported $p$-value is reproducible.
 
 Pooled analyses (both scenarios combined) fit a generalized estimating
 equation (GEE) with participant as the cluster, deletion method and scenario
@@ -383,7 +375,7 @@ Holm-adjusted omnibus test is significant.
 Analysis & Test & Holm family \\
 \midrule
 Scenario shift in protection, effort, benefit loss (paired, $n=177$)
-  & Wilcoxon signed-rank (Shapiro-Wilk rejected normality of the difference scores)
+  & Wilcoxon signed-rank, or paired $t$ where the difference scores pass Shapiro-Wilk
   & 3 scales \\
 Scenario shift in willingness (paired)
   & Wilcoxon signed-rank
@@ -448,36 +440,55 @@ automated feature-extraction step labeling candidate dimensions including
 a coarse deletion-location category, used only to stratify the sampling
 step below, not as the reliability-bearing codes reported next.
 
-\textbf{Coding and reliability.} Two coders independently coded all 138
-prompts of the audit sample (drawn as described below) on seven
-dimensions: deletion location, justification, data type, grammatical
-mood, tone, verb register, and accompanying secondary request.
-Inter-rater reliability is reported as Gwet's $AC_1$~\cite{gwet2008ac1}
-rather than Cohen's $\kappa$, because three dimensions are dominated by
-one label (91--94\% of items), where $\kappa$ understates true
+\textbf{Coding and reliability.} Two coders hand-coded prompts against a
+seven-dimension codebook: deletion location (the storage surface the
+request names: the current conversation, the assistant's persistent
+memory, the account as a whole, a named backend or database, or a
+forward-looking ``stop using this'' instruction that names no location),
+justification, data type (\emph{what}), grammatical mood, tone, verb
+register, and any accompanying secondary request (for example, asking for
+confirmation, or asking the assistant to preserve everything else the
+deletion target excludes). Each dimension was coded on 50 items.
+Inter-rater reliability was computed with Gwet's $AC_1$~\cite{gwet2008ac1}
+rather than Cohen's $\kappa$: several dimensions have highly skewed
+category distributions (one label covering 88--96\% of items), under which
+$\kappa$'s chance-agreement term is known to understate true
 agreement~\cite{gwet2008ac1,wongpakaran2013comparison}.
-Table~\ref{tab:ac1} reports these values.
+Table~\ref{tab:ac1} reports these values. Each of the two coders labeled a
+50-item sample independently, without seeing the other's codes.
+
+The deletion-location definition was refined after piloting, and its
+reliability is reported on a sample coded under the final definition. A
+location counts only when the prompt names it with an explicit referent
+(conversation or chat, memory, account, or a database, server, or
+training data); quantifiers such as ``all'' and generic containers such
+as ``history'' or ``messages'' do not qualify. When a prompt names
+several locations, a named database governs over a conversation or
+memory, and a forward-looking clause governs over a named conversation.
 
 \begin{table}[t]
 \centering
-\caption{Inter-Rater Reliability, $n=138$ per Dimension}
+\caption{Inter-Rater Reliability, $n=50$ per Dimension}
 \label{tab:ac1}
 \small
 \begin{tabular}{lccc}
 \toprule
 Dimension & Agreement & \% & Gwet's $AC_1$ \\
 \midrule
-Deletion location        & 125/138 & 90.6 & 0.890 \\
-Justification            & 131/138 & 94.9 & 0.943 \\
-What (data type)         & 133/138 & 96.4 & 0.956 \\
-Mood                     & 133/138 & 96.4 & 0.959 \\
-Tone                     & 137/138 & 99.3 & 0.990 \\
-Verb register            & 131/138 & 94.9 & 0.947 \\
-Accompanying request     & 133/138 & 96.4 & 0.962 \\
+Deletion location$^{\dagger}$ & 44/50 & 88.0 & 0.862 \\
+Justification           & 47/50 & 94.0 & 0.931 \\
+What (data type)        & 43/50 & 86.0 & 0.826 \\
+Mood                     & 48/50 & 96.0 & 0.955 \\
+Tone                     & 43/50 & 86.0 & 0.807 \\
+Verb register            & 47/50 & 94.0 & 0.938 \\
+Accompanying request     & 46/50 & 92.0 & 0.917 \\
 \midrule
-Pooled (966 ratings) & 923/966 & 95.5 & 0.954 \\
+Pooled (350 ratings) & 318/350 & 90.9 & 0.905 \\
 \bottomrule
 \end{tabular}
+\vspace{4pt}
+
+\footnotesize{$^{\dagger}$Coded under the final definition (see text).}
 \end{table}
 
 \textbf{Sampling for the technical audit.} A 138-item sample was drawn
@@ -495,13 +506,13 @@ chatbot platforms' consumer-facing deletion controls (Claude, ChatGPT,
 Gemini, Copilot, Perplexity, and DeepSeek), conducted against each
 platform's live web interface rather than its API, since the API does
 not expose the memory, settings, and deletion surfaces the study's
-research questions concern. Each platform is tested through
-researcher-controlled accounts under browser automation
+research questions concern. Each platform is tested through a
+researcher-controlled account under browser automation
 (Playwright)\footnote{Two of the six platforms additionally require a
 stealth plugin to pass Cloudflare bot-detection checks that otherwise
 block any automation-driven session; see the Ethics Considerations
 section.}, driven by an orchestrator that loads each test cell's
-parameters from a fixed experiment design and dispatches it to
+parameters from a pre-registered experiment design and dispatches it to
 the matching platform-specific implementation.
 
 \textbf{Design.} A \textit{cell} pairs one injection method with one
@@ -677,7 +688,7 @@ verbatim, paraphrased or not at all. The cue check only routes replies to
 a person and never decides an outcome.
 
 Within each recall visit the probes run in a fixed order, R2, then R3,
-then R1, the order fixed in the experiment design. The order limits
+then R1, the order set in the pre-registered design. The order limits
 contamination between probes: R2 only reads a page and adds nothing to
 the account, R3 runs before any direct question can put the token back
 into the account, and R1, which names the referent outright, runs last.
@@ -829,7 +840,7 @@ of what either attempt finds. Results (\S\ref{sec:audit-results}) report
 both attempts for every cell, not just a single collapsed outcome. Every
 phase of every cell (injection, erasure, same-session recall,
 cross-session recall) saves a transcript and a screenshot of the browser
-window, retained per platform and cell for independent review. All accounts
+window, retained per platform and cell for independent review. All six accounts
 are provisioned on each platform's free, no-cost tier; where a platform
 gates a tested surface behind a paid tier, that is recorded as a result
 rather than treated as a methodology gap. File-upload cells (\textit{FILE})
@@ -852,7 +863,7 @@ or refusal.
 
 \label{sec:sample-knowledge}
 
-Of 235 survey submissions, 218 were complete. One complete respondent failed an attention check and 36 reported never having deleted chatbot data, leaving 181 eligible respondents; 177 of these completed both scenarios and constitute the analysis sample (Table~\ref{tab:demographics}). Unless stated otherwise, percentages are of the 177 participants; percentages of observations count each participant's response in each scenario (354 in total). The sample was relatively young and well educated, with 73\% under age 45 and 62.1\% holding at least a bachelor's degree. Participants had substantial prior exposure to commercial chatbots: ChatGPT and Gemini were the most widely used, whereas Perplexity and DeepSeek had lower and more recent adoption (Figure~\ref{fig:ai-tenure}). Privacy knowledge was also high (mean 5.06 of 6 correct), alongside relatively high self-rated AI literacy (mean 3.83 of 5) and concern about sharing personal information with chatbots (mean 3.80 of 5).
+Of 235 survey submissions, 218 were complete. One complete respondent failed an attention check and 36 reported never having deleted chatbot data, leaving 181 eligible respondents; 177 of these completed both scenarios and constitute the analysis sample (Table~\ref{tab:demographics}). The sample was relatively young and well educated, with 73\% under age 45 and 62.1\% holding at least a bachelor's degree. Participants had substantial prior exposure to commercial chatbots: ChatGPT and Gemini were the most widely used, whereas Perplexity and DeepSeek had lower and more recent adoption (Figure~\ref{fig:ai-tenure}). Privacy knowledge was also high (mean 5.06 of 6 correct), alongside relatively high self-rated AI literacy (mean 3.83 of 5) and concern about sharing personal information with chatbots (mean 3.80 of 5).
 
 Participants most commonly reported sharing general questions, preferences or opinions, and work-related information with chatbots, although health and location information were also reported. Prior deletion attempts covered similar categories, particularly preferences or opinions, general questions, work information, health information, and sensitive personal experiences.
 
@@ -909,7 +920,7 @@ Privacy Knowledge (0--6) & $M=5.06$, $Mdn=5.0$ & n/a & n/a \\
 
 \textbf{Methods chosen in each scenario.} Deleting a single conversation was the most frequent choice in both scenarios (84/177, 47.5\%, in the less-sensitive scenario and 80/177, 45.2\%, in the more-sensitive one), followed by clearing all conversation history (33 and 40 participants; Table~\ref{tab:method-usage}). The distribution of chosen methods did not differ significantly between scenarios (Stuart-Maxwell test, $p=.393$). The more-sensitive scenario was always shown second (\S\ref{sec:survey-methodology}), so every difference between scenarios reported in this section is equally consistent with a sensitivity effect and an order effect.
 
-\textbf{Ideal methods in each scenario.} Participants could mark every method they considered ideal. Deleting a single conversation was again the most often marked (66.1\% and 60.5\%), followed by asking the chatbot to forget (46.9\% and 50.3\%) and clearing all conversation history (35.6\% and 40.7\%) (Table~\ref{tab:method-usage}). No method was marked significantly more or less often in one scenario than in the other after Holm correction across the eight methods (exact McNemar tests). The largest shift was for deleting a specific saved memory (31.1\% to 41.8\%), which did not survive correction ($p_{\mathrm{Holm}}=.088$).
+\textbf{Ideal methods in each scenario.} Participants could mark every method they considered ideal. Deleting a single conversation was again the most often marked (66.1\% and 60.5\%), followed by asking the chatbot to forget (46.9\% and 50.3\%) and clearing all conversation history (35.6\% and 40.7\%) (Table~\ref{tab:method-usage}). No method was marked significantly more or less often in one scenario than in the other after Holm correction across the eight methods (exact McNemar tests). The smallest difference was for deleting a specific saved memory (31.1\% to 41.8\%, $p=.011$, $p_{\mathrm{Holm}}=.088$).
 
 \textbf{Willingness to delete.} Willingness (five-point scale) was higher in the more-sensitive scenario ($M=4.37$) than in the less-sensitive one ($M=3.98$; $\Delta=+0.39$, 95\% CI $[+0.23, +0.55]$, Wilcoxon signed-rank $p<.001$, $r=.55$).
 
@@ -938,11 +949,11 @@ File a request & 2.8 & 0 (0.0) & 0 (0.0) & 2.3 & 5.1 \\
 
 \subsection{Evaluation of Data Deletion Methods}
 
-Only the four methods chosen by at least 14 participants (single conversation, clear all history, specific memory, ask to forget) enter the method comparisons below; the others are too rare to compare. Scale scores are the mean of a scale's items on a five-point agreement scale. Pooled figures use participant-scenario observations ($n=317$ across the four methods), so a participant who chose the same method in both scenarios contributes two.
+Only the four methods chosen by at least 14 participants (single conversation, clear all history, specific memory, ask to forget) enter the tests below; the others are too rare to test. Scale scores are the mean of a scale's items on a five-point agreement scale. Pooled figures use participant-scenario observations ($n=317$ across the four methods), so a participant who chose the same method in both scenarios contributes two.
 
 \subsubsection{Measurement Model}
 
-An exploratory factor analysis of the 12 protection, effort and benefit-loss items (principal axis, oblimin rotation; 354 participant-scenario observations) supported the three intended factors. The sampling was adequate (KMO $=.81$; Bartlett's test $p<.001$), parallel analysis retained three factors (eigenvalues 3.86, 3.58 and 1.86, each above the 95th percentile of random data; the fourth, 0.58, was not), and the three factors explained 70.6\% of the variance. Every item loaded at least .67 on its intended factor and at most .15 on any other (Table~\ref{tab:efa}); the same pattern held within each scenario (intended loadings at least .66, cross-loadings at most .18). Reliability was high for every factor in both scenarios (Cronbach's $\alpha=.87$ to $.92$). The scales were weakly correlated (Spearman $\rho$ on the 354 observations): protection and effort were essentially unrelated ($\rho=-.03$), protection and benefit loss weakly related ($\rho=.13$; $p=.096$ and $p=.089$ within the less- and more-sensitive scenarios), and effort and benefit loss modestly related ($\rho=.27$; $p<.001$ within each scenario).
+An exploratory factor analysis of the 12 protection, effort and benefit-loss items (principal axis, oblimin rotation; 354 participant-scenario observations) supported the three intended factors. The sampling was adequate (KMO $=.81$; Bartlett's test $p<.001$), parallel analysis retained three factors (eigenvalues 3.86, 3.58 and 1.86, each above the 95th percentile of random data; the fourth, 0.58, was not), and the three factors explained 70.6\% of the variance. Every item loaded at least .67 on its intended factor and at most .15 on any other (Table~\ref{tab:efa}); the same pattern held within each scenario. Reliability was high for every factor in both scenarios (Cronbach's $\alpha=.87$ to $.92$). The factors were weakly correlated: protection was unrelated to effort ($\rho=-.06$) and to benefit loss ($\rho=.13$), and effort and benefit loss were modestly correlated ($\rho=.31$, $p<.001$).
 
 \begin{table}[t]
 \centering
@@ -977,7 +988,7 @@ Prevents the kind of help I need & .67 & .15 \\
 
 \subsubsection{Perceived Privacy Protection}
 
-Mean protection ratings were similar across methods (pooled means 3.63 to 3.86; Table~\ref{tab:method-scales}), and the methods did not differ significantly: within each scenario Kruskal-Wallis tests found no difference ($p>.15$), and a participant-clustered generalized estimating equation on the pooled observations found none either (Wald $\chi^2(3)=3.71$, $p_{\mathrm{Holm}}=.29$). Scenario-specific means ranged from 3.54 to 3.84 (less-sensitive) and from 3.71 to 3.89 (more-sensitive). Protection was rated higher in the more-sensitive scenario across all participants ($M=3.66$ to $M=3.79$, $\Delta=+0.13$, 95\% CI $[+0.06, +0.21]$, $p_{\mathrm{Holm}}=.002$, $r=.38$). Within a method, protection did not differ significantly between the participants who chose it in the less-sensitive scenario and those who chose it in the more-sensitive one (Mann-Whitney tests, all $p_{\mathrm{Holm}}\geq.54$). In a regression on both scenarios' ratings (participant-clustered standard errors), AI literacy was the only participant characteristic associated with protection ($b=0.28$, $p=.016$); age, education, gender and privacy concern were not.
+Mean protection ratings were similar across methods (pooled means 3.63 to 3.86; Table~\ref{tab:method-scales}), and the methods did not differ significantly: within each scenario Kruskal-Wallis tests found no difference ($p>.15$), and a participant-clustered generalized estimating equation on the pooled observations found none either (Wald $\chi^2(3)=3.71$, $p_{\mathrm{Holm}}=.29$). Scenario-specific means ranged from 3.54 to 3.84 (less-sensitive) and from 3.71 to 3.89 (more-sensitive). Protection was rated higher in the more-sensitive scenario across all participants ($M=3.66$ to $M=3.79$, $\Delta=+0.13$, 95\% CI $[+0.06, +0.21]$, $p<.001$, $r=.38$). Within a method, protection did not differ significantly between the participants who chose it in the less-sensitive scenario and those who chose it in the more-sensitive one (Mann-Whitney tests, all $p_{\mathrm{Holm}}\geq.54$). In a regression on both scenarios' ratings (participant-clustered standard errors), AI literacy was the only participant characteristic associated with protection ($b=0.28$, $p=.016$); age, education, gender and privacy concern were not.
 
 \subsubsection{Benefit Loss}
 
@@ -985,7 +996,7 @@ Mean benefit-loss ratings were highest for deleting a specific saved memory (3.4
 
 \subsubsection{Effort}
 
-Effort was the only rating on which methods differed (pooled Wald $\chi^2(3)=23.05$, $p_{\mathrm{Holm}}<.001$; less-sensitive $H=18.42$, $p<.001$; more-sensitive $H=16.98$, $p<.001$). Deleting a single conversation had the lowest mean (1.64) and deleting a specific saved memory the highest (2.49; Table~\ref{tab:method-scales}). In pooled contrasts, participants who chose single-conversation deletion reported lower effort than those who chose specific-memory deletion (mean difference $-0.85$, 95\% CI $[-1.25, -0.46]$, $p_{\mathrm{Holm}}<.001$) and than those who chose clear-all-history ($-0.45$, $[-0.76, -0.14]$, $p_{\mathrm{Holm}}=.019$), but not lower than those who asked the chatbot to forget ($-0.10$, $[-0.39, +0.19]$); asking to forget was also rated lower than specific-memory deletion ($-0.75$, $[-1.22, -0.29]$, $p_{\mathrm{Holm}}=.008$). Within scenarios, single-conversation deletion had lower effort than specific-memory deletion in both and lower than clear-all-history in the more-sensitive scenario (all $p_{\mathrm{Holm}}<.01$). Method choice was self-selected, so these are associations with the chosen method, not effects of switching methods. Effort did not differ between scenarios across all participants ($\Delta=+0.03$, 95\% CI $[-0.06, +0.12]$), nor within any method (Mann-Whitney tests, all $p_{\mathrm{Holm}}=1.00$). Higher AI literacy was associated with lower effort ($b=-0.29$, $p=.008$); the other characteristics were not.
+Effort was the only rating on which methods differed (pooled Wald $\chi^2(3)=23.05$, $p_{\mathrm{Holm}}<.001$; less-sensitive $H=18.42$, $p<.001$; more-sensitive $H=16.98$, $p<.001$). Deleting a single conversation had the lowest mean (1.64) and deleting a specific saved memory the highest (2.49; Table~\ref{tab:method-scales}). In pooled contrasts, participants who chose single-conversation deletion reported lower effort than those who chose specific-memory deletion (mean difference $-0.85$, 95\% CI $[-1.25, -0.46]$, $p_{\mathrm{Holm}}<.001$) and than those who chose clear-all-history ($-0.45$, $[-0.76, -0.14]$, $p_{\mathrm{Holm}}=.019$), but not lower than those who asked the chatbot to forget ($-0.10$, $[-0.39, +0.19]$); asking to forget was also rated lower than specific-memory deletion ($-0.75$, $[-1.22, -0.29]$, $p_{\mathrm{Holm}}=.008$). Within scenarios, only single-conversation versus specific-memory deletion in the less-sensitive scenario was significant ($p_{\mathrm{Holm}}<.001$). Method choice was self-selected, so these are associations with the chosen method, not effects of switching methods. Effort did not differ between scenarios across all participants ($\Delta=+0.03$, 95\% CI $[-0.06, +0.12]$), nor within any method (Mann-Whitney tests, all $p_{\mathrm{Holm}}=1.00$). Higher AI literacy was associated with lower effort ($b=-0.29$, $p=.008$); the other characteristics were not.
 
 \begin{table*}[t]
 \centering
@@ -1009,9 +1020,9 @@ Ask to forget & 39; 25; 14 & 3.86 (0.65) & 3.84 & 3.89 & 2.91 (0.95) & 2.91 & 2.
 
 \subsubsection{Expectations of Data Deletion Methods}
 
-\textbf{Expected outcomes.} Across both scenarios ($n=354$ observations), participants most often expected the data to be permanently deleted from the chatbot's database and backups (59.0\%), followed by the chatbot no longer referencing it in future conversations (54.2\%) or in the current one (49.2\%); 28.5\% expected it to be hidden from users, 27.7\% expected it to be excluded from training, and 10.5\% were unsure. Expectations did not differ significantly by method (Table~\ref{tab:contingency}; participant-clustered GEE for each option, Holm-corrected across seven options, all $p_{\mathrm{Holm}}\geq.37$; Cram\'er's $V\leq.18$). The observed rates differed by up to 29 percentage points for some options, so this is a failure to detect an association at these group sizes, not evidence that methods elicit the same expectations.
+\textbf{Expected outcomes.} Across both scenarios, participants most often expected the data to be permanently deleted from the chatbot's database and backups (59.0\% of observations), followed by the chatbot no longer referencing it in future conversations (54.2\%) or in the current one (49.2\%); 28.5\% expected it to be hidden from users, 27.7\% expected it to be excluded from training, and 10.5\% were unsure. Expectations did not differ significantly by method (Table~\ref{tab:contingency}; participant-clustered GEE for each option, Holm-corrected across seven options, all $p_{\mathrm{Holm}}\geq.37$; Cram\'er's $V\leq.18$). The observed rates differed by up to 29 percentage points for some options, so this is a failure to detect an association at these group sizes, not evidence that methods elicit the same expectations.
 
-\textbf{Verification.} The most common verification response was not knowing how to check (44.6\% of the 354 observations), followed by asking in a new conversation (21.8\%), asking in the same conversation (20.6\%), checking the settings (17.5\%) and checking the interface (16.1\%); 10.2\% did not want to check (Table~\ref{tab:verification}). Verification differed by method. In the less-sensitive scenario, method was associated with asking in the same conversation ($p_{\mathrm{Holm}}=.001$), asking in a new conversation ($p_{\mathrm{Holm}}=.007$) and not knowing how to verify ($p_{\mathrm{Holm}}=.007$); in the more-sensitive scenario, with asking in the same conversation ($p_{\mathrm{Holm}}=.039$) and checking the settings ($p_{\mathrm{Holm}}=.046$). Those who chose the lowest-effort method, single-conversation deletion, most often did not know how to verify (58.5\%).
+\textbf{Verification.} The most common verification response was not knowing how to check (46.7\% of observations), followed by asking in the same conversation (20.5\%), asking in a new conversation (19.2\%), checking the interface (15.8\%) and checking the settings (14.5\%); 11.4\% did not want to check (Table~\ref{tab:verification}). Verification differed by method. In the less-sensitive scenario, method was associated with asking in the same conversation ($p_{\mathrm{Holm}}=.001$), asking in a new conversation ($p_{\mathrm{Holm}}=.007$) and not knowing how to verify ($p_{\mathrm{Holm}}=.007$); in the more-sensitive scenario, with asking in the same conversation ($p_{\mathrm{Holm}}=.039$) and checking the settings ($p_{\mathrm{Holm}}=.046$). Those who chose the lowest-effort method, single-conversation deletion, most often did not know how to verify (58.5\%).
 
 \textbf{Deleted information referenced again.} Nearly a quarter (23.7\%) had noticed a chatbot referencing information they believed they had deleted (20.3\% occasionally, 3.4\% frequently); 49.2\% had never noticed this, 24.3\% were not sure, and 2.8\% had never attempted deletion.
 
@@ -1020,8 +1031,7 @@ Ask to forget & 39; 25; 14 & 3.86 (0.65) & 3.84 & 3.89 & 2.91 (0.95) & 2.91 & 2.
 \begin{table}[t]
 \centering
 \caption{Deletion Method $\times$ Expectation (Pooled Participant-Scenario
-Observations), \% of Each Method's Observations. The last row covers all 354
-observations, including methods too rare to list.}
+Observations), \% of Each Method's Observations}
 \label{tab:contingency}
 \small
 \setlength{\tabcolsep}{3pt}
@@ -1034,8 +1044,6 @@ Single conv. (164)  & 58.5 & 44.5 & 54.3 & 28.0 \\
 Clear history (73)  & 52.1 & 39.7 & 42.5 & 16.4 \\
 Specific memory (41) & 65.9 & 68.3 & 63.4 & 19.5 \\
 ``Forget'' msg (39) & 64.1 & 53.8 & 51.3 & 35.9 \\
-\midrule
-All (354) & 59.0 & 49.2 & 54.2 & 27.7 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1043,8 +1051,7 @@ All (354) & 59.0 & 49.2 & 54.2 & 27.7 \\
 \begin{table*}[t]
 \centering
 \caption{Deletion Method $\times$ Verification (Pooled Participant-Scenario
-Observations), \% of Each Method's Observations. The last row covers all 354
-observations, including methods too rare to list.}
+Observations), \% of Each Method's Observations}
 \label{tab:verification}
 \small
 \setlength{\tabcolsep}{4pt}
@@ -1058,7 +1065,7 @@ Clear history (73)  & 19.2 & 17.8 & 13.7 & 23.3 & 6.8 & 42.5 & 11.0 \\
 Specific memory (41) & 22.0 & 34.1 & 36.6 & 12.2 & 2.4 & 29.3 & 12.2 \\
 ``Forget'' msg (39) & 53.8 & 33.3 & 10.3 & 10.3 & 0.0 & 23.1 & 7.7 \\
 \midrule
-All (354) & 20.6 & 21.8 & 17.5 & 16.1 & 5.1 & 44.6 & 10.2 \\
+All (317) & 20.5 & 19.2 & 14.5 & 15.8 & 3.2 & 46.7 & 11.4 \\
 \bottomrule
 \end{tabular}
 \end{table*}
@@ -1094,7 +1101,7 @@ All (354) & 20.6 & 21.8 & 17.5 & 16.1 & 5.1 & 44.6 & 10.2 \\
 % SUBSTUDY and NL FORGET (Recoverability and Policy consistency are
 % computed from them), and tester/transcripts/, once the
 % audit reaches a reportable stopping point (either full completion or a
-% planned interim cut), not before; do not draft this from
+% pre-registered interim cut), not before; do not draft this from
 % partial/in-progress data presented as final.
 TBWL
 
@@ -1105,10 +1112,10 @@ TBWL
 deletion.} Deletion that removes a record does not, by itself, remove
 that record's influence on a model already trained on it; machine-unlearning
 research treats this as a distinct, harder problem than record-level
-deletion~\cite{bourtoule2021machine}. In the survey, participants most
-often expected permanent deletion (59.0\% of observations), while only
-16--36\% of observations (depending on the method chosen) also expected
-exclusion from training (\S\ref{sec:sample-knowledge}). This selection pattern does not show that
+deletion~\cite{bourtoule2021machine}. In the survey, most participants
+selected ``permanently deleted'' as an expected outcome, while only 15--36\%
+(depending on the method chosen) also selected ``no longer used for training the AI model''
+(\S\ref{sec:sample-knowledge}). This selection pattern does not show that
 participants conflate the two outcomes. The item was select-all, so leaving an
 option unselected does not mean a participant believes its opposite. The
 ``permanently deleted'' option was worded as deletion ``from the database and
@@ -1131,7 +1138,7 @@ locatable, or actually checked. This holds for cloud-storage
 deletion~\cite{ramokapane2017stupid} and for website data-deletion and
 opt-out controls audited directly~\cite{habib2019empirical}.
 Participants' self-reported verification behavior fits the same pattern
-in a new setting: 44.6\% of observations did not know how
+in a new setting: nearly half (46.7\% of observations) did not know how
 to check whether a chatbot deletion worked (\S\ref{sec:sample-knowledge}). These are participants' recollections of
 past behavior on the survey's verification item, not actions the study
 observed directly, a distinction the technical audit's own recall probes
@@ -1140,14 +1147,14 @@ that caveat, the pattern suggests the verification gap is a property of
 how deletion controls are generally designed and explained, not something
 specific to any one platform's implementation.
 
-\textbf{The memory-deletion effort matches a known mental-model gap.}
+\textbf{The memory-deletion cost matches a known mental-model gap.}
 Interview work on LLM chatbot memory features finds that users hold
 diverse, often incomplete models of what a stored ``memory'' represents
 and how it was formed, and want finer-grained control over
 it~\cite{zhang2025understanding}. That gives a plausible mechanism for
-this paper's finding that deleting a specific saved memory was rated as
-more effortful than deleting a single conversation or asking the chatbot
-to forget (\S\ref{sec:sample-knowledge}): if a user is unsure what a memory
+this paper's own finding that ``delete a specific saved memory'' is both
+the highest-effort and highest-benefit-loss method participants
+rated (\S\ref{sec:sample-knowledge}): if a user is unsure what a memory
 entry represents or how it was derived, deciding whether and how to
 delete it is harder than deleting a single conversation turn, independent
 of how many clicks either action actually takes.
@@ -1168,7 +1175,7 @@ effort tolerance.
 patterns are consistent with participants expecting deletion to reach stored
 copies (most selected permanent deletion), with training exclusion being a
 less frequently selected outcome, and with limited knowledge of how to verify
-a deletion (44.6\% did not know how). These are implications drawn from
+a deletion (about 45\% did not know how). These are implications drawn from
 association patterns in self-reported data, not interventions this study
 evaluated. If the patterns hold, a chatbot platform that wants its deletion
 controls to function as a right-to-erasure mechanism, rather than a
@@ -1294,7 +1301,7 @@ after a session loaded was identical in kind to a manual one. Potential
 harm is confined to the researchers' own test-account data; the study
 does not disrupt other users, access confidential information, or alter
 shared infrastructure. We did not seek permission from the platforms: all
-accounts were free-tier accounts, and every action was available to any
+six accounts were free-tier accounts, and every action was available to any
 free-tier user. The IRB review covered the survey only; the audit involved
 no human subjects beyond the use of the redacted survey prompts described above.
 We see no path to harm for any person: the audit used only our own accounts,

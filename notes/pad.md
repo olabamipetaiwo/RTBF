@@ -69,3 +69,15 @@ Taiwo Olabamipe · University of Central Florida
 
 
 ---
+
+
+----
+
+The deletion-location definition was refined after piloting, and the
+reliability reported here comes from coding under the final definition. A
+location counts only when the prompt names it with an explicit referent
+(conversation or chat, memory, account, or a database, server, or
+training data); quantifiers such as ``all'' and generic containers such
+as ``history'' or ``messages'' do not qualify. When a prompt names
+several locations, a named database governs over a conversation or
+memory, and a forward-looking clause governs over a named conversation.

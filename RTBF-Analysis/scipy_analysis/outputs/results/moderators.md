@@ -1,6 +1,6 @@
 # moderators
 
-_Run at 2026-08-07T14:24:11_
+_Run at 2026-09-30T15:06:06_
 
 ```text
 
@@ -15,7 +15,7 @@ benefit_loss 0.27 0.9915  1.0000 -0.022
     (dropped groups below n>=14: ['65+ years old'])
 
 [less] age_group (Q2.1) -> method choice (Q4.2)
-    fisher  p=0.0151  cramers_v=0.229  -> SIG
+    fisher  p=0.0161  cramers_v=0.229  -> SIG
     groups tested: ['25-34 years old', '35-44 years old', '18-24 years old', '45-54 years old', '55-64 years old']
 
 ==================================================================
@@ -28,7 +28,7 @@ benefit_loss 1.40 0.7055     1.0 -0.009
  willingness 2.83 0.4186     1.0 -0.001    
 
 [less] chatgpt_tenure (Q3.1_1) -> method choice (Q4.2)
-    fisher  p=0.1213  cramers_v=0.173  -> ns
+    fisher  p=0.1230  cramers_v=0.173  -> ns
     groups tested: ['2+ years', '1 to 2 years', 'Less than 6 months', '6 to 12 months']
 
 ==================================================================
@@ -42,7 +42,7 @@ benefit_loss 1.95 0.7453  1.0000 -0.012
     (dropped groups below n>=14: ['65+ years old'])
 
 [more] age_group (Q2.1) -> method choice (Q5.2)
-    fisher  p=0.0797  cramers_v=0.21  -> ns
+    fisher  p=0.0796  cramers_v=0.21  -> ns
     groups tested: ['25-34 years old', '35-44 years old', '18-24 years old', '45-54 years old', '55-64 years old']
 
 ==================================================================
@@ -55,6 +55,6 @@ benefit_loss 1.67 0.6439     1.0 -0.008
  willingness 2.88 0.4108     1.0 -0.001    
 
 [more] chatgpt_tenure (Q3.1_1) -> method choice (Q5.2)
-    fisher  p=0.0133  cramers_v=0.207  -> SIG
+    fisher  p=0.0094  cramers_v=0.214  -> SIG
     groups tested: ['2+ years', '1 to 2 years', 'Less than 6 months', '6 to 12 months']
 ```
