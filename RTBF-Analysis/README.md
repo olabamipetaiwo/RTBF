@@ -41,6 +41,10 @@ outputs/tables/   Generated tables
 outputs/figures/  Generated figures
 ```
 
+## Audit outcomes
+
+`src/audit_outcomes.py` derives the technical audit's recoverability and policy-consistency measurements from the master workbook (`python -m src.audit_outcomes`). Rules, inputs, prerequisites for a real run, and tests: see [`docs/audit_outcomes.md`](docs/audit_outcomes.md).
+
 ## Data notes
 
 - The raw export has **2 metadata header rows** (question ID, full question text), not the standard 3-row Qualtrics format — there's no ImportId-JSON row. Data starts at row 2 (0-indexed). See `src/config.py`.
@@ -52,3 +56,7 @@ outputs/figures/  Generated figures
 
 
 <!-- Not done — and this is the gap: paper.tex has zero mention of the coding comparison or AC1 anywhere (I grepped for kappa/AC1/Gwet/agreement/inter-rater — nothing). The Methodology section only covers the technical audit (injection/erasure/recall); the qualitative prompt-coding study (deletion_location/justification/what/mood/tone/verb/accompanying_request, 138 items, two coders) isn't written up at all yet, and Results §"Technical Audit" (line 549) is still a TODO stub. -->
+
+## Number sources
+
+`python -m src.number_sources` writes `docs/number_sources.md`: for every number in the paper's Methods and Results, the saved output that prints it (SciPy outputs in `scipy_analysis/` and `outputs/results/`), plus a short list of numbers recorded by hand with the reason. Re-run it after any change to a number in the paper or to a saved output; its exceptions table must stay empty.

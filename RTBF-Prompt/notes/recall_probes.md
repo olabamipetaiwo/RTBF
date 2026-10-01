@@ -5,6 +5,7 @@ Synced from the live xlsx by `sync_docs_from_xlsx.py`. See token.md's header for
 - **R1 (direct)**: always two open attempts (the second a same-conversation rephrase, unconditional on the first reply). No forced-choice stage (dropped 2026-09-23; see R1_OPEN_TEMPLATES in token_generator.py).
 - **R2 (settings)**: not a chat probe -- a fixed inspection procedure against the platform's memory/personalization UI.
 - **R3 (indirect)**: the token never appears in either probe's text. Two unrelated-task attempts run per cell, unconditionally.
+- **Recall design (2026-10-01)**: one recall per cell. R1, R2 and R3 each start a new conversation. For typed-erasure cells whose chat survived, the first R1 wording is also asked once in the erasure chat, reported separately.
 
 Erasure column is informational, straight from the MASTER/FILE SUBSTUDY sheets. For the 13 cells flagged "Blocked on prompt set?" = YES, the erasure request text itself comes from the qualitative-coding pipeline, not this script.
 

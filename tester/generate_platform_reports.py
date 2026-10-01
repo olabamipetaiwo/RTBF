@@ -21,14 +21,14 @@ from pathlib import Path
 import config
 
 # Matches run_cell.py's phase-file naming (01_inject, 02_erase,
-# 03_recall_same_session, 04_recall_cross_session) so reports render in
+# 03_recall_new_conversation, 04_recall_same_conversation) so reports render in
 # chronological order regardless of directory-listing order.
-PHASE_ORDER = ["01_inject", "02_erase", "03_recall_same_session", "04_recall_cross_session"]
+PHASE_ORDER = ["01_inject", "02_erase", "03_recall_new_conversation", "04_recall_same_conversation"]
 PHASE_TITLES = {
     "01_inject": "Inject",
     "02_erase": "Erase",
-    "03_recall_same_session": "Recall -- same session",
-    "04_recall_cross_session": "Recall -- cross session",
+    "03_recall_new_conversation": "Recall -- new conversation",
+    "04_recall_same_conversation": "Recall -- same conversation (typed erasures)",
 }
 
 

@@ -1,3 +1,5 @@
+> **2026-10-01 NOTE (secondhand summary, historical):** the per-cell order and the "same-session / cross-session legs" described below are the original design, then an interim two-visit version; the current recall design is the last entry of `notes/recall_probe_standardization.md`.
+
 
 Claude finished the response
 cna you still recall our rtbf porject?

@@ -43,7 +43,10 @@ PLATFORM_PREFIX = {
     "copilot": "CO", "perplexity": "PE", "deepseek": "DE",
 }
 
+# One dedicated account for five platforms; Gemini runs on its own separate
+# account (tester/accounts.md, tester/config.py ("gemini", "nlforget")).
 NLFORGET_ACCOUNT_EMAIL = "astrataiwo@gmail.com"
+NLFORGET_EMAIL_BY_PLATFORM = {"gemini": "olaoluwaboluwatife001@gmail.com"}
 
 
 def load_prompts() -> list[dict]:
@@ -83,7 +86,7 @@ def main() -> None:
                 "token": token_str,
                 "disclosure_sentence": disclosure,
                 "erasure_request_text": erasure_request_text,
-                "email": NLFORGET_ACCOUNT_EMAIL,
+                "email": NLFORGET_EMAIL_BY_PLATFORM.get(platform, NLFORGET_ACCOUNT_EMAIL),
                 "deletion_locus": p["deletion_locus"],
                 "syntactic_form": p["syntactic_form"],
                 "politeness": p["politeness"],

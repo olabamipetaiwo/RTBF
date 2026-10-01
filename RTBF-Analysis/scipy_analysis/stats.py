@@ -71,11 +71,12 @@ def between_scenario_likert(paired, lines):
     lines.append("\n" + "=" * 70)
     lines.append("STEPS 3-4  BETWEEN-SCENARIO Likert (Shapiro -> t/Wilcoxon, Holm x3)")
     lines.append("=" * 70)
-    pvals, results = [], []
+    pvals, results, zeros = [], [], []
     for scale, (q, k) in SCALES.items():
         less = scale_score(paired, "Q4", q, k)
         more = scale_score(paired, "Q5", q, k)
         d = (more - less).dropna()
+        zeros.append((int((d == 0).sum()), len(d)))  # participants with the same score in both scenarios
         _, p_norm = stats.shapiro(d)
         normal = p_norm > 0.05
         if normal:
@@ -89,12 +90,13 @@ def between_scenario_likert(paired, lines):
         pvals.append(p)
         results.append((scale, test, normal, stat, es, d.mean()))
     padj = holm(pvals)
-    for (scale, test, normal, stat, es, mdiff), p_adj, p_raw in zip(results, padj, pvals):
+    for (scale, test, normal, stat, es, mdiff), p_adj, p_raw, (n_zero, n_all) in zip(results, padj, pvals, zeros):
         arrow = "more>less" if mdiff > 0 else "less>more"
         lines.append(f"\n[{scale}] shapiro_normal={normal}  {test}  stat={stat}  "
                       f"{es}  mean_diff={mdiff:+.3f} ({arrow})")
         lines.append(f"    p_raw={p_raw:.4f}  p_holm={p_adj:.4f}  "
                       f"-> {'SIG' if p_adj < 0.05 else 'ns'}")
+        lines.append(f"    same score in both scenarios (difference = 0): {n_zero}/{n_all} ({100*n_zero/n_all:.1f}%)")
     return [(f"[{scale}] scenario {test}", p) for (scale, test, *_r), p in zip(results, pvals)]
 
 

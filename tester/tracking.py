@@ -8,9 +8,10 @@ due-date math) that only tester itself needs to compute.
 
 Study design (confirmed with the user 2026-08-28): erasure runs 48 hours
 after injection; recall runs 31 days after erasure (not after injection).
-Same-session and cross-session recall both happen at that single 31-day
-mark -- see run_cell.py's recall_cell() -- they are not staggered across
-two different calendar times.
+Recall happens once per cell at that 31-day mark: a new-conversation recall
+for every cell, plus one same-conversation request for typed-erasure cells
+(see run_cell.py's recall_cell(); design fixed 2026-10-01). It is not
+staggered across calendar times.
 """
 
 from __future__ import annotations

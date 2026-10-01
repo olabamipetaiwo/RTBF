@@ -14,7 +14,7 @@ Same architectural pattern as Claude/ChatGPT: conversation history and Memory ar
 
 ## Retention window
 > "Microsoft retains your conversation history for **18 months**" — Microsoft Copilot for individuals: privacy controls
-> Files shared with Copilot are "stored securely for up to **30 days** and then automatically deleted."
+> Files shared with Copilot are "stored securely for a short time (no longer than **18 months**) and then automatically deleted." (Microsoft Privacy FAQ for Copilot; checked 2026-10-01. An earlier version of this note said "up to 30 days", which does not match the page.)
 
 No text found disclosing a specific backend-propagation delay after an explicit user-initiated deletion (distinct from the passive 18-month/30-day retention-then-auto-delete windows above) — this project's own R2/recall-delay design (31 days) is not directly corroborated or contradicted by anything found in Copilot's own documentation.
 

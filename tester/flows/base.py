@@ -176,7 +176,7 @@ class PlatformFlow:
 
     def new_conversation(self) -> None:
         """Start a fresh chat/conversation in the current session (for
-        cross-session recall probes)."""
+        the new-conversation recall probes)."""
         raise NotImplementedError
 
     def send_message(self, text: str) -> str:

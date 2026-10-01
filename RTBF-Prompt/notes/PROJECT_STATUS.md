@@ -1,3 +1,5 @@
+> **2026-10-01 NOTE:** the recall design changed. Wherever this file says "same-session" / "cross-session" recall, read it as the OLD two-visit design. The current design (one new-conversation recall plus one same-conversation request for typed erasures) is the last entry of `notes/recall_probe_standardization.md`.
+
 # RTBF Project Status
 
 Snapshot written 2026-08-24. Read this first for full context, especially if
@@ -59,6 +61,11 @@ afterward, not a hierarchy:
   in this session at the user's request; how to frame/disclose that in the
   paper is still an open decision, don't describe it as independently
   human-coded without checking first.
+  **CORRECTION 2026-09-30 (from the user):** Claude was not involved in the
+  coding. The first coding pass was done independently by the user and by
+  Jihwan Song, each by hand. The sentence above (attributing the coding to
+  Claude) is withdrawn; do not describe the coding as anything other than
+  independent human coding by the two coders.
 - **Jihwan Song**'s independent, inductive (no shared codebook) coding on
   the first 50 of the same 138-item list **arrived 2026-08-26**, in
   `/Users/taiwoolabamipe/Downloads/UCF/RTBF/Compare/` (`Jihwan_Coding
@@ -175,9 +182,13 @@ sheet directly):
   close that gap. 12 spare entries beyond the 88 assigned; expand the list
   before it's ever exhausted by reruns/new cells. Regenerated and verified
   2026-08-26 (all 88 cells confirmed to get distinct referents).
-- **Resurrection check delay: 30 days**, standardized across all 6 platforms,
-  sourced from the platforms' own privacy-policy deletion-completion
-  commitments (not from Claude's separate ~24h memory-synthesis window).
+- **Resurrection check delay: 31 days after erasure** (`ERASURE_DELAY` 48 h and
+  `RECALL_DELAY` 31 d in `tester/tracking.py` are the single source),
+  standardized across all 6 platforms. ChatGPT, Claude and Perplexity state
+  deletion within 30 days (verified 2026-09-30) and one day is added; Gemini,
+  Copilot and DeepSeek state no completion time, so the same window is
+  applied for comparability (not from Claude's separate ~24h memory-synthesis
+  window).
 - **Outcome taxonomy pre-registered**: complied / partial / refused /
   deflected / silently ignored, applied to every reading before full-battery
   runs start. Added as a new "Observed outcome (coded)" column in both MASTER

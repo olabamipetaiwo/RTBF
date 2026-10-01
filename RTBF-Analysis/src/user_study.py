@@ -81,6 +81,10 @@ def multi_select_freq(df: pd.DataFrame, prefix: str, labels: dict[int, str]) -> 
         col = f"{prefix}_{k}"
         if col in df:
             out.append(f"  {label:<45} {pct(int(df[col].notna().sum()), n)}")
+    cols = [f"{prefix}_{k}" for k in labels if f"{prefix}_{k}" in df]
+    if cols:
+        multi = int((df[cols].notna().sum(axis=1) > 1).sum())
+        out.append(f"  (selected more than one option: {multi}/{n}, {100 * multi / n:.1f}%)")
     return out
 
 
@@ -338,12 +342,35 @@ def verification_by_method(p: pd.DataFrame) -> list[str]:
     return lines
 
 
+def pooled_all_observations(p: pd.DataFrame) -> list[str]:
+    """Expectation (Q4.4/Q5.4) and verification (Q4.5/Q5.5) option rates over
+    ALL participant-scenario observations (2 x paired participants), the
+    'All (354)' rows of the paper's contingency and verification tables."""
+    exp = {1: "Permanently deleted (database and backups)", 2: "Made invisible / hidden",
+           3: "Not referenced in the current conversation",
+           4: "Not referenced in future conversations", 5: "No longer used for training",
+           6: "Not sure what happens", 7: "Other"}
+    ver = {1: "Asked in the same conversation", 2: "Asked in a new conversation",
+           3: "Checked settings", 4: "Checked interface", 5: "Privacy portal",
+           6: "Did not know how to check", 7: "Did not want to check"}
+    lines = []
+    for title, qs, labels in (("EXPECTATION", ("Q4.4", "Q5.4"), exp),
+                              ("VERIFICATION", ("Q4.5", "Q5.5"), ver)):
+        n = 2 * len(p)
+        lines.append(f"\n=== 4.2.5 {title}, ALL OBSERVATIONS (both scenarios pooled, n={n}) ===")
+        for k, label in labels.items():
+            c = int(sum(p[f"{q}_{k}"].notna().sum() for q in qs))
+            lines.append(f"  {label:<45} {pct(c, n)}")
+    return lines
+
+
 def main() -> None:
     p = get_bases(RAW, verbose=False)["paired"]
     lines: list[str] = []
     for step in (sample_profile, past_use, ideal_methods, factor_model,
                  per_method_scales, protection_regression,
-                 referencing_and_feedback, verification_by_method):
+                 referencing_and_feedback, verification_by_method,
+                 pooled_all_observations):
         lines += step(p)
     print("\n".join(lines))
     print("saved ->", save_report("user_study", lines))

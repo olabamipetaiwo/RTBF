@@ -33,8 +33,8 @@ unique phrasings (clustering input)         : 375   -> results/step3_unique_phra
 Scrub results
 
 rows                 : 375
-prompts altered      : 32 (8.5%)
-redactions by type   : {'[LOCATION]': 12, '[ORG]': 20, '[PERSON]': 3}
+prompts altered      : 7 (1.9%)
+redactions by type   : {'[LOCATION]': 10}
 
 
 Features Extraction
@@ -145,6 +145,8 @@ This is exactly the separation Searle's speech-act mood taxonomy (declarative/in
 
 
 ## Setup Experimtns
+
+> Historical planning notes. The recall design they mention (same-session / cross-session legs) was replaced on 2026-10-01; see `notes/recall_probe_standardization.md`, last entry.
 
 1. Isolation (the core "no interference" requirement)
 - Fresh, unauthenticated or freshly-provisioned account/session per trial — no shared conversation history, memory, or personalization state carried between prompt conditions or platforms.

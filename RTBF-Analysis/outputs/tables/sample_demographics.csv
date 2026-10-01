@@ -7,3 +7,12 @@ Age,How old are you?,55-64 years old,17,9.6
 Age,How old are you?,65+ years old,3,1.7
 Lives in US,Are you currently living in the United States?,Yes,177,100.0
 Ever used a chatbot,"Have you ever used at least one of the following AI Chatbots: Claude, ChatGPT, Gemini, Perplexity, Deepseek and Microsoft Copilot?",Yes,177,100.0
+Education,What is the highest level of education you have completed?,Bachelor’s degree,75,42.4
+Education,What is the highest level of education you have completed?,"Graduate or professional degree (MA, MS, MBA, PhD, JD, MD, DDS etc.)",35,19.8
+Education,What is the highest level of education you have completed?,"Some college, but no degree",30,16.9
+Education,What is the highest level of education you have completed?,Associates or technical degree,19,10.7
+Education,What is the highest level of education you have completed?,High school diploma or GED,15,8.5
+Education,What is the highest level of education you have completed?,Some high school or less,3,1.7
+Gender,What is your gender? - Selected Choice,Man,104,58.8
+Gender,What is your gender? - Selected Choice,Woman,72,40.7
+Gender,What is your gender? - Selected Choice,Prefer not to say,1,0.6

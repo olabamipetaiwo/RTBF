@@ -54,12 +54,15 @@ PLATFORM_PREFIX = {
 # -- see RTBF-Prompt/token_generator.py's write_tokens_to_xlsx() for the same
 # pattern).
 COL_RUN_STATUS = 9
-COL_R1_SAME = 10
-COL_R2_SAME = 11
-COL_R3_SAME = 12
-COL_R1_CROSS = 13
-COL_R2_CROSS = 14
-COL_R3_CROSS = 15
+# Recall columns (indices unchanged; meaning changed 2026-10-01, see recall_cell):
+# three new-conversation probes, one same-conversation R1, and two retired
+# columns (the old second new-chat visit was dropped) that stay empty.
+COL_R1_NEW = 10
+COL_R2_NEW = 11
+COL_R3_NEW = 12
+COL_R1_SAMECONV = 13
+COL_RETIRED_14 = 14
+COL_RETIRED_15 = 15
 COL_NOTES = 16
 COL_OBSERVED_OUTCOME = 19
 COL_EMAIL = 22  # added 2026-09-01 -- which account ran this cell, see config.account_email()
@@ -68,7 +71,7 @@ COL_ERASURE_REQUEST_TEXT = 23  # added 2026-09-07 -- the 13 blocked_on_prompt_se
 # erasure_request_sentence(), empty for every other row.
 
 # FILE SUBSTUDY sheet column indices (1-indexed) -- a different layout
-# than MASTER: no R1-R3 same/cross-session columns (Q16's verification
+# than MASTER: no R1-R3 recall columns (Q16's verification
 # is a one-time post-upload check, not a same/cross split), instead
 # "Extraction observed at" (written at injection time) and
 # "Results / notes" + "Observed outcome (coded)" (written at recall time).
@@ -205,12 +208,12 @@ def _update_file_substudy_row(cell_id: str, field_updates: dict[int, str]) -> No
 # NL FORGET sheet column indices (1-indexed) -- see nl_forget_cell_generator.py
 # for the writer that created this sheet's header/rows.
 NLF_COL_RUN_STATUS = 8
-NLF_COL_R1_SAME = 9
-NLF_COL_R2_SAME = 10
-NLF_COL_R3_SAME = 11
-NLF_COL_R1_CROSS = 12
-NLF_COL_R2_CROSS = 13
-NLF_COL_R3_CROSS = 14
+NLF_COL_R1_NEW = 9
+NLF_COL_R2_NEW = 10
+NLF_COL_R3_NEW = 11
+NLF_COL_R1_SAMECONV = 12
+NLF_COL_RETIRED_13 = 13
+NLF_COL_RETIRED_14 = 14
 NLF_COL_NOTES = 15
 NLF_COL_OBSERVED_OUTCOME = 16
 
@@ -287,17 +290,16 @@ def _run_recall_probes(
 
     Order (changed 2026-09-23): R2 -> R3 -> R1, the "Probe order (fixed):
     settings / indirect / direct" pre-registered on the master xlsx's README
-    sheet (earlier code ran R1 -> R2 -> R3). It also keeps the probes from
-    contaminating each other within a visit. R2 only reads a page, so it
-    goes first and adds nothing to the account. R3 (does the disclosure
-    leak into unrelated writing) runs before any direct question can put
-    the token back into the account's history or memory. R1, which names
-    the referent outright, goes last. This orders probes within one visit
-    only: the cross-session visit still runs after the same-session one on
-    the same account. Decided 2026-09-23 (review.md N3): no deletion between
-    visits; same-session is the primary measurement and cross-session is
-    labelled not independent when the same-session visit put the token in
-    the account (see recall_cell and _put_token_in_account).
+    sheet. R2 only reads a page, so it goes first and adds nothing to the
+    account. R3 (does the disclosure leak into unrelated writing) runs before
+    any direct question can put the token back into the account's history or
+    memory. R1, which names the referent outright, goes last.
+
+    This is the new-conversation recall, the only part that decides
+    recoverability. Since 2026-10-01 there is exactly one such visit per
+    cell; the old second visit (and its "not independent" labelling) was
+    dropped. A single same-conversation R1 request may follow it, see
+    _run_same_conversation_probe.
 
     Two attempts each, unconditionally (fixed 2026-09-23, review.md item
     3a): the previous design followed up only when the first result was
@@ -311,9 +313,8 @@ def _run_recall_probes(
     replies are classified by recall_scoring.py: only a clean full-token
     match is scored automatically, a partial match or a token with a
     negation/refusal/question cue is labelled for human review.
-    `session_label` is "03_recall_same_session" or "04_recall_cross_session"
-    -- used to name this sub-phase's saved transcript and per-probe
-    screenshots. Returns just the scores; the transcript is saved directly
+    `session_label` is "03_recall_new_conversation" -- used to name this
+    sub-phase's saved transcript and per-probe screenshots. Returns just the scores; the transcript is saved directly
     rather than returned, since this is now the only place that needs it."""
     transcript: dict = {}
 
@@ -361,19 +362,35 @@ def _run_recall_probes(
     return {"r1": r1_score, "r2": r2_score, "r3": r3_score}
 
 
-def _put_token_in_account(scores: dict[str, str]) -> bool:
-    """True if a visit's R1/R3 reply contained the full token, clean or with a
-    negation/refusal/question cue (a cued reply still types the token into the
-    chat). R2 is excluded: reading the memory page adds nothing to the
-    account. Decides whether the next visit is independent (review.md N3)."""
-    return any(scores[k].startswith(("TOKEN FOUND", "REVIEW")) for k in ("r1", "r3"))
+# Erasure types where the forget request is typed into the cell's own chat, so
+# that chat still exists afterwards and can be asked once more (recall design
+# of 2026-10-01). Delete-conversation, UI-action and maximal erasures are not
+# eligible.
+TYPED_ERASURE_TYPES = ("NL forget prompt", "NL forget command")
+_SAME_CONVERSATION_ATTEMPTS = ("same-conversation",)
 
 
-def _memory_appeared_between_visits(same_scores: dict[str, str], cross_scores: dict[str, str]) -> bool:
-    """True if the memory page showed the token only at the second visit. Visit
-    1's R2 runs before any chat, so a token first seen by visit 2's R2 was
-    written in between, most likely by visit 1's own probe chats."""
-    return cross_scores["r2"].startswith("TOKEN FOUND") and same_scores["r2"] == "NOT FOUND (auto)"
+def _same_conversation_eligible(plan: "CellPlan", entry: dict) -> bool:
+    return plan.erasure_type_text in TYPED_ERASURE_TYPES and bool(entry.get("injection_ref"))
+
+
+def _run_same_conversation_probe(
+    flow, probes: dict[str, str], token: str, platform: str, cell_id: str, ref: str, session_label: str
+) -> str:
+    """ONE R1 question asked inside the chat where the forget request was typed
+    (the cell's own conversation, reopened by its stored reference, the same
+    way `_send_nl_forget` reaches it). Run last, after the new-conversation
+    probes. The original disclosure is still in this chat's own context, so a
+    find here is not evidence that the platform kept the content beyond the
+    chat: it is reported separately and never feeds the policy verdict."""
+    flow.page.goto(ref)
+    reply = flow.send_message(probes["r1_open"])
+    _save_screenshot(flow, platform, cell_id, f"{session_label}_r1")
+    label, detail = score_attempts([reply], token, _SAME_CONVERSATION_ATTEMPTS)
+    _save_json(platform, cell_id, session_label, {
+        "ref": ref, "r1_sent": probes["r1_open"], "r1_reply": reply, "scoring": {"r1": detail},
+    })
+    return label
 
 
 def _verify_file_injection(flow, upload_reply: str, token: str) -> tuple[str, dict]:
@@ -636,15 +653,20 @@ def recall_cell(cell_id: str, force: bool = False) -> None:
     flow_cls = FLOW_REGISTRY[plan.platform]
     session_label = config.MAXIMAL_ACCOUNT_LABEL.get(cell_id) or ("nlforget" if plan.sheet == "NLFORGET" else None)
 
+    same_conv_label = "N/A (not applicable)"
     with flow_cls(session_label=session_label) as flow:
-        same_scores = _run_recall_probes(
-            flow, probes, token, plan.platform, cell_id, "03_recall_same_session"
+        new_scores = _run_recall_probes(
+            flow, probes, token, plan.platform, cell_id, "03_recall_new_conversation"
         )
-
-    with flow_cls(session_label=session_label) as flow:
-        cross_scores = _run_recall_probes(
-            flow, probes, token, plan.platform, cell_id, "04_recall_cross_session"
-        )
+        if _same_conversation_eligible(plan, entry):
+            try:
+                same_conv_label = _run_same_conversation_probe(
+                    flow, probes, token, plan.platform, cell_id,
+                    entry["injection_ref"], "04_recall_same_conversation",
+                )
+            except Exception as exc:  # never lose the primary result over the extra probe
+                same_conv_label = f"ERROR (same-conversation probe failed: {type(exc).__name__}: {exc})"
+                print(f"WARNING {cell_id}: {same_conv_label}")
 
     def _leaked(scores: dict[str, str]) -> bool:
         return any(v.startswith("TOKEN FOUND") for v in scores.values())
@@ -652,46 +674,24 @@ def recall_cell(cell_id: str, force: bool = False) -> None:
     def _needs_review(scores: dict[str, str]) -> bool:
         return any(v.startswith(("PARTIAL", "REVIEW")) for v in scores.values())
 
-    leaked_same = _leaked(same_scores)
-    leaked_cross = _leaked(cross_scores)
-    review_pending = _needs_review(same_scores) or _needs_review(cross_scores)
-    # Isolation (review.md N3): the cross-session visit runs on an account the
-    # same-session visit has already written to. If a same-session R1/R3 reply
-    # contained the full token, that reply is now in the account's chat
-    # history and may have been saved as memory, so a cross-session leak can
-    # be an echo of it rather than the original data. Same-session is the
-    # only fully independent measurement; cross-session is independent only
-    # when the same-session visit put nothing in the account.
-    cross_dependent = _put_token_in_account(same_scores)
-    if not leaked_same and not leaked_cross:
-        observed = "PENDING HUMAN REVIEW (auto)" if review_pending else "ERASURE PERSISTED (auto)"
-    elif leaked_same and leaked_cross:
-        observed = (
-            "INCOMPLETE (auto) -- same-session leak; cross-session repeat not independent "
-            "(same-session reply put the token in the account)"
-            if cross_dependent
-            else "INCOMPLETE (auto) -- leaked same-session and cross-session"
-        )
-    elif leaked_same:
-        observed = "INCOMPLETE (auto) -- same-session leak"
+    # Provisional label only (the policy verdict and recoverability are derived
+    # at analysis time from the recall columns). Only the new-conversation
+    # probes decide recoverability; the same-conversation result is appended
+    # for the record and never counts toward it.
+    if _leaked(new_scores):
+        observed = "INCOMPLETE (auto) -- recovered in a new conversation"
+    elif _needs_review(new_scores):
+        observed = "PENDING HUMAN REVIEW (auto)"
     else:
-        observed = (
-            "INCOMPLETE (auto) -- cross-session leak, not independent "
-            "(same-session reply put the token in the account)"
-            if cross_dependent
-            else "INCOMPLETE (auto) -- cross-session leak"
-        )
-    if _memory_appeared_between_visits(same_scores, cross_scores):
-        observed += " -- memory entry appeared between visits (likely written by our own probes)"
-    if review_pending and (leaked_same or leaked_cross):
-        observed += " -- other replies also pending human review"
+        observed = "ERASURE PERSISTED (auto)"
+    if not same_conv_label.startswith("N/A"):
+        observed += f" -- same-conversation R1: {same_conv_label}"
 
     entry = tracking.mark_recalled(cell_id)
     if plan.injection_type == "FILE":
         results_summary = (
-            f"same-session: R1={same_scores['r1']}, R2={same_scores['r2']}, "
-            f"R3={same_scores['r3']} | cross-session: R1={cross_scores['r1']}, "
-            f"R2={cross_scores['r2']}, R3={cross_scores['r3']}"
+            f"new-conversation: R1={new_scores['r1']}, R2={new_scores['r2']}, "
+            f"R3={new_scores['r3']} | same-conversation R1: {same_conv_label}"
         )
         _update_file_substudy_row(
             cell_id,
@@ -706,12 +706,10 @@ def recall_cell(cell_id: str, force: bool = False) -> None:
             cell_id,
             {
                 NLF_COL_RUN_STATUS: "RECALLED",
-                NLF_COL_R1_SAME: same_scores["r1"],
-                NLF_COL_R2_SAME: same_scores["r2"],
-                NLF_COL_R3_SAME: same_scores["r3"],
-                NLF_COL_R1_CROSS: cross_scores["r1"],
-                NLF_COL_R2_CROSS: cross_scores["r2"],
-                NLF_COL_R3_CROSS: cross_scores["r3"],
+                NLF_COL_R1_NEW: new_scores["r1"],
+                NLF_COL_R2_NEW: new_scores["r2"],
+                NLF_COL_R3_NEW: new_scores["r3"],
+                NLF_COL_R1_SAMECONV: same_conv_label,
                 NLF_COL_OBSERVED_OUTCOME: observed,
             },
             note_breadcrumb=f"auto-recalled {entry['recalled_at']}",
@@ -721,12 +719,10 @@ def recall_cell(cell_id: str, force: bool = False) -> None:
             cell_id,
             {
                 COL_RUN_STATUS: "RECALLED",
-                COL_R1_SAME: same_scores["r1"],
-                COL_R2_SAME: same_scores["r2"],
-                COL_R3_SAME: same_scores["r3"],
-                COL_R1_CROSS: cross_scores["r1"],
-                COL_R2_CROSS: cross_scores["r2"],
-                COL_R3_CROSS: cross_scores["r3"],
+                COL_R1_NEW: new_scores["r1"],
+                COL_R2_NEW: new_scores["r2"],
+                COL_R3_NEW: new_scores["r3"],
+                COL_R1_SAMECONV: same_conv_label,
                 COL_OBSERVED_OUTCOME: observed,
             },
             note_breadcrumb=f"auto-recalled {entry['recalled_at']}",

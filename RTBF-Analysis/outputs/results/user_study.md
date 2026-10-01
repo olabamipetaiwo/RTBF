@@ -1,6 +1,6 @@
 # user_study
 
-_Run at 2026-09-24T01:55:23_
+_Run at 2026-10-01T02:23:33_
 
 ```text
 === SAMPLE PROFILE (n=177) ===
@@ -15,6 +15,7 @@ Types of information typically shared (select all):
   Demographics                                  51/177 (28.8%)
   Contact information                           8/177 (4.5%)
   Media                                         49/177 (27.7%)
+  (selected more than one option: 151/177, 85.3%)
 Types of data tried to delete (select all):
   General (no personal info)                    69/177 (39.0%)
   Preferences/opinions                          71/177 (40.1%)
@@ -27,6 +28,7 @@ Types of data tried to delete (select all):
   Contact information                           13/177 (7.3%)
   Media                                         13/177 (7.3%)
   Have not attempted                            8/177 (4.5%)
+  (selected more than one option: 115/177, 65.0%)
 Platforms attempted to delete from (select all):
   Claude                                        43/177 (24.3%)
   ChatGPT                                       156/177 (88.1%)
@@ -34,6 +36,7 @@ Platforms attempted to delete from (select all):
   Copilot                                       35/177 (19.8%)
   Perplexity                                    7/177 (4.0%)
   DeepSeek                                      12/177 (6.8%)
+  (selected more than one option: 104/177, 58.8%)
 AI literacy (10 items, 1-5): M=3.83 SD=0.64
 Privacy concern (4 items, 1-5): M=3.80 SD=0.95
 
@@ -47,6 +50,7 @@ Privacy concern (4 items, 1-5): M=3.80 SD=0.95
   Privacy dashboard                             17/177 (9.6%)
   File a request                                5/177 (2.8%)
   Other                                         3/177 (1.7%)
+  (selected more than one option: 132/177, 74.6%)
 
 How did you find out the deletion options existed? (Q6.7)
   I found them while browsing the platform settings       75/177 (42.4%)
@@ -190,6 +194,7 @@ Confirmation currently received (Q7.1, select all):
   No feedback at all                            52/177 (29.4%)
   Have not attempted to delete                  7/177 (4.0%)
   Other                                         4/177 (2.3%)
+  (selected more than one option: 18/177, 10.2%)
 Feedback that should be provided (Q7.2, select all):
   Popup confirmation                            121/177 (68.4%)
   Inline natural-language confirmation          42/177 (23.7%)
@@ -198,6 +203,7 @@ Feedback that should be provided (Q7.2, select all):
   Breakdown of what was deleted and may be retained 73/177 (41.2%)
   No feedback necessary                         15/177 (8.5%)
   Other                                         0/177 (0.0%)
+  (selected more than one option: 96/177, 54.2%)
 
 === 4.2.5 VERIFICATION BY METHOD (pooled observations, % selecting) ===
 method (obs)                Asked same c  Asked new co  Checked sett  Checked inte  Privacy port  Did not know  Did not want
@@ -206,4 +212,22 @@ Clear all history (73)              19.2          17.8          13.7          23
 Specific memory (41)                22.0          34.1          36.6          12.2           2.4          29.3          12.2
 Ask to forget (39)                  53.8          33.3          10.3          10.3           0.0          23.1           7.7
 All (317)                           20.5          19.2          14.5          15.8           3.2          46.7          11.4
+
+=== 4.2.5 EXPECTATION, ALL OBSERVATIONS (both scenarios pooled, n=354) ===
+  Permanently deleted (database and backups)    209/354 (59.0%)
+  Made invisible / hidden                       101/354 (28.5%)
+  Not referenced in the current conversation    174/354 (49.2%)
+  Not referenced in future conversations        192/354 (54.2%)
+  No longer used for training                   98/354 (27.7%)
+  Not sure what happens                         37/354 (10.5%)
+  Other                                         3/354 (0.8%)
+
+=== 4.2.5 VERIFICATION, ALL OBSERVATIONS (both scenarios pooled, n=354) ===
+  Asked in the same conversation                73/354 (20.6%)
+  Asked in a new conversation                   77/354 (21.8%)
+  Checked settings                              62/354 (17.5%)
+  Checked interface                             57/354 (16.1%)
+  Privacy portal                                18/354 (5.1%)
+  Did not know how to check                     158/354 (44.6%)
+  Did not want to check                         36/354 (10.2%)
 ```

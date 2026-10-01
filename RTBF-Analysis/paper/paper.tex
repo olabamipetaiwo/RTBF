@@ -24,9 +24,9 @@
 % Strip PDF metadata that could deanonymize the submission (author,
 % affiliation leaking through document properties rather than the
 % visible title page).
-\hypersetup{hidelinks,pdfauthor={},pdftitle={Right to Be Forgotten in LLMs: An Empirical Audit of Data Deletion Methods Across Six Platforms},pdfsubject={},pdfkeywords={}}
+\hypersetup{hidelinks,pdfauthor={},pdftitle={What Does 'Delete' Mean? User Expectations and Observable Data Persistence Across Six LLM Chatbots},pdfsubject={},pdfkeywords={}}
 
-\title{What Does ‘Delete’ Mean? User Expectations and Observable Data Persistence Across Six LLM Chatbots}
+\title{What Does `Delete' Mean? User Expectations and Observable Data Persistence Across Six LLM Chatbots}
 
 % ANONYMOUS SUBMISSION
 % IEEE S&P requires no author names/affiliations on the title page and
@@ -75,12 +75,12 @@ right to erasure under Article 17 of the General Data Protection
 Regulation (GDPR) allows individuals, under certain conditions, to
 request deletion of personal data concerning them~\cite{gdpr2016}.
 Commercial LLM chatbots may retain user data as conversation history,
-persistent `memories,'' and conversation content used for model
+persistent memories and conversation content used for model
 training. Prior work has shown that LLMs can memorize and later
 regurgitate portions of their training data~\cite{carlini2021extracting}.
 Yet platforms expose multiple deletion mechanisms, including deleting a
 conversation, clearing history, deleting a saved memory, or asking the
-chatbot to `forget'' information, whose actual scope is unclear.
+chatbot to forget information, whose actual scope is unclear.
 
 Li et al.\ audit the privacy controls exposed by six conversational LLM
 platforms and find substantial inconsistencies, including limited support
@@ -130,14 +130,14 @@ scale~\cite{bertram2019five}. That line of work audits a single,
 well-defined deletion mechanism (search delisting) end to end. Commercial
 LLM chatbots instead expose several, informally specified deletion
 controls over the same underlying account (conversation-level deletion,
-memory-level deletion, natural-language ``forget'' requests, and
+memory-level deletion, natural-language forget requests, and
 account-level deletion), which is the gap this paper's technical audit
 (RQ1/RQ2/RQ5) targets.
 
 \textbf{Auditing LLM platform controls.} Closest to this paper, Li et
 al.\ walk through the stated access/edit/delete/share
 controls of six conversational LLM platforms (a partially overlapping
-set with the six audited here; see \S\ref{sec:intro}) and find them inconsistently
+set with the six audited here) and find them inconsistently
 implemented, with most platforms not supporting deletion of an individual
 message~\cite{li2026privacy}. That audit characterizes what controls each
 platform's interface exposes; it stops short of testing, on live
@@ -155,7 +155,7 @@ influence as a distinct technical problem from simply deleting the
 underlying record~\cite{bourtoule2021machine}.
 
 \textbf{User mental models of deletion.} Usable-privacy research has
-repeatedly found that people's mental models of ``deletion'' do not
+repeatedly found that people's mental models of deletion do not
 match how deletion is actually implemented. Kang et al.\ show that many
 users hold incomplete or inaccurate models of how the internet handles
 their data generally, with direct consequences for the privacy decisions
@@ -172,7 +172,7 @@ backend failure to actually delete data~\cite{habib2019empirical}.
 
 \textbf{LLM memory specifically.} On the user side specifically, Zhang
 et al.\ interview 18 users of LLM chatbots with retrieval-augmented-
-generation-based ``memory'' features and find diverse, often incomplete
+generation-based memory features and find diverse, often incomplete
 mental models of what the memory stores and how it is used, alongside an
 explicit desire for finer-grained control over reviewing, editing, and
 deleting individual memories~\cite{zhang2025understanding}.
@@ -280,13 +280,9 @@ The survey was built and administered in Qualtrics, and respondents were
 recruited through Prolific (recruitment, consent and compensation are
 described in the Ethics Considerations section). We set no formal sample-size
 target or power calculation and aimed for roughly 200 respondents. It uses a within-subject design: the same participants rate two
-scenario blocks in a fixed order, always the less-sensitive
-data-deletion vignette before the more-sensitive one, each repeating an
-identical question battery. Order was not counterbalanced, so scenario
-(data sensitivity) and presentation order are perfectly confounded in
-this dataset; \S\ref{sec:sensitivity-effect} and \S\ref{sec:limitations}
-report the resulting scenario-level differences as observed, not as an
-isolated effect of sensitivity. Each scenario battery includes
+scenario blocks, a less-sensitive and a more-sensitive data-deletion vignette,
+presented in random order by the survey platform's block randomizer, each
+repeating an identical question battery. Each scenario battery includes
 three multi-item Likert scales (perceived protection with 5 items, effort
 with 4 items, and benefit loss with 3 items) plus single-item measures of
 deletion method choice, willingness to delete, deletion expectations, and
@@ -305,20 +301,20 @@ question''). The full scenarios and scale items are in Appendix~\ref{sec:instrum
 
 \textbf{Missingness and aggregation.} Of 235 raw Qualtrics submissions,
 17 incomplete/abandoned attempts are excluded first, leaving 218; 1
-further response is dropped for failing an attention check (a missing,
-unanswered check item is not treated as a failure), and 36 for reporting
+further response is dropped for a wrong attention-check answer, and 36 for reporting
 they had never deleted chatbot data, leaving 181 eligible.
-Within that eligible set, three overlapping bases are used depending on
-the analysis: \textit{less} and \textit{more} (respondents who answered
-that scenario's method-choice item, used for between-method comparisons
-within a single scenario) and \textit{paired}, $n=177$ (respondents who
-answered both, used for every within-subject less-vs-more comparison).
+Within that eligible set, 177 respondents answered both scenarios'
+method-choice items (the paired sample) and form the analysis sample; every
+analysis, within a scenario or across scenarios, uses these 177 participants.
 Pooled-across-scenario analyses (e.g.\ Table~\ref{tab:contingency}) treat
 each participant's response in each scenario as its own observation (354
 observations from the 177 paired participants) and account for the repeated
 measures by clustering on participant, as described under Statistical
-analysis below. Descriptive percentages and the factor analysis use all 354
-observations. Method comparisons, including the pooled GEEs, use the 317
+analysis below. Descriptive percentages are shares of the 177 participants (within a
+scenario where the item was asked per scenario): demographics, usage, past use,
+methods chosen, methods marked ideal and post-deletion feedback. Expectation
+and verification percentages pool both scenarios and are shares of the 354
+observations, as is the factor analysis. Method comparisons, including the pooled GEEs, use the 317
 observations of the four methods that meet the participant threshold
 below. Headline paired mean differences
 (willingness, protection, effort, benefit loss) are reported with 95\%
@@ -343,19 +339,21 @@ correction was applied. Holm-adjusted values are reported as
 $p_{\mathrm{Holm}}$ and unadjusted values as $p$; a single claim never
 mixes the two. We treat every survey analysis as exploratory, so $p$-values
 describe the strength of evidence within a family, not a paper-wide error
-rate. A nonsignificant result is read as ``no association detected,'' with
+rate. A nonsignificant result is read as no association detected, with
 the estimate and its uncertainty where available, not as evidence of no
 association: the smallest qualifying method groups contain 14 participants,
 so the tests have limited power to detect small differences. Method
 comparisons on ratings, expectations and verification include the four
 methods chosen by at least 14 participants in a scenario (at least 29
-pooled); every other method was chosen by at most 9 in a scenario (11
-pooled), so the set does not depend on the exact cutoff. The between-scenario
+distinct participants across both scenarios); every other method was chosen by
+at most 9 in a scenario (11 distinct participants across both), so the set does
+not depend on the exact cutoff. The between-scenario
 tests of method choice and of ideal methods cover all listed methods. Fisher
 exact tests on two-column tables (method by selected or not) are computed by
 exact enumeration, so every reported $p$-value is reproducible. Survey
-tests were computed with SciPy; the GEEs, factor analysis and regressions
-with statsmodels.
+tests were computed with SciPy and checked against a second implementation
+(101 tests, no disagreement in significance); the GEEs, factor analysis and
+regressions with statsmodels, and the bootstrap intervals with NumPy.
 
 Pooled analyses (both scenarios combined) fit a generalized estimating
 equation (GEE) with participant as the cluster, deletion method and scenario
@@ -415,6 +413,9 @@ Ratings by method, between scenarios
 Ratings on participant characteristics
   & Ordinary least squares, participant-clustered standard errors
   & Unadjusted \\
+Correlations between scales (per scenario and pooled)
+  & Spearman rank correlation
+  & 9 correlations \\
 Measurement model
   & Exploratory factor analysis (principal axis, oblimin), parallel analysis
   & Not applicable \\
@@ -431,32 +432,40 @@ phrasings. Those requests originate in the same instrument described in
 \S\ref{sec:survey-methodology}: after selecting a deletion method within
 each scenario block, participants typed the exact message they would send
 the assistant to carry it out and stated their rationale for that
-phrasing. Across both scenario blocks this yielded 415 raw responses from
-209 participants; after removing blank/unusable entries and within- and
-cross-participant duplicates, 375 distinct prompts remained. The
-eligibility screen described in \S\ref{sec:sample-knowledge} (attention
-check, prior-deletion-experience filter) is not applied to the corpus: a
-prompt is included whenever its author wrote one, regardless of whether that
-respondent later qualified for the survey's analysis sample. The corpus
-therefore draws on all complete respondents who wrote a prompt, whereas the
-survey's 181-eligible and 177-paired figures cover respondents after the
-screen. Each prompt was
-scrubbed of residual personally identifying text (32 of 375 prompts
-altered: 20 organization-name, 12 location-name, and 3 person-name
-redactions) and passed through an
+phrasing. Respondents with a wrong attention-check answer were
+excluded, as in the survey analysis. Across both scenario blocks the
+remaining respondents typed 415 prompts (blank answers were not counted) from
+209 participants; removing a participant's exact and near-duplicate repeats
+(22) and then duplicates across participants (18) left 375 distinct prompts. The prior-deletion-experience filter of
+\S\ref{sec:sample-knowledge} is not applied to the corpus: the prompt item
+asks for a hypothetical message, so it does not depend on having deleted data
+before, and the corpus concerns how people phrase a request, not how they
+evaluate methods they have used. A prompt is therefore included whenever its
+author wrote one and was not excluded by the attention checks, whereas the survey's
+181-eligible and 177-paired figures also exclude respondents who had never
+deleted chatbot data or did not complete both scenarios. Each prompt was
+scrubbed of residual personally identifying text (7 of 375 prompts
+altered, all place names: 10 location redactions) and passed through an
 automated feature-extraction step labeling candidate dimensions including
 a coarse deletion-location category, used only to stratify the sampling
 step below, not as the reliability-bearing codes reported next.
 
-\textbf{Coding and reliability.} Two coders independently coded all 138
-prompts of the audit sample (drawn as described below) on seven
-dimensions: deletion location, justification, data type, grammatical
+\textbf{Coding and reliability.} Two coders (the first author and a second
+researcher) coded the prompts independently, in rounds. In the first, each
+coded the same 50 prompts on all candidate dimensions without a shared
+codebook; after comparing results, we kept or dropped dimensions and agreed a
+shared codebook, which we applied to the same 50 prompts. Deletion location
+showed the most disagreement, so we tightened its definition and recoded that
+dimension alone on those prompts. We then independently coded all 138 prompts
+of the audit sample (drawn as described below) on seven dimensions under the
+tightened codebook: deletion location, justification, data type, grammatical
 mood, tone, verb register, and accompanying secondary request.
+Table~\ref{tab:ac1} reports agreement for this final round, which includes the
+50 prompts used to refine the codebook.
 Inter-rater reliability is reported as Gwet's $AC_1$~\cite{gwet2008ac1}
 rather than Cohen's $\kappa$, because three dimensions are dominated by
-one label (91--94\% of items), where $\kappa$ understates true
+one label (91--94\% of the 276 ratings), where $\kappa$ understates true
 agreement~\cite{gwet2008ac1,wongpakaran2013comparison}.
-Table~\ref{tab:ac1} reports these values.
 
 \begin{table}[t]
 \centering
@@ -480,12 +489,12 @@ Pooled (966 ratings) & 923/966 & 95.5 & 0.954 \\
 \end{tabular}
 \end{table}
 
-\textbf{Sampling for the technical audit.} A 138-item sample was drawn
-from the 375-item corpus by proportional stratified sampling on the
-automated deletion-location label (a floor was applied so that
-low-frequency categories were not eliminated from the draw), for use
-verbatim as the chat-typed erasure request in the technical audit's
-NL-forget-prompt cells (\S\ref{sec:audit-methodology}). The sample is a fixed item list, not regenerable under a different random seed.
+\textbf{Sampling for the technical audit.} We selected 138 of the 375
+prompts for the technical audit by stratified sampling on an automated
+deletion-location label, with a floor so that small categories were retained.
+The label definition was revised after the draw. Each selected prompt is used
+as the chat-typed erasure request in the technical audit's NL-forget-prompt
+cells (\S\ref{sec:audit-methodology}), verbatim except for the referent.
 
 \subsection{Technical Audit}
 \label{sec:audit-methodology}
@@ -503,6 +512,9 @@ block any automation-driven session; see the Ethics Considerations
 section.}, driven by an orchestrator that loads each test cell's
 parameters from a fixed experiment design and dispatches it to
 the matching platform-specific implementation.
+Figure~\ref{fig:testing-pipeline} gives a conceptual overview: participant-written
+erasure requests are turned into test cases with expected outcomes, run on the
+six chatbots, and the replies compared against those outcomes.
 
 \textbf{Design.} A \textit{cell} pairs one injection method with one
 erasure method on one platform. Three injection methods test distinct
@@ -528,8 +540,9 @@ are not counted.
 \textbf{Policy commitments.} For RQ2, each cell in the 85-cell battery is
 assigned a \textit{commitment type}, set only from what the platform's own
 published documentation says about the erasure action applied to that
-cell's injection surface. The source URL and the quoted language are
-recorded per cell. \textsc{Deletes} means the documentation states that
+cell's injection surface. The source URL is recorded per cell, and the
+quoted language wherever the documentation states the action's effect; a
+maximal cell cites the cells it combines. The documents are listed in Appendix~\ref{sec:policy-sources}. \textsc{Deletes} means the documentation states that
 the action removes the content. \textsc{Does not delete} means it states
 that the action does not reach the content, as in ``deleting a
 conversation does not delete saved memories''; this is a statement of
@@ -554,7 +567,7 @@ recovered but is not counted as contradicting the commitment.
 requests sampled in \S\ref{sec:prompt-corpus} form an additional set of
 cells appended to the 85-cell design: one cell per prompt per platform
 (138 prompts $\times$ 6 platforms). Each prompt is typed verbatim as the
-erasure request, with only its disclosed referent substituted in, after a
+erasure request, except that its referent is replaced by the cell's disclosed referent, after a
 fixed I1 (offhand conversational) disclosure. Injection type is held
 constant so that erasure phrasing is the only varying factor, and recall
 uses the same three-probe design (R1/R2/R3) as the 85-cell battery. All
@@ -583,22 +596,20 @@ chosen to avoid triggering platform content filters without otherwise
 constraining topic naturalism.
 
 Token uniqueness alone is not sufficient where a cell's own erasure
-action is not scoped to that cell's referent at all: an account-wide or
-``clear everything'' action reaches every other cell sharing that
-account regardless of referent. Two further account-provisioning rules
+action is not scoped to that cell's referent at all: an account-wide
+erasure, such as clearing all memories or all history, reaches every other
+cell sharing that account regardless of referent. Two further account-provisioning rules
 address this. First, within the 85-cell battery, any cell whose erasure
 action shares an account with a sibling cell testing the same
 account-wide surface, or with a cell still inside its 31-day post-erasure
 recall window, is moved to its own dedicated account before either cell
-runs, so that a ``confirmed erased'' or ``not found'' recall outcome can
+runs, so that an erased or not-found recall outcome can
 be attributed to the mechanism under test rather than an unrelated
 blanket action that happened to share its account. Second, cross-platform
 account reuse does not require this isolation: the same login credential
-is deliberately reused across multiple platforms because each platform's
-memory and conversation history is siloed to its own backend, confirmed
-directly in this study: an account-wide erasure action executed on one
-platform had no observed reach into a different platform sharing the
-same login credential. For the NL-forget-prompt extension specifically,
+is deliberately reused across multiple platforms, but each platform keeps its
+own account, memory and conversation history, so an action on one platform
+cannot reach another. For the NL-forget-prompt extension specifically,
 each platform's cells share a single dedicated account (distinct from
 the 85-cell battery's accounts) rather than one account per cell, since
 per-cell token uniqueness is sufficient for the 133 of 138 prompts that
@@ -608,36 +619,36 @@ erasing every other prompt's still-untested content on the shared
 account. They are excluded (30 of the 828 cells) rather than isolated on
 dedicated accounts.
 
-Provisioning by request scope is a necessary but not sufficient
-safeguard on its own, since a request's wording can understate its
-actual operational reach. Scheduling adds a second, independent layer:
-within any account, every due erasure is additionally ranked by a
-text-match against a fixed list of broad-action keywords (``clear
-all,'' ``delete all,'' ``bulk,'' ``privacy dashboard,'' and equivalent
-phrasing), and cells sharing an account are always run narrowest-ranked
-first, broadest-ranked last, so a broad action cannot execute before a
-narrower sibling cell still awaiting its own turn on the same account.
-This scheduling safeguard was added after a real instance of the failure
-it now prevents: a broad erasure run manually before this ordering
-existed wiped three still-pending narrower cells sharing its account,
-which were subsequently re-injected. It is deliberately redundant with,
-not a replacement for, the static per-cell account isolation described
-above.
+Isolating broad cells on their own accounts is necessary but not sufficient
+on its own, since a request's wording can understate its actual operational
+reach. Scheduling adds a second, independent layer: within any account, every
+due erasure is additionally ranked by breadth. An erasure whose type matches a
+fixed list of broad-action phrases ranks broadest, and the rest rank by erasure
+number, from narrow (E1) to broad (E7). Cells in the same account then run
+narrowest-ranked first and broadest-ranked last, so a broad action cannot
+execute before a narrower sibling cell still awaiting its own turn.
 
 \textbf{Temporal design.} Each cell runs as three separately scheduled
 events rather than in immediate succession: erasure occurs 48 hours
-after injection, and recall occurs 31 days after erasure. This window is
-sourced from the platforms' own stated data-deletion completion
-commitments, not an arbitrary delay. Recall is tested two ways within
-that single 31-day-post-erasure phase: \textit{same-session} (probing
-within one continuous browser session) and \textit{cross-session} (a
-separate session against the same account), both run back to back rather
-than at separately staggered times.
+after injection, and recall occurs 31 days after erasure. The 48-hour interval
+is a fixed design choice, intended to let any asynchronous memory processing on
+the platform finish before erasure. No interval could be taken from platform
+documentation, which does not state one and has changed during the study:
+Claude's earlier documentation described a 24-hour memory synthesis, and its
+current documentation describes topic memories saved as the user chats. For
+recall, three platforms (ChatGPT, Claude and
+Perplexity) state that deleted data is removed from their systems within 30
+days; we add one day. Gemini, Copilot and DeepSeek state no
+deletion-completion time, so the same window is applied to all six for
+comparability. Recall is a single visit at that point, in two parts
+(\textit{new-conversation} recall for every cell, and one
+\textit{same-conversation} request for typed erasures), described below.
 
-\textbf{Recall probes.} Three probe types run at each recall point.
+\textbf{Recall probes.} Three probe types run at each recall point, each
+in a new conversation (the new-conversation recall).
 \textit{R1} (direct) always asks two open questions about the disclosed
-referent, worded differently, the second a natural same-conversation
-follow-up run regardless of what the first reply contained. R1 has no
+referent, worded differently, the second a natural follow-up in the same
+probe chat run regardless of what the first reply contained. R1 has no
 forced-choice stage. Ranking the true value against counterfactuals, as
 prior work on quantifying personal-data memorization does, relies on
 model likelihoods~\cite{staufer2025wikimem}, which consumer chat
@@ -646,8 +657,10 @@ instead have to type the correct token into the account being tested, on
 the same conversational surface I1 injection uses to plant a disclosure,
 and would leave a one-in-four chance of a correct answer by guessing
 alone. Recall is therefore probed by open questions only. Asking each
-open probe twice, in different wordings, reflects that model output can
-change with superficial features of a prompt~\cite{sclar2024quantifying}.
+open probe twice, in different wordings, reflects that any single prompt gives
+only a lower bound on what a model can be made to
+produce~\cite{jiang2020know}, and that output can change with superficial
+features of a prompt~\cite{sclar2024quantifying}.
 Probing goes through each platform's consumer web interface, with the
 question asked in a new conversation after the information was given
 earlier, as in the evaluation of commercial chat assistants in
@@ -676,8 +689,8 @@ second reviewer; for R2, the reviewer records whether the fact appears
 verbatim, paraphrased or not at all. The cue check only routes replies to
 a person and never decides an outcome.
 
-Within each recall visit the probes run in a fixed order, R2, then R3,
-then R1, the order fixed in the experiment design. The order limits
+Within the new-conversation recall the probes run in a fixed order, R2,
+then R3, then R1, the order fixed in the experiment design. The order limits
 contamination between probes: R2 only reads a page and adds nothing to
 the account, R3 runs before any direct question can put the token back
 into the account, and R1, which names the referent outright, runs last.
@@ -691,23 +704,18 @@ unrelated task. One related limitation remains and is discussed in
 \S\ref{sec:limitations}: this design has no never-injected negative-control
 or injected-but-not-deleted positive-control cells.
 
-The two visits are not independent, because the cross-session visit runs on
-an account the same-session visit has already written to. If a
-same-session reply contains the token, that reply enters the account's chat
-history and may be saved as a memory, so a cross-session leak could be an
-echo of the first visit rather than evidence about the original data. We do
-not delete the probe conversations between visits: deletion is the
-behavior under test, is unreliable on these platforms, and would add an
-unverified second erasure to every cell. Instead, the same-session visit is
-the primary measurement, since it is the only one that runs on an account
-no probe has touched. A cross-session result is coded as independent only
-when no same-session R1 or R3 reply contained the full token, including
-replies that named it with a negation or question cue, since those also type
-the token into the chat. When one did, a cross-session leak is coded as a
-repeat that is not independent. Each recall also records whether the
-memory page showed the token at the second visit but not at the first, which
-would indicate that our own probes wrote it. Because R2 runs before any chat
-in a visit, the first visit's R2 is a baseline that no probe has touched.
+\textbf{Same-conversation recall.} When the erasure was typed into the
+cell's own chat (the NL-forget prompts and the battery's typed forget
+commands), that chat still exists afterwards. After the new-conversation
+probes, we therefore ask one further question there: the first R1 wording,
+in the conversation where the forget request was sent. It shows whether the
+platform still uses the disclosure inside that chat once told to forget. It
+is reported separately and is not part of the policy verdict, because the
+original disclosure remains in that chat's own context, so a reply that
+repeats it is expected and says nothing about what the platform keeps beyond
+the chat. The request does not apply where the erasure deleted the
+conversation, was a settings or interface action, or was a maximal
+combination.
 % TODO(authors): also report (a) a spot check of a random sample of automatically accepted
 % FOUND replies, since a negation worded outside the cue list would be
 % accepted, and (b) agreement between the two reviewers on a
@@ -720,15 +728,15 @@ acknowledgment in the platform's reply, whether the interface visibly
 changed after the erasure action, whether the content is recoverable at
 the 31-day recall point, and whether the outcome is consistent with the
 platform's documented commitment. Recoverability is read from three
-probes: whether the content still appears in a platform's own
-memory-listing interface (R2), whether it resurfaces unprompted in
+new-conversation probes: whether the content still appears in a platform's
+own memory-listing interface (R2), whether it resurfaces unprompted in
 unrelated generation (R3), and whether it is recoverable when directly
 asked (R1). None of these observations establishes or
 rules out removal from backend storage, training datasets, or an
-already-trained model's parameters: a ``token not found'' outcome shows
+already-trained model's parameters: a not-found outcome shows
 the token did not surface through the probes tested, not that the
 underlying data was deleted from every system that might hold it, and a
-``token found'' outcome shows the content remained recoverable through at
+found outcome shows the content remained recoverable through at
 least one tested surface, not which storage location supplied it. The
 canary-style token design above supports attributing a recovered token to
 its originating cell~\cite{carlini2019secret}; it does not convert a
@@ -742,15 +750,22 @@ as four separate measurements, each with a fixed set of values, and the
 verdict on policy is derived from them by a stated rule, not coded
 directly. \textit{Acknowledgment} is what the platform's reply says about
 the erasure request: complied, partial, refused, deflected, silently
-ignored, asked to connect an app (see ``Platform changes'' below), or no reply for actions performed through the interface, which
+ignored, asked to connect an app (a prompt to connect an external app instead of an answer), or no reply for actions performed through the interface, which
 produce none. It shows what the platform said, not that anything was
 deleted. \textit{Interface change} is whether the intended surface
 visibly changed after the action (changed, unchanged, or not
-observable), coded from the post-erasure screenshot.
-\textit{Recoverability} is the recall outcome (``Recall probes'' above):
-recovered by at least one probe, not recovered, or indeterminate when the
-injection check did not establish that the platform had retained the
-content, so that a missing token is never read as evidence of deletion.
+observable), coded from the post-erasure screenshot. A request typed into
+the chat leaves nothing on the interface to inspect, so its interface change
+is always not observable.
+\textit{Recoverability} is the new-conversation recall outcome (``Recall
+probes'' above): recovered when any probe finds the token, not recovered
+when none does and the injection reached the layer the probes read, and
+indeterminate otherwise, so that a missing token is never read as evidence
+of deletion. The layer matters most for R2: a blank memory page counts only
+when the injection could have written there (an explicit ``please remember''
+or a direct memory entry, or an offhand mention that the platform showed or
+claimed it saved; see ``Retention at injection'' below). A token found
+anywhere counts as recovered, whatever the injection reached.
 \textit{Policy consistency} combines the cell's commitment type with the
 interface change and recoverability by the rules in
 Table~\ref{tab:consistency-rule}. A reply that claims compliance while the
@@ -775,7 +790,7 @@ value, a token that is not recovered is reported as inconclusive, not as
 evidence of deletion, and only denied points to the fact not having been
 kept. Some interfaces draw the notice outside the reply text, so it is
 missing from the saved transcript and is read from the screenshot instead.
-A missing notice is not read as ``not stored'', because it can appear after
+A missing notice is not read as evidence that the fact was not stored, because it can appear after
 the screenshot is taken. Cells that upload a file are left out, since they
 are classified separately.
 
@@ -827,8 +842,8 @@ different evidentiary standards; that asymmetry no longer applies to
 recall, since every cell now gets the same two-attempt check independent
 of what either attempt finds. Results (\S\ref{sec:audit-results}) report
 both attempts for every cell, not just a single collapsed outcome. Every
-phase of every cell (injection, erasure, same-session recall,
-cross-session recall) saves a transcript and a screenshot of the browser
+phase of every cell (injection, erasure, new-conversation recall and,
+where it applies, same-conversation recall) saves a transcript and a screenshot of the browser
 window, retained per platform and cell for independent review. All accounts
 are provisioned on each platform's free, no-cost tier; where a platform
 gates a tested surface behind a paid tier, that is recorded as a result
@@ -842,17 +857,18 @@ after an explicit follow-up request to summarize the document.
 
 \textbf{Platform changes.} Copilot moved from \texttt{copilot.microsoft.com}
 to \texttt{copilot.com} during the study, so its recall runs on an interface
-that differs from the one used at injection (\S\ref{sec:limitations}). On
-Gemini, 7 of 133 chat-based erasure requests received a prompt to connect
-Google Keep instead of a reply. Nothing was deleted, and we code these as a
-separate acknowledgment value (asked to connect an app), not as compliance
-or refusal.
+that differs from the one used at injection (\S\ref{sec:limitations}). Claude
+replaced its memory system on 2026-09-08, which removed the memory of every
+cell not yet recalled, independent of any erasure we had performed. We
+re-injected the 17 Claude battery cells with fresh tokens, so their erasure
+and recall timelines run from the re-injection.
 
 \section{User Study}
 
 \label{sec:sample-knowledge}
 
-Of 235 survey submissions, 218 were complete. One complete respondent failed an attention check and 36 reported never having deleted chatbot data, leaving 181 eligible respondents; 177 of these completed both scenarios and constitute the analysis sample (Table~\ref{tab:demographics}). Unless stated otherwise, percentages are of the 177 participants; percentages of observations count each participant's response in each scenario (354 in total). The sample was relatively young and well educated, with 73\% under age 45 and 62.1\% holding at least a bachelor's degree. Participants had substantial prior exposure to commercial chatbots: ChatGPT and Gemini were the most widely used, whereas Perplexity and DeepSeek had lower and more recent adoption (Figure~\ref{fig:ai-tenure}). Privacy knowledge was also high (mean 5.06 of 6 correct), alongside relatively high self-rated AI literacy (mean 3.83 of 5) and concern about sharing personal information with chatbots (mean 3.80 of 5).
+The analysis sample is the 177 participants who completed both scenarios
+(\S\ref{sec:survey-methodology}; Table~\ref{tab:demographics}). Unless stated otherwise, percentages are of the 177 participants; percentages of observations count each participant's response in each scenario (354 in total). The sample was relatively young and well educated, with 73\% under age 45 and 62.1\% holding at least a bachelor's degree. Participants had substantial prior exposure to commercial chatbots: ChatGPT and Gemini were the most widely used, whereas Perplexity and DeepSeek had lower and more recent adoption (Figure~\ref{fig:ai-tenure}). Privacy knowledge was also high (mean 5.06 of 6 correct), alongside relatively high self-rated AI literacy (mean 3.83 of 5) and concern about sharing personal information with chatbots (mean 3.80 of 5).
 
 Participants most commonly reported sharing general questions, preferences or opinions, and work-related information with chatbots, although health and location information were also reported. Prior deletion attempts covered similar categories, particularly preferences or opinions, general questions, work information, health information, and sensitive personal experiences.
 
@@ -907,7 +923,8 @@ Privacy Knowledge (0--6) & $M=5.06$, $Mdn=5.0$ & n/a & n/a \\
 
 
 
-\textbf{Methods chosen in each scenario.} Deleting a single conversation was the most frequent choice in both scenarios (84/177, 47.5\%, in the less-sensitive scenario and 80/177, 45.2\%, in the more-sensitive one), followed by clearing all conversation history (33 and 40 participants; Table~\ref{tab:method-usage}). The distribution of chosen methods did not differ significantly between scenarios (Stuart-Maxwell test, $p=.393$). The more-sensitive scenario was always shown second (\S\ref{sec:survey-methodology}), so every difference between scenarios reported in this section is equally consistent with a sensitivity effect and an order effect.
+\textbf{Methods chosen in each scenario.} Deleting a single conversation was the most frequent choice in both scenarios (84/177, 47.5\%, in the less-sensitive scenario and 80/177, 45.2\%, in the more-sensitive one), followed by clearing all conversation history (33 and 40 participants; Table~\ref{tab:method-usage}). The distribution of chosen methods did not differ significantly between scenarios (Stuart-Maxwell test on the 176 participants who named a listed method in both
+scenarios, $p=.393$).
 
 \textbf{Ideal methods in each scenario.} Participants could mark every method they considered ideal. Deleting a single conversation was again the most often marked (66.1\% and 60.5\%), followed by asking the chatbot to forget (46.9\% and 50.3\%) and clearing all conversation history (35.6\% and 40.7\%) (Table~\ref{tab:method-usage}). No method was marked significantly more or less often in one scenario than in the other after Holm correction across the eight methods (exact McNemar tests). The largest shift was for deleting a specific saved memory (31.1\% to 41.8\%), which did not survive correction ($p_{\mathrm{Holm}}=.088$).
 
@@ -942,7 +959,12 @@ Only the four methods chosen by at least 14 participants (single conversation, c
 
 \subsubsection{Measurement Model}
 
-An exploratory factor analysis of the 12 protection, effort and benefit-loss items (principal axis, oblimin rotation; 354 participant-scenario observations) supported the three intended factors. The sampling was adequate (KMO $=.81$; Bartlett's test $p<.001$), parallel analysis retained three factors (eigenvalues 3.86, 3.58 and 1.86, each above the 95th percentile of random data; the fourth, 0.58, was not), and the three factors explained 70.6\% of the variance. Every item loaded at least .67 on its intended factor and at most .15 on any other (Table~\ref{tab:efa}); the same pattern held within each scenario (intended loadings at least .66, cross-loadings at most .18). Reliability was high for every factor in both scenarios (Cronbach's $\alpha=.87$ to $.92$). The scales were weakly correlated (Spearman $\rho$ on the 354 observations): protection and effort were essentially unrelated ($\rho=-.03$), protection and benefit loss weakly related ($\rho=.13$; $p=.096$ and $p=.089$ within the less- and more-sensitive scenarios), and effort and benefit loss modestly related ($\rho=.27$; $p<.001$ within each scenario).
+An exploratory factor analysis of the 12 protection, effort and benefit-loss items (principal axis, oblimin rotation; 354 participant-scenario observations) supported the three intended factors. The sampling was adequate (KMO $=.81$; Bartlett's test $p<.001$), parallel analysis retained three factors (eigenvalues 3.86, 3.58 and 1.86, each above the 95th percentile of random data; the fourth, 0.58, was not), and the three factors explained 70.6\% of the variance. Every item loaded at least .67 on its intended factor and at most .15 on any other (Table~\ref{tab:efa}); the same pattern held within each scenario (intended loadings at least .66, cross-loadings at most .18). Reliability was high for every factor in both scenarios (Cronbach's $\alpha=.87$ to $.92$). The scales were weakly correlated (Spearman $\rho$ on each participant's mean
+across the two scenarios, $n=177$, Holm-corrected across the nine scale
+correlations): protection was not significantly related to effort
+($\rho=-.06$) or to benefit loss ($\rho=.13$, $p_{\mathrm{Holm}}=.53$), and
+effort and benefit loss were modestly related ($\rho=.31$,
+$p_{\mathrm{Holm}}<.001$).
 
 \begin{table}[t]
 \centering
@@ -984,6 +1006,7 @@ Mean protection ratings were similar across methods (pooled means 3.63 to 3.86; 
 Mean benefit-loss ratings were highest for deleting a specific saved memory (3.46) and lowest for asking the chatbot to forget (2.91; Table~\ref{tab:method-scales}), but the methods did not differ significantly (within scenarios $p>.15$; pooled Wald $\chi^2(3)=6.94$, $p_{\mathrm{Holm}}=.15$). Benefit loss did not differ between scenarios across all participants ($\Delta=+0.04$, 95\% CI $[-0.07, +0.15]$), nor within any method (Mann-Whitney tests, all $p_{\mathrm{Holm}}=1.00$). No participant characteristic in the regression was associated with benefit loss (all $p\geq.10$).
 
 \subsubsection{Effort}
+\label{sec:effort}
 
 Effort was the only rating on which methods differed (pooled Wald $\chi^2(3)=23.05$, $p_{\mathrm{Holm}}<.001$; less-sensitive $H=18.42$, $p<.001$; more-sensitive $H=16.98$, $p<.001$). Deleting a single conversation had the lowest mean (1.64) and deleting a specific saved memory the highest (2.49; Table~\ref{tab:method-scales}). In pooled contrasts, participants who chose single-conversation deletion reported lower effort than those who chose specific-memory deletion (mean difference $-0.85$, 95\% CI $[-1.25, -0.46]$, $p_{\mathrm{Holm}}<.001$) and than those who chose clear-all-history ($-0.45$, $[-0.76, -0.14]$, $p_{\mathrm{Holm}}=.019$), but not lower than those who asked the chatbot to forget ($-0.10$, $[-0.39, +0.19]$); asking to forget was also rated lower than specific-memory deletion ($-0.75$, $[-1.22, -0.29]$, $p_{\mathrm{Holm}}=.008$). Within scenarios, single-conversation deletion had lower effort than specific-memory deletion in both and lower than clear-all-history in the more-sensitive scenario (all $p_{\mathrm{Holm}}<.01$). Method choice was self-selected, so these are associations with the chosen method, not effects of switching methods. Effort did not differ between scenarios across all participants ($\Delta=+0.03$, 95\% CI $[-0.06, +0.12]$), nor within any method (Mann-Whitney tests, all $p_{\mathrm{Holm}}=1.00$). Higher AI literacy was associated with lower effort ($b=-0.29$, $p=.008$); the other characteristics were not.
 
@@ -1008,14 +1031,19 @@ Ask to forget & 39; 25; 14 & 3.86 (0.65) & 3.84 & 3.89 & 2.91 (0.95) & 2.91 & 2.
 \end{table*}
 
 \subsubsection{Expectations of Data Deletion Methods}
+\label{sec:expectations}
 
-\textbf{Expected outcomes.} Across both scenarios ($n=354$ observations), participants most often expected the data to be permanently deleted from the chatbot's database and backups (59.0\%), followed by the chatbot no longer referencing it in future conversations (54.2\%) or in the current one (49.2\%); 28.5\% expected it to be hidden from users, 27.7\% expected it to be excluded from training, and 10.5\% were unsure. Expectations did not differ significantly by method (Table~\ref{tab:contingency}; participant-clustered GEE for each option, Holm-corrected across seven options, all $p_{\mathrm{Holm}}\geq.37$; Cram\'er's $V\leq.18$). The observed rates differed by up to 29 percentage points for some options, so this is a failure to detect an association at these group sizes, not evidence that methods elicit the same expectations.
+\textbf{Expected outcomes.} Across both scenarios ($n=354$ observations), participants most often expected the data to be permanently deleted from the chatbot's database and backups (59.0\%), followed by the chatbot no longer referencing it in future conversations (54.2\%) or in the current one (49.2\%); 28.5\% expected it to be hidden from users, 27.7\% expected it to be excluded from training, and 10.5\% were unsure. No option differed between the two scenarios (McNemar tests, Holm-corrected
+across seven options, all $p_{\mathrm{Holm}}\geq.22$), so we pool them.
+Expectations did not differ significantly by method (Table~\ref{tab:contingency}; participant-clustered GEE for each option, Holm-corrected across seven options, all $p_{\mathrm{Holm}}\geq.37$; Cram\'er's $V\leq.18$). The observed rates differed by up to 29 percentage points for some options, so this is a failure to detect an association at these group sizes, not evidence that methods elicit the same expectations.
 
-\textbf{Verification.} The most common verification response was not knowing how to check (44.6\% of the 354 observations), followed by asking in a new conversation (21.8\%), asking in the same conversation (20.6\%), checking the settings (17.5\%) and checking the interface (16.1\%); 10.2\% did not want to check (Table~\ref{tab:verification}). Verification differed by method. In the less-sensitive scenario, method was associated with asking in the same conversation ($p_{\mathrm{Holm}}=.001$), asking in a new conversation ($p_{\mathrm{Holm}}=.007$) and not knowing how to verify ($p_{\mathrm{Holm}}=.007$); in the more-sensitive scenario, with asking in the same conversation ($p_{\mathrm{Holm}}=.039$) and checking the settings ($p_{\mathrm{Holm}}=.046$). Those who chose the lowest-effort method, single-conversation deletion, most often did not know how to verify (58.5\%).
+\textbf{Verification.} The most common verification response was not knowing how to check (44.6\% of the 354 observations), followed by asking in a new conversation (21.8\%), asking in the same conversation (20.6\%), checking the settings (17.5\%) and checking the interface (16.1\%); 10.2\% did not want to check (Table~\ref{tab:verification}). No option differed
+between the two scenarios (McNemar tests, Holm-corrected across eight options,
+all $p_{\mathrm{Holm}}=1.00$), so we pool them. Verification differed by method. In the less-sensitive scenario, method was associated with asking in the same conversation ($p_{\mathrm{Holm}}=.001$), asking in a new conversation ($p_{\mathrm{Holm}}=.007$) and not knowing how to verify ($p_{\mathrm{Holm}}=.007$); in the more-sensitive scenario, with asking in the same conversation ($p_{\mathrm{Holm}}=.039$) and checking the settings ($p_{\mathrm{Holm}}=.046$). Those who chose the lowest-effort method, single-conversation deletion, most often did not know how to verify (58.5\%).
 
 \textbf{Deleted information referenced again.} Nearly a quarter (23.7\%) had noticed a chatbot referencing information they believed they had deleted (20.3\% occasionally, 3.4\% frequently); 49.2\% had never noticed this, 24.3\% were not sure, and 2.8\% had never attempted deletion.
 
-\textbf{Post-deletion feedback.} Currently, 41.2\% received a clear message confirming deletion, 34.5\% a brief or vague acknowledgement, and 29.4\% no feedback. Participants most often wanted a popup confirmation (68.4\%) or a breakdown of what was deleted and what may be retained (41.2\%), followed by a timestamp or estimate of when deletion completes (27.7\%), an inline confirmation in the conversation (23.7\%) and an email (22.6\%); 8.5\% wanted no feedback.
+\textbf{Post-deletion feedback.} Participants could select more than one kind of confirmation they currently receive (18 of the 177 did): 41.2\% received a clear message confirming deletion, 34.5\% a brief or vague acknowledgement, and 29.4\% no feedback; 4.0\% had not attempted to delete data and 2.3\% chose other. Asked what feedback a chatbot should provide (again select all, so percentages exceed 100\%), participants most often wanted a popup confirmation (68.4\%) or a breakdown of what was deleted and what may be retained (41.2\%), followed by a timestamp or estimate of when deletion completes (27.7\%), an inline confirmation in the conversation (23.7\%) and an email (22.6\%); 8.5\% wanted no feedback.
 
 \begin{table}[t]
 \centering
@@ -1065,6 +1093,10 @@ All (354) & 20.6 & 21.8 & 17.5 & 16.1 & 5.1 & 44.6 & 10.2 \\
 
 \section{Technical Audit Results}
 \label{sec:audit-results}
+% Result to report here (moved out of Methods 2026-10-01): on Gemini, 7 of 133
+% chat-based erasure requests received a prompt to connect Google Keep instead of
+% a reply; nothing was deleted, and these are coded "asked to connect an app"
+% (counted from tester/transcripts, 2026-09-24).
 % TODO(authors): drives RQ1 (observed deletion-control behavior per
 % platform/cell, recorded as the four measurements described under
 % "Outcome recording and repetition" in \S\ref{sec:audit-methodology}),
@@ -1108,7 +1140,7 @@ research treats this as a distinct, harder problem than record-level
 deletion~\cite{bourtoule2021machine}. In the survey, participants most
 often expected permanent deletion (59.0\% of observations), while only
 16--36\% of observations (depending on the method chosen) also expected
-exclusion from training (\S\ref{sec:sample-knowledge}). This selection pattern does not show that
+exclusion from training (\S\ref{sec:expectations}). This selection pattern does not show that
 participants conflate the two outcomes. The item was select-all, so leaving an
 option unselected does not mean a participant believes its opposite. The
 ``permanently deleted'' option was worded as deletion ``from the database and
@@ -1132,7 +1164,7 @@ deletion~\cite{ramokapane2017stupid} and for website data-deletion and
 opt-out controls audited directly~\cite{habib2019empirical}.
 Participants' self-reported verification behavior fits the same pattern
 in a new setting: 44.6\% of observations did not know how
-to check whether a chatbot deletion worked (\S\ref{sec:sample-knowledge}). These are participants' recollections of
+to check whether a chatbot deletion worked (\S\ref{sec:expectations}). These are participants' recollections of
 past behavior on the survey's verification item, not actions the study
 observed directly, a distinction the technical audit's own recall probes
 (\S\ref{sec:audit-methodology}) are designed to check independently. With
@@ -1142,21 +1174,19 @@ specific to any one platform's implementation.
 
 \textbf{The memory-deletion effort matches a known mental-model gap.}
 Interview work on LLM chatbot memory features finds that users hold
-diverse, often incomplete models of what a stored ``memory'' represents
+diverse, often incomplete models of what a stored memory represents
 and how it was formed, and want finer-grained control over
 it~\cite{zhang2025understanding}. That gives a plausible mechanism for
 this paper's finding that deleting a specific saved memory was rated as
 more effortful than deleting a single conversation or asking the chatbot
-to forget (\S\ref{sec:sample-knowledge}): if a user is unsure what a memory
+to forget (\S\ref{sec:effort}): if a user is unsure what a memory
 entry represents or how it was derived, deciding whether and how to
 delete it is harder than deleting a single conversation turn, independent
 of how many clicks either action actually takes.
 
 \textbf{Willingness to delete was higher when the data were more sensitive,
 and the controls available to act on it are uneven.} Willingness to delete and
-perceived protection were both higher in the more-sensitive scenario
-(\S\ref{sec:survey-methodology} notes this is confounded with presentation
-order). Li et al.'s
+perceived protection were both higher in the more-sensitive scenario. Li et al.'s
 walkthrough finds that LLM platforms' deletion controls are already
 inconsistently implemented across accounts and message types~\cite{li2026privacy}.
 Whether the controls users can reach keep pace with their willingness to
@@ -1180,55 +1210,54 @@ whichever of the two was left unaddressed.
 
 \section{Limitations}
 \label{sec:limitations}
-% TODO(authors): survey-side limitations: the two scenarios were shown in a
-% fixed, non-counterbalanced order (\S\ref{sec:survey-methodology}), so
-% every sensitivity comparison in \S\ref{sec:sensitivity-effect} is equally
-% consistent with an order effect and cannot isolate sensitivity as the
-% cause; sample skew (young, US-only, high baseline privacy knowledge,
-% \S\ref{sec:sample-knowledge}); the eligibility screen excludes people who
-% never deleted chatbot data (36 of 218; see Sample scope in
-% \S\ref{sec:survey-methodology}), so results say nothing about those who
-% never found a deletion control; pooled analyses treat a participant's two
-% scenario responses as clustered, not independent; self-report of past deletion
-% behavior/expectations, underpowered
-% subgroup tests (McNemar per-method power caveats noted in the results,
-% e.g. \S~B9/global.md). Technical-audit-side limitations (once its
-% Results are drafted), e.g. all 6 test accounts are free/no-cost tier
-% (Perplexity's Memory feature, and everything depending on it, is
-% inaccessible on that tier, a real access finding, not just a testing
-% gap, but still worth naming as a scope limitation here too), accounts
-% reused across cells with contamination controlled via unique per-cell
-% anchor+token rather than fresh-account isolation, acknowledgment
-% recorded from a single observation per cell since there is no safe way
-% to re-request the same erasure (recall's own outcome-dependent-
-% repetition asymmetry was fixed 2026-09-23 with a mandatory two-attempt
-% policy -- see "Outcome recording and repetition" in
-% \S\ref{sec:audit-methodology} -- so this residual limitation is scoped
-% to the acknowledgment measurement only, not recall), retention is read
-% from the platform's own reply and interface status at injection, not
-% from control cells (see "Retention at injection" in
-% \S\ref{sec:audit-methodology}), so cells with no such signal, most of
-% them on Gemini, DeepSeek and Perplexity, stay indeterminate, a status or
-% a claim is not proof that the fact sits on a memory surface, and change
-% over the 31-day window is not tested, and
-% platform UI changes during the study window (e.g. ChatGPT's memory
-% redesign removing per-item deletion mid-study; Copilot's move to
-% copilot.com, disclosed under "Platform changes" in
-% \S\ref{sec:audit-methodology}, which puts its recall on a different
-% interface from injection) limiting how directly
-% results generalize forward in time. Also from the outcome coding:
-% acknowledgment shows what a platform said, not what it stored;
-% commitment types rest on the platforms' published documentation as
-% read during the audit and can change; NO COMMITMENT, UNRELATED and NOT
-% TESTABLE cells cannot support a verdict on policy; the ChatGPT and
-% Perplexity help pages returned HTTP 403 to direct fetch, so their
-% commitment wording was copied by hand from the live pages on
-% 2026-09-24 (the pages are revised often: the ChatGPT ones were updated
-% within days of that date, so the wording is dated, not permanent); and acknowledgment for chat-based
-% erasure requests was read from screenshots by optical character
-% recognition, with replies that were cut off, covered or not yet
-% displayed reported as not captured.
-TBWL
+% Copilot's limitation is stated for the domain migration only. Anything about
+% how Copilot recall is run goes in only after the approach is settled (task
+% X7). Incomplete OCR replies: only if some stay uncaptured (task D2b). Still to add to the survey paragraph: the
+% presentation-order check (task C5).
+\textbf{Survey.} The sample is not representative. Participants were
+US-resident Prolific adults who had used at least one of the six chatbots; it
+skews young (73\% under 45) and well educated (62.1\% with at least a bachelor's
+degree), and participants reported high privacy knowledge (mean 5.06 of 6
+correct), so the expectations and behaviors we report may not hold for chatbot
+users more broadly. The survey analysis covers only respondents who had deleted
+chatbot data before (36 of 218 complete respondents had not), so it says nothing
+about people who never found or used a deletion control. All survey measures are
+self-reported: past deletion and verification behavior are recollections and
+expectations are stated beliefs, not observed actions. Method choice was
+self-selected, so differences between methods are associations with the chosen
+method, not effects of switching methods. The two scenarios are hypothetical
+vignettes and both concern location data, a weather query and a health query
+with a home address, so the differences between them may not extend to other
+kinds of personal data. Finally, several comparisons had limited power: we set no
+sample-size target or power calculation, the smallest method groups contained
+14 participants, and a nonsignificant result is read as no association
+detected, not as evidence that methods are equivalent.
+
+\textbf{Technical audit.} The design has no never-injected negative-control or
+injected-but-not-deleted positive-control cells, so a missing or recovered
+token is judged against each platform's documentation and its reply at
+injection, not against a control. All accounts are on each platform's free
+tier, so surfaces behind a paid tier are not tested (Perplexity's Memory, and
+everything that depends on it, is inaccessible on that tier), and accounts are
+reused across cells, with attribution secured by a unique referent and token
+and not by fresh-account isolation. Acknowledgment is read from one
+observation per cell, since the same request cannot safely be sent twice, and
+it shows what a platform said, not what it stored. Retention is read from the
+platform's own reply and interface at injection, not from control cells; it is
+established for most ChatGPT and Claude cells, fewer than half of Copilot's, and
+almost none on Gemini, DeepSeek and Perplexity, so for the rest a missing token
+stays indeterminate, and even an established save does not show which storage
+location holds the fact. Change over the 31-day window is not tested. Commitment
+types rest on the platforms' published documentation as we read it, which is
+revised often (two help pages block automated fetch, so their wording was
+copied by hand and is dated), and cells with no commitment, an unrelated
+mechanism or an unreachable surface cannot support a verdict on policy. Copilot moved
+to a new site during the study, so its recall runs on a different interface
+from the one used at injection, and Claude replaced its memory system
+(\S\ref{sec:audit-methodology}); interfaces and policies can change again, and
+the results describe the platforms as tested. Finally, every outcome is
+platform-observable behavior: none of it can establish or rule out removal from
+backend storage or training data.
 
 
 
@@ -1267,8 +1296,9 @@ deleted chatbot data before) were applied before the quantitative survey
 analysis, excluding 37 of 218 complete responses
 (\S\ref{sec:sample-knowledge}), so those analyses use only eligible,
 attentive respondents' data. The deletion-request prompt corpus
-(\S\ref{sec:prompt-corpus}) was extracted form this too, 
-Consent was required to enter the survey, so excluded respondents gave it
+(\S\ref{sec:prompt-corpus}) was extracted from the same survey; it applies the
+attention check but not the experience filter, so it includes prompts from
+respondents who had never deleted chatbot data. Consent was required to enter the survey, so excluded respondents gave it
 under the same form as included ones. Before the prompts were used in the
 audit, residual personally identifying text was redacted (\S\ref{sec:prompt-corpus}).
 
@@ -1357,6 +1387,56 @@ prevent AI Chatbots from providing the kind of help I need.''
 \textbf{Attention checks.} ``Please select `Sometimes' for this question''
 (frequency scale from Never to Always) and ``Please select `Agree' for
 this question'' (agreement scale).
+
+\section{Documentation Sources for Commitment Types}
+\label{sec:policy-sources}
+
+Commitment types (\S\ref{sec:audit-methodology}) rest only on the platforms' own published documentation. Tables~\ref{tab:sources-a} and~\ref{tab:sources-b} list the documents the types were set from. \textsc{No commitment} means that none of the documents listed states the action's effect, not that none exists elsewhere. Pages were read between 2026-09-23 and 2026-09-24 and their quoted sentences were checked against the live pages on 2026-10-01, except the OpenAI and Perplexity help pages, which block automated access: their wording was copied by hand on 2026-09-24. Only Anthropic, OpenAI and Perplexity state a time within which deleted data is removed (30 days); Gemini, Copilot and DeepSeek state none.
+
+\begin{table*}[t]
+\centering
+\caption{Documents used for the Claude, ChatGPT and Gemini commitment types.}
+\label{tab:sources-a}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.07\textwidth}p{0.33\textwidth}p{0.36\textwidth}p{0.20\textwidth}@{}}
+\toprule
+Platform & Document & What it states about deletion & Access and check \\
+\midrule
+Claude & Claude Help Center, ``Use Claude's chat search and memory to build on previous context''\newline\url{https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context} & Memory is separate from chats; deleting a chat does not remove its memory entries; individual memories and ``Reset memory'' can be deleted; asking Claude to forget updates memory for the next conversation & Read 2026-09-23; quotes confirmed 2026-10-01 \\
+Claude & Claude platform documentation, ``Retrieve and delete chats, files, and projects'' (Enterprise Compliance API)\newline\url{https://platform.claude.com/docs/en/manage-claude/compliance-content-data} & Deleting a chat in claude.ai deletes its messages, attached files, tool-generated files and artifacts (an Enterprise page describing claude.ai behavior) & Read 2026-09-24; quote confirmed 2026-10-01 \\
+Claude & Anthropic Privacy Policy\newline\url{https://www.anthropic.com/legal/privacy} & A deleted conversation is deleted from the back end within 30 days & Quote confirmed 2026-10-01 \\
+ChatGPT & OpenAI Help, ``Memory in ChatGPT''\newline\url{https://help.openai.com/en/articles/8590148-memory-in-chatgpt} & Asking ChatGPT to forget removes a saved memory; deleting a chat does not necessarily delete a saved memory; ``Delete and turn off memory''; updates take time to propagate; logs of deleted memories may be kept up to 30 days & Copied by hand 2026-09-24 (automated fetch blocked) \\
+ChatGPT & OpenAI Help, ``ChatGPT Custom Instructions''\newline\url{https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions} & Custom instructions can be edited or deleted for future conversations & Copied by hand 2026-09-24 (automated fetch blocked) \\
+ChatGPT & OpenAI Help, ``Chat and file retention in ChatGPT''\newline\url{https://help.openai.com/en/articles/8983778-chat-and-file-retention-in-chatgpt} & A deleted chat leaves the account view at once and is scheduled for permanent deletion within 30 days; saved memories are stored separately; deleting a chat does not delete a file saved in the Library & Copied by hand 2026-09-24 (automated fetch blocked) \\
+Gemini & Gemini Apps Help, ``Get personalization with memory of your past Gemini chats''\newline\url{https://support.google.com/gemini/answer/16598469?hl=en} & Gemini can be corrected in the chat; to delete something it remembered, delete the chats containing it from Gemini Apps Activity; a short delay follows a chat deletion & Read 2026-09-23/24; quotes confirmed 2026-10-01 \\
+Gemini & Gemini Apps Help, ``Manage \& delete your activity in Gemini Apps''\newline\url{https://support.google.com/gemini/answer/13278892?hl=en} & How Gemini Apps Activity is deleted (the mechanism behind the activity-deletion cells) & Read 2026-09-23/24; page checked 2026-10-01 \\
+Gemini & Gemini Apps Help, ``Customize Gemini's responses with your instructions''\newline\url{https://support.google.com/gemini/answer/16598625?hl=en} & An individual instruction can be edited or deleted; deleting all instructions at once is not described & Read and confirmed 2026-10-01 \\
+Gemini & Gemini Apps Help, ``Find \& manage your recent chats in Gemini Apps''\newline\url{https://support.google.com/gemini/answer/13666746?hl=en} & Deleting a chat also deletes content created in it and the related activity & Read 2026-09-24; quote confirmed 2026-10-01 \\
+Gemini & Gemini Apps Help, ``Upload \& analyze files in Gemini Apps''\newline\url{https://support.google.com/gemini/answer/14903178?hl=en} & Describes a storage limit for uploads; no sentence says that deleting a chat deletes an uploaded file & Read 2026-09-24; title confirmed 2026-10-01 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Documents used for the Copilot, Perplexity and DeepSeek commitment types.}
+\label{tab:sources-b}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.07\textwidth}p{0.33\textwidth}p{0.36\textwidth}p{0.20\textwidth}@{}}
+\toprule
+Platform & Document & What it states about deletion & Access and check \\
+\midrule
+Copilot & Microsoft Support, ``Microsoft Copilot privacy controls''\newline\url{https://support.microsoft.com/en-us/microsoft-copilot/microsoft-copilot-privacy-controls} & Asking Copilot to forget removes an item from memory; Memory $>$ Delete all Memory removes everything stored and does not delete conversation history; conversation history can be deleted separately & Read 2026-09-23; quotes confirmed 2026-10-01 \\
+Copilot & Microsoft Support, ``Privacy FAQ for Microsoft Copilot''\newline\url{https://support.microsoft.com/en-us/topic/privacy-faq-for-microsoft-copilot-27b3a435-8dc9-4b55-9a4b-58eeb9647a7f} & Uploaded files are stored for a short time (no longer than 18 months); conversation activity is stored for 18 months & Read 2026-09-24; quote confirmed 2026-10-01 \\
+Copilot & Microsoft Support, ``Manage your Copilot activity history in the privacy dashboard''\newline\url{https://support.microsoft.com/en-us/privacy/manage-your-copilot-activity-history-in-the-privacy-dashboard} & ``Delete all activity history'' clears Copilot activity history & Page checked 2026-10-01 \\
+Perplexity & Perplexity Help Center, ``Self-Serve Data Deletion''\newline\url{https://www.perplexity.ai/help-center/en/articles/11564562-self-serve-data-deletion} & Single threads and published content can be deleted; a log of cleared memories may be kept up to 30 days; uploaded files are kept 30 days by default & Copied by hand 2026-09-24 (automated fetch blocked) \\
+Perplexity & Perplexity Help Center, ``How long does Perplexity retain my search history, profile data and personal information''\newline\url{https://www.perplexity.ai/help-center/en/articles/10354873-how-long-does-perplexity-retain-my-search-history-profile-data-and-personal-information} & Retention of search history and personal data; a log of cleared memories may be kept up to 30 days & Copied by hand 2026-09-24 (automated fetch blocked) \\
+DeepSeek & DeepSeek Privacy Policy\newline\url{https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html} & Chat history can be copied or deleted in settings; personal data is kept as long as necessary; no deletion-completion time is stated & Quotes confirmed 2026-10-01 \\
+\bottomrule
+\end{tabular}
+\end{table*}
 
 % ----------------------------------------------------------------
 % TODO(authors): populate refs.bib further as the Background/Related

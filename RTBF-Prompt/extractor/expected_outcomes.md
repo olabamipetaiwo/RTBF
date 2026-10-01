@@ -14,31 +14,31 @@ All three injection types (I1 conversational, I2 NL memory command, I3 memory-UI
 
 ### CL-I1-E1 / CL-I2-E1 / CL-I3-E1 (× E1 Delete conversation)
 **Commitment type:** DOES NOT DELETE
-**Expected outcome:** DOES NOT DELETE (same-session and cross-session): conversation deletion does not remove the memory entry generated from it.
+**Expected outcome:** DOES NOT DELETE (new-conversation recall): conversation deletion does not remove the memory entry generated from it.
 **Citation basis:** Anthropic Help Center, "Use Claude's chat search and memory...": "When a conversation expires or is deleted, related memory entries generated from it won't be removed, but you can delete individual memories at any time." Source: https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context
 **Source URL(s):** see Citation basis
 
 ### CL-I1-E2 / CL-I2-E2 / CL-I3-E2 (× E2 Delete individual memory edit)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (same-session and cross-session): individually deleting the memory topic that stored the anchor removes it.
+**Expected outcome:** DELETES (new-conversation recall): individually deleting the memory topic that stored the anchor removes it.
 **Citation basis:** Anthropic Help Center: memory is stored as individually addressable topics — "See exactly what Claude remembers about you in Settings > Memory. Everything Claude remembers is listed under Topics. Select any topic to read it, then use the edit icon to change it or select 'Delete' to remove it." (fetched 2026-09-24) Source: https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context
 **Source URL(s):** see Citation basis
 
 ### CL-I1-E3 / CL-I2-E3 / CL-I3-E3 (× E3 Clear all memories)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (same-session and cross-session): a full memory reset removes everything, including the injected anchor.
+**Expected outcome:** DELETES (new-conversation recall): a full memory reset removes everything, including the injected anchor.
 **Citation basis:** Anthropic Help Center: "Reset memory: Permanently deletes all memories including project memories. Once you select this option and click 'Reset memory,' this cannot be undone." (fetched 2026-09-24) Source: https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context
 **Source URL(s):** see Citation basis
 
 ### CL-I1-E4 / CL-I2-E4 / CL-I3-E4 (× E4 NL forget command)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (cross-session): the documentation says a chat request to forget changes memory for the next conversation. It does not say the change applies within the same conversation.
+**Expected outcome:** DELETES (new-conversation recall): the documentation says a chat request to forget changes memory for the next conversation. It does not say the change applies within the same conversation.
 **Citation basis:** Anthropic Help Center: "Tell Claude what you'd like it to remember, change, or forget, and the update applies to your next conversation." (fetched verbatim 2026-09-23). Corrects the draft, which recorded no policy text for this mechanism. Source: https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context
 **Source URL(s):** see Citation basis
 
 ### CL-I1-E5 / CL-I2-E5 / CL-I3-E5 (× E5 MAXIMAL)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (same-session and cross-session): MAXIMAL includes the Clear-all-memories action (E3), which independently is policy-confirmed effective regardless of E1/E4's individual uncertainty.
+**Expected outcome:** DELETES (new-conversation recall): MAXIMAL includes the Clear-all-memories action (E3), which independently is policy-confirmed effective regardless of E1/E4's individual uncertainty.
 **Citation basis:** Same as CL-*-E3. Source: https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context
 **Source URL(s):** see Citation basis
 
@@ -59,7 +59,7 @@ I1 (conversational) and I2 (explicit memory instruction) both land in the Memory
 
 ### CH-I1-E2 / CH-I2-E2 (× E2 Delete conversation)
 **Commitment type:** DOES NOT DELETE
-**Expected outcome:** DOES NOT DELETE (same-session and cross-session): the documentation says deleting the original chat does not automatically delete a separate saved memory.
+**Expected outcome:** DOES NOT DELETE (new-conversation recall): the documentation says deleting the original chat does not automatically delete a separate saved memory.
 **Citation basis:** Wording copied from the live page on 2026-09-24. OpenAI "Memory in ChatGPT" (Saved memories): "Saved memories are stored separately from chat history. Deleting the original chat does not automatically delete a separate saved memory." Also: "Deleting a chat alone does not necessarily delete a separate saved memory created from that chat." Source: https://help.openai.com/en/articles/8590148-memory-in-chatgpt
 **Source URL(s):** see Citation basis
 
@@ -71,7 +71,7 @@ I1 (conversational) and I2 (explicit memory instruction) both land in the Memory
 
 ### CH-I1-E4 / CH-I2-E4 (× E4 Clear all memories)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (same-session and cross-session): the documentation says Delete and turn off memory deletes the remembered information shown in the summary and turns Memory off, without deleting past chats. It adds that logs of deleted saved memories may be kept for up to 30 days.
+**Expected outcome:** DELETES (new-conversation recall): the documentation says Delete and turn off memory deletes the remembered information shown in the summary and turns Memory off, without deleting past chats. It adds that logs of deleted saved memories may be kept for up to 30 days.
 **Citation basis:** Wording copied from the live page on 2026-09-24. OpenAI "Memory in ChatGPT" (Memory summary): "Delete and turn off memory deletes the remembered information shown in the summary and turns Memory off. It does not delete past chats." Also: "It can take time for deletion and Memory updates to propagate. OpenAI may retain logs of deleted saved memories for up to 30 days for safety and debugging purposes." Source: https://help.openai.com/en/articles/8590148-memory-in-chatgpt
 **Source URL(s):** see Citation basis
 
@@ -89,13 +89,13 @@ I1 (conversational) and I2 (explicit memory instruction) both land in the Memory
 
 ### CH-I3-E5 (× E5 Clear custom instructions)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (same-session and cross-session): direct match — the field the anchor was typed into is cleared.
+**Expected outcome:** DELETES (new-conversation recall): direct match — the field the anchor was typed into is cleared.
 **Citation basis:** Wording copied from the live page on 2026-09-24. OpenAI "ChatGPT Custom Instructions": "You can edit or delete custom instructions at any time for future conversations." Disabling steps: "[Optional] Delete your instructions from the relevant fields." Source: https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions
 **Source URL(s):** see Citation basis
 
 ### CH-I1-E6 / CH-I2-E6 (× E6 Clear all chat history, bulk)
 **Commitment type:** DOES NOT DELETE
-**Expected outcome:** DOES NOT DELETE (same-session and cross-session): bulk deletion is still scoped to conversations, not Memory — same gap as E2.
+**Expected outcome:** DOES NOT DELETE (new-conversation recall): bulk deletion is still scoped to conversations, not Memory — same gap as E2.
 **Citation basis:** Wording copied from the live page on 2026-09-24. Same Memory quotes as the single-chat cells: "Saved memories are stored separately from chat history. Deleting the original chat does not automatically delete a separate saved memory." The retention article covers chats only and does not mention Memory: "When you delete a saved chat: ChatGPT removes it from your account view immediately. OpenAI schedules it for permanent deletion from its systems within 30 days" (unless de-identified or a legal or security obligation applies). Source: https://help.openai.com/en/articles/8590148-memory-in-chatgpt , https://help.openai.com/en/articles/8983778-chat-and-file-retention-in-chatgpt
 **Source URL(s):** see Citation basis
 
@@ -107,7 +107,7 @@ I1 (conversational) and I2 (explicit memory instruction) both land in the Memory
 
 ### CH-I1-E7 / CH-I2-E7 / CH-I3-E7 (× E7 MAXIMAL)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (same-session and cross-session): MAXIMAL includes both E4 (effective for I1/I2's Memory-store anchor) and E5 (effective for I3's field-anchor) — whichever surface actually holds the anchor, MAXIMAL's matching component clears it.
+**Expected outcome:** DELETES (new-conversation recall): MAXIMAL includes both E4 (effective for I1/I2's Memory-store anchor) and E5 (effective for I3's field-anchor) — whichever surface actually holds the anchor, MAXIMAL's matching component clears it.
 **Citation basis:** Wording copied from the live page on 2026-09-24. Combines the Memory wording of the clear-all-memories cells and the Custom Instructions wording of the clear-custom-instructions cells. Source: https://help.openai.com/en/articles/8590148-memory-in-chatgpt , https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions
 **Source URL(s):** see Citation basis
 
@@ -157,8 +157,8 @@ I1 (conversational injection) lands in conversation/chat history; I2 (personal c
 
 ### GE-I2-E4 (× E4 Delete single Saved info item)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (same-session and cross-session): direct match — deleting the specific Saved-info item that held the anchor removes it.
-**Citation basis:** Gemini Apps Help: Saved info items are individually deletable, user-controlled entries. Source: https://support.google.com/gemini/answer/16598469?hl=en
+**Expected outcome:** DELETES (new-conversation recall): the documentation says an individual instruction can be deleted; deleting the specific Saved-info item that held the anchor removes it.
+**Citation basis:** Google Gemini Apps Help, "Customize Gemini's responses with your instructions", heading "Find, edit, or delete your instructions for Gemini": "Click More and then Edit or Delete." (fetched 2026-10-01). Source: https://support.google.com/gemini/answer/16598625?hl=en
 **Source URL(s):** see Citation basis
 
 ### GE-I1-E5 (× E5 Delete all Saved info)
@@ -168,9 +168,9 @@ I1 (conversational injection) lands in conversation/chat history; I2 (personal c
 **Source URL(s):** see Citation basis
 
 ### GE-I2-E5 (× E5 Delete all Saved info)
-**Commitment type:** DELETES
-**Expected outcome:** DELETES (same-session and cross-session): bulk version of GE-I2-E4.
-**Citation basis:** Same as GE-I2-E4. Source: https://support.google.com/gemini/answer/16598469?hl=en
+**Commitment type:** NO COMMITMENT
+**Expected outcome:** NO COMMITMENT (architectural inference, new-conversation recall): the documentation covers deleting individual instructions only; deleting all of them at once is not described.
+**Citation basis:** Same page as GE-I2-E4 (heading "Find, edit, or delete your instructions for Gemini"); it says nothing about deleting all instructions, and neither do the Gemini Apps Privacy Hub or the Personal context page (fetched 2026-10-01). Source: https://support.google.com/gemini/answer/16598625?hl=en
 **Source URL(s):** see Citation basis
 
 ### GE-I1-E6 (× E6 MAXIMAL)
@@ -181,8 +181,8 @@ I1 (conversational injection) lands in conversation/chat history; I2 (personal c
 
 ### GE-I2-E6 (× E6 MAXIMAL)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (same-session and cross-session): the E4/E5 component (effective for Saved info) clears the anchor regardless of the E2/E3 component being null for this injection type.
-**Citation basis:** Same as GE-I2-E4/E5. Source: https://support.google.com/gemini/answer/16598469?hl=en
+**Expected outcome:** DELETES (new-conversation recall): the E4 component, deleting the specific Saved-info item, is documented to remove it, regardless of the E2/E3 component being null for this injection type.
+**Citation basis:** Same as GE-I2-E4. Source: https://support.google.com/gemini/answer/16598625?hl=en
 **Source URL(s):** see Citation basis
 
 *(Background, applies to all Gemini cells above): activity-retention window (default 18 months) and the three-separate-memory-systems architecture — "Gemini Apps Privacy Hub", https://support.google.com/gemini/answer/13594961?hl=en ; "Manage & delete your activity in Gemini Apps", https://support.google.com/gemini/answer/13278892?hl=en*
@@ -201,7 +201,7 @@ I1 (conversational disclosure) and I2 (explicit memory injection, confirmed chat
 
 ### CO-I1-E2 / CO-I2-E2 (× E2 Delete all memory)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (same-session and cross-session): direct match, Delete all Memory removes everything Copilot stored.
+**Expected outcome:** DELETES (new-conversation recall): direct match, Delete all Memory removes everything Copilot stored.
 **Citation basis:** Microsoft Copilot privacy controls: "To delete everything from memory in Copilot: Select your profile icon, then select Memory > Delete all Memory. Your conversation history will not be deleted." (fetched verbatim 2026-09-23). Source: https://support.microsoft.com/en-us/microsoft-copilot/microsoft-copilot-privacy-controls
 **Source URL(s):** see Citation basis
 
@@ -219,13 +219,13 @@ I1 (conversational disclosure) and I2 (explicit memory injection, confirmed chat
 
 ### CO-I1-E5 / CO-I2-E5 (× E5 Privacy Dashboard)
 **Commitment type:** NO COMMITMENT
-**Expected outcome:** NO COMMITMENT (lower-confidence inference, same-session and cross-session): the Dashboard is titled and scoped around "activity history," matching E1's framing rather than E2's "Memory" framing, so predicted to behave like E1 (misses the Memory-store anchor) rather than E2.
+**Expected outcome:** NO COMMITMENT (lower-confidence inference, new-conversation recall): the Dashboard is titled and scoped around "activity history," matching E1's framing rather than E2's "Memory" framing, so predicted to behave like E1 (misses the Memory-store anchor) rather than E2.
 **Citation basis:** No policy text found directly comparing Privacy Dashboard's scope to E1/E2 — inferred from naming/framing parallel ("Copilot app activity history," confirmed live 2026-08-28 to clear activity, not described anywhere as touching Memory). Source: https://support.microsoft.com/en-us/privacy/manage-your-copilot-activity-history-in-the-privacy-dashboard
 **Source URL(s):** see Citation basis
 
 ### CO-I1-E6 / CO-I2-E6 (× E6 MAXIMAL)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (same-session and cross-session): MAXIMAL includes E2/E4, independently policy-confirmed effective regardless of E1/E3/E5's individual uncertainty.
+**Expected outcome:** DELETES (new-conversation recall): MAXIMAL includes E2/E4, independently policy-confirmed effective regardless of E1/E3/E5's individual uncertainty.
 **Citation basis:** Same as CO-*-E2/E4. Source: https://support.microsoft.com/en-us/microsoft-copilot/microsoft-copilot-privacy-controls
 **Source URL(s):** see Citation basis
 
@@ -239,7 +239,7 @@ I1/I2 injections and all Memory-dependent erasure mechanisms (E4/E5/E6) are stru
 
 ### PE-I1-E1 / PE-I2-E1 (× E1 NL forget prompt)
 **Commitment type:** NO COMMITMENT
-**Expected outcome:** NO COMMITMENT (architectural inference, same-session and cross-session): no described backend trigger for a chat-typed forget request.
+**Expected outcome:** NO COMMITMENT (architectural inference, new-conversation recall): no described backend trigger for a chat-typed forget request.
 **Citation basis:** Wording copied from the live page on 2026-09-24. No policy text found addressing this mechanism. Neither the Self-Serve Data Deletion article nor the retention article addresses asking the chatbot to forget. Docs checked: https://www.perplexity.ai/help-center/en/articles/11564562-self-serve-data-deletion , https://www.perplexity.ai/help-center/en/articles/10354873-how-long-does-perplexity-retain-my-search-history-profile-data-and-personal-information
 **Source URL(s):** see Citation basis
 
@@ -283,25 +283,25 @@ No memory feature exists at all (confirmed live; also the one platform whose own
 
 ### DE-I1-E1 (× E1 Delete single conversation)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (same-session and cross-session): with no separate memory store, the conversation holding the anchor is the only place it can live, and the policy says chat history can be deleted.
+**Expected outcome:** DELETES (new-conversation recall): with no separate memory store, the conversation holding the anchor is the only place it can live, and the policy says chat history can be deleted.
 **Citation basis:** DeepSeek Privacy Policy: "Should you choose to do so, you may also copy or delete your chat history via your settings." (fetched verbatim 2026-09-23). The policy gives no retention period for deleted chat history. No memory feature exists (confirmed live). Source: https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html
 **Source URL(s):** see Citation basis
 
 ### DE-I1-E2 (× E2 Delete all history, bulk)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (same-session and cross-session): with no separate memory store, the conversation holding the anchor is the only place it can live, and the policy says chat history can be deleted.
+**Expected outcome:** DELETES (new-conversation recall): with no separate memory store, the conversation holding the anchor is the only place it can live, and the policy says chat history can be deleted.
 **Citation basis:** DeepSeek Privacy Policy: "Should you choose to do so, you may also copy or delete your chat history via your settings." (fetched verbatim 2026-09-23). The policy gives no retention period for deleted chat history. No memory feature exists (confirmed live). Source: https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html
 **Source URL(s):** see Citation basis
 
 ### DE-I1-E3 (× E3 NL forget prompt)
 **Commitment type:** UNRELATED
-**Expected outcome:** UNRELATED cross-session (no persistence layer exists to carry the fact into a new session regardless of any forget request); same-session, the original disclosure remains visible in that conversation's own transcript — a forget request doesn't retroactively remove prior transcript text unless the conversation itself is also deleted.
+**Expected outcome:** UNRELATED in a new conversation (no persistence layer exists to carry the fact into a new conversation regardless of any forget request); in the same conversation, the original disclosure remains visible in that conversation's own transcript — a forget request doesn't retroactively remove prior transcript text unless the conversation itself is also deleted.
 **Citation basis:** ENUMERATION's own note ("Expected-null by architecture; RUN anyway (pre-registered)") + this project's confirmed no-memory architecture. Source: https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html (ENUMERATION is an internal project sheet, not an external URL)
 **Source URL(s):** see Citation basis
 
 ### DE-I1-E4 (× E4 MAXIMAL)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (same-session and cross-session): with no separate memory store, the conversation holding the anchor is the only place it can live, and the policy says chat history can be deleted.
+**Expected outcome:** DELETES (new-conversation recall): with no separate memory store, the conversation holding the anchor is the only place it can live, and the policy says chat history can be deleted.
 **Citation basis:** DeepSeek Privacy Policy: "Should you choose to do so, you may also copy or delete your chat history via your settings." (fetched verbatim 2026-09-23). The policy gives no retention period for deleted chat history. No memory feature exists (confirmed live). Source: https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html
 **Source URL(s):** see Citation basis
 
@@ -325,13 +325,13 @@ Erasure conditions here are only two per platform: "Delete conversation containi
 
 ### CH-IF-E-CONV (ChatGPT, CONV)
 **Commitment type:** DOES NOT DELETE
-**Expected outcome:** DOES NOT DELETE (same-session and cross-session): the documentation says deleting a chat does not delete a file that remains saved in Library. ChatGPT's Library on the cell's account still lists copies of CH-IF-E-CONV.pdf on 2026-09-24; the most recent copy, labelled as modified 2 weeks earlier, matches the injection on 2026-09-08 and outlasted the conversation's erasure on 2026-09-10.
+**Expected outcome:** DOES NOT DELETE (new-conversation recall): the documentation says deleting a chat does not delete a file that remains saved in Library. ChatGPT's Library on the cell's account still lists copies of CH-IF-E-CONV.pdf on 2026-09-24; the most recent copy, labelled as modified 2 weeks earlier, matches the injection on 2026-09-08 and outlasted the conversation's erasure on 2026-09-10.
 **Citation basis:** OpenAI "Chat and file retention in ChatGPT" (Files saved to Library), wording copied from the live page on 2026-09-24: "Deleting a chat does not delete a file that remains saved in Library. Delete the file from Library when you also want to remove the saved Library copy." Observed: the account's Library lists CH-IF-E-CONV.pdf and four numbered copies on 2026-09-24, after the conversation was deleted on 2026-09-10 (screenshot: tester/transcripts/chatgpt/CH-IF-E-CONV/screenshots/manual_library_check_2026-09-24.png; dates are the Library's relative labels). Source: https://help.openai.com/en/articles/8983778-chat-and-file-retention-in-chatgpt
 **Source URL(s):** see Citation basis
 
 ### CH-IF-E-MAX (ChatGPT, MAX)
 **Commitment type:** DOES NOT DELETE
-**Expected outcome:** DOES NOT DELETE (same-session and cross-session): the token is held only by the uploaded file. This cell's MAXIMAL erasure deletes the conversation, clears all memories and clears custom instructions, and none of these reaches a file saved in Library: the documentation says deleting a chat does not delete such a file, and lists files in Library as a separate source to remove. The memory summary after the forced read named the file but did not contain the token.
+**Expected outcome:** DOES NOT DELETE (new-conversation recall): the token is held only by the uploaded file. This cell's MAXIMAL erasure deletes the conversation, clears all memories and clears custom instructions, and none of these reaches a file saved in Library: the documentation says deleting a chat does not delete such a file, and lists files in Library as a separate source to remove. The memory summary after the forced read named the file but did not contain the token.
 **Citation basis:** OpenAI "Chat and file retention in ChatGPT" (Files saved to Library), wording copied from the live page on 2026-09-24: "Deleting a chat does not delete a file that remains saved in Library. Delete the file from Library when you also want to remove the saved Library copy." OpenAI "Memory in ChatGPT" (Remove remembered information from its sources): "Also remove the information from any other sources where it appears" and the list includes "files in Library". Observed: the account's Library lists CH-IF-E-MAX.pdf and CH-IF-E-MAX(1).pdf on 2026-09-24, after the erasure on 2026-09-09; the copy labelled 2 weeks ago matches the injection on 2026-09-07 (screenshot: tester/transcripts/chatgpt/CH-IF-E-MAX/screenshots/manual_library_check_2026-09-24.png; dates are the Library's relative labels). Source: https://help.openai.com/en/articles/8983778-chat-and-file-retention-in-chatgpt , https://help.openai.com/en/articles/8590148-memory-in-chatgpt
 **Source URL(s):** see Citation basis
 

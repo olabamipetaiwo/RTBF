@@ -127,7 +127,7 @@ def test_probe_order_is_r2_then_r3_then_r1_with_no_extra_messages():
         "R1b": "Nutcase something?",
     }
     flow = _FakeFlow(replies, "memory page: nothing here")
-    scores = run_cell._run_recall_probes(flow, probes, TOKEN, "claude", "T-1", "03_recall_same_session")
+    scores = run_cell._run_recall_probes(flow, probes, TOKEN, "claude", "T-1", "03_recall_new_conversation")
 
     assert flow.events == ["R2", "new", "msg:R3a", "msg:R3b", "new", "msg:R1a", "msg:R1b"], flow.events
     assert scores["r2"] == "NOT FOUND (auto)"
@@ -144,6 +144,59 @@ def test_unreadable_memory_page() -> None:
     assert rs.unreadable_memory_page("Memory summary\nGenerating") == "memory summary still generating"
     assert rs.unreadable_memory_page("Memory summary | Updated just now | Overview | You have recently been working with a document") is None
     assert rs.unreadable_memory_page("Topics | Name Summary Last updated Actions | Hobbies | Hobbies and personal projects") is None
+
+
+class _FakePage:
+    def __init__(self, events: list[str]):
+        self._events = events
+
+    def goto(self, url: str) -> None:
+        self._events.append(f"goto:{url}")
+
+
+class _FakeChatFlow(_FakeFlow):
+    def __init__(self, replies: dict[str, str]):
+        super().__init__(replies, "unused")
+        self.page = _FakePage(self.events)
+
+
+def _plan(erasure_type_text: str):
+    import run_cell
+
+    return run_cell.CellPlan(
+        cell_id="T-1", platform="claude", injection_type="I1", token=TOKEN, injection_text="",
+        erasure_desc="", erasure_type_text=erasure_type_text, blocked_on_prompt_set=False,
+    )
+
+
+def test_same_conversation_eligibility() -> None:
+    """Only typed erasures whose chat still exists get the same-conversation request."""
+    import run_cell
+
+    ref = {"injection_ref": "https://claude.ai/chat/abc"}
+    assert run_cell._same_conversation_eligible(_plan("NL forget prompt"), ref)
+    assert run_cell._same_conversation_eligible(_plan("NL forget command"), ref)
+    assert not run_cell._same_conversation_eligible(_plan("NL forget prompt"), {})
+    for ui_erasure in ("Delete conversation", "Clear all memories", "MAXIMAL", "Delete individual memory entry"):
+        assert not run_cell._same_conversation_eligible(_plan(ui_erasure), ref), ui_erasure
+
+
+def test_same_conversation_probe_asks_once_in_the_erasure_chat() -> None:
+    import run_cell
+
+    run_cell._save_screenshot = lambda *a, **k: None
+    run_cell._save_json = lambda *a, **k: None
+    probes = {"r1_open": "R1a", "r1_open_followup": "R1b"}
+    ref = "https://claude.ai/chat/abc"
+
+    flow = _FakeChatFlow({"R1a": f"You called it {TOKEN}."})
+    label = run_cell._run_same_conversation_probe(flow, probes, TOKEN, "claude", "T-1", ref, "04_recall_same_conversation")
+    assert flow.events == [f"goto:{ref}", "msg:R1a"], flow.events  # one request, no new chat, no follow-up
+    assert label.startswith("TOKEN FOUND"), label
+
+    flow = _FakeChatFlow({"R1a": "I don't remember that."})
+    label = run_cell._run_same_conversation_probe(flow, probes, TOKEN, "claude", "T-1", ref, "04_recall_same_conversation")
+    assert not label.startswith("TOKEN FOUND"), label
 
 
 if __name__ == "__main__":

@@ -9,10 +9,11 @@ happens here; those are later, separately reported steps.
 Qualtrics export layout:
 
 row 0 = short column header
-row 1 = full questiontext
-row 2 = ImportId JSON. 
+row 1 = full question text
+row 2 = ImportId JSON, only in some exports
 
-Response data begins at row 3.
+The first response row is located by content (ResponseId starts with "R_"),
+not by a fixed header count: see qualtrics_export.py.
 
 Each participant passes through two blocks (Q4, Q5) and is asked the same
 hypothetical in each: "If you were to type a message asking the AI Chatbot to
@@ -26,24 +27,36 @@ delete your location data, what would your message be?" We therefore carry:
                    human-coding validation step, not a prompt itself
 """
 import argparse
-import warnings
 import pandas as pd
 
-warnings.filterwarnings(
-    "ignore", message="Workbook contains no default style", category=UserWarning
-)
+from qualtrics_export import load_export
 
-HEADER_ROWS = 3   # Qualtrics: header, question text, ImportId
+# Attention checks, the same two items and the same rule as the survey
+# analysis (RTBF-Analysis/src/screen.py): a respondent is excluded only if
+# they ANSWERED a check with the wrong value. A blank answer is not a failure.
+ATTENTION_CHECKS = {"Q6.5": "Sometimes", "Q9.3": "Agree"}
 
 BLOCKS = {
     "Q4": {"prompt": "Q4.11", "rationale": "Q4.12", "method": "Q4.2"},
     "Q5": {"prompt": "Q5.11", "rationale": "Q5.12", "method": "Q5.2"},
 }
 
-def extract(xlsx_path):
-    raw = pd.read_excel(xlsx_path, header=None, dtype=str)
-    header = raw.iloc[0].tolist()
-    data = raw.iloc[HEADER_ROWS:].reset_index(drop=True)
+def failed_attention(header, data):
+    """Boolean Series: True where a check was answered with the wrong value."""
+    wrong = pd.Series(False, index=data.index)
+    for name, expected in ATTENTION_CHECKS.items():
+        answer = data.iloc[:, header.index(name)]
+        wrong |= answer.notna() & (answer != expected)
+    return wrong
+
+
+def extract(xlsx_path, screen_attention=False):
+    header, _, data = load_export(xlsx_path)
+    n_failed = 0
+    if screen_attention:
+        wrong = failed_attention(header, data)
+        n_failed = int(wrong.sum())
+        data = data[~wrong].reset_index(drop=True)
 
     def col(name):
         return data.iloc[:, header.index(name)]
@@ -65,15 +78,17 @@ def extract(xlsx_path):
                 "prompt": str(p).strip(),
                 "rationale": ("" if pd.isna(rationale.iloc[i]) else str(rationale.iloc[i]).strip()),
             })
-    return pd.DataFrame(rows), len(data)
+    return pd.DataFrame(rows), len(data), n_failed
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--xlsx", required=True)
     ap.add_argument("--out", default="raw_prompts.csv")
+    ap.add_argument("--screen-attention", action="store_true",
+                    help="exclude respondents who answered an attention check wrongly")
     a = ap.parse_args()
 
-    df, n_participants = extract(a.xlsx)
+    df, n_participants, n_failed = extract(a.xlsx, a.screen_attention)
     df.to_csv(a.out, index=False)
 
     n_prompts = len(df)
@@ -85,7 +100,9 @@ def main():
     q4_only = blocks_per_pid.apply(lambda s: s == {"Q4"}).sum()
     q5_only = blocks_per_pid.apply(lambda s: s == {"Q5"}).sum()
 
-    print(f"Participant rows in export : {n_participants}")
+    if a.screen_attention:
+        print(f"Failed attention (excluded): {n_failed}")
+    print(f"Participant rows kept      : {n_participants}")
     print(f"Prompt instances extracted : {n_prompts}")
     print(f"Participants contributing  : {n_contrib}")
     print(f"  answered both blocks     : {both}")

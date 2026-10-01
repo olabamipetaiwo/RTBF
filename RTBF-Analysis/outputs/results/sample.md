@@ -1,20 +1,29 @@
 # sample
 
-_Run at 2026-08-25T23:53:27_
+_Run at 2026-10-01T02:24:16_
 
 ```text
 sample: n = 177
 
 === demographics ===
-           variable        response   n   pct
-                Age 25-34 years old  56  31.6
-                Age 35-44 years old  45  25.4
-                Age 18-24 years old  29  16.4
-                Age 45-54 years old  27  15.3
-                Age 55-64 years old  17   9.6
-                Age   65+ years old   3   1.7
-        Lives in US             Yes 177 100.0
-Ever used a chatbot             Yes 177 100.0
+           variable                                                             response   n   pct
+                Age                                                      25-34 years old  56  31.6
+                Age                                                      35-44 years old  45  25.4
+                Age                                                      18-24 years old  29  16.4
+                Age                                                      45-54 years old  27  15.3
+                Age                                                      55-64 years old  17   9.6
+                Age                                                        65+ years old   3   1.7
+        Lives in US                                                                  Yes 177 100.0
+Ever used a chatbot                                                                  Yes 177 100.0
+          Education                                                    Bachelor’s degree  75  42.4
+          Education Graduate or professional degree (MA, MS, MBA, PhD, JD, MD, DDS etc.)  35  19.8
+          Education                                          Some college, but no degree  30  16.9
+          Education                                       Associates or technical degree  19  10.7
+          Education                                           High school diploma or GED  15   8.5
+          Education                                             Some high school or less   3   1.7
+             Gender                                                                  Man 104  58.8
+             Gender                                                                Woman  72  40.7
+             Gender                                                    Prefer not to say   1   0.6
 
 === usage x tenure (users only) ===
             Less than 6 months  6 to 12 months  1 to 2 years  2+ years  total_users

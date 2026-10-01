@@ -26,6 +26,26 @@ ENT_MAP = {
 }
 
 
+# Words that spaCy's small English model mislabels as entities in short
+# imperative deletion requests, found by listing every entity it flagged
+# across the 375 prompts (2026-09-30): sentence-initial "Delete" tagged ORG
+# (19 of 35 flagged entities, e.g. "Delete all personal data" became
+# "[ORG] all personal data"), "chatbot"/"AI Chatbot" tagged PERSON, "AI"
+# tagged GPE, and the typo "hte" tagged ORG. None is identifying text, and
+# redacting them removed the verb from the prompt. An entity is kept as
+# non-PII only when EVERY one of its words is in this set, so a real name or
+# place that merely contains one of these words is still redacted.
+NOT_PII_WORDS = {
+    "delete", "forget", "remove", "erase", "clear", "the", "hte", "location",
+    "ai", "chatbot", "bot", "assistant",
+}
+
+
+def is_deletion_vocabulary(ent_text):
+    words = re.findall(r"[a-z]+", ent_text.lower())
+    return bool(words) and all(w in NOT_PII_WORDS for w in words)
+
+
 def scrub(text, nlp, counts):
     t = str(text)
     for tag, pat in REGEX:
@@ -36,7 +56,7 @@ def scrub(text, nlp, counts):
     # replace entity spans right-to-left so offsets stay valid
     for ent in sorted(doc.ents, key=lambda e: e.start_char, reverse=True):
         tag = ENT_MAP.get(ent.label_)
-        if tag and not ent.text.startswith("["):
+        if tag and not ent.text.startswith("[") and not is_deletion_vocabulary(ent.text):
             t = t[: ent.start_char] + tag + t[ent.end_char :]
             counts[tag] = counts.get(tag, 0) + 1
     return t

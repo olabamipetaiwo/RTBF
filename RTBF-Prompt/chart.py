@@ -11,7 +11,8 @@ from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 
-HEADER_ROWS = 3
+from qualtrics_export import load_export
+
 BOT_COLS = [f"Q3.1_{i}" for i in range(1, 7)]
 TENURE_ORDER = [
     "Less than 6 months",
@@ -34,10 +35,7 @@ METHOD_SHORT = {
 
 
 def load(xlsx):
-    raw = pd.read_excel(xlsx, header=None, dtype=str)
-    header, qtext = raw.iloc[0].tolist(), raw.iloc[1].tolist()
-    data = raw.iloc[HEADER_ROWS:].reset_index(drop=True)
-    return header, qtext, data
+    return load_export(xlsx)
 
 
 def attention_pass(header, data):

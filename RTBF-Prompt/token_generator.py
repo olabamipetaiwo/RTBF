@@ -312,9 +312,12 @@ I3_TEMPLATE = 'FYI -- {referent} is called "{token}".'
 FILE_CONTENT_TEMPLATE = 'Note to self: I\'ve been calling {referent} "{token}" in my planning notes.'
 
 # Recall probes. R1/R2/R3 match the MASTER sheet's existing probe-style
-# columns (direct / settings / indirect); each runs once same-session and
-# once cross-session (a new conversation) -- session is WHEN you run the
-# probe, not a text variant, so it isn't templated separately.
+# columns (direct / settings / indirect); each runs once, in a new
+# conversation, 31 days after erasure. One extra R1 request (the first R1
+# wording, no separate template) is asked in the erasure chat for typed
+# erasures; see notes/recall_probe_standardization.md (final design
+# 2026-10-01). The probe text is the same in both places, so it isn't
+# templated separately.
 #
 # R1 (direct): two open questions, always both, the second a differently
 # worded same-conversation rephrase. Unprompted production of the exact
@@ -949,10 +952,9 @@ def write_recall_probes_md(assigned, injection_types, erasure_desc, path: Path) 
     lines.append(
         "Per-cell probe text for the three recall styles already defined in "
         'the MASTER sheet ("R1 (direct)", "R2 (settings)", "R3 (indirect)"), '
-        "each run once same-session (same conversation as the injection/"
-        "erasure) and once cross-session (a brand-new conversation) -- "
-        "session is *when* you run the probe, not different text, so it "
-        "isn't templated separately below."
+        "each run once in a new conversation; for typed erasures the first "
+        "R1 wording is also asked once in the erasure chat (design of "
+        "2026-10-01) -- same text, so it isn't templated separately below."
     )
     lines.append("")
     lines.append(

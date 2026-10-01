@@ -33,7 +33,8 @@ plt.rcParams.update({
 TENURE_ORDER = ["Less than 6 months", "6 to 12 months", "1 to 2 years", "2+ years"]
 CHATBOTS = {"Q3.1_1": "ChatGPT", "Q3.1_2": "Claude", "Q3.1_3": "Gemini",
             "Q3.1_4": "Copilot", "Q3.1_5": "Perplexity", "Q3.1_6": "Deepseek"}
-DEMO = {"Q2.1": "Age", "Q2.2": "Lives in US", "Q2.3": "Ever used a chatbot"}
+DEMO = {"Q2.1": "Age", "Q2.2": "Lives in US", "Q2.3": "Ever used a chatbot",
+        "Q10.1": "Education", "Q10.2": "Gender"}
 
 
 def demographics_table(df, labels):

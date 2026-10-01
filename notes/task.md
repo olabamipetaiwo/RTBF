@@ -1,35 +1,26 @@
-# Tasks: resolve paper.tex inconsistencies -  ""
- 
-**Working rules (agreed 2026-09-30):** one item at a time; first explain the problem and the data behind it, then propose the fix, apply only after your OK. Paper is a scientific paper, not a project report (no process history). Every percentage must name a consistent base: 177 participants / 354 observations / 317 four-method observations. Survey tests: SciPy (`scipy_analysis`) where covered, `src` (statsmodels) for GEEs, factor analysis, regressions.
+# WHERE WE ARE (2026-10-01)
 
-**Status at handoff (2026-09-30):** section A done (A1-A9), B1 done. Next: B2, then B3-B12, C, D, E. Yao's meeting feedback (she) is still to be handled after B; only her scale-to-factor edit is applied so far (`RTBF-Analysis/paper/paper-yao-edit.tex` is her copy, made before today's changes; do not merge it wholesale).
+- No recall has run**: 876 cells await it (1 due 2026-10-01, 23 on 2026-10-08).
+- `src/audit_outcomes.py` derives recoverability and policy consistency (docs: `RTBF-Analysis/docs/audit_outcomes.md`). Today every cell is NOT RECALLED; the gaps it reports are X8.
+- Waiting on others: your professor (figure, C4b), you (Qualtrics re-export C5, OCR decision D2b, Copilot approach X7, the 138 draw D4), and the recall data (D1).
 
-Source: `notes/inconsistencies.md` (line numbers refer to paper.tex as audited 2026-09-30). One item at a time; tick when fixed in the paper and the source note agrees. "Decision" = needs your call first.    
+**Working rules:** one item at a time; explain the problem and the data, propose the fix, apply after the OK. The paper is a scientific paper, not a project report. Name the base of every percentage (177 participants / 354 observations / 317 four-method observations). Every number needs a saved source: `scipy_analysis` first, then `src`. Delete an item once it is done.
 
-## B. Numbers and wording
-- [ ] **B7** 436-437: "35 redactions across 32 prompts".
-- [ ] **B8** 1029: mark the post-deletion feedback item as select-all; mention omitted 4.0% / 2.3%.
-- [ ] **B9** 498-499 vs 567-568: one wording, "verbatim except the referent".
-- [ ] **B10** 499: reconcile "not regenerable" with the logged seed=42 / 137-item draw; say how the 138th item came about.
-- [ ] **B11** 433-435: confirm the prompt extraction export (217 rows) vs 218 complete respondents; state the export or fix.
-- [ ] **B12** Title (29) vs `pdftitle` (27): make the PDF metadata match.
+# EXPERIMENTS
 
-## C. Text defects
+- [ ] **X1** Release recall only after a live check. The same-conversation step reopens the chat with `page.goto(ref)` and has not run on any platform. Run one of the first typed-erasure cells (`CH-I1-E1` or `CH-I2-E1`, due 2026-10-08) and read its `03_recall_new_conversation` and `04_recall_same_conversation` transcripts and screenshots before running the rest. (`CH-I1-E5`, due today, is a UI erasure and tests only the new-conversation part.)
+- [ ] **X8** Code the two hand-coded measurements the outcomes module needs (`python -m src.audit_outcomes` lists the gaps): **Acknowledgment** for the 865 erased cells (reply text is in the transcripts: 601 whole OCR replies, 197 incomplete, see D2b; battery UI actions are "NO REPLY (UI ACTION)") and **Interface change** for the 54 battery cells erased through the interface (typed requests are "not observable" and need no coding). You and Jihwan do the response-type coding across all platforms; only 4 of the 13 Gemini replies are checked so far.
+- [ ] **X7** Copilot recall is blocked by the automated-send check on copilot.com. Choose: recall by hand, extend the disclosed stealth measure, or report it as blocked. Deadlines: 12 battery cells due 2026-10-08, 120 NL-forget cells due 2026-10-19. `tester/flows/copilot.py` still has old-UI code to re-map to copilot.com: `_open_view_memory` and `read_memory_settings` (needed for recall), the sidebar row finders, `_delete_conversation_history`, `_delete_all_memory`, `_delete_via_facts_editor`, `_delete_via_privacy_dashboard`, `_erase_maximal`. Needed from you: a throwaway chat URL made by hand (to test deletion without touching study chats), fresh cookie and localStorage exports from a copilot.com tab for the main account and `ui_migration_i1`, and the recall decision. Write nothing about how Copilot recall is run until this is settled.
+- [ ] **D2a** After the first recall: count the auto-accepted FOUND replies. A few dozen: a person reads all and the paper TODO (end of "Recall probes") becomes "all FOUND replies were read by a person". Hundreds: draw a random sample and describe it. Second-reviewer agreement (Gwet's AC1) is a separate decision.
+- [ ] **D2b** DECISION (you): 197 of the 798 NL-forget erase replies are incomplete (104 cut off, 76 start not visible, 15 screenshot before the reply, 2 covered). Recover them from the stored conversations (about 200 page loads, valid sessions needed, Copilot and Gemini NL-forget sessions are logged out) (order: Perplexity 85 cut-offs, DeepSeek 73, then ChatGPT and Claude) or accept them as not captured and report the counts; accepting drops any redirect such as "go to Settings" that sits in the missing part. Then remove the TODO after the acknowledgment paragraph.
 
-- [ ] **C1** 140: remove or fix the "see \S\ref{sec:intro}" pointer to Li et al.'s platforms.
-- [ ] **C2** 78, 83: fix LaTeX quote marks.
-- [ ] **C3** 1277: fix "extracted form this too," (typo, unfinished sentence).
-- [ ] **C4** Reference the pipeline figure (`fig:testing-pipeline`) in the text.
-- [ ] **C5** Add an order-confound caveat where the protection shift (991) is reported.
-- [ ] **C6** Re-check Discussion forward references (1111-1132, 1174-1186) once Results exist.
-- [ ] **C7** Before submission: remove author TODO comments and resolve the Ethics placeholders.
+# WRITE
 
-## D. Open placeholders (after the above)
+- [ ] **D1** After recall: the Abstract, Technical Audit Results and Conclusion (the `TBWL` markers). Include the Gemini Keep observation (7 of 133 chat-based erasure requests, nothing deleted), re-check the Discussion's three audit forward references ("takes up directly", "check independently", "the mismatch RQ5 measures"), and add to the audit Limitations: Copilot (X7), incomplete OCR replies only if some stay uncaptured (D2b), the order result (C5).
+- [ ] **C5** Scenario order was randomized but is not in the current export. You re-export the responses from Qualtrics with "viewing order data for randomized surveys" (check 235 rows, 218 complete). Then compute each respondent's order, test whether the scenario shift differs by order, check the split is roughly even, and report it in the paper and in Limitations.
+- [ ] **C4b** After your professor's changes to the pipeline figure (`fig:testing-pipeline`): re-check the caption, the sentence citing it (Technical Audit opening) and where the figure sits; update the recall stages in `testing_pipeline_overview.svg` and `.png` (one new-conversation recall plus one same-conversation request).
 
-- [ ] **D1** Abstract, Technical Audit Results, Limitations, Conclusion (all `TBWL`).
-- [ ] **D2** Methods TODOs: FOUND-reply spot check and reviewer agreement (722-725); recovery of incomplete OCR replies (826-828).
-- [ ] **D3** Sheet check: NL FORGET Email column vs Gemini's separate account, before accounts are described in Methods.
+# REVIEW
 
-## E. Possible additions (not in the paper now)
-
-- [ ] **E1** Moderator analysis (`src/moderators.py`, age group / ChatGPT tenure vs ratings, willingness and method choice): not reported in the paper. Ratings and willingness show no effect; age group vs method choice in the less-sensitive scenario is nominally significant (Fisher p = .016 raw) and would need multiple-comparison handling if added. Decision deferred; paper stays as is for now.
+- [ ] **D4** Confirm with whoever produced the 138-prompt list how it was drawn. It is recorded as stratified on the automated deletion-location label (before its revision) with a floor (`RTBF-Prompt/results/prompt_clean.md`); you remember no dimension being involved. If not confirmed, rewrite the paragraph at `paper.tex` line ~482.
+- [ ] **C7** Before submission, last. Status 2026-10-01: `cd RTBF-Analysis/paper && python3 make_submission.py --number <HotCRP number>` runs; its only failure is the 3 `TBWL` placeholders (Abstract line 30, Audit Results ~1047, Conclusion ~1179 of the output), i.e. D1. LaTeX is not installed on this machine, so the paper has not been compiled since the policy-source appendix and the 40-odd edits were added: compile `paper_submission.tex` on Overleaf or elsewhere and check the two new appendix tables fit the page. Then: upload only `paper_submission.tex`; check the Ethics text matches the HotCRP Ethics field; check the account records (`config.py`, `accounts.md`, workbook Email column) match the isolation sentence in Methods; check the OpenAI and Perplexity help-page quotes (Appendix `sec:policy-sources`) still match the live pages; re-run `python -m src.number_sources` (in `RTBF-Analysis`) after any number changes and confirm its exceptions table is empty.

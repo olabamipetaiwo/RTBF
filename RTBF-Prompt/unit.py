@@ -1,6 +1,10 @@
+import argparse
+
 import pandas as pd
 
-df = pd.read_csv("results/raw_prompts.csv")
+ap = argparse.ArgumentParser()
+ap.add_argument("--in", dest="inp", default="results/raw_prompts.csv")
+df = pd.read_csv(ap.parse_args().inp)
 
 # structure: how many prompts each participant contributes
 per_pid = df.groupby("pid")["prompt"].size()

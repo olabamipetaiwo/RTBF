@@ -58,7 +58,7 @@ BLOCK_TYPE: dict[str, str] = {
     "CH-I3-E6": UNRELATED, "CH-I1-E7": DELETES,
     "GE-I1-E1": NO_COMMIT, "GE-I1-E2": DELETES, "GE-I2-E2": UNRELATED, "GE-I1-E3": DELETES,
     "GE-I2-E3": UNRELATED, "GE-I1-E4": UNRELATED, "GE-I2-E4": DELETES, "GE-I1-E5": UNRELATED,
-    "GE-I2-E5": DELETES, "GE-I1-E6": DELETES, "GE-I2-E6": DELETES,
+    "GE-I2-E5": NO_COMMIT, "GE-I1-E6": DELETES, "GE-I2-E6": DELETES,
     "CO-I1-E1": NO_COMMIT, "CO-I1-E2": DELETES, "CO-I1-E3": DELETES, "CO-I1-E4": NO_COMMIT,
     "CO-I1-E5": NO_COMMIT, "CO-I1-E6": DELETES,
     "PE-I1-E1": NO_COMMIT, "PE-I1-E2": DELETES, "PE-I1-E3": DELETES,
@@ -102,13 +102,32 @@ class Override:
 
 CLAUDE_MEMORY = "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context"
 GEMINI_MEMORY = "https://support.google.com/gemini/answer/16598469?hl=en"
+GEMINI_INSTRUCTIONS = "https://support.google.com/gemini/answer/16598625?hl=en"
 COPILOT_CONTROLS = "https://support.microsoft.com/en-us/microsoft-copilot/microsoft-copilot-privacy-controls"
 DEEPSEEK_POLICY = "https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html"
 
 OVERRIDES: tuple[Override, ...] = (
     Override(
+        ("GE-I2-E4",),
+        'DELETES (new-conversation recall): the documentation says an individual instruction can be deleted; deleting the specific Saved-info item that held the anchor removes it.',
+        'Google Gemini Apps Help, "Customize Gemini\'s responses with your instructions", heading "Find, edit, or delete your instructions for Gemini": "Click More and then Edit or Delete." (fetched 2026-10-01). Source: https://support.google.com/gemini/answer/16598625?hl=en',
+        GEMINI_INSTRUCTIONS,
+    ),
+    Override(
+        ("GE-I2-E5",),
+        'NO COMMITMENT (architectural inference, new-conversation recall): the documentation covers deleting individual instructions only; deleting all of them at once is not described.',
+        'Same page as GE-I2-E4 (heading "Find, edit, or delete your instructions for Gemini"); it says nothing about deleting all instructions, and neither do the Gemini Apps Privacy Hub or the Personal context page (fetched 2026-10-01). Source: https://support.google.com/gemini/answer/16598625?hl=en',
+        GEMINI_INSTRUCTIONS,
+    ),
+    Override(
+        ("GE-I2-E6",),
+        'DELETES (new-conversation recall): the E4 component, deleting the specific Saved-info item, is documented to remove it, regardless of the E2/E3 component being null for this injection type.',
+        'Same as GE-I2-E4. Source: https://support.google.com/gemini/answer/16598625?hl=en',
+        GEMINI_INSTRUCTIONS,
+    ),
+    Override(
         ("CL-I1-E4", "CL-I2-E4", "CL-I3-E4"),
-        "DELETES (cross-session): the documentation says a chat request to forget changes "
+        "DELETES (new-conversation recall): the documentation says a chat request to forget changes "
         "memory for the next conversation. It does not say the change applies within the "
         "same conversation.",
         "Anthropic Help Center: \"Tell Claude what you'd like it to remember, change, or "
@@ -161,7 +180,7 @@ OVERRIDES: tuple[Override, ...] = (
     ),
     Override(
         ("CO-I1-E2", "CO-I2-E2"),
-        "DELETES (same-session and cross-session): direct match, Delete all Memory removes "
+        "DELETES (new-conversation recall): direct match, Delete all Memory removes "
         "everything Copilot stored.",
         "Microsoft Copilot privacy controls: \"To delete everything from memory in Copilot: "
         "Select your profile icon, then select Memory > Delete all Memory. Your conversation "
@@ -192,7 +211,7 @@ OVERRIDES: tuple[Override, ...] = (
     ),
     Override(
         ("DE-I1-E1", "DE-I1-E2", "DE-I1-E4"),
-        "DELETES (same-session and cross-session): with no separate memory store, the "
+        "DELETES (new-conversation recall): with no separate memory store, the "
         "conversation holding the anchor is the only place it can live, and the policy says "
         "chat history can be deleted.",
         "DeepSeek Privacy Policy: \"Should you choose to do so, you may also copy or delete "
@@ -234,7 +253,7 @@ OVERRIDES: tuple[Override, ...] = (
     ),
     Override(
         ("CH-I1-E2", "CH-I2-E2"),
-        "DOES NOT DELETE (same-session and cross-session): the documentation says deleting "
+        "DOES NOT DELETE (new-conversation recall): the documentation says deleting "
         "the original chat does not automatically delete a separate saved memory.",
         "Wording copied from the live page on 2026-09-24. OpenAI \"Memory in ChatGPT\" (Saved "
         "memories): \"Saved memories are stored separately from chat history. Deleting the "
@@ -261,7 +280,7 @@ OVERRIDES: tuple[Override, ...] = (
     ),
     Override(
         ("CH-I1-E4", "CH-I2-E4"),
-        "DELETES (same-session and cross-session): the documentation says Delete and turn off "
+        "DELETES (new-conversation recall): the documentation says Delete and turn off "
         "memory deletes the remembered information shown in the summary and turns Memory off, "
         "without deleting past chats. It adds that logs of deleted saved memories may be kept "
         "for up to 30 days.",
@@ -307,7 +326,7 @@ OVERRIDES: tuple[Override, ...] = (
     ),
     Override(
         ("CH-I3-E5",),
-        "DELETES (same-session and cross-session): direct match — the field the anchor was "
+        "DELETES (new-conversation recall): direct match — the field the anchor was "
         "typed into is cleared.",
         "Wording copied from the live page on 2026-09-24. OpenAI \"ChatGPT Custom "
         "Instructions\": \"You can edit or delete custom instructions at any time for future "
@@ -318,7 +337,7 @@ OVERRIDES: tuple[Override, ...] = (
     ),
     Override(
         ("CH-I1-E6", "CH-I2-E6"),
-        "DOES NOT DELETE (same-session and cross-session): bulk deletion is still scoped to "
+        "DOES NOT DELETE (new-conversation recall): bulk deletion is still scoped to "
         "conversations, not Memory — same gap as E2.",
         "Wording copied from the live page on 2026-09-24. Same Memory quotes as the "
         "single-chat cells: \"Saved memories are stored separately from chat history. Deleting "
@@ -347,7 +366,7 @@ OVERRIDES: tuple[Override, ...] = (
     ),
     Override(
         ("CH-I1-E7", "CH-I2-E7", "CH-I3-E7"),
-        "DELETES (same-session and cross-session): MAXIMAL includes both E4 (effective for "
+        "DELETES (new-conversation recall): MAXIMAL includes both E4 (effective for "
         "I1/I2's Memory-store anchor) and E5 (effective for I3's field-anchor) — whichever "
         "surface actually holds the anchor, MAXIMAL's matching component clears it.",
         "Wording copied from the live page on 2026-09-24. Combines the Memory wording of the "
@@ -359,7 +378,7 @@ OVERRIDES: tuple[Override, ...] = (
     ),
     Override(
         ("PE-I1-E1", "PE-I2-E1"),
-        "NO COMMITMENT (architectural inference, same-session and cross-session): no "
+        "NO COMMITMENT (architectural inference, new-conversation recall): no "
         "described backend trigger for a chat-typed forget request.",
         "Wording copied from the live page on 2026-09-24. No policy text found addressing "
         "this mechanism. Neither the Self-Serve Data Deletion article nor the retention "
@@ -443,7 +462,7 @@ OVERRIDES: tuple[Override, ...] = (
     ),
     Override(
         ("CH-IF-E-CONV",),
-        "DOES NOT DELETE (same-session and cross-session): the documentation says deleting a "
+        "DOES NOT DELETE (new-conversation recall): the documentation says deleting a "
         "chat does not delete a file that remains saved in Library. ChatGPT's Library on the "
         "cell's account still lists copies of CH-IF-E-CONV.pdf on 2026-09-24; the most recent "
         "copy, labelled as modified 2 weeks earlier, matches the injection on 2026-09-08 and "
@@ -461,7 +480,7 @@ OVERRIDES: tuple[Override, ...] = (
     ),
     Override(
         ("CH-IF-E-MAX",),
-        "DOES NOT DELETE (same-session and cross-session): the token is held only by the "
+        "DOES NOT DELETE (new-conversation recall): the token is held only by the "
         "uploaded file. This cell's MAXIMAL erasure deletes the conversation, clears all "
         "memories and clears custom instructions, and none of these reaches a file saved in "
         "Library: the documentation says deleting a chat does not delete such a file, and "
@@ -509,7 +528,7 @@ OVERRIDES: tuple[Override, ...] = (
     ),
     Override(
         ("CL-I1-E2", "CL-I2-E2", "CL-I3-E2"),
-        "DELETES (same-session and cross-session): individually deleting the memory topic "
+        "DELETES (new-conversation recall): individually deleting the memory topic "
         "that stored the anchor removes it.",
         "Anthropic Help Center: memory is stored as individually addressable topics — \"See "
         "exactly what Claude remembers about you in Settings > Memory. Everything Claude "
@@ -520,7 +539,7 @@ OVERRIDES: tuple[Override, ...] = (
     ),
     Override(
         ("CL-I1-E3", "CL-I2-E3", "CL-I3-E3"),
-        "DELETES (same-session and cross-session): a full memory reset removes everything, "
+        "DELETES (new-conversation recall): a full memory reset removes everything, "
         "including the injected anchor.",
         "Anthropic Help Center: \"Reset memory: Permanently deletes all memories including "
         "project memories. Once you select this option and click 'Reset memory,' this cannot "

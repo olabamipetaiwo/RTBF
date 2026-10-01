@@ -1,6 +1,6 @@
 # stats
 
-_Run at 2026-09-30T15:04:35_
+_Run at 2026-10-01T01:20:08_
 
 ```text
 paired base n = 177
@@ -30,12 +30,15 @@ STEPS 3-4  BETWEEN-SCENARIO Likert (Shapiro -> t/Wilcoxon, Holm x3)
 
 [protection] shapiro_normal=False  Wilcoxon  stat=1752.0  r=0.382  mean_diff=+0.133 (more>less)
     p_raw=0.0006  p_holm=0.0018  -> SIG
+    same score in both scenarios (difference = 0): 71/177 (40.1%)
 
 [effort] shapiro_normal=False  Wilcoxon  stat=1750.5  r=0.085  mean_diff=+0.032 (more>less)
     p_raw=0.4854  p_holm=0.5935  -> ns
+    same score in both scenarios (difference = 0): 90/177 (50.8%)
 
 [benefit_loss] shapiro_normal=False  Wilcoxon  stat=1999.5  r=0.123  mean_diff=+0.043 (more>less)
     p_raw=0.2968  p_holm=0.5935  -> ns
+    same score in both scenarios (difference = 0): 82/177 (46.3%)
 
 ======================================================================
 STEP 5  BETWEEN-SCENARIO binary: McNemar per option
