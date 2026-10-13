@@ -129,6 +129,19 @@ class GeminiFlow(PlatformFlow):
             else:
                 stable_checks = 0
             prev_text = cur_text
+        else:
+            # Hole caught live 2026-10-05 on chatgpt (CH-I1-E5): the old
+            # silent fall-through returned "" when the reply shell
+            # appeared but never populated, so the next prompt fired on
+            # top of the half-finished turn. Same fix applied here.
+            raise RuntimeError("_wait_for_reply: reply never stabilised with non-empty text within 60s")
+
+        # Scroll the last reply into full view before reading — triggers any
+        # lazy-rendered content and ensures the screenshot captures everything.
+        els = self.page.query_selector_all(".model-response-text")
+        if els:
+            els[-1].evaluate("el => el.scrollIntoView({block: 'end'})")
+            self.page.wait_for_timeout(500)
 
         return self._last_response_text()
 
@@ -197,6 +210,7 @@ class GeminiFlow(PlatformFlow):
     def read_memory_settings(self) -> str:
         """R2: the Saved info / "Instructions for Gemini" page."""
         self._goto_fresh("https://gemini.google.com/saved-info")
+        self._scroll_to_bottom()
         return self.page.inner_text("body")
 
     # --- ERASURE_DISPATCH targets ---

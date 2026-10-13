@@ -629,7 +629,7 @@ def erase_cell(cell_id: str, force: bool = False) -> None:
     print(f"Erased. Recall due at {entry['recall_due_at']}.")
 
 
-def recall_cell(cell_id: str, force: bool = False) -> None:
+def recall_cell(cell_id: str, force: bool = False, cdp_url: str | None = None) -> None:
     plan = load_cell(cell_id)
     entry = tracking.get(cell_id)
     if entry is None or entry.get("erased_at") is None:
@@ -653,8 +653,14 @@ def recall_cell(cell_id: str, force: bool = False) -> None:
     flow_cls = FLOW_REGISTRY[plan.platform]
     session_label = config.MAXIMAL_ACCOUNT_LABEL.get(cell_id) or ("nlforget" if plan.sheet == "NLFORGET" else None)
 
+    flow_kwargs: dict = {}
+    if cdp_url and plan.platform == "copilot":
+        flow_kwargs["cdp_url"] = cdp_url
+    else:
+        flow_kwargs["session_label"] = session_label
+
     same_conv_label = "N/A (not applicable)"
-    with flow_cls(session_label=session_label) as flow:
+    with flow_cls(**flow_kwargs) as flow:
         new_scores = _run_recall_probes(
             flow, probes, token, plan.platform, cell_id, "03_recall_new_conversation"
         )
@@ -771,6 +777,7 @@ if __name__ == "__main__":
 
     cmd = sys.argv[1]
     force = "--force" in sys.argv
+    cdp = "--cdp" in sys.argv
     positional = [a for a in sys.argv[2:] if not a.startswith("--")]
 
     if cmd == "inject":
@@ -778,7 +785,8 @@ if __name__ == "__main__":
     elif cmd == "erase":
         erase_cell(positional[0], force=force)
     elif cmd == "recall":
-        recall_cell(positional[0], force=force)
+        recall_cell(positional[0], force=force,
+                    cdp_url="http://localhost:9222" if cdp else None)
     elif cmd == "status":
         status(positional[0] if positional else None)
     else:

@@ -122,6 +122,19 @@ class ClaudeFlow(PlatformFlow):
             else:
                 stable_checks = 0
             prev_text = cur_text
+        else:
+            # Hole caught live 2026-10-05 on chatgpt (CH-I1-E5): the old
+            # silent fall-through returned "" when the reply shell
+            # appeared but never populated, so the next prompt fired on
+            # top of the half-finished turn. Same fix applied here.
+            raise RuntimeError("_wait_for_reply: reply never stabilised with non-empty text within 60s")
+
+        # Scroll the last reply into full view before reading — triggers any
+        # lazy-rendered content and ensures the screenshot captures everything.
+        els = self.page.query_selector_all(".standard-markdown")
+        if els:
+            els[-1].evaluate("el => el.scrollIntoView({block: 'end'})")
+            self.page.wait_for_timeout(500)
 
         return self._last_reply_text()
 
@@ -167,65 +180,43 @@ class ClaudeFlow(PlatformFlow):
         return self._wait_for_reply(before)
 
     def _open_memory_settings(self) -> None:
-        """Idempotent by design -- confirmed live 2026-08-27 that calling
-        the naive account-switcher->Settings->Memory click sequence a
-        second time (e.g. two set_memory_field() calls in a row) breaks:
-        the Settings modal is left open on the Memory tab after a submit,
-        so the next force=True click on the account switcher lands on the
-        modal's backdrop instead (since the modal now covers the sidebar)
-        and closes it, leaving nothing for the following "text=Settings"
-        click to find. Check current state first and only do the
-        navigation that's actually needed from here.
-
-        The account-switcher click used to be hardcoded to "text=anchor"
-        -- that's the MAIN account's own org/display name, not present on
-        any dedicated MAXIMAL account (each has its own name, e.g.
-        "T,Ola", "Tee"). Confirmed live 2026-09-01 this silently times out
-        on every account except main. "text=Free" is the actually stable,
-        portable label across every account's plan badge -- use that
-        instead. It can match 2+ elements and land slightly outside the
-        viewport depending on window size, so click via JS (bypasses
-        Playwright's viewport-visibility check) rather than a normal
-        click()."""
-        if self.page.query_selector('[placeholder="Tell Claude what to change or remove"]'):
-            return  # already on the Memory panel
+        """Opens Settings > Memory. Deep-link first (most reliable),
+        fallback to clicking through the settings nav, last resort via the
+        account-switcher. Oct 2026 redesign: placeholder changed to
+        'Tell Claude what to change'; tab buttons have unicode icon
+        prefixes; tabs are <li> elements inside nav[aria-label='Settings']."""
+        if self.page.query_selector('[placeholder="Tell Claude what to change"]'):
+            return
+        self.page.goto('https://claude.ai/new#settings/memory')
+        self.page.wait_for_timeout(3000)
+        if self.page.query_selector('[placeholder="Tell Claude what to change"]'):
+            return
         dialog = self.page.query_selector('[role="dialog"]')
-        if dialog and "Settings" in dialog.inner_text():
-            # Settings modal open, just not on the Memory tab yet.
-            self.page.get_by_role("button", name="Memory", exact=True).click()
-            self.page.wait_for_timeout(1500)
-            return
-
-        # Direct deep-link first -- confirmed live 2026-09-01 that the
-        # click-through path (account-switcher -> Settings -> Memory tab)
-        # intermittently crashes the whole page ("This page ran into a
-        # problem") on at least one dedicated MAXIMAL account, while
-        # goto()'ing the route directly loads cleanly every time on that
-        # same account. Falls back to the click-through path only if the
-        # direct nav doesn't land on the panel (e.g. an account/session
-        # state where the deep link redirects elsewhere).
-        self.page.goto("https://claude.ai/new#settings/memory")
-        self.page.wait_for_timeout(2000)
-        if self.page.query_selector('[placeholder="Tell Claude what to change or remove"]'):
-            return
-
-        free_el = self.page.query_selector("text=Free")
+        if dialog:
+            mem_item = dialog.query_selector('li:has-text("Memory")')
+            if mem_item:
+                mem_item.click()
+                self.page.wait_for_timeout(1500)
+                return
+        free_el = self.page.query_selector('text=Free')
         if free_el is None:
-            raise RuntimeError("_open_memory_settings: account-switcher 'Free' label not found")
-        free_el.evaluate("el => el.click()")
+            raise RuntimeError('_open_memory_settings: account-switcher Free label not found')
+        free_el.evaluate('el => el.click()')
         self.page.wait_for_timeout(800)
-        self.page.click("text=Settings", force=True)
+        self.page.click('text=Settings', force=True)
         self.page.wait_for_timeout(1500)
-        self.page.get_by_role("button", name="Memory", exact=True).click()
+        mem_item = self.page.query_selector('li:has-text("Memory")')
+        if mem_item:
+            mem_item.click()
         self.page.wait_for_timeout(1500)
 
     def _submit_memory_command(self, text: str) -> None:
         """Shared by set_memory_field() and _clear_all_memories() -- the
-        "Tell Claude what to change or remove" box is a single general-
-        purpose natural-language interface for all memory edits on this
-        platform (add, modify, remove one, remove all), not separate UI
-        controls per action. See module docstring."""
-        self.page.get_by_placeholder("Tell Claude what to change or remove").click()
+        "Tell Claude what to change" box is a single general-purpose
+        natural-language interface for all memory edits on this platform
+        (add, modify, remove one, remove all), not separate UI controls
+        per action. See module docstring."""
+        self.page.get_by_placeholder("Tell Claude what to change").click()
         self.page.keyboard.type(text)
         self.page.keyboard.press("Enter")
         self.page.wait_for_timeout(6000)
@@ -262,9 +253,13 @@ class ClaudeFlow(PlatformFlow):
     def read_memory_settings(self) -> str:
         """R2: the Memory settings panel. Note Claude clusters facts into
         thematic "Topics" rather than one entry per injected fact -- see
-        module docstring caveat before scoring against a specific token."""
+        module docstring caveat before scoring against a specific token.
+        Scoped to the dialog, not body — body includes sidebar chat titles
+        that could false-positive on a token match."""
         self._open_memory_settings()
-        return self.page.inner_text("body")
+        dialog = self.page.query_selector_all('[role="dialog"]')[-1]
+        self._scroll_to_bottom(dialog)
+        return dialog.inner_text()
 
     # --- ERASURE_DISPATCH targets ---
 

@@ -32,6 +32,18 @@ from .base import PlatformFlow
 class ChatGPTFlow(PlatformFlow):
     platform = "chatgpt"
 
+    # Flipped on 2026-10-05: the first live recall (CH-I1-E5) hit
+    # "Something went wrong while generating the response" on every
+    # automated R3 send_message, three attempts in a row, while a
+    # hand-typed prompt on the same account/session in a normal browser
+    # answered immediately. Typing-delay/Enter-press mitigation (added to
+    # send_message the same day, mirroring copilot.py) didn't help, so this
+    # reads as the same class of automation-fingerprint check Claude
+    # already needs stealth for (navigator.webdriver etc. -- see
+    # base.py's USE_STEALTH comment). ChatGPT didn't need this for the
+    # earlier inject/erase runs; something tightened on their side.
+    USE_STEALTH = True
+
     # Keys are the exact erasure_type_text values from CellPlan (MASTER
     # sheet's Erasure desc column), matching ENUMERATION's description text.
     ERASURE_DISPATCH = {
@@ -49,17 +61,17 @@ class ChatGPTFlow(PlatformFlow):
     }
 
     def new_conversation(self) -> None:
-        # .first: "create-new-chat-button" testid matches two elements (a
-        # sidebar link and a header icon) -- either works, first is stable.
-        # force=True: the sidebar's opacity/width transition briefly
-        # intercepts pointer events right after page load even though the
-        # element reports visible/stable -- confirmed live 2026-08-27.
+        # ChatGPT's Oct 2026 redesign replaced data-testid="create-new-chat-button"
+        # with aria-label="New chat". Navigating to "/" is the most reliable
+        # way to land on a blank conversation without depending on sidebar state.
         self.page.wait_for_timeout(1000)
-        self.page.locator('[data-testid="create-new-chat-button"]').first.click(force=True, timeout=10000)
-        self.page.wait_for_timeout(1500)
+        self.page.goto("https://chatgpt.com/", wait_until="domcontentloaded")
+        self.page.wait_for_timeout(2500)
 
     def _last_assistant_text(self) -> str:
-        turns = self.page.query_selector_all('[data-message-author-role="assistant"]')
+        # Oct 2026 redesign: data-message-author-role is gone; the reply
+        # body is in [data-chatgpt-selection-message-id] elements.
+        turns = self.page.query_selector_all('[data-chatgpt-selection-message-id]')
         return turns[-1].inner_text() if turns else ""
 
     def _wait_for_reply(self, before_count: int) -> str:
@@ -77,7 +89,7 @@ class ChatGPTFlow(PlatformFlow):
         deadline_ms = 60000
         waited_ms = 0
         while waited_ms < deadline_ms:
-            turns = self.page.query_selector_all('[data-message-author-role="assistant"]')
+            turns = self.page.query_selector_all('[data-chatgpt-selection-message-id]')
             if len(turns) > before_count:
                 break
             self.page.wait_for_timeout(1000)
@@ -99,15 +111,63 @@ class ChatGPTFlow(PlatformFlow):
             else:
                 stable_checks = 0
             prev_text = cur_text
+        else:
+            # Hole caught live 2026-10-05 (CH-I1-E5 first recall): the
+            # old silent fall-through here returned "" when the reply
+            # shell appeared but never populated, so send_message
+            # succeeded with an empty string and the next prompt fired
+            # on top of the half-finished turn (two user bubbles, no
+            # assistant in between). Raise instead so the caller halts.
+            raise RuntimeError("_wait_for_reply: reply never stabilised with non-empty text within 60s")
 
-        return self._last_assistant_text()
+        # Scroll the last reply into full view before reading — triggers any
+        # lazy-rendered content and ensures the screenshot captures everything.
+        turns = self.page.query_selector_all('[data-chatgpt-selection-message-id]')
+        if turns:
+            turns[-1].evaluate("el => el.scrollIntoView({block: 'end'})")
+            self.page.wait_for_timeout(500)
+
+        text = self._last_assistant_text()
+        # Also caught live 2026-10-05 (CH-I1-E5 first recall): ChatGPT's
+        # "Something went wrong while generating the response" error
+        # banner renders inside an element with
+        # data-message-author-role="assistant", so phase 1 counts it as
+        # a turn and phase 2 settles on its text, and send_message would
+        # otherwise return the banner wording as if it were a real reply.
+        # The next prompt would then fire on top of the dead turn. The
+        # match is on the full banner sentence to keep false positives
+        # (a reply that merely mentions errors) low.
+        if "Something went wrong while generating the response" in text:
+            raise RuntimeError(f"_wait_for_reply: ChatGPT returned error banner, not a reply: {text!r}")
+        return text
 
     def send_message(self, text: str) -> str:
-        before = len(self.page.query_selector_all('[data-message-author-role="assistant"]'))
-
-        self.page.locator("#prompt-textarea").click(force=True, timeout=10000)
-        self.page.keyboard.type(text)
-        self.page.locator('[data-testid="send-button"]').click(force=True, timeout=10000)
+        # Typing with delay=40 instead of 0 ms, and submitting by Enter on
+        # the focused composer instead of a force=True Send-button click,
+        # mirrors the mitigation added to copilot.py the same day (2026-10-05)
+        # after a plain burst-typed, force-clicked path tripped Copilot's
+        # abuse score and triggered "Verification required" / Refresh errors
+        # on every submit even with stealth on. Confirmed live on ChatGPT
+        # 2026-10-05 (CH-I1-E5 first recall): the burst-typed, force-clicked
+        # path kept returning "Something went wrong while generating the
+        # response" on back-to-back prompts, while a hand-typed prompt on the
+        # same account in a normal browser answered immediately. force=True
+        # bypasses the hover/focus event sequence a real send carries. The
+        # original forced click is kept as a fallback for the case where
+        # Enter did not submit (composer still holds the text).
+        # Oct 2026 redesign: #prompt-textarea is now a contenteditable div
+        # with aria-label="Ask ChatGPT", and data-testid="send-button" is
+        # now aria-label="Send". Must use the aria-label to avoid hitting
+        # an inline "Start writing" edit field that also matches.
+        composer = self.page.locator('[aria-label="Ask ChatGPT"]')
+        composer.click(force=True, timeout=10000)
+        composer.focus()
+        self.page.keyboard.type(text, delay=40)
+        before = len(self.page.query_selector_all('[data-chatgpt-selection-message-id]'))
+        self.page.keyboard.press("Enter")
+        self.page.wait_for_timeout(400)
+        if composer.inner_text().strip():
+            self.page.locator('button[aria-label="Send"]').click(force=True, timeout=10000)
 
         return self._wait_for_reply(before)
 
@@ -119,7 +179,7 @@ class ChatGPTFlow(PlatformFlow):
         reachable via set_input_files(), no need to click "Add files and
         more" first. caption=None (default) sends the file with no
         accompanying message."""
-        before = len(self.page.query_selector_all('[data-message-author-role="assistant"]'))
+        before = len(self.page.query_selector_all('[data-chatgpt-selection-message-id]'))
 
         self.page.set_input_files('#upload-files', file_path)
         self.page.wait_for_timeout(2000)
@@ -131,28 +191,24 @@ class ChatGPTFlow(PlatformFlow):
         # reads as the same class of real nondeterminism already documented
         # for Copilot's chat-based memory save. One retry, same as that
         # fix, rather than chasing a root cause further.
-        if self.page.locator('[data-testid="send-button"]').count() == 0:
+        if self.page.locator('button[aria-label="Send"]').count() == 0:
             self.page.set_input_files('#upload-files', file_path)
             self.page.wait_for_timeout(3000)
 
         if caption:
-            self.page.locator("#prompt-textarea").click(force=True, timeout=10000)
+            self.page.locator('[aria-label="Ask ChatGPT"]').click(force=True, timeout=10000)
             self.page.keyboard.type(caption)
             self.page.wait_for_timeout(500)
 
-        # Widened from a flat 10s after two real-batch failures 2026-08-28
-        # (CH-IF-E-CONV, CH-IF-E-MAX) both timed out waiting for
-        # send-button here -- same selector/flow that passed cleanly in
-        # isolated verification earlier, so this reads as real-world file-
-        # upload-processing variance (PDF size/network/server load), not a
-        # selector regression. 25s gives ChatGPT's client-side upload
-        # processing more headroom before giving up.
-        self.page.locator('[data-testid="send-button"]').click(force=True, timeout=25000)
+        self.page.locator('button[aria-label="Send"]').click(force=True, timeout=25000)
         return self._wait_for_reply(before)
 
     def _open_settings_personalization(self) -> None:
-        self.page.goto("https://chatgpt.com/#settings/Personalization")
-        self.page.wait_for_selector('[data-testid="personalization-tab"]', timeout=15000)
+        # ChatGPT moved from a hash-route overlay (#settings/Personalization)
+        # to a full page (/settings/personalization) circa Oct 2026; the old
+        # data-testid="personalization-tab" no longer exists.
+        self.page.goto("https://chatgpt.com/settings/personalization")
+        self.page.wait_for_selector('text=Memory summary', timeout=15000)
         self.page.wait_for_timeout(500)
 
     def _fill_custom_instructions(self, text: str) -> None:
@@ -206,24 +262,31 @@ class ChatGPTFlow(PlatformFlow):
         referent/token may need to tolerate paraphrase. See module
         docstring.
 
-        Closes both the Memory dialog and the Settings overlay (2
-        Escape presses) before returning -- confirmed live 2026-08-28
-        this is genuinely needed: leaving them open breaks a subsequent
-        new_conversation() call (the composer/send-button never render
-        while the Settings hash-route overlay is still active), which
-        surfaced as a real send_message() timeout in
-        _run_recall_probes()'s R3 step the first time this method was
-        exercised as part of a real recall run. Same shape of bug as
-        Claude's _open_memory_settings() (see that module's docstring)."""
+        Since ChatGPT moved settings to a full page (Oct 2026), closing
+        the dialog (one Escape) is enough, then we navigate back to the
+        main chat so subsequent new_conversation() calls work."""
         self._open_settings_personalization()
         self.page.get_by_role("button", name="Manage", exact=True).first.click()
         self.page.wait_for_timeout(1500)
         dialog = self.page.query_selector_all('[role="dialog"]')[-1]
+        # The memory summary is AI-generated and can take several seconds.
+        # Poll until "Generating"/"Updating" disappears or 30s passes.
+        waited = 0
+        while waited < 30000:
+            text = dialog.inner_text()
+            if "Generating" not in text and "Updating" not in text:
+                break
+            self.page.wait_for_timeout(1000)
+            waited += 1000
+        else:
+            text = dialog.inner_text()
+        # Scroll the dialog to the bottom to trigger any lazy-loaded content.
+        self._scroll_to_bottom(dialog)
         text = dialog.inner_text()
         self.page.keyboard.press("Escape")
         self.page.wait_for_timeout(500)
-        self.page.keyboard.press("Escape")
-        self.page.wait_for_timeout(800)
+        self.page.goto("https://chatgpt.com/", wait_until="domcontentloaded")
+        self.page.wait_for_timeout(2500)
         return text
 
     # --- ERASURE_DISPATCH targets ---

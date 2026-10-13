@@ -47,7 +47,7 @@ class PlatformFlow:
     # blanket "just in case."
     USE_STEALTH: bool = False
 
-    def __init__(self, headless: bool = False, session_label: str | None = None):
+    def __init__(self, headless: bool = False, session_label: str | None = None, playwright=None):
         session = config.session_path(self.platform, session_label)
         if not session.exists():
             label_hint = f" --label {session_label}" if session_label else ""
@@ -58,14 +58,23 @@ class PlatformFlow:
             )
         self._session_path = session
         self._headless = headless
-        self._playwright = None
+        # Playwright forbids more than one active sync_playwright() per thread
+        # ("using Playwright Sync API inside the asyncio loop"), so running
+        # several flows side by side -- e.g. recover_erase_replies.py's
+        # round-robin across four platforms -- requires sharing one driver.
+        # `playwright=None` keeps every existing caller unchanged (each flow
+        # still starts and stops its own); passing a shared instance opts in
+        # to using that one and leaves its lifetime to the caller.
+        self._playwright = playwright
+        self._owns_playwright = playwright is None
         self._browser = None
         self._context = None
         self.page = None
 
     def __enter__(self):
         try:
-            self._playwright = sync_playwright().start()
+            if self._playwright is None:
+                self._playwright = sync_playwright().start()
             # headless=False + channel="chrome" (real Chrome, not bundled
             # Chromium) by default -- confirmed live 2026-08-27 on ChatGPT that
             # bundled headless Chromium gets stuck on Cloudflare's "verify you
@@ -99,7 +108,7 @@ class PlatformFlow:
             # process-wide corruption.
             if self._browser:
                 self._browser.close()
-            if self._playwright:
+            if self._playwright and self._owns_playwright:
                 self._playwright.stop()
             raise
         return self
@@ -166,8 +175,18 @@ class PlatformFlow:
     def __exit__(self, *exc):
         if self._browser:
             self._browser.close()
-        if self._playwright:
+        if self._playwright and self._owns_playwright:
             self._playwright.stop()
+
+    def _scroll_to_bottom(self, element=None) -> None:
+        """Scroll an element (or the page) to the bottom to trigger any
+        lazy-loaded content, then wait for it to settle. Re-read inner_text
+        after calling this, not before."""
+        if element:
+            self.page.evaluate("el => el.scrollTo(0, el.scrollHeight)", element)
+        else:
+            self.page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+        self.page.wait_for_timeout(1500)
 
     # --- Interface every platform flow must implement ---
     # None of these have real selectors yet. Filling them in requires

@@ -215,6 +215,23 @@ class PerplexityFlow(PlatformFlow):
             else:
                 stable_checks = 0
             prev_text = cur_text
+        else:
+            # Hole caught live 2026-10-05 on chatgpt (CH-I1-E5): the old
+            # silent fall-through returned "" when the reply shell
+            # appeared but never populated, so the next prompt fired on
+            # top of the half-finished turn. Same fix applied here.
+            raise RuntimeError("_wait_for_reply: reply never stabilised with non-empty text within 60s")
+
+        # Scroll the last reply into full view before reading — triggers any
+        # lazy-rendered content and ensures the screenshot captures everything.
+        self.page.evaluate("""() => {
+            const matches = Array.from(document.querySelectorAll('[class*="prose"]'));
+            const topLevel = matches.filter(
+                el => !matches.some(other => other !== el && other.contains(el))
+            );
+            if (topLevel.length) topLevel[topLevel.length - 1].scrollIntoView({block: 'end'});
+        }""")
+        self.page.wait_for_timeout(500)
 
         return self._last_reply_text()
 

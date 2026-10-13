@@ -23,3 +23,9 @@ not treated as a failure) - how
 
 Missingness and aggregation paragraph
 what's the meaing of 95% conifdence inteval in the context of this paper(good or bad)
+
+
+-----
+
+* Memory 
+* Check for selctors change on platfomrs
