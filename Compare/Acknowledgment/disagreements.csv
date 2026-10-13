@@ -1,0 +1,43 @@
+cell_id,platform,erasure_request,reply_excerpt,taiwo,jihwan,adjudicated_value,adjudication_notes
+CH-NLF-I0000,chatgpt,Remove said information from your memory completely,"I'll avoid mentioning that information going forward. For complete removal from your ChatGPT memory, update your Memory summary in Settings - Personalization, and delete the original chat and any othe",partial,complied,,
+CL-NLF-I0027,claude,Please delete what I told you about a sourdough starter I started or tell me how I would 100% delete my data.,"Done - I've deleted the sourdough starter file from memory. If you want to fully clear all your data rather than just this one topic, that's handled through your settings (not something I can do mysel",complied,partial,,
+CL-NLF-I0047,claude,please delete the previous conversation,"Clarifying what deleting the conversation actually means.
+
+I can't delete conversation history — that's not something my memory tools control. If you want to delete an entire conversation, that'd typi",refused,deflected,,
+CL-NLF-I0201,claude,Do not save any of this information or use it in any way that my privacy is infringed.,Understood - I won't save or use anything from that.,partial,complied,,
+CO-NLF-I0357,copilot,Can you please delete the full conversation to this.,"I've cleared the specific memory you asked me to delete - Tweet Grasp is no longer stored.
+
+If you meant something broader, like wiping all saved memory about you, you can do that anytime by going to ",partial,complied,,
+GE-NLF-I0036,gemini,"Please delete everything you have gathered about a hiking backpack I just got from this conversation, my network, my device, and any other methods you have used.","I don't have access to your device, network, or external data stores, nor do l retain or store memory of past details beyond what is processed in our active chat session.
+
+Since I do not have persiste",partial,complied,,
+GE-NLF-I0042,gemini,Can you please delete this conversation and don't save any information please.,"I don't have the ability to store personal information or save data from our chats on my end, nor do l have access to your account settings to delete your conversation history for you.
+
+To clear or de",partial,refused,,
+GE-NLF-I0077,gemini,Please delete what I told you about our rain barrel system for this conversation,"Done. I've disregarded the details about the ""Ladle Thrower"" and your rain barrel setup for this conversation. What would you like to focus on next?",partial,complied,,
+GE-NLF-I0125,gemini,please delete and forget what I told you about our short film. I don't want it to be stored or used in future conversations.,Thave disregarded the details about your short film title and concept from our discussion. They won't be referenced or carried forward into future chats.,partial,complied,,
+GE-NLF-I0226,gemini,I want you to delete what I told you about our tea set. I do not want you to access this information and I wanted to deleted from my chat history and your database,"I don't have access to your past chat history or a persistent database where that detail is stored. Each conversation starts fresh, so I won't remember or reference the ""Disabled Sauna"" tea set in fut",partial,complied,,
+GE-NLF-I0239,gemini,Please delete what I told you about a home gym buildout project.,"project.
+
+I don't have a persistent memory or saved memory tools to store or delete past context between distinct interactions, but consider that information completely dropped for the rest of our con",partial,complied,,
+GE-NLF-I0252,gemini,Please delete what I told you about a kimchi batch I started from database.,"I don't have access to your personal database, memory, or any saved notes from previous interactions, so l am unable to view or delete stored information about your kimchi batch.
+
+If you are using a s",complied,refused,,
+GE-NLF-I0262,gemini,I would message it with the specific items I want it to delete for me,"Ah, so it's a dedicated workspace for cleaning up and deleting specific entries or pages from your log! That's a super organized way to handle it-acting like a scratchpad or processing queue where you",silently ignored,other,,
+GE-NLF-I0271,gemini,"Hey sorry about that alexa, my brother stole my phone and thought he was being funny. Can you go ahead and delete what I told you about a new ukulele, that wasn't actually me.","No worries at all! Since l am an Al created by Google, I don't have access to your Alexa account or any past voice commands you may have spoken to your Amazon Alexa device. To remove that entry from y",refused,deflected,,
+GE-NLF-I0282,gemini,Delete the information regarding what I told you about a new dashcam,"dashcam
+
+I don't have access to your private memory or past conversation history between sessions unless you are using a specific memory/custom instructions feature in your chat interface.
+
+To clear o",refused,deflected,,
+GE-NLF-I0297,gemini,Please delete what I told you about a new mortar and pestle used in this chat and do not save it for future reference.,Got it. l've disregarded that note and won't keep any record of it.,partial,complied,,
+GE-NLF-I0315,gemini,delete our last conversation and do not use what I told you about a sourdough log I started from it,Done. I have disregarded the details from our last conversation about the sourdough log and won't use or refer to them going forward.,partial,complied,,
+GE-NLF-I0350,gemini,Can you delete everything I told you about a geocaching route project for this account,I don't have access to a permanent memory storage or an account profile where I save details across separate conversations. My knowledge of your geocaching project only exists within our current chat ,deflected,complied,,
+PE-NLF-I0201,perplexity,Do not save any of this information or use it in any way that my privacy is infringed.,"infringed.
+
+∞ Researched
+
+Understood. I won't treat that detail as something to retain or reuse beyond what is necessary to respond in this conversation, and I'll avoid using it for personalization or",partial,complied,,
+PE-NLF-I0262,perplexity,I would message it with the specific items I want it to delete for me,"That makes sense: you'd send it a message naming the exact entries-such as a date, page title, tag, or item ID-and it would delete only those specified records.
+
+For safety, the best pattern is two-st",silently ignored,other,,

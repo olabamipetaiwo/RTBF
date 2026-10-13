@@ -46,12 +46,92 @@ Same logic here. We prove Right to Erasure gaps (audit methodology is the resear
 
 ## Proposed artifact: Deletion Residual Checker (browser extension)
 
+Not a core contribution. The paper stands on the methodology + findings. The tool is a minor practical add-on: something we can point researchers and users to as a tangible outcome of the work.
+
 After a user deletes something (conversation, memory entry, etc.), the tool probes the other persistence layers on that platform and shows the user what's still there. It doesn't delete for them; it exposes the residuals.
 
 Core function: make the invisible gap visible. User deletes a ChatGPT conversation, the extension checks Memory and Custom Instructions and warns "your data is still stored in 2 other locations."
 
-Why this and not the other options:
-- Not a cross-layer orchestrator (option 2): we're not claiming to solve the problem, we're proving it exists
-- Not a transparency probe (option 4): interesting but different scope
+**Open question for professor meeting (2026-10-14):** Does the submission need a built artifact at all, or do the findings stand alone? If yes, is the residual checker the right one, or should it be the reproducible audit framework (option 3)?
 
 The per-platform selectors for reading persistence surfaces already exist in the codebase (read_memory_settings). The extension is essentially that, triggered after a deletion event.
+
+## Scope
+
+### Platforms and their persistence layers
+
+| Platform | Layers the extension checks after a deletion |
+|----------|----------------------------------------------|
+| ChatGPT  | Conversations, Memory entries, Custom Instructions |
+| Claude   | Conversations, Memory (Areas + facts) |
+| Gemini   | Conversations, Saved Info, Activity (myactivity.google.com) |
+| Copilot  | Conversations, Saved Memories, Facts Editor |
+| Perplexity | Threads (no persistent memory layer) |
+| DeepSeek | Conversations (no persistent memory layer) |
+
+Perplexity and DeepSeek have no cross-layer gap (nothing persists beyond the conversation). The extension would confirm "no residuals found" on those, which is itself informative.
+
+### How it works
+
+1. User installs the Chrome extension
+2. Extension detects which AI platform the user is on (by domain)
+3. When the user deletes something (conversation, memory entry, etc.), extension detects the deletion event (DOM mutation or navigation to a delete-confirmation state)
+4. Extension reads the remaining persistence layers for that platform (the content-script equivalent of read_memory_settings())
+5. If residuals found: popup shows "Data still exists in N other location(s)" with a list of where
+6. If clean: popup shows "No residuals detected"
+
+### What it does NOT do
+
+- Does not delete anything for the user
+- Does not inject or probe with canary facts (that's the research methodology, not the tool)
+- Does not require any login beyond what the user already has open
+- Does not store or transmit user data
+
+### Tech stack
+
+- Chrome Manifest V3 extension
+- Content scripts per platform (one per domain) that read DOM for persistence surfaces
+- Background service worker for cross-tab coordination
+- Popup UI showing residual status
+
+### Mapping from existing code to extension
+
+| Existing (Playwright, Python) | Extension equivalent (content script, JS) |
+|-------------------------------|-------------------------------------------|
+| `chatgpt.read_memory_settings()` | Content script reads chatgpt.com Settings > Personalization > Memory list |
+| `claude.read_memory_settings()` | Content script reads claude.ai memory dashboard |
+| `gemini.read_memory_settings()` | Content script reads gemini.google.com Saved Info panel |
+| `copilot.read_memory_settings()` | Content script reads copilot.microsoft.com memory/facts pane |
+| DOM selectors for each surface | Same selectors, ported from Playwright to querySelectorAll |
+
+The core logic is a port of read_memory_settings() from Playwright to vanilla JS content scripts. The selectors are already known and tested.
+
+### MVP scope (what to build first)
+
+1. ChatGPT only (richest cross-layer gap, strongest finding)
+2. Detect conversation deletion (user clicks "Delete conversation")
+3. Read Memory page entries
+4. Read Custom Instructions
+5. Show popup: "You deleted a conversation, but Memory still contains N entries that may reference this data"
+
+### Stretch
+
+- Add Claude, Gemini, Copilot
+- Keyword matching: compare deleted conversation content against memory entries to flag specific residuals (not just "memory has entries" but "memory entry X references what you just deleted")
+- Pre-deletion scan: before the user deletes, show what other layers reference the same data
+
+
+## Testing
+
+We already have the ground truth. The audit data tells us exactly which deletions leave residuals on which platforms and which layers. That's the test set.
+
+1. Inject a fact (we know how, per platform)
+2. Delete it via a single-layer method (E1, E2, etc.)
+3. Run the extension
+4. Check if it correctly flags the residual in the other layer(s)
+5. Compare against what we already know the answer should be
+
+Precision and recall of the detection, measured against our own audit results. No separate user study needed — the audit IS the ground truth.
+
+That also makes a clean sentence in the paper: "We validated the tool against the N cells in our audit whose ground-truth residual status was known, achieving X% detection accuracy."
+

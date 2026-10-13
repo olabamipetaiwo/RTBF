@@ -366,11 +366,11 @@ Probes run in the fixed order R2, R3, then R1. This minimizes cross-probe contam
 % accepted, and (b) agreement between the two reviewers on a
 % double-reviewed sample (Gwet's AC1).
 
-\textbf{Measurement scope.} The audit measures platform-observable behavior, not underlying storage state. Each cell records four outcomes: the platform's acknowledgment, any visible interface change after erasure, recoverability at the 31-day recall point, and consistency with the platform's documented commitment. Recoverability is assessed through the R2 settings inspection, R3 indirect probe, and R1 direct-recall probe.
+\textbf{Measurement scope.} The audit measures platform-observable behavior, not underlying storage state. Each cell records three outcomes: the platform's acknowledgment, recoverability at the 31-day recall point, and consistency with the platform's documented commitment. Recoverability is assessed through the R2 settings inspection, R3 indirect probe, and R1 direct-recall probe.
 
 These observations cannot establish whether data were removed from backend storage, training data, or model parameters. A token that is not recovered was simply not observed through the tested surfaces, while a recovered token shows that the disclosure remained accessible through at least one of them. Accordingly, RQ1 and RQ2 concern observable recoverability and policy consistency, not verified backend erasure.
 
-\textbf{Outcome recording and repetition.} Each cell produces four measurements: \textit{acknowledgment}, \textit{interface change}, \textit{recoverability}, and \textit{policy consistency}. Acknowledgment records what the platform says in response to the erasure request, while interface change records whether the relevant user-facing surface visibly changes after the action.
+\textbf{Outcome recording and repetition.} Each cell produces three measurements: \textit{acknowledgment}, \textit{recoverability}, and \textit{policy consistency}. Acknowledgment records what the platform says in response to the erasure request.
 
 Recoverability is determined from the new-conversation recall probes. A cell is \textit{recovered} if any probe retrieves the token, \textit{not recovered} only when none does and the injection is known to have reached the layer being tested, and \textit{indeterminate} otherwise. This prevents absence from being treated automatically as evidence of deletion.
 
@@ -383,7 +383,7 @@ Retention is coded from platform-visible signals. Only explicit interface indica
 \begin{table}[t]
 \centering
 \caption{How policy consistency is derived. The commitment type fixes
-which combinations of interface change and recoverability count as
+which recoverability outcomes count as
 consistent or contradicted. Cells of the last three types are never
 contradicted, so they are reported descriptively.}
 \label{tab:consistency-rule}
@@ -393,8 +393,8 @@ contradicted, so they are reported descriptively.}
 \toprule
 Commitment type & Contradicted & Consistent & Indeterminate \\
 \midrule
-\textsc{Deletes} & recovered, or interface unchanged
- & not recovered, and interface not unchanged & otherwise \\
+\textsc{Deletes} & recovered
+ & not recovered & otherwise \\
 \textsc{Does not delete} & never & recovered & not recovered \\
 \textsc{No commitment}, \textsc{Unrelated}, \textsc{Not testable}
  & never & never & always \\
@@ -655,7 +655,7 @@ All (354) & 59.0 & 49.2 & 54.2 & 27.7 & 20.6 & 21.8 & 17.5 & 16.1 & 5.1 & 44.6 &
 % exclusion), which is a scope limitation to report, not a confirmed
 % mismatch. "Who bears that gap" needs a stated subgroup (e.g., by method
 % choice or by platform) or should be narrowed to whichever comparison the
-% data actually support. Draft from the Acknowledgment and Interface change
+% data actually support. Draft from the Acknowledgment
 % columns, the recall columns and the commitment types in MASTER, FILE
 % SUBSTUDY and NL FORGET (Recoverability and Policy consistency are
 % computed from them), and tester/transcripts/, once the
