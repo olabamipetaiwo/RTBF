@@ -528,9 +528,13 @@ class CopilotFlow(PlatformFlow):
         dialog. Scoped to the dialog -- the Settings dialog is a modal
         with tabs General/Personalization/Data controls/Notifications/
         About/Sources; Personalization holds Saved memories + Customize
-        Copilot."""
+        Copilot.
+
+        Matches both spellings: confirmed live 2026-10-18 that the
+        ui_migration_file account (ogunwalepelumi06) is served the en-GB
+        UI ("Personalisation"), while ui_migration_i2 gets en-US."""
         dialog = self.page.locator('[role="dialog"]:is([aria-label="Settings"], [aria-label="Chat settings"])')
-        dialog.locator('[role="tab"]').filter(has_text="Personalization").click()
+        dialog.locator('[role="tab"]').filter(has_text=re.compile(r"Personali[sz]ation")).click()
         self.page.wait_for_timeout(1500)
 
     def _open_saved_memories(self) -> None:
@@ -547,6 +551,11 @@ class CopilotFlow(PlatformFlow):
         has been the stable position in the live DOM."""
         self._open_settings_dialog()
         self._open_personalization_tab()
+        self._click_saved_memories_manage()
+
+    def _click_saved_memories_manage(self) -> None:
+        """Click Manage next to "Saved memories" in the already-open
+        Personalization pane (see _open_saved_memories for the fallback)."""
         saved_mem_manage = (
             self.page.get_by_text("Saved memories", exact=True)
             .locator("xpath=../..")
@@ -603,8 +612,17 @@ class CopilotFlow(PlatformFlow):
         message UI). Scope to specifically the one containing "View
         memory"."""
         if self._on_new_site():
-            self._open_saved_memories()
             dialog = self.page.locator('[role="dialog"]:is([aria-label="Settings"], [aria-label="Chat settings"])')
+            self._open_settings_dialog()
+            self._open_personalization_tab()
+            if self.page.get_by_text("Saved memories", exact=True).count() == 0:
+                # Confirmed live 2026-10-18 on recall_conflict (noreply.ayodev):
+                # the Personalization pane has no Saved memories row at all,
+                # only "Advanced" (Web search). Return the pane as evidence
+                # instead of clicking a Manage button that isn't there;
+                # recall_scoring.unreadable_memory_page() labels it REVIEW.
+                return dialog.inner_text()
+            self._click_saved_memories_manage()
             self._scroll_to_bottom(dialog.element_handle())
             return dialog.inner_text()
         self._open_view_memory()

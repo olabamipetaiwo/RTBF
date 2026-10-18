@@ -26,12 +26,14 @@ import openpyxl
 
 import config
 import tracking
+from shared_files import atomic_save_workbook, write_lock
 from recall_probes_loader import load_recall_probes
 from recall_scoring import score_attempts, unreadable_memory_page
 from recall_scoring import token_found as _token_found  # also used by the file-injection checks
 from flows.claude import ClaudeFlow
 from flows.chatgpt import ChatGPTFlow
 from flows.gemini import GeminiFlow
+from flows.gemini_selenium import GeminiSeleniumFlow
 from flows.copilot import CopilotFlow
 from flows.perplexity import PerplexityFlow
 from flows.deepseek import DeepSeekFlow
@@ -39,7 +41,7 @@ from flows.deepseek import DeepSeekFlow
 FLOW_REGISTRY: dict[str, type] = {
     "claude": ClaudeFlow,
     "chatgpt": ChatGPTFlow,
-    "gemini": GeminiFlow,
+    "gemini": GeminiSeleniumFlow,
     "copilot": CopilotFlow,
     "deepseek": DeepSeekFlow,
     "perplexity": PerplexityFlow,
@@ -175,34 +177,36 @@ def _update_master_row(cell_id: str, field_updates: dict[int, str], note_breadcr
     """One load/save cycle: writes `field_updates` (1-indexed column ->
     value) and, if given, appends `note_breadcrumb` to the existing Notes
     cell rather than overwriting it."""
-    wb = openpyxl.load_workbook(config.MASTER_XLSX_PATH)
-    ws = wb["MASTER "]
-    for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
-        if row[0].value == cell_id:
-            for col, val in field_updates.items():
-                ws.cell(row=row[0].row, column=col, value=val)
-            if note_breadcrumb:
-                existing = row[COL_NOTES - 1].value
-                new_note = f"{existing} | {note_breadcrumb}" if existing else note_breadcrumb
-                ws.cell(row=row[0].row, column=COL_NOTES, value=new_note)
-            wb.save(config.MASTER_XLSX_PATH)
-            return
-    raise ValueError(f"cell_id {cell_id!r} not found in MASTER for writing")
+    with write_lock():
+        wb = openpyxl.load_workbook(config.MASTER_XLSX_PATH)
+        ws = wb["MASTER "]
+        for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
+            if row[0].value == cell_id:
+                for col, val in field_updates.items():
+                    ws.cell(row=row[0].row, column=col, value=val)
+                if note_breadcrumb:
+                    existing = row[COL_NOTES - 1].value
+                    new_note = f"{existing} | {note_breadcrumb}" if existing else note_breadcrumb
+                    ws.cell(row=row[0].row, column=COL_NOTES, value=new_note)
+                atomic_save_workbook(wb, config.MASTER_XLSX_PATH)
+                return
+        raise ValueError(f"cell_id {cell_id!r} not found in MASTER for writing")
 
 
 def _update_file_substudy_row(cell_id: str, field_updates: dict[int, str]) -> None:
     """FILE SUBSTUDY's counterpart to _update_master_row() -- a separate
     sheet with a different column layout, so a separate small writer
     rather than trying to force one function to handle both shapes."""
-    wb = openpyxl.load_workbook(config.MASTER_XLSX_PATH)
-    ws = wb["FILE SUBSTUDY"]
-    for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
-        if row[0].value == cell_id:
-            for col, val in field_updates.items():
-                ws.cell(row=row[0].row, column=col, value=val)
-            wb.save(config.MASTER_XLSX_PATH)
-            return
-    raise ValueError(f"cell_id {cell_id!r} not found in FILE SUBSTUDY for writing")
+    with write_lock():
+        wb = openpyxl.load_workbook(config.MASTER_XLSX_PATH)
+        ws = wb["FILE SUBSTUDY"]
+        for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
+            if row[0].value == cell_id:
+                for col, val in field_updates.items():
+                    ws.cell(row=row[0].row, column=col, value=val)
+                atomic_save_workbook(wb, config.MASTER_XLSX_PATH)
+                return
+        raise ValueError(f"cell_id {cell_id!r} not found in FILE SUBSTUDY for writing")
 
 
 # NL FORGET sheet column indices (1-indexed) -- see nl_forget_cell_generator.py
@@ -221,19 +225,20 @@ NLF_COL_OBSERVED_OUTCOME = 16
 def _update_nlforget_row(cell_id: str, field_updates: dict[int, str], note_breadcrumb: str | None = None) -> None:
     """NL FORGET sheet's counterpart to _update_master_row() -- same
     breadcrumb-append behavior for Notes, different column layout."""
-    wb = openpyxl.load_workbook(config.MASTER_XLSX_PATH)
-    ws = wb["NL FORGET"]
-    for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
-        if row[0].value == cell_id:
-            for col, val in field_updates.items():
-                ws.cell(row=row[0].row, column=col, value=val)
-            if note_breadcrumb:
-                existing = row[NLF_COL_NOTES - 1].value
-                new_note = f"{existing} | {note_breadcrumb}" if existing else note_breadcrumb
-                ws.cell(row=row[0].row, column=NLF_COL_NOTES, value=new_note)
-            wb.save(config.MASTER_XLSX_PATH)
-            return
-    raise ValueError(f"cell_id {cell_id!r} not found in NL FORGET for writing")
+    with write_lock():
+        wb = openpyxl.load_workbook(config.MASTER_XLSX_PATH)
+        ws = wb["NL FORGET"]
+        for row in ws.iter_rows(min_row=2, max_row=ws.max_row):
+            if row[0].value == cell_id:
+                for col, val in field_updates.items():
+                    ws.cell(row=row[0].row, column=col, value=val)
+                if note_breadcrumb:
+                    existing = row[NLF_COL_NOTES - 1].value
+                    new_note = f"{existing} | {note_breadcrumb}" if existing else note_breadcrumb
+                    ws.cell(row=row[0].row, column=NLF_COL_NOTES, value=new_note)
+                atomic_save_workbook(wb, config.MASTER_XLSX_PATH)
+                return
+        raise ValueError(f"cell_id {cell_id!r} not found in NL FORGET for writing")
 
 
 def _cell_dir(platform: str, cell_id: str) -> tuple[Path, Path]:

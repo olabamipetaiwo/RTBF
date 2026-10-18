@@ -46,6 +46,7 @@ class PlatformFlow:
     # platform that's actually been confirmed to need it, don't apply it
     # blanket "just in case."
     USE_STEALTH: bool = False
+    EXTRA_LAUNCH_ARGS: list[str] = []
 
     def __init__(self, headless: bool = False, session_label: str | None = None, playwright=None):
         session = config.session_path(self.platform, session_label)
@@ -81,10 +82,14 @@ class PlatformFlow:
             # are human" check even with valid session cookies, while real
             # Chrome headed passes straight through. Don't flip this to
             # headless=True without re-verifying per platform.
-            self._browser = self._playwright.chromium.launch(headless=self._headless, channel="chrome")
+            self._browser = self._playwright.chromium.launch(
+                headless=self._headless, channel="chrome",
+                args=self.EXTRA_LAUNCH_ARGS or None,
+            )
             self._context = self._browser.new_context(storage_state=str(self._session_path))
             if self.USE_STEALTH:
                 Stealth().apply_stealth_sync(self._context)
+            self._prepare_context(self._context)
             self.page = self._context.new_page()
             self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
             # The sidebar/layout has an opacity+width transition on load that
@@ -112,6 +117,10 @@ class PlatformFlow:
                 self._playwright.stop()
             raise
         return self
+
+    def _prepare_context(self, context) -> None:
+        """Hook for per-platform context setup before any page is created."""
+        pass
 
     def _verify_logged_in(self) -> None:
         """No-op by default -- override per platform once its logged-out

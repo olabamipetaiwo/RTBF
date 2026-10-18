@@ -62,3 +62,18 @@ The risk of dropping it: a reviewer could ask "but did the UI actually reflect t
 One option: code it only for the MASTER + FILE SUBSTUDY cells (88+21 = 109), not all 828 NL-forget cells. The NL-forget erasure is always the same mechanism (typed request in chat), so interface change would be repetitive there. The structured erasure methods (E1-E7) are where you'd see meaningful UI variation.
 
 DECISION - SHELF interface change for now
+
+
+
+---
+
+
+- Claude is the cleanest: outcome determined entirely by erasure method (memory-targeted = success, conversation deletion = failure), injection type irrelevant.
+- ChatGPT is the worst: NL forget fails across the board, I3/Custom Instructions especially sticky.
+- Gemini is the messiest: outcome depends on both injection type and erasure method.
+- Copilot is mixed: NL forget works (unlike ChatGPT), but single-conversation/single-memory deletion fails (like Claude's architecture).
+- Perplexity/DeepSeek are trivially compliant — no memory layer at all.
+
+What does converge is the cross-platform theme: conversation deletion ≠ memory deletion. That's the central finding, and it manifests on Claude, ChatGPT, Copilot, and Gemini in different ways. But the specific failure patterns, which erasure methods work, and whether injection type matters are all platform-dependent.
+
+Were you asking about convergence for a specific section of the paper, or something else?

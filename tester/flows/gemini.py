@@ -41,6 +41,7 @@ from .base import PlatformFlow
 
 class GeminiFlow(PlatformFlow):
     platform = "gemini"
+    EXTRA_LAUNCH_ARGS = ["--disable-blink-features=AutomationControlled"]
 
     # I2 ("personal context injection") targets Saved-info, not chat --
     # unlike Claude/ChatGPT where I2 is chat-based. See base.py's
@@ -64,6 +65,11 @@ class GeminiFlow(PlatformFlow):
         "Delete all Saved info": "_delete_all_saved_info",
         "MAXIMAL": "_erase_maximal",
     }
+
+    def _prepare_context(self, context) -> None:
+        context.add_init_script(
+            "Object.defineProperty(navigator, 'webdriver', {get: () => undefined})"
+        )
 
     def _verify_logged_in(self) -> None:
         """Logged-out Gemini renders a full, plausible-looking chat UI --
@@ -148,9 +154,11 @@ class GeminiFlow(PlatformFlow):
     def send_message(self, text: str) -> str:
         before = len(self.page.query_selector_all(".model-response-text"))
 
-        self.page.locator('[aria-label="Enter a prompt for Gemini"]').click(force=True, timeout=10000)
-        self.page.keyboard.type(text)
-        self.page.locator('[aria-label="Send message"]').click(force=True, timeout=10000)
+        self.page.locator('[aria-label="Enter a prompt for Gemini"]').click(timeout=10000)
+        self.page.wait_for_timeout(500)
+        self.page.keyboard.type(text, delay=50)
+        self.page.wait_for_timeout(500)
+        self.page.keyboard.press("Enter")
 
         return self._wait_for_reply(before)
 

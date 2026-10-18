@@ -4,9 +4,8 @@
 
 # EXPERIMENTS
 
-- [ ] **X8** Two hand-coded measurements for the outcomes module (`python -m src.audit_outcomes`): **Acknowledgment** — Taiwo's 655 cells coded, Jihwan's coding pending, then compute Gwet's AC1 agreement. **Interface change** for the 54 battery cells erased through the interface (typed requests are "not observable" and need no coding).
 - [ ] **D2a** Count the auto-accepted FOUND replies across all recalled cells. A few dozen: a person reads all. Hundreds: draw a random sample. Second-reviewer agreement (Gwet's AC1) is a separate decision.
-- [ ] ChatGPT human review: 4 cells pending (CH-I1-E5, CH-I1-E7, CH-I2-E7, CH-I3-E7) + CH-IF-E-MAX. Read transcripts and confirm verdicts.
+
 
 # WRITE
 

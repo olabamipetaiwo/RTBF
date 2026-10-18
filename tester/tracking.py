@@ -21,6 +21,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import config
+from shared_files import atomic_write_text, write_lock
 
 TRACKING_PATH = config.TESTER_ROOT / "data" / "run_tracking.json"
 PENDING_UPLOADS_PATH = config.TESTER_ROOT / "data" / "pending_file_uploads.json"
@@ -48,8 +49,9 @@ def load() -> dict[str, dict]:
 
 
 def save(data: dict[str, dict]) -> None:
-    TRACKING_PATH.parent.mkdir(parents=True, exist_ok=True)
-    TRACKING_PATH.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n")
+    """Callers that load -> modify -> save must hold write_lock() for the
+    whole cycle (the mark_* functions below do); see shared_files.py."""
+    atomic_write_text(TRACKING_PATH, json.dumps(data, indent=2, sort_keys=True) + "\n")
 
 
 def get(cell_id: str) -> dict | None:
@@ -66,38 +68,41 @@ def mark_injected(cell_id: str, ts: datetime | None = None, ref: str | None = No
     that grabbing "whatever's topmost in the sidebar" silently deletes
     the wrong cell's data when multiple cells share an account."""
     ts = ts or _now()
-    data = load()
-    data[cell_id] = {
-        "status": "injected",
-        "injected_at": _iso(ts),
-        "erasure_due_at": _iso(ts + ERASURE_DELAY),
-        "erased_at": None,
-        "recall_due_at": None,
-        "recalled_at": None,
-        "injection_ref": ref,
-    }
-    save(data)
+    with write_lock():
+        data = load()
+        data[cell_id] = {
+            "status": "injected",
+            "injected_at": _iso(ts),
+            "erasure_due_at": _iso(ts + ERASURE_DELAY),
+            "erased_at": None,
+            "recall_due_at": None,
+            "recalled_at": None,
+            "injection_ref": ref,
+        }
+        save(data)
     return data[cell_id]
 
 
 def mark_erased(cell_id: str, ts: datetime | None = None) -> dict:
     ts = ts or _now()
-    data = load()
-    entry = data.setdefault(cell_id, {})
-    entry["status"] = "erased"
-    entry["erased_at"] = _iso(ts)
-    entry["recall_due_at"] = _iso(ts + RECALL_DELAY)
-    save(data)
+    with write_lock():
+        data = load()
+        entry = data.setdefault(cell_id, {})
+        entry["status"] = "erased"
+        entry["erased_at"] = _iso(ts)
+        entry["recall_due_at"] = _iso(ts + RECALL_DELAY)
+        save(data)
     return entry
 
 
 def mark_recalled(cell_id: str, ts: datetime | None = None) -> dict:
     ts = ts or _now()
-    data = load()
-    entry = data.setdefault(cell_id, {})
-    entry["status"] = "recalled"
-    entry["recalled_at"] = _iso(ts)
-    save(data)
+    with write_lock():
+        data = load()
+        entry = data.setdefault(cell_id, {})
+        entry["status"] = "recalled"
+        entry["recalled_at"] = _iso(ts)
+        save(data)
     return entry
 
 

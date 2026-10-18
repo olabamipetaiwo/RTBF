@@ -104,6 +104,12 @@ _UNREADABLE_MEMORY_PAGE = (
     (re.compile(r"Get Gemini App"), "signed-out landing page"),
     (re.compile(r"Enable memory to see what ChatGPT knows"), "memory is turned off"),
     (re.compile(r"Memory summary\s*Generating\s*$"), "memory summary still generating"),
+    # Copilot Personalization pane with no Saved memories row: the description
+    # runs straight into "Advanced" (seen live 2026-10-18, app 2.20261015.61.0).
+    (
+        re.compile(r"Copilot tailors responses[^\n]*Learn more\s*Advanced"),
+        "no Saved memories section on this account",
+    ),
 )
 
 
