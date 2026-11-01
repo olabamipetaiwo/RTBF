@@ -159,6 +159,9 @@ class _FakeChatFlow(_FakeFlow):
         super().__init__(replies, "unused")
         self.page = _FakePage(self.events)
 
+    def open_conversation(self, ref: str) -> None:
+        self.page.goto(ref)
+
 
 def _plan(erasure_type_text: str):
     import run_cell
@@ -208,3 +211,11 @@ if __name__ == "__main__":
         if name.startswith("test_") and callable(fn):
             fn()
             print(f"ok  {name}")
+
+
+def test_score_attempts_without_cue_check_counts_cue_as_found():
+    names = ("same-conversation",)
+    label, _ = rs.score_attempts(["You called it Nutcase Taps; nothing in memory has it."], TOKEN, names, cue_check=False)
+    assert label == "TOKEN FOUND (auto, same-conversation)"
+    label, _ = rs.score_attempts(["Nutcase something"], TOKEN, names, cue_check=False)
+    assert label.startswith("PARTIAL")

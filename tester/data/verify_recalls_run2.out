@@ -1,0 +1,3 @@
+[01:17:28] OK: 0 newly recalled cells, all checks pass
+[01:19:29] DE-NLF-I0368: WARNING same-conversation probe recorded as 'ERROR (same-conversation probe failed: RuntimeError: _wait_for_reply: no new reply appeared within 60s)'; re-read it afterwards
+[01:19:29] OK: 4 newly recalled cells, all checks pass

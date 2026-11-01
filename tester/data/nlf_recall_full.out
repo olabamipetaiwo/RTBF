@@ -1,0 +1,64 @@
+[2026-10-18T01:07:27] perplexity: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:07:27] claude: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:07:27] chatgpt: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:07:27] perplexity: batch of 7 (ceiling 7, 118 due now)
+[2026-10-18T01:07:27] deepseek: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:07:27] chatgpt: batch of 7 (ceiling 7, 118 due now)
+[2026-10-18T01:07:27] claude: batch of 7 (ceiling 7, 117 due now)
+[2026-10-18T01:07:27] deepseek: batch of 7 (ceiling 7, 118 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/deepseek/DE-NLF-I0092
+[2026-10-18T01:08:10] deepseek: OK DE-NLF-I0092 (1/7)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/perplexity/PE-NLF-I0273
+[2026-10-18T01:08:26] perplexity: OK PE-NLF-I0273 (1/7)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0339
+[2026-10-18T01:08:26] claude: OK CL-NLF-I0339 (1/7)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0240
+[2026-10-18T01:08:41] chatgpt: OK CH-NLF-I0240 (1/7)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/deepseek/DE-NLF-I0085
+[2026-10-18T01:09:13] deepseek: OK DE-NLF-I0085 (2/7)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/perplexity/PE-NLF-I0096
+[2026-10-18T01:09:54] perplexity: OK PE-NLF-I0096 (2/7)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0159
+[2026-10-18T01:10:21] claude: OK CL-NLF-I0159 (2/7)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0287
+[2026-10-18T01:10:41] chatgpt: OK CH-NLF-I0287 (2/7)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/deepseek/DE-NLF-I0365
+[2026-10-18T01:11:06] deepseek: OK DE-NLF-I0365 (3/7)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/perplexity/PE-NLF-I0170
+[2026-10-18T01:11:08] perplexity: OK PE-NLF-I0170 (3/7)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0126
+[2026-10-18T01:11:37] claude: OK CL-NLF-I0126 (3/7)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/perplexity/PE-NLF-I0131
+[2026-10-18T01:12:26] perplexity: OK PE-NLF-I0131 (4/7)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0004
+[2026-10-18T01:12:33] chatgpt: OK CH-NLF-I0004 (3/7)
+WARNING DE-NLF-I0355: ERROR (same-conversation probe failed: RuntimeError: _wait_for_reply: no new reply appeared within 60s)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: ERROR (same-conversation probe failed: RuntimeError: _wait_for_reply: no new reply appeared within 60s)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/deepseek/DE-NLF-I0355
+[2026-10-18T01:13:01] deepseek: OK DE-NLF-I0355 (4/7)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0355
+[2026-10-18T01:13:30] claude: OK CL-NLF-I0355 (4/7)
+/Users/taiwoolabamipe/.pyenv/versions/3.11.13/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+/Users/taiwoolabamipe/.pyenv/versions/3.11.13/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+/Users/taiwoolabamipe/.pyenv/versions/3.11.13/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+/Users/taiwoolabamipe/.pyenv/versions/3.11.13/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+/Users/taiwoolabamipe/.pyenv/versions/3.11.13/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

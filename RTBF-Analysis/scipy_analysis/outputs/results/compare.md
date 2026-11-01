@@ -1,6 +1,6 @@
 # compare
 
-_Run at 2026-09-30T15:10:39_
+_Run at 2026-10-20T00:52:51_
 
 ```text
 === scipy_analysis vs src (manual) pipeline: 101 tests compared ===

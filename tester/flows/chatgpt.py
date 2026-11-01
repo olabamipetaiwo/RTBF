@@ -26,7 +26,17 @@ all" ("Delete all chats") -- see _clear_all_chat_history_bulk().
 
 from __future__ import annotations
 
+import re
+
 from .base import PlatformFlow
+
+# ChatGPT's soft rate limit, seen live 2026-10-18 (CH-NLF-I0293) after ~25
+# recall messages in ~11 minutes on the free-tier nlforget account: the
+# composer area shows "We're doing a quick check to keep ChatGPT reliable.
+# Try again in 13 minutes." and the next prompt gets no reply.
+_RATE_LIMIT_RE = re.compile(r"Try again in (\d+)\s*(second|minute|hour)s?", re.I)
+_RATE_LIMIT_UNIT_S = {"second": 1, "minute": 60, "hour": 3600}
+MAX_RATE_LIMIT_WAIT_S = 60 * 60
 
 
 class ChatGPTFlow(PlatformFlow):
@@ -67,6 +77,14 @@ class ChatGPTFlow(PlatformFlow):
         self.page.wait_for_timeout(1000)
         self.page.goto("https://chatgpt.com/", wait_until="domcontentloaded")
         self.page.wait_for_timeout(2500)
+
+    def _reply_count(self) -> int:
+        return len(self.page.query_selector_all('[data-chatgpt-selection-message-id]'))
+
+    def _last_reply_text(self) -> str:
+        """Name the shared recall guards look for (flows/base.py's
+        open_conversation, run_cell.py's _send_fresh)."""
+        return self._last_assistant_text()
 
     def _last_assistant_text(self) -> str:
         # Oct 2026 redesign: data-message-author-role is gone; the reply
@@ -141,7 +159,41 @@ class ChatGPTFlow(PlatformFlow):
             raise RuntimeError(f"_wait_for_reply: ChatGPT returned error banner, not a reply: {text!r}")
         return text
 
+    def _rate_limit_seconds(self) -> int | None:
+        # Page text minus the chat messages, so a reply that happens to say
+        # "try again in 5 minutes" is never mistaken for the banner.
+        outside_messages = self.page.evaluate("""() => {
+            const copy = document.body.cloneNode(true);
+            copy.querySelectorAll('[data-chatgpt-selection-message-id], [data-message-author-role], article')
+                .forEach(e => e.remove());
+            return copy.textContent;
+        }""")
+        m = _RATE_LIMIT_RE.search(outside_messages)
+        return int(m.group(1)) * _RATE_LIMIT_UNIT_S[m.group(2).lower()] if m else None
+
+    def _wait_out_rate_limit(self) -> None:
+        """Called before every prompt. If the rate-limit banner is showing,
+        wait the time it names plus a minute, reopen the same page, and
+        check again -- so a limit that appears between two of a cell's
+        prompts delays the cell instead of cutting it off half-sent.
+        Gives up (raises, nothing sent) after MAX_RATE_LIMIT_WAIT_S."""
+        waited = 0
+        while (seconds := self._rate_limit_seconds()) is not None:
+            pause = seconds + 60
+            if waited + pause > MAX_RATE_LIMIT_WAIT_S:
+                raise RuntimeError(f"ChatGPT rate limit still active after {waited}s; prompt not sent")
+            print(f"RATE LIMIT (chatgpt): banner asks to wait {seconds}s; pausing {pause}s before sending", flush=True)
+            self.page.wait_for_timeout(pause * 1000)
+            waited += pause
+            url = self.page.url
+            if "/c/" in url:
+                self.open_conversation(url)
+            else:
+                self.page.goto(url, wait_until="domcontentloaded")
+                self.page.wait_for_timeout(4000)
+
     def send_message(self, text: str) -> str:
+        self._wait_out_rate_limit()
         # Typing with delay=40 instead of 0 ms, and submitting by Enter on
         # the focused composer instead of a force=True Send-button click,
         # mirrors the mitigation added to copilot.py the same day (2026-10-05)
@@ -283,11 +335,37 @@ class ChatGPTFlow(PlatformFlow):
         # Scroll the dialog to the bottom to trigger any lazy-loaded content.
         self._scroll_to_bottom(dialog)
         text = dialog.inner_text()
+        if self.memory_shot_path:
+            self._screenshot_dialog(dialog, self.memory_shot_path)
         self.page.keyboard.press("Escape")
         self.page.wait_for_timeout(500)
         self.page.goto("https://chatgpt.com/", wait_until="domcontentloaded")
         self.page.wait_for_timeout(2500)
         return text
+
+    def _screenshot_dialog(self, dialog, path) -> None:
+        """Saves the open memory summary as <stem>_1.png, <stem>_2.png, ...
+        one viewport at a time from the top, so every line of the text R2
+        scored is visible in an image. Without this the only R2 screenshot
+        was taken after the dialog closed and showed the home page
+        (found 2026-10-26 on every ChatGPT R2 since the summary moved into
+        this dialog)."""
+        # The dialog itself may not scroll; its tallest overflowing
+        # descendant does.
+        scroller = self.page.evaluate_handle(
+            """d => [d, ...d.querySelectorAll('*')]
+                .filter(e => e.scrollHeight > e.clientHeight + 4)
+                .sort((a, b) => b.scrollHeight - a.scrollHeight)[0] || d""",
+            dialog,
+        )
+        height, view = self.page.evaluate("e => [e.scrollHeight, e.clientHeight]", scroller)
+        step = max(view - 40, 200)
+        for i, top in enumerate(range(0, max(height - view, 0) + step, step), start=1):
+            self.page.evaluate("([e, y]) => e.scrollTo(0, y)", [scroller, top])
+            self.page.wait_for_timeout(300)
+            self.page.screenshot(path=str(path.with_name(f"{path.stem}_{i}.png")))
+            if i == 10:
+                break
 
     # --- ERASURE_DISPATCH targets ---
 

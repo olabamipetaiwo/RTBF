@@ -1,0 +1,149 @@
+[2026-10-29T23:41:18] copilot: === start (limit=None, min_days=31, batch=10 cells, failed so far=10) ===
+[2026-10-29T23:41:32] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-29T23:41:32] copilot: batch of 10 (ceiling 10, 55 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0305
+[2026-10-29T23:42:41] copilot: OK CO-NLF-I0305 (1/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0327
+[2026-10-29T23:46:32] copilot: OK CO-NLF-I0327 (2/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0233
+[2026-10-29T23:49:31] copilot: OK CO-NLF-I0233 (3/10)
+[2026-10-29T23:54:11] copilot: FAIL CO-NLF-I0177 (4/10), not retried: TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+
+[2026-10-29T23:54:11] copilot: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 752, in recall_cell
+    flow = stack.enter_context(flow_cls(**flow_kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/.pyenv/versions/3.11.13/lib/python3.11/contextlib.py", line 517, in enter_context
+    result = _enter(cm)
+             ^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/copilot.py", line 1240, in __enter__
+    self._browser = self._playwright.chromium.connect_over_cdp(self._cdp_url)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 17126, in connect_over_cdp
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_browser_type.py", line 205, in connect_over_cdp
+    response = await self._channel.send_return_as_dict(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 103, in send_return_as_dict
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 334, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 757, in recall_cell
+    raise FlowNotStarted(f"{type(exc).__name__}: {exc}") from exc
+run_cell.FlowNotStarted: TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+
+
+[2026-10-29T23:59:18] copilot: FAIL CO-NLF-I0024 (5/10), not retried: TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+
+[2026-10-29T23:59:18] copilot: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 752, in recall_cell
+    flow = stack.enter_context(flow_cls(**flow_kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/.pyenv/versions/3.11.13/lib/python3.11/contextlib.py", line 517, in enter_context
+    result = _enter(cm)
+             ^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/copilot.py", line 1240, in __enter__
+    self._browser = self._playwright.chromium.connect_over_cdp(self._cdp_url)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 17126, in connect_over_cdp
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_browser_type.py", line 205, in connect_over_cdp
+    response = await self._channel.send_return_as_dict(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 103, in send_return_as_dict
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 334, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 757, in recall_cell
+    raise FlowNotStarted(f"{type(exc).__name__}: {exc}") from exc
+run_cell.FlowNotStarted: TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+
+
+[2026-10-29T23:59:18] copilot: THROTTLE DETECTED (2/5 failed); ceiling 10 -> 3
+[2026-10-29T23:59:18] copilot: batch done; cooling down 900s
+Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 444, in <module>
+    main()
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 434, in main
+    run_platform(ns.platform, ns.limit, ns.min_days)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 323, in run_platform
+    if not _account_ok(platform):
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 280, in _account_ok
+    name = _copilot_account_name()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 263, in _copilot_account_name
+    with CopilotFlow(cdp_url=CDP_URL) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/copilot.py", line 1240, in __enter__
+    self._browser = self._playwright.chromium.connect_over_cdp(self._cdp_url)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 17126, in connect_over_cdp
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_browser_type.py", line 205, in connect_over_cdp
+    response = await self._channel.send_return_as_dict(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 103, in send_return_as_dict
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+

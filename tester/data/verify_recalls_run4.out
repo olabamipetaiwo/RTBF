@@ -1,0 +1,28 @@
+[01:33:16] OK: 0 newly recalled cells, all checks pass
+[01:35:16] OK: 4 newly recalled cells, all checks pass
+[01:37:17] OK: 10 newly recalled cells, all checks pass
+[01:39:17] CH-NLF-I0226: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0045 'Discharge Jogger' in r1_open_reply; CH-NLF-I0220 'Radiator Gains' in r1_open_reply
+[01:39:17] OK: 14 newly recalled cells, all checks pass
+[01:41:18] OK: 18 newly recalled cells, all checks pass
+[01:43:18] CH-NLF-I0302: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0126 'Sludge Chaplain Vocalist' in r1_open_reply; CH-NLF-I0201 'Emcee Violator Capacity Aversion' in r1_open_reply
+[01:43:18] OK: 24 newly recalled cells, all checks pass
+[01:45:19] OK: 24 newly recalled cells, all checks pass
+[01:47:19] OK: 25 newly recalled cells, all checks pass
+[01:49:20] OK: 25 newly recalled cells, all checks pass
+[01:51:20] OK: 25 newly recalled cells, all checks pass
+[01:53:21] OK: 26 newly recalled cells, all checks pass
+[01:55:21] OK: 28 newly recalled cells, all checks pass
+[01:57:22] OK: 32 newly recalled cells, all checks pass
+[01:59:23] OK: 36 newly recalled cells, all checks pass
+[02:01:23] OK: 38 newly recalled cells, all checks pass
+[02:03:24] OK: 40 newly recalled cells, all checks pass
+[02:05:24] OK: 41 newly recalled cells, all checks pass
+[02:07:25] CH-NLF-I0293: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0060 'Guide Scorpion Class Backstage' in r1_open_reply; CH-NLF-I0060 'Guide Scorpion Class Backstage' in r1_open_followup_reply
+[02:07:25] OK: 42 newly recalled cells, all checks pass
+[02:09:25] OK: 42 newly recalled cells, all checks pass
+[02:11:26] OK: 43 newly recalled cells, all checks pass
+[02:13:26] OK: 44 newly recalled cells, all checks pass
+[02:15:27] OK: 47 newly recalled cells, all checks pass
+[02:17:28] OK: 49 newly recalled cells, all checks pass
+[02:19:28] OK: 51 newly recalled cells, all checks pass
+[02:21:29] OK: 54 newly recalled cells, all checks pass

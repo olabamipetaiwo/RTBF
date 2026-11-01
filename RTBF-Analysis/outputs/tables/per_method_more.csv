@@ -1,5 +1,5 @@
 method,n,protection_mean,protection_median,protection_sd,effort_mean,effort_median,effort_sd,benefit_loss_mean,benefit_loss_median,benefit_loss_sd,flag
-Delete this single conversation.,81,3.73,3.8,0.91,1.67,1.5,0.81,3.02,3.0,1.01,
+Delete this single conversation.,80,3.73,3.8,0.91,1.67,1.5,0.81,3.02,3.0,1.01,
 Clear all conversation history.,40,3.78,4.0,0.82,2.18,2.0,1.0,3.14,3.3333333333333335,1.1,
 Delete a specific saved memory or fact.,22,3.71,4.0,0.69,2.32,2.25,0.97,3.38,3.5,0.92,
 Type a message asking the AI Chatbot to forget it.,14,3.89,4.0,0.73,1.54,1.375,0.5,2.9,2.833333333333333,0.95,

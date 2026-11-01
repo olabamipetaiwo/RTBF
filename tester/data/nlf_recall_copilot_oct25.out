@@ -1,0 +1,37 @@
+[2026-10-25T17:14:43] copilot: === start (limit=None, min_days=30, batch=10 cells, failed so far=5) ===
+[2026-10-25T17:14:57] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-25T17:14:57] copilot: batch of 10 (ceiling 10, 90 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0230
+[2026-10-25T17:16:07] copilot: OK CO-NLF-I0230 (1/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0296
+[2026-10-25T17:18:39] copilot: OK CO-NLF-I0296 (2/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0032
+[2026-10-25T17:21:53] copilot: OK CO-NLF-I0032 (3/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0355
+[2026-10-25T17:25:02] copilot: OK CO-NLF-I0355 (4/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0068
+[2026-10-25T17:27:18] copilot: OK CO-NLF-I0068 (5/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0132
+[2026-10-25T17:29:51] copilot: OK CO-NLF-I0132 (6/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0191
+[2026-10-25T17:33:52] copilot: OK CO-NLF-I0191 (7/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0115
+[2026-10-25T17:36:39] copilot: OK CO-NLF-I0115 (8/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0200
+[2026-10-25T17:39:19] copilot: OK CO-NLF-I0200 (9/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0030
+[2026-10-25T17:43:17] copilot: OK CO-NLF-I0030 (10/10)
+[2026-10-25T17:43:17] copilot: batch done; cooling down 900s
+[2026-10-25T18:47:20] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-25T18:47:20] copilot: batch of 10 (ceiling 10, 80 due now)
+[2026-10-25T18:49:35] copilot: BACKOFF: _wait_for_reply: no new reply appeared within 60s -- stopping copilot; CO-NLF-I0279 left for resume

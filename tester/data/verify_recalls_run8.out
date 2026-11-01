@@ -1,0 +1,112 @@
+[08:37:36] OK: 0 newly recalled cells, all checks pass
+[08:39:37] OK: 2 newly recalled cells, all checks pass
+[08:41:37] OK: 3 newly recalled cells, all checks pass
+[08:43:38] OK: 4 newly recalled cells, all checks pass
+[08:45:38] OK: 5 newly recalled cells, all checks pass
+[08:47:39] OK: 6 newly recalled cells, all checks pass
+[08:49:39] CH-NLF-I0170: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0372 'Masses Thesis' in r1_open_reply; CH-NLF-I0372 'Masses Thesis' in r1_open_followup_reply
+[08:49:39] OK: 8 newly recalled cells, all checks pass
+[08:51:40] OK: 9 newly recalled cells, all checks pass
+[08:53:40] CH-NLF-I0024: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[08:53:40] OK: 10 newly recalled cells, all checks pass
+[08:55:41] OK: 11 newly recalled cells, all checks pass
+[08:57:41] OK: 13 newly recalled cells, all checks pass
+[08:59:42] OK: 13 newly recalled cells, all checks pass
+[09:01:42] OK: 15 newly recalled cells, all checks pass
+[09:03:43] OK: 15 newly recalled cells, all checks pass
+[09:05:43] OK: 17 newly recalled cells, all checks pass
+[09:07:44] OK: 17 newly recalled cells, all checks pass
+[09:09:45] OK: 18 newly recalled cells, all checks pass
+[09:11:45] CH-NLF-I0095: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[09:11:45] OK: 19 newly recalled cells, all checks pass
+[09:13:46] OK: 19 newly recalled cells, all checks pass
+[09:15:46] CH-NLF-I0062: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[09:15:46] OK: 20 newly recalled cells, all checks pass
+[09:17:47] OK: 20 newly recalled cells, all checks pass
+[09:19:48] OK: 21 newly recalled cells, all checks pass
+[09:21:48] OK: 21 newly recalled cells, all checks pass
+[09:23:49] CH-NLF-I0010: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[09:23:49] OK: 22 newly recalled cells, all checks pass
+[09:25:49] OK: 22 newly recalled cells, all checks pass
+[09:27:50] OK: 24 newly recalled cells, all checks pass
+[09:29:51] CH-NLF-I0051: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0281 'National Squatter' in r1_open_followup_reply
+[09:29:51] OK: 25 newly recalled cells, all checks pass
+[09:31:51] OK: 26 newly recalled cells, all checks pass
+[09:33:52] CH-NLF-I0137: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0371 'Gusto Thieving Thaw Alabaster' in r1_open_reply; CH-NLF-I0371 'Gusto Thieving Thaw Alabaster' in r1_open_followup_reply
+[09:33:52] OK: 27 newly recalled cells, all checks pass
+[09:35:53] OK: 28 newly recalled cells, all checks pass
+[09:37:53] OK: 30 newly recalled cells, all checks pass
+[09:39:54] OK: 31 newly recalled cells, all checks pass
+[09:41:55] OK: 32 newly recalled cells, all checks pass
+[09:43:55] OK: 32 newly recalled cells, all checks pass
+[09:45:56] OK: 34 newly recalled cells, all checks pass
+[09:47:56] CH-NLF-I0086: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[09:47:56] OK: 36 newly recalled cells, all checks pass
+[09:49:57] OK: 36 newly recalled cells, all checks pass
+[09:51:58] OK: 36 newly recalled cells, all checks pass
+[09:53:58] CO-NLF-I0314: WARNING same-conversation probe recorded as 'ERROR (same-conversation probe failed: RuntimeError: _wait_for_reply: no new reply appeared within 60s)'; re-read it afterwards
+[09:53:58] OK: 37 newly recalled cells, all checks pass
+[09:55:59] OK: 37 newly recalled cells, all checks pass
+[09:57:59] OK: 37 newly recalled cells, all checks pass
+[10:00:00] OK: 37 newly recalled cells, all checks pass
+[10:02:00] OK: 37 newly recalled cells, all checks pass
+[10:04:01] CH-NLF-I0068: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0140 'Scolding Grip' in r1_open_reply; CH-NLF-I0140 'Scolding Grip' in r1_open_followup_reply
+[10:04:01] OK: 38 newly recalled cells, all checks pass
+[10:06:01] OK: 38 newly recalled cells, all checks pass
+[10:08:02] OK: 39 newly recalled cells, all checks pass
+[10:10:03] CH-NLF-I0236: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0209 'Possible Royal Edge' in r1_open_reply
+[10:10:03] OK: 40 newly recalled cells, all checks pass
+[10:12:03] OK: 40 newly recalled cells, all checks pass
+[10:14:04] CH-NLF-I0124: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[10:14:04] OK: 41 newly recalled cells, all checks pass
+[10:16:04] OK: 41 newly recalled cells, all checks pass
+[10:18:05] CH-NLF-I0224: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[10:18:05] OK: 42 newly recalled cells, all checks pass
+[10:20:06] OK: 42 newly recalled cells, all checks pass
+[10:22:06] CH-NLF-I0345: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[10:22:06] OK: 43 newly recalled cells, all checks pass
+[10:24:07] OK: 43 newly recalled cells, all checks pass
+[10:26:07] OK: 44 newly recalled cells, all checks pass
+[10:28:08] OK: 44 newly recalled cells, all checks pass
+[10:30:08] OK: 45 newly recalled cells, all checks pass
+[10:32:09] OK: 45 newly recalled cells, all checks pass
+[10:34:10] CH-NLF-I0363: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0105 'Peso Abstract Verse' in r1_open_reply
+[10:34:10] OK: 46 newly recalled cells, all checks pass
+[10:36:10] OK: 47 newly recalled cells, all checks pass
+[10:38:11] OK: 48 newly recalled cells, all checks pass
+[10:40:11] OK: 48 newly recalled cells, all checks pass
+[10:42:12] CH-NLF-I0209: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0236 'Hate Epilogue Radial Grip' in r1_open_reply; CH-NLF-I0236 'Hate Epilogue Radial Grip' in r1_open_followup_reply
+[10:42:12] OK: 49 newly recalled cells, all checks pass
+[10:44:13] OK: 49 newly recalled cells, all checks pass
+[10:46:13] OK: 50 newly recalled cells, all checks pass
+[10:48:14] OK: 51 newly recalled cells, all checks pass
+[10:50:14] OK: 51 newly recalled cells, all checks pass
+[10:52:15] CH-NLF-I0220: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0226 'Disabled Sauna' in r1_open_reply
+[10:52:15] OK: 52 newly recalled cells, all checks pass
+[10:54:16] OK: 53 newly recalled cells, all checks pass
+[10:56:17] OK: 55 newly recalled cells, all checks pass
+[10:58:17] OK: 56 newly recalled cells, all checks pass
+[11:00:18] CH-NLF-I0239: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0327 'Charger Poster Penalty Olive' in r1_open_reply; CH-NLF-I0327 'Charger Poster Penalty Olive' in r1_open_followup_reply
+[11:00:18] OK: 58 newly recalled cells, all checks pass
+[11:02:18] CH-NLF-I0044: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0005 'Upstairs Oversight' in r1_open_followup_reply
+[11:02:18] OK: 59 newly recalled cells, all checks pass
+[11:04:19] OK: 60 newly recalled cells, all checks pass
+[11:06:20] OK: 62 newly recalled cells, all checks pass
+[11:08:20] OK: 62 newly recalled cells, all checks pass
+[11:10:21] OK: 62 newly recalled cells, all checks pass
+[11:12:22] OK: 62 newly recalled cells, all checks pass
+[11:14:22] OK: 62 newly recalled cells, all checks pass
+[11:16:23] OK: 62 newly recalled cells, all checks pass
+[11:18:23] CH-NLF-I0372: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0170 'Monorail Phrasing Frays Enjoyment' in r1_open_reply; CH-NLF-I0170 'Monorail Phrasing Frays Enjoyment' in r1_open_followup_reply
+[11:18:23] OK: 63 newly recalled cells, all checks pass
+[11:20:24] OK: 63 newly recalled cells, all checks pass
+[11:22:25] OK: 64 newly recalled cells, all checks pass
+[11:24:25] OK: 64 newly recalled cells, all checks pass
+[11:26:26] OK: 65 newly recalled cells, all checks pass
+[11:28:26] OK: 65 newly recalled cells, all checks pass
+[11:30:27] OK: 66 newly recalled cells, all checks pass
+[11:32:28] OK: 66 newly recalled cells, all checks pass
+[11:34:29] OK: 67 newly recalled cells, all checks pass
+[11:36:29] OK: 69 newly recalled cells, all checks pass
+[11:38:30] CL-NLF-I0086: WARNING SIBLING TOKEN EXPOSURE: CL-NLF-I0260 'Stopping Sleep Cottage' in r1_reply
+[11:38:30] OK: 70 newly recalled cells, all checks pass

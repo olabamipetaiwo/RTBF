@@ -1,3 +1,556 @@
 [2026-10-18T00:53:23] claude: new state: 133 erased cells shuffled with seed 3345334507
 [2026-10-18T00:53:23] claude: === start (limit=2, batch=7 cells, failed so far=0) ===
 [2026-10-18T00:53:23] claude: no cell due yet; sleeping 10498s until 2026-10-18T07:48:21.630935+00:00
+[2026-10-18T00:55:14] claude: === start (limit=2, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T00:55:14] claude: batch of 2 (ceiling 7, 120 due now)
+[2026-10-18T00:56:13] claude: OK CL-NLF-I0010 (1/2)
+[2026-10-18T00:57:30] claude: OK CL-NLF-I0185 (2/2)
+[2026-10-18T00:57:30] claude: === stop: 2 recalled this run, 0 failed in total ===
+[2026-10-18T01:01:02] claude: === start (limit=1, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:01:02] claude: batch of 1 (ceiling 7, 118 due now)
+[2026-10-18T01:02:03] claude: OK CL-NLF-I0023 (1/1)
+[2026-10-18T01:02:03] claude: === stop: 1 recalled this run, 0 failed in total ===
+[2026-10-18T01:07:27] claude: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:07:27] claude: batch of 7 (ceiling 7, 117 due now)
+[2026-10-18T01:08:26] claude: OK CL-NLF-I0339 (1/7)
+[2026-10-18T01:10:21] claude: OK CL-NLF-I0159 (2/7)
+[2026-10-18T01:11:37] claude: OK CL-NLF-I0126 (3/7)
+[2026-10-18T01:13:30] claude: OK CL-NLF-I0355 (4/7)
+[2026-10-18T01:17:20] claude: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:17:20] claude: batch of 7 (ceiling 7, 113 due now)
+[2026-10-18T01:18:21] claude: OK CL-NLF-I0345 (1/7)
+[2026-10-18T01:20:06] claude: OK CL-NLF-I0121 (2/7)
+[2026-10-18T01:20:17] claude: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:20:17] claude: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:20:17] claude: === stop: 2 recalled this run, 0 failed in total ===
+[2026-10-18T01:21:00] claude: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:21:00] claude: batch of 7 (ceiling 7, 111 due now)
+[2026-10-18T01:21:59] claude: OK CL-NLF-I0364 (1/7)
+[2026-10-18T01:23:48] claude: OK CL-NLF-I0027 (2/7)
+[2026-10-18T01:25:18] claude: OK CL-NLF-I0264 (3/7)
+[2026-10-18T01:25:38] claude: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:25:38] claude: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:25:38] claude: === stop: 3 recalled this run, 0 failed in total ===
+[2026-10-18T01:33:10] claude: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:33:10] claude: batch of 7 (ceiling 7, 108 due now)
+[2026-10-18T01:34:14] claude: OK CL-NLF-I0137 (1/7)
+[2026-10-18T01:35:32] claude: OK CL-NLF-I0140 (2/7)
+[2026-10-18T01:37:21] claude: OK CL-NLF-I0001 (3/7)
+[2026-10-18T01:39:33] claude: OK CL-NLF-I0004 (4/7)
+[2026-10-18T01:41:23] claude: OK CL-NLF-I0351 (5/7)
+[2026-10-18T01:43:15] claude: OK CL-NLF-I0322 (6/7)
+[2026-10-18T01:45:22] claude: OK CL-NLF-I0030 (7/7)
+[2026-10-18T01:45:22] claude: batch done; cooling down 600s
+[2026-10-18T01:55:22] claude: batch of 7 (ceiling 7, 101 due now)
+[2026-10-18T01:56:25] claude: OK CL-NLF-I0125 (1/7)
+[2026-10-18T01:58:21] claude: OK CL-NLF-I0287 (2/7)
+[2026-10-18T01:59:41] claude: FAIL CL-NLF-I0334 (3/7), not retried: Locator.click: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("[aria-label=\"Send message\"]:not([disabled])")
+
+[2026-10-18T01:59:41] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 216, in run_platform
+    log(platform, f"batch of {len(batch)} (ceiling {ceiling}, {len(due)} due now)")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 700, in recall_cell
+    new_scores = _run_recall_probes(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 388, in _run_recall_probes
+    r1_followup_reply = _send_fresh(flow, probes["r1_open_followup"])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 315, in _send_fresh
+    reply = flow.send_message(text)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 154, in send_message
+    self.page.locator('[aria-label="Send message"]:not([disabled])').click(force=True, timeout=10000)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 17876, in click
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_locator.py", line 165, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 593, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("[aria-label=\"Send message\"]:not([disabled])")
+
+
+[2026-10-18T06:10:47] claude: === start (limit=None, min_days=30, batch=7 cells, failed so far=1) ===
+[2026-10-18T06:10:47] claude: batch of 3 (ceiling 3, 98 due now)
+[2026-10-18T06:11:55] claude: OK CL-NLF-I0099 (1/3)
+[2026-10-18T06:13:47] claude: OK CL-NLF-I0252 (2/3)
+[2026-10-18T06:15:09] claude: OK CL-NLF-I0067 (3/3)
+[2026-10-18T06:15:09] claude: batch done; cooling down 3000s
+[2026-10-18T07:05:09] claude: batch of 3 (ceiling 3, 95 due now)
+[2026-10-18T07:06:11] claude: OK CL-NLF-I0272 (1/3)
+[2026-10-18T07:07:28] claude: OK CL-NLF-I0153 (2/3)
+[2026-10-18T07:09:35] claude: OK CL-NLF-I0319 (3/3)
+[2026-10-18T07:09:35] claude: batch done; cooling down 3000s
+[2026-10-18T07:59:35] claude: batch of 3 (ceiling 3, 92 due now)
+[2026-10-18T08:00:37] claude: OK CL-NLF-I0216 (1/3)
+[2026-10-18T08:02:38] claude: OK CL-NLF-I0105 (2/3)
+[2026-10-18T08:04:34] claude: OK CL-NLF-I0259 (3/3)
+[2026-10-18T08:04:34] claude: batch done; cooling down 3000s
+[2026-10-18T08:37:12] claude: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T08:37:12] claude: === stop: 9 recalled this run, 1 failed in total ===
+[2026-10-18T08:37:31] claude: === start (limit=None, min_days=30, batch=15 cells, failed so far=1) ===
+[2026-10-18T08:37:31] claude: batch of 15 (ceiling 15, 89 due now)
+[2026-10-18T08:38:37] claude: OK CL-NLF-I0005 (1/15)
+[2026-10-18T08:41:02] claude: OK CL-NLF-I0035 (2/15)
+[2026-10-18T08:44:42] claude: OK CL-NLF-I0281 (3/15)
+[2026-10-18T08:48:17] claude: OK CL-NLF-I0367 (4/15)
+[2026-10-18T08:51:31] claude: OK CL-NLF-I0012 (5/15)
+[2026-10-18T08:54:05] claude: OK CL-NLF-I0260 (6/15)
+[2026-10-18T08:56:41] claude: OK CL-NLF-I0026 (7/15)
+[2026-10-18T09:00:41] claude: OK CL-NLF-I0096 (8/15)
+[2026-10-18T09:04:32] claude: OK CL-NLF-I0220 (9/15)
+[2026-10-18T10:52:25] claude: OK CL-NLF-I0282 (10/15)
+[2026-10-18T10:55:21] claude: OK CL-NLF-I0302 (11/15)
+[2026-10-18T10:57:41] claude: OK CL-NLF-I0363 (12/15)
+[2026-10-18T10:59:49] claude: OK CL-NLF-I0309 (13/15)
+[2026-10-18T11:03:01] claude: OK CL-NLF-I0315 (14/15)
+[2026-10-18T11:05:30] claude: OK CL-NLF-I0297 (15/15)
+[2026-10-18T11:05:30] claude: batch done; cooling down 900s
+[2026-10-18T11:20:30] claude: batch of 15 (ceiling 15, 74 due now)
+[2026-10-18T11:21:39] claude: OK CL-NLF-I0106 (1/15)
+[2026-10-18T11:25:13] claude: OK CL-NLF-I0368 (2/15)
+[2026-10-18T11:28:38] claude: OK CL-NLF-I0361 (3/15)
+[2026-10-18T11:32:35] claude: OK CL-NLF-I0166 (4/15)
+[2026-10-18T11:34:59] claude: OK CL-NLF-I0053 (5/15)
+[2026-10-18T11:38:28] claude: OK CL-NLF-I0086 (6/15)
+[2026-10-18T11:39:53] claude: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T11:39:53] claude: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T11:39:53] claude: === stop: 21 recalled this run, 1 failed in total ===
+[2026-10-18T11:40:08] claude: === start (limit=None, min_days=30, batch=15 cells, failed so far=1) ===
+[2026-10-18T11:40:08] claude: batch of 15 (ceiling 15, 68 due now)
+[2026-10-18T11:41:07] claude: OK CL-NLF-I0133 (1/15)
+[2026-10-18T11:44:00] claude: OK CL-NLF-I0365 (2/15)
+[2026-10-18T11:46:42] claude: OK CL-NLF-I0043 (3/15)
+[2026-10-18T11:50:25] claude: OK CL-NLF-I0024 (4/15)
+[2026-10-18T11:53:29] claude: OK CL-NLF-I0239 (5/15)
+[2026-10-18T11:56:30] claude: OK CL-NLF-I0149 (6/15)
+[2026-10-18T12:00:08] claude: FAIL CL-NLF-I0304 (7/15), not retried: _wait_for_reply: no new reply appeared within 60s
+[2026-10-18T12:00:08] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 272, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=CDP_URL if platform == "copilot" else None)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 715, in recall_cell
+    new_scores = _run_recall_probes(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 387, in _run_recall_probes
+    r3_reply = _send_fresh(flow, probes["r3"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 317, in _send_fresh
+    reply = flow.send_message(text)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 198, in send_message
+    return self._wait_for_reply(before)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 122, in _wait_for_reply
+    raise RuntimeError("_wait_for_reply: no new reply appeared within 60s")
+RuntimeError: _wait_for_reply: no new reply appeared within 60s
+
+[2026-10-18T16:02:04] claude: === start (limit=None, min_days=30, batch=15 cells, failed so far=2) ===
+[2026-10-18T16:02:04] claude: batch of 15 (ceiling 15, 61 due now)
+[2026-10-18T16:03:06] claude: OK CL-NLF-I0314 (1/15)
+[2026-10-18T16:06:56] claude: OK CL-NLF-I0293 (2/15)
+[2026-10-18T16:10:46] claude: OK CL-NLF-I0226 (3/15)
+[2026-10-18T16:13:45] claude: OK CL-NLF-I0059 (4/15)
+[2026-10-18T16:16:25] claude: OK CL-NLF-I0002 (5/15)
+[2026-10-18T16:19:09] claude: OK CL-NLF-I0271 (6/15)
+[2026-10-18T16:22:07] claude: OK CL-NLF-I0195 (7/15)
+[2026-10-18T16:24:26] claude: OK CL-NLF-I0371 (8/15)
+[2026-10-18T16:28:16] claude: OK CL-NLF-I0240 (9/15)
+[2026-10-18T16:28:21] claude: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T16:28:21] claude: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T16:28:21] claude: === stop: 9 recalled this run, 2 failed in total ===
+[2026-10-18T16:29:03] claude: === start (limit=6, min_days=30, batch=15 cells, failed so far=2) ===
+[2026-10-18T16:29:03] claude: batch of 6 (ceiling 15, 52 due now)
+[2026-10-18T16:30:04] claude: OK CL-NLF-I0044 (1/6)
+[2026-10-18T16:32:33] claude: OK CL-NLF-I0085 (2/6)
+[2026-10-18T16:36:24] claude: OK CL-NLF-I0228 (3/6)
+[2026-10-18T16:40:09] claude: OK CL-NLF-I0201 (4/6)
+[2026-10-18T16:42:56] claude: OK CL-NLF-I0169 (5/6)
+[2026-10-18T16:45:08] claude: OK CL-NLF-I0131 (6/6)
+[2026-10-18T16:45:08] claude: === stop: 6 recalled this run, 2 failed in total ===
+[2026-10-18T20:35:12] claude: === start (limit=None, min_days=30, batch=15 cells, failed so far=2) ===
+[2026-10-18T20:35:12] claude: batch of 15 (ceiling 15, 46 due now)
+[2026-10-18T21:02:43] claude: OK CL-NLF-I0092 (1/15)
+[2026-10-18T21:04:59] claude: OK CL-NLF-I0224 (2/15)
+[2026-10-18T21:08:30] claude: OK CL-NLF-I0165 (3/15)
+[2026-10-18T21:11:20] claude: OK CL-NLF-I0262 (4/15)
+[2026-10-18T21:14:57] claude: OK CL-NLF-I0049 (5/15)
+[2026-10-18T21:17:03] claude: OK CL-NLF-I0177 (6/15)
+[2026-10-18T21:20:48] claude: OK CL-NLF-I0188 (7/15)
+[2026-10-18T21:24:02] claude: OK CL-NLF-I0068 (8/15)
+[2026-10-18T21:27:19] claude: OK CL-NLF-I0124 (9/15)
+[2026-10-18T21:30:36] claude: OK CL-NLF-I0028 (10/15)
+[2026-10-18T21:34:22] claude: OK CL-NLF-I0161 (11/15)
+[2026-10-18T21:37:26] claude: OK CL-NLF-I0191 (12/15)
+[2026-10-18T21:40:36] claude: OK CL-NLF-I0269 (13/15)
+[2026-10-18T21:44:22] claude: OK CL-NLF-I0372 (14/15)
+[2026-10-18T21:46:00] claude: FAIL CL-NLF-I0018 (15/15), not retried: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-10-18T21:46:00] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 294, in run_platform
+    if _stop_requested(platform):
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 729, in recall_cell
+    elif cdp_url and plan.platform == "gemini":
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 94, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-10-18T21:46:00] claude: batch done; cooling down 15000s
+[2026-10-19T01:56:00] claude: batch of 15 (ceiling 15, 31 due now)
+[2026-10-19T01:57:05] claude: OK CL-NLF-I0062 (1/15)
+[2026-10-19T02:00:49] claude: OK CL-NLF-I0118 (2/15)
+[2026-10-19T02:04:54] claude: OK CL-NLF-I0187 (3/15)
+[2026-10-19T02:07:06] claude: OK CL-NLF-I0233 (4/15)
+[2026-10-19T02:09:58] claude: OK CL-NLF-I0357 (5/15)
+[2026-10-19T02:13:38] claude: OK CL-NLF-I0089 (6/15)
+[2026-10-19T02:15:57] claude: OK CL-NLF-I0163 (7/15)
+[2026-10-19T02:19:01] claude: OK CL-NLF-I0215 (8/15)
+[2026-10-19T02:22:25] claude: OK CL-NLF-I0115 (9/15)
+[2026-10-19T02:26:14] claude: OK CL-NLF-I0041 (10/15)
+[2026-10-19T02:28:21] claude: OK CL-NLF-I0181 (11/15)
+[2026-10-19T02:31:45] claude: OK CL-NLF-I0327 (12/15)
+[2026-10-19T02:35:10] claude: OK CL-NLF-I0042 (13/15)
+[2026-10-19T02:37:23] claude: OK CL-NLF-I0176 (14/15)
+[2026-10-19T02:40:13] claude: OK CL-NLF-I0170 (15/15)
+[2026-10-19T02:40:13] claude: batch done; cooling down 15000s
+[2026-10-19T06:50:13] claude: batch of 15 (ceiling 15, 16 due now)
+[2026-10-19T06:50:44] claude: FAIL CL-NLF-I0036 (1/15), not retried: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-10-19T06:50:44] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 294, in run_platform
+    if _stop_requested(platform):
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 729, in recall_cell
+    elif cdp_url and plan.platform == "gemini":
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 94, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-10-19T06:53:28] claude: FAIL CL-NLF-I0132 (2/15), not retried: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://claude.ai/login
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-10-19T06:53:28] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 294, in run_platform
+    if _stop_requested(platform):
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 729, in recall_cell
+    elif cdp_url and plan.platform == "gemini":
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 94, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://claude.ai/login
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-10-19T06:55:47] claude: FAIL CL-NLF-I0077 (3/15), not retried: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://claude.ai/login
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-10-19T06:55:47] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 294, in run_platform
+    if _stop_requested(platform):
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 729, in recall_cell
+    elif cdp_url and plan.platform == "gemini":
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 94, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://claude.ai/login
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-10-19T06:57:52] claude: FAIL CL-NLF-I0051 (4/15), not retried: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-10-19T06:57:52] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 294, in run_platform
+    if _stop_requested(platform):
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 729, in recall_cell
+    elif cdp_url and plan.platform == "gemini":
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 94, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-10-19T07:00:46] claude: FAIL CL-NLF-I0348 (5/15), not retried: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-10-19T07:00:46] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 294, in run_platform
+    if _stop_requested(platform):
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 729, in recall_cell
+    elif cdp_url and plan.platform == "gemini":
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 94, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-10-19T07:00:46] claude: THROTTLE DETECTED (5/5 failed); ceiling 15 -> 2
+[2026-10-19T07:00:46] claude: batch done; cooling down 15000s
+[2026-10-19T07:40:05] claude: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-19T07:40:05] claude: === stop: 29 recalled this run, 8 failed in total ===
+[2026-10-19T07:45:11] claude: === start (limit=None, min_days=30, batch=15 cells, failed so far=2) ===
+[2026-10-19T07:45:11] claude: batch of 15 (ceiling 15, 17 due now)
+[2026-10-19T07:46:13] claude: OK CL-NLF-I0018 (1/15)
+[2026-10-19T07:49:51] claude: OK CL-NLF-I0036 (2/15)
+[2026-10-19T07:53:20] claude: OK CL-NLF-I0132 (3/15)
+[2026-10-19T07:55:12] claude: FAIL CL-NLF-I0077 (4/15), not retried: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-10-19T07:55:12] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 94, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-10-19T07:58:33] claude: FAIL CL-NLF-I0051 (5/15), not retried: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-10-19T07:58:33] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 94, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-10-19T07:58:33] claude: THROTTLE DETECTED (2/5 failed); ceiling 15 -> 3
+[2026-10-19T07:58:33] claude: batch done; cooling down 15000s
+[2026-10-19T09:54:12] claude: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-19T09:54:12] claude: === stop: 3 recalled this run, 4 failed in total ===
+[2026-10-19T09:56:36] claude: === start (limit=None, min_days=30, batch=15 cells, failed so far=2) ===
+[2026-10-19T09:56:36] claude: batch of 14 (ceiling 15, 14 due now)
+[2026-10-19T09:57:45] claude: OK CL-NLF-I0077 (1/14)
+[2026-10-19T10:00:42] claude: OK CL-NLF-I0051 (2/14)
+[2026-10-19T10:04:02] claude: OK CL-NLF-I0348 (3/14)
+[2026-10-19T12:42:45] claude: OK CL-NLF-I0047 (4/14)
+[2026-10-19T12:46:02] claude: OK CL-NLF-I0305 (5/14)
+[2026-10-19T12:48:24] claude: OK CL-NLF-I0236 (6/14)
+[2026-10-19T12:51:09] claude: OK CL-NLF-I0200 (7/14)
+[2026-10-19T17:42:14] claude: FAIL CL-NLF-I0273 (8/14), not retried: Locator.click: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("[aria-label=\"Send message\"]:not([disabled])")
+
+[2026-10-19T17:42:14] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 334, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 752, in recall_cell
+    # Opening the browser/session failed, so no prompt was sent. The
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 406, in _run_recall_probes
+    r1_open_reply = _send_fresh(flow, probes["r1_open"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 322, in _send_fresh
+    reply = flow.send_message(text)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 196, in send_message
+    self.page.locator('[aria-label="Send message"]:not([disabled])').click(force=True, timeout=10000)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 17876, in click
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_locator.py", line 165, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 593, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("[aria-label=\"Send message\"]:not([disabled])")
+
+
+[2026-10-19T17:44:51] claude: OK CL-NLF-I0095 (9/14)
+[2026-10-19T17:47:14] claude: OK CL-NLF-I0128 (10/14)
+[2026-10-19T17:49:57] claude: OK CL-NLF-I0000 (11/14)
+[2026-10-19T17:52:40] claude: OK CL-NLF-I0070 (12/14)
+[2026-10-19T17:54:41] claude: OK CL-NLF-I0279 (13/14)
+[2026-10-19T17:56:40] claude: OK CL-NLF-I0209 (14/14)
+[2026-10-19T17:56:40] claude: batch done; cooling down 15000s
+[2026-10-19T22:06:40] claude: === next cell not due until 2026-10-23T22:10:20.181855+00:00 (>24h) -- exiting ===
+[2026-10-24T12:48:11] claude: === start (limit=None, min_days=30, batch=15 cells, failed so far=3) ===
+[2026-10-24T12:48:11] claude: batch of 13 (ceiling 15, 13 due now)
+[2026-10-24T12:49:08] claude: OK CL-NLF-I0237 (1/13)
+[2026-10-24T12:51:52] claude: OK CL-NLF-I0230 (2/13)
+[2026-10-24T12:54:51] claude: OK CL-NLF-I0032 (3/13)
+[2026-10-24T12:58:52] claude: OK CL-NLF-I0241 (4/13)
+[2026-10-24T13:01:45] claude: OK CL-NLF-I0045 (5/13)
+[2026-10-24T13:03:59] claude: OK CL-NLF-I0182 (6/13)
+[2026-10-24T13:07:28] claude: OK CL-NLF-I0146 (7/13)
+[2026-10-24T13:11:02] claude: OK CL-NLF-I0060 (8/13)
+[2026-10-24T13:13:14] claude: OK CL-NLF-I0090 (9/13)
+[2026-10-24T13:15:46] claude: OK CL-NLF-I0326 (10/13)
+[2026-10-24T13:19:40] claude: OK CL-NLF-I0141 (11/13)
+[2026-10-24T13:21:54] claude: OK CL-NLF-I0350 (12/13)
+[2026-10-24T13:25:49] claude: OK CL-NLF-I0296 (13/13)
+[2026-10-24T13:25:49] claude: batch done; cooling down 15000s
+[2026-10-24T17:35:49] claude: === nothing left to recall -- exiting ===

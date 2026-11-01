@@ -27,6 +27,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 import config
+from recall_scoring import gemini_memory_content, PERMISSION_CARD
 
 
 class GeminiSeleniumFlow:
@@ -63,6 +64,7 @@ class GeminiSeleniumFlow:
     )
 
     def __init__(self, headless: bool = False, session_label: str | None = None, **_kwargs):
+        self.send_log: list[dict] = []
         session = config.session_path(self.platform, session_label)
         if not session.exists():
             label_hint = f" --label {session_label}" if session_label else ""
@@ -162,6 +164,29 @@ class GeminiSeleniumFlow:
         els = self._get_response_elements()
         return els[-1].text if els else ""
 
+    # Names the shared recall code expects (run_cell._send_fresh's stale-read
+    # guard, open_conversation's load wait), matching the Playwright flows.
+    def _last_reply_text(self) -> str:
+        return self._last_response_text()
+
+    def _reply_count(self) -> int:
+        return len(self._get_response_elements())
+
+    def open_conversation(self, ref: str) -> None:
+        """Reopen a past chat and wait until its earlier replies have
+        rendered (same reason as flows/base.py's open_conversation: counting
+        replies before they load makes an old reply look new)."""
+        self._driver.get(ref)
+        prev, stable = None, 0
+        for _ in range(30):
+            time.sleep(1)
+            cur = self._last_reply_text()
+            stable = stable + 1 if cur and cur == prev else 0
+            if stable >= 2:
+                return
+            prev = cur
+        raise RuntimeError(f"open_conversation: earlier replies never finished loading at {ref}")
+
     def _wait_for_reply(self, before_count: int) -> str:
         deadline = 60
         waited = 0
@@ -173,10 +198,14 @@ class GeminiSeleniumFlow:
         else:
             raise RuntimeError("_wait_for_reply: no new response appeared within 60s")
 
+        # Settle wait raised 60 -> 180 s (2026-10-18): GE-NLF-I0279's
+        # same-conversation reply and GE-NLF-I0012's R3 follow-up were still
+        # changing after 60 s (long replies, and Gemini sometimes swaps in a
+        # second draft while writing; see GE-NLF-I0357's re-ask).
         prev_text = None
         stable_checks = 0
         waited = 0
-        while waited < 60:
+        while waited < 180:
             time.sleep(1)
             waited += 1
             cur_text = self._last_response_text()
@@ -188,7 +217,7 @@ class GeminiSeleniumFlow:
                 stable_checks = 0
             prev_text = cur_text
         else:
-            raise RuntimeError("_wait_for_reply: reply never stabilised within 60s")
+            raise RuntimeError("_wait_for_reply: reply never stabilised within 180s")
 
         els = self._get_response_elements()
         if els:
@@ -202,7 +231,75 @@ class GeminiSeleniumFlow:
             element.send_keys(char)
             time.sleep(random.uniform(0.03, 0.08))
 
+    # Human-like pacing and overload handling (user direction 2026-10-18,
+    # after the pilot: rushed prompts got "I'm having a hard time fulfilling
+    # your request" from Gemini, and quick page loads triggered Google's
+    # unusual-traffic check). A random pause precedes every prompt; an
+    # overload reply is never returned as an answer: the flow waits, re-asks
+    # the same prompt once in the same chat (logged in send_log), and raises
+    # if Gemini is still overloaded.
+    # Gap before each prompt (revised 2026-10-18, user: a flat uniform wait
+    # looks robotic): mostly a short pause, sometimes a long one, like a
+    # person who reads the reply, or looks away, before typing again.
+    PROMPT_GAP_SECONDS = (5, 25)
+    PROMPT_LONG_GAP_SECONDS = (40, 90)
+    PROMPT_LONG_GAP_CHANCE = 0.15
+    OVERLOAD_BACKOFF_SECONDS = (180, 300)
+    OVERLOAD_PHRASES = ("having a hard time", "having trouble responding", "try again in a bit",
+                        "try this again in a bit", "something went wrong", "high demand", "at capacity")
+
+    def _check_not_blocked(self) -> None:
+        if "google.com/sorry" in self._driver.current_url:
+            raise RuntimeError("Google unusual-traffic check page is showing; stop Gemini, prompt not sent")
+
+    def _is_overload(self, reply: str) -> bool:
+        low = (reply or "").lower()
+        return len(low) < 300 and any(p in low for p in self.OVERLOAD_PHRASES)
+
     def send_message(self, text: str) -> str:
+        self._check_not_blocked()
+        long_gap = random.random() < self.PROMPT_LONG_GAP_CHANCE
+        time.sleep(random.uniform(*(self.PROMPT_LONG_GAP_SECONDS if long_gap else self.PROMPT_GAP_SECONDS)))
+        reply = self._send_once(text)
+        if self._is_overload(reply):
+            pause = random.uniform(*self.OVERLOAD_BACKOFF_SECONDS)
+            self.send_log.append({"prompt": text, "overload_reply": reply, "paused_s": round(pause)})
+            print(f"GEMINI OVERLOAD: {reply[:80]!r}; pausing {pause:.0f}s, then re-asking once", flush=True)
+            time.sleep(pause)
+            self._check_not_blocked()
+            reply = self._send_once(text)
+            if self._is_overload(reply):
+                raise RuntimeError(f"Gemini still overloaded after one re-ask: {reply[:120]!r}")
+            self.send_log[-1]["reask_reply"] = reply
+        if PERMISSION_CARD.search(reply or ""):
+            # Gemini answered with a Google app-permission card (Tasks for
+            # "I'm working on..." prompts, Keep for notes). User decision
+            # 2026-10-18: the card is Gemini choosing a path from the prompt,
+            # so it is recorded as that probe's answer (a non-answer, reported
+            # as a finding) and the question is NOT re-asked. It is declined
+            # ("No thanks") so the account stays unchanged; "Continue" would
+            # connect the app and corrupt the study.
+            # Screenshot of the card as Gemini showed it (with its "No thanks"
+            # / "Continue" buttons), taken before declining; run_cell sets
+            # card_shot_dir to the cell's screenshot folder.
+            shot = None
+            if getattr(self, "card_shot_dir", None):
+                path = self.card_shot_dir / f"permission_card_{len(self.send_log) + 1:02d}_before_decline.png"
+                self._driver.save_screenshot(str(path))
+                shot = path.name
+            self._decline_permission_card()
+            self.send_log.append({"prompt": text, "permission_card_reply": reply, "declined": True,
+                                  "screenshot_before_decline": shot})
+            print(f"GEMINI PERMISSION CARD: {reply[:80]!r}; declined, recorded as non-answer", flush=True)
+        return reply
+
+    def _decline_permission_card(self) -> None:
+        buttons = self._driver.find_elements(By.XPATH, "//button[normalize-space()='No thanks']")
+        if buttons:
+            buttons[-1].click()
+            time.sleep(1.5)
+
+    def _send_once(self, text: str) -> str:
         before = len(self._get_response_elements())
 
         composer = WebDriverWait(self._driver, 10).until(
@@ -211,17 +308,41 @@ class GeminiSeleniumFlow:
         composer.click()
         time.sleep(0.5)
 
-        self._human_type(composer, text)
+        # Since ~19:05 on 2026-10-18 the composer ignores Selenium key events
+        # entirely (send_keys, ActionChains and Enter all left it empty, so
+        # GE-NLF-I0012's prompts were never submitted), while editor input
+        # events still work. So the prompt goes in word by word as input
+        # events, the box is checked to hold exactly the prompt, and the Send
+        # button is clicked; nothing is sent if the text did not land.
+        for i, word in enumerate(text.split(" ")):
+            self._driver.execute_script(
+                "arguments[0].focus(); document.execCommand('insertText', false, arguments[1])",
+                composer, (" " if i else "") + word,
+            )
+            time.sleep(random.uniform(0.15, 0.45))
         time.sleep(0.5)
+        if " ".join(composer.text.split()) != " ".join(text.split()):
+            raise RuntimeError(f"prompt text did not land in the composer, not sent: {composer.text[:80]!r}")
 
-        composer.send_keys(Keys.RETURN)
+        queries_before = len(self._driver.find_elements(By.CSS_SELECTOR, "user-query"))
+        WebDriverWait(self._driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'button[aria-label="Send message"]'))
+        ).click()
+        for _ in range(15):
+            time.sleep(1)
+            if len(self._driver.find_elements(By.CSS_SELECTOR, "user-query")) > queries_before:
+                break
+        else:
+            raise RuntimeError("prompt not submitted: no new user message in the chat 15s after Send")
 
         return self._wait_for_reply(before)
 
     def read_memory_settings(self) -> str:
         self._goto_fresh("https://gemini.google.com/saved-info")
+        self._check_not_blocked()
         self._scroll_to_bottom()
-        return self._driver.find_element(By.TAG_NAME, "body").text
+        content = gemini_memory_content(self._driver.find_element(By.TAG_NAME, "body").text)
+        return content if content is not None else "GEMINI_NO_CONTENT_HEADING (page had no Saved info heading)"
 
     def _scroll_to_bottom(self, element=None) -> None:
         if element:
@@ -436,6 +557,11 @@ class _PageShim:
 
     def wait_for_timeout(self, ms: int) -> None:
         time.sleep(ms / 1000)
+
+    def evaluate(self, js: str, arg=None):
+        """Playwright-style evaluate for an arrow-function string, e.g. the
+        scroll-before-screenshot script in run_cell._save_screenshot."""
+        return self._driver.execute_script(f"return ({js})(arguments[0]);", arg)
 
     def inner_text(self, selector: str) -> str:
         el = self._driver.find_element(By.CSS_SELECTOR, selector)

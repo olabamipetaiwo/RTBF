@@ -37,6 +37,7 @@ before touching this file further:
 from __future__ import annotations
 
 from .base import PlatformFlow
+from recall_scoring import gemini_memory_content
 
 
 class GeminiFlow(PlatformFlow):
@@ -219,7 +220,9 @@ class GeminiFlow(PlatformFlow):
         """R2: the Saved info / "Instructions for Gemini" page."""
         self._goto_fresh("https://gemini.google.com/saved-info")
         self._scroll_to_bottom()
-        return self.page.inner_text("body")
+        # Content only, not the sidebar's chat titles (see recall_scoring.gemini_memory_content).
+        content = gemini_memory_content(self.page.inner_text("body"))
+        return content if content is not None else "GEMINI_NO_CONTENT_HEADING (page had no Saved info heading)"
 
     # --- ERASURE_DISPATCH targets ---
 

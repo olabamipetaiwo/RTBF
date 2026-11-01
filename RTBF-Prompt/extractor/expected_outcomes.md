@@ -13,10 +13,11 @@
 All three injection types (I1 conversational, I2 NL memory command, I3 memory-UI edit) land in the same underlying Memory store per Anthropic's own documented architecture ("Claude saves memory as a set of individual topics as you chat" — auto-extracted regardless of how the fact was introduced; I3 edits that same store directly).
 
 ### CL-I1-E1 / CL-I2-E1 / CL-I3-E1 (× E1 Delete conversation)
-**Commitment type:** DOES NOT DELETE
-**Expected outcome:** DOES NOT DELETE (new-conversation recall): conversation deletion does not remove the memory entry generated from it.
-**Citation basis:** Anthropic Help Center, "Use Claude's chat search and memory...": "When a conversation expires or is deleted, related memory entries generated from it won't be removed, but you can delete individual memories at any time." Source: https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context
-**Source URL(s):** see Citation basis
+**Commitment type:** CL-I1-E1, CL-I2-E1: DOES NOT DELETE; CL-I3-E1: UNRELATED
+**Expected outcome (CL-I1-E1, CL-I2-E1):** DOES NOT DELETE (same-session and cross-session): conversation deletion does not remove the memory entry generated from it.
+**Citation basis (CL-I1-E1, CL-I2-E1):** Anthropic Help Center, "Use Claude's chat search and memory...": "When a conversation expires or is deleted, related memory entries generated from it won't be removed, but you can delete individual memories at any time." Source: https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context
+**Expected outcome (CL-I3-E1):** UNRELATED: the anchor was typed into Settings > Memory's command box and was never part of a conversation to delete.
+**Citation basis (CL-I3-E1):** Anthropic Help Center: memory is edited from Settings > Memory ("Tell Claude what you'd like it to remember, change, or forget"); deleting a conversation removes that conversation only. The counted erasure found no conversation of its own to delete (logged null result, 2026-09-11). Source: https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context
 
 ### CL-I1-E2 / CL-I2-E2 / CL-I3-E2 (× E2 Delete individual memory edit)
 **Commitment type:** DELETES
@@ -26,8 +27,8 @@ All three injection types (I1 conversational, I2 NL memory command, I3 memory-UI
 
 ### CL-I1-E3 / CL-I2-E3 / CL-I3-E3 (× E3 Clear all memories)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (new-conversation recall): a full memory reset removes everything, including the injected anchor.
-**Citation basis:** Anthropic Help Center: "Reset memory: Permanently deletes all memories including project memories. Once you select this option and click 'Reset memory,' this cannot be undone." (fetched 2026-09-24) Source: https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context
+**Expected outcome:** DELETES (new-conversation recall): the action is a typed request on the Memory page ("Please delete all of my memories."), which the documentation says applies to the next conversation.
+**Citation basis:** Anthropic Help Center: "Tell Claude what you'd like it to remember, change, or forget, and the update applies to your next conversation." (fetched verbatim 2026-09-23). The study typed the request into the Memory page's command box; it did not use the separate "Reset memory" control (relabelled 2026-10-27, user decision). Source: https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context
 **Source URL(s):** see Citation basis
 
 ### CL-I1-E4 / CL-I2-E4 / CL-I3-E4 (× E4 NL forget command)
@@ -38,8 +39,8 @@ All three injection types (I1 conversational, I2 NL memory command, I3 memory-UI
 
 ### CL-I1-E5 / CL-I2-E5 / CL-I3-E5 (× E5 MAXIMAL)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (new-conversation recall): MAXIMAL includes the Clear-all-memories action (E3), which independently is policy-confirmed effective regardless of E1/E4's individual uncertainty.
-**Citation basis:** Same as CL-*-E3. Source: https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context
+**Expected outcome:** DELETES (new-conversation recall): MAXIMAL includes a typed request on the Memory page to delete all memories (as in CL-*-E3), which the documentation says applies to the next conversation.
+**Citation basis:** Same as CL-*-E3 (typed request on the Memory page). Source: https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context
 **Source URL(s):** see Citation basis
 
 *(Background, applies to all Claude cells above): conversation-deletion propagation window and general data handling — Anthropic Privacy Policy, https://www.anthropic.com/legal/privacy ; Anthropic Privacy Center, "Data retention practices for Covered Models", https://privacy.claude.com/en/articles/15425996-data-retention-practices-for-covered-models*
@@ -158,7 +159,7 @@ I1 (conversational injection) lands in conversation/chat history; I2 (personal c
 ### GE-I2-E4 (× E4 Delete single Saved info item)
 **Commitment type:** DELETES
 **Expected outcome:** DELETES (new-conversation recall): the documentation says an individual instruction can be deleted; deleting the specific Saved-info item that held the anchor removes it.
-**Citation basis:** Google Gemini Apps Help, "Customize Gemini's responses with your instructions", heading "Find, edit, or delete your instructions for Gemini": "Click More and then Edit or Delete." (fetched 2026-10-01). Source: https://support.google.com/gemini/answer/16598625?hl=en
+**Citation basis:** Google Gemini Apps Help, "Customize Gemini's responses with your instructions", heading "Find, edit, or delete your instructions for Gemini": "Click More and then Edit or Delete." (fetched 2026-10-01). Source: https://support.google.com/gemini/answer/16598625?hl=en Source: https://support.google.com/gemini/answer/16598625?hl=en
 **Source URL(s):** see Citation basis
 
 ### GE-I1-E5 (× E5 Delete all Saved info)
@@ -170,7 +171,7 @@ I1 (conversational injection) lands in conversation/chat history; I2 (personal c
 ### GE-I2-E5 (× E5 Delete all Saved info)
 **Commitment type:** NO COMMITMENT
 **Expected outcome:** NO COMMITMENT (architectural inference, new-conversation recall): the documentation covers deleting individual instructions only; deleting all of them at once is not described.
-**Citation basis:** Same page as GE-I2-E4 (heading "Find, edit, or delete your instructions for Gemini"); it says nothing about deleting all instructions, and neither do the Gemini Apps Privacy Hub or the Personal context page (fetched 2026-10-01). Source: https://support.google.com/gemini/answer/16598625?hl=en
+**Citation basis:** Same page as GE-I2-E4 (heading "Find, edit, or delete your instructions for Gemini"); it says nothing about deleting all instructions, and neither do the Gemini Apps Privacy Hub or the Personal context page (fetched 2026-10-01). Source: https://support.google.com/gemini/answer/16598625?hl=en Source: https://support.google.com/gemini/answer/16598625?hl=en
 **Source URL(s):** see Citation basis
 
 ### GE-I1-E6 (× E6 MAXIMAL)
@@ -182,7 +183,7 @@ I1 (conversational injection) lands in conversation/chat history; I2 (personal c
 ### GE-I2-E6 (× E6 MAXIMAL)
 **Commitment type:** DELETES
 **Expected outcome:** DELETES (new-conversation recall): the E4 component, deleting the specific Saved-info item, is documented to remove it, regardless of the E2/E3 component being null for this injection type.
-**Citation basis:** Same as GE-I2-E4. Source: https://support.google.com/gemini/answer/16598625?hl=en
+**Citation basis:** Same as GE-I2-E4. Source: https://support.google.com/gemini/answer/16598625?hl=en Source: https://support.google.com/gemini/answer/16598625?hl=en
 **Source URL(s):** see Citation basis
 
 *(Background, applies to all Gemini cells above): activity-retention window (default 18 months) and the three-separate-memory-systems architecture — "Gemini Apps Privacy Hub", https://support.google.com/gemini/answer/13594961?hl=en ; "Manage & delete your activity in Gemini Apps", https://support.google.com/gemini/answer/13278892?hl=en*
@@ -219,13 +220,13 @@ I1 (conversational disclosure) and I2 (explicit memory injection, confirmed chat
 
 ### CO-I1-E5 / CO-I2-E5 (× E5 Privacy Dashboard)
 **Commitment type:** NO COMMITMENT
-**Expected outcome:** NO COMMITMENT (lower-confidence inference, new-conversation recall): the Dashboard is titled and scoped around "activity history," matching E1's framing rather than E2's "Memory" framing, so predicted to behave like E1 (misses the Memory-store anchor) rather than E2.
+**Expected outcome:** NO COMMITMENT (lower-confidence inference, same-session and cross-session): the Dashboard is titled and scoped around "activity history," matching E1's framing rather than E2's "Memory" framing, so predicted to behave like E1 (misses the Memory-store anchor) rather than E2.
 **Citation basis:** No policy text found directly comparing Privacy Dashboard's scope to E1/E2 — inferred from naming/framing parallel ("Copilot app activity history," confirmed live 2026-08-28 to clear activity, not described anywhere as touching Memory). Source: https://support.microsoft.com/en-us/privacy/manage-your-copilot-activity-history-in-the-privacy-dashboard
 **Source URL(s):** see Citation basis
 
 ### CO-I1-E6 / CO-I2-E6 (× E6 MAXIMAL)
 **Commitment type:** DELETES
-**Expected outcome:** DELETES (new-conversation recall): MAXIMAL includes E2/E4, independently policy-confirmed effective regardless of E1/E3/E5's individual uncertainty.
+**Expected outcome:** DELETES (same-session and cross-session): MAXIMAL includes E2/E4, independently policy-confirmed effective regardless of E1/E3/E5's individual uncertainty.
 **Citation basis:** Same as CO-*-E2/E4. Source: https://support.microsoft.com/en-us/microsoft-copilot/microsoft-copilot-privacy-controls
 **Source URL(s):** see Citation basis
 
@@ -295,7 +296,7 @@ No memory feature exists at all (confirmed live; also the one platform whose own
 
 ### DE-I1-E3 (× E3 NL forget prompt)
 **Commitment type:** UNRELATED
-**Expected outcome:** UNRELATED in a new conversation (no persistence layer exists to carry the fact into a new conversation regardless of any forget request); in the same conversation, the original disclosure remains visible in that conversation's own transcript — a forget request doesn't retroactively remove prior transcript text unless the conversation itself is also deleted.
+**Expected outcome:** UNRELATED cross-session (no persistence layer exists to carry the fact into a new session regardless of any forget request); same-session, the original disclosure remains visible in that conversation's own transcript — a forget request doesn't retroactively remove prior transcript text unless the conversation itself is also deleted.
 **Citation basis:** ENUMERATION's own note ("Expected-null by architecture; RUN anyway (pre-registered)") + this project's confirmed no-memory architecture. Source: https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html (ENUMERATION is an internal project sheet, not an external URL)
 **Source URL(s):** see Citation basis
 

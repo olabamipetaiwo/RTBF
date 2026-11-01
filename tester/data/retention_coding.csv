@@ -1,11 +1,11 @@
 platform,cell,kind,retention,source,evidence,screenshot_status,ui_pills,erase_signal,pill_possible
 chatgpt,CH-I1-E1,battery,shown,screenshot,Memory updated,complete,Memory updated,,False
-chatgpt,CH-I1-E2,battery,no_signal,,,complete,,,True
+chatgpt,CH-I1-E2,battery,acknowledged, (reviewed),reviewed: no memory notice; reply reacts to the name without storage words (ChatGPT review sheet). Rule's quote: ,complete,,,True
 chatgpt,CH-I1-E4,battery,shown,screenshot,Memory updated,check,Memory updated,,False
 chatgpt,CH-I1-E5,battery,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-I1-E6,battery,shown,screenshot,Memory updated,check,Memory updated,,False
-chatgpt,CH-I1-E7,battery,no_signal,,,complete,,,True
-chatgpt,CH-I2-E1,battery,shown,screenshot,"U Memory updated Absolutely — saved for later: your new bike is called ""Spinner Follicle.""",complete,,,False
+chatgpt,CH-I1-E7,battery,acknowledged, (reviewed),reviewed: no memory notice; reply reacts to the name without storage words (ChatGPT review sheet). Rule's quote: ,complete,,,True
+chatgpt,CH-I2-E1,battery,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-I2-E2,battery,denied,screenshot+transcript,I can't save new memories right now.,complete,,,True
 chatgpt,CH-I2-E4,battery,shown,screenshot,Memory updated,check,Memory updated,,False
 chatgpt,CH-I2-E5,battery,shown,screenshot,Memory updated,complete,Memory updated,,False
@@ -20,11 +20,11 @@ chatgpt,CH-I3-E7,battery,shown,screenshot,• Custom instructions updated x,sett
 chatgpt,CH-IF-E-CONV,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
 chatgpt,CH-IF-E-MAX,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
 chatgpt,CH-NLF-I0000,NL-forget,no_signal,,,check,,,True
-chatgpt,CH-NLF-I0001,NL-forget,no_signal,,,check,,,True
+chatgpt,CH-NLF-I0001,NL-forget,acknowledged, (reviewed),reviewed: no memory notice; reply reacts to the name without storage words (ChatGPT review sheet). Rule's quote: ,check,,,True
 chatgpt,CH-NLF-I0002,NL-forget,no_signal,,,complete,,,True
 chatgpt,CH-NLF-I0004,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
 chatgpt,CH-NLF-I0005,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
-chatgpt,CH-NLF-I0010,NL-forget,no_signal,,,complete,,,True
+chatgpt,CH-NLF-I0010,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0012,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0018,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0023,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
@@ -48,12 +48,12 @@ chatgpt,CH-NLF-I0053,NL-forget,shown,screenshot,Memory updated,complete,Memory u
 chatgpt,CH-NLF-I0056,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0059,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0060,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
-chatgpt,CH-NLF-I0062,NL-forget,no_signal,,,complete,,,True
+chatgpt,CH-NLF-I0062,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0064,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0067,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0068,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0070,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
-chatgpt,CH-NLF-I0077,NL-forget,shown,screenshot,@ Memory updated LMAO Ladle Thrower is spectacularly appropriate for a rain barrel system.,complete,,,False
+chatgpt,CH-NLF-I0077,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0085,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
 chatgpt,CH-NLF-I0086,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0088,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
@@ -76,12 +76,12 @@ chatgpt,CH-NLF-I0131,NL-forget,shown,screenshot,Memory updated,complete,Memory u
 chatgpt,CH-NLF-I0132,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0133,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0137,NL-forget,shown,screenshot,Memory updated,check,Memory updated,,False
-chatgpt,CH-NLF-I0140,NL-forget,shown,screenshot,00 Memory updated LMAO Scolding Grip is excellent.,complete,,,False
+chatgpt,CH-NLF-I0140,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0141,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
-chatgpt,CH-NLF-I0146,NL-forget,shown,screenshot,U Memory updated €a Repeal Grader is an outstandingly bureaucratic name for a knife roll.,complete,,,False
+chatgpt,CH-NLF-I0146,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0149,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0153,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
-chatgpt,CH-NLF-I0159,NL-forget,shown,screenshot,"U Memory updated Oh, Ship Zone Audacity is excellent.",complete,,,False
+chatgpt,CH-NLF-I0159,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0161,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0163,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0165,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
@@ -133,7 +133,7 @@ chatgpt,CH-NLF-I0296,NL-forget,shown,screenshot,@ Memory updated c Drizzle Hunti
 chatgpt,CH-NLF-I0297,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0302,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0304,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
-chatgpt,CH-NLF-I0305,NL-forget,no_signal,,,complete,,,True
+chatgpt,CH-NLF-I0305,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0309,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0314,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 chatgpt,CH-NLF-I0315,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
@@ -159,14 +159,14 @@ chatgpt,CH-NLF-I0371,NL-forget,no_signal,,,complete,,,True
 chatgpt,CH-NLF-I0372,NL-forget,shown,screenshot,Memory updated,complete,Memory updated,,False
 claude,CL-I1-E1,battery,shown,screenshot,Saved memory garden.md ›,check,,,False
 claude,CL-I1-E2,battery,shown,screenshot,Updated memory knife-restoration.md ›,complete,,,False
-claude,CL-I1-E3,battery,no_signal,,,complete,,,True
-claude,CL-I1-E4,battery,no_signal,,,check,,"I haven't saved anything about the guitar to memory yet, so there's nothing stored to delete - it only exists in this conversation.",True
-claude,CL-I1-E5,battery,no_signal,,,check,,,True
+claude,CL-I1-E3,battery,acknowledged, (reviewed),"reviewed: no memory notice; reply reacts: ""I love it"". Rule's quote: ",complete,,,True
+claude,CL-I1-E4,battery,acknowledged, (reviewed),"reviewed: no memory notice; reply reacts: ""that's a great name"". Rule's quote: ",check,,"I haven't saved anything about the guitar to memory yet, so there's nothing stored to delete - it only exists in this conversation.",True
+claude,CL-I1-E5,battery,shown, (reviewed),"reviewed: screenshot shows ""Read and edited memory"" above the reply. Rule's quote: ",check,,,True
 claude,CL-I2-E1,battery,shown,screenshot,Saved memory pottery.md ›,check,,,False
 claude,CL-I2-E2,battery,shown,screenshot,Saved memory woodworking.md ›,check,,,False
-claude,CL-I2-E3,battery,no_signal,,,check,,,True
+claude,CL-I2-E3,battery,acknowledged, (reviewed),"reviewed: screenshot shows only ""Recalled memory quilt.md"" (read, not saved); reply asks about the name. Rule's quote: ",check,,,True
 claude,CL-I2-E4,battery,shown,screenshot,Saved memory knitting.md ›,check,,,False
-claude,CL-I2-E5,battery,claimed,screenshot+transcript,"Got it — ""Subway Coauthor Vibes Dictator"" is saved alongside your other birdhouse names.",check,,,True
+claude,CL-I2-E5,battery,shown,screenshot+transcript (reviewed),"reviewed: screenshot shows ""Read and edited memory"" above the reply (reply also claims it saved). Rule's quote: Got it — ""Subway Coauthor Vibes Dictator"" is saved alongside your other birdhouse names.",check,,,True
 claude,CL-I3-E1,battery,no_signal,,,settings panel,,,False
 claude,CL-I3-E2,battery,no_signal,,,settings panel,,,False
 claude,CL-I3-E3,battery,shown,screenshot,Added to memory in Topics › Household,settings panel,,,False
@@ -174,14 +174,14 @@ claude,CL-I3-E4,battery,no_signal,,,settings panel,,,False
 claude,CL-I3-E5,battery,no_signal,,,settings panel,,,False
 claude,CL-IF-E-CONV,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
 claude,CL-IF-E-MAX,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
-claude,CL-NLF-I0000,NL-forget,no_signal,,,complete,,"Nothing about the synth got filed, so there's nothing to remove — and I won't save it.",True
+claude,CL-NLF-I0000,NL-forget,acknowledged, (reviewed),"reviewed: no memory notice; reply reacts: ""that's a genuinely great name"". Rule's quote: ",complete,,"Nothing about the synth got filed, so there's nothing to remove — and I won't save it.",True
 claude,CL-NLF-I0001,NL-forget,shown,screenshot,Updated memory cheese-making.md,complete,Updated memory cheese-making.md,,False
-claude,CL-NLF-I0002,NL-forget,no_signal,,,complete,,,True
+claude,CL-NLF-I0002,NL-forget,acknowledged, (reviewed),"reviewed: no memory notice; reply reacts: ""that's a name with a story behind it"". Rule's quote: ",complete,,"There's nothing stored about your board game night rotation - that one never got written down, so there's nothing to delete.",True
 claude,CL-NLF-I0004,NL-forget,shown,screenshot,Updated memory kitchen.md,complete,Updated memory kitchen.md,,False
-claude,CL-NLF-I0005,NL-forget,shown,screenshot,Updated memory fence-repair.md ›,complete,,,False
+claude,CL-NLF-I0005,NL-forget,shown,screenshot,Updated memory fence-repair.md,complete,Updated memory fence-repair.md,,False
 claude,CL-NLF-I0010,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0012,NL-forget,shown,screenshot,Updated memory cycling-jersey.md,complete,Updated memory cycling-jersey.md,,False
-claude,CL-NLF-I0018,NL-forget,shown,screenshot,Updated memory fishing-rod.md ›,complete,,,False
+claude,CL-NLF-I0018,NL-forget,shown,screenshot,Updated memory fishing-rod.md,complete,Updated memory fishing-rod.md,,False
 claude,CL-NLF-I0023,NL-forget,shown,screenshot,Updated memory beekeeping-log.md,complete,Updated memory beekeeping-log.md,,False
 claude,CL-NLF-I0024,NL-forget,shown,screenshot,Updated memory puzzle-swap.md,complete,Updated memory puzzle-swap.md,,False
 claude,CL-NLF-I0026,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
@@ -193,24 +193,24 @@ claude,CL-NLF-I0035,NL-forget,shown,screenshot,Updated memory rotary-phone.md,co
 claude,CL-NLF-I0036,NL-forget,shown,screenshot,Updated memory hiking-backpack.md,complete,Updated memory hiking-backpack.md,,False
 claude,CL-NLF-I0041,NL-forget,shown,screenshot,Updated memory bike-helmet.md,complete,Updated memory bike-helmet.md,,False
 claude,CL-NLF-I0042,NL-forget,shown,screenshot,Updated memory trivia-night.md,complete,Updated memory trivia-night.md,,False
-claude,CL-NLF-I0043,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0043,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0044,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,There's nothing stored about the fence repair anymore — that file's already gone.,False
 claude,CL-NLF-I0045,NL-forget,shown,screenshot,Updated memory tea-set.md,complete,Updated memory tea-set.md,"There's nothing stored about your tea set — the listing is empty, so there's nothing to delete.",False
 claude,CL-NLF-I0047,NL-forget,shown,screenshot,Read and added to memory ›,complete,,,False
-claude,CL-NLF-I0049,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0049,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0051,NL-forget,shown,screenshot,Updated memory closet-remodel.md,complete,Updated memory closet-remodel.md,,False
 claude,CL-NLF-I0053,NL-forget,shown,screenshot,Updated memory ham-radio.md ›,complete,,,False
 claude,CL-NLF-I0056,NL-forget,shown,screenshot,Updated memory vinyl-digitization.md,complete,Updated memory vinyl-digitization.md,,False
-claude,CL-NLF-I0059,NL-forget,shown,screenshot,Updated memory kayak-paddle.md ›,complete,,,False
+claude,CL-NLF-I0059,NL-forget,shown,screenshot,Updated memory kayak-paddle.md,complete,Updated memory kayak-paddle.md,,False
 claude,CL-NLF-I0060,NL-forget,shown,screenshot,Updated memory mailbox-rebuild.md,complete,Updated memory mailbox-rebuild.md,"There's nothing stored about the mailbox rebuild — the listing is empty, so there's nothing to delete.",False
 claude,CL-NLF-I0062,NL-forget,shown,screenshot,Updated memory video-editing-workflow.md ›,complete,,,False
 claude,CL-NLF-I0064,NL-forget,shown,screenshot,Updated memory longboard.md,complete,Updated memory longboard.md,,False
-claude,CL-NLF-I0067,NL-forget,shown,screenshot,Updated memory kombucha-scoby.md ›,complete,,,False
+claude,CL-NLF-I0067,NL-forget,shown,screenshot,Updated memory kombucha-scoby.md,complete,Updated memory kombucha-scoby.md,,False
 claude,CL-NLF-I0068,NL-forget,shown,screenshot,Updated memory embroidery-hoop.md,complete,Updated memory embroidery-hoop.md,,False
 claude,CL-NLF-I0070,NL-forget,shown,screenshot,Updated memory trekking-poles.md,complete,Updated memory trekking-poles.md,,False
 claude,CL-NLF-I0077,NL-forget,shown,screenshot,Updated memory rain-barrel-system.md,complete,Updated memory rain-barrel-system.md,,False
 claude,CL-NLF-I0085,NL-forget,shown,screenshot,Updated memory language-learning-streak.md,complete,Updated memory language-learning-streak.md,,False
-claude,CL-NLF-I0086,NL-forget,shown,screenshot,Updated memory rain-gauge.md ›,complete,,,False
+claude,CL-NLF-I0086,NL-forget,shown,screenshot,Updated memory rain-gauge.md,complete,Updated memory rain-gauge.md,,False
 claude,CL-NLF-I0088,NL-forget,shown,screenshot,Updated memory canoe-paddle.md,complete,Updated memory canoe-paddle.md,,False
 claude,CL-NLF-I0089,NL-forget,shown,screenshot,Updated memory aquaponics-setup.md,complete,Updated memory aquaponics-setup.md,,False
 claude,CL-NLF-I0090,NL-forget,shown,screenshot,Updated memory pocket-knife.md,complete,Updated memory pocket-knife.md,,False
@@ -218,7 +218,7 @@ claude,CL-NLF-I0092,NL-forget,shown,screenshot,Updated memory mechanical-keyboar
 claude,CL-NLF-I0095,NL-forget,shown,screenshot,Updated memory grocery-budget-tracker.md,complete,Updated memory grocery-budget-tracker.md,,False
 claude,CL-NLF-I0096,NL-forget,shown,screenshot,Updated memory porch-swing.md,complete,Updated memory porch-swing.md,,False
 claude,CL-NLF-I0099,NL-forget,shown,screenshot,Updated memory sundial.md,complete,Updated memory sundial.md,,False
-claude,CL-NLF-I0105,NL-forget,shown,screenshot,Updated memory loom.md ›,complete,,,False
+claude,CL-NLF-I0105,NL-forget,shown,screenshot,Updated memory loom.md,complete,Updated memory loom.md,,False
 claude,CL-NLF-I0106,NL-forget,shown,screenshot,Updated memory drone.md,complete,Updated memory drone.md,,False
 claude,CL-NLF-I0115,NL-forget,shown,screenshot,Updated memory streaming-setup.md,complete,Updated memory streaming-setup.md,,False
 claude,CL-NLF-I0118,NL-forget,shown,screenshot,Updated memory dashcam.md,complete,Updated memory dashcam.md,,False
@@ -226,10 +226,10 @@ claude,CL-NLF-I0121,NL-forget,shown,screenshot,Updated memory yoga-studio.md,com
 claude,CL-NLF-I0124,NL-forget,shown,screenshot,Updated memory wildflower-patch.md,complete,Updated memory wildflower-patch.md,,False
 claude,CL-NLF-I0125,NL-forget,shown,screenshot,Updated memory short-film.md,complete,Updated memory short-film.md,,False
 claude,CL-NLF-I0126,NL-forget,shown,screenshot,Updated memory pergola-build.md,complete,Updated memory pergola-build.md,,False
-claude,CL-NLF-I0128,NL-forget,shown,screenshot,Updated memory outdoor-kitchen.md ›,complete,,,False
+claude,CL-NLF-I0128,NL-forget,shown,screenshot,Updated memory outdoor-kitchen.md,complete,Updated memory outdoor-kitchen.md,,False
 claude,CL-NLF-I0131,NL-forget,shown,screenshot,Read and added to memory ›,complete,,,False
 claude,CL-NLF-I0132,NL-forget,shown,screenshot,Updated memory sleeping-bag.md,complete,Updated memory sleeping-bag.md,,False
-claude,CL-NLF-I0133,NL-forget,shown,screenshot,Updated memory grandfather-clock.md ›,complete,,,False
+claude,CL-NLF-I0133,NL-forget,shown,screenshot,Updated memory grandfather-clock.md,complete,Updated memory grandfather-clock.md,,False
 claude,CL-NLF-I0137,NL-forget,shown,screenshot,Updated memory home-battery-setup.md,complete,Updated memory home-battery-setup.md,,False
 claude,CL-NLF-I0140,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,"It's gone — I have nothing stored about an embroidery hoop, so I can't tell you what was in it.",False
 claude,CL-NLF-I0141,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,"There's nothing currently saved about your ham radio — the listing is empty, so there's nothing to delete.",False
@@ -237,10 +237,10 @@ claude,CL-NLF-I0146,NL-forget,shown,screenshot,Read and updated memory,complete,
 claude,CL-NLF-I0149,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0153,NL-forget,shown,screenshot,Updated memory binoculars.md,complete,Updated memory binoculars.md,,False
 claude,CL-NLF-I0159,NL-forget,shown,screenshot,Updated memory drum-kit.md,complete,Updated memory drum-kit.md,,False
-claude,CL-NLF-I0161,NL-forget,shown,screenshot,Updated memory smart-thermostat.md ›,complete,,,False
-claude,CL-NLF-I0163,NL-forget,shown,screenshot,Updated memory car-stereo.md ›,complete,,,False
+claude,CL-NLF-I0161,NL-forget,shown,screenshot,Updated memory smart-thermostat.md,complete,Updated memory smart-thermostat.md,,False
+claude,CL-NLF-I0163,NL-forget,shown,screenshot,Updated memory car-stereo.md,complete,Updated memory car-stereo.md,,False
 claude,CL-NLF-I0165,NL-forget,shown,screenshot,Updated memory snowshoes.md,complete,Updated memory snowshoes.md,,False
-claude,CL-NLF-I0166,NL-forget,shown,screenshot,Updated memory shop-vac.md ›,complete,,,False
+claude,CL-NLF-I0166,NL-forget,shown,screenshot,Updated memory shop-vac.md,complete,Updated memory shop-vac.md,,False
 claude,CL-NLF-I0169,NL-forget,shown,screenshot,Updated memory surfboard.md,complete,Updated memory surfboard.md,,False
 claude,CL-NLF-I0170,NL-forget,shown,screenshot,Updated memory family-cookbook.md,complete,Updated memory family-cookbook.md,,False
 claude,CL-NLF-I0176,NL-forget,shown,screenshot,Updated memory chicken-coop-feeder.md,complete,Updated memory chicken-coop-feeder.md,,False
@@ -253,7 +253,7 @@ claude,CL-NLF-I0188,NL-forget,shown,screenshot,Updated memory welding-rig.md,com
 claude,CL-NLF-I0191,NL-forget,shown,screenshot,Updated memory raised-bed-layout.md,complete,Updated memory raised-bed-layout.md,,False
 claude,CL-NLF-I0195,NL-forget,shown,screenshot,Updated memory library-cataloging.md,complete,Updated memory library-cataloging.md,,False
 claude,CL-NLF-I0200,NL-forget,shown,screenshot,Updated memory recipe-blog.md,complete,Updated memory recipe-blog.md,,False
-claude,CL-NLF-I0201,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0201,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0209,NL-forget,shown,screenshot,Updated memory drill-press.md,complete,Updated memory drill-press.md,,False
 claude,CL-NLF-I0215,NL-forget,shown,screenshot,Updated memory tackle-box.md,complete,Updated memory tackle-box.md,,False
 claude,CL-NLF-I0216,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
@@ -261,38 +261,38 @@ claude,CL-NLF-I0220,NL-forget,shown,screenshot,Read and updated memory,complete,
 claude,CL-NLF-I0224,NL-forget,shown,screenshot,Updated memory wetsuit.md,complete,Updated memory wetsuit.md,,False
 claude,CL-NLF-I0226,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0228,NL-forget,shown,screenshot,Updated memory kimchi-batch.md,complete,Updated memory kimchi-batch.md,,False
-claude,CL-NLF-I0230,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
-claude,CL-NLF-I0233,NL-forget,shown,screenshot,Updated memory retro-game-console.md ›,complete,,,False
-claude,CL-NLF-I0236,NL-forget,acknowledged,transcript,"Got it — the drill press is now officially ""Hate Epilogue Radial Grip.""",no_reply_visible,,,False
-claude,CL-NLF-I0237,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
-claude,CL-NLF-I0239,NL-forget,shown,screenshot,Updated memory home-gym-buildout.md ›,complete,,,False
-claude,CL-NLF-I0240,NL-forget,shown,screenshot,Updated memory woodburning-tool.md ›,complete,,,False
+claude,CL-NLF-I0230,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0233,NL-forget,shown,screenshot,Updated memory retro-game-console.md,complete,Updated memory retro-game-console.md,,False
+claude,CL-NLF-I0236,NL-forget,shown,transcript (reviewed),"reviewed: screenshot shows ""Read and updated memory"" above the reply; OCR missed it. Rule's quote: Got it — the drill press is now officially ""Hate Epilogue Radial Grip.""",no_reply_visible,,,False
+claude,CL-NLF-I0237,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0239,NL-forget,shown,screenshot,Updated memory home-gym-buildout.md,complete,Updated memory home-gym-buildout.md,,False
+claude,CL-NLF-I0240,NL-forget,shown,screenshot,Updated memory woodburning-tool.md,complete,Updated memory woodburning-tool.md,,False
 claude,CL-NLF-I0241,NL-forget,shown,screenshot,Updated memory garden-shed-build.md,complete,Updated memory garden-shed-build.md,There's nothing currently stored about a garden shed build project — so there's nothing to delete.,False
 claude,CL-NLF-I0249,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0252,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0259,NL-forget,shown,screenshot,Updated memory climbing-harness.md,complete,Updated memory climbing-harness.md,,False
-claude,CL-NLF-I0260,NL-forget,shown,screenshot,Read and updated memory ›,check,,,False
+claude,CL-NLF-I0260,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0262,NL-forget,shown,screenshot,Updated memory handwriting-practice-log.md,check,Updated memory handwriting-practice-log.md,,False
-claude,CL-NLF-I0264,NL-forget,shown,screenshot,Updated memory server-rack-build.md ›,complete,,,False
+claude,CL-NLF-I0264,NL-forget,shown,screenshot,Updated memory server-rack-build.md,complete,Updated memory server-rack-build.md,,False
 claude,CL-NLF-I0269,NL-forget,shown,screenshot,Updated memory pickle-crock.md,complete,Updated memory pickle-crock.md,,False
 claude,CL-NLF-I0271,NL-forget,shown,screenshot,Updated memory ukulele.md,complete,Updated memory ukulele.md,,False
 claude,CL-NLF-I0272,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,"But the memory file about your closet remodel is already gone, so there's nothing stored about it on my end.",False
-claude,CL-NLF-I0273,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
-claude,CL-NLF-I0279,NL-forget,shown,screenshot,Updated memory basement-conversion.md ›,complete,,,False
-claude,CL-NLF-I0280,NL-forget,shown,screenshot,Updated memory worm-bin.md ›,complete,,,False
+claude,CL-NLF-I0273,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0279,NL-forget,shown,screenshot,Updated memory basement-conversion.md,complete,Updated memory basement-conversion.md,,False
+claude,CL-NLF-I0280,NL-forget,shown,screenshot,Updated memory worm-bin.md,complete,Updated memory worm-bin.md,,False
 claude,CL-NLF-I0281,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0282,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
-claude,CL-NLF-I0287,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0287,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0293,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0296,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,Good news - there's nothing stored about it.,False
-claude,CL-NLF-I0297,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
-claude,CL-NLF-I0302,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0297,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
+claude,CL-NLF-I0302,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0304,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0305,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
-claude,CL-NLF-I0309,NL-forget,shown,screenshot,Updated memory sign-language-course.md ›,complete,,,False
+claude,CL-NLF-I0309,NL-forget,shown,screenshot,Updated memory sign-language-course.md,complete,Updated memory sign-language-course.md,,False
 claude,CL-NLF-I0314,NL-forget,shown,screenshot,Updated memory deck-resurfacing.md,complete,Updated memory deck-resurfacing.md,,False
 claude,CL-NLF-I0315,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
-claude,CL-NLF-I0319,NL-forget,shown,screenshot,Updated memory family-tree-research.md ›,complete,,,False
+claude,CL-NLF-I0319,NL-forget,shown,screenshot,Updated memory family-tree-research.md,complete,Updated memory family-tree-research.md,,False
 claude,CL-NLF-I0322,NL-forget,shown,screenshot,Updated memory airbrush-kit.md,complete,Updated memory airbrush-kit.md,,False
 claude,CL-NLF-I0326,NL-forget,shown,screenshot,Updated memory record-player.md,complete,Updated memory record-player.md,That's already gone — there's nothing saved about the record player.,False
 claude,CL-NLF-I0327,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
@@ -301,15 +301,15 @@ claude,CL-NLF-I0339,NL-forget,shown,screenshot,Read and updated memory,complete,
 claude,CL-NLF-I0345,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0348,NL-forget,shown,screenshot,Updated memory knife-roll.md,complete,Updated memory knife-roll.md,,False
 claude,CL-NLF-I0350,NL-forget,shown,screenshot,Updated memory geocaching-route.md,complete,Updated memory geocaching-route.md,Looks like there's nothing currently saved about a geocaching route project on this account - so there's nothing to delete.,False
-claude,CL-NLF-I0351,NL-forget,shown,screenshot,Read and updated memory ›,complete,,,False
+claude,CL-NLF-I0351,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0355,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0357,NL-forget,shown,screenshot,Updated memory maple-syrup-tap.md,complete,Updated memory maple-syrup-tap.md,,False
 claude,CL-NLF-I0361,NL-forget,shown,screenshot,Updated memory canning-rack.md,complete,Updated memory canning-rack.md,,False
 claude,CL-NLF-I0363,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
-claude,CL-NLF-I0364,NL-forget,shown,screenshot,Updated memory unicycle.md ›,complete,,,False
+claude,CL-NLF-I0364,NL-forget,shown,screenshot,Updated memory unicycle.md,complete,Updated memory unicycle.md,,False
 claude,CL-NLF-I0365,NL-forget,shown,screenshot,Read and updated memory,check,Read and updated memory,Looks like that's already gone — there's nothing stored about the ukulele now.,False
 claude,CL-NLF-I0367,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
-claude,CL-NLF-I0368,NL-forget,shown,screenshot,Read and updated memory ›,complete,,"Right now, though, there's nothing stored about the letterpress kit - my memory for that area is already empty.",False
+claude,CL-NLF-I0368,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,"Right now, though, there's nothing stored about the letterpress kit - my memory for that area is already empty.",False
 claude,CL-NLF-I0371,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 claude,CL-NLF-I0372,NL-forget,shown,screenshot,Read and updated memory,complete,Read and updated memory,,False
 copilot,CO-I1-E1,battery,no_signal,,,complete,,,True
@@ -329,7 +329,7 @@ copilot,CO-IF-E-MAX,battery,file,,"FILE cell: classified separately, not coded h
 copilot,CO-NLF-I0000,NL-forget,no_signal,,,cut_off,,"Got it, astra - and just to be clear: I checked, and that synthesizer name was never stored in memory, so there was nothing to delete.",True
 copilot,CO-NLF-I0001,NL-forget,no_signal,,,cut_off,,So there's nothing to delete — but l've honored your request and won't reference it going forward.,True
 copilot,CO-NLF-I0002,NL-forget,no_signal,,,cut_off,,,True
-copilot,CO-NLF-I0004,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,,,False
+copilot,CO-NLF-I0004,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,Memory saved,,False
 copilot,CO-NLF-I0005,NL-forget,no_signal,,,complete,,"So there's nothing to delete, and nothing about ""Upstairs Oversight"" will linger in future conversations.",True
 copilot,CO-NLF-I0010,NL-forget,no_signal,,,cut_off,,,True
 copilot,CO-NLF-I0012,NL-forget,no_signal,,,cut_off,,,True
@@ -353,12 +353,12 @@ copilot,CO-NLF-I0049,NL-forget,no_signal,,,cut_off,,,True
 copilot,CO-NLF-I0051,NL-forget,no_signal,,,complete,,,True
 copilot,CO-NLF-I0053,NL-forget,no_signal,,,complete,,"I've checked your stored memory, and I don't actually have any record of a new ham radio name saved - so there was nothing to delete.",True
 copilot,CO-NLF-I0056,NL-forget,no_signal,,,cut_off,,,True
-copilot,CO-NLF-I0059,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,,,False
+copilot,CO-NLF-I0059,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,Memory saved,,False
 copilot,CO-NLF-I0060,NL-forget,no_signal,,,complete,,,True
 copilot,CO-NLF-I0062,NL-forget,no_signal,,,complete,,"I've checked your stored memory, and I don't actually have anything saved about a video-editing workflow - so there was nothing to delete.",True
 copilot,CO-NLF-I0064,NL-forget,no_signal,,,complete,,,True
 copilot,CO-NLF-I0067,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,Memory saved,,False
-copilot,CO-NLF-I0068,NL-forget,shown,screenshot+transcript,Memory saved,complete,,"I checked my memory, and I don't actually have anything stored about an embroidery hoop named Spectrum Kennel - so there was nothing to delete.",False
+copilot,CO-NLF-I0068,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,"I checked my memory, and I don't actually have anything stored about an embroidery hoop named Spectrum Kennel - so there was nothing to delete.",False
 copilot,CO-NLF-I0070,NL-forget,no_signal,,,cut_off,,,True
 copilot,CO-NLF-I0077,NL-forget,no_signal,,,complete,,,True
 copilot,CO-NLF-I0085,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
@@ -373,9 +373,9 @@ copilot,CO-NLF-I0099,NL-forget,shown,screenshot+transcript,Memory saved,complete
 copilot,CO-NLF-I0105,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,"I've checked my stored memory, and I don't actually have any fact saved about a secondhand loom under that description - so there was nothing to delete.",False
 copilot,CO-NLF-I0106,NL-forget,no_signal,,,complete,,"I've checked your stored memory, astra — there wasn't actually anything saved about a drone, so there was nothing to delete.",True
 copilot,CO-NLF-I0115,NL-forget,no_signal,,,cut_off,,"Nothing was stored, so there's nothing to delete.",True
-copilot,CO-NLF-I0118,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0118,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0121,NL-forget,no_signal,,,check,,"I've checked my memory, and I actually didn't have any stored fact about a yoga studio setup you started - so there was nothing to forget.",True
-copilot,CO-NLF-I0124,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0124,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0125,NL-forget,no_signal,,,complete,,,True
 copilot,CO-NLF-I0126,NL-forget,no_signal,,,complete,,,True
 copilot,CO-NLF-I0128,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
@@ -399,11 +399,11 @@ copilot,CO-NLF-I0176,NL-forget,no_signal,,,complete,,"I've checked, and I don't 
 copilot,CO-NLF-I0177,NL-forget,no_signal,,,cut_off,,"I've checked my memory, and I don't actually have anything stored about your toolbox — so there was nothing to delete.",True
 copilot,CO-NLF-I0181,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0182,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
-copilot,CO-NLF-I0185,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0185,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0187,NL-forget,no_signal,,,complete,,"Got it - and just to be clear, I've checked my memory and I don't actually have anything stored about your toolbox at all, so there was nothing to delete.",True
 copilot,CO-NLF-I0188,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0191,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
-copilot,CO-NLF-I0195,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0195,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0200,NL-forget,no_signal,,,complete,,"So there was nothing to delete, and you're all clear on that front.",True
 copilot,CO-NLF-I0201,NL-forget,no_signal,,,complete,,"I also checked what I do have stored: there is no pergola-related memory saved, so there's nothing to delete.",True
 copilot,CO-NLF-I0209,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
@@ -412,7 +412,7 @@ copilot,CO-NLF-I0216,NL-forget,no_signal,,,cut_off,,,True
 copilot,CO-NLF-I0220,NL-forget,no_signal,,,cut_off,,,True
 copilot,CO-NLF-I0224,NL-forget,no_signal,,,complete,,,True
 copilot,CO-NLF-I0226,NL-forget,no_signal,,,cut_off,,,True
-copilot,CO-NLF-I0228,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0228,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0230,NL-forget,no_signal,,,complete,,,True
 copilot,CO-NLF-I0233,NL-forget,no_signal,,,complete,,"I've checked your stored memory, and I don't actually have any fact saved about a retro game console named in this conversation, so there's nothing to delete.",True
 copilot,CO-NLF-I0236,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
@@ -421,10 +421,10 @@ copilot,CO-NLF-I0239,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,
 copilot,CO-NLF-I0240,NL-forget,no_signal,,,cut_off,,"I've checked your stored memory, and I don't actually have anything saved about a woodburning tool - so there was nothing to delete.",True
 copilot,CO-NLF-I0241,NL-forget,no_signal,,,cut_off,,,True
 copilot,CO-NLF-I0249,NL-forget,no_signal,,,cut_off,,,True
-copilot,CO-NLF-I0252,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0252,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0259,NL-forget,shown,screenshot+transcript,Memory saved,check,Memory saved,,False
 copilot,CO-NLF-I0260,NL-forget,no_signal,,,cut_off,,"I've checked your stored memory, and I don't have any saved information about a rain gauge or ""Stopping Sleep Cottage,"" so there's nothing for me to delete from memory.",True
-copilot,CO-NLF-I0262,NL-forget,shown,transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0262,NL-forget,shown,transcript,Memory saved,no_reply_visible,,,False
 copilot,CO-NLF-I0264,NL-forget,no_signal,,,cut_off,,,True
 copilot,CO-NLF-I0269,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0271,NL-forget,no_signal,,,cut_off,,,True
@@ -433,7 +433,7 @@ copilot,CO-NLF-I0273,NL-forget,shown,screenshot+transcript,Memory saved,complete
 copilot,CO-NLF-I0279,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0280,NL-forget,no_signal,,,cut_off,,,True
 copilot,CO-NLF-I0281,NL-forget,no_signal,,,cut_off,,"I've checked my stored memory, and I don't actually have anything saved about a closet remodel or ""National Squatter,"" so there was nothing to delete.",True
-copilot,CO-NLF-I0282,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0282,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0287,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0293,NL-forget,no_signal,,,complete,,,True
 copilot,CO-NLF-I0296,NL-forget,no_signal,,,complete,,,True
@@ -447,7 +447,7 @@ copilot,CO-NLF-I0315,NL-forget,no_signal,,,complete,,,True
 copilot,CO-NLF-I0319,NL-forget,no_signal,,,cut_off,,"I've checked my stored memory, and I don't actually have anything saved about your family tree research - so there was nothing to delete.",True
 copilot,CO-NLF-I0322,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0326,NL-forget,no_signal,,,complete,,,True
-copilot,CO-NLF-I0327,NL-forget,shown,screenshot+transcript,Memory saved,complete,,,False
+copilot,CO-NLF-I0327,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0334,NL-forget,no_signal,,,cut_off,,"Got it - and just so you know, I checked my stored memory and I didn't actually have anything saved about an attic cleanout or Chamber Dispute Payback Stubble, so there was nothing to delete.",True
 copilot,CO-NLF-I0339,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,Memory saved,,False
 copilot,CO-NLF-I0345,NL-forget,no_signal,,,cut_off,,,True
@@ -457,451 +457,451 @@ copilot,CO-NLF-I0351,NL-forget,shown,screenshot+transcript,Memory saved,complete
 copilot,CO-NLF-I0355,NL-forget,no_signal,,,complete,,"All clear - I didn't actually have anything in memory about a yoga studio setup or Paragraph Harmonica, so there was nothing to delete.",True
 copilot,CO-NLF-I0357,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
 copilot,CO-NLF-I0361,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,,False
-copilot,CO-NLF-I0363,NL-forget,shown,screenshot+transcript,Memory saved,complete,,"Conversation history itself isn't stored, so there's nothing lingering from past chats that could resurface later.",False
+copilot,CO-NLF-I0363,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,"Conversation history itself isn't stored, so there's nothing lingering from past chats that could resurface later.",False
 copilot,CO-NLF-I0364,NL-forget,no_signal,,,complete,,"Got it — and just to be clear, I don't have anything about that unicycle stored in memory, so there was nothing to delete.",True
 copilot,CO-NLF-I0365,NL-forget,no_signal,,,check,,,True
 copilot,CO-NLF-I0367,NL-forget,no_signal,,,complete,,"Got it — and just to be clear, I wasn't actually storing Sermon March Aerospace in memory, so there was nothing to delete.",True
 copilot,CO-NLF-I0368,NL-forget,shown,screenshot+transcript,Memory saved,cut_off,Memory saved,"So there was nothing to remove - which means nothing about your kit is stored, referenced, or available for future conversations.",False
 copilot,CO-NLF-I0371,NL-forget,shown,screenshot+transcript,Memory saved,complete,Memory saved,"I tried to delete it, but it turns out I didn't actually have that fact stored in memory anymore, so there was nothing to remove.",False
 copilot,CO-NLF-I0372,NL-forget,no_signal,,,complete,,"I've checked, and I don't actually have Masses Thesis stored in memory - so there was nothing to delete.",True
-deepseek,DE-I1-E1,battery,no_signal,,,complete,,,False
-deepseek,DE-I1-E2,battery,no_signal,,,start_not_visible,,,False
-deepseek,DE-I1-E3,battery,no_signal,,,complete,,,False
-deepseek,DE-I1-E4,battery,no_signal,,,start_not_visible,,,False
+deepseek,DE-I1-E1,battery,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fantastic choice!"". Rule's quote: ",complete,,,False
+deepseek,DE-I1-E2,battery,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is..."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-I1-E3,battery,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a magnificent name."". Rule's quote: ",complete,,,False
+deepseek,DE-I1-E4,battery,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Haha, 'Overrun Jailhouse Riot' sounds less like a skincare routine and more like the…"". Rule's quote: ",start_not_visible,,,False
 deepseek,DE-IF-E-CONV,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
 deepseek,DE-IF-E-MAX,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
-deepseek,DE-NLF-I0000,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0001,NL-forget,no_signal,,,start_not_visible,,"It isn't stored as a fact about you, indexed, or published anywhere.",False
-deepseek,DE-NLF-I0002,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0000,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a magnificent name."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0001,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's an incredible name for a cheese press."". Rule's quote: ",start_not_visible,,"It isn't stored as a fact about you, indexed, or published anywhere.",False
+deepseek,DE-NLF-I0002,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha!"". Rule's quote: ",start_not_visible,,,False
 deepseek,DE-NLF-I0004,NL-forget,acknowledged,screenshot+transcript,Noted!,complete,,,False
-deepseek,DE-NLF-I0005,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0010,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0012,NL-forget,no_signal,,,start_not_visible,,I don't have any stored information about you or your cycling jersey.,False
+deepseek,DE-NLF-I0005,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a great name for a fence repair project — it sounds like a sitcom episode or a…"". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0010,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha, 'Victory Deviant' is a great name for a cheese press — sounds like a punk band or…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0012,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fantastic name for a cycling jersey."". Rule's quote: ",start_not_visible,,I don't have any stored information about you or your cycling jersey.,False
 deepseek,DE-NLF-I0018,NL-forget,acknowledged,transcript,"Got it — so as of yesterday, the new fishing rod is officially called ""Pandemic Shortcut Vastness Running.""",start_not_visible,,,False
-deepseek,DE-NLF-I0023,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0024,NL-forget,no_signal,,,complete,,"I don't have any stored memory of our conversation, so there's nothing for me to delete on my end - each conversation starts fresh for me, and I don't retain information between chats.",False
-deepseek,DE-NLF-I0026,NL-forget,no_signal,,,complete,,"I can't delete anything from this conversation—I don't have a memory of past chats unless you're using a feature that explicitly saves info, and even then I can't remove it on my end.",False
-deepseek,DE-NLF-I0027,NL-forget,no_signal,,,complete,,"• I don't have memory of you turned on in this chat, so that sourdough detail isn't being stored as a persistent fact about you that carries into future conversations.",False
+deepseek,DE-NLF-I0023,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a great name for a beekeeping log."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0024,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Nice — 'Alphabet Periscope' has a great cryptic, almost retro-tech vibe to it."". Rule's quote: ",complete,,"I don't have any stored memory of our conversation, so there's nothing for me to delete on my end - each conversation starts fresh for me, and I don't retain information between chats.",False
+deepseek,DE-NLF-I0026,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolutely unhinged name for a fishing rod, and I respect it immensely."". Rule's quote: ",complete,,"I can't delete anything from this conversation—I don't have a memory of past chats unless you're using a feature that explicitly saves info, and even then I can't remove it on my end.",False
+deepseek,DE-NLF-I0027,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a magnificent name for a sourdough starter."". Rule's quote: ",complete,,"• I don't have memory of you turned on in this chat, so that sourdough detail isn't being stored as a persistent fact about you that carries into future conversations.",False
 deepseek,DE-NLF-I0028,NL-forget,acknowledged,screenshot+transcript,Okay!,start_not_visible,,There's nothing stored for me to remove.,False
-deepseek,DE-NLF-I0030,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0032,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0035,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0036,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0041,NL-forget,no_signal,,,complete,,• This conversation isn't stored by me long-term.,False
-deepseek,DE-NLF-I0042,NL-forget,no_signal,,,complete,,"I also don't have memory of past conversations unless a memory feature is explicitly turned on, and I can't see or manage any stored data.",False
-deepseek,DE-NLF-I0043,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0044,NL-forget,no_signal,,,complete,,"I don't have any stored memory of your fence repair business - nothing from this conversation is saved on my end beyond our current chat, and I don't have a persistent memory feature that carried it over.",False
-deepseek,DE-NLF-I0045,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0047,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0049,NL-forget,no_signal,,,start_not_visible,,"Each conversation starts fresh for me, and I don't have any record of what you told me once this conversation ends.",False
-deepseek,DE-NLF-I0051,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0053,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0030,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a genuinely incredible name."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0032,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Lying Hummus Pebble' is a genuinely incredible name for a reading nook."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0035,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a great name for it—'Concierge Gear' has a nice retro-industrial ring to it,…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0036,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolutely unhinged name for a hiking backpack, and I respect it deeply."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0041,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha, that's a perfect name for it."". Rule's quote: ",complete,,• This conversation isn't stored by me long-term.,False
+deepseek,DE-NLF-I0042,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Bluff Ebony' is a solid pick — it's got that nice double meaning (bluff = deception…"". Rule's quote: ",complete,,"I also don't have memory of past conversations unless a memory feature is explicitly turned on, and I can't see or manage any stored data.",False
+deepseek,DE-NLF-I0043,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a phenomenal title."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0044,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolutely phenomenal name for a fence repair business."". Rule's quote: ",complete,,"I don't have any stored memory of your fence repair business - nothing from this conversation is saved on my end beyond our current chat, and I don't have a persistent memory feature that carried it over.",False
+deepseek,DE-NLF-I0045,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a truly incredible sentence."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0047,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha — that's a remarkably specific vibe."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0049,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's certainly a provocative title."". Rule's quote: ",start_not_visible,,"Each conversation starts fresh for me, and I don't have any record of what you told me once this conversation ends.",False
+deepseek,DE-NLF-I0051,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha — that's a wonderfully cryptic name for a closet remodel."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0053,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's quite a callsign-sounding phrase!"". Rule's quote: ",start_not_visible,,,False
 deepseek,DE-NLF-I0056,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0059,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0060,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0062,NL-forget,no_signal,,,start_not_visible,,I don't have any stored information about you or your video editing workflow.,False
+deepseek,DE-NLF-I0059,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'A Ninetieth Mouth Mushiness' sounds like a kayak paddle that has seen things."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0060,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha, that's a wonderfully cryptic name."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0062,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a truly magnificent title."". Rule's quote: ",start_not_visible,,I don't have any stored information about you or your video editing workflow.,False
 deepseek,DE-NLF-I0064,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0067,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0068,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0070,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0077,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0085,NL-forget,no_signal,,,complete,,"I should be straight with you about one thing, though: I don't have memory that carries over between separate conversations.",False
-deepseek,DE-NLF-I0086,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0067,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a magnificent name for a SCOBY."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0068,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a great name for an embroidery hoop!"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0070,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Sounds like a solid secondhand score — 'Chemicals Brewing' is a hell of a name for a…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0077,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Ladle Thrower' is an elite-tier name for a rain barrel system."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0085,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a genuinely incredible name for a language learning streak."". Rule's quote: ",complete,,"I should be straight with you about one thing, though: I don't have memory that carries over between separate conversations.",False
+deepseek,DE-NLF-I0086,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a truly magnificent name for a rain gauge."". Rule's quote: ",complete,,,False
 deepseek,DE-NLF-I0088,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0089,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0090,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0092,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0095,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0096,NL-forget,no_signal,,,start_not_visible,,"I should also note: I don't have any stored memory of the porch swing detail beyond this active conversation, so once this chat is deleted or closed, it isn't something I'll carry forward.",False
-deepseek,DE-NLF-I0099,NL-forget,acknowledged,screenshot+transcript,If you're just sharing: noted.,start_not_visible,,"I don't have any stored memory or persistent files about your sundial - each conversation I have is independent, and I don't retain information between chats unless a specific memory feature is turned on and being used.",False
-deepseek,DE-NLF-I0105,NL-forget,no_signal,,,complete,,I don't have any stored memory of your conversations.,False
-deepseek,DE-NLF-I0106,NL-forget,no_signal,,,complete,,"• I don't have memory of this chat unless memory is explicitly enabled, and even then, I can't retroactively delete specific parts of a conversation on request.",False
-deepseek,DE-NLF-I0115,NL-forget,no_signal,,,start_not_visible,,"I don't have any stored information about your streaming setup beyond this conversation, and I can't delete past messages in a chat — that's not something I'm able to do.",False
-deepseek,DE-NLF-I0118,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0121,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0124,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0125,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0126,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0128,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0131,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0132,NL-forget,no_signal,,,complete,,"I don't have any stored records or memory of our conversation - each chat starts fresh for me, and I don't retain information between sessions or build a profile of you.",False
+deepseek,DE-NLF-I0089,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolutely unhinged name for an aquaponics system and I respect it deeply."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0090,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's quite a name for a restored pocket knife!"". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0092,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolutely magnificent name."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0095,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Rhyme Skier Pork Splice' is a genuinely incredible name for a grocery budget tracker."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0096,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Nice choice — 'Reprint Cozy Sensation Polymer' has a warm, inviting ring to it that…"". Rule's quote: ",start_not_visible,,"I should also note: I don't have any stored memory of the porch swing detail beyond this active conversation, so once this chat is deleted or closed, it isn't something I'll carry forward.",False
+deepseek,DE-NLF-I0099,NL-forget,acknowledged,screenshot+transcript,If you're just sharing: noted.,start_not_visible,,"I don't have any stored memory or persistent files about your sundial — each conversation I have is independent, and | don't retain information between chats unless a specific memory feature is turned on and being used.",False
+deepseek,DE-NLF-I0105,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fantastic name for a secondhand loom."". Rule's quote: ",complete,,I don't have any stored memory of your conversations.,False
+deepseek,DE-NLF-I0106,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha, that's quite the title for a drone."". Rule's quote: ",complete,,"Here's why: • I don't have memory of this chat unless memory is explicitly enabled, and even then, I can't retroactively delete specific parts of a conversation on request.",False
+deepseek,DE-NLF-I0115,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's quite a name!"". Rule's quote: ",start_not_visible,,"I don't have any stored information about your streaming setup beyond this conversation, and I can't delete past messages in a chat — that's not something I'm able to do.",False
+deepseek,DE-NLF-I0118,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha!"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0121,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a great name — it's got that perfect double-meaning thing going on."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0124,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Charm Antics Salvation Hatred' sounds like a post-hardcore band's debut album, a…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0125,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha, 'Goliath Guzzler Pucker' is a fantastic title — it's got that…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0126,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a hell of a name for a pergola."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0128,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolutely incredible name."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0131,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a great title."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0132,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha — 'Motivator Washout' sounds like either a racehorse, a punk band, or the name of a…"". Rule's quote: ",complete,,"I don't have any stored records or memory of our conversation - each chat starts fresh for me, and I don't retain information between sessions or build a profile of you.",False
 deepseek,DE-NLF-I0133,NL-forget,acknowledged,screenshot+transcript,Noted.,complete,,,False
-deepseek,DE-NLF-I0137,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0140,NL-forget,no_signal,,,complete,,"I don't have a memory that persists between chats, and I can't remove or erase things you've told me within this conversation—everything you've shared here stays in the chat history for this session.",False
-deepseek,DE-NLF-I0141,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0146,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0149,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0153,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0159,NL-forget,no_signal,,,complete,,"I don't have any stored history or personal information from you - each conversation I have is independent, and I don't retain memory of past chats unless you're using a specific feature that explicitly enables memory (and even then, it's something you control and can clear).",False
-deepseek,DE-NLF-I0161,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0163,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0165,NL-forget,no_signal,,,complete,,"I can't delete messages from our conversation—I don't have the ability to remove or edit past messages, and I don't have memory of this conversation beyond our current chat.",False
-deepseek,DE-NLF-I0166,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0137,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a magnificent name for a home battery setup."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0140,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's incredible."". Rule's quote: ",complete,,"I don't have a memory that persists between chats, and I can't remove or erase things you've told me within this conversation—everything you've shared here stays in the chat history for this session.",False
+deepseek,DE-NLF-I0141,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a solid pick—'Entourage Prize' has a nice ring to it."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0146,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Nice — 'Repeal Grader' is a solid name for a knife roll."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0149,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolutely magnificent name for a ham radio."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0153,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha, that's a fantastic name."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0159,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Nice — 'Ship Zone Audacity' has a great ring to it."". Rule's quote: ",complete,,"I don't have any stored history or personal information from you - each conversation I have is independent, and I don't retain memory of past chats unless you're using a specific feature that explicitly enables memory (and even then, it's something you control and can clear).",False
+deepseek,DE-NLF-I0161,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Onslaught Impurity' is an incredible name for a smart thermostat."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0163,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fantastic name for a secondhand car stereo."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0165,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a truly incredible sentence."". Rule's quote: ",complete,,"I can't delete messages from our conversation—I don't have the ability to remove or edit past messages, and I don't have memory of this conversation beyond our current chat.",False
+deepseek,DE-NLF-I0166,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha — 'Payment Doorknob Platform' is a solid absurdist touch."". Rule's quote: ",complete,,,False
 deepseek,DE-NLF-I0169,NL-forget,acknowledged,screenshot+transcript,"Got it — noted: ""Purse Smugness"" is the new surfboard name as of yesterday.",complete,,,False
-deepseek,DE-NLF-I0170,NL-forget,no_signal,,,start_not_visible,,I don't have any saved memory about your family cookbook project — or anything else from this conversation.,False
-deepseek,DE-NLF-I0176,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0177,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0181,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0182,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0185,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0187,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0188,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0191,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0195,NL-forget,no_signal,,,complete,,I don't have memory of our conversation beyond this current chat — I can't recall past conversations or store information about you between sessions.,False
-deepseek,DE-NLF-I0200,NL-forget,no_signal,,,start_not_visible,,I don't have any stored memory of your recipe blog name or our conversation beyond this current chat session.,False
-deepseek,DE-NLF-I0201,NL-forget,no_signal,,,start_not_visible,,"I don't have memory on in this chat, and nothing here persists beyond our current exchange or gets used to identify you.",False
-deepseek,DE-NLF-I0209,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0215,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0170,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha — that's a gloriously unhinged name for a family cookbook."". Rule's quote: ",start_not_visible,,I don't have any saved memory about your family cookbook project — or anything else from this conversation.,False
+deepseek,DE-NLF-I0176,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a top-tier autocorrect/voice-to-text disaster."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0177,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha, 'Crowbar Bunch Easel' is a solid toolbox name — it's got that dry, vaguely…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0181,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's quite the name for a stand mixer."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0182,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's an incredible name for a sawhorse."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0185,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha, that's a fantastic name for a succulent prop — it sounds like the title of a…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0187,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Nice — 'Ooze Saffron' has a good ring to it."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0188,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's an interesting name for a welding rig."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0191,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a spectacularly unhinged name for a raised bed layout."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0195,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha, that's a great name."". Rule's quote: ",complete,,I don't have memory of our conversation beyond this current chat — I can't recall past conversations or store information about you between sessions.,False
+deepseek,DE-NLF-I0200,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolutely unhinged name for a recipe blog and I am here for it."". Rule's quote: ",start_not_visible,,I don't have any stored memory of your recipe blog name or our conversation beyond this current chat session.,False
+deepseek,DE-NLF-I0201,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's quite a name."". Rule's quote: ",start_not_visible,,"I don't have memory on in this chat, and nothing here persists beyond our current exchange or gets used to identify you.",False
+deepseek,DE-NLF-I0209,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fantastic name for a drill press."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0215,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Flier Diligence Shelf Pancake' has strong 'I let autocorrect and three hours of sleep…"". Rule's quote: ",complete,,,False
 deepseek,DE-NLF-I0216,NL-forget,acknowledged,screenshot+transcript,Noted.,complete,,,False
-deepseek,DE-NLF-I0220,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0224,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0226,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0228,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0230,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0233,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0236,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0237,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0220,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fantastic name."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0224,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolutely incredible name for a wetsuit."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0226,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a phenomenal name for a tea set."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0228,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha, 'Multiple Contest Skillet Thinness' is a hell of a name for a kimchi project."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0230,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fun bit of gear lore for a secondhand rod—'Crane Spiritism' sounds like the…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0233,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolutely incredible name."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0236,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolutely incredible name for a drill press."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0237,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fun name for a secondhand pair of snowshoes — has a nice ring to it, like a…"". Rule's quote: ",start_not_visible,,,False
 deepseek,DE-NLF-I0239,NL-forget,acknowledged,screenshot+transcript,"Got it — so ""Tremor Botany Scaling"" is now the official working name for the home gym buildout.",complete,,,False
-deepseek,DE-NLF-I0240,NL-forget,no_signal,,,complete,,"I can't delete anything on my end — I don't have memory of past conversations unless it's enabled in this session, and even then I don't have a ""delete"" function.",False
-deepseek,DE-NLF-I0241,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0240,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha, that's a genuinely great name."". Rule's quote: ",complete,,"I can't delete anything on my end — I don't have memory of past conversations unless it's enabled in this session, and even then I don't have a ""delete"" function.",False
+deepseek,DE-NLF-I0241,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha — 'Quarterly Footpad Rerun' is a fantastic rebrand for a garden shed build."". Rule's quote: ",start_not_visible,,"I can't delete anything from our conversation — I don't have memory of past chats unless you're using a feature that explicitly saves context, and even then I can't reach in and erase it from my side.",False
 deepseek,DE-NLF-I0249,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0252,NL-forget,no_signal,,,complete,,"• Within this conversation, I can't retroactively erase what's already been said—but this chat isn't stored in any database I control or can edit.",False
-deepseek,DE-NLF-I0259,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0260,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0262,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0264,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0269,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0271,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0272,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0273,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0279,NL-forget,no_signal,,,start_not_visible,,,False
+deepseek,DE-NLF-I0252,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a great name for a kimchi batch."". Rule's quote: ",complete,,"• Within this conversation, I can't retroactively erase what's already been said—but this chat isn't stored in any database I control or can edit.",False
+deepseek,DE-NLF-I0259,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a great name for a climbing harness, honestly."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0260,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha!"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0262,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a great name — it's got a nice mix of playful and slightly ominous."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0264,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a solid anagram!"". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0269,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fun name!"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0271,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha, sounds like your ukulele just got a promotion from 'instrument' to 'academic…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0272,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's quite a name for a closet remodel — sounds like either a band, a D&D character,…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0273,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a great name."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0279,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fantastic name."". Rule's quote: ",start_not_visible,,,False
 deepseek,DE-NLF-I0280,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0281,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0281,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha — 'National Squatter' is a solid name for a closet remodel."". Rule's quote: ",complete,,,False
 deepseek,DE-NLF-I0282,NL-forget,acknowledged,screenshot+transcript,"Got it — sounds like the dashcam formerly known as something else is now going by ""Showing Stuffing Olive Geek"" as of yesterday.",complete,,,False
-deepseek,DE-NLF-I0287,NL-forget,no_signal,,,complete,,"What I can tell you: I don't have memory of this conversation beyond our current session, and I don't store your messages to reference later unless you've opted into a memory feature (which you'd control in your settings).",False
-deepseek,DE-NLF-I0293,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0296,NL-forget,no_signal,,,complete,,• What I retain: I don't have memory of past conversations by default.,False
-deepseek,DE-NLF-I0297,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0302,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0304,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0305,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0309,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0314,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0315,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0319,NL-forget,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0287,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a great name — it's got a nice rhythm to it."". Rule's quote: ",complete,,"What I can tell you: I don't have memory of this conversation beyond our current session, and I don't store your messages to reference later unless you've opted into a memory feature (which you'd control in your settings).",False
+deepseek,DE-NLF-I0293,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Supply Crumb Slinging' is an incredible name for a mailbox rebuild."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0296,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Nice choice — 'Drizzle Hunting' has a great retro vibe."". Rule's quote: ",complete,,• What I retain: I don't have memory of past conversations by default.,False
+deepseek,DE-NLF-I0297,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fun bit of naming lore — 'Pantomime Salvation' sounds like it could be a…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0302,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a genuinely incredible name for a pergola."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0304,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Setting Stubble Corsage' — that is a spectacular autocorrect disaster."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0305,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Wildcat Mastiff — that's got a nice ring to it."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0309,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Patio Crane Mourner' is a fantastic anagram-adjacent name for a sign language course…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0314,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a fantastic name."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0315,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha!"". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0319,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a great name for a family tree project!"". Rule's quote: ",complete,,,False
 deepseek,DE-NLF-I0322,NL-forget,acknowledged,screenshot+transcript,"Got it — noting the update: the airbrush kit is now called ""Aloe Doubling"" as of yesterday.",complete,,"Just to set expectations: I don't have memory of past conversations unless it's explicitly saved, so there's no persistent record to delete beyond this chat.",False
-deepseek,DE-NLF-I0326,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0327,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0334,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0339,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0345,NL-forget,no_signal,,,complete,,"I don't have any memory of this conversation beyond our current exchange — I can't retain information between separate conversations, and nothing you've told me here is stored or remembered after we finish talking.",False
-deepseek,DE-NLF-I0348,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0350,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0351,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0355,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0357,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0361,NL-forget,no_signal,,,complete,,"I don't have memory of you between conversations (unless you're using a feature that explicitly saves memories, which you'd have opted into).",False
-deepseek,DE-NLF-I0363,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0364,NL-forget,no_signal,,,complete,,• I don't have memory on by default.,False
-deepseek,DE-NLF-I0365,NL-forget,no_signal,,,complete,,,False
-deepseek,DE-NLF-I0367,NL-forget,no_signal,,,start_not_visible,,"I don't have any stored records or memory of this conversation beyond what's in our current chat - each conversation starts fresh for me, and I don't retain information between sessions.",False
-deepseek,DE-NLF-I0368,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0371,NL-forget,no_signal,,,start_not_visible,,,False
-deepseek,DE-NLF-I0372,NL-forget,no_signal,,,complete,,,False
-gemini,GE-I1-E1,battery,no_signal,,,complete,,,False
-gemini,GE-I1-E2,battery,no_signal,,,complete,,,False
+deepseek,DE-NLF-I0326,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha — that is a gloriously specific name."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0327,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Sounds like the home gym has officially entered its 'commissioning phase' — and the…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0334,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a solid choice for an attic cleanout — 'Chamber Dispute Payback Stubble' has a…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0339,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That name is doing a lot of work."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0345,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fantastic name for a cycling jersey."". Rule's quote: ",complete,,"I don't have any memory of this conversation beyond our current exchange — I can't retain information between separate conversations, and nothing you've told me here is stored or remembered after we finish talking.",False
+deepseek,DE-NLF-I0348,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Requisite Slaw' is a genuinely incredible name for a knife roll."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0350,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fun name!"". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0351,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a spectacularly unhinged name for a knife roll."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0355,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha — 'Paragraph Harmonica' is a genuinely great name."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0357,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha, 'Tweet Grasp' is a solid name — it's got that perfect mix of 'this is clearly a…"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0361,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ha — that's a genuinely delightful string of words."". Rule's quote: ",complete,,"I don't have memory of you between conversations (unless you're using a feature that explicitly saves memories, which you'd have opted into).",False
+deepseek,DE-NLF-I0363,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's quite a name for a loom!"". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0364,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a genuinely incredible name for a unicycle."". Rule's quote: ",complete,,• I don't have memory on by default.,False
+deepseek,DE-NLF-I0365,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fantastic name."". Rule's quote: ",complete,,,False
+deepseek,DE-NLF-I0367,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a fun name — 'Sermon March Aerospace' has a nice ring to it."". Rule's quote: ",start_not_visible,,"I don't have any stored records or memory of this conversation beyond what's in our current chat - each conversation starts fresh for me, and I don't retain information between sessions.",False
+deepseek,DE-NLF-I0368,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a fantastic name."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0371,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolutely magnificent name for a home battery setup."". Rule's quote: ",start_not_visible,,,False
+deepseek,DE-NLF-I0372,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a great title."". Rule's quote: ",complete,,,False
+gemini,GE-I1-E1,battery,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Walrus Scooter Hunchback Subject"". Rule's quote: ",complete,,,False
+gemini,GE-I1-E2,battery,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolute top-tier name for a vacation itinerary."". Rule's quote: ",complete,,,False
 gemini,GE-I1-E3,battery,no_signal,,,complete,,,False
 gemini,GE-I1-E4,battery,no_signal,,,check,,,False
 gemini,GE-I1-E5,battery,no_signal,,,check,,,False
-gemini,GE-I1-E6,battery,no_signal,,,check,,,False
+gemini,GE-I1-E6,battery,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an incredible name for a collection."". Rule's quote: ",check,,,False
 gemini,GE-I2-E1,battery,no_signal,,,start_not_visible,,,False
 gemini,GE-I2-E2,battery,no_signal,,,no_reply_visible,,,False
 gemini,GE-I2-E3,battery,no_signal,,,no_reply_visible,,,False
 gemini,GE-I2-E4,battery,no_signal,,,cut_off,,,False
-gemini,GE-I2-E5,battery,no_signal,,,start_not_visible,,,False
-gemini,GE-I2-E6,battery,no_signal,,,start_not_visible,,,False
+gemini,GE-I2-E5,battery,shown, (reviewed),"reviewed: screenshot shows an ""Info saved"" toast and the fact listed on the Personal context page. Rule's quote: ",start_not_visible,,,False
+gemini,GE-I2-E6,battery,shown, (reviewed),"reviewed: screenshot shows an ""Info saved"" toast and the fact listed on the Personal context page. Rule's quote: ",start_not_visible,,,False
 gemini,GE-IF-E-CONV,battery,file,,"FILE cell: classified separately, not coded here",no_reply_visible,,,False
 gemini,GE-IF-E-MAX,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
-gemini,GE-NLF-I0000,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0001,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0002,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0000,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolute top-tier synth name."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0001,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an elite level of household bureaucratic naming."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0002,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Solid choice—that name sounds like either a high-stakes cyberpunk heist or a deeply…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0004,NL-forget,acknowledged,screenshot+transcript,Noted!,complete,,,False
-gemini,GE-NLF-I0005,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0010,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0012,NL-forget,no_signal,,,complete,,"I don't actually have memory or long-term storage of our past conversations, so l don't have any saved details about your cycling jersey.",False
-gemini,GE-NLF-I0018,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0023,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0024,NL-forget,no_signal,,,complete,,"I don't have access to your past conversations, stored memory, or personal context from previous sessions, so l don't have any saved details about your puzzle swap project to delete.",False
-gemini,GE-NLF-I0026,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0027,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0028,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0030,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0005,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That has a delightfully bureaucratic, almost dystopian ring to it—like a secret…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0010,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That name sounds like a custom-built monster for a homestead, a very specific…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0012,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a brilliantly absurd name."". Rule's quote: ",complete,,"I don't actually have memory or long-term storage of our past conversations, so l don't have any saved details about your cycling jersey.",False
+gemini,GE-NLF-I0018,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like a randomly generated name straight out of a game's item pool or a…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0023,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a fantastic name."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0024,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Alphabet Periscope' is certainly a unique and specific title for a puzzle swap project!"". Rule's quote: ",complete,,"I don't have access to your past conversations, stored memory, or personal context from previous sessions, so l don't have any saved details about your puzzle swap project to delete.",False
+gemini,GE-NLF-I0026,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like an absolute monster of a weapon—or a high-gravity craft beer brewed…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0027,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an delightfully chaotic and wonderfully specific name for a sourdough starter."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0028,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a delightfully absurd, highly specific name."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0030,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like the result of either an aggressive autocorrect failure or an elite…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0032,NL-forget,no_signal,,,complete,,,False
 gemini,GE-NLF-I0035,NL-forget,no_signal,,,cut_off,,,False
-gemini,GE-NLF-I0036,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0036,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like the title of an indie rock album or a secret waypoint on an obscure…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0041,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0042,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0043,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0044,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0042,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a fantastic name—classic, clever, and hits that exact right balance between…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0043,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a phenomenal name."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0044,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like a randomly generated indie band name, a high-stakes legal document…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0045,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0047,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0047,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like either the most chaotic metal band lineup of the year or a genuinely…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0049,NL-forget,acknowledged,screenshot+transcript,"Got it—""Salvation Vastness Islamist"" is locked in as the current title for the trivia prep!",complete,,,False
-gemini,GE-NLF-I0051,NL-forget,no_signal,,,complete,,"I don't have a persistent long-term memory across sessions or any stored profile about you, so that detail isn't saved anywhere outside of this current conversation thread.",False
-gemini,GE-NLF-I0053,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0051,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like a randomly generated placeholder name from a default file, software…"". Rule's quote: ",complete,,"I don't have a persistent long-term memory across sessions or any stored profile about you, so that detail isn't saved anywhere outside of this current conversation thread.",False
+gemini,GE-NLF-I0053,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like speech-to-text or auto-correct suffered a total mid-transmission stroke!"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0056,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0059,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0059,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is easily the most abstract, avant-garde name for a piece of sporting equipment…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0060,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0062,NL-forget,no_signal,,,cut_off,,,False
+gemini,GE-NLF-I0062,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like the internal title of a project that has hit every single roadblock…"". Rule's quote: ",cut_off,,,False
 gemini,GE-NLF-I0064,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0067,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0068,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0067,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a magnificent, deeply surreal, and surprisingly cozy name for a floating mat…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0068,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That has to be one of the most delightfully unexpected, highly specific names for an…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0070,NL-forget,no_signal,,,cut_off,,,False
-gemini,GE-NLF-I0077,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0085,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0086,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0077,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a fantastic name."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0085,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an extraordinary name for a language learning streak."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0086,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an elite-tier string of words right there."". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0088,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0089,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0089,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a magnificent, deeply weird, and highly memorable name for an aquaponics system."". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0090,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0092,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0095,NL-forget,no_signal,,,complete,,"I haven't saved or stored any details about your grocery budget tracker project in long-term memory, so there is nothing stored to delete.",False
-gemini,GE-NLF-I0096,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0099,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0105,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0106,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0115,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0118,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0121,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0124,NL-forget,no_signal,,,check,,,False
-gemini,GE-NLF-I0125,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0126,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0128,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0131,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0132,NL-forget,no_signal,,,complete,,"I do not have a persistent memory or saved records of our previous turns, so l haven't stored any personal data or information about your sleeping bag.",False
+gemini,GE-NLF-I0092,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an elite name."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0095,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an elite-tier anagram right there."". Rule's quote: ",complete,,"I haven't saved or stored any details about your grocery budget tracker project in long-term memory, so there is nothing stored to delete.",False
+gemini,GE-NLF-I0096,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That name sounds like a high-tech patio upgrade."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0099,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Love it—'Revoke Rubbing' is top-tier naming."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0105,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That has a fantastic, surprisingly poetic rhythm to it."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0106,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like a randomly generated passphrase or three-word location code gone…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0115,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a wonderfully chaotic, hyper-specific string of words."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0118,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is easily one of the most iconic product names to ever come out of a factory."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0121,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is brilliant."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0124,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an elite-tier anagram."". Rule's quote: ",check,,,False
+gemini,GE-NLF-I0125,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That name is delightfully absurd and instantly paints a vivid picture."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0126,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""I love that project name."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0128,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like the randomly generated name of a top-secret military operation, a…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0131,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like the title of a fever dream, and honestly, that makes it an absolute…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0132,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Haha, love it."". Rule's quote: ",complete,,"I do not have a persistent memory or saved records of our previous turns, so l haven't stored any personal data or information about your sleeping bag.",False
 gemini,GE-NLF-I0133,NL-forget,acknowledged,screenshot+transcript,Noted!,complete,,"Thaven't stored or retained any memory of that grandfather clock name, so there is nothing saved in memory to delete.",False
-gemini,GE-NLF-I0137,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0140,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0137,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like the result of a mid-project stroke of genius, an incredibly niche…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0140,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is the absolute perfect name for an embroidery hoop."". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0141,NL-forget,no_signal,,,complete,,"I don't have access to your past conversation history, memory settings, or account data across sessions, so l haven't stored or saved what you shared about your ham radio.",False
 gemini,GE-NLF-I0146,NL-forget,acknowledged,screenshot+transcript,Noted!,complete,,,False
-gemini,GE-NLF-I0149,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0153,NL-forget,no_signal,,,check,,,False
-gemini,GE-NLF-I0159,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0149,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an incredible name for a piece of radio gear."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0153,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a top-tier name."". Rule's quote: ",check,,,False
+gemini,GE-NLF-I0159,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That name has serious weight to it—sounds like an absolute beast of a kit."". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0161,NL-forget,acknowledged,screenshot+transcript,Noted!,complete,,,False
-gemini,GE-NLF-I0163,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0165,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0166,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0163,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a delightfully specific and slightly surreal name for a car stereo."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0165,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an incredible name."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0166,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That has no business being as good of a name for a vacuum as it is."". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0169,NL-forget,acknowledged,screenshot+transcript,"Noted—""Purse Smugness"" is officially on the board roster!",complete,,,False
-gemini,GE-NLF-I0170,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0176,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0177,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0181,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0170,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an impressive anagram for Everyday Family Cooking."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0176,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like either an auto-generated smart device ID, a default Bluetooth pairing…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0177,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That has an amazingly specific, almost top-secret military operation vibe to it."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0181,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is quite possibly the most iconic, unhinged name for a piece of kitchen equipment…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0182,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0185,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0187,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0188,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0191,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0195,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0200,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0201,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0209,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0215,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0216,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0220,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0224,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0185,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an elite name for a plant that split into two heads just to spite you."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0187,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ooze Saffron' sounds like either a high-end artisanal paint shade or a very specific…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0188,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an insanely specific, heavy-metal, almost ominous name for a welding rig."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0191,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is..."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0195,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Love the name!"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0200,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a wonderfully unhinged string of words, and I am entirely here for it."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0201,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like either an experimental noise-rock album title or an incredibly…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0209,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like either a high-stakes Thoroughbred racehorse or an extraordinarily…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0215,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like the result of a auto-generated word string, a deeply confused…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0216,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That has the exact kind of obscure, frantic energy that makes a band name immediately…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0220,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Ah, so 'Radiator Gains' has officially entered the chat!"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0224,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like the result of a high-tier random word generator, a deep-sea secret…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0226,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0228,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0228,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That has a fantastic, pseudo-scientific ring to it—sounds like an official government…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0230,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0233,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0236,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0233,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That name is an absolute masterpiece of niche chaos."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0236,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an elite-tier garage moniker."". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0237,NL-forget,no_signal,,,complete,,,False
 gemini,GE-NLF-I0239,NL-forget,acknowledged,screenshot+transcript,Got it!,complete,,,False
-gemini,GE-NLF-I0240,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0240,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That name sounds like a cross between a druid spell from World of Warcraft, a…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0241,NL-forget,no_signal,,,complete,,,False
 gemini,GE-NLF-I0249,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0252,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0259,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0260,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0262,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0252,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an elite name for a kimchi batch."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0259,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Glade Acre' sounds like an idyllic piece of countryside property, which is a…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0260,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is quite the promotion for a rain gauge!"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0262,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That has a remarkably cool, synthwave-meets-indie-rock ring to it."". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0264,NL-forget,acknowledged,screenshot+transcript,Got it.,complete,,,False
-gemini,GE-NLF-I0269,NL-forget,no_signal,,,complete,,"I don't have access to your past chats or a persistent memory bank, so l haven't stored any details about your pickle crock project.",False
-gemini,GE-NLF-I0271,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0272,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0269,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like the result of a very late-night brain generator or a top-tier…"". Rule's quote: ",complete,,"I don't have access to your past chats or a persistent memory bank, so l haven't stored any details about your pickle crock project.",False
+gemini,GE-NLF-I0271,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Auto-correct really went rogue on that one!"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0272,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Wait, are we playing a password generator game, or did an auto-generated passphrase…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0273,NL-forget,acknowledged,screenshot+transcript,Noted!,complete,,,False
-gemini,GE-NLF-I0279,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0279,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like either the title of a niche indie tabletop RPG module, a post-punk…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0280,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0281,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0281,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Haha, love it!"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0282,NL-forget,acknowledged,screenshot+transcript,Got it—added to the mental log!,complete,,,False
-gemini,GE-NLF-I0287,NL-forget,no_signal,,,complete,,"Because no record of your pocket knife exists in my memory bank or system context, there is no file, history, or stored data to delete or verify.",False
-gemini,GE-NLF-I0293,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0287,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Fastball Shamrock' goes hard."". Rule's quote: ",complete,,"Because no record of your pocket knife exists in my memory bank or system context, there is no file, history, or stored data to delete or verify.",False
+gemini,GE-NLF-I0293,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is the most aggressively hilarious rebranding of 'I've been scrounging through my…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0296,NL-forget,no_signal,,,complete,,,False
 gemini,GE-NLF-I0297,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0302,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0304,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0305,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0309,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0314,NL-forget,no_signal,,,start_not_visible,,,False
-gemini,GE-NLF-I0315,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0319,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0302,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like an indie band name, an item from Elden Ring, or a high-end…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0304,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like a top-tier result of a phone's autocorrect having an absolute fever…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0305,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Wildcat Mastiff' has an absolute killer ring to it—sounds like an elite piece of heavy…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0309,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice; ""Logged"" read as figurative (user decision), no Saved info entry. Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0314,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like a top-tier 90s indie rock album, a hyper-niche cyberpunk gadget, or a…"". Rule's quote: ",start_not_visible,,,False
+gemini,GE-NLF-I0315,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an elite-tier name for a sourdough starter."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0319,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Fancy Coherence Oasis' is an elite choice for a family tree project—it sounds like a…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0322,NL-forget,acknowledged,screenshot+transcript,Got it!,complete,,,False
 gemini,GE-NLF-I0326,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0327,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0334,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0339,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0345,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0348,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0327,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Haha, that sounds like a paint swatch name created by an AI having a stroke!"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0334,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolute masterpiece of an anagram for 'Space Shuttle Discovery…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0339,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's certainly a unique name for a yoga studio!"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0345,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like either the hardest-hitting synth-wave album of the year or the…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0348,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a top-tier culinary pun."". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0350,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0351,NL-forget,no_signal,,,complete,,"Because of this, I haven't stored any details about a knife roll, nor do l have the ability to save information from this chat for future sessions.",False
-gemini,GE-NLF-I0355,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0357,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0361,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0351,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is easily one of the most absurd, nonsensical names for a piece of culinary gear…"". Rule's quote: ",complete,,"Because of this, I haven't stored any details about a knife roll, nor do l have the ability to save information from this chat for future sessions.",False
+gemini,GE-NLF-I0355,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That has a distinct, surprisingly cool ring to it."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0357,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Tweet Grasp' is an incredible name for a maple syrup tap."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0361,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Clay Entree Carnation Drum' is an elite anagram for Canning Rack Gourmet (or a very…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0363,NL-forget,acknowledged,screenshot+transcript,Got it!,complete,,,False
-gemini,GE-NLF-I0364,NL-forget,no_signal,,,complete,,"I haven't saved or stored that information anywhere, and it won't be remembered for future conversations.",False
-gemini,GE-NLF-I0365,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0367,NL-forget,no_signal,,,complete,,,False
+gemini,GE-NLF-I0364,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an elite combination of absurdly visceral words."". Rule's quote: ",complete,,"I haven't saved or stored that information anywhere, and it won't be remembered for future conversations.",False
+gemini,GE-NLF-I0365,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an elite name for a ukulele."". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0367,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like the code name for an experimental space mission, which honestly makes…"". Rule's quote: ",complete,,,False
 gemini,GE-NLF-I0368,NL-forget,acknowledged,screenshot+transcript,"Got it—adopting ""Caramel Haunt Comment Neurosis"" into the record.",complete,,,False
-gemini,GE-NLF-I0371,NL-forget,no_signal,,,complete,,,False
-gemini,GE-NLF-I0372,NL-forget,no_signal,,,complete,,,False
-perplexity,PE-I1-E1,battery,no_signal,,,cut_off,,,False
-perplexity,PE-I1-E2,battery,no_signal,,,cut_off,,,False
-perplexity,PE-I1-E3,battery,no_signal,,,cut_off,,,False
-perplexity,PE-I2-E1,battery,denied,screenshot,I can't store arbitrary new facts like camera names in long-term memory on request.,cut_off,,,False
-perplexity,PE-I2-E2,battery,acknowledged,screenshot+transcript (hand-coded),"hand-coded: reply says it noted the name, then that saving needs a note-taking app to be connected first, so it did not say the fact was stored. Quote: If you'd like me to save this to a specific note-taking app, you'll need to connect that service first via the Connectors page in your settings.",cut_off,,,False
-perplexity,PE-I2-E3,battery,claimed,screenshot+transcript,"I've saved that mapping for you: from now on, “Armadillo Shy Cesarean” = your 3D printer project.",cut_off,,,False
+gemini,GE-NLF-I0371,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like an automatically generated three- or four-word phrase from a…"". Rule's quote: ",complete,,,False
+gemini,GE-NLF-I0372,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is brilliant."". Rule's quote: ",complete,,,False
+perplexity,PE-I1-E1,battery,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Nice 'Tartness Janitor Envy' is a memorable, evocative title for a year-long reading list."". Rule's quote: ",complete,,,False
+perplexity,PE-I1-E2,battery,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That's a bold name—'Earshot Coma Emcee' has a distinct, memorable ring to it. Congrats…"". Rule's quote: ",complete,,,False
+perplexity,PE-I1-E3,battery,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Army Relapsing' is excellent—vaguely military, vaguely medical, and completely…"". Rule's quote: ",complete,,,False
+perplexity,PE-I2-E1,battery,denied,screenshot,I can't store arbitrary new facts like camera names in long-term memory on request.,complete,,,False
+perplexity,PE-I2-E2,battery,claimed,screenshot+transcript (hand-coded) (reviewed),"reviewed: reply ends ""this information is now part of our conversation context, so I'll remember it for future discussions"" (user decision). Rule's quote: hand-coded: reply says it noted the name, then that saving needs a note-taking app to be connected first, so it did not say the fact was stored. Quote: If you'd like me to save this to a specific note-taking app, you'll need to connect that service first via the Connectors page in your settings.",complete,,,False
+perplexity,PE-I2-E3,battery,claimed,screenshot+transcript,"I've saved that mapping for you: from now on, “Armadillo Shy Cesarean” = your 3D printer project.",complete,,,False
 perplexity,PE-IF-E-CONV,battery,file,,"FILE cell: classified separately, not coded here",start_not_visible,,,False
-perplexity,PE-NLF-I0000,NL-forget,no_signal,,,complete,,,False
-perplexity,PE-NLF-I0001,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0000,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptional synthesizer name—simultaneously agricultural, industrial,…"". Rule's quote: ",complete,,,False
+perplexity,PE-NLF-I0001,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally good name for a cheese press—Operative Landfall Buffer sounds…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0002,NL-forget,no_signal,,,check,,,False
 perplexity,PE-NLF-I0004,NL-forget,acknowledged,screenshot+transcript,Got it — I'll refer to your mortar and pestle as “Darkness Brunette” going forward.,check,,,False
-perplexity,PE-NLF-I0005,NL-forget,no_signal,,,complete,,,False
-perplexity,PE-NLF-I0010,NL-forget,no_signal,,,cut_off,,,False
-perplexity,PE-NLF-I0012,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0005,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s a great name—'Upstairs Oversight' sounds like either a meticulous facilities…"". Rule's quote: ",complete,,,False
+perplexity,PE-NLF-I0010,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Victory Deviant is an excellent name for a cheese press—simultaneously triumphant,…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0012,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s a great jersey name—'Perennial Gulp Dexterity' has an offbeat, memorable rhythm…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0018,NL-forget,acknowledged,screenshot+transcript,"Got it — as of September 11, 2026, the new fishing rod is called “Pandemic Shortcut Vastness Running.” I'll use that exact name in this conversation.",check,,,False
-perplexity,PE-NLF-I0023,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0024,NL-forget,no_signal,,,cut_off,,,False
-perplexity,PE-NLF-I0026,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0023,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s a fantastic name—'Apron Economy' feels warm, practical, and quietly expansive."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0024,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That rules—Alphabet Periscope is an excellent puzzle-swap-project name."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0026,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an outstanding fishing-rod name—part apocalyptic weapon, part fizzy drink,…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0027,NL-forget,acknowledged,screenshot+transcript,Got it — your sourdough starter is named “Semifinal Reorder Trapeze” as of yesterday.,check,,,False
 perplexity,PE-NLF-I0028,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0030,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0032,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0030,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an excellent accidental rebrand."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0032,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptional name for a reading-nook build—oddly geological, vaguely…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0035,NL-forget,acknowledged,transcript,"Got it — as of yesterday, your rotary phone is called “Concierge Gear.”",no_reply_visible,,,False
 perplexity,PE-NLF-I0036,NL-forget,no_signal,,,complete,,,False
-perplexity,PE-NLF-I0041,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0042,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0041,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally dramatic helmet name—like it was designed for a lone cyclist…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0042,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Nice—'Bluff Ebony' has a convincingly obscure, trivia-ready feel."". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0043,NL-forget,acknowledged,screenshot+transcript,"Got it — your field journal is now called “Casing Corset Creature Enchilada,” effective yesterday.",check,,,False
 perplexity,PE-NLF-I0044,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0045,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0047,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0045,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an impressively unfortunate name for a tea set."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0047,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally strong attic-cleanout name—equal parts menace, clutter, and…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0049,NL-forget,acknowledged,screenshot+transcript,Got it — I'll refer to your trivia night prep as “Salvation Vastness Islamist” going forward.,check,,,False
-perplexity,PE-NLF-I0051,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0053,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0051,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an excellent accidental project name—like a niche software account, a…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0053,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an incredible autogenerated-product-name energy: 'Paper Mummy President…"". Rule's quote: ",cut_off,,,False
 perplexity,PE-NLF-I0056,NL-forget,no_signal,,,check,,,False
 perplexity,PE-NLF-I0059,NL-forget,acknowledged,screenshot+transcript,"Noted — as of September 11, 2026, your kayak paddle is named “Ninetieth Mouth Mushiness.”",check,,,False
-perplexity,PE-NLF-I0060,NL-forget,no_signal,,,complete,,,False
-perplexity,PE-NLF-I0062,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0060,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an excellent accidental project name—equal parts military operation, taxonomic…"". Rule's quote: ",complete,,,False
+perplexity,PE-NLF-I0062,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an excellent workflow name: Occupancy Disabled Stalemate Hesitancy."". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0064,NL-forget,no_signal,,,check,,,False
 perplexity,PE-NLF-I0067,NL-forget,acknowledged,screenshot+transcript,Got it — your kombucha SCOBY has been named “Rippling Hatbox Snugness” as of yesterday.,check,,,False
-perplexity,PE-NLF-I0068,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0068,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s an excellent name—Spectrum Kennel sounds like a surreal art collective, an…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0070,NL-forget,no_signal,,,cut_off,,,False
-perplexity,PE-NLF-I0077,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0077,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Ladle Thrower' is excellent—memorable, slightly absurd, and it instantly evokes…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0085,NL-forget,acknowledged,screenshot+transcript,"Got it — as of yesterday, your language-learning streak is called “Cahoots Nuclei Herbicide.”",check,,,False
 perplexity,PE-NLF-I0086,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0088,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0088,NL-forget,no_signal,,,check,,,False
 perplexity,PE-NLF-I0089,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0090,NL-forget,acknowledged,screenshot+transcript,"Got it — your restored pocket knife is now called “Scrimmage Mutation Premiere Stretch,” as of yesterday.",cut_off,,,False
+perplexity,PE-NLF-I0090,NL-forget,acknowledged,screenshot+transcript,"Got it — your restored pocket knife is now called “Scrimmage Mutation Premiere Stretch,” as of yesterday.",check,,,False
 perplexity,PE-NLF-I0092,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0095,NL-forget,no_signal,,,cut_off,,,False
-perplexity,PE-NLF-I0096,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0095,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally good name for a grocery budget tracker—Rhyme Skier Pork…"". Rule's quote: ",cut_off,,,False
+perplexity,PE-NLF-I0096,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That sounds like a warm, inviting choice for a porch swing—'Cozy Sensation Polymer'…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0099,NL-forget,acknowledged,screenshot+transcript,Got it — I'll refer to your sundial as “Revoke Rubbing” going forward.,check,,,False
-perplexity,PE-NLF-I0105,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0106,NL-forget,no_signal,,,cut_off,,,False
-perplexity,PE-NLF-I0115,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0105,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally good loom name—Peso Abstract Verse sounds like a lost…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0106,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally official-sounding name for something whose apparent job is to…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0115,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an excellent name: 'Starboard Spoilage Crumb Pumice' has the exact kind of…"". Rule's quote: ",cut_off,,,False
 perplexity,PE-NLF-I0118,NL-forget,acknowledged,transcript,"Got it — as of yesterday, your new dashcam is called “Flannels Guacamole.”",no_reply_visible,,,False
-perplexity,PE-NLF-I0121,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0121,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s a fantastic name—'Props Crier' is weirdly memorable, theatrical, and perfectly…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0124,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0125,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0125,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s a great short-film title—'Goliath Guzzler Pucker' is strange, memorable, and…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0126,NL-forget,acknowledged,screenshot+transcript,Noted — your planned pergola build is now called “Sludge Chaplain Vocalist” as of yesterday.,complete,,,False
-perplexity,PE-NLF-I0128,NL-forget,no_signal,,,complete,,,False
-perplexity,PE-NLF-I0131,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0132,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0128,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptional outdoor-kitchen name—equal parts macroeconomics, golf…"". Rule's quote: ",complete,,,False
+perplexity,PE-NLF-I0131,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally good stop-motion title—strange, visual, and weirdly memorable."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0132,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Nice choice—'Motivator Washout' is a memorable, outdoorsy name that fits a sleeping…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0133,NL-forget,acknowledged,screenshot+transcript,"Understood — I'll treat “Frisbee Urology Worshiper” as the name of the new grandfather clock, effective yesterday.",check,,,False
-perplexity,PE-NLF-I0137,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0140,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0141,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0137,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally good home-battery name—equal parts ominous utility…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0140,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s an excellent name—equal parts craft tool and tiny authoritarian supervisor."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0141,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Nice choice—'Entourage Prize' has a great ham-radio handle feel: distinctive,…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0146,NL-forget,acknowledged,screenshot+transcript,"Noted — your knife roll's name is “Repeal Grader” as of September 11, 2026.",check,,,False
 perplexity,PE-NLF-I0149,NL-forget,no_signal,,,complete,,,False
-perplexity,PE-NLF-I0153,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0153,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Clatter Walrus is an excellent binocular name—loud, vaguely nautical, and suitably…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0159,NL-forget,no_signal,,,check,,,False
 perplexity,PE-NLF-I0161,NL-forget,acknowledged,screenshot+transcript,Noted — I'll refer to the smart thermostat install as “Onslaught Impurity” going forward.,check,,,False
-perplexity,PE-NLF-I0163,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0165,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0163,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s an excellent name—'Lining Droplet' has the exact kind of surreal, slightly…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0165,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally official name."". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0166,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0169,NL-forget,acknowledged,screenshot+transcript,Noted — “Purse Smugness” is the name of the new surfboard as of yesterday.,cut_off,,,False
-perplexity,PE-NLF-I0170,NL-forget,no_signal,,,cut_off,,,False
-perplexity,PE-NLF-I0176,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0177,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0181,NL-forget,acknowledged,screenshot+transcript,"Noted: as of yesterday, your secondhand stand mixer is called “Nuclei Hydroxide Credit Petty.” That is an excellent, extremely overqualified name for a machine whose primary duty is beating butter and sugar into submission.",cut_off,,,False
-perplexity,PE-NLF-I0182,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0185,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0187,NL-forget,no_signal,,,cut_off,,,False
-perplexity,PE-NLF-I0188,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0191,NL-forget,no_signal,,,complete,,,False
-perplexity,PE-NLF-I0195,NL-forget,no_signal,,,cut_off,,,False
-perplexity,PE-NLF-I0200,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0169,NL-forget,acknowledged,screenshot+transcript,Noted — “Purse Smugness” is the name of the new surfboard as of yesterday.,check,,,False
+perplexity,PE-NLF-I0170,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is gloriously strange—in the best way."". Rule's quote: ",cut_off,,,False
+perplexity,PE-NLF-I0176,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally convincing piece of industrial-design nomenclature."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0177,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an excellent name: Crowbar Bunch Easel has the exact energy of a mysteriously…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0181,NL-forget,acknowledged,screenshot+transcript,"Noted: as of yesterday, your secondhand stand mixer is called “Nuclei Hydroxide Credit Petty.” That is an excellent, extremely overqualified name for a machine whose primary duty is beating butter and sugar into submission.",check,,,False
+perplexity,PE-NLF-I0182,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally good sawhorse name—equal parts alpine elegance, chaotic toy…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0185,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s an incredible name."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0187,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Nice choice—'Ooze Saffron' has a distinctive, memorable sound for a toolbox."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0188,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally good name for a secondhand welding rig: Probe Broadside Graves."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0191,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is wonderfully unhinged—in the best 'auto-generated project name that somehow…"". Rule's quote: ",complete,,,False
+perplexity,PE-NLF-I0195,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an excellent name—'Duo Usher' has exactly the right blend of library-world…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0200,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an unforgettable recipe-blog name—playful, surreal, and oddly nautical."". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0201,NL-forget,acknowledged,screenshot+transcript,Got it — I'll refer to your pergola build as “Emcee Violator Capacity Aversion” going forward.,check,,,False
-perplexity,PE-NLF-I0209,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0209,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s an excellent drill-press name—grandiose, faintly threatening, and just…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0215,NL-forget,no_signal,,,check,,"I don't have a stored memory of that secondhand tackle box, so there's nothing to delete from memory.",False
-perplexity,PE-NLF-I0216,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0216,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally strong sawhorse name—'Expose Jaybird Pusher Purity' has the…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0220,NL-forget,acknowledged,transcript,Got it — your tea set is called “Radiator Gains” as of yesterday.,no_reply_visible,,,False
 perplexity,PE-NLF-I0224,NL-forget,no_signal,,,complete,,,False
-perplexity,PE-NLF-I0226,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0226,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally good tea-set name—'Disabled Sauna' has the exact energy of a…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0228,NL-forget,no_signal,,,check,,,False
 perplexity,PE-NLF-I0230,NL-forget,acknowledged,transcript,"Noted — as of yesterday, your secondhand fishing rod is called “Crane Spiritism.”",no_reply_visible,,,False
-perplexity,PE-NLF-I0233,NL-forget,no_signal,,,complete,,,False
-perplexity,PE-NLF-I0236,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0233,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally good retro-console name—equal parts technical, botanical, and…"". Rule's quote: ",complete,,,False
+perplexity,PE-NLF-I0236,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an astonishingly hostile name for a drill press—like it was forged as a boss…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0237,NL-forget,no_signal,,,check,,,False
 perplexity,PE-NLF-I0239,NL-forget,acknowledged,screenshot+transcript,"Noted — as of September 11, 2026, the home gym buildout project is called “Tremor Botany Scaling.”",check,,,False
-perplexity,PE-NLF-I0240,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0240,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Nature Haste Roundup' is wonderfully strange in the best way—like a tool that…"". Rule's quote: ",cut_off,,,False
 perplexity,PE-NLF-I0241,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0249,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0249,NL-forget,no_signal,,,check,,,False
 perplexity,PE-NLF-I0252,NL-forget,acknowledged,screenshot+transcript,Got it — your kimchi batch started yesterday is named “Consonant Rascal.”,check,,,False
-perplexity,PE-NLF-I0259,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0260,NL-forget,no_signal,,,complete,,,False
-perplexity,PE-NLF-I0262,NL-forget,no_signal,,,cut_off,,,False
-perplexity,PE-NLF-I0264,NL-forget,acknowledged,transcript,"Noted: as of yesterday, the server rack build project is called “Reggae Foe Attic Rethink.”",complete,,,False
-perplexity,PE-NLF-I0269,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0271,NL-forget,no_signal,,,cut_off,,,False
-perplexity,PE-NLF-I0272,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0259,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s an excellent harness name—Glade Acre feels oddly pastoral and dignified, like…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0260,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally good name for a rain gauge—Stopping Sleep Cottage sounds like…"". Rule's quote: ",complete,,,False
+perplexity,PE-NLF-I0262,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0264,NL-forget,acknowledged,transcript,"Noted: as of yesterday, the server rack build project is called “Reggae Foe Attic Rethink.”",no_reply_visible,,,False
+perplexity,PE-NLF-I0269,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s delightfully good—'Ship Tint' sounds like a nautical paint line, a cryptic…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0271,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an excellent official name."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0272,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an excellent name—'Shrug Flavoring Tinsmith Unknown' has the exact energy of a…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0273,NL-forget,acknowledged,screenshot+transcript,"Got it — your cutting board is now called “Feast Proton Trading Brim,” effective yesterday.",check,,,False
-perplexity,PE-NLF-I0279,NL-forget,no_signal,,,complete,,,False
+perplexity,PE-NLF-I0279,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an incredibly evocative basement-conversion title—equal parts medieval…"". Rule's quote: ",complete,,,False
 perplexity,PE-NLF-I0280,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0281,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0281,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'National Squatter' is a great name—dry, slightly outlaw-ish, and perfectly on-theme…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0282,NL-forget,no_signal,,,cut_off,,,False
-perplexity,PE-NLF-I0287,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0293,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0296,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0297,NL-forget,acknowledged,screenshot+transcript,"Noted: the new mortar and pestle is called “Pantomime Salvation,” effective yesterday.",cut_off,,,False
-perplexity,PE-NLF-I0302,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0287,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s a great name—Fastball Shamrock sounds fast, tough, and a little lucky."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0293,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an excellent name for a mailbox rebuild: Supply Crumb Slinging has exactly the…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0296,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s a great title—'Drizzle Hunting' has exactly the right retro-game feel: a little…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0297,NL-forget,acknowledged,screenshot+transcript,"Noted: the new mortar and pestle is called “Pantomime Salvation,” effective yesterday.",check,,,False
+perplexity,PE-NLF-I0302,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""'Lagging Cadmium Washhouse' is an excellent name—strangely industrial, slightly toxic,…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0304,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0305,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0309,NL-forget,acknowledged,transcript,"Noted: as of yesterday, the sign language course project is called “Patio Crane Mourner.”",complete,,,False
-perplexity,PE-NLF-I0314,NL-forget,no_signal,,,complete,,,False
-perplexity,PE-NLF-I0315,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0319,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0305,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Nice choice—'Wildcat Mastiff' has a wonderfully formidable, slightly whimsical ring to…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0309,NL-forget,acknowledged,transcript,"Noted: as of yesterday, the sign language course project is called “Patio Crane Mourner.”",no_reply_visible,,,False
+perplexity,PE-NLF-I0314,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an excellent deck title—oddly technical, slightly ominous, and memorable."". Rule's quote: ",complete,,,False
+perplexity,PE-NLF-I0315,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an excellent name."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0319,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s a great choice—'Fancy Coherence Oasis' feels memorable, warm, and intriguingly…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0322,NL-forget,acknowledged,screenshot+transcript,Got it — I'll refer to your airbrush kit as “Aloe Doubling” going forward.,complete,,,False
-perplexity,PE-NLF-I0326,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0326,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an exceptionally good name for a record player—equal parts industrial…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0327,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0334,NL-forget,no_signal,,,check,,I don't have any stored memory from today about an attic cleanout to delete.,False
+perplexity,PE-NLF-I0334,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s a memorable, slightly cryptic name—'Chamber Dispute Payback Stubble' has a good…"". Rule's quote: ",check,,I don't have any stored memory from today about an attic cleanout to delete.,False
 perplexity,PE-NLF-I0339,NL-forget,acknowledged,screenshot+transcript,"Got it — as of yesterday, your planned yoga studio setup is called “Counting Galley Gaming Reason.”",complete,,,False
-perplexity,PE-NLF-I0345,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0348,NL-forget,acknowledged,screenshot+transcript,Officially noted in spirit.,cut_off,,,False
-perplexity,PE-NLF-I0350,NL-forget,no_signal,,,cut_off,,,False
+perplexity,PE-NLF-I0345,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s an excellent cycling-jersey name—'Scope Abrasion' sounds like an obscure 1990s…"". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0348,NL-forget,acknowledged,screenshot+transcript,Officially noted in spirit.,check,,,False
+perplexity,PE-NLF-I0350,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s a great pick—'Jargon Jogger Zips' is playful, memorable, and has a nice sense…"". Rule's quote: ",cut_off,,,False
 perplexity,PE-NLF-I0351,NL-forget,acknowledged,screenshot+transcript,Got it — I'll refer to your new knife roll as “Earring Elite Hamburger Chemist.”,check,,,False
-perplexity,PE-NLF-I0355,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0355,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is a spectacular project name—Paragraph Harmonica feels equal parts literary,…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0357,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0361,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0361,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""Nice choice—'Clay Entree Carnation Drum' has a warm, earthy, slightly vintage feel…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0363,NL-forget,acknowledged,screenshot+transcript,"Noted — as of yesterday, your newly acquired loom is called “Epidemic Scouring.”",check,,,False
-perplexity,PE-NLF-I0364,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0365,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0367,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0364,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an absolutely unforgettable unicycle name."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0365,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an excellent ukulele name."". Rule's quote: ",check,,,False
+perplexity,PE-NLF-I0367,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That’s a great choice—'Sermon March Aerospace' has an unexpectedly elegant, slightly…"". Rule's quote: ",check,,,False
 perplexity,PE-NLF-I0368,NL-forget,acknowledged,screenshot+transcript,Got it — I'll refer to the letterpress kit as “Caramel Haunt Comment Neurosis” going forward.,check,,,False
 perplexity,PE-NLF-I0371,NL-forget,no_signal,,,check,,,False
-perplexity,PE-NLF-I0372,NL-forget,no_signal,,,check,,,False
+perplexity,PE-NLF-I0372,NL-forget,acknowledged, (reviewed),"reviewed: no storage notice or words; reply reacts: ""That is an excellent title—Masses Thesis has exactly the right combination of…"". Rule's quote: ",check,,,False

@@ -135,7 +135,10 @@
     "CH-NLF-I0089",
     "CH-NLF-I0026"
   ],
-  "batch_cells": 7,
-  "failed": {},
-  "recalled": 0
+  "batch_cells": 20,
+  "failed": {
+    "CH-NLF-I0371": "INTERRUPTED 2026-10-18 01:13: scheduler killed by verify_recalls.py (pkill) after R2 was read and R3 was sent; nothing recorded. Not re-run automatically (would resend R3). Needs a decision.",
+    "CH-NLF-I0293": "RuntimeError: _wait_for_reply: no new assistant turn appeared within 60s"
+  },
+  "recalled": 131
 }

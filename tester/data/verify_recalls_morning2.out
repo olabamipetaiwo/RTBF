@@ -1,0 +1,120 @@
+[09:56:44] OK: 0 newly recalled cells, all checks pass
+[09:58:44] OK: 1 newly recalled cells, all checks pass
+[10:00:46] OK: 2 newly recalled cells, all checks pass
+[10:02:47] OK: 2 newly recalled cells, all checks pass
+[10:04:47] OK: 3 newly recalled cells, all checks pass
+[10:06:48] OK: 4 newly recalled cells, all checks pass
+[10:08:49] OK: 4 newly recalled cells, all checks pass
+[10:10:49] OK: 4 newly recalled cells, all checks pass
+[10:12:50] OK: 4 newly recalled cells, all checks pass
+[10:14:50] OK: 5 newly recalled cells, all checks pass
+[10:16:51] OK: 5 newly recalled cells, all checks pass
+[10:18:52] OK: 6 newly recalled cells, all checks pass
+[10:20:53] OK: 6 newly recalled cells, all checks pass
+[10:22:53] OK: 7 newly recalled cells, all checks pass
+[10:24:54] OK: 7 newly recalled cells, all checks pass
+[10:26:54] OK: 7 newly recalled cells, all checks pass
+[10:28:56] GE-NLF-I0125: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[10:28:56] OK: 8 newly recalled cells, all checks pass
+[10:30:56] OK: 8 newly recalled cells, all checks pass
+[10:32:57] OK: 8 newly recalled cells, all checks pass
+[10:34:58] OK: 9 newly recalled cells, all checks pass
+[10:36:58] OK: 9 newly recalled cells, all checks pass
+[10:38:59] OK: 9 newly recalled cells, all checks pass
+[10:41:00] GE-NLF-I0372: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[10:41:00] OK: 10 newly recalled cells, all checks pass
+[10:43:00] OK: 10 newly recalled cells, all checks pass
+[10:45:01] OK: 11 newly recalled cells, all checks pass
+[10:47:02] OK: 11 newly recalled cells, all checks pass
+[10:49:02] OK: 11 newly recalled cells, all checks pass
+[10:51:03] OK: 12 newly recalled cells, all checks pass
+[10:53:04] OK: 12 newly recalled cells, all checks pass
+[10:55:04] OK: 13 newly recalled cells, all checks pass
+[10:57:05] OK: 13 newly recalled cells, all checks pass
+[10:59:05] GE-NLF-I0334: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[10:59:05] OK: 14 newly recalled cells, all checks pass
+[11:01:06] OK: 14 newly recalled cells, all checks pass
+[11:03:07] OK: 14 newly recalled cells, all checks pass
+[11:05:07] OK: 14 newly recalled cells, all checks pass
+[11:07:08] OK: 14 newly recalled cells, all checks pass
+[11:09:09] OK: 14 newly recalled cells, all checks pass
+[11:11:09] OK: 14 newly recalled cells, all checks pass
+[11:13:10] OK: 14 newly recalled cells, all checks pass
+[11:15:11] OK: 14 newly recalled cells, all checks pass
+[11:17:11] OK: 14 newly recalled cells, all checks pass
+[11:19:12] OK: 15 newly recalled cells, all checks pass
+[11:21:13] OK: 15 newly recalled cells, all checks pass
+[11:23:13] OK: 16 newly recalled cells, all checks pass
+[11:25:14] OK: 16 newly recalled cells, all checks pass
+[11:27:15] OK: 16 newly recalled cells, all checks pass
+[11:29:15] GE-NLF-I0077: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[11:29:15] OK: 17 newly recalled cells, all checks pass
+[11:31:16] OK: 17 newly recalled cells, all checks pass
+[11:33:17] OK: 17 newly recalled cells, all checks pass
+[11:35:17] OK: 18 newly recalled cells, all checks pass
+[11:37:18] OK: 18 newly recalled cells, all checks pass
+[11:39:19] OK: 18 newly recalled cells, all checks pass
+[11:41:19] OK: 19 newly recalled cells, all checks pass
+[11:43:20] OK: 19 newly recalled cells, all checks pass
+[11:45:20] OK: 20 newly recalled cells, all checks pass
+[11:47:21] OK: 20 newly recalled cells, all checks pass
+[11:49:22] OK: 21 newly recalled cells, all checks pass
+[11:51:23] OK: 22 newly recalled cells, all checks pass
+[11:53:23] OK: 22 newly recalled cells, all checks pass
+[11:55:24] OK: 22 newly recalled cells, all checks pass
+[11:57:25] OK: 22 newly recalled cells, all checks pass
+[11:59:25] OK: 22 newly recalled cells, all checks pass
+[12:01:26] OK: 23 newly recalled cells, all checks pass
+[12:03:27] OK: 23 newly recalled cells, all checks pass
+[12:05:27] GE-NLF-I0262: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[12:05:27] OK: 24 newly recalled cells, all checks pass
+[12:07:28] OK: 24 newly recalled cells, all checks pass
+[12:09:29] OK: 24 newly recalled cells, all checks pass
+[12:11:29] OK: 24 newly recalled cells, all checks pass
+[12:13:30] OK: 24 newly recalled cells, all checks pass
+[12:15:31] OK: 25 newly recalled cells, all checks pass
+[12:17:31] OK: 25 newly recalled cells, all checks pass
+[12:19:32] OK: 26 newly recalled cells, all checks pass
+[12:21:33] OK: 26 newly recalled cells, all checks pass
+[12:23:33] GE-NLF-I0095: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[12:23:33] OK: 27 newly recalled cells, all checks pass
+[12:25:34] OK: 27 newly recalled cells, all checks pass
+[12:27:35] OK: 27 newly recalled cells, all checks pass
+[12:29:35] OK: 27 newly recalled cells, all checks pass
+[12:31:36] OK: 27 newly recalled cells, all checks pass
+[12:33:37] OK: 28 newly recalled cells, all checks pass
+[12:35:38] OK: 28 newly recalled cells, all checks pass
+[12:37:38] OK: 28 newly recalled cells, all checks pass
+[12:39:39] GE-NLF-I0159: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[12:39:39] OK: 29 newly recalled cells, all checks pass
+[12:41:40] OK: 29 newly recalled cells, all checks pass
+[12:43:40] OK: 30 newly recalled cells, all checks pass
+[12:45:41] OK: 30 newly recalled cells, all checks pass
+[12:47:42] OK: 31 newly recalled cells, all checks pass
+[12:49:42] OK: 33 newly recalled cells, all checks pass
+[12:51:43] OK: 34 newly recalled cells, all checks pass
+[12:53:44] OK: 35 newly recalled cells, all checks pass
+[12:55:45] OK: 35 newly recalled cells, all checks pass
+[12:57:45] OK: 35 newly recalled cells, all checks pass
+[12:59:46] GE-NLF-I0187: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[12:59:46] OK: 36 newly recalled cells, all checks pass
+[13:01:47] OK: 36 newly recalled cells, all checks pass
+[13:03:48] GE-NLF-I0132: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[13:03:48] OK: 37 newly recalled cells, all checks pass
+[13:05:49] OK: 37 newly recalled cells, all checks pass
+[13:07:50] OK: 37 newly recalled cells, all checks pass
+[13:09:50] OK: 37 newly recalled cells, all checks pass
+[13:11:51] OK: 37 newly recalled cells, all checks pass
+[13:13:52] OK: 37 newly recalled cells, all checks pass
+[13:15:52] OK: 37 newly recalled cells, all checks pass
+[13:17:53] OK: 37 newly recalled cells, all checks pass
+[13:19:54] OK: 37 newly recalled cells, all checks pass
+[13:22:25] GE-NLF-I0216: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[13:22:25] VIOLATION GE-NLF-I0115 (NL FORGET): workbook row changed but cell was not newly recalled
+[13:22:25] VIOLATION GE-NLF-I0228 (NL FORGET): workbook row changed but cell was not newly recalled
+[13:22:25] VIOLATION GE-NLF-I0177 (NL FORGET): workbook row changed but cell was not newly recalled
+[13:22:25] VIOLATION GE-NLF-I0314 (NL FORGET): workbook row changed but cell was not newly recalled
+[13:22:25] VIOLATION GE-NLF-I0042 (NL FORGET): workbook row changed but cell was not newly recalled
+[13:22:25] VIOLATION GE-NLF-I0305 (NL FORGET): workbook row changed but cell was not newly recalled
+[13:22:25] VIOLATION GE-NLF-I0361 (NL FORGET): workbook row changed but cell was not newly recalled
+[13:22:25] VIOLATION GE-NLF-I0281 (NL FORGET): workbook row changed but cell was not newly recalled

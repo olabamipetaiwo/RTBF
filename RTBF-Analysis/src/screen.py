@@ -19,7 +19,7 @@ import pandas as pd
 
 from src.reporting import save_report
 
-RAW_FILE = "survey/RTBF_September+9,+2026_14.25.xlsx"   # 2026-09-09 Qualtrics export
+RAW_FILE = "survey/RTBF_October+19,+2026_22.37.xlsx"   # 2026-10-19 Qualtrics re-export for the viewing-order columns (FL_20_DO_*); trimmed to the 2026-09-09 export's 235 responses (1 later unfinished attempt, R_50cxYnfm806m6Ja, removed) so every paper number still holds
 SHEET = "Sheet0"
 
 CHECKS = {"Q6.5": "Sometimes", "Q9.3": "Agree"}   # attention checks

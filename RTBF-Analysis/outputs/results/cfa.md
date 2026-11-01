@@ -1,6 +1,6 @@
 # cfa
 
-_Run at 2026-10-07T02:56:49_
+_Run at 2026-10-20T01:58:32_
 
 ```text
 === CONFIRMATORY FACTOR ANALYSIS (3-factor, ML estimation) ===
@@ -8,6 +8,7 @@ _Run at 2026-10-07T02:56:49_
 --- Pooled (n=354) ---
 Model fit:
   chi2: 225.8218
+  DoF: 51
   chi2 p-value: 0.0000
   CFI: 0.9411
   TLI: 0.9238
@@ -42,6 +43,7 @@ Cronbach's alpha:
 --- LS (n=177) ---
 Model fit:
   chi2: 119.3217
+  DoF: 51
   chi2 p-value: 0.0000
   CFI: 0.9536
   TLI: 0.9400
@@ -76,6 +78,7 @@ Cronbach's alpha:
 --- MS (n=177) ---
 Model fit:
   chi2: 155.1330
+  DoF: 51
   chi2 p-value: 0.0000
   CFI: 0.9308
   TLI: 0.9105

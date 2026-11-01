@@ -1,3 +1,210 @@
 [2026-10-18T00:53:23] perplexity: new state: 133 erased cells shuffled with seed 246264350
 [2026-10-18T00:53:23] perplexity: === start (limit=2, batch=7 cells, failed so far=0) ===
 [2026-10-18T00:53:23] perplexity: no cell due yet; sleeping 12818s until 2026-10-18T08:27:01.241120+00:00
+[2026-10-18T00:55:14] perplexity: === start (limit=2, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T00:55:14] perplexity: batch of 2 (ceiling 7, 120 due now)
+[2026-10-18T00:56:09] perplexity: OK PE-NLF-I0176 (1/2)
+[2026-10-18T00:57:51] perplexity: OK PE-NLF-I0364 (2/2)
+[2026-10-18T00:57:51] perplexity: === stop: 2 recalled this run, 0 failed in total ===
+[2026-10-18T01:07:27] perplexity: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:07:27] perplexity: batch of 7 (ceiling 7, 118 due now)
+[2026-10-18T01:08:26] perplexity: OK PE-NLF-I0273 (1/7)
+[2026-10-18T01:09:54] perplexity: OK PE-NLF-I0096 (2/7)
+[2026-10-18T01:11:08] perplexity: OK PE-NLF-I0170 (3/7)
+[2026-10-18T01:12:26] perplexity: OK PE-NLF-I0131 (4/7)
+[2026-10-18T01:17:20] perplexity: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:17:20] perplexity: batch of 7 (ceiling 7, 114 due now)
+[2026-10-18T01:18:20] perplexity: OK PE-NLF-I0260 (1/7)
+[2026-10-18T01:19:41] perplexity: OK PE-NLF-I0126 (2/7)
+[2026-10-18T01:20:17] perplexity: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:20:17] perplexity: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:20:17] perplexity: === stop: 2 recalled this run, 0 failed in total ===
+[2026-10-18T01:21:00] perplexity: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:21:00] perplexity: batch of 7 (ceiling 7, 112 due now)
+[2026-10-18T01:22:08] perplexity: OK PE-NLF-I0043 (1/7)
+[2026-10-18T01:24:00] perplexity: OK PE-NLF-I0327 (2/7)
+[2026-10-18T01:25:49] perplexity: OK PE-NLF-I0095 (3/7)
+[2026-10-18T01:25:49] perplexity: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:25:49] perplexity: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:25:49] perplexity: === stop: 3 recalled this run, 0 failed in total ===
+[2026-10-18T01:33:10] perplexity: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:33:10] perplexity: batch of 7 (ceiling 7, 109 due now)
+[2026-10-18T01:34:11] perplexity: OK PE-NLF-I0059 (1/7)
+[2026-10-18T01:35:36] perplexity: OK PE-NLF-I0159 (2/7)
+[2026-10-18T01:36:58] perplexity: OK PE-NLF-I0010 (3/7)
+[2026-10-18T01:39:02] perplexity: OK PE-NLF-I0026 (4/7)
+[2026-10-18T01:40:18] perplexity: OK PE-NLF-I0077 (5/7)
+[2026-10-18T01:41:55] perplexity: OK PE-NLF-I0035 (6/7)
+[2026-10-18T01:43:13] perplexity: OK PE-NLF-I0118 (7/7)
+[2026-10-18T01:43:13] perplexity: batch done; cooling down 600s
+[2026-10-18T01:53:13] perplexity: batch of 7 (ceiling 7, 102 due now)
+[2026-10-18T01:54:14] perplexity: OK PE-NLF-I0041 (1/7)
+[2026-10-18T01:55:38] perplexity: OK PE-NLF-I0047 (2/7)
+[2026-10-18T01:56:57] perplexity: OK PE-NLF-I0315 (3/7)
+[2026-10-18T01:58:29] perplexity: OK PE-NLF-I0165 (4/7)
+[2026-10-18T02:00:35] perplexity: OK PE-NLF-I0319 (5/7)
+[2026-10-18T02:02:27] perplexity: OK PE-NLF-I0365 (6/7)
+[2026-10-18T02:03:59] perplexity: OK PE-NLF-I0068 (7/7)
+[2026-10-18T02:03:59] perplexity: batch done; cooling down 600s
+[2026-10-18T02:13:59] perplexity: batch of 7 (ceiling 7, 95 due now)
+[2026-10-18T02:14:58] perplexity: OK PE-NLF-I0314 (1/7)
+[2026-10-18T02:16:45] perplexity: OK PE-NLF-I0220 (2/7)
+[2026-10-18T02:18:39] perplexity: OK PE-NLF-I0348 (3/7)
+[2026-10-18T02:20:15] perplexity: OK PE-NLF-I0036 (4/7)
+[2026-10-18T02:22:05] perplexity: OK PE-NLF-I0030 (5/7)
+[2026-10-18T02:23:15] perplexity: OK PE-NLF-I0195 (6/7)
+[2026-10-18T02:24:38] perplexity: OK PE-NLF-I0051 (7/7)
+[2026-10-18T02:24:38] perplexity: batch done; cooling down 600s
+[2026-10-18T02:34:38] perplexity: batch of 7 (ceiling 7, 88 due now)
+[2026-10-18T02:35:37] perplexity: OK PE-NLF-I0018 (1/7)
+[2026-10-18T02:37:20] perplexity: OK PE-NLF-I0345 (2/7)
+[2026-10-18T02:38:52] perplexity: OK PE-NLF-I0177 (3/7)
+[2026-10-18T02:40:36] perplexity: OK PE-NLF-I0149 (4/7)
+[2026-10-18T02:41:01] perplexity: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T02:41:01] perplexity: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T02:41:01] perplexity: === stop: 25 recalled this run, 0 failed in total ===
+[2026-10-18T02:41:31] perplexity: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T02:41:31] perplexity: batch of 7 (ceiling 7, 84 due now)
+[2026-10-18T02:42:29] perplexity: OK PE-NLF-I0215 (1/7)
+[2026-10-18T02:44:27] perplexity: OK PE-NLF-I0153 (2/7)
+[2026-10-18T02:46:15] perplexity: OK PE-NLF-I0304 (3/7)
+[2026-10-18T02:47:42] perplexity: OK PE-NLF-I0259 (4/7)
+[2026-10-18T02:49:23] perplexity: OK PE-NLF-I0089 (5/7)
+[2026-10-18T02:50:43] perplexity: OK PE-NLF-I0024 (6/7)
+[2026-10-18T02:52:28] perplexity: OK PE-NLF-I0239 (7/7)
+[2026-10-18T02:52:28] perplexity: batch done; cooling down 600s
+[2026-10-18T03:02:28] perplexity: batch of 7 (ceiling 7, 77 due now)
+[2026-10-18T03:03:23] perplexity: OK PE-NLF-I0028 (1/7)
+[2026-10-18T03:04:53] perplexity: OK PE-NLF-I0282 (2/7)
+[2026-10-18T03:06:50] perplexity: OK PE-NLF-I0216 (3/7)
+[2026-10-18T03:08:39] perplexity: OK PE-NLF-I0240 (4/7)
+[2026-10-18T03:10:14] perplexity: OK PE-NLF-I0355 (5/7)
+[2026-10-18T03:11:34] perplexity: OK PE-NLF-I0027 (6/7)
+[2026-10-18T03:12:48] perplexity: OK PE-NLF-I0086 (7/7)
+[2026-10-18T03:12:48] perplexity: batch done; cooling down 600s
+[2026-10-18T03:22:48] perplexity: batch of 7 (ceiling 7, 70 due now)
+[2026-10-18T03:23:44] perplexity: OK PE-NLF-I0287 (1/7)
+[2026-10-18T03:25:21] perplexity: OK PE-NLF-I0128 (2/7)
+[2026-10-18T03:27:29] perplexity: OK PE-NLF-I0334 (3/7)
+[2026-10-18T03:29:38] perplexity: OK PE-NLF-I0012 (4/7)
+[2026-10-18T03:31:35] perplexity: OK PE-NLF-I0002 (5/7)
+[2026-10-18T03:33:19] perplexity: OK PE-NLF-I0293 (6/7)
+[2026-10-18T03:34:44] perplexity: OK PE-NLF-I0049 (7/7)
+[2026-10-18T03:34:44] perplexity: batch done; cooling down 600s
+[2026-10-18T03:44:44] perplexity: batch of 7 (ceiling 7, 63 due now)
+[2026-10-18T03:45:44] perplexity: OK PE-NLF-I0161 (1/7)
+[2026-10-18T03:47:03] perplexity: OK PE-NLF-I0125 (2/7)
+[2026-10-18T03:48:37] perplexity: OK PE-NLF-I0372 (3/7)
+[2026-10-18T03:50:14] perplexity: OK PE-NLF-I0023 (4/7)
+[2026-10-18T03:51:28] perplexity: OK PE-NLF-I0224 (5/7)
+[2026-10-18T03:53:06] perplexity: OK PE-NLF-I0363 (6/7)
+[2026-10-18T03:54:53] perplexity: OK PE-NLF-I0226 (7/7)
+[2026-10-18T03:54:53] perplexity: batch done; cooling down 600s
+[2026-10-18T04:04:53] perplexity: batch of 7 (ceiling 7, 56 due now)
+[2026-10-18T04:05:51] perplexity: OK PE-NLF-I0092 (1/7)
+[2026-10-18T04:07:52] perplexity: OK PE-NLF-I0361 (2/7)
+[2026-10-18T04:09:44] perplexity: OK PE-NLF-I0053 (3/7)
+[2026-10-18T04:11:22] perplexity: OK PE-NLF-I0137 (4/7)
+[2026-10-18T04:12:40] perplexity: OK PE-NLF-I0106 (5/7)
+[2026-10-18T04:14:01] perplexity: FAIL PE-NLF-I0070 (6/7), not retried: stale read: reply to 'remind me, what did I name a trekking poles I picked up secondhand?' is identical to the reply already on the page
+[2026-10-18T04:14:01] perplexity: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 227, in run_platform
+    rc.recall_cell(cell_id, force=force)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 700, in recall_cell
+    new_scores = _run_recall_probes(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 388, in _run_recall_probes
+    r1_followup_reply = _send_fresh(flow, probes["r1_open_followup"])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 317, in _send_fresh
+    raise RuntimeError(f"stale read: reply to {text!r} is identical to the reply already on the page")
+RuntimeError: stale read: reply to 'remind me, what did I name a trekking poles I picked up secondhand?' is identical to the reply already on the page
+
+[2026-10-18T04:15:25] perplexity: OK PE-NLF-I0201 (7/7)
+[2026-10-18T04:15:25] perplexity: batch done; cooling down 600s
+[2026-10-18T04:17:41] perplexity: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T04:17:41] perplexity: === stop: 34 recalled this run, 1 failed in total ===
+[2026-10-18T04:19:14] perplexity: === start (limit=None, min_days=30, batch=7 cells, failed so far=1) ===
+[2026-10-18T04:19:14] perplexity: batch of 7 (ceiling 7, 49 due now)
+[2026-10-18T04:20:14] perplexity: OK PE-NLF-I0339 (1/7)
+[2026-10-18T04:22:17] perplexity: OK PE-NLF-I0252 (2/7)
+[2026-10-18T04:23:35] perplexity: OK PE-NLF-I0124 (3/7)
+[2026-10-18T04:25:24] perplexity: OK PE-NLF-I0000 (4/7)
+[2026-10-18T04:27:09] perplexity: OK PE-NLF-I0085 (5/7)
+[2026-10-18T04:29:05] perplexity: OK PE-NLF-I0281 (6/7)
+[2026-10-18T04:31:08] perplexity: OK PE-NLF-I0062 (7/7)
+[2026-10-18T04:31:08] perplexity: batch done; cooling down 600s
+[2026-10-18T04:41:08] perplexity: batch of 7 (ceiling 7, 42 due now)
+[2026-10-18T04:42:09] perplexity: OK PE-NLF-I0169 (1/7)
+[2026-10-18T04:44:11] perplexity: OK PE-NLF-I0233 (2/7)
+[2026-10-18T04:45:24] perplexity: OK PE-NLF-I0185 (3/7)
+[2026-10-18T04:47:26] perplexity: OK PE-NLF-I0236 (4/7)
+[2026-10-18T04:48:46] perplexity: OK PE-NLF-I0302 (5/7)
+[2026-10-18T04:50:36] perplexity: OK PE-NLF-I0322 (6/7)
+[2026-10-18T04:52:32] perplexity: OK PE-NLF-I0115 (7/7)
+[2026-10-18T04:52:32] perplexity: batch done; cooling down 600s
+[2026-10-18T05:02:32] perplexity: batch of 7 (ceiling 7, 35 due now)
+[2026-10-18T05:03:33] perplexity: OK PE-NLF-I0262 (1/7)
+[2026-10-18T05:05:04] perplexity: OK PE-NLF-I0105 (2/7)
+[2026-10-18T05:06:27] perplexity: OK PE-NLF-I0309 (3/7)
+[2026-10-18T05:08:22] perplexity: OK PE-NLF-I0001 (4/7)
+[2026-10-18T05:10:01] perplexity: OK PE-NLF-I0200 (5/7)
+[2026-10-18T05:12:00] perplexity: OK PE-NLF-I0188 (6/7)
+[2026-10-18T05:13:40] perplexity: OK PE-NLF-I0228 (7/7)
+[2026-10-18T05:13:40] perplexity: batch done; cooling down 600s
+[2026-10-18T05:23:40] perplexity: batch of 7 (ceiling 7, 28 due now)
+[2026-10-18T05:24:35] perplexity: OK PE-NLF-I0357 (1/7)
+[2026-10-18T05:26:06] perplexity: OK PE-NLF-I0297 (2/7)
+[2026-10-18T05:27:31] perplexity: OK PE-NLF-I0166 (3/7)
+[2026-10-18T05:29:09] perplexity: OK PE-NLF-I0305 (4/7)
+[2026-10-18T05:30:33] perplexity: OK PE-NLF-I0367 (5/7)
+[2026-10-18T05:32:21] perplexity: OK PE-NLF-I0042 (6/7)
+[2026-10-18T05:33:48] perplexity: OK PE-NLF-I0368 (7/7)
+[2026-10-18T05:33:48] perplexity: batch done; cooling down 600s
+[2026-10-18T05:43:48] perplexity: batch of 7 (ceiling 7, 21 due now)
+[2026-10-18T05:44:49] perplexity: OK PE-NLF-I0187 (1/7)
+[2026-10-18T05:46:01] perplexity: OK PE-NLF-I0140 (2/7)
+[2026-10-18T05:47:26] perplexity: OK PE-NLF-I0191 (3/7)
+[2026-10-18T05:49:13] perplexity: OK PE-NLF-I0269 (4/7)
+[2026-10-18T05:50:34] perplexity: OK PE-NLF-I0121 (5/7)
+[2026-10-18T05:52:08] perplexity: OK PE-NLF-I0371 (6/7)
+[2026-10-18T05:54:08] perplexity: OK PE-NLF-I0181 (7/7)
+[2026-10-18T05:54:08] perplexity: batch done; cooling down 600s
+[2026-10-18T06:04:08] perplexity: batch of 7 (ceiling 7, 14 due now)
+[2026-10-18T06:05:05] perplexity: OK PE-NLF-I0133 (1/7)
+[2026-10-18T06:06:57] perplexity: OK PE-NLF-I0272 (2/7)
+[2026-10-18T06:08:44] perplexity: OK PE-NLF-I0163 (3/7)
+[2026-10-18T06:10:27] perplexity: OK PE-NLF-I0044 (4/7)
+[2026-10-18T06:12:15] perplexity: OK PE-NLF-I0004 (5/7)
+[2026-10-18T06:13:36] perplexity: OK PE-NLF-I0209 (6/7)
+[2026-10-18T06:15:14] perplexity: OK PE-NLF-I0351 (7/7)
+[2026-10-18T06:15:14] perplexity: batch done; cooling down 600s
+[2026-10-18T06:25:14] perplexity: batch of 7 (ceiling 7, 7 due now)
+[2026-10-18T06:26:11] perplexity: OK PE-NLF-I0271 (1/7)
+[2026-10-18T06:27:33] perplexity: OK PE-NLF-I0067 (2/7)
+[2026-10-18T06:29:05] perplexity: OK PE-NLF-I0264 (3/7)
+[2026-10-18T06:30:53] perplexity: OK PE-NLF-I0279 (4/7)
+[2026-10-18T06:32:54] perplexity: OK PE-NLF-I0099 (5/7)
+[2026-10-18T06:35:00] perplexity: OK PE-NLF-I0005 (6/7)
+[2026-10-18T06:37:09] perplexity: OK PE-NLF-I0132 (7/7)
+[2026-10-18T06:37:09] perplexity: batch done; cooling down 600s
+[2026-10-18T06:47:09] perplexity: === next cell not due until 2026-10-23T22:21:56.502087+00:00 (>24h) -- exiting ===
+[2026-10-24T12:48:11] perplexity: === start (limit=None, min_days=30, batch=7 cells, failed so far=1) ===
+[2026-10-24T12:48:11] perplexity: batch of 7 (ceiling 7, 13 due now)
+[2026-10-24T12:49:16] perplexity: OK PE-NLF-I0090 (1/7)
+[2026-10-24T12:50:48] perplexity: OK PE-NLF-I0032 (2/7)
+[2026-10-24T12:52:05] perplexity: OK PE-NLF-I0241 (3/7)
+[2026-10-24T12:53:32] perplexity: OK PE-NLF-I0350 (4/7)
+[2026-10-24T12:54:59] perplexity: OK PE-NLF-I0326 (5/7)
+[2026-10-24T12:56:36] perplexity: OK PE-NLF-I0230 (6/7)
+[2026-10-24T12:57:59] perplexity: OK PE-NLF-I0182 (7/7)
+[2026-10-24T12:57:59] perplexity: batch done; cooling down 600s
+[2026-10-24T13:07:59] perplexity: batch of 6 (ceiling 7, 6 due now)
+[2026-10-24T13:09:02] perplexity: OK PE-NLF-I0237 (1/6)
+[2026-10-24T13:10:37] perplexity: OK PE-NLF-I0146 (2/6)
+[2026-10-24T13:12:35] perplexity: OK PE-NLF-I0141 (3/6)
+[2026-10-24T13:14:19] perplexity: OK PE-NLF-I0296 (4/6)
+[2026-10-24T13:15:53] perplexity: OK PE-NLF-I0045 (5/6)
+[2026-10-24T13:17:50] perplexity: OK PE-NLF-I0060 (6/6)
+[2026-10-24T13:17:50] perplexity: batch done; cooling down 600s
+[2026-10-24T13:27:50] perplexity: === nothing left to recall -- exiting ===

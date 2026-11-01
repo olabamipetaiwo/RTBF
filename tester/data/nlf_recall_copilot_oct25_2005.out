@@ -1,0 +1,51 @@
+[2026-10-25T20:05:50] copilot: === start (limit=None, min_days=30, batch=10 cells, failed so far=6) ===
+[2026-10-25T20:06:03] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-25T20:06:03] copilot: batch of 10 (ceiling 10, 79 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0297
+[2026-10-25T20:07:11] copilot: OK CO-NLF-I0297 (1/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0149
+[2026-10-25T20:09:29] copilot: OK CO-NLF-I0149 (2/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0363
+[2026-10-25T20:12:41] copilot: OK CO-NLF-I0363 (3/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0271
+[2026-10-25T20:16:31] copilot: OK CO-NLF-I0271 (4/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0044
+[2026-10-25T20:19:56] copilot: OK CO-NLF-I0044 (5/10)
+[2026-10-25T20:22:36] copilot: FAIL CO-NLF-I0146 (6/10), not retried: stale read: reply to 'can you help me write a quick one-line update about how my knife roll is going?' is identical to the reply already on the page
+[2026-10-25T20:22:36] copilot: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 334, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 757, in recall_cell
+    new_scores = _run_recall_probes(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 400, in _run_recall_probes
+    r3_followup_reply = _send_fresh(flow, probes["r3_followup"])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 331, in _send_fresh
+    raise RuntimeError(f"stale read: reply to {text!r} is identical to the reply already on the page")
+RuntimeError: stale read: reply to 'can you help me write a quick one-line update about how my knife roll is going?' is identical to the reply already on the page
+
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0273
+[2026-10-25T20:25:46] copilot: OK CO-NLF-I0273 (7/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0042
+[2026-10-25T20:29:53] copilot: OK CO-NLF-I0042 (8/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0237
+[2026-10-25T20:33:12] copilot: OK CO-NLF-I0237 (9/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0126
+[2026-10-25T20:36:32] copilot: OK CO-NLF-I0126 (10/10)
+[2026-10-25T20:36:32] copilot: batch done; cooling down 900s
+[2026-10-25T20:51:46] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-25T20:51:46] copilot: batch of 10 (ceiling 10, 69 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: DEFERRED (same-conversation R1 asked in a later pass; recall first)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0260
+[2026-10-25T20:52:55] copilot: OK CO-NLF-I0260 (1/10)
+[2026-10-25T20:57:02] copilot: BACKOFF: _wait_for_reply: no new reply appeared within 60s -- stopping copilot; CO-NLF-I0241 left for resume

@@ -1,6 +1,6 @@
 # user_study
 
-_Run at 2026-10-01T02:23:33_
+_Run at 2026-10-27T12:36:13_
 
 ```text
 === SAMPLE PROFILE (n=177) ===
@@ -188,6 +188,7 @@ Noticed the chatbot referencing information believed deleted (Q6.8):
   Yes, this happened occasionally               36/177 (20.3%)
   Yes, this happened frequently                 6/177 (3.4%)
   I have not attempted to delete data           5/177 (2.8%)
+  Yes, occasionally or frequently (combined)    42/177 (23.7%)
 Confirmation currently received (Q7.1, select all):
   Clear message confirming deletion             73/177 (41.2%)
   Brief or vague acknowledgement                61/177 (34.5%)

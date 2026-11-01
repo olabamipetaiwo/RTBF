@@ -62,7 +62,17 @@ per-action UI element.
 
 from __future__ import annotations
 
+import re
+from datetime import datetime, timedelta
+
 from .base import PlatformFlow
+
+# Claude's free-tier message cap, seen live 2026-10-18 (CL-NLF-I0334) after
+# ~105 recall messages in ~65 minutes on the nlforget account: an "Upgrade to
+# keep chatting" dialog says "You hit your 5-hour message limit. It resets at
+# 5:50 AM." and the Send button stays disabled.
+_LIMIT_RE = re.compile(r"message limit\.?\s*It resets at (\d{1,2}):(\d{2})\s*([AP]M)", re.I)
+MAX_LIMIT_WAIT_S = 5 * 3600 + 15 * 60
 
 
 class ClaudeFlow(PlatformFlow):
@@ -88,6 +98,9 @@ class ClaudeFlow(PlatformFlow):
     def new_conversation(self) -> None:
         self.page.goto("https://claude.ai/new")
         self.page.wait_for_timeout(1500)
+
+    def _reply_count(self) -> int:
+        return len(self.page.query_selector_all(".standard-markdown"))
 
     def _last_reply_text(self) -> str:
         els = self.page.query_selector_all(".standard-markdown")
@@ -138,7 +151,36 @@ class ClaudeFlow(PlatformFlow):
 
         return self._last_reply_text()
 
+    def _limit_reset_at(self) -> datetime | None:
+        m = _LIMIT_RE.search(self.page.inner_text("body"))
+        if not m:
+            return None
+        hour, minute, ampm = int(m.group(1)) % 12, int(m.group(2)), m.group(3).upper()
+        now = datetime.now()
+        reset = now.replace(hour=hour + (12 if ampm == "PM" else 0), minute=minute, second=0, microsecond=0)
+        return reset if reset > now else reset + timedelta(days=1)
+
+    def _wait_out_message_limit(self) -> None:
+        """Called before every prompt. If the 5-hour-limit dialog is showing,
+        wait until the reset time it names (+2 min), reopen the same page and
+        check again, so a cap that hits between two of a cell's prompts
+        delays the cell instead of cutting it off half-sent. Raises (nothing
+        sent) if the wait would exceed MAX_LIMIT_WAIT_S."""
+        while (reset := self._limit_reset_at()) is not None:
+            wait_s = (reset - datetime.now()).total_seconds() + 120
+            if wait_s > MAX_LIMIT_WAIT_S:
+                raise RuntimeError(f"Claude message limit resets at {reset:%H:%M}, too far ahead; prompt not sent")
+            print(f"MESSAGE LIMIT (claude): resets at {reset:%H:%M}; pausing {wait_s:.0f}s before sending", flush=True)
+            self.page.wait_for_timeout(wait_s * 1000)
+            url = self.page.url
+            if "/chat/" in url:
+                self.open_conversation(url)
+            else:
+                self.page.goto(url, wait_until="domcontentloaded")
+                self.page.wait_for_timeout(4000)
+
     def send_message(self, text: str) -> str:
+        self._wait_out_message_limit()
         before = len(self.page.query_selector_all(".standard-markdown"))
 
         self.page.locator('[data-testid="chat-input"]').click(force=True, timeout=10000)

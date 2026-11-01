@@ -1,12 +1,40 @@
-[2026-10-18T00:53:23] chatgpt: new state: 133 erased cells shuffled with seed 565955332
-[2026-10-18T00:53:23] chatgpt: === start (limit=2, batch=7 cells, failed so far=0) ===
-[2026-10-18T00:53:23] perplexity: new state: 133 erased cells shuffled with seed 246264350
-[2026-10-18T00:53:23] perplexity: === start (limit=2, batch=7 cells, failed so far=0) ===
-[2026-10-18T00:53:23] claude: new state: 133 erased cells shuffled with seed 3345334507
-[2026-10-18T00:53:23] claude: === start (limit=2, batch=7 cells, failed so far=0) ===
-[2026-10-18T00:53:23] chatgpt: no cell due yet; sleeping 37294s until 2026-10-18T15:14:57.598865+00:00
-[2026-10-18T00:53:23] perplexity: no cell due yet; sleeping 12818s until 2026-10-18T08:27:01.241120+00:00
-[2026-10-18T00:53:23] claude: no cell due yet; sleeping 10498s until 2026-10-18T07:48:21.630935+00:00
-[2026-10-18T00:53:23] deepseek: new state: 133 erased cells shuffled with seed 1382295087
-[2026-10-18T00:53:23] deepseek: === start (limit=2, batch=7 cells, failed so far=0) ===
-[2026-10-18T00:53:23] deepseek: no cell due yet; sleeping 15216s until 2026-10-18T09:06:59.912249+00:00
+[2026-10-18T00:55:14] perplexity: === start (limit=2, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T00:55:14] claude: === start (limit=2, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T00:55:14] deepseek: === start (limit=2, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T00:55:14] perplexity: batch of 2 (ceiling 7, 120 due now)
+[2026-10-18T00:55:14] claude: batch of 2 (ceiling 7, 120 due now)
+[2026-10-18T00:55:14] chatgpt: === start (limit=2, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T00:55:14] deepseek: batch of 2 (ceiling 7, 120 due now)
+[2026-10-18T00:55:14] chatgpt: batch of 2 (ceiling 7, 120 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/deepseek/DE-NLF-I0153
+[2026-10-18T00:55:55] deepseek: OK DE-NLF-I0153 (1/2)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/perplexity/PE-NLF-I0176
+[2026-10-18T00:56:09] perplexity: OK PE-NLF-I0176 (1/2)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0010
+[2026-10-18T00:56:13] claude: OK CL-NLF-I0010 (1/2)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0070
+[2026-10-18T00:56:40] chatgpt: OK CH-NLF-I0070 (1/2)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/deepseek/DE-NLF-I0224
+[2026-10-18T00:57:28] deepseek: OK DE-NLF-I0224 (2/2)
+[2026-10-18T00:57:28] deepseek: === stop: 2 recalled this run, 0 failed in total ===
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0185
+[2026-10-18T00:57:30] claude: OK CL-NLF-I0185 (2/2)
+[2026-10-18T00:57:30] claude: === stop: 2 recalled this run, 0 failed in total ===
+claude: exited with code 0
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/perplexity/PE-NLF-I0364
+[2026-10-18T00:57:51] perplexity: OK PE-NLF-I0364 (2/2)
+[2026-10-18T00:57:51] perplexity: === stop: 2 recalled this run, 0 failed in total ===
+perplexity: exited with code 0
+deepseek: exited with code 0
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0106
+[2026-10-18T00:58:13] chatgpt: OK CH-NLF-I0106 (2/2)
+[2026-10-18T00:58:13] chatgpt: === stop: 2 recalled this run, 0 failed in total ===
+chatgpt: exited with code 0

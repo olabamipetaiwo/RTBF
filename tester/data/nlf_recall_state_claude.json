@@ -135,7 +135,11 @@
     "CL-NLF-I0279",
     "CL-NLF-I0209"
   ],
-  "batch_cells": 7,
-  "failed": {},
-  "recalled": 0
+  "batch_cells": 15,
+  "failed": {
+    "CL-NLF-I0334": "TimeoutError: Locator.click: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"[aria-label=\\\"Send message\\\"]:not([disabled])\")\n",
+    "CL-NLF-I0304": "RuntimeError: _wait_for_reply: no new reply appeared within 60s",
+    "CL-NLF-I0273": "TimeoutError: Locator.click: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"[aria-label=\\\"Send message\\\"]:not([disabled])\")\n"
+  },
+  "recalled": 130
 }

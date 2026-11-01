@@ -1,10 +1,5 @@
-% Chapter 3 (Methodology) references verified 2026-10-01 against the venue or publisher page (title, authors, venue, volume/pages, year):
-% carlini2019secret, graf1985implicit, gwet2008ac1, jiang2020know, roediger2006test, sclar2024quantifying,
-% staufer2025wikimem (workshop paper, Springer CCIS proceedings), wongpakaran2013comparison, wu2025longmemeval.
-
 % References for paper.tex.
-% TODO(authors): add Background/Related Work citations here as the
-% literature review is written; keep BibTeX keys stable once cited.
+
 
 @misc{gdpr2016,
   title        = {Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data (General Data Protection Regulation)},
@@ -25,6 +20,14 @@
   booktitle = {Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security (CCS)},
   year      = {2019},
   doi       = {10.1145/3319535.3354208}
+}
+
+@inproceedings{reardon2013sok,
+  title     = {{SoK}: Secure Data Deletion},
+  author    = {Reardon, Joel and Basin, David and Capkun, Srdjan},
+  booktitle = {Proceedings of the IEEE Symposium on Security and Privacy (S\&P)},
+  pages     = {301--315},
+  year      = {2013}
 }
 
 @inproceedings{bourtoule2021machine,
@@ -85,7 +88,6 @@
 }
 
 % --- Technical audit (Methodology) citations ----------------------
-% Verified 2026-09-09 via web search + primary-source fetch.
 
 @inproceedings{carlini2019secret,
   title     = {The Secret Sharer: Evaluating and Testing Unintended Memorization in Neural Networks},
@@ -96,73 +98,7 @@
 }
 
 % Metadata re-verified 2026-09-23 against Crossref (DOI below): published in
-% Springer CCIS in 2026, so the year is 2026 although the workshop was 2025.
-@inproceedings{staufer2025wikimem,
-  title     = {What Should {LLMs} Forget? Quantifying Personal Data in {LLMs} for Right-to-Be-Forgotten Requests},
-  author    = {Staufer, Dimitri},
-  booktitle = {Machine Learning and Principles and Practice of Knowledge Discovery in Databases},
-  series    = {Communications in Computer and Information Science},
-  publisher = {Springer Nature Switzerland},
-  year      = {2026},
-  pages     = {591--606},
-  doi       = {10.1007/978-3-032-19105-2_41},
-  note      = {Presented at the 7th Workshop on eXplainable Knowledge Discovery in Data Mining (XKDD), ECML PKDD 2025}
-}
-
-% --- Recall-probe design citations (added 2026-09-23) ---------------
-% Verified 2026-09-23 against the ICLR proceedings pages (title, authors,
-% year); LongMemEval's web-interface / new-session protocol quoted from
-% the paper's own text.
-
-@article{roediger2006test,
-  title   = {Test-Enhanced Learning: Taking Memory Tests Improves Long-Term Retention},
-  author  = {Roediger, Henry L. and Karpicke, Jeffrey D.},
-  journal = {Psychological Science},
-  volume  = {17},
-  number  = {3},
-  pages   = {249--255},
-  year    = {2006},
-  doi     = {10.1111/j.1467-9280.2006.01693.x}
-}
-
-@article{graf1985implicit,
-  title   = {Implicit and Explicit Memory for New Associations in Normal and Amnesic Subjects},
-  author  = {Graf, Peter and Schacter, Daniel L.},
-  journal = {Journal of Experimental Psychology: Learning, Memory, and Cognition},
-  volume  = {11},
-  number  = {3},
-  pages   = {501--518},
-  year    = {1985},
-  doi     = {10.1037/0278-7393.11.3.501}
-}
-
-@inproceedings{wu2025longmemeval,
-  title     = {{LongMemEval}: Benchmarking Chat Assistants on Long-Term Interactive Memory},
-  author    = {Wu, Di and Wang, Hongwei and Yu, Wenhao and Zhang, Yuwei and Chang, Kai-Wei and Yu, Dong},
-  booktitle = {Proceedings of the 13th International Conference on Learning Representations (ICLR)},
-  year      = {2025}
-}
-
-@inproceedings{sclar2024quantifying,
-  title     = {Quantifying Language Models' Sensitivity to Spurious Features in Prompt Design or: How I learned to start worrying about prompt formatting},
-  author    = {Sclar, Melanie and Choi, Yejin and Tsvetkov, Yulia and Suhr, Alane},
-  booktitle = {Proceedings of the 12th International Conference on Learning Representations (ICLR)},
-  year      = {2024}
-}
-
-@article{jiang2020know,
-  title   = {How Can We Know What Language Models Know?},
-  author  = {Jiang, Zhengbao and Xu, Frank F. and Araki, Jun and Neubig, Graham},
-  journal = {Transactions of the Association for Computational Linguistics},
-  volume  = {8},
-  pages   = {423--438},
-  year    = {2020},
-  doi     = {10.1162/tacl_a_00324}
-}
-
-% --- Prompt corpus / coding reliability (Methodology) citations --
-% Verified 2026-09-18 via web search + primary-source fetch.
-
+% Springer CCIS in 2026
 @article{gwet2008ac1,
   title   = {Computing Inter-Rater Reliability and Its Variance in the Presence of High Agreement},
   author  = {Gwet, Kilem L.},
@@ -183,13 +119,41 @@
   year    = {2013}
 }
 
-@article{hu1999cutoff,
-  title   = {Cutoff Criteria for Fit Indexes in Covariance Structure Analysis: Conventional Criteria versus New Alternatives},
-  author  = {Hu, Li-tze and Bentler, Peter M.},
-  journal = {Structural Equation Modeling},
-  volume  = {6},
-  number  = {1},
-  pages   = {1--55},
-  year    = {1999},
-  doi     = {10.1080/10705519909540118}
+@inproceedings{chen2026relational,
+  title     = {Relational Gains, Privacy Strains: Exploring Users' Perceptions and Experiences with {ChatGPT}'s Memory Feature},
+  author    = {Chen, Cheng and Molina, Maria D. and Liao, Mengqi and Snyder, Eugene Cho},
+  booktitle = {Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems (CHI)},
+  year      = {2026},
+  pages     = {1--17},
+  doi       = {10.1145/3772318.3791635}
+}
+
+@article{rupp2022leave,
+  author  = {Rupp, Eduard and Syrmoudis, Emmanuel and Grossklags, Jens},
+  title   = {Leave No Data Behind: Empirical Insights into Data Erasure from Online Services},
+  journal = {Proceedings on Privacy Enhancing Technologies},
+  volume  = {2022},
+  number  = {3},
+  pages   = {437--455},
+  year    = {2022},
+  doi     = {10.56553/popets-2022-0080}
+}
+
+@inproceedings{liu2022zombie,
+  author    = {Liu, Yijing and Jia, Yan and Tan, Qingyin and Liu, Zheli and Xing, Luyi},
+  title     = {How Are Your Zombie Accounts? Understanding Users' Practices and Expectations on Mobile App Account Deletion},
+  booktitle = {31st USENIX Security Symposium (USENIX Security 22)},
+  year      = {2022}
+}
+
+@inproceedings{kwesi2026impact,
+  author    = {Kwesi, Jabari and Cao, Jiaxun and Cunningham, Hailee and Emami-Naeini, Pardis},
+  title     = {The Impact of Security and Privacy Controls on Users' Emotional Engagement with Generative {AI} Chatbots},
+  booktitle = {35th USENIX Security Symposium (USENIX Security 26)},
+  year      = {2026}
+}
+
+@misc{ccpa2018,
+  title = {California Consumer Privacy Act of 2018, Cal. Civ. Code \S 1798.100 et seq.},
+  year  = {2018}
 }

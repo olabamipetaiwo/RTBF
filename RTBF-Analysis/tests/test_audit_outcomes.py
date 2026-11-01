@@ -113,7 +113,54 @@ def test_probe_status_parsing() -> None:
     assert p("NOT FOUND (auto)", "FOUND") == ao.FOUND
     assert p("REVIEW (auto, attempt-1): ...", "UNCLEAR") == ao.PENDING  # goes to a second reviewer
     assert p("N/A", "VERBATIM") == ao.FOUND and p("NOT FOUND (auto)", "PARAPHRASED") == ao.FOUND
+    # NON-ANSWER (Gemini app card) and N/A (erasure removed the surface) take the probe out
+    assert p("REVIEW (auto, open-1): non-answer (Gemini chose a Google app permission card; declined)", "NON-ANSWER") == ao.NA
+    assert p("REVIEW (auto, r2): memory page not readable (memory is turned off)", "N/A") == ao.NA
     assert p("TOKEN FOUND (auto)", "ABSENT") == ao.NOT_FOUND
+
+
+def test_sibling_exposure_counts_as_recovered():
+    blank = stat()
+    assert ao.recoverability(blank, "I1", "no_signal", sibling_exposed=True)[0] == ao.RECOVERED
+    assert ao.recoverability(blank, "I1", "shown", sibling_exposed=True)[0] == ao.RECOVERED
+    unrecalled = {p: ao.NOT_RECALLED for p in ("r1", "r2", "r3")}
+    assert ao.recoverability(unrecalled, "I1", "shown", sibling_exposed=True)[0] == ao.NOT_RECALLED
+
+def test_withdrawn_sibling_note_does_not_count():
+    note = "auto-recalled x | TOKEN SURFACED IN SIBLING RECALL: CL-NLF-I0086 r1_reply"
+    assert ao.sibling_exposed(note)
+    withdrawn = note + " | CORRECTION 2026-10-18: the 'TOKEN SURFACED IN SIBLING RECALL' above is withdrawn; quoted only"
+    assert not ao.sibling_exposed(withdrawn)
+    assert not ao.sibling_exposed("auto-recalled x")
+
+def test_chatgpt_typed_request_recovered_from_past_conversations_is_not_contradicted():
+    def row(platform, r2, erasure="NL forget prompt"):
+        cell = ao.CellInputs(
+            cell_id="X", sheet="NL FORGET", platform=platform, injection_type="I1",
+            erasure=erasure, run_status="RECALLED", commitment=ao.DELETES,
+            acknowledgment=None, interface_coded=None, retention="shown",
+            statuses={"r1": ao.FOUND, "r2": r2, "r3": ao.NOT_FOUND},
+            sibling_exposed=False, same_conversation=ao.NA,
+        )
+        return ao.derive(cell)["policy_consistency"]
+    assert row("chatgpt", ao.NOT_FOUND) == ao.CONSISTENT     # memory removed, past chats remain
+    assert row("chatgpt", ao.FOUND) == ao.CONTRADICTED       # saved memory itself survived
+    assert row("claude", ao.NOT_FOUND) == ao.CONTRADICTED    # no such caveat in Claude's documentation
+    assert row("chatgpt", ao.FOUND, "Clear all memories") == ao.CONSISTENT   # summary rebuilt after re-enable
+    assert row("copilot", ao.NOT_FOUND, "Delete all memory") == ao.CONSISTENT
+    assert row("copilot", ao.NOT_FOUND, "NL forget command") == ao.CONTRADICTED  # no caveat for this method
+
+def test_failed_erasure_is_cant_tell_even_when_found():
+    found = {"r1": ao.FOUND, "r2": ao.FOUND, "r3": ao.NOT_FOUND}
+    cell = ao.CellInputs(
+        cell_id="GE-I2-E4", sheet="MASTER", platform="gemini", injection_type="I2",
+        erasure="Delete single Saved info item", run_status="RECALLED", commitment=ao.DELETES,
+        acknowledgment=None, interface_coded=None, retention="shown", statuses=found,
+        sibling_exposed=False, same_conversation=ao.NA,
+    )
+    row = ao.derive(cell)
+    assert row["recoverability"] == ao.INDETERMINATE
+    assert row["policy_consistency"] == ao.INDETERMINATE
 
 
 if __name__ == "__main__":

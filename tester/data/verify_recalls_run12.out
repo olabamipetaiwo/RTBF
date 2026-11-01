@@ -1,0 +1,20 @@
+[16:02:09] OK: 0 newly recalled cells, all checks pass
+[16:04:10] OK: 1 newly recalled cells, all checks pass
+[16:06:10] OK: 1 newly recalled cells, all checks pass
+[16:08:11] OK: 2 newly recalled cells, all checks pass
+[16:10:11] OK: 2 newly recalled cells, all checks pass
+[16:12:12] OK: 3 newly recalled cells, all checks pass
+[16:14:12] OK: 4 newly recalled cells, all checks pass
+[16:16:13] OK: 4 newly recalled cells, all checks pass
+[16:18:13] OK: 5 newly recalled cells, all checks pass
+[16:20:14] OK: 6 newly recalled cells, all checks pass
+[16:22:14] OK: 7 newly recalled cells, all checks pass
+[16:24:15] OK: 7 newly recalled cells, all checks pass
+[16:26:15] OK: 8 newly recalled cells, all checks pass
+[16:28:16] VIOLATION CL-NLF-I0240: workbook run status is 'ERASED'
+[16:28:16] VIOLATION CL-NLF-I0240: workbook R1 empty
+[16:28:16] VIOLATION CL-NLF-I0240: workbook R2 empty
+[16:28:16] VIOLATION CL-NLF-I0240: workbook R3 empty
+[16:28:16] VIOLATION CL-NLF-I0240: workbook same-conv empty
+[16:28:16] VIOLATION CL-NLF-I0240: workbook outcome empty
+[16:28:16] stop file written after 9 newly recalled cells; each platform exits after its current cell

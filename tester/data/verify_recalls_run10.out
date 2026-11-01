@@ -1,0 +1,101 @@
+[11:40:14] OK: 0 newly recalled cells, all checks pass
+[11:42:14] OK: 2 newly recalled cells, all checks pass
+[11:44:15] OK: 3 newly recalled cells, all checks pass
+[11:46:15] OK: 4 newly recalled cells, all checks pass
+[11:48:16] OK: 5 newly recalled cells, all checks pass
+[11:50:16] OK: 6 newly recalled cells, all checks pass
+[11:52:17] OK: 7 newly recalled cells, all checks pass
+[11:54:17] CH-NLF-I0304: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[11:54:17] OK: 9 newly recalled cells, all checks pass
+[11:56:18] OK: 9 newly recalled cells, all checks pass
+[11:58:18] CH-NLF-I0281: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0272 'Shrug Flavoring Tinsmith Unknown' in r1_open_reply
+[11:58:18] OK: 11 newly recalled cells, all checks pass
+[12:00:19] OK: 12 newly recalled cells, all checks pass
+[12:02:19] OK: 12 newly recalled cells, all checks pass
+[12:04:20] CH-NLF-I0260: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[12:04:20] OK: 13 newly recalled cells, all checks pass
+[12:06:20] OK: 13 newly recalled cells, all checks pass
+[12:08:21] CH-NLF-I0339: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0121 'Props Crier' in r1_open_reply; CH-NLF-I0121 'Props Crier' in r1_open_followup_reply
+[12:08:21] OK: 14 newly recalled cells, all checks pass
+[12:10:21] OK: 14 newly recalled cells, all checks pass
+[12:12:22] CH-NLF-I0195: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[12:12:22] OK: 15 newly recalled cells, all checks pass
+[12:14:22] OK: 16 newly recalled cells, all checks pass
+[12:16:23] OK: 16 newly recalled cells, all checks pass
+[12:18:23] CH-NLF-I0191: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0367 'Sermon March Aerospace' in r1_open_reply; CH-NLF-I0367 'Sermon March Aerospace' in r1_open_followup_reply
+[12:18:23] OK: 17 newly recalled cells, all checks pass
+[12:20:24] OK: 17 newly recalled cells, all checks pass
+[12:22:24] CH-NLF-I0233: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0296 'Drizzle Hunting' in r1_open_reply
+[12:22:24] OK: 18 newly recalled cells, all checks pass
+[12:24:25] OK: 18 newly recalled cells, all checks pass
+[12:26:25] OK: 19 newly recalled cells, all checks pass
+[12:28:26] OK: 20 newly recalled cells, all checks pass
+[12:30:26] OK: 20 newly recalled cells, all checks pass
+[12:32:27] CH-NLF-I0201: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0302 'Lagging Cadmium Washhouse' in r1_open_reply; CH-NLF-I0302 'Lagging Cadmium Washhouse' in r1_open_followup_reply
+[12:32:27] OK: 21 newly recalled cells, all checks pass
+[12:34:27] OK: 22 newly recalled cells, all checks pass
+[12:36:28] OK: 22 newly recalled cells, all checks pass
+[12:38:28] OK: 23 newly recalled cells, all checks pass
+[12:40:29] OK: 23 newly recalled cells, all checks pass
+[12:42:30] OK: 24 newly recalled cells, all checks pass
+[12:44:30] CH-NLF-I0018: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0026 'Onslaught Seltzer Magma Corral' in r1_open_reply; CH-NLF-I0230 'Crane Spiritism' in r1_open_reply
+[12:44:30] OK: 25 newly recalled cells, all checks pass
+[12:46:31] OK: 25 newly recalled cells, all checks pass
+[12:48:31] CH-NLF-I0348: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0146 'Repeal Grader' in r1_open_reply; CH-NLF-I0351 'Earring Elite Hamburger Chemist' in r1_open_followup_reply
+[12:48:31] OK: 26 newly recalled cells, all checks pass
+[12:50:32] OK: 26 newly recalled cells, all checks pass
+[12:52:32] OK: 26 newly recalled cells, all checks pass
+[12:54:33] OK: 26 newly recalled cells, all checks pass
+[12:56:33] OK: 26 newly recalled cells, all checks pass
+[12:58:34] OK: 26 newly recalled cells, all checks pass
+[13:00:34] OK: 26 newly recalled cells, all checks pass
+[13:02:35] OK: 26 newly recalled cells, all checks pass
+[13:04:35] OK: 27 newly recalled cells, all checks pass
+[13:06:36] OK: 27 newly recalled cells, all checks pass
+[13:08:37] CH-NLF-I0297: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0004 'Darkness Brunette' in r1_open_reply; CH-NLF-I0004 'Darkness Brunette' in r1_open_followup_reply
+[13:08:37] OK: 28 newly recalled cells, all checks pass
+[13:10:37] CH-NLF-I0315: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[13:10:37] OK: 29 newly recalled cells, all checks pass
+[13:12:38] OK: 29 newly recalled cells, all checks pass
+[13:14:39] CH-NLF-I0140: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0068 'Spectrum Kennel' in r1_open_reply
+[13:14:39] OK: 30 newly recalled cells, all checks pass
+[13:16:39] CH-NLF-I0118: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0282 'Showing Stuffing Olive Geek' in r1_open_reply; CH-NLF-I0282 'Showing Stuffing Olive Geek' in r1_open_followup_reply
+[13:16:39] OK: 31 newly recalled cells, all checks pass
+[13:18:40] OK: 31 newly recalled cells, all checks pass
+[13:20:40] OK: 32 newly recalled cells, all checks pass
+[13:22:41] OK: 33 newly recalled cells, all checks pass
+[13:24:41] OK: 33 newly recalled cells, all checks pass
+[13:26:42] OK: 34 newly recalled cells, all checks pass
+[13:28:43] OK: 34 newly recalled cells, all checks pass
+[13:30:43] OK: 35 newly recalled cells, all checks pass
+[13:32:44] CH-NLF-I0126: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0302 'Lagging Cadmium Washhouse' in r1_open_reply; CH-NLF-I0201 'Emcee Violator Capacity Aversion' in r1_open_followup_reply; CH-NLF-I0302 'Lagging Cadmium Washhouse' in r1_open_followup_reply
+[13:32:44] OK: 36 newly recalled cells, all checks pass
+[13:34:44] OK: 36 newly recalled cells, all checks pass
+[13:36:45] CH-NLF-I0131: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[13:36:45] OK: 37 newly recalled cells, all checks pass
+[13:38:45] OK: 38 newly recalled cells, all checks pass
+[13:40:46] OK: 38 newly recalled cells, all checks pass
+[13:42:47] CH-NLF-I0047: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0334 'Chamber Dispute Payback Stubble' in r1_open_reply; CH-NLF-I0334 'Chamber Dispute Payback Stubble' in r1_open_followup_reply
+[13:42:47] OK: 39 newly recalled cells, all checks pass
+[13:44:47] OK: 39 newly recalled cells, all checks pass
+[13:46:48] OK: 39 newly recalled cells, all checks pass
+[13:48:48] CH-NLF-I0272: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0051 'Engraver Customer' in r1_open_reply
+[13:48:48] OK: 40 newly recalled cells, all checks pass
+[13:50:49] OK: 41 newly recalled cells, all checks pass
+[13:52:49] OK: 41 newly recalled cells, all checks pass
+[13:54:50] CH-NLF-I0271: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0365 'Whole Fragrance Chuck' in r1_open_reply; CH-NLF-I0365 'Whole Fragrance Chuck' in r1_open_followup_reply
+[13:54:50] OK: 42 newly recalled cells, all checks pass
+[13:56:51] CH-NLF-I0357: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[13:56:51] OK: 43 newly recalled cells, all checks pass
+[13:58:51] OK: 43 newly recalled cells, all checks pass
+[14:00:52] OK: 44 newly recalled cells, all checks pass
+[14:02:52] OK: 44 newly recalled cells, all checks pass
+[14:04:53] OK: 45 newly recalled cells, all checks pass
+[14:06:54] OK: 45 newly recalled cells, all checks pass
+[14:08:54] OK: 45 newly recalled cells, all checks pass
+[14:10:55] OK: 45 newly recalled cells, all checks pass
+[14:12:55] OK: 45 newly recalled cells, all checks pass
+[14:14:56] OK: 45 newly recalled cells, all checks pass
+[14:16:57] OK: 45 newly recalled cells, all checks pass
+[14:18:57] OK: 45 newly recalled cells, all checks pass
+[14:20:58] OK: 45 newly recalled cells, all checks pass

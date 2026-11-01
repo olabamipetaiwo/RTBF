@@ -133,7 +133,7 @@ with its own sibling already on the main account.
 | Cell | Erasure action | Email | Session file |
 |---|---|---|---|
 | `GE-I1-E4` | Delete individual Saved info item | `dummybox90@gmail.com` | `sessions/gemini__instability.json` |
-| `GE-I2-E2` | Delete individual Saved info item | `dummybox90@gmail.com` | `sessions/gemini__instability.json` |
+| `GE-I2-E2` | Delete single conversation | `dummybox90@gmail.com` | `sessions/gemini__instability.json` |
 
 ### `instability2` (Gemini) -- role: second migration off the unstable main account
 

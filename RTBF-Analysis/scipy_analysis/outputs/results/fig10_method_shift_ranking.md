@@ -1,6 +1,6 @@
 # fig10_method_shift_ranking
 
-_Run at 2026-08-25T23:45:07_
+_Run at 2026-10-20T00:52:55_
 
 ```text
 === Method choice shift, RANKED by net (added - dropped) ===

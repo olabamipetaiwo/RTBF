@@ -1,0 +1,291 @@
+[2026-10-18T20:35:12] claude: === start (limit=None, min_days=30, batch=15 cells, failed so far=2) ===
+[2026-10-18T20:35:12] claude: batch of 15 (ceiling 15, 46 due now)
+MESSAGE LIMIT (claude): resets at 21:00; pausing 1583s before sending
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0092
+[2026-10-18T21:02:43] claude: OK CL-NLF-I0092 (1/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0224
+[2026-10-18T21:04:59] claude: OK CL-NLF-I0224 (2/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0165
+[2026-10-18T21:08:30] claude: OK CL-NLF-I0165 (3/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0262
+[2026-10-18T21:11:20] claude: OK CL-NLF-I0262 (4/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0049
+[2026-10-18T21:14:57] claude: OK CL-NLF-I0049 (5/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0177
+[2026-10-18T21:17:03] claude: OK CL-NLF-I0177 (6/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0188
+[2026-10-18T21:20:48] claude: OK CL-NLF-I0188 (7/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0068
+[2026-10-18T21:24:02] claude: OK CL-NLF-I0068 (8/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0124
+[2026-10-18T21:27:19] claude: OK CL-NLF-I0124 (9/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0028
+[2026-10-18T21:30:36] claude: OK CL-NLF-I0028 (10/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0161
+[2026-10-18T21:34:22] claude: OK CL-NLF-I0161 (11/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0191
+[2026-10-18T21:37:26] claude: OK CL-NLF-I0191 (12/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0269
+[2026-10-18T21:40:36] claude: OK CL-NLF-I0269 (13/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0372
+[2026-10-18T21:44:22] claude: OK CL-NLF-I0372 (14/15)
+[2026-10-18T21:46:00] claude: FAIL CL-NLF-I0018 (15/15), not retried: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-10-18T21:46:00] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 294, in run_platform
+    if _stop_requested(platform):
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 729, in recall_cell
+    elif cdp_url and plan.platform == "gemini":
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 94, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-10-18T21:46:00] claude: batch done; cooling down 15000s
+[2026-10-19T01:56:00] claude: batch of 15 (ceiling 15, 31 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0062
+[2026-10-19T01:57:05] claude: OK CL-NLF-I0062 (1/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0118
+[2026-10-19T02:00:49] claude: OK CL-NLF-I0118 (2/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0187
+[2026-10-19T02:04:54] claude: OK CL-NLF-I0187 (3/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0233
+[2026-10-19T02:07:06] claude: OK CL-NLF-I0233 (4/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0357
+[2026-10-19T02:09:58] claude: OK CL-NLF-I0357 (5/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0089
+[2026-10-19T02:13:38] claude: OK CL-NLF-I0089 (6/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0163
+[2026-10-19T02:15:57] claude: OK CL-NLF-I0163 (7/15)
+Recalled. Observed outcome: PENDING HUMAN REVIEW (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0215
+[2026-10-19T02:19:01] claude: OK CL-NLF-I0215 (8/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0115
+[2026-10-19T02:22:25] claude: OK CL-NLF-I0115 (9/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0041
+[2026-10-19T02:26:14] claude: OK CL-NLF-I0041 (10/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0181
+[2026-10-19T02:28:21] claude: OK CL-NLF-I0181 (11/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0327
+[2026-10-19T02:31:45] claude: OK CL-NLF-I0327 (12/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0042
+[2026-10-19T02:35:10] claude: OK CL-NLF-I0042 (13/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0176
+[2026-10-19T02:37:23] claude: OK CL-NLF-I0176 (14/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0170
+[2026-10-19T02:40:13] claude: OK CL-NLF-I0170 (15/15)
+[2026-10-19T02:40:13] claude: batch done; cooling down 15000s
+[2026-10-19T06:50:13] claude: batch of 15 (ceiling 15, 16 due now)
+[2026-10-19T06:50:44] claude: FAIL CL-NLF-I0036 (1/15), not retried: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-10-19T06:50:44] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 294, in run_platform
+    if _stop_requested(platform):
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 729, in recall_cell
+    elif cdp_url and plan.platform == "gemini":
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 94, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-10-19T06:53:28] claude: FAIL CL-NLF-I0132 (2/15), not retried: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://claude.ai/login
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-10-19T06:53:28] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 294, in run_platform
+    if _stop_requested(platform):
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 729, in recall_cell
+    elif cdp_url and plan.platform == "gemini":
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 94, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://claude.ai/login
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-10-19T06:55:47] claude: FAIL CL-NLF-I0077 (3/15), not retried: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://claude.ai/login
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-10-19T06:55:47] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 294, in run_platform
+    if _stop_requested(platform):
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 729, in recall_cell
+    elif cdp_url and plan.platform == "gemini":
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 94, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://claude.ai/login
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-10-19T06:57:52] claude: FAIL CL-NLF-I0051 (4/15), not retried: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-10-19T06:57:52] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 294, in run_platform
+    if _stop_requested(platform):
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 729, in recall_cell
+    elif cdp_url and plan.platform == "gemini":
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 94, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-10-19T07:00:46] claude: FAIL CL-NLF-I0348 (5/15), not retried: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+[2026-10-19T07:00:46] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 294, in run_platform
+    if _stop_requested(platform):
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 729, in recall_cell
+    elif cdp_url and plan.platform == "gemini":
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/base.py", line 94, in __enter__
+    self.page.goto(config.PLATFORMS[self.platform], wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://claude.ai/login", waiting until "domcontentloaded"
+
+
+[2026-10-19T07:00:46] claude: THROTTLE DETECTED (5/5 failed); ceiling 15 -> 2
+[2026-10-19T07:00:46] claude: batch done; cooling down 15000s
+[2026-10-19T07:40:05] claude: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-19T07:40:05] claude: === stop: 29 recalled this run, 8 failed in total ===
+claude: exited with code 0

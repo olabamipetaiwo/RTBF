@@ -86,6 +86,9 @@ CELL_TYPE: dict[str, str] = {
     # 2026-09-24), which the retention page says a chat deletion does not remove. In both file cells
     # the token lives only in that file, so they are typed alike.
     "CH-IF-E-CONV": NOT_DELETE, "CH-IF-E-MAX": NOT_DELETE,
+    # The I3 fact is typed into Settings > Memory, so there is no conversation to delete (the
+    # counted erasure found none); typed like CH-I3-E2 and GE-I2-E2 (user decision 2026-10-27).
+    "CL-I3-E1": UNRELATED,
 }
 
 
@@ -107,6 +110,12 @@ COPILOT_CONTROLS = "https://support.microsoft.com/en-us/microsoft-copilot/micros
 DEEPSEEK_POLICY = "https://cdn.deepseek.com/policies/en-US/deepseek-privacy-policy.html"
 
 OVERRIDES: tuple[Override, ...] = (
+    Override(
+        ("CL-I3-E1",),
+        "UNRELATED: the anchor was typed into Settings > Memory's command box and was never part of a conversation to delete.",
+        "Anthropic Help Center: memory is edited from Settings > Memory (\"Tell Claude what you'd like it to remember, change, or forget\"); deleting a conversation removes that conversation only. The counted erasure found no conversation of its own to delete (logged null result, 2026-09-11).",
+        CLAUDE_MEMORY,
+    ),
     Override(
         ("GE-I2-E4",),
         'DELETES (new-conversation recall): the documentation says an individual instruction can be deleted; deleting the specific Saved-info item that held the anchor removes it.',
@@ -539,11 +548,22 @@ OVERRIDES: tuple[Override, ...] = (
     ),
     Override(
         ("CL-I1-E3", "CL-I2-E3", "CL-I3-E3"),
-        "DELETES (new-conversation recall): a full memory reset removes everything, "
-        "including the injected anchor.",
-        "Anthropic Help Center: \"Reset memory: Permanently deletes all memories including "
-        "project memories. Once you select this option and click 'Reset memory,' this cannot "
-        "be undone.\" (fetched 2026-09-24) Source: "
+        "DELETES (new-conversation recall): the action is a typed request on the Memory page "
+        "(\"Please delete all of my memories.\"), which the documentation says applies to the "
+        "next conversation.",
+        "Anthropic Help Center: \"Tell Claude what you'd like it to remember, change, or forget, "
+        "and the update applies to your next conversation.\" (fetched verbatim 2026-09-23). The "
+        "study typed the request into the Memory page's command box; it did not use the separate "
+        "\"Reset memory\" control (relabelled 2026-10-27, user decision). Source: "
+        "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
+        "",
+    ),
+    Override(
+        ("CL-I1-E5", "CL-I2-E5", "CL-I3-E5"),
+        "DELETES (new-conversation recall): MAXIMAL includes a typed request on the Memory page "
+        "to delete all memories (as in CL-*-E3), which the documentation says applies to the next "
+        "conversation.",
+        "Same as CL-*-E3 (typed request on the Memory page). Source: "
         "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
         "",
     ),

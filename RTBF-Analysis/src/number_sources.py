@@ -26,18 +26,20 @@ SOURCES = (sorted((ROOT / "outputs" / "results").glob("*.md"))
            + sorted((ROOT / "scipy_analysis" / "outputs" / "tables").glob("*.csv"))
            + [ROOT.parent / "RTBF-Prompt" / "results_217" / "run_log.md",
               ROOT.parent / "RTBF-Prompt" / "results" / "prompt_clean.md",
-              ROOT.parent / "Compare" / "Fourth Pass" / "agreement_report.md"])
+              ROOT.parent / "Compare" / "Prompts" / "Fourth Pass" / "agreement_report.md"])
 
 # Numbers that no analysis output prints, each with the reason and the place it
 # is recorded. A number is listed by its text as it appears in the paper.
 MANUAL: dict[str, str] = {
     "200": "design target (planned sample size), not a result",
     "235": "raw Qualtrics rows; printed by src/screen.py get_bases() (base chain 235-218-181-177)",
-    "276": "138 coded prompts x 2 coders (agreement_report.md: 138 items)",
-    "798": "audit cells run: 133 prompts x 6 platforms (RTBF Experiments.xlsx NL FORGET sheet)",
-    "828": "audit cells injected: 138 prompts x 6 platforms (RTBF Experiments.xlsx NL FORGET sheet)",
+    "276": "138 coded requests x 2 coders (agreement_report.md: 138 items)",
+    "85": "audit test cases: 73 in MASTER + 12 in FILE SUBSTUDY (RTBF Experiments.xlsx, one row per test case ID)",
+    "798": "audit test cases run: 133 requests x 6 platforms (RTBF Experiments.xlsx NL FORGET sheet)",
+    "828": "audit test cases injected: 138 requests x 6 platforms (RTBF Experiments.xlsx NL FORGET sheet)",
     "16.5": "36 / 218 never-deleted of complete respondents; both counts printed in outputs/results/screen.md",
     "62.1": "(75 + 35) / 177 bachelor's or graduate degree; counts in outputs/tables/sample_demographics.csv",
+    "15": "sampling floor per keyword group, a design parameter: RTBF-Prompt/build_sheet.py stratified(), --floor default 15",
 }
 
 # Numbers that sit in a different output than the rest of their paper line.
@@ -59,6 +61,20 @@ CONFIRMED: dict[str, str] = {
     "16.98": "outputs/results/stats.md (more | effort KW H)",
     "58.5": "outputs/results/pooled_gee.md (single conversation, permanently deleted)",
     "375": "RTBF-Prompt/results/prompt_clean.md (unique phrasings)",
+    # Checked by hand 2026-10-20.
+    "181": "outputs/results/screen.md (eligible participants)",
+    ".45": "scipy_analysis/outputs/results/scenario_order.md (binomial test of the order split)",
+    "6.94": "outputs/results/pooled_gee.md (benefit loss, pooled GEE Wald chi2)",
+    "23.05": "outputs/results/pooled_gee.md (effort, pooled GEE Wald chi2)",
+    ".91": "outputs/results/stats.md (more | protection KW p=0.9106)",
+    "10.4": "outputs/results/user_study.md (verification by method: single conversation, checked settings)",
+    "10.3": "outputs/results/user_study.md (verification by method: ask to forget, checked settings and interface)",
+    "52.1": "outputs/tables/pooled_obs_expectation_pct.csv (clear history, permanently deleted)",
+    "39.7": "outputs/tables/pooled_obs_expectation_pct.csv (clear history, not referenced in current conversation)",
+    "16.4": "outputs/tables/pooled_obs_expectation_pct.csv (clear history, no longer used for training)",
+    "65.9": "outputs/tables/pooled_obs_expectation_pct.csv (specific memory, permanently deleted)",
+    "68.3": "outputs/tables/pooled_obs_expectation_pct.csv (specific memory, not referenced in current conversation)",
+    "19.5": "outputs/tables/pooled_obs_expectation_pct.csv (specific memory, no longer used for training)",
 }
 
 NUM = re.compile(r"(?<![\w.])[-+]?(?:\d+\.\d+|\.\d+|\d+)(?![\w])")
@@ -94,18 +110,21 @@ def main() -> None:
     lines = PAPER.read_text().split("\n")
     start = next(i for i, l in enumerate(lines) if l.startswith("\\section{Methodology}"))
     end = next(i for i, l in enumerate(lines) if l.startswith("\\section{Discussion}"))
+    app_start = next(i for i, l in enumerate(lines) if l.startswith("\\section{Statistical Details}"))
+    app_end = next(i for i, l in enumerate(lines) if l.startswith("\\section{Survey Instrument}"))
     values = load_values()
 
     heading = "Methodology"
     rows, exceptions = [], []
-    for i in range(start, end):
+    for i in [*range(start, end), *range(app_start, app_end)]:
         raw = lines[i]
         m = re.match(r"\\(?:sub)*section\{([^}]*)\}", raw)
         if m:
             heading = m.group(1)
         m = re.match(r"\\textbf\{([^}]*)\}", raw)
         label = m.group(1).rstrip(".") if m else None
-        if raw.lstrip().startswith("%"):
+        # Comments, and table column specs (widths such as 0.25\columnwidth are not results).
+        if raw.lstrip().startswith(("%", "\\begin{tabular}")):
             continue
         body = STRIP.sub("", raw).replace("\\%", "").replace("$", "")
         found = []

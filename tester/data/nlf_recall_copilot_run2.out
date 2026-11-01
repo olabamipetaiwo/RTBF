@@ -1,0 +1,26 @@
+[2026-10-18T20:25:42] copilot: === start (limit=None, min_days=30, batch=10 cells, failed so far=1) ===
+[2026-10-18T20:25:54] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-18T20:25:54] copilot: batch of 10 (ceiling 10, 111 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0059
+[2026-10-18T20:27:12] copilot: OK CO-NLF-I0059 (1/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0018
+[2026-10-18T20:29:45] copilot: OK CO-NLF-I0018 (2/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0287
+[2026-10-18T20:34:02] copilot: OK CO-NLF-I0287 (3/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0161
+[2026-10-18T20:37:10] copilot: OK CO-NLF-I0161 (4/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0215
+[2026-10-18T20:41:00] copilot: OK CO-NLF-I0215 (5/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0216
+[2026-10-18T20:44:05] copilot: OK CO-NLF-I0216 (6/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/copilot/CO-NLF-I0372
+[2026-10-18T20:47:32] copilot: OK CO-NLF-I0372 (7/10)
+[2026-10-18T20:51:17] copilot: BACKOFF: _wait_for_reply: no new reply appeared within 60s -- stopping copilot; CO-NLF-I0201 left for resume
+copilot: exited with code 0

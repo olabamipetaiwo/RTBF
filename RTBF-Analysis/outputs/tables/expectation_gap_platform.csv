@@ -1,0 +1,79 @@
+method,platform,reading,cells,recovered,not_recovered,indeterminate,waiting,held,gated,cell,decided
+Delete this single conversation.,chatgpt,recoverability,3,1,0,2,0,0,0,1 of 1 (2 can't tell),1 of 1
+Delete this single conversation.,claude,recoverability,3,3,0,0,0,0,0,3 of 3,3 of 3
+Delete this single conversation.,gemini,recoverability,2,1,0,1,0,0,0,1 of 1 (1 can't tell),1 of 1
+Delete this single conversation.,copilot,recoverability,2,1,0,1,0,0,0,1 of 1 (1 can't tell),1 of 1
+Delete this single conversation.,perplexity,recoverability,2,0,1,1,0,0,0,0 of 1 (1 can't tell),0 of 1
+Delete this single conversation.,deepseek,recoverability,1,0,0,1,0,0,0,none known (1 can't tell),none known
+Clear all conversation history.,chatgpt,recoverability,3,2,1,0,0,0,0,2 of 3,2 of 3
+Clear all conversation history.,gemini,recoverability,2,2,0,0,0,0,0,2 of 2,2 of 2
+Clear all conversation history.,perplexity,recoverability,2,0,1,1,0,0,0,0 of 1 (1 can't tell),0 of 1
+Clear all conversation history.,deepseek,recoverability,1,0,0,1,0,0,0,none known (1 can't tell),none known
+Delete a specific saved memory or fact.,claude,recoverability,3,0,3,0,0,0,0,0 of 3,0 of 3
+Delete a specific saved memory or fact.,gemini,recoverability,2,1,0,1,0,0,0,1 of 1 (1 can't tell),1 of 1
+Delete a specific saved memory or fact.,copilot,recoverability,2,1,0,0,1,0,0,1 of 1 (1 waiting),1 of 1
+Delete a specific saved memory or fact.,perplexity,recoverability,2,0,0,0,0,0,2,none known (2 gated),none known
+Type a message asking the AI Chatbot to forget it. [138 participant prompts],chatgpt,recoverability,138,108,23,2,0,5,0,"108 of 131 (2 can't tell, 5 held)",108 of 131
+Type a message asking the AI Chatbot to forget it. [138 participant prompts],claude,recoverability,138,0,131,2,0,5,0,"0 of 131 (2 can't tell, 5 held)",0 of 131
+Type a message asking the AI Chatbot to forget it. [138 participant prompts],gemini,recoverability,138,0,0,121,12,5,0,"none known (121 can't tell, 12 waiting, 5 held)",none known
+Type a message asking the AI Chatbot to forget it. [138 participant prompts],copilot,recoverability,138,0,25,42,66,5,0,"0 of 25 (42 can't tell, 66 waiting, 5 held)",0 of 25
+Type a message asking the AI Chatbot to forget it. [138 participant prompts],perplexity,recoverability,138,31,0,102,0,5,0,"31 of 31 (102 can't tell, 5 held)",31 of 31
+Type a message asking the AI Chatbot to forget it. [138 participant prompts],deepseek,recoverability,138,0,0,133,0,5,0,"none known (133 can't tell, 5 held)",none known
+Type a message asking the AI Chatbot to forget it. [battery command],chatgpt,recoverability,3,3,0,0,0,0,0,3 of 3,3 of 3
+Type a message asking the AI Chatbot to forget it. [battery command],claude,recoverability,3,0,2,1,0,0,0,0 of 2 (1 can't tell),0 of 2
+Type a message asking the AI Chatbot to forget it. [battery command],gemini,recoverability,2,1,0,1,0,0,0,1 of 1 (1 can't tell),1 of 1
+Type a message asking the AI Chatbot to forget it. [battery command],copilot,recoverability,2,1,0,1,0,0,0,1 of 1 (1 can't tell),1 of 1
+Type a message asking the AI Chatbot to forget it. [battery command],perplexity,recoverability,2,0,0,2,0,0,0,none known (2 can't tell),none known
+Type a message asking the AI Chatbot to forget it. [battery command],deepseek,recoverability,1,0,0,1,0,0,0,none known (1 can't tell),none known
+Clear all saved memories.,chatgpt,recoverability,3,2,1,0,0,0,0,2 of 3,2 of 3
+Clear all saved memories.,claude,recoverability,3,0,2,1,0,0,0,0 of 2 (1 can't tell),0 of 2
+Clear all saved memories.,gemini,recoverability,2,0,1,1,0,0,0,0 of 1 (1 can't tell),0 of 1
+Clear all saved memories.,copilot,recoverability,2,2,0,0,0,0,0,2 of 2,2 of 2
+Clear all saved memories.,perplexity,recoverability,2,0,0,0,0,0,2,none known (2 gated),none known
+Privacy dashboard or account-level data management page.,copilot,recoverability,2,0,1,1,0,0,0,0 of 1 (1 can't tell),0 of 1
+(audit only) Clear custom instructions,chatgpt,recoverability,3,2,1,0,0,0,0,2 of 3,2 of 3
+(audit only) MAXIMAL,chatgpt,recoverability,3,0,2,1,0,0,0,0 of 2 (1 can't tell),0 of 2
+(audit only) MAXIMAL,claude,recoverability,3,0,3,0,0,0,0,0 of 3,0 of 3
+(audit only) MAXIMAL,gemini,recoverability,2,0,1,1,0,0,0,0 of 1 (1 can't tell),0 of 1
+(audit only) MAXIMAL,copilot,recoverability,2,0,1,0,1,0,0,0 of 1 (1 waiting),0 of 1
+(audit only) MAXIMAL,perplexity,recoverability,2,0,0,0,0,0,2,none known (2 gated),none known
+(audit only) MAXIMAL,deepseek,recoverability,1,0,0,1,0,0,0,none known (1 can't tell),none known
+Delete this single conversation.,chatgpt,recoverability_platform,3,1,1,1,0,0,0,1 of 2 (1 can't tell),1 of 2
+Delete this single conversation.,claude,recoverability_platform,3,3,0,0,0,0,0,3 of 3,3 of 3
+Delete this single conversation.,gemini,recoverability_platform,2,1,1,0,0,0,0,1 of 2,1 of 2
+Delete this single conversation.,copilot,recoverability_platform,2,1,1,0,0,0,0,1 of 2,1 of 2
+Delete this single conversation.,perplexity,recoverability_platform,2,0,2,0,0,0,0,0 of 2,0 of 2
+Delete this single conversation.,deepseek,recoverability_platform,1,0,0,1,0,0,0,none known (1 can't tell),none known
+Clear all conversation history.,chatgpt,recoverability_platform,3,2,1,0,0,0,0,2 of 3,2 of 3
+Clear all conversation history.,gemini,recoverability_platform,2,2,0,0,0,0,0,2 of 2,2 of 2
+Clear all conversation history.,perplexity,recoverability_platform,2,0,2,0,0,0,0,0 of 2,0 of 2
+Clear all conversation history.,deepseek,recoverability_platform,1,0,0,1,0,0,0,none known (1 can't tell),none known
+Delete a specific saved memory or fact.,claude,recoverability_platform,3,0,3,0,0,0,0,0 of 3,0 of 3
+Delete a specific saved memory or fact.,gemini,recoverability_platform,2,1,1,0,0,0,0,1 of 2,1 of 2
+Delete a specific saved memory or fact.,copilot,recoverability_platform,2,1,0,0,1,0,0,1 of 1 (1 waiting),1 of 1
+Delete a specific saved memory or fact.,perplexity,recoverability_platform,2,0,0,0,0,0,2,none known (2 gated),none known
+Type a message asking the AI Chatbot to forget it. [138 participant prompts],chatgpt,recoverability_platform,138,108,25,0,0,5,0,108 of 133 (5 held),108 of 133
+Type a message asking the AI Chatbot to forget it. [138 participant prompts],claude,recoverability_platform,138,0,133,0,0,5,0,0 of 133 (5 held),0 of 133
+Type a message asking the AI Chatbot to forget it. [138 participant prompts],gemini,recoverability_platform,138,0,121,0,12,5,0,"0 of 121 (12 waiting, 5 held)",0 of 121
+Type a message asking the AI Chatbot to forget it. [138 participant prompts],copilot,recoverability_platform,138,0,67,0,66,5,0,"0 of 67 (66 waiting, 5 held)",0 of 67
+Type a message asking the AI Chatbot to forget it. [138 participant prompts],perplexity,recoverability_platform,138,31,102,0,0,5,0,31 of 133 (5 held),31 of 133
+Type a message asking the AI Chatbot to forget it. [138 participant prompts],deepseek,recoverability_platform,138,0,0,133,0,5,0,"none known (133 can't tell, 5 held)",none known
+Type a message asking the AI Chatbot to forget it. [battery command],chatgpt,recoverability_platform,3,3,0,0,0,0,0,3 of 3,3 of 3
+Type a message asking the AI Chatbot to forget it. [battery command],claude,recoverability_platform,3,0,3,0,0,0,0,0 of 3,0 of 3
+Type a message asking the AI Chatbot to forget it. [battery command],gemini,recoverability_platform,2,1,1,0,0,0,0,1 of 2,1 of 2
+Type a message asking the AI Chatbot to forget it. [battery command],copilot,recoverability_platform,2,1,1,0,0,0,0,1 of 2,1 of 2
+Type a message asking the AI Chatbot to forget it. [battery command],perplexity,recoverability_platform,2,0,1,1,0,0,0,0 of 1 (1 can't tell),0 of 1
+Type a message asking the AI Chatbot to forget it. [battery command],deepseek,recoverability_platform,1,0,0,1,0,0,0,none known (1 can't tell),none known
+Clear all saved memories.,chatgpt,recoverability_platform,3,2,1,0,0,0,0,2 of 3,2 of 3
+Clear all saved memories.,claude,recoverability_platform,3,0,3,0,0,0,0,0 of 3,0 of 3
+Clear all saved memories.,gemini,recoverability_platform,2,0,2,0,0,0,0,0 of 2,0 of 2
+Clear all saved memories.,copilot,recoverability_platform,2,2,0,0,0,0,0,2 of 2,2 of 2
+Clear all saved memories.,perplexity,recoverability_platform,2,0,0,0,0,0,2,none known (2 gated),none known
+Privacy dashboard or account-level data management page.,copilot,recoverability_platform,2,0,2,0,0,0,0,0 of 2,0 of 2
+(audit only) Clear custom instructions,chatgpt,recoverability_platform,3,2,1,0,0,0,0,2 of 3,2 of 3
+(audit only) MAXIMAL,chatgpt,recoverability_platform,3,0,3,0,0,0,0,0 of 3,0 of 3
+(audit only) MAXIMAL,claude,recoverability_platform,3,0,3,0,0,0,0,0 of 3,0 of 3
+(audit only) MAXIMAL,gemini,recoverability_platform,2,0,2,0,0,0,0,0 of 2,0 of 2
+(audit only) MAXIMAL,copilot,recoverability_platform,2,0,1,0,1,0,0,0 of 1 (1 waiting),0 of 1
+(audit only) MAXIMAL,perplexity,recoverability_platform,2,0,0,0,0,0,2,none known (2 gated),none known
+(audit only) MAXIMAL,deepseek,recoverability_platform,1,0,0,1,0,0,0,none known (1 can't tell),none known

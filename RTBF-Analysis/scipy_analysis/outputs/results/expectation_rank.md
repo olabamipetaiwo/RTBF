@@ -1,6 +1,6 @@
 # expectation_rank
 
-_Run at 2026-08-11T05:22:21_
+_Run at 2026-10-20T00:55:23_
 
 ```text
 
@@ -71,14 +71,14 @@ checked settings                  other      32       2 0.0000  0.0000   *
  did NOT want to                  other      19       2 0.0002  0.0030   *
 
 ==================================================================
-[more] EXPECTATION (n=178) -- ranked by selection rate
+[more] EXPECTATION (n=177) -- ranked by selection rate
 ==================================================================
-permanently deleted      62.4
-not ref. future          53.9
-not ref. current         46.1
-made invisible           30.9
-not used for training    28.7
-not sure                 11.2
+permanently deleted      62.7
+not ref. future          54.2
+not ref. current         46.3
+made invisible           31.1
+not used for training    28.8
+not sure                 11.3
 other                     0.6
 
 Cochran's Q=247.39  df=6  p=1.482e-50  -> SIG
@@ -105,13 +105,13 @@ not used for training                 other      51       1 0.0000  0.0000   *
              not sure                 other      20       1 0.0000  0.0002   *
 
 ==================================================================
-[more] VERIFICATION (n=178) -- ranked by selection rate
+[more] VERIFICATION (n=177) -- ranked by selection rate
 ==================================================================
-did NOT know how          44.4
-asked new convo           23.6
-asked same convo          19.7
+did NOT know how          44.6
+asked new convo           23.7
+asked same convo          19.8
 checked settings          16.9
-checked UI                14.6
+checked UI                14.7
 did NOT want to            9.6
 privacy-portal request     5.1
 other                      1.7

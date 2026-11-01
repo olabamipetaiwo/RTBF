@@ -206,6 +206,12 @@ class CopilotFlow(PlatformFlow):
     BASE_URL = "https://copilot.com/"
     CHAT_URL_PREFIX = "https://copilot.com/chat/conversation/"
     LEGACY_CHAT_URL_PREFIX = "https://copilot.microsoft.com/chats/"
+    # Second move (seen 2026-10-18 on astrataiwo): the personal account's
+    # Copilot now lives at copilot.cloud.microsoft (same app: same composer
+    # id, same /chat/conversation/<id> paths), while copilot.com shows a
+    # sign-in wall in the same browser. Both hosts count as the new site; in
+    # CDP mode BASE_URL/CHAT_URL_PREFIX follow the signed-in tab's origin.
+    NEW_SITE_HOSTS = ("copilot.com", "copilot.cloud.microsoft")
 
     def __init__(self, headless: bool = False, session_label: str | None = None,
                  playwright=None, cdp_url: str | None = None):
@@ -222,17 +228,25 @@ class CopilotFlow(PlatformFlow):
             super().__init__(headless=headless, session_label=session_label,
                              playwright=playwright)
 
-    @classmethod
-    def normalize_ref(cls, ref: str) -> str:
+    def open_conversation(self, ref: str) -> None:
+        """Stored refs point at copilot.microsoft.com or copilot.com; open the
+        same chat id on the host this session is signed in on."""
+        super().open_conversation(self.normalize_ref(ref))
+
+    def normalize_ref(self, ref: str) -> str:
         """run_tracking.json's injection_ref was captured on the old domain;
         the same chat id opens at the new URL."""
-        if ref.startswith(cls.LEGACY_CHAT_URL_PREFIX):
-            return cls.CHAT_URL_PREFIX + ref[len(cls.LEGACY_CHAT_URL_PREFIX):]
+        if ref.startswith(self.LEGACY_CHAT_URL_PREFIX):
+            return self.CHAT_URL_PREFIX + ref[len(self.LEGACY_CHAT_URL_PREFIX):]
+        for host in self.NEW_SITE_HOSTS:
+            old = f"https://{host}/chat/conversation/"
+            if ref.startswith(old):
+                return self.CHAT_URL_PREFIX + ref[len(old):]
         return ref
 
     def _on_new_site(self) -> bool:
         host = urlparse(self.page.url).hostname or ""
-        return host == "copilot.com" or host.endswith(".copilot.com")
+        return any(host == h or host.endswith("." + h) for h in self.NEW_SITE_HOSTS)
 
     def _composer_selector(self) -> str:
         return _NEW_COMPOSER if self._on_new_site() else _OLD_COMPOSER
@@ -450,6 +464,14 @@ class CopilotFlow(PlatformFlow):
         self._verification_just_handled = True
 
     def send_message(self, text: str) -> str:
+        # Copilot's free-tier daily cap (hit 2026-10-18 on astrataiwo after
+        # ~40-60 messages): "You've reached your daily limit... check back at
+        # 8:00 PM", and a prompt sent then gets no answer (CO-NLF-I0314's
+        # same-conversation probe). Refuse to send while the notice shows;
+        # the reset is hours away, so this raises instead of waiting.
+        notice = re.search(r"reached your daily limit[^\n]*", self.page.inner_text("body"), re.I)
+        if notice:
+            raise RuntimeError(f"Copilot daily limit active, prompt not sent: {notice.group(0)[:120]}")
         before = self._reply_count()
         self._type_into_composer(text)
         self._click_send()
@@ -880,7 +902,7 @@ class CopilotFlow(PlatformFlow):
         if self._on_new_site():
             # Navigate to the sidebar listing. /chat is Copilot's "no
             # current chat" landing; the sidebar renders equally there.
-            self.page.goto("https://copilot.com/chat")
+            self.page.goto(self.BASE_URL + "chat")
             self.page.wait_for_timeout(2000)
             more_btn = self._find_new_row_more_button(ref=ref, token=token)
             if more_btn is None:
@@ -1224,16 +1246,22 @@ class CopilotFlow(PlatformFlow):
                     )
                 self._context = contexts[0]
                 copilot_page = None
-                for p in self._context.pages:
-                    if "copilot.com" in p.url:
-                        copilot_page = p
+                for host in reversed(self.NEW_SITE_HOSTS):  # prefer copilot.cloud.microsoft
+                    for p in self._context.pages:
+                        if (urlparse(p.url).hostname or "") == host:
+                            copilot_page = p
+                            break
+                    if copilot_page:
                         break
                 if copilot_page is None:
                     raise RuntimeError(
-                        "No copilot.com tab found in the CDP browser -- "
-                        "open copilot.com and log in first."
+                        "No Copilot tab (copilot.cloud.microsoft or copilot.com) found in the CDP browser -- "
+                        "open it and log in first."
                     )
                 self.page = copilot_page
+                origin = f"https://{urlparse(copilot_page.url).hostname}/"
+                self.BASE_URL = origin
+                self.CHAT_URL_PREFIX = origin + "chat/conversation/"
                 self.page.bring_to_front()
                 self.page.wait_for_timeout(1500)
             else:

@@ -1,3 +1,215 @@
 [2026-10-18T00:53:23] chatgpt: new state: 133 erased cells shuffled with seed 565955332
 [2026-10-18T00:53:23] chatgpt: === start (limit=2, batch=7 cells, failed so far=0) ===
 [2026-10-18T00:53:23] chatgpt: no cell due yet; sleeping 37294s until 2026-10-18T15:14:57.598865+00:00
+[2026-10-18T00:55:14] chatgpt: === start (limit=2, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T00:55:14] chatgpt: batch of 2 (ceiling 7, 120 due now)
+[2026-10-18T00:56:40] chatgpt: OK CH-NLF-I0070 (1/2)
+[2026-10-18T00:58:13] chatgpt: OK CH-NLF-I0106 (2/2)
+[2026-10-18T00:58:13] chatgpt: === stop: 2 recalled this run, 0 failed in total ===
+[2026-10-18T01:07:27] chatgpt: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:07:27] chatgpt: batch of 7 (ceiling 7, 118 due now)
+[2026-10-18T01:08:41] chatgpt: OK CH-NLF-I0240 (1/7)
+[2026-10-18T01:10:41] chatgpt: OK CH-NLF-I0287 (2/7)
+[2026-10-18T01:12:33] chatgpt: OK CH-NLF-I0004 (3/7)
+[2026-10-18T01:17:20] chatgpt: === start (limit=None, min_days=30, batch=7 cells, failed so far=1) ===
+[2026-10-18T01:17:20] chatgpt: batch of 7 (ceiling 7, 114 due now)
+[2026-10-18T01:18:46] chatgpt: OK CH-NLF-I0121 (1/7)
+[2026-10-18T01:20:28] chatgpt: OK CH-NLF-I0262 (2/7)
+[2026-10-18T01:20:28] chatgpt: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:20:28] chatgpt: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:20:28] chatgpt: === stop: 2 recalled this run, 1 failed in total ===
+[2026-10-18T01:21:00] chatgpt: === start (limit=None, min_days=30, batch=7 cells, failed so far=1) ===
+[2026-10-18T01:21:00] chatgpt: batch of 7 (ceiling 7, 112 due now)
+[2026-10-18T01:22:22] chatgpt: OK CH-NLF-I0049 (1/7)
+[2026-10-18T01:24:47] chatgpt: OK CH-NLF-I0305 (2/7)
+[2026-10-18T01:26:40] chatgpt: OK CH-NLF-I0028 (3/7)
+[2026-10-18T01:26:40] chatgpt: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:26:40] chatgpt: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:26:40] chatgpt: === stop: 3 recalled this run, 1 failed in total ===
+[2026-10-18T01:33:10] chatgpt: === start (limit=None, min_days=30, batch=7 cells, failed so far=1) ===
+[2026-10-18T01:33:10] chatgpt: batch of 7 (ceiling 7, 109 due now)
+[2026-10-18T01:34:33] chatgpt: OK CH-NLF-I0309 (1/7)
+[2026-10-18T01:37:11] chatgpt: OK CH-NLF-I0042 (2/7)
+[2026-10-18T01:39:04] chatgpt: OK CH-NLF-I0226 (3/7)
+[2026-10-18T01:41:36] chatgpt: OK CH-NLF-I0302 (4/7)
+[2026-10-18T01:44:30] chatgpt: FAIL CH-NLF-I0293 (5/7), not retried: _wait_for_reply: no new assistant turn appeared within 60s
+[2026-10-18T01:44:30] chatgpt: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 216, in run_platform
+    rc.recall_cell(cell_id, force=force)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 700, in recall_cell
+    new_scores = _run_recall_probes(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 388, in _run_recall_probes
+    r1_followup_reply = _send_fresh(flow, probes["r1_open_followup"])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 315, in _send_fresh
+    reply = flow.send_message(text)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/chatgpt.py", line 177, in send_message
+    return self._wait_for_reply(before)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/chatgpt.py", line 103, in _wait_for_reply
+    raise RuntimeError("_wait_for_reply: no new assistant turn appeared within 60s")
+RuntimeError: _wait_for_reply: no new assistant turn appeared within 60s
+
+[2026-10-18T06:10:47] chatgpt: === start (limit=None, min_days=30, batch=7 cells, failed so far=2) ===
+[2026-10-18T06:10:47] chatgpt: batch of 3 (ceiling 3, 104 due now)
+[2026-10-18T06:12:20] chatgpt: OK CH-NLF-I0228 (1/3)
+[2026-10-18T06:14:40] chatgpt: OK CH-NLF-I0264 (2/3)
+[2026-10-18T06:16:37] chatgpt: OK CH-NLF-I0001 (3/3)
+[2026-10-18T06:16:37] chatgpt: batch done; cooling down 900s
+[2026-10-18T06:31:37] chatgpt: batch of 3 (ceiling 3, 101 due now)
+[2026-10-18T06:33:00] chatgpt: OK CH-NLF-I0005 (1/3)
+[2026-10-18T06:35:06] chatgpt: OK CH-NLF-I0161 (2/3)
+[2026-10-18T06:37:02] chatgpt: OK CH-NLF-I0059 (3/3)
+[2026-10-18T06:37:02] chatgpt: batch done; cooling down 900s
+[2026-10-18T06:52:02] chatgpt: batch of 3 (ceiling 3, 98 due now)
+[2026-10-18T06:53:29] chatgpt: OK CH-NLF-I0000 (1/3)
+[2026-10-18T06:55:14] chatgpt: OK CH-NLF-I0053 (2/3)
+[2026-10-18T06:57:22] chatgpt: OK CH-NLF-I0165 (3/3)
+[2026-10-18T06:57:22] chatgpt: batch done; cooling down 900s
+[2026-10-18T07:12:22] chatgpt: batch of 3 (ceiling 3, 95 due now)
+[2026-10-18T07:13:48] chatgpt: OK CH-NLF-I0036 (1/3)
+[2026-10-18T07:16:12] chatgpt: OK CH-NLF-I0322 (2/3)
+[2026-10-18T07:18:17] chatgpt: OK CH-NLF-I0177 (3/3)
+[2026-10-18T07:18:17] chatgpt: batch done; cooling down 900s
+[2026-10-18T07:33:17] chatgpt: batch of 3 (ceiling 3, 92 due now)
+[2026-10-18T07:34:42] chatgpt: OK CH-NLF-I0365 (1/3)
+[2026-10-18T07:36:40] chatgpt: OK CH-NLF-I0188 (2/3)
+[2026-10-18T07:38:46] chatgpt: OK CH-NLF-I0355 (3/3)
+[2026-10-18T07:38:46] chatgpt: batch done; cooling down 900s
+[2026-10-18T07:53:46] chatgpt: batch of 3 (ceiling 3, 89 due now)
+[2026-10-18T07:55:07] chatgpt: OK CH-NLF-I0099 (1/3)
+[2026-10-18T07:56:49] chatgpt: OK CH-NLF-I0153 (2/3)
+[2026-10-18T07:58:31] chatgpt: OK CH-NLF-I0159 (3/3)
+[2026-10-18T07:58:31] chatgpt: batch done; cooling down 900s
+[2026-10-18T08:13:31] chatgpt: batch of 3 (ceiling 3, 86 due now)
+[2026-10-18T08:14:56] chatgpt: OK CH-NLF-I0133 (1/3)
+[2026-10-18T08:16:55] chatgpt: OK CH-NLF-I0105 (2/3)
+[2026-10-18T08:18:56] chatgpt: OK CH-NLF-I0187 (3/3)
+[2026-10-18T08:18:56] chatgpt: batch done; cooling down 900s
+[2026-10-18T08:33:56] chatgpt: batch of 3 (ceiling 3, 83 due now)
+[2026-10-18T08:35:19] chatgpt: OK CH-NLF-I0176 (1/3)
+[2026-10-18T08:36:56] chatgpt: OK CH-NLF-I0012 (2/3)
+[2026-10-18T08:37:16] chatgpt: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T08:37:16] chatgpt: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T08:37:16] chatgpt: === stop: 23 recalled this run, 2 failed in total ===
+[2026-10-18T08:37:31] chatgpt: === start (limit=None, min_days=30, batch=20 cells, failed so far=2) ===
+[2026-10-18T08:37:31] chatgpt: batch of 20 (ceiling 20, 81 due now)
+[2026-10-18T08:38:59] chatgpt: OK CH-NLF-I0030 (1/20)
+[2026-10-18T08:42:31] chatgpt: OK CH-NLF-I0166 (2/20)
+[2026-10-18T08:46:43] chatgpt: OK CH-NLF-I0115 (3/20)
+[2026-10-18T08:49:16] chatgpt: OK CH-NLF-I0170 (4/20)
+[2026-10-18T08:52:48] chatgpt: OK CH-NLF-I0024 (5/20)
+[2026-10-18T08:57:09] chatgpt: OK CH-NLF-I0259 (6/20)
+[2026-10-18T09:01:23] chatgpt: OK CH-NLF-I0035 (7/20)
+[2026-10-18T09:05:26] chatgpt: OK CH-NLF-I0327 (8/20)
+[2026-10-18T09:08:30] chatgpt: OK CH-NLF-I0077 (9/20)
+[2026-10-18T09:11:25] chatgpt: OK CH-NLF-I0095 (10/20)
+[2026-10-18T09:15:08] chatgpt: OK CH-NLF-I0062 (11/20)
+[2026-10-18T09:17:57] chatgpt: OK CH-NLF-I0132 (12/20)
+[2026-10-18T09:21:59] chatgpt: OK CH-NLF-I0010 (13/20)
+[2026-10-18T09:26:09] chatgpt: OK CH-NLF-I0092 (14/20)
+[2026-10-18T09:29:16] chatgpt: OK CH-NLF-I0051 (15/20)
+[2026-10-18T09:33:14] chatgpt: OK CH-NLF-I0137 (16/20)
+[2026-10-18T09:37:09] chatgpt: OK CH-NLF-I0361 (17/20)
+[2026-10-18T09:39:47] chatgpt: OK CH-NLF-I0279 (18/20)
+[2026-10-18T09:44:05] chatgpt: OK CH-NLF-I0085 (19/20)
+[2026-10-18T09:47:09] chatgpt: OK CH-NLF-I0086 (20/20)
+[2026-10-18T09:47:09] chatgpt: batch done; cooling down 900s
+[2026-10-18T10:02:09] chatgpt: batch of 20 (ceiling 20, 61 due now)
+[2026-10-18T10:03:32] chatgpt: OK CH-NLF-I0068 (1/20)
+[2026-10-18T10:06:34] chatgpt: OK CH-NLF-I0367 (2/20)
+[2026-10-18T10:09:56] chatgpt: OK CH-NLF-I0236 (3/20)
+[2026-10-18T10:13:46] chatgpt: OK CH-NLF-I0124 (4/20)
+[2026-10-18T10:16:33] chatgpt: OK CH-NLF-I0224 (5/20)
+[2026-10-18T10:21:01] chatgpt: OK CH-NLF-I0345 (6/20)
+[2026-10-18T10:25:05] chatgpt: OK CH-NLF-I0351 (7/20)
+[2026-10-18T10:28:46] chatgpt: OK CH-NLF-I0041 (8/20)
+[2026-10-18T10:32:42] chatgpt: OK CH-NLF-I0363 (9/20)
+[2026-10-18T10:35:16] chatgpt: OK CH-NLF-I0002 (10/20)
+[2026-10-18T10:38:02] chatgpt: OK CH-NLF-I0125 (11/20)
+[2026-10-18T10:40:42] chatgpt: OK CH-NLF-I0209 (12/20)
+[2026-10-18T10:44:28] chatgpt: OK CH-NLF-I0319 (13/20)
+[2026-10-18T10:47:41] chatgpt: OK CH-NLF-I0269 (14/20)
+[2026-10-18T10:52:01] chatgpt: OK CH-NLF-I0220 (15/20)
+[2026-10-18T10:55:20] chatgpt: OK CH-NLF-I0043 (16/20)
+[2026-10-18T10:59:10] chatgpt: OK CH-NLF-I0239 (17/20)
+[2026-10-18T11:02:08] chatgpt: OK CH-NLF-I0044 (18/20)
+[2026-10-18T11:06:06] chatgpt: OK CH-NLF-I0273 (19/20)
+[2026-10-18T11:18:17] chatgpt: OK CH-NLF-I0372 (20/20)
+[2026-10-18T11:18:17] chatgpt: batch done; cooling down 900s
+[2026-10-18T11:33:17] chatgpt: batch of 20 (ceiling 20, 41 due now)
+[2026-10-18T11:34:37] chatgpt: OK CH-NLF-I0023 (1/20)
+[2026-10-18T11:38:49] chatgpt: OK CH-NLF-I0181 (2/20)
+[2026-10-18T11:39:54] chatgpt: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T11:39:54] chatgpt: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T11:39:54] chatgpt: === stop: 42 recalled this run, 2 failed in total ===
+[2026-10-18T11:40:08] chatgpt: === start (limit=None, min_days=30, batch=20 cells, failed so far=2) ===
+[2026-10-18T11:40:08] chatgpt: batch of 20 (ceiling 20, 39 due now)
+[2026-10-18T11:41:29] chatgpt: OK CH-NLF-I0282 (1/20)
+[2026-10-18T11:45:10] chatgpt: OK CH-NLF-I0368 (2/20)
+[2026-10-18T11:49:21] chatgpt: OK CH-NLF-I0169 (3/20)
+[2026-10-18T11:53:41] chatgpt: OK CH-NLF-I0304 (4/20)
+[2026-10-18T11:57:09] chatgpt: OK CH-NLF-I0281 (5/20)
+[2026-10-18T11:59:49] chatgpt: OK CH-NLF-I0128 (6/20)
+[2026-10-18T12:03:29] chatgpt: OK CH-NLF-I0260 (7/20)
+[2026-10-18T12:07:38] chatgpt: OK CH-NLF-I0339 (8/20)
+[2026-10-18T12:11:05] chatgpt: OK CH-NLF-I0195 (9/20)
+[2026-10-18T12:13:25] chatgpt: OK CH-NLF-I0096 (10/20)
+[2026-10-18T12:17:01] chatgpt: OK CH-NLF-I0191 (11/20)
+[2026-10-18T12:20:53] chatgpt: OK CH-NLF-I0233 (12/20)
+[2026-10-18T12:25:06] chatgpt: OK CH-NLF-I0185 (13/20)
+[2026-10-18T12:28:09] chatgpt: OK CH-NLF-I0215 (14/20)
+[2026-10-18T12:30:36] chatgpt: OK CH-NLF-I0201 (15/20)
+[2026-10-18T12:33:39] chatgpt: OK CH-NLF-I0149 (16/20)
+[2026-10-18T12:37:19] chatgpt: OK CH-NLF-I0334 (17/20)
+[2026-10-18T12:41:20] chatgpt: OK CH-NLF-I0067 (18/20)
+[2026-10-18T12:43:55] chatgpt: OK CH-NLF-I0018 (19/20)
+[2026-10-18T12:46:45] chatgpt: OK CH-NLF-I0348 (20/20)
+[2026-10-18T12:46:45] chatgpt: batch done; cooling down 900s
+[2026-10-18T13:01:45] chatgpt: batch of 19 (ceiling 20, 19 due now)
+[2026-10-18T13:03:12] chatgpt: OK CH-NLF-I0364 (1/19)
+[2026-10-18T13:06:53] chatgpt: OK CH-NLF-I0297 (2/19)
+[2026-10-18T13:10:36] chatgpt: OK CH-NLF-I0315 (3/19)
+[2026-10-18T13:13:33] chatgpt: OK CH-NLF-I0140 (4/19)
+[2026-10-18T13:16:04] chatgpt: OK CH-NLF-I0118 (5/19)
+[2026-10-18T13:19:18] chatgpt: OK CH-NLF-I0163 (6/19)
+[2026-10-18T13:21:55] chatgpt: OK CH-NLF-I0216 (7/19)
+[2026-10-18T13:25:11] chatgpt: OK CH-NLF-I0252 (8/19)
+[2026-10-18T13:29:22] chatgpt: OK CH-NLF-I0314 (9/19)
+[2026-10-18T13:32:43] chatgpt: OK CH-NLF-I0126 (10/19)
+[2026-10-18T13:35:32] chatgpt: OK CH-NLF-I0131 (11/19)
+[2026-10-18T13:38:30] chatgpt: OK CH-NLF-I0027 (12/19)
+[2026-10-18T13:42:30] chatgpt: OK CH-NLF-I0047 (13/19)
+[2026-10-18T13:46:51] chatgpt: OK CH-NLF-I0272 (14/19)
+[2026-10-18T13:50:44] chatgpt: OK CH-NLF-I0200 (15/19)
+[2026-10-18T13:54:07] chatgpt: OK CH-NLF-I0271 (16/19)
+[2026-10-18T13:56:49] chatgpt: OK CH-NLF-I0357 (17/19)
+[2026-10-18T14:00:32] chatgpt: OK CH-NLF-I0089 (18/19)
+[2026-10-18T14:04:26] chatgpt: OK CH-NLF-I0026 (19/19)
+[2026-10-18T14:04:26] chatgpt: batch done; cooling down 900s
+[2026-10-18T14:19:26] chatgpt: === next cell not due until 2026-10-23T22:32:47.831538+00:00 (>24h) -- exiting ===
+[2026-10-24T12:48:11] chatgpt: === start (limit=None, min_days=30, batch=20 cells, failed so far=2) ===
+[2026-10-24T12:48:11] chatgpt: batch of 13 (ceiling 20, 13 due now)
+[2026-10-24T12:49:43] chatgpt: OK CH-NLF-I0237 (1/13)
+[2026-10-24T12:53:40] chatgpt: OK CH-NLF-I0350 (2/13)
+[2026-10-24T12:57:32] chatgpt: OK CH-NLF-I0032 (3/13)
+[2026-10-24T13:01:17] chatgpt: OK CH-NLF-I0060 (4/13)
+[2026-10-24T13:05:34] chatgpt: OK CH-NLF-I0182 (5/13)
+[2026-10-24T13:09:26] chatgpt: OK CH-NLF-I0141 (6/13)
+[2026-10-24T13:13:47] chatgpt: OK CH-NLF-I0241 (7/13)
+[2026-10-24T13:17:12] chatgpt: OK CH-NLF-I0326 (8/13)
+[2026-10-24T13:21:34] chatgpt: OK CH-NLF-I0296 (9/13)
+[2026-10-24T13:24:45] chatgpt: OK CH-NLF-I0146 (10/13)
+[2026-10-24T13:27:00] chatgpt: NOT STARTED CH-NLF-I0230 (11/13): connection problem while opening, nothing sent; left in the queue: Error: Page.goto: net::ERR_ABORTED at https://chatgpt.com/auth/login
+Call log:
+  - navigating to "https://chatgpt.com/auth/login", waiting until "domcontentloaded"
+
+[2026-10-24T13:29:29] chatgpt: OK CH-NLF-I0045 (12/13)
+[2026-10-24T13:33:23] chatgpt: OK CH-NLF-I0090 (13/13)
+[2026-10-24T13:33:23] chatgpt: batch done; cooling down 900s
+[2026-10-24T13:48:23] chatgpt: batch of 1 (ceiling 20, 1 due now)
+[2026-10-24T13:49:59] chatgpt: OK CH-NLF-I0230 (1/1)
+[2026-10-24T13:49:59] chatgpt: batch done; cooling down 900s
+[2026-10-24T14:04:59] chatgpt: === nothing left to recall -- exiting ===

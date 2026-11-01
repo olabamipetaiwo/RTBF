@@ -1,0 +1,84 @@
+[2026-10-19T09:56:36] claude: === start (limit=None, min_days=30, batch=15 cells, failed so far=2) ===
+[2026-10-19T09:56:36] claude: batch of 14 (ceiling 15, 14 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0077
+[2026-10-19T09:57:45] claude: OK CL-NLF-I0077 (1/14)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0051
+[2026-10-19T10:00:42] claude: OK CL-NLF-I0051 (2/14)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0348
+[2026-10-19T10:04:02] claude: OK CL-NLF-I0348 (3/14)
+MESSAGE LIMIT (claude): resets at 12:40; pausing 9342s before sending
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0047
+[2026-10-19T12:42:45] claude: OK CL-NLF-I0047 (4/14)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0305
+[2026-10-19T12:46:02] claude: OK CL-NLF-I0305 (5/14)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0236
+[2026-10-19T12:48:24] claude: OK CL-NLF-I0236 (6/14)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0200
+[2026-10-19T12:51:09] claude: OK CL-NLF-I0200 (7/14)
+MESSAGE LIMIT (claude): resets at 17:40; pausing 17357s before sending
+[2026-10-19T17:42:14] claude: FAIL CL-NLF-I0273 (8/14), not retried: Locator.click: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("[aria-label=\"Send message\"]:not([disabled])")
+
+[2026-10-19T17:42:14] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 334, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 752, in recall_cell
+    # Opening the browser/session failed, so no prompt was sent. The
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 406, in _run_recall_probes
+    r1_open_reply = _send_fresh(flow, probes["r1_open"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 322, in _send_fresh
+    reply = flow.send_message(text)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 196, in send_message
+    self.page.locator('[aria-label="Send message"]:not([disabled])').click(force=True, timeout=10000)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 17876, in click
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_locator.py", line 165, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 593, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("[aria-label=\"Send message\"]:not([disabled])")
+
+
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0095
+[2026-10-19T17:44:51] claude: OK CL-NLF-I0095 (9/14)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0128
+[2026-10-19T17:47:14] claude: OK CL-NLF-I0128 (10/14)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0000
+[2026-10-19T17:49:57] claude: OK CL-NLF-I0000 (11/14)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0070
+[2026-10-19T17:52:40] claude: OK CL-NLF-I0070 (12/14)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0279
+[2026-10-19T17:54:41] claude: OK CL-NLF-I0279 (13/14)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0209
+[2026-10-19T17:56:40] claude: OK CL-NLF-I0209 (14/14)
+[2026-10-19T17:56:40] claude: batch done; cooling down 15000s
+[2026-10-19T22:06:40] claude: === next cell not due until 2026-10-23T22:10:20.181855+00:00 (>24h) -- exiting ===
+claude: exited with code 0

@@ -11,7 +11,7 @@ RESULTS_DIR = "outputs/results"
 GUARD_MARKER = "## DON'T CLEAR THIS"
 
 
-def save_report(name: str, lines: list[str]) -> str:
+def save_report(name: str, lines: list[str], fenced: bool = True) -> str:
     """Write `lines` to outputs/results/<name>.md, prefixed with a run timestamp.
 
     Content is wrapped in a fenced code block so table alignment from
@@ -20,6 +20,9 @@ def save_report(name: str, lines: list[str]) -> str:
     If the file already has a "## DON'T CLEAR THIS" section (hand-written
     interpretation notes), that section is carried over verbatim instead of
     being overwritten by the fresh run.
+
+    fenced=False writes the lines as plain markdown, for reports that are
+    themselves markdown tables (pipe tables do not render inside a fence).
     """
     os.makedirs(RESULTS_DIR, exist_ok=True)
     path = os.path.join(RESULTS_DIR, f"{name}.md")
@@ -36,9 +39,11 @@ def save_report(name: str, lines: list[str]) -> str:
     with open(path, "w") as f:
         f.write(f"# {name}\n\n")
         f.write(f"_Run at {timestamp}_\n\n")
-        f.write("```text\n")
+        if fenced:
+            f.write("```text\n")
         f.write("\n".join(lines) + "\n")
-        f.write("```\n")
+        if fenced:
+            f.write("```\n")
         if preserved:
             f.write("\n" + preserved + "\n")
 

@@ -1,0 +1,39 @@
+[2026-10-18T18:49:49] gemini: === start (limit=None, min_days=30, batch=10 cells, failed so far=0) ===
+[2026-10-18T18:49:49] gemini: batch of 10 (ceiling 10, 118 due now)
+Loaded 16 cookies
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0209
+[2026-10-18T18:54:42] gemini: OK GE-NLF-I0209 (1/10)
+Loaded 16 cookies
+WARNING GE-NLF-I0279: ERROR (same-conversation probe failed: RuntimeError: _wait_for_reply: reply never stabilised within 60s)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: ERROR (same-conversation probe failed: RuntimeError: _wait_for_reply: reply never stabilised within 60s)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0279
+[2026-10-18T19:03:29] gemini: OK GE-NLF-I0279 (2/10)
+Loaded 16 cookies
+[2026-10-18T19:07:59] gemini: FAIL GE-NLF-I0012 (3/10), not retried: _wait_for_reply: no new response appeared within 60s
+[2026-10-18T19:07:59] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 279, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=CDP_URL if platform == "copilot" else None)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 717, in recall_cell
+    new_scores = _run_recall_probes(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 387, in _run_recall_probes
+    r3_reply = _send_fresh(flow, probes["r3"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 317, in _send_fresh
+    reply = flow.send_message(text)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_selenium.py", line 253, in send_message
+    reply = self._send_once(text)
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_selenium.py", line 280, in _send_once
+    return self._wait_for_reply(before)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_selenium.py", line 199, in _wait_for_reply
+    raise RuntimeError("_wait_for_reply: no new response appeared within 60s")
+RuntimeError: _wait_for_reply: no new response appeared within 60s
+
+[2026-10-18T19:08:14] gemini: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T19:08:14] gemini: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T19:08:14] gemini: === stop: 2 recalled this run, 1 failed in total ===
+gemini: exited with code 0

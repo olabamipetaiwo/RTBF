@@ -1,0 +1,49 @@
+[2026-10-18T01:17:20] perplexity: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:17:20] perplexity: batch of 7 (ceiling 7, 114 due now)
+[2026-10-18T01:17:20] claude: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:17:20] deepseek: === start (limit=None, min_days=30, batch=7 cells, failed so far=0) ===
+[2026-10-18T01:17:20] deepseek: batch of 7 (ceiling 7, 114 due now)
+[2026-10-18T01:17:20] claude: batch of 7 (ceiling 7, 113 due now)
+[2026-10-18T01:17:20] chatgpt: === start (limit=None, min_days=30, batch=7 cells, failed so far=1) ===
+[2026-10-18T01:17:20] chatgpt: batch of 7 (ceiling 7, 114 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/perplexity/PE-NLF-I0260
+[2026-10-18T01:18:20] perplexity: OK PE-NLF-I0260 (1/7)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0345
+[2026-10-18T01:18:21] claude: OK CL-NLF-I0345 (1/7)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0121
+[2026-10-18T01:18:46] chatgpt: OK CH-NLF-I0121 (1/7)
+WARNING DE-NLF-I0368: ERROR (same-conversation probe failed: RuntimeError: _wait_for_reply: no new reply appeared within 60s)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: ERROR (same-conversation probe failed: RuntimeError: _wait_for_reply: no new reply appeared within 60s)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/deepseek/DE-NLF-I0368
+[2026-10-18T01:19:02] deepseek: OK DE-NLF-I0368 (1/7)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/perplexity/PE-NLF-I0126
+[2026-10-18T01:19:41] perplexity: OK PE-NLF-I0126 (2/7)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/deepseek/DE-NLF-I0228
+[2026-10-18T01:20:06] deepseek: OK DE-NLF-I0228 (2/7)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0121
+[2026-10-18T01:20:06] claude: OK CL-NLF-I0121 (2/7)
+[2026-10-18T01:20:16] deepseek: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:20:16] deepseek: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:20:16] deepseek: === stop: 2 recalled this run, 0 failed in total ===
+[2026-10-18T01:20:17] claude: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:20:17] claude: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:20:17] claude: === stop: 2 recalled this run, 0 failed in total ===
+[2026-10-18T01:20:17] perplexity: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:20:17] perplexity: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:20:17] perplexity: === stop: 2 recalled this run, 0 failed in total ===
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0262
+[2026-10-18T01:20:28] chatgpt: OK CH-NLF-I0262 (2/7)
+[2026-10-18T01:20:28] chatgpt: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:20:28] chatgpt: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T01:20:28] chatgpt: === stop: 2 recalled this run, 1 failed in total ===
+chatgpt: exited with code 0
+claude: exited with code 0
+perplexity: exited with code 0
+deepseek: exited with code 0

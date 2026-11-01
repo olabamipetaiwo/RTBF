@@ -1,6 +1,6 @@
 # effect_cis
 
-_Run at 2026-09-23T08:48:21_
+_Run at 2026-10-20T00:46:35_
 
 ```text
 === Bootstrap 95% CIs for headline scenario-shift mean differences ===

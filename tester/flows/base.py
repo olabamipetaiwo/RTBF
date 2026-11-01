@@ -6,6 +6,8 @@ live site and are stubbed with TODOs, not guessed at."""
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from playwright.sync_api import sync_playwright
 from playwright_stealth import Stealth
 
@@ -71,6 +73,10 @@ class PlatformFlow:
         self._browser = None
         self._context = None
         self.page = None
+        # Set by run_cell.py before R2: where a flow that closes its memory
+        # panel before returning (ChatGPT) saves that panel's screenshots,
+        # since run_cell's own R2 screenshot comes after the panel is gone.
+        self.memory_shot_path: Path | None = None
 
     def __enter__(self):
         try:
@@ -206,6 +212,31 @@ class PlatformFlow:
         """Start a fresh chat/conversation in the current session (for
         the new-conversation recall probes)."""
         raise NotImplementedError
+
+    def open_conversation(self, ref: str) -> None:
+        """Reopen an existing conversation by its stored URL and wait until
+        its earlier messages have rendered. Without this wait, a flow's
+        send_message() counts replies before the old ones load, then takes
+        an old reply for the new one -- confirmed 2026-10-18 on Claude,
+        where 3 of 4 same-conversation recalls (CL-I1-E4, CL-I2-E4,
+        CL-NLF-I0185) returned the earlier erasure confirmation instead
+        of the answer to the recall question. Flows with _last_reply_text()
+        wait for that text to be non-empty and unchanged for 2 consecutive
+        1s checks; others get a fixed settle wait."""
+        self.page.goto(ref, wait_until="domcontentloaded")
+        last_reply = getattr(self, "_last_reply_text", None)
+        if last_reply is None:
+            self.page.wait_for_timeout(5000)
+            return
+        prev, stable = None, 0
+        for _ in range(30):
+            self.page.wait_for_timeout(1000)
+            cur = last_reply()
+            stable = stable + 1 if cur and cur == prev else 0
+            if stable >= 2:
+                return
+            prev = cur
+        raise RuntimeError(f"open_conversation: earlier replies never finished loading at {ref}")
 
     def send_message(self, text: str) -> str:
         """Type `text` into the chat input, submit, and return the

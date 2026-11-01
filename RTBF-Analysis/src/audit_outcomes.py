@@ -84,12 +84,36 @@ RETAINED = ("shown", "claimed")  # the only values that establish the platform k
 TYPED_ERASURES = ("NL forget prompt", "NL forget command")
 PROBES = ("r1", "r2", "r3")
 
+# Erasures whose own documentation says past conversations remain (paper, Methods; widened to
+# every such deletion 2026-10-27, user decision). A recovery that can only have come from those
+# conversations is consistent with the documentation. Value: whether the memory summary (R2) must
+# not hold the token for that to be shown. It must for a typed request, which leaves memory on, so
+# a token still in the summary means the saved memory survived. It need not after "Delete and turn
+# off memory": memory was emptied and switched off, so any later summary was rebuilt from chats.
+PAST_CONVERSATIONS_REMAIN: dict[tuple[str, str], bool] = {
+    ("chatgpt", "NL forget prompt"): True,     # "does not remove mentions ... from past conversations"
+    ("chatgpt", "Clear all memories"): False,  # "It does not delete past chats."
+    ("copilot", "Delete all memory"): True,    # "Your conversation history will not be deleted."
+}
+
+# Cells whose erasure action itself visibly failed: nothing was deleted, so the recall says
+# nothing about erasure and the cell is can't tell whatever the probes found (user decision
+# 2026-10-27, from the interface-change review). Value: the reason, quoted from the screen.
+FAILED_ERASURES: dict[str, str] = {
+    "GE-I2-E4": "Gemini reported \"Something went wrong and the info wasn't deleted\"; the item stayed listed",
+    "GE-I1-E5": "the delete click failed on all 3 attempts; the empty list was observed later, not caused by the action",
+}
+
 
 def probe_status(auto: str | None, reviewed: str | None = None) -> str:
     """One probe's status from its automatic label and, if present, the human review.
 
     A review overrides the automatic label. UNCLEAR stays PENDING (it goes to a
     second reviewer). R2 review values are VERBATIM / PARAPHRASED / ABSENT.
+    NON-ANSWER (a Gemini app-permission card instead of a reply) and N/A (no
+    surface for the probe to read: a MAXIMAL erasure turned ChatGPT memory off,
+    or memory was never on for the account) take the probe out, so the cell
+    rests on its other probes (user decisions 2026-10-19).
     """
     review = (reviewed or "").strip().upper()
     if review:
@@ -97,6 +121,8 @@ def probe_status(auto: str | None, reviewed: str | None = None) -> str:
             return FOUND
         if review in ("NOT FOUND", "ABSENT"):
             return NOT_FOUND
+        if review in ("NON-ANSWER", "N/A"):
+            return NA
         return PENDING  # UNCLEAR or anything unexpected: never guess
     label = (auto or "").strip().upper()
     if not label:
@@ -110,6 +136,25 @@ def probe_status(auto: str | None, reviewed: str | None = None) -> str:
     return PENDING  # REVIEW (...), PARTIAL (...)
 
 
+SIBLING_NOTE = "TOKEN SURFACED IN SIBLING RECALL"  # written by tester/sibling_tokens.surfaced_note()
+
+
+def sibling_exposed(notes: str) -> bool:
+    """Whether the Notes record a sibling exposure that still stands.
+
+    Notes are " | "-separated entries in time order. A later CORRECTION entry that names the
+    sibling note and calls it withdrawn cancels it (e.g. CL-NLF-I0260, withdrawn 2026-10-18
+    because the sibling only quoted its own earlier erasure reply).
+    """
+    exposed = False
+    for entry in notes.split(" | "):
+        if entry.startswith(SIBLING_NOTE):
+            exposed = True
+        elif entry.startswith("CORRECTION") and SIBLING_NOTE in entry and "withdrawn" in entry:
+            exposed = False
+    return exposed
+
+
 def miss_counts(probe: str, injection_type: str, retention: str | None) -> bool:
     """Whether a miss on `probe` is evidence of absence (the layer was reached)."""
     kept = retention in RETAINED
@@ -118,8 +163,16 @@ def miss_counts(probe: str, injection_type: str, retention: str | None) -> bool:
     return kept
 
 
-def recoverability(statuses: dict[str, str], injection_type: str, retention: str | None) -> tuple[str, str]:
-    """(value, reason) for the new-conversation recall of one cell."""
+def recoverability(
+    statuses: dict[str, str], injection_type: str, retention: str | None, sibling_exposed: bool = False,
+) -> tuple[str, str]:
+    """(value, reason) for the new-conversation recall of one cell.
+
+    sibling_exposed: another NL-forget cell's recall returned this cell's token
+    (workbook Notes "TOKEN SURFACED IN SIBLING RECALL"). Sibling rule, user
+    decision 2026-10-18: the erasure failed, so the cell is RECOVERED whatever
+    its own probes show (tester/sibling_tokens.py).
+    """
     if injection_type == "FILE":
         return FILE_TAXONOMY, "file cells use a separate verification taxonomy"
     if any(statuses.get(p, NOT_RECALLED) == NOT_RECALLED for p in ("r1", "r3")):
@@ -127,6 +180,8 @@ def recoverability(statuses: dict[str, str], injection_type: str, retention: str
     found = [p for p in PROBES if statuses.get(p) == FOUND]
     if found:
         return RECOVERED, f"found by {', '.join(p.upper() for p in found)}"
+    if sibling_exposed:
+        return RECOVERED, "token surfaced in a sibling cell's recall (sibling rule)"
     pending = [p for p in PROBES if statuses.get(p) == PENDING]
     if pending:
         return PENDING_REVIEW, f"{', '.join(p.upper() for p in pending)} awaiting human review"
@@ -177,6 +232,7 @@ class CellInputs:
     interface_coded: str | None
     retention: str | None
     statuses: dict[str, str]
+    sibling_exposed: bool
     same_conversation: str  # reported separately, never enters a derivation
 
 
@@ -228,15 +284,25 @@ def load_cells() -> list[CellInputs]:
                 commitment=_cell(row, idx, "Commitment type"),
                 acknowledgment=_cell(row, idx, "Acknowledgment (coded)"),
                 interface_coded=_cell(row, idx, "Interface change (coded)"),
-                retention=retention.get(cell_id), statuses=statuses, same_conversation=same_conversation,
+                retention=retention.get(cell_id), statuses=statuses,
+                sibling_exposed=sibling_exposed(_cell(row, idx, "Notes") or ""),
+                same_conversation=same_conversation,
             ))
     return cells
 
 
 def derive(c: CellInputs) -> dict[str, str]:
-    recov, recov_reason = recoverability(c.statuses, c.injection_type, c.retention)
+    recov, recov_reason = recoverability(c.statuses, c.injection_type, c.retention, c.sibling_exposed)
+    if c.cell_id in FAILED_ERASURES:
+        recov, recov_reason = INDETERMINATE, f"erasure action failed: {FAILED_ERASURES[c.cell_id]}"
     interface = effective_interface_change(c.erasure, c.interface_coded)
     policy, policy_reason = policy_consistency(c.commitment, interface, recov)
+    summary_must_be_clear = PAST_CONVERSATIONS_REMAIN.get((c.platform, (c.erasure or "").strip()))
+    if policy == CONTRADICTED and recov == RECOVERED and summary_must_be_clear is not None:
+        if not summary_must_be_clear or c.statuses["r2"] == NOT_FOUND:
+            policy, policy_reason = CONSISTENT, "recovered from past conversations, which the documentation says remain"
+        elif c.statuses["r2"] != FOUND:
+            policy, policy_reason = INDETERMINATE, "recovered, but the memory summary was not read"
     return {
         "cell_id": c.cell_id, "sheet": c.sheet, "platform": c.platform, "injection": c.injection_type,
         "erasure": c.erasure, "run_status": c.run_status, "commitment": c.commitment or "",

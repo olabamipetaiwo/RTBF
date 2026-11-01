@@ -1,10 +1,37 @@
 # contingency_table
 
-_Run at 2026-08-24T13:22:59_
+_Run at 2026-10-20T00:55:22_
 
 ```text
 (* = method n < 14; see verify.md for the significance test on this pairing)
 
+======================================================================
+LESS SENSITIVE — method x expectation (Q4.2 x Q4.4)
+======================================================================
+                     expectation  Delete this single conversation. (n=84)  Clear all conversation history. (n=33)  Type a message asking the AI Chatbot to forget it. (n=25)  Delete a specific saved memory or fact. (n=19)  Clear all saved memories.* (n=7)  Privacy dashboard or account-level data management page.* (n=6)  Delete my account entirely.* (n=2)  Total
+permanently deleted (DB+backups)                                       47                                      16                                                         15                                              12                                 2                                                                4                                   1     97
+         made invisible / hidden                                       23                                      12                                                          3                                               3                                 1                                                                2                                   2     46
+ not referenced in current convo                                       39                                      18                                                         15                                              12                                 3                                                                4                                   1     92
+  not referenced in future convo                                       45                                      17                                                         14                                              10                                 4                                                                5                                   0     95
+     no longer used for training                                       22                                       5                                                          9                                               3                                 3                                                                3                                   2     47
+           not sure what happens                                       12                                       2                                                          1                                               1                                 0                                                                1                                   0     17
+                           other                                        0                                       1                                                          0                                               0                                 0                                                                1                                   0      2
+
+saved -> scipy_analysis/outputs/tables/contingency_less.csv
+
+======================================================================
+MORE SENSITIVE — method x expectation (Q5.2 x Q5.4)
+======================================================================
+                     expectation  Delete this single conversation. (n=80)  Clear all conversation history. (n=40)  Delete a specific saved memory or fact. (n=22)  Type a message asking the AI Chatbot to forget it. (n=14)  Privacy dashboard or account-level data management page.* (n=9)  Clear all saved memories.* (n=8)  Delete my account entirely.* (n=3)  Total
+permanently deleted (DB+backups)                                       49                                      22                                              15                                                         10                                                                6                                 5                                   3    110
+         made invisible / hidden                                       26                                      14                                               2                                                          4                                                                3                                 4                                   2     55
+ not referenced in current convo                                       34                                      11                                              16                                                          6                                                                7                                 7                                   1     82
+  not referenced in future convo                                       44                                      14                                              16                                                          6                                                                7                                 7                                   1     95
+     no longer used for training                                       24                                       7                                               5                                                          5                                                                5                                 3                                   2     51
+           not sure what happens                                        9                                       5                                               2                                                          1                                                                2                                 1                                   0     20
+                           other                                        0                                       1                                               0                                                          0                                                                0                                 0                                   0      1
+
+saved -> scipy_analysis/outputs/tables/contingency_more.csv
 
 ======================================================================
 POOLED (deduped per respondent, same mechanism as pooling.py) — method x expectation
@@ -66,35 +93,8 @@ permanently deleted (DB+backups)   chi2 0.7091  1.0000      0.080
  not referenced in current convo   chi2 0.1449  0.8695      0.159    
   not referenced in future convo   chi2 0.5420  1.0000      0.100    
      no longer used for training   chi2 0.3176  1.0000      0.128    
-           not sure what happens fisher 0.9200  1.0000      0.057    
-                           other fisher 0.5051  1.0000      0.124    
+           not sure what happens fisher 0.9225  1.0000      0.057    
+                           other fisher 0.5093  1.0000      0.124    
 
 saved -> scipy_analysis/outputs/tables/contingency_pooled_sig.csv
 ```
-## finding
-
-No significant association between deletion method and expectation, on the pooled data.
-
-For all 7 expectation options (tested against the 4 methods with n≥14: single-conversation delete, clear all history, delete specific memory, type "forget" message), after Holm correction across the family:
-
-┌─────────────────────────────┬────────┬───────┬────────┬────────────┬─────┐
-│           option            │  test  │ p_raw │ p_holm │ Cramér's V │ sig │
-├─────────────────────────────┼────────┼───────┼────────┼────────────┼─────┤
-│ permanently deleted         │ chi2   │ .709  │ 1.000  │ .080       │     │
-├─────────────────────────────┼────────┼───────┼────────┼────────────┼─────┤
-│ made invisible / hidden     │ chi2   │ .049  │ .344   │ .192       │     │
-├─────────────────────────────┼────────┼───────┼────────┼────────────┼─────┤
-│ not ref. current convo      │ chi2   │ .145  │ .870   │ .159       │     │
-├─────────────────────────────┼────────┼───────┼────────┼────────────┼─────┤
-│ not ref. future convo       │ chi2   │ .542  │ 1.000  │ .100       │     │
-├─────────────────────────────┼────────┼───────┼────────┼────────────┼─────┤
-│ no longer used for training │ chi2   │ .318  │ 1.000  │ .128       │     │
-├─────────────────────────────┼────────┼───────┼────────┼────────────┼─────┤
-│ not sure what happens       │ fisher │ .920  │ 1.000  │ .057       │     │
-├─────────────────────────────┼────────┼───────┼────────┼────────────┼─────┤
-│ other                       │ fisher │ .505  │ 1.000  │ .124       │     │
-└─────────────────────────────┴────────┴───────┴────────┴────────────┴─────┘
-
-None survive Holm correction — closest is "made invisible / hidden" (raw p=.049, but Holm p=.344, ns). Effect sizes are all small (Cramér's V ≤ .19).
-
-Bottom line: which deletion method someone picks tells you nothing statistically about what they expect it to do. This matches verify.md's separate less/more-scenario tests, so the finding holds whether you look at each scenario individually or pool them together.

@@ -35,6 +35,8 @@ Columns are found by **header text**, not position. If a header is renamed, the 
 | NOT RECALLED | R1 or R3 has no recorded result |
 | FILE (classified separately) | file-upload cells, which use their own taxonomy |
 
+**Sibling rule.** A cell is also RECOVERED when its token surfaced in another typed-request cell's recall, recorded in its Notes as "TOKEN SURFACED IN SIBLING RECALL". A later "CORRECTION … withdrawn" entry in the same Notes cancels it (`sibling_exposed()`); before 2026-10-26 the rule matched the phrase anywhere, so CL-NLF-I0260, withdrawn on 2026-10-18, was wrongly scored RECOVERED.
+
 A miss counts only for a layer the injection reached. **R1 and R3** (fresh-chat questions): only when retention is `shown` or `claimed` (the paper's "Retention at injection" rule: only those establish that the platform kept the fact). **R2** (the memory/settings page): the same, and also when the injection itself targeted that layer (I2, an explicit "please remember"; I3, a direct entry) unless retention is `denied`.
 
 **Policy consistency** follows Table `tab:consistency-rule` and is computed **only after recall** (a cell not yet recalled is NOT RECALLED, even if its interface is unchanged, so no premature verdict appears).
@@ -44,6 +46,10 @@ A miss counts only for a layer the injection reached. **R1 and R3** (fresh-chat 
 | DELETES | CONTRADICTED if recovered or interface UNCHANGED; CONSISTENT if NOT RECOVERED and interface CHANGED or NOT OBSERVABLE; otherwise INDETERMINATE (also when the interface change is not yet coded) |
 | DOES NOT DELETE | CONSISTENT if recovered (the documentation states scope only); otherwise INDETERMINATE; never contradicted |
 | NO COMMITMENT, UNRELATED, NOT TESTABLE | always INDETERMINATE: reported descriptively |
+
+**Interface change for interface erasures** was coded on 2026-10-27 for the 54 battery cells erased through the interface (`Compare/InterfaceChange/interface-change.xlsx`, one coder plus user review; written to the workbook in upper case). The code records what the screen did on the surface the method acts on, not where the fact was stored. Where the erasure screenshot did not show the result, the user checked the account live (`Compare/InterfaceChange/live_checks/`). Result: 49 CHANGED, 4 UNCHANGED (the method found nothing of its own to remove), 1 left blank by user decision (GE-I2-E4: the deletion itself failed). Because nothing was deleted, GE-I2-E4's recoverability is forced to INDETERMINATE by `FAILED_ERASURES` in the module, as is GE-I1-E5 (its delete click failed on all three attempts; user decision 2026-10-27, treat failed erasures alike), so its recall find is not read as an erasure failure.
+
+**Methods exemption: past conversations remain** (paper, Methods; added 2026-10-27, widened the same day by user decision from typed requests to every erasure whose documentation says it): "A Deletes commitment covers what the documentation says the action removes, together with any scope it states. Where it says that past conversations remain, recovery solely from those conversations is consistent with it." `PAST_CONVERSATIONS_REMAIN` lists the (platform, erasure) pairs: ChatGPT typed request ("does not remove mentions of that information from past conversations"), ChatGPT clear all memories ("It does not delete past chats"), Copilot delete all memory ("Your conversation history will not be deleted"). For the typed request the memory summary (R2) must not hold the token (memory stays on, so a token there means the saved memory survived); after "Delete and turn off memory" any later summary was rebuilt from chats, so R2 is not required. Effect: ChatGPT typed requests 130 consistent, 1 contradicted, 2 indeterminate; CH-I1-E4, CO-I1-E2 and CO-I2-E2 consistent.
 
 **Interface change for typed requests** (`NL forget prompt`, `NL forget command`) is NOT OBSERVABLE by definition and overrides whatever the sheet holds: a request typed into the chat leaves nothing on the interface to inspect. NL FORGET therefore has no interface column.
 
@@ -80,7 +86,7 @@ cd RTBF-Analysis
 .venv/bin/python tests/test_audit_outcomes.py
 ```
 
-11 tests, no workbook needed. They check every cell of the consistency table (Deletes, Does not delete, the three no-verdict types, with every interface value and every recoverability value), that no verdict appears before recall or for FILE cells, the typed-request interface override, each branch of the recoverability rule (a find always wins; a miss counts only for retained layers; the R2 rule for I2/I3 and `denied`; pending review blocks a not-recovered call) and the parsing of automatic and reviewed labels.
+15 tests, no workbook needed. They check every cell of the consistency table (Deletes, Does not delete, the three no-verdict types, with every interface value and every recoverability value), that no verdict appears before recall or for FILE cells, the typed-request interface override, each branch of the recoverability rule (a find always wins; a miss counts only for retained layers; the R2 rule for I2/I3 and `denied`; pending review blocks a not-recovered call) and the parsing of automatic and reviewed labels.
 
 ## Decisions and caveats
 

@@ -103,7 +103,7 @@ from src.verify import cramers_v
 # screen.RAW_FILE still points at data/raw/..., which does not exist in this
 # checkout; the Sept 9 export lives under survey/ (same constant as
 # src/effect_cis.py).
-SURVEY_XLSX = "survey/RTBF_September+9,+2026_14.25.xlsx"
+SURVEY_XLSX = "survey/RTBF_October+19,+2026_22.37.xlsx"
 TABLES_DIR = Path("outputs/tables")
 OTHER = "Other (Please specify)"
 N_FLOOR = 14

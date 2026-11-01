@@ -1,6 +1,6 @@
 # knowledge
 
-_Run at 2026-08-25T23:45:15_
+_Run at 2026-10-20T00:46:29_
 
 ```text
 === Objective knowledge (Q8.2-Q8.7), n=177 ===

@@ -75,6 +75,14 @@ def main() -> None:
         if cid in jihwan and taiwo[cid]["code"] and jihwan[cid]["code"]
     )
     n = len(both_coded)
+    n_ui = sum(
+        1 for cid in taiwo
+        if not taiwo[cid]["code"] and not jihwan.get(cid, {}).get("code")
+    )
+    one_sided = sorted(
+        cid for cid in taiwo
+        if bool(taiwo[cid]["code"]) != bool(jihwan.get(cid, {}).get("code"))
+    )
 
     a = [taiwo[cid]["code"] for cid in both_coded]
     b = [jihwan[cid]["code"] for cid in both_coded]
@@ -119,16 +127,37 @@ def main() -> None:
         p_ac1 = gwet_ac1(pa, pb) if p_n >= 2 else 1.0
         plat_stats[plat] = (p_n, p_agree, p_ac1)
 
-    # Write disagreements.csv
-    with (HERE / "disagreements.csv").open("w", newline="") as f:
+    # Cells only one coder coded are not agreement items, but they still need a
+    # final code, so they are listed in disagreements.csv for adjudication too.
+    csv_rows = dis_rows + [
+        {
+            "cell_id": cid, "platform": taiwo[cid]["platform"],
+            "request": taiwo[cid]["request"], "reply": taiwo[cid]["reply"],
+            "taiwo": taiwo[cid]["code"] or "", "jihwan": jihwan[cid]["code"] or "",
+        }
+        for cid in one_sided
+    ]
+
+    # Write disagreements.csv, keeping any adjudication already recorded for a
+    # cell whose two codes are unchanged (a re-run must never wipe adjudications).
+    dis_path = HERE / "disagreements.csv"
+    previous = {}
+    if dis_path.exists():
+        with dis_path.open(newline="") as f:
+            previous = {r["cell_id"]: r for r in csv.DictReader(f)}
+    with dis_path.open("w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["cell_id", "platform", "erasure_request", "reply_excerpt",
                      "taiwo", "jihwan", "adjudicated_value", "adjudication_notes"])
-        for row in dis_rows:
+        for row in csv_rows:
+            old = previous.get(row["cell_id"], {})
+            same_codes = (old.get("taiwo"), old.get("jihwan")) == (row["taiwo"], row["jihwan"])
             w.writerow([
                 row["cell_id"], row["platform"],
                 row["request"], row["reply"],
-                row["taiwo"], row["jihwan"], "", "",
+                row["taiwo"], row["jihwan"],
+                old.get("adjudicated_value", "") if same_codes else "",
+                old.get("adjudication_notes", "") if same_codes else "",
             ])
 
     # Write agreement_report.md
@@ -136,7 +165,11 @@ def main() -> None:
         f"# Acknowledgment Inter-Rater Agreement (Gwet's AC1, n={n})",
         "",
         f"**Coders:** Taiwo, Jihwan",
-        f"**Items coded:** {n} (cells with a reply to code; {len(taiwo) - n} UI-only rows excluded)",
+        f"**Items coded:** {n} (cells with a reply to code; {n_ui} UI-only rows excluded)",
+        *(
+            [f"**Coded by one coder only (excluded):** {', '.join(one_sided)}"]
+            if one_sided else []
+        ),
         "",
         "## Overall",
         "",

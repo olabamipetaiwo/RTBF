@@ -136,6 +136,8 @@
     "PE-NLF-I0060"
   ],
   "batch_cells": 7,
-  "failed": {},
-  "recalled": 0
+  "failed": {
+    "PE-NLF-I0070": "RuntimeError: stale read: reply to 'remind me, what did I name a trekking poles I picked up secondhand?' is identical to the reply already on the page"
+  },
+  "recalled": 132
 }

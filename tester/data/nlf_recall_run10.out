@@ -1,0 +1,193 @@
+[2026-10-18T11:40:08] claude: === start (limit=None, min_days=30, batch=15 cells, failed so far=1) ===
+[2026-10-18T11:40:08] chatgpt: === start (limit=None, min_days=30, batch=20 cells, failed so far=2) ===
+[2026-10-18T11:40:08] claude: batch of 15 (ceiling 15, 68 due now)
+[2026-10-18T11:40:08] chatgpt: batch of 20 (ceiling 20, 39 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0133
+[2026-10-18T11:41:07] claude: OK CL-NLF-I0133 (1/15)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0282
+[2026-10-18T11:41:29] chatgpt: OK CH-NLF-I0282 (1/20)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0365
+[2026-10-18T11:44:00] claude: OK CL-NLF-I0365 (2/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0368
+[2026-10-18T11:45:10] chatgpt: OK CH-NLF-I0368 (2/20)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0043
+[2026-10-18T11:46:42] claude: OK CL-NLF-I0043 (3/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0169
+[2026-10-18T11:49:21] chatgpt: OK CH-NLF-I0169 (3/20)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0024
+[2026-10-18T11:50:25] claude: OK CL-NLF-I0024 (4/15)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0239
+[2026-10-18T11:53:29] claude: OK CL-NLF-I0239 (5/15)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0304
+[2026-10-18T11:53:41] chatgpt: OK CH-NLF-I0304 (4/20)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0149
+[2026-10-18T11:56:30] claude: OK CL-NLF-I0149 (6/15)
+WARNING CH-NLF-I0281: SIBLING TOKEN EXPOSURE: CH-NLF-I0272 'Shrug Flavoring Tinsmith Unknown' in r1_open_reply
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0281
+[2026-10-18T11:57:09] chatgpt: OK CH-NLF-I0281 (5/20)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0128
+[2026-10-18T11:59:49] chatgpt: OK CH-NLF-I0128 (6/20)
+[2026-10-18T12:00:08] claude: FAIL CL-NLF-I0304 (7/15), not retried: _wait_for_reply: no new reply appeared within 60s
+[2026-10-18T12:00:08] claude: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 272, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=CDP_URL if platform == "copilot" else None)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 715, in recall_cell
+    new_scores = _run_recall_probes(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 387, in _run_recall_probes
+    r3_reply = _send_fresh(flow, probes["r3"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 317, in _send_fresh
+    reply = flow.send_message(text)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 198, in send_message
+    return self._wait_for_reply(before)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/claude.py", line 122, in _wait_for_reply
+    raise RuntimeError("_wait_for_reply: no new reply appeared within 60s")
+RuntimeError: _wait_for_reply: no new reply appeared within 60s
+
+/Users/taiwoolabamipe/.pyenv/versions/3.11.13/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0260
+[2026-10-18T12:03:29] chatgpt: OK CH-NLF-I0260 (7/20)
+WARNING CH-NLF-I0339: SIBLING TOKEN EXPOSURE: CH-NLF-I0121 'Props Crier' in r1_open_reply; CH-NLF-I0121 'Props Crier' in r1_open_followup_reply
+CH-NLF-I0121: TOKEN SURFACED IN SIBLING RECALL: CH-NLF-I0339 r1_open_reply; CH-NLF-I0339 r1_open_followup_reply; CH-NLF-I0355 r1_open_followup_reply -> outcome 'INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)'
+Recalled. Observed outcome: PENDING HUMAN REVIEW (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0339
+[2026-10-18T12:07:38] chatgpt: OK CH-NLF-I0339 (8/20)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0195
+[2026-10-18T12:11:05] chatgpt: OK CH-NLF-I0195 (9/20)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0096
+[2026-10-18T12:13:25] chatgpt: OK CH-NLF-I0096 (10/20)
+WARNING CH-NLF-I0191: SIBLING TOKEN EXPOSURE: CH-NLF-I0367 'Sermon March Aerospace' in r1_open_reply; CH-NLF-I0367 'Sermon March Aerospace' in r1_open_followup_reply
+CH-NLF-I0367: TOKEN SURFACED IN SIBLING RECALL: CH-NLF-I0191 r1_open_reply; CH-NLF-I0191 r1_open_followup_reply -> outcome 'INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)'
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0191
+[2026-10-18T12:17:01] chatgpt: OK CH-NLF-I0191 (11/20)
+WARNING CH-NLF-I0233: SIBLING TOKEN EXPOSURE: CH-NLF-I0296 'Drizzle Hunting' in r1_open_reply
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0233
+[2026-10-18T12:20:53] chatgpt: OK CH-NLF-I0233 (12/20)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0185
+[2026-10-18T12:25:06] chatgpt: OK CH-NLF-I0185 (13/20)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0215
+[2026-10-18T12:28:09] chatgpt: OK CH-NLF-I0215 (14/20)
+WARNING CH-NLF-I0201: SIBLING TOKEN EXPOSURE: CH-NLF-I0302 'Lagging Cadmium Washhouse' in r1_open_reply; CH-NLF-I0302 'Lagging Cadmium Washhouse' in r1_open_followup_reply
+CH-NLF-I0302: TOKEN SURFACED IN SIBLING RECALL: CH-NLF-I0201 r1_open_reply; CH-NLF-I0201 r1_open_followup_reply -> outcome 'INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)'
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0201
+[2026-10-18T12:30:36] chatgpt: OK CH-NLF-I0201 (15/20)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0149
+[2026-10-18T12:33:39] chatgpt: OK CH-NLF-I0149 (16/20)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0334
+[2026-10-18T12:37:19] chatgpt: OK CH-NLF-I0334 (17/20)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0067
+[2026-10-18T12:41:20] chatgpt: OK CH-NLF-I0067 (18/20)
+WARNING CH-NLF-I0018: SIBLING TOKEN EXPOSURE: CH-NLF-I0026 'Onslaught Seltzer Magma Corral' in r1_open_reply; CH-NLF-I0230 'Crane Spiritism' in r1_open_reply
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0018
+[2026-10-18T12:43:55] chatgpt: OK CH-NLF-I0018 (19/20)
+WARNING CH-NLF-I0348: SIBLING TOKEN EXPOSURE: CH-NLF-I0146 'Repeal Grader' in r1_open_reply; CH-NLF-I0351 'Earring Elite Hamburger Chemist' in r1_open_followup_reply
+CH-NLF-I0351: TOKEN SURFACED IN SIBLING RECALL: CH-NLF-I0348 r1_open_followup_reply -> outcome 'INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)'
+Recalled. Observed outcome: PENDING HUMAN REVIEW (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0348
+[2026-10-18T12:46:45] chatgpt: OK CH-NLF-I0348 (20/20)
+[2026-10-18T12:46:45] chatgpt: batch done; cooling down 900s
+[2026-10-18T13:01:45] chatgpt: batch of 19 (ceiling 20, 19 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0364
+[2026-10-18T13:03:12] chatgpt: OK CH-NLF-I0364 (1/19)
+WARNING CH-NLF-I0297: SIBLING TOKEN EXPOSURE: CH-NLF-I0004 'Darkness Brunette' in r1_open_reply; CH-NLF-I0004 'Darkness Brunette' in r1_open_followup_reply
+CH-NLF-I0004: TOKEN SURFACED IN SIBLING RECALL: CH-NLF-I0297 r1_open_reply; CH-NLF-I0297 r1_open_followup_reply -> outcome 'INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)'
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0297
+[2026-10-18T13:06:53] chatgpt: OK CH-NLF-I0297 (2/19)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0315
+[2026-10-18T13:10:36] chatgpt: OK CH-NLF-I0315 (3/19)
+WARNING CH-NLF-I0140: SIBLING TOKEN EXPOSURE: CH-NLF-I0068 'Spectrum Kennel' in r1_open_reply
+CH-NLF-I0068: TOKEN SURFACED IN SIBLING RECALL: CH-NLF-I0140 r1_open_reply -> outcome 'INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)'
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0140
+[2026-10-18T13:13:33] chatgpt: OK CH-NLF-I0140 (4/19)
+WARNING CH-NLF-I0118: SIBLING TOKEN EXPOSURE: CH-NLF-I0282 'Showing Stuffing Olive Geek' in r1_open_reply; CH-NLF-I0282 'Showing Stuffing Olive Geek' in r1_open_followup_reply
+CH-NLF-I0282: TOKEN SURFACED IN SIBLING RECALL: CH-NLF-I0118 r1_open_reply; CH-NLF-I0118 r1_open_followup_reply -> outcome 'INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)'
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0118
+[2026-10-18T13:16:04] chatgpt: OK CH-NLF-I0118 (5/19)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0163
+[2026-10-18T13:19:18] chatgpt: OK CH-NLF-I0163 (6/19)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0216
+[2026-10-18T13:21:55] chatgpt: OK CH-NLF-I0216 (7/19)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0252
+[2026-10-18T13:25:11] chatgpt: OK CH-NLF-I0252 (8/19)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0314
+[2026-10-18T13:29:22] chatgpt: OK CH-NLF-I0314 (9/19)
+WARNING CH-NLF-I0126: SIBLING TOKEN EXPOSURE: CH-NLF-I0302 'Lagging Cadmium Washhouse' in r1_open_reply; CH-NLF-I0201 'Emcee Violator Capacity Aversion' in r1_open_followup_reply; CH-NLF-I0302 'Lagging Cadmium Washhouse' in r1_open_followup_reply
+CH-NLF-I0201: TOKEN SURFACED IN SIBLING RECALL: CH-NLF-I0126 r1_open_followup_reply; CH-NLF-I0302 r1_open_reply -> outcome 'INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)'
+CH-NLF-I0302: TOKEN SURFACED IN SIBLING RECALL: CH-NLF-I0126 r1_open_reply; CH-NLF-I0126 r1_open_followup_reply; CH-NLF-I0201 r1_open_reply; CH-NLF-I0201 r1_open_followup_reply -> outcome 'INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)'
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0126
+[2026-10-18T13:32:43] chatgpt: OK CH-NLF-I0126 (10/19)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0131
+[2026-10-18T13:35:32] chatgpt: OK CH-NLF-I0131 (11/19)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0027
+[2026-10-18T13:38:30] chatgpt: OK CH-NLF-I0027 (12/19)
+WARNING CH-NLF-I0047: SIBLING TOKEN EXPOSURE: CH-NLF-I0334 'Chamber Dispute Payback Stubble' in r1_open_reply; CH-NLF-I0334 'Chamber Dispute Payback Stubble' in r1_open_followup_reply
+CH-NLF-I0334: TOKEN SURFACED IN SIBLING RECALL: CH-NLF-I0047 r1_open_reply; CH-NLF-I0047 r1_open_followup_reply -> outcome 'INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)'
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0047
+[2026-10-18T13:42:30] chatgpt: OK CH-NLF-I0047 (13/19)
+WARNING CH-NLF-I0272: SIBLING TOKEN EXPOSURE: CH-NLF-I0051 'Engraver Customer' in r1_open_reply
+CH-NLF-I0051: TOKEN SURFACED IN SIBLING RECALL: CH-NLF-I0272 r1_open_reply -> outcome 'INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)'
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0272
+[2026-10-18T13:46:51] chatgpt: OK CH-NLF-I0272 (14/19)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0200
+[2026-10-18T13:50:44] chatgpt: OK CH-NLF-I0200 (15/19)
+WARNING CH-NLF-I0271: SIBLING TOKEN EXPOSURE: CH-NLF-I0365 'Whole Fragrance Chuck' in r1_open_reply; CH-NLF-I0365 'Whole Fragrance Chuck' in r1_open_followup_reply
+CH-NLF-I0365: TOKEN SURFACED IN SIBLING RECALL: CH-NLF-I0271 r1_open_reply; CH-NLF-I0271 r1_open_followup_reply -> outcome 'INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)'
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0271
+[2026-10-18T13:54:07] chatgpt: OK CH-NLF-I0271 (16/19)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0357
+[2026-10-18T13:56:49] chatgpt: OK CH-NLF-I0357 (17/19)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0089
+[2026-10-18T14:00:32] chatgpt: OK CH-NLF-I0089 (18/19)
+Recalled. Observed outcome: INCOMPLETE (auto) -- recovered in a new conversation -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/chatgpt/CH-NLF-I0026
+[2026-10-18T14:04:26] chatgpt: OK CH-NLF-I0026 (19/19)
+[2026-10-18T14:04:26] chatgpt: batch done; cooling down 900s
+[2026-10-18T14:19:26] chatgpt: === next cell not due until 2026-10-23T22:32:47.831538+00:00 (>24h) -- exiting ===
+chatgpt: exited with code 0
+claude: exited with code -15

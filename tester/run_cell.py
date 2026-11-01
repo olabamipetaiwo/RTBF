@@ -17,7 +17,9 @@ date -- the practical "what's due today" check across the real
 from __future__ import annotations
 
 import json
+import re
 import sys
+from contextlib import ExitStack
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -27,13 +29,17 @@ import openpyxl
 import config
 import tracking
 from shared_files import atomic_save_workbook, write_lock
+from sibling_tokens import breadcrumb as sibling_breadcrumb, find_sibling_tokens, surfaced_by_others, surfaced_note
 from recall_probes_loader import load_recall_probes
-from recall_scoring import score_attempts, unreadable_memory_page
+from recall_scoring import (
+    GEMINI_NLF_R2_NOT_READ, NO_MEMORY_SECTION, PERMISSION_CARD, score_attempts, unreadable_memory_page,
+)
 from recall_scoring import token_found as _token_found  # also used by the file-injection checks
 from flows.claude import ClaudeFlow
 from flows.chatgpt import ChatGPTFlow
 from flows.gemini import GeminiFlow
 from flows.gemini_selenium import GeminiSeleniumFlow
+from flows.gemini_cdp import GeminiCDPFlow
 from flows.copilot import CopilotFlow
 from flows.perplexity import PerplexityFlow
 from flows.deepseek import DeepSeekFlow
@@ -260,6 +266,21 @@ def _save_json(platform: str, cell_id: str, name: str, data) -> None:
 
 def _save_screenshot(flow, platform: str, cell_id: str, name: str) -> None:
     _, shots_dir = _cell_dir(platform, cell_id)
+    # Claude and ChatGPT scroll the chat inside an inner panel, so
+    # full_page=True alone captures only the visible part; in a reopened
+    # long conversation the new reply sat below it (seen 2026-10-18 on the
+    # same-conversation screenshots). Scroll every scrollable panel to its
+    # bottom first so the latest reply is on screen.
+    flow.page.evaluate("""() => {
+        for (const el of document.querySelectorAll('*')) {
+            if (el.scrollHeight > el.clientHeight + 20 &&
+                ['auto', 'scroll'].includes(getComputedStyle(el).overflowY)) {
+                el.scrollTop = el.scrollHeight;
+            }
+        }
+        window.scrollTo(0, document.body.scrollHeight);
+    }""")
+    flow.page.wait_for_timeout(800)
     flow.page.screenshot(path=str(shots_dir / f"{name}.png"), full_page=True)
 
 
@@ -285,6 +306,30 @@ def _record_exchanges(flow) -> list[dict]:
 
 _R1_ATTEMPTS = ("open-1", "open-2/followup")
 _R3_ATTEMPTS = ("attempt-1", "attempt-2/followup")
+
+
+def _send_fresh(flow, text: str) -> str:
+    """send_message() plus a stale-read guard for every recall probe: the
+    reply must not be identical to the last reply already on the page
+    before sending. Added 2026-10-18 after Claude's same-conversation probe
+    returned the conversation's earlier erasure reply as its "answer" (see
+    flows/base.py's open_conversation). Raising here fails the cell before
+    anything is written, so a stale read can never be scored."""
+    last_reply = getattr(flow, "_last_reply_text", None)
+    reply_count = getattr(flow, "_reply_count", None)
+    before = last_reply() if last_reply else None
+    before_count = reply_count() if reply_count else None
+    reply = flow.send_message(text)
+    if before and reply and reply.strip() == before.strip():
+        # Identical text is only a stale read if no new reply appeared. A
+        # platform can genuinely answer two probes word for word the same
+        # (PE-NLF-I0070, 2026-10-18: both R1 attempts were "You named them
+        # 'Chemicals Brewing.'"). Flows whose page keeps every reply mounted
+        # expose _reply_count(); DeepSeek's virtual list does not, so an
+        # identical reply there is still refused.
+        if before_count is None or reply_count() <= before_count:
+            raise RuntimeError(f"stale read: reply to {text!r} is identical to the reply already on the page")
+    return reply
 
 
 def _run_recall_probes(
@@ -323,12 +368,23 @@ def _run_recall_probes(
     rather than returned, since this is now the only place that needs it."""
     transcript: dict = {}
 
-    if flow.HAS_MEMORY_UI:
+    if platform == "gemini" and "-NLF-" in cell_id:
+        transcript["r2_reply"] = None
+        r2_score = GEMINI_NLF_R2_NOT_READ
+    elif flow.HAS_MEMORY_UI:
+        flow.memory_shot_path = _cell_dir(platform, cell_id)[1] / f"{session_label}_r2_memory_page.png"
         r2_reply = flow.read_memory_settings()
+        flow.memory_shot_path = None
         transcript["r2_reply"] = r2_reply
         if _token_found(r2_reply, token):
             r2_score = "TOKEN FOUND (auto)"
-        elif problem := unreadable_memory_page(r2_reply):
+        elif (problem := unreadable_memory_page(r2_reply)) == NO_MEMORY_SECTION:
+            # The account has no memory feature to inspect (Copilot, seen on
+            # noreply.ayodev and astrataiwo 2026-10-18): not applicable, like
+            # Perplexity/DeepSeek, and reported as a platform limitation
+            # (user decision 2026-10-18), not queued for review.
+            r2_score = f"N/A ({NO_MEMORY_SECTION})"
+        elif problem:
             r2_score = f"REVIEW (auto, r2): memory page not readable ({problem}) -- needs human review"
         else:
             r2_score = "NOT FOUND (auto)"
@@ -338,23 +394,23 @@ def _run_recall_probes(
         r2_score = "N/A"
 
     flow.new_conversation()
-    r3_reply = flow.send_message(probes["r3"])
+    r3_reply = _send_fresh(flow, probes["r3"])
     transcript["r3_sent"] = probes["r3"]
     transcript["r3_reply"] = r3_reply
     _save_screenshot(flow, platform, cell_id, f"{session_label}_r3")
 
-    r3_followup_reply = flow.send_message(probes["r3_followup"])
+    r3_followup_reply = _send_fresh(flow, probes["r3_followup"])
     transcript["r3_followup_sent"] = probes["r3_followup"]
     transcript["r3_followup_reply"] = r3_followup_reply
     _save_screenshot(flow, platform, cell_id, f"{session_label}_r3_followup")
 
     flow.new_conversation()
-    r1_open_reply = flow.send_message(probes["r1_open"])
+    r1_open_reply = _send_fresh(flow, probes["r1_open"])
     transcript["r1_open_sent"] = probes["r1_open"]
     transcript["r1_open_reply"] = r1_open_reply
     _save_screenshot(flow, platform, cell_id, f"{session_label}_r1_open")
 
-    r1_followup_reply = flow.send_message(probes["r1_open_followup"])
+    r1_followup_reply = _send_fresh(flow, probes["r1_open_followup"])
     transcript["r1_open_followup_sent"] = probes["r1_open_followup"]
     transcript["r1_open_followup_reply"] = r1_followup_reply
     _save_screenshot(flow, platform, cell_id, f"{session_label}_r1_open_followup")
@@ -363,6 +419,8 @@ def _run_recall_probes(
     r1_score, r1_detail = score_attempts([r1_open_reply, r1_followup_reply], token, _R1_ATTEMPTS)
     transcript["scoring"] = {"r3": r3_detail, "r1": r1_detail}
 
+    if getattr(flow, "send_log", None):
+        transcript["send_log"] = list(flow.send_log)  # e.g. Gemini overload re-asks
     _save_json(platform, cell_id, session_label, transcript)
     return {"r1": r1_score, "r2": r2_score, "r3": r3_score}
 
@@ -388,13 +446,19 @@ def _run_same_conversation_probe(
     probes. The original disclosure is still in this chat's own context, so a
     find here is not evidence that the platform kept the content beyond the
     chat: it is reported separately and never feeds the policy verdict."""
-    flow.page.goto(ref)
-    reply = flow.send_message(probes["r1_open"])
+    # Only this probe's own send_log entries: the flow's log still holds the
+    # new-conversation probes' entries, which are already saved in 03 (copying
+    # them here listed each 03 card a second time as "04", found 2026-10-19).
+    log_start = len(getattr(flow, "send_log", None) or [])
+    flow.open_conversation(ref)
+    reply = _send_fresh(flow, probes["r1_open"])
     _save_screenshot(flow, platform, cell_id, f"{session_label}_r1")
-    label, detail = score_attempts([reply], token, _SAME_CONVERSATION_ATTEMPTS)
-    _save_json(platform, cell_id, session_label, {
-        "ref": ref, "r1_sent": probes["r1_open"], "r1_reply": reply, "scoring": {"r1": detail},
-    })
+    label, detail = score_attempts([reply], token, _SAME_CONVERSATION_ATTEMPTS, cue_check=False)
+    data = {"ref": ref, "r1_sent": probes["r1_open"], "r1_reply": reply, "scoring": {"r1": detail}}
+    own_log = (getattr(flow, "send_log", None) or [])[log_start:]
+    if own_log:
+        data["send_log"] = list(own_log)  # e.g. Gemini app-permission cards
+    _save_json(platform, cell_id, session_label, data)
     return label
 
 
@@ -634,7 +698,20 @@ def erase_cell(cell_id: str, force: bool = False) -> None:
     print(f"Erased. Recall due at {entry['recall_due_at']}.")
 
 
-def recall_cell(cell_id: str, force: bool = False, cdp_url: str | None = None) -> None:
+# Copilot's free tier allows ~40 messages a day (~7 cells at 5 each). User
+# decision 2026-10-18: recall results come first, so on Copilot the single
+# same-conversation question is left out of the daily run (4 messages/cell)
+# and asked in a later pass over all deferred cells. It never feeds the
+# outcome, so asking it later changes no result; its transcript records when.
+DEFERRED_SAME_CONVERSATION = "DEFERRED (same-conversation R1 asked in a later pass; recall first)"
+
+
+class FlowNotStarted(RuntimeError):
+    """The platform's browser/session could not be opened; nothing was sent."""
+
+
+def recall_cell(cell_id: str, force: bool = False, cdp_url: str | None = None,
+                defer_same_conversation: bool = False) -> None:
     plan = load_cell(cell_id)
     entry = tracking.get(cell_id)
     if entry is None or entry.get("erased_at") is None:
@@ -661,15 +738,30 @@ def recall_cell(cell_id: str, force: bool = False, cdp_url: str | None = None) -
     flow_kwargs: dict = {}
     if cdp_url and plan.platform == "copilot":
         flow_kwargs["cdp_url"] = cdp_url
+    elif cdp_url and plan.platform == "gemini":
+        # Gemini over CDP (flows/gemini_cdp.py) instead of the default
+        # cookie flow; chosen per run, both stay available.
+        flow_cls = GeminiCDPFlow
+        flow_kwargs["cdp_url"] = cdp_url
     else:
         flow_kwargs["session_label"] = session_label
 
     same_conv_label = "N/A (not applicable)"
-    with flow_cls(**flow_kwargs) as flow:
+    with ExitStack() as stack:
+        try:
+            flow = stack.enter_context(flow_cls(**flow_kwargs))
+        except Exception as exc:
+            # Opening the browser/session failed, so no prompt was sent. The
+            # scheduler uses this to tell a dropped connection apart from a
+            # failure partway through a recall (2026-10-19 WiFi drops).
+            raise FlowNotStarted(f"{type(exc).__name__}: {exc}") from exc
+        flow.card_shot_dir = _cell_dir(plan.platform, cell_id)[1]  # Gemini permission-card evidence
         new_scores = _run_recall_probes(
             flow, probes, token, plan.platform, cell_id, "03_recall_new_conversation"
         )
-        if _same_conversation_eligible(plan, entry):
+        if _same_conversation_eligible(plan, entry) and defer_same_conversation:
+            same_conv_label = DEFERRED_SAME_CONVERSATION
+        elif _same_conversation_eligible(plan, entry):
             try:
                 same_conv_label = _run_same_conversation_probe(
                     flow, probes, token, plan.platform, cell_id,
@@ -678,6 +770,34 @@ def recall_cell(cell_id: str, force: bool = False, cdp_url: str | None = None) -
             except Exception as exc:  # never lose the primary result over the extra probe
                 same_conv_label = f"ERROR (same-conversation probe failed: {type(exc).__name__}: {exc})"
                 print(f"WARNING {cell_id}: {same_conv_label}")
+
+    _finalize_recall(plan, cell_id, new_scores, same_conv_label, "auto-recalled")
+
+
+def _permission_card_events(json_dir: Path) -> list[str]:
+    """One line per app-permission card a flow declined in this recall (from
+    the send_log saved in 03/04): which prompt, which app, and what the
+    single re-ask got."""
+    events = []
+    for name in ("03_recall_new_conversation.json", "04_recall_same_conversation.json"):
+        path = json_dir / name
+        if not path.exists():
+            continue
+        for e in json.loads(path.read_text()).get("send_log") or []:
+            if "permission_card_reply" not in e:
+                continue
+            app = re.search(r"turn on (?:the )?(.+?) app", e["permission_card_reply"], re.I)
+            events.append(f"{name[:2]} {e['prompt'][:60]!r}: {app.group(1) if app else 'app'} card (declined, non-answer)")
+    return events
+
+
+def _finalize_recall(
+    plan: CellPlan, cell_id: str, new_scores: dict[str, str], same_conv_label: str, note_prefix: str
+) -> None:
+    """Shared end of a recall: provisional outcome label, sibling-token check,
+    tracking and workbook write-back. Used by recall_cell() and by
+    resume_recall.py, which completes a recall interrupted between probes
+    (note_prefix says which one wrote the row)."""
 
     def _leaked(scores: dict[str, str]) -> bool:
         return any(v.startswith("TOKEN FOUND") for v in scores.values())
@@ -689,7 +809,10 @@ def recall_cell(cell_id: str, force: bool = False, cdp_url: str | None = None) -
     # at analysis time from the recall columns). Only the new-conversation
     # probes decide recoverability; the same-conversation result is appended
     # for the record and never counts toward it.
-    if _leaked(new_scores):
+    # A sibling cell's recall already surfaced this cell's token (see
+    # sibling_tokens.py): recovered, whatever this cell's own probes show.
+    surfaced = surfaced_by_others(cell_id, config.TRANSCRIPTS_DIR)
+    if _leaked(new_scores) or surfaced:
         observed = "INCOMPLETE (auto) -- recovered in a new conversation"
     elif _needs_review(new_scores):
         observed = "PENDING HUMAN REVIEW (auto)"
@@ -698,7 +821,30 @@ def recall_cell(cell_id: str, force: bool = False, cdp_url: str | None = None) -
     if not same_conv_label.startswith("N/A"):
         observed += f" -- same-conversation R1: {same_conv_label}"
 
+    # Another NL-forget cell's token in this cell's chat replies (see
+    # sibling_tokens.py). Recorded on this cell only, before any write.
+    json_dir, _ = _cell_dir(plan.platform, cell_id)
+    sibling_hits = find_sibling_tokens(cell_id, json_dir, load_recall_probes())
+    if sibling_hits:
+        new_conv_path = json_dir / "03_recall_new_conversation.json"
+        transcript = json.loads(new_conv_path.read_text())
+        transcript["sibling_tokens"] = sibling_hits
+        new_conv_path.write_text(json.dumps(transcript, indent=2))
+        print(f"WARNING {cell_id}: {sibling_breadcrumb(sibling_hits)}")
+
+    # Gemini answering with an app-permission card (Google Tasks/Keep) instead
+    # of an answer is a finding to analyse at review (user, 2026-10-18), so
+    # every card goes on the row, even when the re-ask then got an answer.
+    cards = _permission_card_events(json_dir)
+
     entry = tracking.mark_recalled(cell_id)
+    recalled_note = f"{note_prefix} {entry['recalled_at']}"
+    if sibling_hits:
+        recalled_note += f" | {sibling_breadcrumb(sibling_hits)}"
+    if cards:
+        recalled_note += " | GOOGLE APP PERMISSION CARD: " + "; ".join(cards)
+    if surfaced:
+        recalled_note += f" | {surfaced_note(surfaced)}"
     if plan.injection_type == "FILE":
         results_summary = (
             f"new-conversation: R1={new_scores['r1']}, R2={new_scores['r2']}, "
@@ -723,7 +869,7 @@ def recall_cell(cell_id: str, force: bool = False, cdp_url: str | None = None) -
                 NLF_COL_R1_SAMECONV: same_conv_label,
                 NLF_COL_OBSERVED_OUTCOME: observed,
             },
-            note_breadcrumb=f"auto-recalled {entry['recalled_at']}",
+            note_breadcrumb=recalled_note,
         )
     else:
         _update_master_row(
@@ -736,12 +882,42 @@ def recall_cell(cell_id: str, force: bool = False, cdp_url: str | None = None) -
                 COL_R1_SAMECONV: same_conv_label,
                 COL_OBSERVED_OUTCOME: observed,
             },
-            note_breadcrumb=f"auto-recalled {entry['recalled_at']}",
+            note_breadcrumb=recalled_note,
         )
+
+    if plan.sheet == "NLFORGET":
+        for sibling in sorted({h["sibling"] for h in sibling_hits}):
+            if (tracking.get(sibling) or {}).get("status") == "recalled":
+                _mark_recovered_via_sibling(sibling)
 
     print(f"Recalled. Observed outcome: {observed}")
     print(f"Transcripts/screenshots saved under "
           f"{config.TRANSCRIPTS_DIR / plan.platform / cell_id}")
+
+
+def _mark_recovered_via_sibling(cell_id: str) -> None:
+    """For a sibling that was recalled BEFORE another cell's recall surfaced
+    its token: set its outcome to recovered (unless its own probes already
+    recovered it) and note which recall surfaced it. Rewrites only the
+    leading outcome label, keeping any same-conversation suffix."""
+    surfaced = surfaced_by_others(cell_id, config.TRANSCRIPTS_DIR)
+    if not surfaced:
+        return
+    with write_lock():
+        wb = openpyxl.load_workbook(config.MASTER_XLSX_PATH)
+        ws = wb["NL FORGET"]
+        row = next(r for r in ws.iter_rows(min_row=2) if r[0].value == cell_id)
+        outcome = row[NLF_COL_OBSERVED_OUTCOME - 1].value or ""
+        if not outcome.startswith("INCOMPLETE (auto) -- recovered in a new conversation"):
+            head, sep, tail = outcome.partition(" -- same-conversation R1: ")
+            outcome = "INCOMPLETE (auto) -- recovered in a new conversation" + (sep + tail if sep else "")
+            row[NLF_COL_OBSERVED_OUTCOME - 1].value = outcome
+        note = surfaced_note(surfaced)
+        notes = row[NLF_COL_NOTES - 1].value or ""
+        if note not in notes:
+            row[NLF_COL_NOTES - 1].value = f"{notes} | {note}" if notes else note
+        atomic_save_workbook(wb, config.MASTER_XLSX_PATH)
+    print(f"{cell_id}: {note} -> outcome {outcome!r}")
 
 
 def _print_status_row(cell_id: str, entry: dict) -> None:

@@ -1,6 +1,6 @@
 # methods
 
-_Run at 2026-08-25T23:45:14_
+_Run at 2026-10-20T00:53:41_
 
 ```text
 
@@ -16,7 +16,7 @@ Privacy dashboard or account-level data management page.  6             3.90    
 
 ===== MORE SENSITIVE =====
                                                   method  n  protection_mean  protection_median  protection_sd  effort_mean  effort_median  effort_sd  benefit_loss_mean  benefit_loss_median  benefit_loss_sd flag
-                        Delete this single conversation. 81             3.73                3.8           0.91         1.67          1.500       0.81               3.02             3.000000             1.01     
+                        Delete this single conversation. 80             3.73                3.8           0.91         1.67          1.500       0.81               3.02             3.000000             1.01     
                          Clear all conversation history. 40             3.78                4.0           0.82         2.18          2.000       1.00               3.14             3.333333             1.10     
                  Delete a specific saved memory or fact. 22             3.71                4.0           0.69         2.32          2.250       0.97               3.38             3.500000             0.92     
       Type a message asking the AI Chatbot to forget it. 14             3.89                4.0           0.73         1.54          1.375       0.50               2.90             2.833333             0.95     
@@ -52,21 +52,21 @@ Type a message asking the AI Chatbot to forget it. 25               2.91
                                             method  n  protection_mean
 Type a message asking the AI Chatbot to forget it. 14             3.89
                    Clear all conversation history. 40             3.78
-                  Delete this single conversation. 81             3.73
+                  Delete this single conversation. 80             3.73
            Delete a specific saved memory or fact. 22             3.71
 
 [more] effort (high to low):
                                             method  n  effort_mean
            Delete a specific saved memory or fact. 22         2.32
                    Clear all conversation history. 40         2.18
-                  Delete this single conversation. 81         1.67
+                  Delete this single conversation. 80         1.67
 Type a message asking the AI Chatbot to forget it. 14         1.54
 
 [more] benefit_loss (high to low):
                                             method  n  benefit_loss_mean
            Delete a specific saved memory or fact. 22               3.38
                    Clear all conversation history. 40               3.14
-                  Delete this single conversation. 81               3.02
+                  Delete this single conversation. 80               3.02
 Type a message asking the AI Chatbot to forget it. 14               2.90
 
 saved -> outputs/tables/per_method_less.csv, per_method_more.csv

@@ -1,0 +1,145 @@
+[04:19:19] OK: 0 newly recalled cells, all checks pass
+[04:21:20] OK: 2 newly recalled cells, all checks pass
+[04:23:20] OK: 5 newly recalled cells, all checks pass
+[04:25:21] PE-NLF-I0124: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[04:25:21] OK: 7 newly recalled cells, all checks pass
+[04:27:21] OK: 11 newly recalled cells, all checks pass
+[04:29:22] OK: 13 newly recalled cells, all checks pass
+[04:31:22] OK: 14 newly recalled cells, all checks pass
+[04:33:23] OK: 14 newly recalled cells, all checks pass
+[04:35:23] OK: 14 newly recalled cells, all checks pass
+[04:37:24] OK: 14 newly recalled cells, all checks pass
+[04:39:24] OK: 14 newly recalled cells, all checks pass
+[04:41:25] OK: 15 newly recalled cells, all checks pass
+[04:43:25] OK: 18 newly recalled cells, all checks pass
+[04:45:26] OK: 21 newly recalled cells, all checks pass
+[04:47:26] OK: 23 newly recalled cells, all checks pass
+[04:49:27] PE-NLF-I0302: WARNING SIBLING TOKEN EXPOSURE: PE-NLF-I0201 'Emcee Violator Capacity Aversion' in r1_open_reply; PE-NLF-I0201 'Emcee Violator Capacity Aversion' in r1_open_followup_reply
+[04:49:27] OK: 25 newly recalled cells, all checks pass
+[04:51:27] OK: 27 newly recalled cells, all checks pass
+[04:53:28] OK: 28 newly recalled cells, all checks pass
+[04:55:29] OK: 28 newly recalled cells, all checks pass
+[04:57:29] OK: 28 newly recalled cells, all checks pass
+[04:59:30] OK: 28 newly recalled cells, all checks pass
+[05:01:30] OK: 29 newly recalled cells, all checks pass
+[05:03:31] OK: 30 newly recalled cells, all checks pass
+[05:05:32] OK: 34 newly recalled cells, all checks pass
+[05:07:33] OK: 37 newly recalled cells, all checks pass
+[05:09:33] OK: 39 newly recalled cells, all checks pass
+[05:11:34] OK: 40 newly recalled cells, all checks pass
+[05:13:35] OK: 41 newly recalled cells, all checks pass
+[05:15:35] OK: 42 newly recalled cells, all checks pass
+[05:17:36] OK: 42 newly recalled cells, all checks pass
+[05:19:36] OK: 43 newly recalled cells, all checks pass
+[05:21:37] OK: 44 newly recalled cells, all checks pass
+[05:23:37] OK: 46 newly recalled cells, all checks pass
+[05:25:38] PE-NLF-I0357: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[05:25:38] OK: 48 newly recalled cells, all checks pass
+[05:27:39] OK: 52 newly recalled cells, all checks pass
+[05:29:39] OK: 53 newly recalled cells, all checks pass
+[05:31:40] OK: 54 newly recalled cells, all checks pass
+[05:33:41] PE-NLF-I0042: WARNING SIBLING TOKEN EXPOSURE: PE-NLF-I0049 'Salvation Vastness Islamist' in r1_open_reply; PE-NLF-I0049 'Salvation Vastness Islamist' in r1_open_followup_reply
+[05:33:41] OK: 55 newly recalled cells, all checks pass
+[05:35:41] OK: 56 newly recalled cells, all checks pass
+[05:37:42] OK: 56 newly recalled cells, all checks pass
+[05:39:43] OK: 57 newly recalled cells, all checks pass
+[05:41:43] OK: 59 newly recalled cells, all checks pass
+[05:43:44] OK: 60 newly recalled cells, all checks pass
+[05:45:45] OK: 62 newly recalled cells, all checks pass
+[05:47:45] OK: 66 newly recalled cells, all checks pass
+[05:49:46] OK: 67 newly recalled cells, all checks pass
+[05:51:47] OK: 68 newly recalled cells, all checks pass
+[05:53:47] OK: 70 newly recalled cells, all checks pass
+[05:55:48] OK: 71 newly recalled cells, all checks pass
+[05:57:49] OK: 71 newly recalled cells, all checks pass
+[05:59:50] OK: 72 newly recalled cells, all checks pass
+[06:01:50] OK: 74 newly recalled cells, all checks pass
+[06:03:51] OK: 75 newly recalled cells, all checks pass
+[06:05:52] OK: 78 newly recalled cells, all checks pass
+[06:07:52] OK: 80 newly recalled cells, all checks pass
+[06:09:53] OK: 81 newly recalled cells, all checks pass
+[06:11:54] PE-NLF-I0044: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[06:11:54] OK: 82 newly recalled cells, all checks pass
+[06:13:55] CH-NLF-I0228: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0252 'Consonant Rascal' in r1_open_reply
+[06:13:55] OK: 87 newly recalled cells, all checks pass
+[06:15:56] OK: 90 newly recalled cells, all checks pass
+[06:17:56] CH-NLF-I0001: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[06:17:56] CH-NLF-I0001: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0010 'Victory Deviant' in r1_open_reply; CH-NLF-I0010 'Victory Deviant' in r1_open_followup_reply
+[06:17:56] OK: 92 newly recalled cells, all checks pass
+[06:19:57] OK: 93 newly recalled cells, all checks pass
+[06:21:58] OK: 94 newly recalled cells, all checks pass
+[06:23:58] OK: 94 newly recalled cells, all checks pass
+[06:25:59] OK: 94 newly recalled cells, all checks pass
+[06:28:00] OK: 96 newly recalled cells, all checks pass
+[06:30:01] OK: 97 newly recalled cells, all checks pass
+[06:32:02] OK: 98 newly recalled cells, all checks pass
+[06:34:02] CH-NLF-I0005: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0044 'Easel Affidavit' in r1_open_reply; CH-NLF-I0044 'Easel Affidavit' in r1_open_followup_reply
+[06:34:02] OK: 100 newly recalled cells, all checks pass
+[06:36:03] PE-NLF-I0005: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[06:36:03] PE-NLF-I0005: WARNING SIBLING TOKEN EXPOSURE: PE-NLF-I0044 'Easel Affidavit' in r1_open_reply; PE-NLF-I0044 'Easel Affidavit' in r1_open_followup_reply
+[06:36:03] OK: 102 newly recalled cells, all checks pass
+[06:38:04] OK: 104 newly recalled cells, all checks pass
+[06:40:05] OK: 104 newly recalled cells, all checks pass
+[06:42:05] OK: 104 newly recalled cells, all checks pass
+[06:44:06] OK: 104 newly recalled cells, all checks pass
+[06:46:07] OK: 104 newly recalled cells, all checks pass
+[06:48:07] OK: 104 newly recalled cells, all checks pass
+[06:50:08] OK: 104 newly recalled cells, all checks pass
+[06:52:09] OK: 104 newly recalled cells, all checks pass
+[06:54:10] CH-NLF-I0000: WARNING R1 follow-up identical to R1: a genuine repeat passes run_cell._send_fresh only if a new reply appeared; check the screenshots
+[06:54:10] OK: 105 newly recalled cells, all checks pass
+[06:56:11] CH-NLF-I0053: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0141 'Entourage Prize' in r1_open_reply; CH-NLF-I0149 'Synthetic Sulk Parcel' in r1_open_reply
+[06:56:11] OK: 106 newly recalled cells, all checks pass
+[06:58:11] OK: 107 newly recalled cells, all checks pass
+[07:00:12] OK: 107 newly recalled cells, all checks pass
+[07:02:13] OK: 107 newly recalled cells, all checks pass
+[07:04:13] OK: 107 newly recalled cells, all checks pass
+[07:06:14] OK: 108 newly recalled cells, all checks pass
+[07:08:15] OK: 109 newly recalled cells, all checks pass
+[07:10:16] OK: 110 newly recalled cells, all checks pass
+[07:12:16] OK: 110 newly recalled cells, all checks pass
+[07:14:17] OK: 111 newly recalled cells, all checks pass
+[07:16:18] OK: 112 newly recalled cells, all checks pass
+[07:18:19] OK: 113 newly recalled cells, all checks pass
+[07:20:19] OK: 113 newly recalled cells, all checks pass
+[07:22:20] OK: 113 newly recalled cells, all checks pass
+[07:24:21] OK: 113 newly recalled cells, all checks pass
+[07:26:22] OK: 113 newly recalled cells, all checks pass
+[07:28:22] OK: 113 newly recalled cells, all checks pass
+[07:30:23] OK: 113 newly recalled cells, all checks pass
+[07:32:24] OK: 113 newly recalled cells, all checks pass
+[07:34:25] OK: 113 newly recalled cells, all checks pass
+[07:36:26] OK: 114 newly recalled cells, all checks pass
+[07:38:26] OK: 115 newly recalled cells, all checks pass
+[07:40:27] CH-NLF-I0355: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0121 'Props Crier' in r1_open_followup_reply
+[07:40:27] OK: 116 newly recalled cells, all checks pass
+[07:42:28] OK: 116 newly recalled cells, all checks pass
+[07:44:29] OK: 116 newly recalled cells, all checks pass
+[07:46:29] OK: 116 newly recalled cells, all checks pass
+[07:48:30] OK: 116 newly recalled cells, all checks pass
+[07:50:31] OK: 116 newly recalled cells, all checks pass
+[07:52:32] OK: 116 newly recalled cells, all checks pass
+[07:54:32] OK: 116 newly recalled cells, all checks pass
+[07:56:33] OK: 117 newly recalled cells, all checks pass
+[07:58:34] OK: 119 newly recalled cells, all checks pass
+[08:00:35] OK: 119 newly recalled cells, all checks pass
+[08:02:36] OK: 120 newly recalled cells, all checks pass
+[08:04:36] OK: 122 newly recalled cells, all checks pass
+[08:06:37] OK: 122 newly recalled cells, all checks pass
+[08:08:38] OK: 122 newly recalled cells, all checks pass
+[08:10:39] OK: 122 newly recalled cells, all checks pass
+[08:12:39] OK: 122 newly recalled cells, all checks pass
+[08:14:40] OK: 122 newly recalled cells, all checks pass
+[08:16:41] OK: 123 newly recalled cells, all checks pass
+[08:18:42] CH-NLF-I0105: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0363 'Epidemic Scouring' in r1_open_reply
+[08:18:42] OK: 124 newly recalled cells, all checks pass
+[08:20:43] CH-NLF-I0187: WARNING SIBLING TOKEN EXPOSURE: CH-NLF-I0177 'Crowbar Bunch Easel' in r1_open_reply; CH-NLF-I0177 'Crowbar Bunch Easel' in r1_open_followup_reply
+[08:20:43] OK: 125 newly recalled cells, all checks pass
+[08:22:44] OK: 125 newly recalled cells, all checks pass
+[08:24:44] OK: 125 newly recalled cells, all checks pass
+[08:26:45] OK: 125 newly recalled cells, all checks pass
+[08:28:46] OK: 125 newly recalled cells, all checks pass
+[08:30:47] OK: 125 newly recalled cells, all checks pass
+[08:32:47] OK: 125 newly recalled cells, all checks pass
+[08:34:48] OK: 125 newly recalled cells, all checks pass
+[08:36:49] OK: 126 newly recalled cells, all checks pass

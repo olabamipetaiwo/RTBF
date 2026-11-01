@@ -66,7 +66,7 @@ def scale_diffs(paired, q, k):
     return d.values
 
 
-SURVEY_XLSX = "survey/RTBF_September+9,+2026_14.25.xlsx"
+SURVEY_XLSX = "survey/RTBF_October+19,+2026_22.37.xlsx"
 
 
 def main():

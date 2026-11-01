@@ -160,10 +160,57 @@ Recall due counts (875 pending; 1 already recalled, 30 with no due date — the 
 
 -----
 
-No — a low FOUND count doesn't hurt the paper. The audit's claim isn't "platforms leak lots of tokens"; it's "we systematically probed what their UIs claim to erase." All-NOT_FOUND is a valid, publishable result ("UI-promised erasure held in X% of cells, except these specific failures").
+The data does support a story, with a clear order:
+1. Motivation: people want to delete more when the data is sensitive (willingness M = 4.37 vs 3.98, p < .001).
+2. Habit: they rely on the simplest interface actions, which they found themselves, with little guidance from the platform.
+3. The gap: the method they rank as ideal, asking the chatbot to forget, is one they rarely use.
+4. So what: the controls people trust and use are not the ones they would choose. The next question is whether those controls do what people expect, which is 4.3 and then the audit.
 
-What carries the paper is the variation — across the 6 platforms, 3 injection loci (I1/I2/I3), erasure types, R1/R2/R3 layers, and UI-erasure vs NL-forget. Even a handful of FOUNDs become the interesting cells for Discussion; the rest become the baseline compliance rate.
+Proposal
+- Reorder the four paragraphs in that order: Willingness, then Past use and Methods chosen (merged), then Ideal vs used.
+- Replace my opening sentence with: "Users want to delete their data, more so when it is sensitive, but they rely on the few controls they found on their own, and the method they would prefer, asking the chatbot to forget, is one they rarely use."
+- Add a closing sentence: "So the question is whether the controls people actually use do what they expect, which we turn to next."
+- Cut the repeated "did not differ between scenarios" lines down to one clause, since they aren't part of the story.
 
-Also, the paper already has load-bearing results independent of FOUND counts: 138-prompt coding (AC1=0.954), user study (n=177), deletion-location policy mapping, NL-forget refusal typology.
 
-Where it would hurt: if every cell on every platform gave identical outcomes with zero platform/mechanism contrast. The layered design makes that unlikely.
+---
+
+
+Preseent all the results to Professors  today, we will choose the direction to go form there
+
+
+---
+
+Accounts
+- CO-I1-E4 (granular facts editor): the default Copilot account, anchorexperiment@gmail.com, session sessions/copilot.json. It has no per-cell override in config.py or accounts.md.
+- CO-I1-E6 (maximal): olataiwo839@gmail.com, session sessions/copilot__ui_migration_i1.json. It was moved off its original account on 2026-
+
+
+
+
+----
+
+
+1. Where deletion was asked (conversation, memory, backend database, whole account): no effect, ChatGPT came back at every level (from 41 of 53 unspecified to 10 of 10 memory) and Perplexity stayed low (1 of 10 to 14 of 53).
+2. What was named (a specific fact, a general one, none): the only real effect, Perplexity gave the name in 16 of 109 specific requests against 10 of 17 with none named, while ChatGPT stayed high either way (87 of 107 against 15 of 17).
+3. Mood (command, question, statement): no clear effect, Perplexity gave the name more for questions (6 of 14) than commands (19 of 105) but the group is small, and ChatGPT was high for all.
+4. Tone (polite, neutral, friendly): no clear effect, ChatGPT 55 of 71 polite against 50 of 54 neutral, and the friendly group (6 requests) is too small to read.
+5. Verb (technical, everyday): no effect, ChatGPT 100 of 122 technical against 6 of 7 everyday, Perplexity 26 of 124 against 3 of 7.
+6. Giving a reason: no effect, ChatGPT 101 of 121 without against 7 of 10 with, Perplexity 28 of 122 against 3 of 11.
+7. Asking for something else too (verify, get guidance, keep context): no effect, ChatGPT 97 of 118 with nothing extra against 6 of 7 asking to verify, and the extra-request groups are only 3 to 7 requests.
+
+
+how
+
+We had two people label each of the 138 requests by hand on the seven things, sent every request to all six chatbots, asked for the fact in a new chat about a month later, then counted per platform how often it came back for each label (no significance tests, so "no clear effect" means the counts look alike).
+
+
+Yes, we counted separately for each platform, because the platforms behave so differently (ChatGPT almost always gave the fact back, Claude never did), and pooling them would have measured the platform instead of the wording.
+
+It would tell us whether a gap between two groups (say polite against neutral) is bigger than chance would produce, but here it adds little: Claude is 0 everywhere, ChatGPT is high everywhere, and the groups are small, so a "not significant" result would show only that we couldn't tell, not that wording has no effect.
+
+
+
+-----
+
+rq in a fied list

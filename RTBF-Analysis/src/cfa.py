@@ -92,9 +92,10 @@ def run_one_slice(data: pd.DataFrame, label: str) -> list[str]:
     mod, fit = fit_cfa(data)
 
     lines.append("Model fit:")
-    for k in ["chi2", "dof", "chi2 p-value", "CFI", "TLI", "RMSEA", "SRMR"]:
+    # semopy names the degrees of freedom "DoF"; "dof" here silently skipped it.
+    for k in ["chi2", "DoF", "chi2 p-value", "CFI", "TLI", "RMSEA", "SRMR"]:
         if k in fit:
-            lines.append(f"  {k}: {fit[k]:.4f}")
+            lines.append(f"  {k}: {fit[k]:.0f}" if k == "DoF" else f"  {k}: {fit[k]:.4f}")
 
     loadings = standardised_loadings(mod)
     lines.append("\nStandardised factor loadings:")

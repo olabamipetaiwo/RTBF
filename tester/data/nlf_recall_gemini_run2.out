@@ -1,0 +1,30 @@
+[2026-10-18T19:15:51] gemini: === start (limit=None, min_days=30, batch=10 cells, failed so far=0) ===
+[2026-10-18T19:15:51] gemini: batch of 10 (ceiling 10, 116 due now)
+Loaded 16 cookies
+[2026-10-18T19:18:32] gemini: FAIL GE-NLF-I0012 (1/10), not retried: _wait_for_reply: reply never stabilised within 60s
+[2026-10-18T19:18:32] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 286, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=CDP_URL if platform == "copilot" else None)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 717, in recall_cell
+    new_scores = _run_recall_probes(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 392, in _run_recall_probes
+    r3_followup_reply = _send_fresh(flow, probes["r3_followup"])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 317, in _send_fresh
+    reply = flow.send_message(text)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_selenium.py", line 259, in send_message
+    reply = self._send_once(text)
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_selenium.py", line 286, in _send_once
+    return self._wait_for_reply(before)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_selenium.py", line 216, in _wait_for_reply
+    raise RuntimeError("_wait_for_reply: reply never stabilised within 60s")
+RuntimeError: _wait_for_reply: reply never stabilised within 60s
+
+[2026-10-18T19:18:57] gemini: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T19:18:57] gemini: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-18T19:18:57] gemini: === stop: 0 recalled this run, 1 failed in total ===
+gemini: exited with code 0

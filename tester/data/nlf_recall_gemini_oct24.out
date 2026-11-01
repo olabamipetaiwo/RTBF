@@ -1,0 +1,4 @@
+[2026-10-24T13:28:03] gemini: gemini method: cdp (http://localhost:9223)
+[2026-10-24T13:28:03] gemini: === start (limit=None, min_days=30, batch=10 cells, failed so far=3) ===
+[2026-10-24T13:28:03] gemini: batch of 10 (ceiling 10, 13 due now)
+[2026-10-24T13:32:03] gemini: BACKOFF: _wait_for_reply: no new response appeared within 120s -- stopping gemini; GE-NLF-I0032 left for resume

@@ -1,0 +1,22 @@
+[2026-10-18T16:29:03] claude: === start (limit=6, min_days=30, batch=15 cells, failed so far=2) ===
+[2026-10-18T16:29:03] claude: batch of 6 (ceiling 15, 52 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0044
+[2026-10-18T16:30:04] claude: OK CL-NLF-I0044 (1/6)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0085
+[2026-10-18T16:32:33] claude: OK CL-NLF-I0085 (2/6)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0228
+[2026-10-18T16:36:24] claude: OK CL-NLF-I0228 (3/6)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0201
+[2026-10-18T16:40:09] claude: OK CL-NLF-I0201 (4/6)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0169
+[2026-10-18T16:42:56] claude: OK CL-NLF-I0169 (5/6)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/claude/CL-NLF-I0131
+[2026-10-18T16:45:08] claude: OK CL-NLF-I0131 (6/6)
+[2026-10-18T16:45:08] claude: === stop: 6 recalled this run, 2 failed in total ===
+claude: exited with code 0

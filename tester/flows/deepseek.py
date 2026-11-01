@@ -94,12 +94,24 @@ class DeepSeekFlow(PlatformFlow):
             )
         send_btns[0].click(force=True)
 
-    def _wait_for_reply(self, before_count: int) -> str:
+    def _wait_for_reply(self, before_count: int, before_text: str | None = None) -> str:
+        """A new reply is detected by the reply count rising OR the last
+        reply's text changing from `before_text`. Count alone fails in a
+        reopened long conversation: DeepSeek renders it as a virtual list
+        that keeps only the latest messages mounted, so a new reply unmounts
+        an old one and the count stays flat (confirmed 2026-10-18 on
+        DE-NLF-I0355/I0368: 6 messages, 2 .ds-markdown mounted before and
+        after, and every same-conversation probe timed out although
+        DeepSeek had answered)."""
         deadline_ms = 60000
         waited_ms = 0
         while waited_ms < deadline_ms:
             if len(self.page.query_selector_all(".ds-markdown")) > before_count:
                 break
+            if before_text is not None:
+                cur = self._last_reply_text()
+                if cur and cur != before_text:
+                    break
             self.page.wait_for_timeout(1000)
             waited_ms += 1000
         else:
@@ -138,12 +150,13 @@ class DeepSeekFlow(PlatformFlow):
     def send_message(self, text: str) -> str:
         self._dismiss_cookie_banner()
         before = len(self.page.query_selector_all(".ds-markdown"))
+        before_text = self._last_reply_text()
 
         self.page.locator('textarea[placeholder="Message DeepSeek"]').click(force=True, timeout=10000)
         self.page.keyboard.type(text)
         self._click_primary_send_button()
 
-        return self._wait_for_reply(before)
+        return self._wait_for_reply(before, before_text)
 
     def upload_file(self, file_path: str, caption: str | None = None) -> str:
         """FILE-substudy cells: attach a document via the real (hidden)
@@ -154,6 +167,7 @@ class DeepSeekFlow(PlatformFlow):
         sends the file with no accompanying message."""
         self._dismiss_cookie_banner()
         before = len(self.page.query_selector_all(".ds-markdown"))
+        before_text = self._last_reply_text()
 
         self.page.locator('input[type="file"]').first.set_input_files(file_path)
         self.page.wait_for_timeout(2000)
@@ -164,7 +178,7 @@ class DeepSeekFlow(PlatformFlow):
             self.page.wait_for_timeout(500)
 
         self._click_primary_send_button()
-        return self._wait_for_reply(before)
+        return self._wait_for_reply(before, before_text)
 
     def set_memory_field(self, text: str) -> None:
         """Not applicable -- DeepSeek has no I2/I3 injection surface, no

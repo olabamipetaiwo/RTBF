@@ -1,0 +1,275 @@
+[2026-10-19T07:45:09] gemini: gemini method: cdp (http://localhost:9223)
+[2026-10-19T07:45:09] gemini: === start (limit=None, min_days=30, batch=10 cells, failed so far=0) ===
+[2026-10-19T07:45:09] gemini: batch of 10 (ceiling 10, 85 due now)
+GEMINI PERMISSION CARD: "Sure. First, I'll need your permission to turn on the Google Tasks app."; declined, recorded as non-answer
+GEMINI PERMISSION CARD: "Sure. First, I'll need your permission to turn on the Google Tasks app."; declined, recorded as non-answer
+Recalled. Observed outcome: PENDING HUMAN REVIEW (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0361
+[2026-10-19T07:49:11] gemini: OK GE-NLF-I0361 (1/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0028
+[2026-10-19T07:52:53] gemini: OK GE-NLF-I0028 (2/10)
+[2026-10-19T07:53:31] gemini: FAIL GE-NLF-I0153 (3/10), not retried: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://gemini.google.com/app
+Call log:
+  - navigating to "https://gemini.google.com/app", waiting until "domcontentloaded"
+
+[2026-10-19T07:53:31] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_cdp.py", line 81, in __enter__
+    self.page.goto("https://gemini.google.com/app", wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: Page.goto: net::ERR_INTERNET_DISCONNECTED at https://gemini.google.com/app
+Call log:
+  - navigating to "https://gemini.google.com/app", waiting until "domcontentloaded"
+
+
+[2026-10-19T07:55:02] gemini: FAIL GE-NLF-I0001 (4/10), not retried: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+[2026-10-19T07:55:02] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_cdp.py", line 76, in __enter__
+    raise RuntimeError(f"No gemini.google.com tab in the CDP browser at {self._cdp_url} -- open one and sign in.")
+RuntimeError: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+
+[2026-10-19T07:56:57] gemini: FAIL GE-NLF-I0297 (5/10), not retried: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+[2026-10-19T07:56:57] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_cdp.py", line 76, in __enter__
+    raise RuntimeError(f"No gemini.google.com tab in the CDP browser at {self._cdp_url} -- open one and sign in.")
+RuntimeError: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+
+[2026-10-19T07:56:57] gemini: THROTTLE DETECTED (3/5 failed); ceiling 10 -> 2
+[2026-10-19T07:56:57] gemini: batch done; cooling down 900s
+[2026-10-19T08:11:57] gemini: batch of 2 (ceiling 2, 80 due now)
+[2026-10-19T08:12:04] gemini: FAIL GE-NLF-I0271 (1/2), not retried: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+[2026-10-19T08:12:04] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_cdp.py", line 76, in __enter__
+    raise RuntimeError(f"No gemini.google.com tab in the CDP browser at {self._cdp_url} -- open one and sign in.")
+RuntimeError: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+
+[2026-10-19T08:14:35] gemini: FAIL GE-NLF-I0125 (2/2), not retried: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+[2026-10-19T08:14:35] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_cdp.py", line 76, in __enter__
+    raise RuntimeError(f"No gemini.google.com tab in the CDP browser at {self._cdp_url} -- open one and sign in.")
+RuntimeError: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+
+[2026-10-19T08:14:35] gemini: batch done; cooling down 900s
+[2026-10-19T08:29:35] gemini: batch of 2 (ceiling 2, 78 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0068
+[2026-10-19T08:32:40] gemini: OK GE-NLF-I0068 (1/2)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0161
+[2026-10-19T08:36:12] gemini: OK GE-NLF-I0161 (2/2)
+[2026-10-19T08:36:12] gemini: batch done; cooling down 900s
+[2026-10-19T08:51:12] gemini: batch of 2 (ceiling 2, 76 due now)
+[2026-10-19T08:51:43] gemini: FAIL GE-NLF-I0176 (1/2), not retried: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://gemini.google.com/app", waiting until "domcontentloaded"
+
+[2026-10-19T08:51:43] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_cdp.py", line 81, in __enter__
+    self.page.goto("https://gemini.google.com/app", wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://gemini.google.com/app", waiting until "domcontentloaded"
+
+
+[2026-10-19T08:52:53] gemini: FAIL GE-NLF-I0372 (2/2), not retried: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+[2026-10-19T08:52:53] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_cdp.py", line 76, in __enter__
+    raise RuntimeError(f"No gemini.google.com tab in the CDP browser at {self._cdp_url} -- open one and sign in.")
+RuntimeError: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+
+[2026-10-19T08:52:53] gemini: batch done; cooling down 900s
+[2026-10-19T09:07:53] gemini: batch of 2 (ceiling 2, 74 due now)
+[2026-10-19T09:10:54] gemini: FAIL GE-NLF-I0220 (1/2), not retried: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9223
+  - <ws connecting> ws://localhost:9223/devtools/browser/28067818-5e2d-4898-820c-da59d21d65c5
+  - <ws connected> ws://localhost:9223/devtools/browser/28067818-5e2d-4898-820c-da59d21d65c5
+
+[2026-10-19T09:10:54] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_cdp.py", line 70, in __enter__
+    self._browser = self._playwright.chromium.connect_over_cdp(self._cdp_url)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 17126, in connect_over_cdp
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_browser_type.py", line 205, in connect_over_cdp
+    response = await self._channel.send_return_as_dict(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 103, in send_return_as_dict
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9223
+  - <ws connecting> ws://localhost:9223/devtools/browser/28067818-5e2d-4898-820c-da59d21d65c5
+  - <ws connected> ws://localhost:9223/devtools/browser/28067818-5e2d-4898-820c-da59d21d65c5
+
+
+[2026-10-19T09:14:48] gemini: FAIL GE-NLF-I0027 (2/2), not retried: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9223
+  - <ws connecting> ws://localhost:9223/devtools/browser/28067818-5e2d-4898-820c-da59d21d65c5
+  - <ws connected> ws://localhost:9223/devtools/browser/28067818-5e2d-4898-820c-da59d21d65c5
+
+[2026-10-19T09:14:48] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_cdp.py", line 70, in __enter__
+    self._browser = self._playwright.chromium.connect_over_cdp(self._cdp_url)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 17126, in connect_over_cdp
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_browser_type.py", line 205, in connect_over_cdp
+    response = await self._channel.send_return_as_dict(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 103, in send_return_as_dict
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9223
+  - <ws connecting> ws://localhost:9223/devtools/browser/28067818-5e2d-4898-820c-da59d21d65c5
+  - <ws connected> ws://localhost:9223/devtools/browser/28067818-5e2d-4898-820c-da59d21d65c5
+
+
+[2026-10-19T09:14:48] gemini: batch done; cooling down 900s
+[2026-10-19T09:29:48] gemini: batch of 2 (ceiling 2, 72 due now)
+[2026-10-19T09:31:49] gemini: FAIL GE-NLF-I0351 (1/2), not retried: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+[2026-10-19T09:31:49] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_cdp.py", line 76, in __enter__
+    raise RuntimeError(f"No gemini.google.com tab in the CDP browser at {self._cdp_url} -- open one and sign in.")
+RuntimeError: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+
+[2026-10-19T09:34:50] gemini: FAIL GE-NLF-I0334 (2/2), not retried: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+[2026-10-19T09:34:50] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_cdp.py", line 76, in __enter__
+    raise RuntimeError(f"No gemini.google.com tab in the CDP browser at {self._cdp_url} -- open one and sign in.")
+RuntimeError: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+
+[2026-10-19T09:34:50] gemini: batch done; cooling down 900s
+[2026-10-19T09:49:51] gemini: batch of 2 (ceiling 2, 70 due now)
+[2026-10-19T09:50:22] gemini: FAIL GE-NLF-I0035 (1/2), not retried: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://gemini.google.com/app", waiting until "domcontentloaded"
+
+[2026-10-19T09:50:22] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_cdp.py", line 81, in __enter__
+    self.page.goto("https://gemini.google.com/app", wait_until="domcontentloaded")
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://gemini.google.com/app", waiting until "domcontentloaded"
+
+
+[2026-10-19T09:51:54] gemini: FAIL GE-NLF-I0302 (2/2), not retried: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+[2026-10-19T09:51:54] gemini: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 297, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 738, in recall_cell
+    with flow_cls(**flow_kwargs) as flow:
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_cdp.py", line 76, in __enter__
+    raise RuntimeError(f"No gemini.google.com tab in the CDP browser at {self._cdp_url} -- open one and sign in.")
+RuntimeError: No gemini.google.com tab in the CDP browser at http://localhost:9223 -- open one and sign in.
+
+[2026-10-19T09:51:54] gemini: batch done; cooling down 900s
+[2026-10-19T09:54:14] gemini: stop file found (nlf_recall.STOP) -- exiting before the next cell
+[2026-10-19T09:54:14] gemini: === stop: 4 recalled this run, 13 failed in total ===
+gemini: exited with code 0

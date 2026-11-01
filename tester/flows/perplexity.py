@@ -185,6 +185,9 @@ class PerplexityFlow(PlatformFlow):
             }"""
         )
 
+    def _reply_count(self) -> int:
+        return len(self._top_level_reply_texts())
+
     def _last_reply_text(self) -> str:
         texts = self._top_level_reply_texts()
         return texts[-1] if texts else ""

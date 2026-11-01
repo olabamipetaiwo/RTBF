@@ -1,87 +1,88 @@
 # global_correction
 
-_Run at 2026-08-03T03:40:50_
+_Run at 2026-10-20T00:55:20_
 
 ```text
 === Global correction across 101 primary/omnibus tests ===
 raw p<.05        : 31 / 101
 Holm-global p<.05: 14 / 101
-BH-FDR q<.05     : 22 / 101
+BH-FDR q<.05     : 23 / 101
 
 -- tests significant at raw p<.05 (sorted by p_raw) --
                        family                                         label    p_raw  p_holm_global  p_fdr_global  sig_holm_global  sig_fdr_global
-    calibration.used_vs_ideal                          [less] Ask to forget 0.000000       0.000000      0.000000             True            True
-    calibration.used_vs_ideal                     [more] Clear all memories 0.000000       0.000000      0.000000             True            True
-    calibration.used_vs_ideal                    [less] Delete specific mem 0.000000       0.000000      0.000000             True            True
-    calibration.used_vs_ideal                      [more] Clear all history 0.000000       0.000000      0.000000             True            True
-    calibration.used_vs_ideal                      [less] Clear all history 0.000000       0.000000      0.000000             True            True
     calibration.used_vs_ideal                      [less] Privacy dashboard 0.000000       0.000000      0.000000             True            True
-    calibration.used_vs_ideal                    [more] Delete specific mem 0.000000       0.000000      0.000000             True            True
+    calibration.used_vs_ideal                          [less] Ask to forget 0.000000       0.000000      0.000000             True            True
+    calibration.used_vs_ideal                    [less] Delete specific mem 0.000000       0.000000      0.000000             True            True
+    calibration.used_vs_ideal                     [more] Clear all memories 0.000000       0.000000      0.000000             True            True
+    calibration.used_vs_ideal                      [less] Clear all history 0.000000       0.000000      0.000000             True            True
+    calibration.used_vs_ideal                      [more] Clear all history 0.000000       0.000000      0.000000             True            True
     calibration.used_vs_ideal                          [more] Ask to forget 0.000000       0.000000      0.000000             True            True
+    calibration.used_vs_ideal                    [more] Delete specific mem 0.000000       0.000000      0.000000             True            True
    willingness.scenario_shift                  [scenario shift] willingness 0.000012       0.001127      0.000136             True            True
-    calibration.used_vs_ideal                     [less] Delete single conv 0.000100       0.009200      0.000842             True            True
     calibration.used_vs_ideal                     [less] Clear all memories 0.000100       0.009200      0.000842             True            True
     calibration.used_vs_ideal                      [more] Privacy dashboard 0.000100       0.009200      0.000842             True            True
-          verify.verification                       [less] asked same convo 0.000300       0.026700      0.002331             True            True
+    calibration.used_vs_ideal                     [less] Delete single conv 0.000100       0.009200      0.000842             True            True
+          verify.verification                       [less] asked same convo 0.000200       0.017800      0.001554             True            True
          stats.between_method                       [less|effort] method KW 0.000361       0.031740      0.002602             True            True
-stats.between_scenario_likert                [protection] scenario Wilcoxon 0.000611       0.053163      0.004115            False            True
-         stats.between_method                       [more|effort] method KW 0.000715       0.061470      0.004512            False            True
-          verify.verification                        [less] asked new convo 0.000800       0.068000      0.004753            False            True
-    calibration.used_vs_ideal                     [more] Delete single conv 0.001000       0.084000      0.005611            False            True
+    calibration.used_vs_ideal                     [more] Delete single conv 0.000600       0.052200      0.003857            False            True
+stats.between_scenario_likert                [protection] scenario Wilcoxon 0.000611       0.052552      0.003857            False            True
+         stats.between_method                       [more|effort] method KW 0.000715       0.060756      0.004247            False            True
+          verify.verification                        [less] asked new convo 0.001000       0.084000      0.005611            False            True
           verify.verification                       [less] did NOT know how 0.001100       0.091300      0.005847            False            True
-          verify.verification                       [more] asked same convo 0.006000       0.492000      0.030300            False            True
-          verify.verification                       [more] checked settings 0.006600       0.534600      0.031743            False            True
-           verify.expectation                       [more] not ref. current 0.007700       0.616000      0.035350            False            True
- calibration.confidence_trend                                        [less] 0.012352       0.975797      0.054241            False           False
-     moderators.method_choice                 [more] chatgpt_tenure->method 0.013500       1.000000      0.056813            False           False
-     moderators.method_choice                      [less] age_group->method 0.016800       1.000000      0.067872            False           False
+          verify.verification                       [more] asked same convo 0.004800       0.393600      0.024240            False            True
+          verify.verification                       [more] checked settings 0.006500       0.526500      0.031262            False            True
+           verify.expectation                       [more] not ref. current 0.007900       0.632000      0.036268            False            True
+     moderators.method_choice                 [more] chatgpt_tenure->method 0.009428       0.744811      0.041401            False            True
+ calibration.confidence_trend                                        [less] 0.012352       0.963446      0.051981            False           False
+     moderators.method_choice                      [less] age_group->method 0.016074       1.000000      0.064939            False           False
      mcnemar.per_method_shift            Type a message asking the AI Chatb 0.019200       1.000000      0.074585            False           False
     calibration.used_vs_ideal                         [more] Delete account 0.021500       1.000000      0.080426            False           False
  calibration.confidence_trend                                        [more] 0.025979       1.000000      0.093711            False           False
-           verify.expectation                        [more] not ref. future 0.029500       1.000000      0.102741            False           False
+           verify.expectation                        [more] not ref. future 0.027600       1.000000      0.096124            False           False
 stats.between_scenario_binary [scenario shift] expectation (Q4.4/Q5.4) opt1 0.031141       1.000000      0.104842            False           False
-          verify.verification                       [more] did NOT know how 0.043700       1.000000      0.142377            False           False
+          verify.verification                       [more] did NOT know how 0.036400       1.000000      0.118594            False           False
 
 -- of those, still significant under BH-FDR global correction --
                        family                          label    p_raw  p_fdr_global
-    calibration.used_vs_ideal           [less] Ask to forget 0.000000      0.000000
-    calibration.used_vs_ideal      [more] Clear all memories 0.000000      0.000000
-    calibration.used_vs_ideal     [less] Delete specific mem 0.000000      0.000000
-    calibration.used_vs_ideal       [more] Clear all history 0.000000      0.000000
-    calibration.used_vs_ideal       [less] Clear all history 0.000000      0.000000
     calibration.used_vs_ideal       [less] Privacy dashboard 0.000000      0.000000
-    calibration.used_vs_ideal     [more] Delete specific mem 0.000000      0.000000
+    calibration.used_vs_ideal           [less] Ask to forget 0.000000      0.000000
+    calibration.used_vs_ideal     [less] Delete specific mem 0.000000      0.000000
+    calibration.used_vs_ideal      [more] Clear all memories 0.000000      0.000000
+    calibration.used_vs_ideal       [less] Clear all history 0.000000      0.000000
+    calibration.used_vs_ideal       [more] Clear all history 0.000000      0.000000
     calibration.used_vs_ideal           [more] Ask to forget 0.000000      0.000000
+    calibration.used_vs_ideal     [more] Delete specific mem 0.000000      0.000000
    willingness.scenario_shift   [scenario shift] willingness 0.000012      0.000136
-    calibration.used_vs_ideal      [less] Delete single conv 0.000100      0.000842
     calibration.used_vs_ideal      [less] Clear all memories 0.000100      0.000842
     calibration.used_vs_ideal       [more] Privacy dashboard 0.000100      0.000842
-          verify.verification        [less] asked same convo 0.000300      0.002331
+    calibration.used_vs_ideal      [less] Delete single conv 0.000100      0.000842
+          verify.verification        [less] asked same convo 0.000200      0.001554
          stats.between_method        [less|effort] method KW 0.000361      0.002602
-stats.between_scenario_likert [protection] scenario Wilcoxon 0.000611      0.004115
-         stats.between_method        [more|effort] method KW 0.000715      0.004512
-          verify.verification         [less] asked new convo 0.000800      0.004753
-    calibration.used_vs_ideal      [more] Delete single conv 0.001000      0.005611
+    calibration.used_vs_ideal      [more] Delete single conv 0.000600      0.003857
+stats.between_scenario_likert [protection] scenario Wilcoxon 0.000611      0.003857
+         stats.between_method        [more|effort] method KW 0.000715      0.004247
+          verify.verification         [less] asked new convo 0.001000      0.005611
           verify.verification        [less] did NOT know how 0.001100      0.005847
-          verify.verification        [more] asked same convo 0.006000      0.030300
-          verify.verification        [more] checked settings 0.006600      0.031743
-           verify.expectation        [more] not ref. current 0.007700      0.035350
+          verify.verification        [more] asked same convo 0.004800      0.024240
+          verify.verification        [more] checked settings 0.006500      0.031262
+           verify.expectation        [more] not ref. current 0.007900      0.036268
+     moderators.method_choice  [more] chatgpt_tenure->method 0.009428      0.041401
 
 -- of those, still significant under Holm global correction (strictest) --
                     family                        label    p_raw  p_holm_global
- calibration.used_vs_ideal         [less] Ask to forget 0.000000       0.000000
- calibration.used_vs_ideal    [more] Clear all memories 0.000000       0.000000
- calibration.used_vs_ideal   [less] Delete specific mem 0.000000       0.000000
- calibration.used_vs_ideal     [more] Clear all history 0.000000       0.000000
- calibration.used_vs_ideal     [less] Clear all history 0.000000       0.000000
  calibration.used_vs_ideal     [less] Privacy dashboard 0.000000       0.000000
- calibration.used_vs_ideal   [more] Delete specific mem 0.000000       0.000000
+ calibration.used_vs_ideal         [less] Ask to forget 0.000000       0.000000
+ calibration.used_vs_ideal   [less] Delete specific mem 0.000000       0.000000
+ calibration.used_vs_ideal    [more] Clear all memories 0.000000       0.000000
+ calibration.used_vs_ideal     [less] Clear all history 0.000000       0.000000
+ calibration.used_vs_ideal     [more] Clear all history 0.000000       0.000000
  calibration.used_vs_ideal         [more] Ask to forget 0.000000       0.000000
+ calibration.used_vs_ideal   [more] Delete specific mem 0.000000       0.000000
 willingness.scenario_shift [scenario shift] willingness 0.000012       0.001127
- calibration.used_vs_ideal    [less] Delete single conv 0.000100       0.009200
  calibration.used_vs_ideal    [less] Clear all memories 0.000100       0.009200
  calibration.used_vs_ideal     [more] Privacy dashboard 0.000100       0.009200
-       verify.verification      [less] asked same convo 0.000300       0.026700
+ calibration.used_vs_ideal    [less] Delete single conv 0.000100       0.009200
+       verify.verification      [less] asked same convo 0.000200       0.017800
       stats.between_method      [less|effort] method KW 0.000361       0.031740
 ```
 

@@ -1,6 +1,6 @@
 # method_selection
 
-_Run at 2026-08-25T23:54:19_
+_Run at 2026-10-20T00:46:26_
 
 ```text
 === method selection counts (paired base) ===

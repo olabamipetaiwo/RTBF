@@ -30,7 +30,7 @@ from statsmodels.stats.multitest import multipletests
 from src.reporting import save_report
 from src.screen import LIKERT, get_bases
 
-RAW = "survey/RTBF_September+9,+2026_14.25.xlsx"
+RAW = "survey/RTBF_October+19,+2026_22.37.xlsx"
 
 METHODS = {
     1: "Ask chatbot to forget",
@@ -303,6 +303,8 @@ def referencing_and_feedback(p: pd.DataFrame) -> list[str]:
     lines.append("Noticed the chatbot referencing information believed deleted (Q6.8):")
     for v, k in p["Q6.8"].value_counts().items():
         lines.append(f"  {v:<45} {pct(int(k), n)}")
+    yes = int(p["Q6.8"].astype(str).str.startswith("Yes").sum())
+    lines.append(f"  {'Yes, occasionally or frequently (combined)':<45} {pct(yes, n)}")
     lines.append("Confirmation currently received (Q7.1, select all):")
     lines += multi_select_freq(p, "Q7.1", {1: "Clear message confirming deletion",
                                             2: "Brief or vague acknowledgement",

@@ -1,6 +1,6 @@
 # crowning
 
-_Run at 2026-08-11T04:14:42_
+_Run at 2026-10-20T00:55:24_
 
 ```text
 
@@ -9,27 +9,18 @@ SCOPE A -- POOLED (both scenarios, task 2 dedup)
 ======================================================================
 
 [pooled | protection] (higher=better)  KW H=2.41 p=0.4923 eps2=-0.003  n_methods=4
-    Clear all conversati=3.798
-    Type a message askin=3.786
-    Delete this single c=3.659
-    Delete a specific sa=3.650
+    means: Clear all conversati=3.798, Type a message askin=3.786, Delete this single c=3.659, Delete a specific sa=3.650
     -> ns: no method is statistically distinguishable from the others
 
 [pooled | effort] (lower=better)  KW H=19.54 p=0.0002 eps2=0.079  n_methods=4
-    Delete this single c=1.679
-    Type a message askin=1.793
-    Clear all conversati=2.042
-    Delete a specific sa=2.446
-    -> PARTIAL: 'Delete this single conversation' has the best point estimate but doesn't beat everyone -- not a clean winner
+    means: Delete this single c=1.679, Type a message askin=1.793, Clear all conversati=2.042, Delete a specific sa=2.446
+    -> PARTIAL: 'Delete this single conversatio' has the best point estimate but doesn't beat everyone -- not a clean winner
        * significantly beats Delete a specific saved memory p_holm=0.0002 r=0.483
        * NOT distinguishable from Clear all conversation history p_holm=0.0509 r=0.254
        * NOT distinguishable from Type a message asking the AI C p_holm=0.6272 r=0.107
 
 [pooled | benefit_loss] (lower=better)  KW H=4.49 p=0.2136 eps2=0.007  n_methods=4
-    Type a message askin=2.994
-    Delete this single c=3.011
-    Clear all conversati=3.107
-    Delete a specific sa=3.433
+    means: Type a message askin=2.994, Delete this single c=3.011, Clear all conversati=3.107, Delete a specific sa=3.433
     -> ns: no method is statistically distinguishable from the others
 
 ======================================================================
@@ -37,27 +28,18 @@ SCOPE B -- LESS SCENARIO (recomputed for crowning synthesis; omnibus p already i
 ======================================================================
 
 [less | protection] (higher=better)  KW H=5.18 p=0.1593 eps2=0.014  n_methods=4
-    Type a message askin=3.840
-    Clear all conversati=3.770
-    Delete a specific sa=3.579
-    Delete this single c=3.536
+    means: Type a message askin=3.840, Clear all conversati=3.770, Delete a specific sa=3.579, Delete this single c=3.536
     -> ns: no method is statistically distinguishable from the others
 
 [less | effort] (lower=better)  KW H=18.42 p=0.0004 eps2=0.098  n_methods=4
-    Delete this single c=1.622
-    Type a message askin=1.860
-    Clear all conversati=1.985
-    Delete a specific sa=2.697
-    -> PARTIAL: 'Delete this single conversation' has the best point estimate but doesn't beat everyone -- not a clean winner
+    means: Delete this single c=1.622, Type a message askin=1.860, Clear all conversati=1.985, Delete a specific sa=2.697
+    -> PARTIAL: 'Delete this single conversatio' has the best point estimate but doesn't beat everyone -- not a clean winner
        * significantly beats Delete a specific saved memory p_holm=0.0002 r=0.597
        * NOT distinguishable from Clear all conversation history p_holm=0.1922 r=0.219
        * NOT distinguishable from Type a message asking the AI C p_holm=0.4070 r=0.163
 
 [less | benefit_loss] (lower=better)  KW H=5.29 p=0.1515 eps2=0.015  n_methods=4
-    Type a message askin=2.907
-    Delete this single c=2.968
-    Clear all conversati=3.061
-    Delete a specific sa=3.544
+    means: Type a message askin=2.907, Delete this single c=2.968, Clear all conversati=3.061, Delete a specific sa=3.544
     -> ns: no method is statistically distinguishable from the others
 
 ======================================================================
@@ -65,31 +47,21 @@ SCOPE B -- MORE SCENARIO (recomputed for crowning synthesis; omnibus p already i
 ======================================================================
 
 [more | protection] (higher=better)  KW H=0.54 p=0.9106 eps2=-0.016  n_methods=4
-    Type a message askin=3.886
-    Clear all conversati=3.775
-    Delete this single c=3.728
-    Delete a specific sa=3.709
+    means: Type a message askin=3.886, Clear all conversati=3.775, Delete this single c=3.728, Delete a specific sa=3.709
     -> ns: no method is statistically distinguishable from the others
 
 [more | effort] (lower=better)  KW H=16.98 p=0.0007 eps2=0.092  n_methods=4
-    Type a message askin=1.536
-    Delete this single c=1.666
-    Clear all conversati=2.181
-    Delete a specific sa=2.318
-    -> PARTIAL: 'Type a message asking the AI Chatbot' has the best point estimate but doesn't beat everyone -- not a clean winner
-       * NOT distinguishable from Delete this single conversation p_holm=1.0000 r=-0.006
+    means: Type a message askin=1.536, Delete this single c=1.666, Clear all conversati=2.181, Delete a specific sa=2.318
+    -> PARTIAL: 'Type a message asking the AI C' has the best point estimate but doesn't beat everyone -- not a clean winner
+       * NOT distinguishable from Delete this single conversatio p_holm=1.0000 r=-0.006
        * NOT distinguishable from Clear all conversation history p_holm=0.1334 r=0.379
        * NOT distinguishable from Delete a specific saved memory p_holm=0.0781 r=0.484
 
 [more | benefit_loss] (lower=better)  KW H=2.89 p=0.4088 eps2=-0.001  n_methods=4
-    Type a message askin=2.905
-    Delete this single c=3.025
-    Clear all conversati=3.142
-    Delete a specific sa=3.379
+    means: Type a message askin=2.905, Delete this single c=3.025, Clear all conversati=3.142, Delete a specific sa=3.379
     -> ns: no method is statistically distinguishable from the others
 ```
 
-TASk - we dont want to report number, create a chart for pooled
 ## DON'T CLEAR THIS
 ## Interpretation
 

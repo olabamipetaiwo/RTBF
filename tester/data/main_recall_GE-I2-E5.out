@@ -1,0 +1,22 @@
+Loaded 14 cookies
+Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 967, in <module>
+    recall_cell(positional[0], force=force,
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 757, in recall_cell
+    new_scores = _run_recall_probes(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 411, in _run_recall_probes
+    r1_followup_reply = _send_fresh(flow, probes["r1_open_followup"])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 322, in _send_fresh
+    reply = flow.send_message(text)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_selenium.py", line 263, in send_message
+    reply = self._send_once(text)
+            ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_selenium.py", line 338, in _send_once
+    return self._wait_for_reply(before)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/gemini_selenium.py", line 220, in _wait_for_reply
+    raise RuntimeError("_wait_for_reply: reply never stabilised within 180s")
+RuntimeError: _wait_for_reply: reply never stabilised within 180s

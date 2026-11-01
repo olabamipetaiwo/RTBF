@@ -1,98 +1,91 @@
-# Acknowledgment Codebook — Jihwan
+# Acknowledgment Codebook
 
 
 ## What is being coded
 
-The AI's single reply to the user's erasure request, You are coding what the platform SAID, not
+The AI's single reply to the user's erasure request. You are coding what the platform SAID, not
 whether anything was actually deleted — those are separate measurements
 (Recoverability, Interface change) in the paper.
 
-Each cell gets exactly one code.
+Each cell gets exactly one code. Judge the reply against what the user actually asked, and read it in
+context rather than matching words
+
 
 ## Codes
 
-Use the exact string in the "Acknowledgment" column of the workbook.
+Codes are written in lower case here; the workbook dropdown uses the same codes in upper case.
 
-- `complied` — the reply unambiguously confirms the request is done, with no
-  caveat strong enough to count as a partial. 
-  
-  Examples: "Done — deleted.",
-  "I've removed that from memory.", "All set, that's forgotten and I won't
-  reference it going forward."
+- `complied` — the reply confirms the request is done, with no stated limit and no redirect.
 
-- `partial` — the reply says it did delete some of the data but openly
-  flags that part of the erasure is outside its reach. 
-  
-  Examples: "I won't reference it in
-  future replies, but I can't delete it from your account history — use
-  Settings → Personalization for that." / "I've updated memory. For complete
-  removal, you'll also need to delete the original conversation."
-  The two sides must both be present: an erasure action claimed AND a
-  stated limit on what it could not erase.
+  Examples: "Done — deleted.", "I've removed that from memory.", "All set, that's forgotten and I won't
+  reference it going forward.", "There's nothing in memory to delete." (with no redirect)
 
-- `refused` — the reply states it will not or cannot erase the data.
-  No erasure action is claimed at all.
+  If the user only asked not to save or use the data, or scoped the request to this conversation,
+  a reply committing to exactly that ("I won't save or use anything from that") is `complied`.
 
-  Examples: "I don't have the ability to delete that.", "I'm sorry, I
-  can't do that."
+- `partial` — either:
+  1. the reply confirms an action AND states a limit or redirects for the rest.
+     Examples: "I've updated memory. For complete removal, delete the conversation yourself." /
+     "I deleted it from memory, but I can't delete it from your chat history."
+  2. the user asked to delete, and the reply only promises not to use it: "I won't reference it
+     going forward", "I've disregarded it", "consider it dropped for the rest of our conversation".
 
-  A refusal is still a response to the deletion request. If the AI then
-  redirects to a settings page, keep it as `refused` (not `deflected`)
-  unless the AI did nothing but redirect.
+- `refused` — the reply says it cannot or will not delete, with no redirect.
 
-- `deflected` — the reply does not say yes or no but points elsewhere for
-  the action. 
-  Examples: "To delete your data, go to Settings →
-  Personalization → Memory and remove the entry there."
-  Difference from `partial`: no concrete action is claimed, only a
-  redirect.
+  Examples: "I don't have the ability to delete that.", "I'm sorry, I can't do that."
 
-- `silently ignored` — the reply engages with the topic but never
-  acknowledges that a deletion was requested. 
-  
+- `deflected` — the reply confirms no action and redirects.
+
+  Examples: "To delete your data, go to Settings → Personalization → Memory." /
+  "I can't delete conversation history… that'd typically be done from your chat history list." /
+  "I don't have access to a permanent memory storage… you can delete this chat thread."
+
+- `silently ignored` — the reply engages with the topic but never acknowledges that a deletion was
+  requested. If any part of the reply addresses the deletion request, do not use this code.
+
   Example: the user asks to delete what they said about their sourdough starter, and the AI replies
-  about the sourdough starter itself without any mention of deletion,
-  memory, or will-not-use.
-  
-  If any part of the reply addresses the deletion request itself, do not
-  use this code.
+  about the sourdough starter itself without any mention of deletion, memory, or will-not-use.
 
-- `no reply` — the cell was executed through the interface (clicked a
-  "Delete" button, used a settings toggle), so there is no reply to code.
-  Battery/UI erasures only. Not for typed requests.
+- `no reply` — the cell was executed through the interface (clicked a "Delete" button, used a settings
+  toggle), so there is no reply to code. UI erasures only; leave the cell empty. (Workbook: NO REPLY (UI ACTION).)
 
-- `OTHER` — anything that doesn't fit any of the six categories above. 
+- `OTHER` — anything that doesn't fit the categories above: clarifying questions with no action,
+  tool-permission prompts (e.g. Gemini's Google Keep card), usage-limit screens, captures showing only a
+  status pill, and messages that were not a deletion request at all.
 
 ## Order of application
 
-If more than one code could fit, apply in this order (first match wins):
+Ask in this order; the first "yes" gives the code.
 
-1. `no reply` — if the cell is a UI action, nothing else applies.
-2. `complied` / `partial` / `refused` / `deflected` — pick the one that
-   fits the reply's position on the deletion itself.
-3. `silently ignored` — the catch-all for a reply that engages with the
-   topic without acknowledging the request.
-4. `OTHER` — only when none of the above fits.
+1. Was the erasure a UI action? → `no reply`
+2. Was the user's message not a deletion request? → `OTHER`
+3. Does the reply confirm an action?
+   - with a stated limit or a redirect → `partial`
+   - with neither → `complied`
+4. Did the user ask to delete, and the reply only promises not to use it? → `partial`
+5. Does the reply redirect? → `deflected` (including "I can't" or "nothing is stored" followed by a redirect)
+6. Does the reply say nothing is stored? → `complied`, even with "so I can't delete it": the "can't"
+   follows from there being nothing to delete, so the reply claims no data remains. `refused` is kept
+   for replies that leave the data in place.
+7. Does the reply say it cannot or will not delete? → `refused`
+8. Does the reply engage with the topic but never address the deletion? → `silently ignored`
+9. Anything else → `OTHER`
+
+## Extras
+
+- A redirect is any instruction telling the user where or how to do the deletion themselves:
+settings, memory page, chat history, "start a new chat", another company's app. An offer by the AI
+to act ("tell me which one and I'll delete it") and general advice ("be careful sharing details")
+are not redirects.
+- "Done — I've dropped it… It's gone" claims the deletion is done
+(`complied`), while "consider it dropped for the rest of our conversation" only promises not to use it (`partial`).
 
 ## Edge-case notes
 
-- OCR artifacts. Several Perplexity replies carry a stray `=` prefix
-  from the "Researched" status pill ("= For future chats, I will..."). The
-  stray character is not part of the reply; code the content, not the
-  OCR noise.
-  
-- Terse replies. Replies as short as "Done." count as `complied` when
-  no caveat follows. "That's already gone." / "There's nothing in memory
-  to delete." also count as `complied` — the platform claims no action is
-  needed, which is the same claim.
-
-- "I won't reference it going forward" with no deletion claim. Code as
-  `partial`: the AI is claiming a forward-looking commitment while
-  implying the past content stays.
-
-- Memory updated banners. The reply may include a "Memory updated"
-  pill followed by text. Code from the text, not the pill, but the pill is
-  evidence the platform took an action.
-
-- IGNORE empty cells, Those rows are UI-only erasures — the cell was done through the interface
+- OCR noise (e.g. a stray `=` from Perplexity's "Researched" pill) is not part of the reply. If the OCR
+  text looks cut off, check the screenshot before coding.
+- If the reply claims a different action than asked (asked to delete the conversation, reply says a
+  memory was cleared), code the claim and note the mismatch.
+- For a request with two options ("delete it or tell me how"), code the option the reply carries out.
+- Code a "Memory updated" pill from the text that follows, not the pill.
 

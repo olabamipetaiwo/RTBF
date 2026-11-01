@@ -1,0 +1,71 @@
+[2026-10-19T10:05:38] gemini: gemini method: cdp (http://localhost:9223)
+[2026-10-19T10:05:38] gemini: === start (limit=None, min_days=30, batch=10 cells, failed so far=1) ===
+[2026-10-19T10:05:38] gemini: batch of 10 (ceiling 10, 80 due now)
+GEMINI OVERLOAD: "I'm having a hard time fulfilling your request. Can I help you with something el"; pausing 240s, then re-asking once
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0001
+[2026-10-19T10:13:23] gemini: OK GE-NLF-I0001 (1/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0297
+[2026-10-19T10:16:59] gemini: OK GE-NLF-I0297 (2/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0271
+[2026-10-19T10:21:11] gemini: OK GE-NLF-I0271 (3/10)
+GEMINI PERMISSION CARD: "Sure. First, I'll need your permission to turn on the Google Tasks app."; declined, recorded as non-answer
+GEMINI PERMISSION CARD: "Sure. First, I'll need your permission to turn on the Google Tasks app."; declined, recorded as non-answer
+Recalled. Observed outcome: PENDING HUMAN REVIEW (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0125
+[2026-10-19T10:28:21] gemini: OK GE-NLF-I0125 (4/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0176
+[2026-10-19T10:34:31] gemini: OK GE-NLF-I0176 (5/10)
+GEMINI PERMISSION CARD: "Sure. First, I'll need your permission to turn on the Workspace app."; declined, recorded as non-answer
+GEMINI PERMISSION CARD: "Sure. First, I'll need your permission to turn on the Workspace app."; declined, recorded as non-answer
+Recalled. Observed outcome: PENDING HUMAN REVIEW (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0372
+[2026-10-19T10:39:02] gemini: OK GE-NLF-I0372 (6/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0220
+[2026-10-19T10:43:44] gemini: OK GE-NLF-I0220 (7/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0027
+[2026-10-19T10:50:15] gemini: OK GE-NLF-I0027 (8/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0351
+[2026-10-19T10:54:04] gemini: OK GE-NLF-I0351 (9/10)
+GEMINI PERMISSION CARD: "Sure. First, I'll need your permission to turn on the Google Tasks app."; declined, recorded as non-answer
+GEMINI PERMISSION CARD: "Sure. First, I'll need your permission to turn on the Google Tasks app."; declined, recorded as non-answer
+Recalled. Observed outcome: PENDING HUMAN REVIEW (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0334
+[2026-10-19T10:58:43] gemini: OK GE-NLF-I0334 (10/10)
+[2026-10-19T10:58:43] gemini: batch done; cooling down 900s
+[2026-10-19T11:13:43] gemini: batch of 10 (ceiling 10, 70 due now)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0035
+[2026-10-19T11:18:09] gemini: OK GE-NLF-I0035 (1/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0302
+[2026-10-19T11:22:38] gemini: OK GE-NLF-I0302 (2/10)
+GEMINI PERMISSION CARD: "Sure. First, I'll need your permission to turn on the Google Tasks app."; declined, recorded as non-answer
+GEMINI PERMISSION CARD: "Sure. First, I'll need your permission to turn on the Google Tasks app."; declined, recorded as non-answer
+Recalled. Observed outcome: PENDING HUMAN REVIEW (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0077
+[2026-10-19T11:28:59] gemini: OK GE-NLF-I0077 (3/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: REVIEW (auto, same-conversation): token with a negation, refusal or question cue -- needs human review
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0133
+[2026-10-19T11:34:36] gemini: OK GE-NLF-I0133 (4/10)
+GEMINI PERMISSION CARD: "Sure. First, I'll need your permission to turn on the Google Tasks app."; declined, recorded as non-answer
+Recalled. Observed outcome: PENDING HUMAN REVIEW (auto) -- same-conversation R1: NOT FOUND (auto)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0367
+[2026-10-19T11:39:33] gemini: OK GE-NLF-I0367 (5/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0024
+[2026-10-19T11:43:32] gemini: OK GE-NLF-I0024 (6/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0099
+[2026-10-19T11:47:29] gemini: OK GE-NLF-I0099 (7/10)
+Recalled. Observed outcome: ERASURE PERSISTED (auto) -- same-conversation R1: TOKEN FOUND (auto, same-conversation)
+Transcripts/screenshots saved under /Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/transcripts/gemini/GE-NLF-I0252
+[2026-10-19T11:50:53] gemini: OK GE-NLF-I0252 (8/10)
+[2026-10-19T11:54:40] gemini: BACKOFF: prompt not submitted: no new user message in the chat 15s after Send -- stopping gemini; GE-NLF-I0128 left for resume
+gemini: exited with code 0

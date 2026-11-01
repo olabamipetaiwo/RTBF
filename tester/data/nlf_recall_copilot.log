@@ -1,0 +1,306 @@
+[2026-10-18T09:24:34] copilot: new state: 133 erased cells shuffled with seed 3943304003
+[2026-10-18T09:24:34] copilot: === start (limit=None, min_days=30, batch=10 cells, failed so far=0) ===
+[2026-10-18T09:24:46] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-18T09:24:46] copilot: batch of 10 (ceiling 10, 120 due now)
+[2026-10-18T09:26:07] copilot: OK CO-NLF-I0166 (1/10)
+[2026-10-18T09:30:01] copilot: OK CO-NLF-I0357 (2/10)
+[2026-10-18T09:34:03] copilot: OK CO-NLF-I0051 (3/10)
+[2026-10-18T09:37:09] copilot: OK CO-NLF-I0105 (4/10)
+[2026-10-18T09:40:31] copilot: OK CO-NLF-I0001 (5/10)
+[2026-10-18T09:44:42] copilot: OK CO-NLF-I0035 (6/10)
+[2026-10-18T09:47:09] copilot: OK CO-NLF-I0070 (7/10)
+[2026-10-18T09:52:01] copilot: OK CO-NLF-I0314 (8/10)
+[2026-10-18T15:11:13] copilot: === start (limit=2, min_days=30, batch=10 cells, failed so far=0) ===
+[2026-10-18T15:11:25] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-18T15:11:25] copilot: batch of 2 (ceiling 10, 112 due now)
+[2026-10-18T15:12:44] copilot: FAIL CO-NLF-I0121 (1/2), not retried: _wait_for_reply: no new reply appeared within 60s
+[2026-10-18T15:12:44] copilot: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 272, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=CDP_URL if platform == "copilot" else None)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 715, in recall_cell
+    new_scores = _run_recall_probes(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 387, in _run_recall_probes
+    r3_reply = _send_fresh(flow, probes["r3"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 317, in _send_fresh
+    reply = flow.send_message(text)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/copilot.py", line 484, in send_message
+    return self._wait_for_reply(before, deadline_ms=deadline_ms)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/copilot.py", line 293, in _wait_for_reply
+    raise RuntimeError(f"_wait_for_reply: no new reply appeared within {deadline_ms // 1000}s")
+RuntimeError: _wait_for_reply: no new reply appeared within 60s
+
+[2026-10-18T20:25:42] copilot: === start (limit=None, min_days=30, batch=10 cells, failed so far=1) ===
+[2026-10-18T20:25:54] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-18T20:25:54] copilot: batch of 10 (ceiling 10, 111 due now)
+[2026-10-18T20:27:12] copilot: OK CO-NLF-I0059 (1/10)
+[2026-10-18T20:29:45] copilot: OK CO-NLF-I0018 (2/10)
+[2026-10-18T20:34:02] copilot: OK CO-NLF-I0287 (3/10)
+[2026-10-18T20:37:10] copilot: OK CO-NLF-I0161 (4/10)
+[2026-10-18T20:41:00] copilot: OK CO-NLF-I0215 (5/10)
+[2026-10-18T20:44:05] copilot: OK CO-NLF-I0216 (6/10)
+[2026-10-18T20:47:32] copilot: OK CO-NLF-I0372 (7/10)
+[2026-10-18T20:51:17] copilot: BACKOFF: _wait_for_reply: no new reply appeared within 60s -- stopping copilot; CO-NLF-I0201 left for resume
+[2026-10-19T20:58:11] copilot: === start (limit=None, min_days=30, batch=10 cells, failed so far=2) ===
+[2026-10-19T20:58:23] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-19T20:58:23] copilot: batch of 10 (ceiling 10, 103 due now)
+[2026-10-19T21:01:37] copilot: OK CO-NLF-I0062 (1/10)
+[2026-10-19T21:05:22] copilot: OK CO-NLF-I0089 (2/10)
+[2026-10-19T21:08:04] copilot: OK CO-NLF-I0281 (3/10)
+[2026-10-19T21:11:09] copilot: OK CO-NLF-I0086 (4/10)
+[2026-10-19T21:15:04] copilot: OK CO-NLF-I0004 (5/10)
+[2026-10-19T21:18:01] copilot: OK CO-NLF-I0159 (6/10)
+[2026-10-19T21:20:53] copilot: OK CO-NLF-I0240 (7/10)
+[2026-10-19T21:24:11] copilot: OK CO-NLF-I0049 (8/10)
+[2026-10-19T21:26:57] copilot: OK CO-NLF-I0176 (9/10)
+[2026-10-19T21:29:18] copilot: BACKOFF: _wait_for_reply: no new reply appeared within 60s -- stopping copilot; CO-NLF-I0165 left for resume
+[2026-10-20T23:40:14] copilot: === start (limit=None, min_days=30, batch=10 cells, failed so far=3) ===
+[2026-10-20T23:40:26] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-20T23:40:26] copilot: batch of 10 (ceiling 10, 93 due now)
+[2026-10-20T23:43:49] copilot: OK CO-NLF-I0334 (1/10)
+[2026-10-20T23:47:16] copilot: OK CO-NLF-I0131 (2/10)
+[2026-10-20T23:49:37] copilot: OK CO-NLF-I0118 (3/10)
+[2026-10-20T23:53:00] copilot: OK CO-NLF-I0125 (4/10)
+[2026-10-20T23:56:20] copilot: OK CO-NLF-I0272 (5/10)
+[2026-10-21T00:02:31] copilot: OK CO-NLF-I0224 (6/10)
+[2026-10-21T00:04:44] copilot: OK CO-NLF-I0092 (7/10)
+[2026-10-21T00:06:54] copilot: OK CO-NLF-I0220 (8/10)
+[2026-10-21T00:10:13] copilot: OK CO-NLF-I0106 (9/10)
+[2026-10-21T00:13:18] copilot: BACKOFF: _wait_for_reply: no new reply appeared within 60s -- stopping copilot; CO-NLF-I0371 left for resume
+[2026-10-22T22:04:42] copilot: === start (limit=None, min_days=30, batch=10 cells, failed so far=4) ===
+[2026-10-22T22:04:54] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-22T22:04:54] copilot: batch of 10 (ceiling 10, 83 due now)
+[2026-10-22T22:05:55] copilot: OK CO-NLF-I0096 (1/10)
+[2026-10-22T22:08:41] copilot: OK CO-NLF-I0095 (2/10)
+[2026-10-22T22:10:49] copilot: OK CO-NLF-I0085 (3/10)
+[2026-10-22T22:14:21] copilot: OK CO-NLF-I0361 (4/10)
+[2026-10-22T22:18:26] copilot: OK CO-NLF-I0077 (5/10)
+[2026-10-22T22:22:24] copilot: BACKOFF: _wait_for_reply: no new reply appeared within 60s -- stopping copilot; CO-NLF-I0067 left for resume
+[2026-10-25T17:14:43] copilot: === start (limit=None, min_days=30, batch=10 cells, failed so far=5) ===
+[2026-10-25T17:14:57] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-25T17:14:57] copilot: batch of 10 (ceiling 10, 90 due now)
+[2026-10-25T17:16:07] copilot: OK CO-NLF-I0230 (1/10)
+[2026-10-25T17:18:39] copilot: OK CO-NLF-I0296 (2/10)
+[2026-10-25T17:21:53] copilot: OK CO-NLF-I0032 (3/10)
+[2026-10-25T17:25:02] copilot: OK CO-NLF-I0355 (4/10)
+[2026-10-25T17:27:18] copilot: OK CO-NLF-I0068 (5/10)
+[2026-10-25T17:29:51] copilot: OK CO-NLF-I0132 (6/10)
+[2026-10-25T17:33:52] copilot: OK CO-NLF-I0191 (7/10)
+[2026-10-25T17:36:39] copilot: OK CO-NLF-I0115 (8/10)
+[2026-10-25T17:39:19] copilot: OK CO-NLF-I0200 (9/10)
+[2026-10-25T17:43:17] copilot: OK CO-NLF-I0030 (10/10)
+[2026-10-25T17:43:17] copilot: batch done; cooling down 900s
+[2026-10-25T18:47:20] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-25T18:47:20] copilot: batch of 10 (ceiling 10, 80 due now)
+[2026-10-25T18:49:35] copilot: BACKOFF: _wait_for_reply: no new reply appeared within 60s -- stopping copilot; CO-NLF-I0279 left for resume
+[2026-10-25T20:05:50] copilot: === start (limit=None, min_days=30, batch=10 cells, failed so far=6) ===
+[2026-10-25T20:06:03] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-25T20:06:03] copilot: batch of 10 (ceiling 10, 79 due now)
+[2026-10-25T20:07:11] copilot: OK CO-NLF-I0297 (1/10)
+[2026-10-25T20:09:29] copilot: OK CO-NLF-I0149 (2/10)
+[2026-10-25T20:12:41] copilot: OK CO-NLF-I0363 (3/10)
+[2026-10-25T20:16:31] copilot: OK CO-NLF-I0271 (4/10)
+[2026-10-25T20:19:56] copilot: OK CO-NLF-I0044 (5/10)
+[2026-10-25T20:22:36] copilot: FAIL CO-NLF-I0146 (6/10), not retried: stale read: reply to 'can you help me write a quick one-line update about how my knife roll is going?' is identical to the reply already on the page
+[2026-10-25T20:22:36] copilot: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 334, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 757, in recall_cell
+    new_scores = _run_recall_probes(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 400, in _run_recall_probes
+    r3_followup_reply = _send_fresh(flow, probes["r3_followup"])
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 331, in _send_fresh
+    raise RuntimeError(f"stale read: reply to {text!r} is identical to the reply already on the page")
+RuntimeError: stale read: reply to 'can you help me write a quick one-line update about how my knife roll is going?' is identical to the reply already on the page
+
+[2026-10-25T20:25:46] copilot: OK CO-NLF-I0273 (7/10)
+[2026-10-25T20:29:53] copilot: OK CO-NLF-I0042 (8/10)
+[2026-10-25T20:33:12] copilot: OK CO-NLF-I0237 (9/10)
+[2026-10-25T20:36:32] copilot: OK CO-NLF-I0126 (10/10)
+[2026-10-25T20:36:32] copilot: batch done; cooling down 900s
+[2026-10-25T20:51:46] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-25T20:51:46] copilot: batch of 10 (ceiling 10, 69 due now)
+[2026-10-25T20:52:55] copilot: OK CO-NLF-I0260 (1/10)
+[2026-10-25T20:57:02] copilot: BACKOFF: _wait_for_reply: no new reply appeared within 60s -- stopping copilot; CO-NLF-I0241 left for resume
+[2026-10-27T02:07:57] copilot: === start (limit=None, min_days=30, batch=10 cells, failed so far=8) ===
+[2026-10-27T02:08:12] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-27T02:08:12] copilot: batch of 10 (ceiling 10, 67 due now)
+[2026-10-27T02:09:26] copilot: OK CO-NLF-I0259 (1/10)
+[2026-10-27T02:13:29] copilot: OK CO-NLF-I0315 (2/10)
+[2026-10-27T02:15:44] copilot: OK CO-NLF-I0348 (3/10)
+[2026-10-27T02:18:22] copilot: OK CO-NLF-I0005 (4/10)
+[2026-10-27T02:21:49] copilot: OK CO-NLF-I0322 (5/10)
+[2026-10-27T02:24:16] copilot: OK CO-NLF-I0269 (6/10)
+[2026-10-27T02:26:58] copilot: OK CO-NLF-I0282 (7/10)
+[2026-10-27T02:29:55] copilot: OK CO-NLF-I0185 (8/10)
+[2026-10-27T02:33:37] copilot: OK CO-NLF-I0170 (9/10)
+[2026-10-27T02:39:51] copilot: OK CO-NLF-I0163 (10/10)
+[2026-10-27T02:39:51] copilot: batch done; cooling down 900s
+[2026-10-27T02:55:03] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-27T02:55:03] copilot: batch of 10 (ceiling 10, 57 due now)
+[2026-10-27T02:57:33] copilot: FAIL CO-NLF-I0023 (1/10), not retried: _type_into_composer: composer holds '', expected 'can you help me write a quick one-line update about how our beekeeping log is going?'; nothing was sent
+[2026-10-27T02:57:33] copilot: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 334, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 759, in recall_cell
+    new_scores = _run_recall_probes(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 397, in _run_recall_probes
+    r3_reply = _send_fresh(flow, probes["r3"])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 322, in _send_fresh
+    reply = flow.send_message(text)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/copilot.py", line 491, in send_message
+    self._type_into_composer(text)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/copilot.py", line 365, in _type_into_composer
+    raise RuntimeError(f"_type_into_composer: composer holds {typed!r}, expected {text!r}; nothing was sent")
+RuntimeError: _type_into_composer: composer holds '', expected 'can you help me write a quick one-line update about how our beekeeping log is going?'; nothing was sent
+
+[2026-10-27T03:01:03] copilot: BACKOFF: _wait_for_reply: no new reply appeared within 60s -- stopping copilot; CO-NLF-I0364 left for resume
+[2026-10-29T23:40:16] copilot: === start (limit=None, min_days=31, batch=10 cells, failed so far=10) ===
+[2026-10-29T23:41:18] copilot: === start (limit=None, min_days=31, batch=10 cells, failed so far=10) ===
+[2026-10-29T23:41:32] copilot: account check OK: signed in as 'astra taiwo'
+[2026-10-29T23:41:32] copilot: batch of 10 (ceiling 10, 55 due now)
+[2026-10-29T23:42:41] copilot: OK CO-NLF-I0305 (1/10)
+[2026-10-29T23:46:32] copilot: OK CO-NLF-I0327 (2/10)
+[2026-10-29T23:49:31] copilot: OK CO-NLF-I0233 (3/10)
+[2026-10-29T23:54:11] copilot: FAIL CO-NLF-I0177 (4/10), not retried: TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+
+[2026-10-29T23:54:11] copilot: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 752, in recall_cell
+    flow = stack.enter_context(flow_cls(**flow_kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/.pyenv/versions/3.11.13/lib/python3.11/contextlib.py", line 517, in enter_context
+    result = _enter(cm)
+             ^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/copilot.py", line 1240, in __enter__
+    self._browser = self._playwright.chromium.connect_over_cdp(self._cdp_url)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 17126, in connect_over_cdp
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_browser_type.py", line 205, in connect_over_cdp
+    response = await self._channel.send_return_as_dict(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 103, in send_return_as_dict
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 334, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 757, in recall_cell
+    raise FlowNotStarted(f"{type(exc).__name__}: {exc}") from exc
+run_cell.FlowNotStarted: TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+
+
+[2026-10-29T23:59:18] copilot: FAIL CO-NLF-I0024 (5/10), not retried: TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+
+[2026-10-29T23:59:18] copilot: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 752, in recall_cell
+    flow = stack.enter_context(flow_cls(**flow_kwargs))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/.pyenv/versions/3.11.13/lib/python3.11/contextlib.py", line 517, in enter_context
+    result = _enter(cm)
+             ^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/copilot.py", line 1240, in __enter__
+    self._browser = self._playwright.chromium.connect_over_cdp(self._cdp_url)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/sync_api/_generated.py", line 17126, in connect_over_cdp
+    self._sync(
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_browser_type.py", line 205, in connect_over_cdp
+    response = await self._channel.send_return_as_dict(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 103, in send_return_as_dict
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/.venv/lib/python3.11/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 334, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 757, in recall_cell
+    raise FlowNotStarted(f"{type(exc).__name__}: {exc}") from exc
+run_cell.FlowNotStarted: TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.
+Call log:
+  - <ws preparing> retrieving websocket url from http://localhost:9222
+  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63
+
+
+[2026-10-29T23:59:18] copilot: THROTTLE DETECTED (2/5 failed); ceiling 10 -> 3
+[2026-10-29T23:59:18] copilot: batch done; cooling down 900s
+[2026-11-01T01:27:35] copilot: === start (limit=None, min_days=31, batch=10 cells, failed so far=12) ===
+[2026-11-01T01:27:47] copilot: account check OK: signed in as 'astra taiwo'
+[2026-11-01T01:27:47] copilot: batch of 10 (ceiling 10, 50 due now)
+[2026-11-01T01:28:54] copilot: OK CO-NLF-I0012 (1/10)
+[2026-11-01T01:32:44] copilot: OK CO-NLF-I0226 (2/10)
+[2026-11-01T01:35:14] copilot: OK CO-NLF-I0027 (3/10)
+[2026-11-01T01:38:47] copilot: OK CO-NLF-I0187 (4/10)
+[2026-11-01T01:42:15] copilot: OK CO-NLF-I0350 (5/10)
+[2026-11-01T01:44:32] copilot: OK CO-NLF-I0262 (6/10)
+[2026-11-01T01:47:29] copilot: OK CO-NLF-I0304 (7/10)
+[2026-11-01T01:51:33] copilot: OK CO-NLF-I0028 (8/10)
+[2026-11-01T01:56:21] copilot: FAIL CO-NLF-I0252 (9/10), not retried: _type_into_composer: composer holds '', expected 'what did we decide to call a kimchi batch I started again?'; nothing was sent
+[2026-11-01T01:56:21] copilot: Traceback (most recent call last):
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/nlf_recall_scheduler.py", line 334, in run_platform
+    rc.recall_cell(cell_id, force=force, cdp_url=_cdp_url(platform),
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 759, in recall_cell
+    new_scores = _run_recall_probes(
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 408, in _run_recall_probes
+    r1_open_reply = _send_fresh(flow, probes["r1_open"])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/run_cell.py", line 322, in _send_fresh
+    reply = flow.send_message(text)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/copilot.py", line 491, in send_message
+    self._type_into_composer(text)
+  File "/Users/taiwoolabamipe/Downloads/UCF/RTBF/tester/flows/copilot.py", line 365, in _type_into_composer
+    raise RuntimeError(f"_type_into_composer: composer holds {typed!r}, expected {text!r}; nothing was sent")
+RuntimeError: _type_into_composer: composer holds '', expected 'what did we decide to call a kimchi batch I started again?'; nothing was sent
+
+[2026-11-01T01:00:09] copilot: BACKOFF: _wait_for_reply: no new reply appeared within 60s -- stopping copilot; CO-NLF-I0188 left for resume
+[2026-11-01T06:24:48] copilot: account check OK: signed in as 'astra taiwo'
