@@ -1,21 +1,21 @@
 # audit_outcomes
 
-_Run at 2026-10-28T10:49:02_
+_Run at 2026-11-02T04:09:29_
 
 ```text
 cells read: 901 (MASTER and NL FORGET; FILE cells are classified separately)
 
 recoverability (new-conversation recall):
-  INDETERMINATE                  423
-  NOT RECOVERED                  200
+  INDETERMINATE                  432
+  NOT RECOVERED                  210
   RECOVERED                      162
-  NOT RECALLED                   113
+  NOT RECALLED                   94
   PENDING REVIEW                 3
 
 policy consistency:
-  INDETERMINATE                  473
-  CONSISTENT                     311
-  NOT RECALLED                   113
+  INDETERMINATE                  482
+  CONSISTENT                     321
+  NOT RECALLED                   94
   CONTRADICTED                   4
 
 missing inputs among 865 erased cells (each blocks or weakens a verdict):

@@ -150,7 +150,8 @@
     "CO-NLF-I0177": "FlowNotStarted: TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.\nCall log:\n  - <ws preparing> retrieving websocket url from http://localhost:9222\n  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63\n  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63\n",
     "CO-NLF-I0024": "FlowNotStarted: TimeoutError: BrowserType.connect_over_cdp: Timeout 180000ms exceeded.\nCall log:\n  - <ws preparing> retrieving websocket url from http://localhost:9222\n  - <ws connecting> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63\n  - <ws connected> ws://localhost:9222/devtools/browser/12392960-3333-4b62-b832-3623c296ff63\n",
     "CO-NLF-I0252": "RuntimeError: _type_into_composer: composer holds '', expected 'what did we decide to call a kimchi batch I started again?'; nothing was sent",
-    "CO-NLF-I0188": "RuntimeError: _wait_for_reply: no new reply appeared within 60s"
+    "CO-NLF-I0188": "RuntimeError: _wait_for_reply: no new reply appeared within 60s",
+    "CO-NLF-I0169": "RuntimeError: _wait_for_reply: no new reply appeared within 60s"
   },
-  "recalled": 79
+  "recalled": 86
 }

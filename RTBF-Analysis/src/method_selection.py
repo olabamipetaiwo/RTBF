@@ -83,6 +83,18 @@ if __name__ == "__main__":
     df = selection_counts(paired)
 
     lines = ["=== method selection counts (paired base) ===", df.to_string()]
+    n_choices = int(df["total"].sum())
+    kept = paired[["Q4.2", "Q5.2"]].isin(METHODS)
+    n_people = int(kept.any(axis=1).sum())
+    share = (df["total"] / n_choices * 100).round(1)
+    lines.append(
+        f"\n=== share of choices, both scenarios pooled "
+        f"(base = {n_choices} choices from {n_people} participants) ==="
+    )
+    lines.extend(
+        f"  {name.replace(chr(10), ' '):<64} {int(n):>4}/{n_choices} ({pct:.1f}%)"
+        for name, n, pct in zip(df.index, df["total"], share)
+    )
     fig_path = plot(df)
     lines.append(f"\nsaved -> {fig_path}")
 

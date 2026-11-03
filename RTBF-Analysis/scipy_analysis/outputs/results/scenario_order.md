@@ -1,6 +1,6 @@
 # scenario_order
 
-_Run at 2026-10-20T01:29:19_
+_Run at 2026-11-01T13:08:16_
 
 ```text
 === Scenario order check (LS = weather, MS = health) ===

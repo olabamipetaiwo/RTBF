@@ -1,0 +1,75 @@
+test cases run: 865; with a real result: 804; filled with a placeholder: 61
+
+recoverability on the full base (placeholders included):
+  INDETERMINATE    471  54.5%
+  NOT RECOVERED    232  26.8%
+  RECOVERED        162  18.7%
+
+placeholders by agent, part and value:
+  copilot     MASTER     INDETERMINATE   2
+  copilot     NL FORGET  INDETERMINATE   25
+  copilot     NL FORGET  NOT RECOVERED   22
+  gemini      NL FORGET  INDETERMINATE   12
+
+per-cell list:
+  CO-I1-E4       INDETERMINATE  copilot MASTER retention no_signal: INDETERMINATE 3, RECOVERED 1
+  CO-I1-E6       INDETERMINATE  copilot MASTER retention no_signal: INDETERMINATE 3, RECOVERED 1
+  CO-NLF-I0000   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0002   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0010   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0023   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0024   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0026   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  GE-NLF-I0032   INDETERMINATE  gemini NL FORGET retention no_signal: INDETERMINATE 6
+  CO-NLF-I0036   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0041   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0043   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  GE-NLF-I0045   INDETERMINATE  gemini NL FORGET retention no_signal: INDETERMINATE 6
+  CO-NLF-I0045   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0047   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0053   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  GE-NLF-I0060   INDETERMINATE  gemini NL FORGET retention no_signal: INDETERMINATE 6
+  CO-NLF-I0060   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0067   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  GE-NLF-I0090   INDETERMINATE  gemini NL FORGET retention no_signal: INDETERMINATE 6
+  CO-NLF-I0096   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0099   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  CO-NLF-I0121   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0124   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  CO-NLF-I0133   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  CO-NLF-I0137   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  CO-NLF-I0140   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  GE-NLF-I0141   INDETERMINATE  gemini NL FORGET retention no_signal: INDETERMINATE 6
+  GE-NLF-I0146   INDETERMINATE  gemini NL FORGET retention acknowledged: INDETERMINATE 115
+  CO-NLF-I0146   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  CO-NLF-I0153   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  CO-NLF-I0165   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  CO-NLF-I0169   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  CO-NLF-I0177   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0181   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  GE-NLF-I0182   INDETERMINATE  gemini NL FORGET retention no_signal: INDETERMINATE 6
+  CO-NLF-I0195   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  CO-NLF-I0201   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0209   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  GE-NLF-I0230   INDETERMINATE  gemini NL FORGET retention no_signal: INDETERMINATE 6
+  CO-NLF-I0236   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  GE-NLF-I0237   INDETERMINATE  gemini NL FORGET retention no_signal: INDETERMINATE 6
+  CO-NLF-I0239   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  GE-NLF-I0241   INDETERMINATE  gemini NL FORGET retention no_signal: INDETERMINATE 6
+  CO-NLF-I0241   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0252   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  CO-NLF-I0264   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0279   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  CO-NLF-I0293   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0302   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0309   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  CO-NLF-I0319   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  GE-NLF-I0326   INDETERMINATE  gemini NL FORGET retention no_signal: INDETERMINATE 6
+  CO-NLF-I0339   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  CO-NLF-I0345   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  GE-NLF-I0350   INDETERMINATE  gemini NL FORGET retention no_signal: INDETERMINATE 6
+  CO-NLF-I0351   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35
+  CO-NLF-I0364   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0365   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0367   INDETERMINATE  copilot NL FORGET retention no_signal: INDETERMINATE 51
+  CO-NLF-I0371   NOT RECOVERED  copilot NL FORGET retention shown: NOT RECOVERED 35

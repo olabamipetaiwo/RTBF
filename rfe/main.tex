@@ -1,0 +1,105 @@
+\documentclass[conference,compsoc]{IEEEtran}
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    Bib\TeX}}}
+
+\ifCLASSOPTIONcompsoc
+  % IEEE Computer Society needs nocompress option
+  % requires cite.sty v4.0 or later (November 2003)
+  \usepackage[nocompress]{cite}
+\else
+  % normal IEEE
+  \usepackage{cite}
+\fi
+
+\ifCLASSINFOpdf
+\else
+\fi
+
+\newcommand{\ignore}[1]{}
+
+%IEEEtran
+\usepackage{amsthm}
+\pagestyle{plain}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+
+\usepackage{enumitem}
+\usepackage{pifont}
+
+\usepackage{subcaption}        
+\usepackage{hyperref}
+
+%\usepackage{appendix}
+\usepackage{booktabs}    % for \midrule, \toprule, \bottomrule
+\usepackage[table]{xcolor} % for \rowcolor
+\usepackage{tabularx}
+
+\usepackage[normalem]{ulem}
+%\usepackage{url}
+\usepackage{xurl}
+
+\usepackage{threeparttable}
+
+\usepackage{listings}
+
+\newtcolorbox{takeawaybox}{
+    colback=gray!10,
+    colframe=gray!70,
+    arc=0pt,
+    outer arc=0pt,
+    boxrule=0.5pt,
+    left=2pt,
+    right=2pt,
+    top=2pt,
+    bottom=2pt,
+    before skip=8pt,
+    after skip=8pt
+}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\usepackage{graphicx}
+\usepackage{makecell}
+\usepackage{array}
+
+\newcommand{\para}[1]{\vspace{3pt}\noindent\textbf{#1.~}}
+\newcommand{\subpara}[1]{\vspace{3pt}\textbf{#1}}
+
+\usepackage{multirow}
+
+\newcommand{\xw}[1] {{\color{red}xueqiang: #1}}
+\newcommand{\yao}[1] {{\color{blue}yao: #1}}
+\newcommand{\jh}[1] {{\color{violet}jingzhou: #1}}
+
+\definecolor{notepink}{RGB}{0,140,140}
+\newcommand{\mycontent}[1] {{\color{notepink}Content: #1}}
+\newenvironment{outlinenote}{\par\begingroup\color{red}}{\par\endgroup}
+
+\begin{document}
+
+\title{``I Thought It Was Gone'': Understanding User Data Deletion Experiences, Expectations, and Post-Deletion Data Resurfacing in Commercial LLM Agents}
+
+\maketitle
+\input{sections/abstract}
+
+\IEEEpeerreviewmaketitle
+
+\input{sections/intro}
+\input{sections/background}
+\input{sections/design}
+\input{sections/qual_results}
+\input{sections/tech_results}
+\input{sections/discussion}
+\input{sections/related}
+\input{sections/conclusion}
+\input{sections/ethics}
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\section*{Appendix}
+\input{sections/appendix}
+
+\end{document}

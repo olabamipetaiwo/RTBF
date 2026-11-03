@@ -1,6 +1,6 @@
 # recall_refusals
 
-_Run at 2026-10-27T02:58:22_
+_Run at 2026-11-02T11:13:35_
 
 ```text
 Refusals among cells where the token did not come back (scoring unchanged; reported separately).
@@ -10,19 +10,19 @@ per platform, study and outcome: refusals / cells (reviewed cells / cells)
   chatgpt     MASTER     recall failed    0 / 5  (5 / 5 reviewed)
   chatgpt     NL FORGET  can't tell       1 / 2  (2 / 2 reviewed)
   chatgpt     NL FORGET  recall failed   12 / 23  (23 / 23 reviewed)
-  claude      MASTER     can't tell       0 / 2  (0 / 2 reviewed)
-  claude      MASTER     recall failed    0 / 10  (0 / 10 reviewed)
-  claude      NL FORGET  can't tell       0 / 2  (0 / 2 reviewed)
-  claude      NL FORGET  recall failed    0 / 131  (0 / 131 reviewed)
-  copilot     MASTER     can't tell       0 / 3  (0 / 3 reviewed)
-  copilot     MASTER     recall failed    0 / 2  (0 / 2 reviewed)
-  copilot     NL FORGET  can't tell       0 / 42  (0 / 42 reviewed)
-  copilot     NL FORGET  recall failed    0 / 25  (0 / 25 reviewed)
-  deepseek    MASTER     can't tell       0 / 4  (0 / 4 reviewed)
-  deepseek    NL FORGET  can't tell       0 / 133  (0 / 133 reviewed)
-  gemini      MASTER     can't tell       0 / 5  (0 / 5 reviewed)
-  gemini      MASTER     recall failed    0 / 2  (0 / 2 reviewed)
-  gemini      NL FORGET  can't tell       0 / 120  (0 / 120 reviewed)
+  claude      MASTER     can't tell       0 / 2  (2 / 2 reviewed)
+  claude      MASTER     recall failed    0 / 10  (10 / 10 reviewed)
+  claude      NL FORGET  can't tell       0 / 2  (2 / 2 reviewed)
+  claude      NL FORGET  recall failed    0 / 131  (131 / 131 reviewed)
+  copilot     MASTER     can't tell       0 / 3  (3 / 3 reviewed)
+  copilot     MASTER     recall failed    0 / 2  (2 / 2 reviewed)
+  copilot     NL FORGET  can't tell       0 / 51  (51 / 51 reviewed)
+  copilot     NL FORGET  recall failed    0 / 35  (35 / 35 reviewed)
+  deepseek    MASTER     can't tell       0 / 4  (4 / 4 reviewed)
+  deepseek    NL FORGET  can't tell       0 / 133  (133 / 133 reviewed)
+  gemini      MASTER     can't tell       0 / 5  (5 / 5 reviewed)
+  gemini      MASTER     recall failed    0 / 2  (2 / 2 reviewed)
+  gemini      NL FORGET  can't tell       0 / 121  (121 / 121 reviewed)
   perplexity  MASTER     can't tell       0 / 4  (4 / 4 reviewed)
   perplexity  MASTER     recall failed    0 / 2  (2 / 2 reviewed)
   perplexity  NL FORGET  can't tell      97 / 102  (102 / 102 reviewed)

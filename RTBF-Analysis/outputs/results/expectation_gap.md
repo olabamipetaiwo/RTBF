@@ -1,6 +1,6 @@
 # expectation_gap
 
-_Run at 2026-10-28T10:05:52_
+_Run at 2026-11-02T04:19:27_
 
 # What users expect vs. what happened
 
@@ -19,7 +19,7 @@ _Run at 2026-10-28T10:05:52_
 | Delete one conversation | 54% | 4 of 13 | 6 | 1 |
 | Clear all conversations | 42% | 4 of 8 | 4 | 2 |
 | Delete one saved memory | 63% | 4 of 9 | 2 | 3 |
-| Type "forget" (138 participant prompts) | 51% | 414 of 828 | 139 | 179 |
+| Type "forget" (138 participant prompts) | 51% | 414 of 828 | 139 | 189 |
 | Type "forget" (battery command) | 51% | 7 of 13 | 5 | 2 |
 | Clear all saved memories | 73% | 7 of 12 | 4 | 4 |
 
@@ -43,7 +43,7 @@ Each cell reads **recall success out of all cells with a known outcome**. "none 
 | Delete one conversation | 1 of 1 | 3 of 3 | 1 of 1 | 1 of 1 | 0 of 1 | none known |
 | Clear all conversations | 2 of 3 | not tested | 2 of 2 | not tested | 0 of 1 | none known |
 | Delete one saved memory | not tested | 0 of 3 | 1 of 1 | 1 of 1 | none known | not tested |
-| Type "forget" (138 participant prompts) | 108 of 131 | 0 of 131 | none known | 0 of 25 | 31 of 31 | none known |
+| Type "forget" (138 participant prompts) | 108 of 131 | 0 of 131 | none known | 0 of 35 | 31 of 31 | none known |
 | Type "forget" (battery command) | 3 of 3 | 0 of 2 | 1 of 1 | 1 of 1 | none known | none known |
 | Clear all saved memories | 2 of 3 | 0 of 2 | 0 of 1 | 2 of 2 | none known | not tested |
 
@@ -58,7 +58,7 @@ By method:
 | Delete one conversation | 6 | 5 |
 | Clear all conversations | 4 | 3 |
 | Delete one saved memory | 2 | 4 |
-| Type "forget" (138 participant prompts) | 139 | 448 |
+| Type "forget" (138 participant prompts) | 139 | 467 |
 | Type "forget" (battery command) | 5 | 6 |
 | Clear all saved memories | 4 | 6 |
 
@@ -69,7 +69,7 @@ By platform (recall success out of all cells with a known outcome):
 | Delete one conversation | 1 of 2 | 3 of 3 | 1 of 2 | 1 of 2 | 0 of 2 | none known |
 | Clear all conversations | 2 of 3 | not tested | 2 of 2 | not tested | 0 of 2 | none known |
 | Delete one saved memory | not tested | 0 of 3 | 1 of 2 | 1 of 1 | none known | not tested |
-| Type "forget" (138 participant prompts) | 108 of 133 | 0 of 133 | 0 of 121 | 0 of 67 | 31 of 133 | none known |
+| Type "forget" (138 participant prompts) | 108 of 133 | 0 of 133 | 0 of 121 | 0 of 86 | 31 of 133 | none known |
 | Type "forget" (battery command) | 3 of 3 | 0 of 3 | 1 of 2 | 1 of 2 | 0 of 1 | none known |
 | Clear all saved memories | 2 of 3 | 0 of 3 | 0 of 2 | 2 of 2 | none known | not tested |
 

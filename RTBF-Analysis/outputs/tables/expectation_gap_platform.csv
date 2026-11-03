@@ -16,7 +16,7 @@ Delete a specific saved memory or fact.,perplexity,recoverability,2,0,0,0,0,0,2,
 Type a message asking the AI Chatbot to forget it. [138 participant prompts],chatgpt,recoverability,138,108,23,2,0,5,0,"108 of 131 (2 can't tell, 5 held)",108 of 131
 Type a message asking the AI Chatbot to forget it. [138 participant prompts],claude,recoverability,138,0,131,2,0,5,0,"0 of 131 (2 can't tell, 5 held)",0 of 131
 Type a message asking the AI Chatbot to forget it. [138 participant prompts],gemini,recoverability,138,0,0,121,12,5,0,"none known (121 can't tell, 12 waiting, 5 held)",none known
-Type a message asking the AI Chatbot to forget it. [138 participant prompts],copilot,recoverability,138,0,25,42,66,5,0,"0 of 25 (42 can't tell, 66 waiting, 5 held)",0 of 25
+Type a message asking the AI Chatbot to forget it. [138 participant prompts],copilot,recoverability,138,0,35,51,47,5,0,"0 of 35 (51 can't tell, 47 waiting, 5 held)",0 of 35
 Type a message asking the AI Chatbot to forget it. [138 participant prompts],perplexity,recoverability,138,31,0,102,0,5,0,"31 of 31 (102 can't tell, 5 held)",31 of 31
 Type a message asking the AI Chatbot to forget it. [138 participant prompts],deepseek,recoverability,138,0,0,133,0,5,0,"none known (133 can't tell, 5 held)",none known
 Type a message asking the AI Chatbot to forget it. [battery command],chatgpt,recoverability,3,3,0,0,0,0,0,3 of 3,3 of 3
@@ -55,7 +55,7 @@ Delete a specific saved memory or fact.,perplexity,recoverability_platform,2,0,0
 Type a message asking the AI Chatbot to forget it. [138 participant prompts],chatgpt,recoverability_platform,138,108,25,0,0,5,0,108 of 133 (5 held),108 of 133
 Type a message asking the AI Chatbot to forget it. [138 participant prompts],claude,recoverability_platform,138,0,133,0,0,5,0,0 of 133 (5 held),0 of 133
 Type a message asking the AI Chatbot to forget it. [138 participant prompts],gemini,recoverability_platform,138,0,121,0,12,5,0,"0 of 121 (12 waiting, 5 held)",0 of 121
-Type a message asking the AI Chatbot to forget it. [138 participant prompts],copilot,recoverability_platform,138,0,67,0,66,5,0,"0 of 67 (66 waiting, 5 held)",0 of 67
+Type a message asking the AI Chatbot to forget it. [138 participant prompts],copilot,recoverability_platform,138,0,86,0,47,5,0,"0 of 86 (47 waiting, 5 held)",0 of 86
 Type a message asking the AI Chatbot to forget it. [138 participant prompts],perplexity,recoverability_platform,138,31,102,0,0,5,0,31 of 133 (5 held),31 of 133
 Type a message asking the AI Chatbot to forget it. [138 participant prompts],deepseek,recoverability_platform,138,0,0,133,0,5,0,"none known (133 can't tell, 5 held)",none known
 Type a message asking the AI Chatbot to forget it. [battery command],chatgpt,recoverability_platform,3,3,0,0,0,0,0,3 of 3,3 of 3

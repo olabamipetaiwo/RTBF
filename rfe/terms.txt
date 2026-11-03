@@ -1,0 +1,50 @@
+TERMS 
+
+Systems and people
+- commercial LLM agent, short form agent: the systems studied. Not chatbot.
+- platform: only the company or service (e.g., platform's privacy policy).
+- participant: a survey respondent. Not respondent.
+
+Studies
+- participatory survey (first mention), then the survey.
+- Post-Deletion Behavioral Analysis (first mention), then post-deletion analysis. Not behavioral audit or technical audit.
+- DIDR Pipeline: data injection, data deletion, data recall.
+
+Survey vocabulary
+- user experience, user expectation: the two survey headings.
+- data deletion method: what users can do to delete data (found in the Background walkthrough, asked about in the survey). This is the survey's own term. The eight methods are defined once in Background as a table of our name and the survey's exact wording in quotes. Option 1 is named "sending a deletion-request prompt" (survey wording: "Type a message asking the AI Chatbot to forget it."). Options 2 to 8 use the survey wording as their name.
+- Participants saw "AI chatbot". The paper says so once, then uses "LLM agent" throughout. "Forget" and "chatbot" appear only inside quoted survey wording.
+- scenario sensitivity.
+
+Pipeline vocabulary
+- synthetic fact: an <entity, attribute, value> tuple. The value is the part we search for in recall. Not "token".
+- data injection: through prompts or through UI actions.
+- data deletion: through deletion-request prompts or deletion-request UI actions. Not erasure or removal.
+- No umbrella noun for prompt vs. UI action. Write through prompts / through UI actions.
+- stratified prompt sampling.
+- data recall has two parts: prompt-based recall (direct recall prompt: asks about entity and attribute; indirect recall prompt: asks about entity only) and UI-based check.
+
+Outcomes
+- recall success: value retrieved, so deletion failed.
+- recall failed: value not retrieved, so deletion held.
+- can't tell: outcome unresolved.
+- Do not coin other outcome labels.
+- withheld: the agent's recall reply declines to give the fact, citing the user's earlier deletion request. Not an outcome label. Reported separately, and it does not change the recall outcome.
+- agent reply types (what the agent said when asked to delete): complied, partial, deflected, refused, silently ignored, other. Used only in the sections on agent behavior; they are not outcomes.
+
+Documentation and verdicts
+- commitment type (from the agent's own published help and privacy pages, for a deletion method and the place the fact was injected): deletes, does not delete, no commitment, unrelated, not testable. Say "documentation", not "policy", for the source.
+- interface change (UI actions only): changed, unchanged, not observable. A deletion typed in the chat is always not observable.
+- verdict (only for deletes and does not delete): consistent, contradicted. Every other test case is unresolved. Do not say "indeterminate" in the paper.
+- the most extensive deletion: the combination of all of an agent's controls (one per agent). Not "maximal" or "MAXIMAL".
+- "Among the deletion requests typed in the chat": the base for the prompts part (133 per agent). Name it whenever a count uses that base instead of all test cases.
+
+Other
+- test case, topic: keep their meanings from the earlier draft.
+- resurfacing (title only): defined once as recall success after a deletion request; the body uses recall success.
+- forget: only inside quoted prompt text, never in our own prose.
+
+
+
+https://sp2027.ieee-security.org/cfpapers.html
+https://sp2027.ieee-security.org/cfartifacts.html

@@ -1,6 +1,6 @@
 # gemini_permission_cards
 
-_Run at 2026-10-27T21:02:34_
+_Run at 2026-11-02T04:15:15_
 
 ```text
 Gemini replies to participants' own deletion requests that were an app-permission card

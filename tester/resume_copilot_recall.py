@@ -6,7 +6,7 @@ resume_recall.py cannot do this: it finds a cell's chats through ChatGPT/Claude'
 conversation-list APIs, and Copilot has none. Here the cell's R3 chat is named
 by URL instead, on the command line.
 
-    python resume_copilot_recall.py CO-NLF-I0188 <R3 chat URL>            (read-only plan)
+    python resume_copilot_recall.py CO-NLF-I0169 <R3 chat URL> [<R1 chat URL>]            (read-only plan)
     python resume_copilot_recall.py CO-NLF-I0188 <R3 chat URL> --apply    (send what is missing, record)
 
 It refuses to send anything unless: the tab is signed in as the study account, no
@@ -51,26 +51,48 @@ def _prompt_in_sidebar(titles: list[str], prompt: str) -> bool:
     return any(t.startswith(prefix) for t in titles)
 
 
-def _check_chat(flow: CopilotFlow, cell_id: str, probes: dict, url: str) -> tuple[int, int]:
-    """Opens the R3 chat; returns (user prompts in it, replies in it). Raises on anything unexpected."""
-    flow.open_conversation(url)
-    flow.page.wait_for_timeout(4000)
-    body = _norm(flow.page.inner_text("body"))
-    if _norm(probes["r3"]) not in body:
-        raise RuntimeError(f"{cell_id}: the chat at {url} does not contain this cell's R3 probe; nothing sent")
-    prompts = 1 + (_norm(probes["r3_followup"]) in body)
-    return prompts, flow._reply_count()
+def _read_chat(flow: CopilotFlow, cell_id: str, url: str, first: str, second: str) -> tuple[int, list[str]]:
+    """Opens a recall chat; returns (this cell's prompts in it, its reply texts). Raises on anything unexpected."""
+    # Not flow.open_conversation(): it waits for earlier replies, and this chat may hold none.
+    flow.page.goto(flow.normalize_ref(url))
+    flow.page.wait_for_timeout(5000)
+    body = _norm(flow.page.inner_text("main"))
+    if _norm(first) not in body:
+        raise RuntimeError(f"{cell_id}: the chat at {url} does not start with {first!r}; nothing sent")
+    prompts = 1 + (_norm(second) in body)
+    replies = [el.inner_text() for el in flow.page.query_selector_all(flow._reply_selector())]
+    if len(replies) > prompts:
+        raise RuntimeError(f"{cell_id}: {url} holds {len(replies)} replies for {prompts} prompts; nothing sent")
+    return prompts, replies
 
 
-def _retry_unanswered(flow: CopilotFlow, cell_id: str) -> str:
-    if (notice := LIMIT_NOTICE.search(flow.page.inner_text("body"))):
-        raise RuntimeError(f"{cell_id}: daily limit still active ({notice.group(0)[:100]}); nothing sent")
+def _retry_unanswered(flow: CopilotFlow, cell_id: str, r3_prompt: str) -> str:
+    # No daily-limit pre-check here: the unanswered turn stores its own "reached your daily
+    # limit" notice, so the text stays after the reset. Try again only replays the same
+    # prompt; if the limit is still on, no reply appears and _wait_for_reply raises.
     before = flow._reply_count()
+    seen = _norm(flow.page.inner_text("body")).count(_norm(r3_prompt))
     flow.page.get_by_role("button", name="Try again").click(timeout=RETRY_TIMEOUT_MS)
-    return flow._wait_for_reply(before)
+    reply = flow._wait_for_reply(before)
+    if _norm(flow.page.inner_text("body")).count(_norm(r3_prompt)) > seen:
+        raise RuntimeError(f"{cell_id}: Try again duplicated the R3 prompt in the chat; stopping before anything else is sent")
+    return reply
 
 
-def resume(cell_id: str, url: str, apply: bool) -> None:
+def _finish_chat(flow: CopilotFlow, cell_id: str, url: str, first: str, second: str, replies: list[str],
+                 prompts: int) -> tuple[list[str], list[str]]:
+    """Answers whatever is missing in one two-prompt chat; returns (its two replies, what was done)."""
+    done = []
+    if len(replies) < prompts:  # only the last prompt can be unanswered
+        replies.append(_retry_unanswered(flow, cell_id, first if prompts == 1 else second))
+        done.append("retry")
+    if prompts == 1:
+        replies.append(rc._send_fresh(flow, second))
+        done.append("followup")
+    return replies, done
+
+
+def resume(cell_id: str, r3_url: str, r1_url: str | None, apply: bool) -> None:
     plan = rc.load_cell(cell_id)
     entry = tracking.get(cell_id)
     if plan.platform != "copilot" or plan.sheet != "NLFORGET":
@@ -86,40 +108,39 @@ def resume(cell_id: str, url: str, apply: bool) -> None:
     with CopilotFlow(cdp_url=sched.CDP_URL) as flow:
         flow.page.goto(flow.BASE_URL)
         flow.page.wait_for_timeout(3000)
-        titles = _sidebar_titles(flow)
-        for key in ("r3_followup", "r1_open", "r1_open_followup"):
-            if key != "r3_followup" and _prompt_in_sidebar(titles, probes[key]):
-                raise RuntimeError(f"{cell_id}: a chat starting with the {key} prompt already exists; refusing to guess")
-        prompts, replies = _check_chat(flow, cell_id, probes, url)
-        todo = []
-        if replies < 1:
-            todo.append("r3_retry")
-        if prompts == 1:
-            todo.append("r3_followup")
-        todo += ["r1_open", "r1_open_followup"]
-        print(f"{cell_id}: R3 chat has {prompts} prompt(s) and {replies} repl(ies)")
-        print(f"{cell_id}: will do {todo}; same-conversation R1 stays deferred")
+        if r1_url is None:
+            titles = _sidebar_titles(flow)
+            if _prompt_in_sidebar(titles, probes["r1_open"]):
+                raise RuntimeError(f"{cell_id}: a chat starting with the R1 prompt already exists; pass its URL")
+        r3_prompts, r3_replies = _read_chat(flow, cell_id, r3_url, probes["r3"], probes["r3_followup"])
+        r1_prompts, r1_replies = (0, [])
+        if r1_url:
+            r1_prompts, r1_replies = _read_chat(flow, cell_id, r1_url, probes["r1_open"], probes["r1_open_followup"])
+        print(f"{cell_id}: R3 chat {r3_prompts} prompt(s), {len(r3_replies)} repl(ies); "
+              f"R1 chat {'none' if not r1_url else f'{r1_prompts} prompt(s), {len(r1_replies)} repl(ies)'}")
+        print(f"{cell_id}: same-conversation R1 stays deferred")
         if not apply:
             print("DRY RUN -- nothing sent or written")
             return
 
-        r3_replies = []
-        if "r3_retry" in todo:
-            r3_replies.append(_retry_unanswered(flow, cell_id))
-        else:
-            r3_replies.append(flow._last_reply_text())
-        rc._save_screenshot(flow, plan.platform, cell_id, f"{SESSION}_r3")
-        if "r3_followup" in todo:
-            r3_replies.append(rc._send_fresh(flow, probes["r3_followup"]))
-        else:
-            r3_replies.append(flow._last_reply_text())
+        did: dict[str, list[str]] = {}
+        flow.page.goto(flow.normalize_ref(r3_url))
+        flow.page.wait_for_timeout(4000)
+        r3_replies, did["r3"] = _finish_chat(flow, cell_id, r3_url, probes["r3"], probes["r3_followup"],
+                                             r3_replies, r3_prompts)
         rc._save_screenshot(flow, plan.platform, cell_id, f"{SESSION}_r3_followup")
 
-        flow.new_conversation()
-        r1_replies = [rc._send_fresh(flow, probes["r1_open"])]
-        rc._save_screenshot(flow, plan.platform, cell_id, f"{SESSION}_r1_open")
-        r1_replies.append(rc._send_fresh(flow, probes["r1_open_followup"]))
+        if r1_url:
+            flow.page.goto(flow.normalize_ref(r1_url))
+            flow.page.wait_for_timeout(4000)
+            r1_replies, did["r1"] = _finish_chat(flow, cell_id, r1_url, probes["r1_open"],
+                                                 probes["r1_open_followup"], r1_replies, r1_prompts)
+        else:
+            flow.new_conversation()
+            r1_replies = [rc._send_fresh(flow, probes["r1_open"]), rc._send_fresh(flow, probes["r1_open_followup"])]
+            did["r1"] = ["open", "followup"]
         rc._save_screenshot(flow, plan.platform, cell_id, f"{SESSION}_r1_open_followup")
+        todo = did
 
         r2_reply = flow.read_memory_settings()
         if token_found(r2_reply, token):
@@ -144,9 +165,10 @@ def resume(cell_id: str, url: str, apply: bool) -> None:
             "resumed": {
                 "at": datetime.now(timezone.utc).isoformat(),
                 "did": todo,
-                "r3_chat": url,
-                "note": "R3 prompt 1 was sent before the daily limit stopped the run and got no answer; "
-                        "it was answered through the chat's Try again button, not re-typed. "
+                "r3_chat": r3_url, "r1_chat": r1_url,
+                "note": "the run was stopped by Copilot's daily limit; replies already in the chats were read from the "
+                        "page, an unanswered prompt was answered through the chat's Try again button "
+                        "(not re-typed), and only prompts not yet in a chat were sent. "
                         "R2 re-read at resume (the original run's read is kept only as "
                         "03_recall_new_conversation_r2.png).",
             },
@@ -158,4 +180,5 @@ def resume(cell_id: str, url: str, apply: bool) -> None:
 
 
 if __name__ == "__main__":
-    resume(sys.argv[1], sys.argv[2], apply="--apply" in sys.argv)
+    urls = [a for a in sys.argv[2:] if a.startswith("http")]
+    resume(sys.argv[1], urls[0], urls[1] if len(urls) > 1 else None, apply="--apply" in sys.argv)
