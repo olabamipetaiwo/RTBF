@@ -1,26 +1,16 @@
 \section{Participatory Survey Results}
 \label{sec:qual_results}
 
-\subsection{User Experience about Data Deletion}
-
-\begin{outlinenote}
-talk about overall willingness of conducting data deletion, and impact of scenario sensitive on willingness of data deletion.  
-
-talk about choices of data deletion methods, e.g., which one is most used, rarely used, and how scenario sensitivity will affect the choice.
-\end{outlinenote}
-
-In both scenarios, the majority of participants answered probably yes or definitely yes when asked whether they would delete the data (125 of 177 and 150 of 177), and they were more willing when the data were more sensitive. They also rated the method they chose as more protective in the more sensitive scenario, but not as more effortful or costly. So the more sensitive the data, the more users want to delete them, and the more protective they find their chosen method.
-
-Participants relied on conversation-level deletion. Deleting a single conversation was both the most used method (136 of 177 participants) and the most chosen (46.6\% of 352 responses), and every method that acts on saved memories, an account, or a dashboard had been used by no more than a third of participants (Table~\ref{tab:method-use}). Filing a request was the least used (5 of 177). We found no change in which method participants chose between the scenarios. So sensitivity changes how much participants want to delete, not how they delete.
-
-\begin{table*}[t]
+\begin{table*}[!t]
 \centering
-\caption{Past use and choice of each data deletion method. Used is the number of the 177 participants who had used the method (select all that apply). Chosen is the number of responses naming the method, among the methods a participant had used, in each scenario and combined (352 responses from 176 participants; choices of Other are left out). Percentages are of 177 for Used and of 352 for Chosen.}
+\caption{Past use (select all that apply) and choice of each data deletion method, in the less sensitive scenario (LS), the more sensitive scenario (MS), and both combined (Pooled). Choice is among the methods a participant had used, and choices of Other are left out.}
 \label{tab:method-use}
 \small
 \begin{tabular}{@{}lrrrr@{}}
 \toprule
-Method & Used & Less & More & Chosen \\
+ & Used & \multicolumn{3}{c}{Chosen} \\
+\cmidrule(lr){3-5}
+Method & ($n=177$) & LS & MS & Pooled ($n=352$) \\
 \midrule
 Sending a deletion-request prompt & 55 (31.1\%) & 25 & 14 & 39 (11.1\%) \\
 Deleting a single conversation & 136 (76.8\%) & 84 & 80 & 164 (46.6\%) \\
@@ -34,28 +24,44 @@ Filing a request & 5 (2.8\%) & 0 & 0 & 0 (0.0\%) \\
 \end{tabular}
 \end{table*}
 
+Participants delete data at the conversation level, and more sensitive data raise their willingness to delete but not their choice of method. Most expect every data deletion method to delete permanently, and many cannot verify that a deletion worked. This section reports these findings from the 177 participants; where we combine both scenarios (Pooled), percentages are of the 354 responses, or of 352 where choices of Other are left out.
+
+\subsection{User Experience about Data Deletion}
+
+\begin{takeawaybox}
+\textbf{Finding:} More sensitive data raised participants' willingness to delete but not which method they chose, and about half named sending a deletion-request prompt as an ideal method although few chose it. Participants relied on conversation-level deletion and found the options on their own.
+\end{takeawaybox}
+
+Participants relied on conversation-level deletion and found the options on their own. Deleting a single conversation was the most used and the most chosen data deletion method, while methods that act on saved memories had been used by about a third of participants or fewer, and the account, the privacy dashboard, and filing a request by about one in ten or fewer (Table~\ref{tab:method-use}). Most participants found the options by browsing the settings or by guessing, and the agent told only 6 of 177. So most participants learned what they can delete without the agent's help.
+
+Sensitivity changed how much participants wanted to delete, not how. In both LS and MS, most participants would probably or definitely delete the data (125 of 177 and 150 of 177), and willingness rose with sensitivity (mean 3.98 to 4.37 on the five-point scale; Wilcoxon signed-rank test, $p<.001$, $r=.55$). We found no change in which data deletion method participants chose between the scenarios (Stuart-Maxwell test, $p=.39$, 176 participants). So we found no sign that participants who wanted to delete more chose a different method.
+
+About half of participants named sending a deletion-request prompt as an ideal data deletion method, but few chose it. It was the second most often named ideal method (47\% to 50\% of participants across LS and MS), after deleting a single conversation (61\% to 66\%), yet only 8\% to 14\% of participants chose it. So a method that about half of participants named as ideal was one that few of them chose.
+
 \subsection{User Expectation about Data Deletion}
 
-\para{Data deletion methods differ in efforts, but not protection, and benefit loss.}
+\begin{takeawaybox}
+\textbf{Finding:} Expectations did not differ between data deletion methods, although the methods act on different parts of what an agent stores: for each of the four most chosen methods, most responses expected permanent deletion from the database and backups. Participants told the methods apart by effort and not by what each one does. Many could not verify that it worked, and those who deleted by asking the agent verified by asking the agent.
+\end{takeawaybox}
 
-Participants rated the four most chosen methods differently on effort, but not on protection or benefit loss (Figure~\ref{fig:scales}). Deleting a specific saved memory took the most effort and deleting a single conversation the least (mean ratings 2.49 and 1.64 on the five-point scale), while we found no difference between the methods in protection or benefit loss. So participants who reach into saved memories pay for it in effort, and we found no protection to show for it.
+Expectations did not differ between data deletion methods, although the methods act on different parts of what an agent stores (permanent deletion, $p_{\mathrm{Holm}}=1.0$; future conversations, $p_{\mathrm{Holm}}=1.0$). Across Pooled responses, 59.0\% expected permanent deletion from the database and backups, and 54.2\% expected the information never to come up in future conversations (Figure~\ref{fig:expectation}). The four most chosen methods differed in effort ($p_{\mathrm{Holm}}=.0001$) but not in protection ($p_{\mathrm{Holm}}=.29$; Figure~\ref{fig:scales}). Participants chose their own method and the groups are small, so these are associations. So participants distinguish the methods by effort, not by what they expect them to do.
 
 \begin{figure*}[t]
     \centering
     \includegraphics[width=0.9\textwidth]{figures/fig_scales.png}
-    \caption{Mean ratings of protection, effort, and benefit loss for the four most chosen methods, for both scenarios combined and for each scenario (317 responses from 105, 50, 30, and 29 participants). Ratings use five-point agreement scales.}
+    \caption{Mean ratings of protection, effort, and benefit loss for the four most chosen methods, pooled across the less and more sensitive scenarios and for each scenario (317 responses from 105, 50, 30, and 29 participants). Ratings use five-point agreement scales.}
     \label{fig:scales}
 \end{figure*}
 
+Many participants could not verify that deletion worked, and those who deleted by asking the agent verified by asking the agent. Across Pooled responses, 44.6\% did not know how to verify. Those who did verify mostly asked the agent, in the same or a new conversation (21\% to 22\% of responses), or looked at the settings or the interface (16\% to 18\%). Participants who deleted by sending a deletion-request prompt verified most often by asking in the same conversation (53.8\% of 39 responses). So for these participants the verification is the agent's own reply.
 
-\para{Participants expect permanent deletion but can not check it.}
-
-Most participants expected deletion to be permanent, but many could not check that it was (Figure~\ref{fig:expectation}). Across both scenarios, 59.0\% of responses expected permanent deletion from the database and backups, while 44.6\% said the participant did not know how to check. Asking the agent in the same conversation was the usual check for participants who deleted by sending a deletion-request prompt (53.8\% of those responses), and an unusual one for participants who deleted a single conversation (12.8\%). So users expect deletion to be final and have few ways to confirm it, and those who delete by asking the agent confirm it by asking the agent again.
+Some participants had seen an agent reference information they believed deleted, and fewer than half had received a clear confirmation of deletion. Of the 177 participants, 42 (23.7\%) had seen this, and after deleting, 41.2\% got a clear message confirming deletion while 29.4\% to 34.5\% got a vague acknowledgement or no feedback at all (participants could select several). Of the 177, 73 (41.2\%) wanted a breakdown of what was deleted and what may be retained. Whether deletion holds up is what the Post-Deletion Behavior section tests (Section~\ref{sec:tech_results}).
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=\columnwidth,height=0.42\textheight,keepaspectratio]{figures/fig_expectation.png}
-    \caption{Expectations of what deletion does, and how participants checked that it worked, in both scenarios combined and in each scenario (354 responses from 177 participants; participants could select several options). Percentages are of the 354 responses for both scenarios combined and of 177 for each scenario.}
+    \caption{Expectations of what deletion does, and how participants verified that it worked, pooled across the less and more sensitive scenarios and in each scenario (354 responses from 177 participants; participants could select several options). Percentages are of the 354 responses when pooled and of 177 for each scenario.}
     \label{fig:expectation}
 \end{figure}
 
+\FloatBarrier

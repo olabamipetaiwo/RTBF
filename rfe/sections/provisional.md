@@ -129,12 +129,13 @@ Placeholders behind these: Copilot 22 recall failed and 27 can't tell, Gemini 12
 | Base for "1 contradicted it" | 399 (352 real + 47 placeholders) | 352 |
 | Consistent test cases where the fact came back | 107 of 318 (all ChatGPT, no placeholders involved); 211 recall failed | 107 of 296 |
 | Wording: "On Claude and Copilot, recall success never occurred under any code" | Copilot: 57 known outcomes, of which 22 are placeholders (recall failed), so true by construction for those 22 | 35 known outcomes, none recall success |
+| Base for the wording analysis: "Among the 350 deletion requests typed in the chat with a known outcome" | 350 (328 real + 22 Copilot placeholders, all recall failed). The wording tables in `outputs/results/outcome_by_prompt_features.md` still count real results only (328), so their Copilot cells show 35 known outcomes, not 57 | 328 |
 
 After recall: rebuild the Copilot and Gemini review sheets for the new rows (the builder overwrites existing marks, so copy the marked rows across first), re-run `src.recall_refusals`, and re-check the sentence.
 
 ### 5.3 What Agents Say
 
-The reply counts themselves (798 deletion requests typed in the chat: 299 complied, 267 partial, 168 deflected, 8 refused, 7 silently ignored, 42 other, 7 not captured) are real: every erase reply, including those for Copilot and Gemini placeholders, is coded. They do not change when recall finishes. Only the recall splits below depend on placeholders.
+The reply counts themselves (798 deletion requests typed in the chat: 299 complied, 267 partial, 168 deflected, 8 refused, 7 silently ignored, 49 other (42 coded plus 7 Perplexity replies with no code, classed as other)) are real: every erase reply, including those for Copilot and Gemini placeholders, is coded. They do not change when recall finishes. Only the recall splits below depend on placeholders.
 
 | Sentence | In the paper (865 base) | On real results only |
 |---|---|---|

@@ -84,54 +84,87 @@ def interface(df: pd.DataFrame) -> dict[str, int]:
     }
 
 
-def draw(sc: pd.DataFrame, ui: dict[str, int]) -> None:
-    plt.rcParams.update({"font.size": 11, "font.family": "serif", "axes.edgecolor": INK_2})
-    fig, (ax1, ax2) = plt.subplots(
-        1, 2, figsize=(10.5, 3.9), gridspec_kw={"width_ratios": [1.6, 1], "wspace": 0.85}
-    )
-    labels = [f"{PLATFORM_NAMES[p]} (n={n})" for p, n in zip(sc["platform"], sc["n"])]
-    y = range(len(sc))
-    left = [0.0] * len(sc)
-    for key in ("match", "reassured", "alarm"):
-        share = [100 * v / n for v, n in zip(sc[key], sc["n"])]
-        ax1.barh(list(y), share, left=left, color=COLORS[key], edgecolor="white", linewidth=1.5, height=0.62)
-        for yi, s, l in zip(y, share, left):
-            if s >= 9:
-                ax1.text(l + s / 2, yi, f"{s:.0f}%", ha="center", va="center", color="white", fontsize=10)
-        left = [l + s for l, s in zip(left, share)]
-    ax1.set_yticks(list(y), labels)
-    ax1.invert_yaxis()
-    ax1.set_xlim(0, 100)
-    ax1.set_title("Asking again in the same conversation", loc="left", fontsize=11.5, color=INK)
+GREY = "#9a9a96"
+ROW_ORDER = ["chatgpt", "claude", "copilot", "perplexity"]  # most to least wrong
 
-    # screen check: the screen said "gone", so recall failed = matched, recall success = wrong
-    k = ui["known"]
-    left = 0.0
-    for key, color in (("failed", COLORS["match"]), ("success", COLORS["reassured"])):
-        share = 100 * ui[key] / k
-        ax2.barh([0], [share], left=left, color=color, edgecolor="white", linewidth=1.5, height=0.5)
-        ax2.text(left + share / 2, 0, f"{share:.0f}%", ha="center", va="center", color="white", fontsize=10)
-        left += share
-    ax2.set_yticks([0], [f"Screen showed it\ngone (n={k})"])
-    ax2.set_xlim(0, 100)
-    ax2.set_title("Looking at the screen", loc="left", fontsize=11.5, color=INK)
 
-    for ax in (ax1, ax2):
-        for side in ("top", "right"):
-            ax.spines[side].set_visible(False)
-        ax.tick_params(colors=INK_2)
-        ax.set_xlabel("Share of test cases with a known outcome (%)", color=INK_2)
-    handles = [plt.Rectangle((0, 0), 1, 1, color=COLORS[k]) for k in ("match", "reassured", "alarm")]
-    fig.legend(
-        handles,
-        ["Matched the outcome", "Said gone, but recall success", "Said still there, but recall failed"],
-        loc="upper center", ncol=3, frameon=False, bbox_to_anchor=(0.5, 0.02), fontsize=10,
-    )
-    OUT_FIG.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(OUT_FIG, dpi=200, bbox_inches="tight")
+def _rows(sc: pd.DataFrame, ui: dict[str, int]) -> list[dict]:
+    """One row per check: agents (same-conversation check) then the screen check."""
+    rows = []
+    for p in ROW_ORDER:
+        r = sc[sc["platform"] == p].iloc[0]
+        rows.append({"label": f"{PLATFORM_NAMES[p]} (n={r['n']})", "n": r["n"],
+                     "right": r["match"], "worked_but_back": r["reassured"], "failed_but_gone": r["alarm"]})
+    rows.append({"label": f"Screen check, UI actions (n={ui['known']})", "n": ui["known"],
+                 "right": ui["failed"], "worked_but_back": ui["success"], "failed_but_gone": 0})
+    return rows
+
+
+def _style(ax) -> None:
+    for side in ("top", "right"):
+        ax.spines[side].set_visible(False)
+    ax.tick_params(colors=INK_2)
+    ax.set_xlim(0, 100)
+    ax.set_xlabel("Share of test cases with a known outcome (%)", color=INK_2)
+
+
+def _save(fig, name: str) -> None:
+    out = OUT_FIG.parent / name
+    out.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(out, dpi=200, bbox_inches="tight")
     plt.close(fig)
     if PAPER_FIG.parent.exists():
-        shutil.copy(OUT_FIG, PAPER_FIG)
+        shutil.copy(out, PAPER_FIG.parent / name)
+
+
+def draw_wrong(rows: list[dict]) -> None:
+    """Option A: one bar per check, the share of test cases where the check gave the wrong answer."""
+    plt.rcParams.update({"font.size": 11, "font.family": "serif", "axes.edgecolor": INK_2})
+    fig, ax = plt.subplots(figsize=(7.2, 3.4))
+    ys = [0, 1, 2, 3, 4.4]  # a gap before the screen check
+    wrong = [100 * (r["worked_but_back"] + r["failed_but_gone"]) / r["n"] for r in rows]
+    ax.barh(ys, wrong, color=COLORS["match"], height=0.6)
+    for y, w in zip(ys, wrong):
+        ax.text(w + 1.5, y, f"{w:.0f}%", va="center", color=INK, fontsize=10.5)
+    ax.set_yticks(ys, [r["label"] for r in rows])
+    ax.invert_yaxis()
+    ax.set_title("How often the check disagreed with the outcome", loc="left", fontsize=11.5, color=INK)
+    _style(ax)
+    ax.set_xlim(0, 100)
+    ax.set_xlabel("Share of test cases where the check disagreed (%)", color=INK_2)
+    _save(fig, "fig_checks_wrong.png")
+
+
+def draw_direction(rows: list[dict]) -> None:
+    """Option B: the same, with the two ways a check can be wrong shown separately."""
+    plt.rcParams.update({"font.size": 11, "font.family": "serif", "axes.edgecolor": INK_2})
+    fig, ax = plt.subplots(figsize=(8.6, 3.9))
+    ys = [0, 1, 2, 3, 4.4]
+    parts = [("right", GREY, "Check agreed with the outcome"),
+             ("worked_but_back", COLORS["reassured"], "Check suggested deleted, outcome recall success"),
+             ("failed_but_gone", COLORS["alarm"], "Check suggested not deleted, outcome recall failed")]
+    left = [0.0] * len(rows)
+    for key, color, _ in parts:
+        share = [100 * r[key] / r["n"] for r in rows]
+        ax.barh(ys, share, left=left, color=color, edgecolor="white", linewidth=1.5, height=0.6)
+        for y, s, l in zip(ys, share, left):
+            if s >= 9:
+                ax.text(l + s / 2, y, f"{s:.0f}%", ha="center", va="center", color="white", fontsize=10)
+        left = [l + s for l, s in zip(left, share)]
+    ax.set_yticks(ys, [r["label"] for r in rows])
+    ax.invert_yaxis()
+    ax.set_title("What the check suggested, against what happened", loc="left", fontsize=11.5, color=INK)
+    _style(ax)
+    handles = [plt.Rectangle((0, 0), 1, 1, color=c) for _, c, _ in parts]
+    fig.legend(handles, [lab for _, _, lab in parts], loc="upper center", ncol=1, frameon=False,
+               bbox_to_anchor=(0.5, 0.0), fontsize=10)
+    _save(fig, "fig_checks_direction.png")
+
+
+def draw(sc: pd.DataFrame, ui: dict[str, int]) -> None:
+    rows = _rows(sc, ui)
+    draw_wrong(rows)
+    draw_direction(rows)
 
 
 def main() -> None:

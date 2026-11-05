@@ -1,6 +1,6 @@
 # outcomes_by_agent
 
-_Run at 2026-11-03T13:45:01_
+_Run at 2026-11-03T16:30:20_
 
 Source: outputs/tables/audit_outcomes_provisional.csv (865 erased test cases, placeholders included).
 

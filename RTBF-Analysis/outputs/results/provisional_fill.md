@@ -11,6 +11,12 @@ placeholders by agent, part and value:
   copilot     NL FORGET  NOT RECOVERED   22
   gemini      NL FORGET  INDETERMINATE   12
 
+same-conversation readings filled with a placeholder (agent, reading):
+  copilot   FOUND      66
+  copilot   NOT FOUND  54
+  gemini    FOUND      8
+  gemini    NOT FOUND  4
+
 per-cell list:
   CO-I1-E4       INDETERMINATE  copilot MASTER retention no_signal: INDETERMINATE 3, RECOVERED 1
   CO-I1-E6       INDETERMINATE  copilot MASTER retention no_signal: INDETERMINATE 3, RECOVERED 1

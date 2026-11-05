@@ -1,13 +1,66 @@
 \section{Discussion}
 \label{sec:discussion}
 
-\begin{outlinenote}
-\begin{enumerate}[leftmargin=*,nosep]
-\item Opening, no heading, two sentences: the one major finding . Users expect deletion to mean gone and cannot check it, and what happened depended on the agent, not on the wording.
-\item Subsection: What Explains the Differences Across Agents. Where each agent keeps the fact and which data deletion method reaches that place; what each agent's documentation says a method removes, set against what we observed; regulation (we looked for a difference and report what we found, or that none distinguishes the agents). Explanations are worded as consistent with the observations, because the audit is black-box.
-\item Subsection: Why Users Cannot Tell. The check users reach for first misleads; the agent's reply and the interface do not show the outcome. This joins the survey (expectation, check) to the audit. [Heading wording open.]
-\item Subsection: What Each Party Should Do, by audience. Platforms: state what each data deletion method removes, say what a deletion did and did not do, and give users a way to check. Regulators: deletion rights have to be testable (no claim of GDPR compliance or non-compliance). Users: which methods reached what we tested, marked provisional. Researchers: the audit method and data are available. A table follows (as in Khandelwal et al.), with three columns: what we found, what we recommend, who acts. Each row traces a recommendation to a result section.
-\item Subsection: Limitations, short and last, no new heading level. The survey describes US Prolific users of the six agents; free-tier accounts and one time window; prompt-based recall is weak evidence that a fact is gone; the can't tell share (provisional until recall finishes); the audit reports what a user can observe, not what a platform stores. The free-text reasons participants gave (not coded) go here as a note without counts.
-\item Left out: repeated numbers (Sections 4 and 5 hold them), future work (Conclusion), related work (its own section).
-\end{enumerate}
-\end{outlinenote}
+In the post-deletion analysis, what happened after a deletion depended more on the agent than on the deletion method or how the request was worded, and users had no reliable way to tell which outcome they had. This matters because users expected a deletion to keep their information out of later conversations.
+
+\subsection{What Explains the Differences Across Agents}
+
+The differences across agents are consistent with where each agent keeps a fact and which deletion method reaches that place: a method that acts on one place does not remove a fact kept in another (Section~\ref{sec:cross-agent}). Claude's help page says that memory entries made from a deleted conversation are not removed, and deleting a conversation left the fact in saved memory, while deleting the saved memory held. ChatGPT's documentation says that deleting a saved memory does not remove mentions of that information from past conversations, and its memory page no longer showed the fact in most test cases that were recall success, which is consistent with the fact surviving in past conversations and not in saved memory. A user cannot see which places an agent uses.
+
+This explanation has limits. It does not tell us in advance which agents will return a fact: Copilot was recall failed on the typed requests where we could judge. What separates the agents may be the form of what each one stores, which we cannot see from outside. Withholding is a different matter from deleting. ChatGPT and Perplexity sometimes withheld the fact, saying we had asked them to delete or not use it (Section~\ref{sec:what-agents-say}), which is consistent with an agent that keeps the request and applies it as an instruction not to use the information, and that is not the same as removing the information.
+
+Gemini and DeepSeek tell us little here. Every one of their typed-request test cases was can't tell, because we could not show that the fact had reached the place we tested (Section~\ref{sec:overall}). This reflects our evidence rule and is not a finding that they delete well or badly.
+
+We make no claim about whether any agent complies with a law.
+
+\subsection{Why Users Cannot Verify Deletion}
+
+Users cannot verify a deletion because each signal available to them looks at one place, and an agent can keep a fact in several. Of the responses, 44.6\% said they did not know how to verify a deletion, and the participants who did mostly asked the agent again, in the same or a new conversation, or looked at the settings or the interface (Section~\ref{sec:qual_results}). In our test, the three signals we could compare with the outcome, the agent's reply, asking again in the same conversation, and whether the interface changed, did not separate a deletion that held from one that failed (Section~\ref{sec:expectation}).
+
+A question in the same conversation can be answered from what that conversation still contains, which is consistent with Claude repeating the fact there although it did not return it in a new conversation. A screen that no longer lists a conversation or a memory entry says nothing about the other places, which is consistent with a deleted conversation leaving the fact in saved memory on Claude (Section~\ref{sec:cross-agent}). The agent's reply to the request says what the agent did in that conversation, and no reply type went with a deletion that held on every agent.
+
+The signal closest to our own test, asking in a new conversation, has a different limit. A fact that is retrieved shows that the deletion failed, but a fact that is not retrieved does not show that it was deleted: in more than half of our test cases we could not show that the fact had reached the place we tested, although we had planted it ourselves (Section~\ref{sec:overall}). A user who did not plant the fact and may not know what the agent saved has even less to go on.
+
+A user who relied on these signals therefore could not tell which case they were in. Four in ten participants wanted to be told what a deletion did and what may be retained (Section~\ref{sec:qual_results}), and a user who relied on those signals would not learn it.
+
+\subsection{What Each Party Should Do}
+
+Each recommendation follows from the finding in its row (Table~\ref{tab:recommendations}), and none claims that an agent complies with a law.
+
+\begin{table*}[t]
+\centering
+\caption{Findings, recommendations, and the party that acts.}
+\label{tab:recommendations}
+\small
+\begin{tabular}{@{}p{0.45\textwidth}p{0.36\textwidth}p{0.11\textwidth}@{}}
+\toprule
+What we found & What we recommend & Who acts \\
+\midrule
+Replies said a deletion was done far more often than it was shown to hold (Section~\ref{sec:what-agents-say}), and participants wanted to be told what a deletion did (Section~\ref{sec:qual_results}). & Say in the reply what the deletion removed and what it did not. & Platforms \\
+A method acted on one place and left the fact where it was kept elsewhere, as when deleting a conversation left it in saved memory on Claude (Section~\ref{sec:cross-agent}). & State what each deletion method removes and what it does not, where users find it. & Platforms \\
+Neither the reply, asking again in the same conversation, nor the interface showed the outcome (Section~\ref{sec:expectation}), and more than half of our test cases could not be judged (Section~\ref{sec:overall}). & Give users a way to verify a deletion, such as showing where an item is kept and when it is removed. & Platforms \\
+The same request had different outcomes on different agents (Section~\ref{sec:cross-agent}). & Make deletion rights testable, so that a deletion can be verified from outside the agent. & Regulators \\
+A confirming reply or a clean screen did not mean the fact was gone (Sections~\ref{sec:what-agents-say} and \ref{sec:expectation}). & Do not treat a confirming reply or a clean screen as proof that a deletion held. & Users \\
+The pipeline compares what an agent says with what it returns later (Section~\ref{sec:design}). & Test deletion by recall in a new conversation, with a fact the agent could not already know. & Researchers \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Why We Tested From the User's Side}
+
+We tested from the user's side because it is the position open to anyone outside a platform, and it is the one users have. The post-deletion analysis needs no cooperation from a platform and can be repeated on any consumer agent, and it showed something users can act on: replies and screens that said a deletion was done when the fact was still retrieved in a new conversation (Section~\ref{sec:what-agents-say}).
+
+Inspecting what a platform stores is a different kind of study, and it needs access that platforms do not give. It would have to examine backend storage, logs and backups, and for training data it would have to evaluate a trained model, which is a separate problem from deleting records~\cite{bourtoule2021machine}. That access is realistic through a cooperating provider or a regulator with the power to inspect, and not from outside, so we see such a study as future work that builds on ours and not as a replacement for it.
+
+Such a study would also be hard to do, because deleting a fact from an agent is itself a hard technical problem. A fact a user shares can be copied into stored conversations, saved memories, logs, backups and derived data, and a deletion request removes it only where the platform has built a path to do so. Work on secure deletion shows the same difficulty in ordinary storage systems: whether removed data is gone depends on the layer of the system the deletion reaches~\cite{reardon2013sok}. For a trained model, removing records does not remove what the model has learned from them~\cite{bourtoule2021machine}, and models can reproduce memorized training text~\cite{carlini2021extracting}. This difficulty is a plausible reason why agents differ in what their deletion methods reach, and it is why a reply or screen that says a fact is gone is weak evidence that it is.
+
+The two kinds of study answer different questions. Ours asks what users can observe and rely on, and a study of stored data would ask what is actually stored. Our results suggest which methods and which agents such a study should examine first.
+
+\subsection{Limitations}
+
+The study shows, from the position of an ordinary user, how people expect deletion to work and what six agents do when asked to delete, and its results hold within the following limits. The survey describes US adults recruited through Prolific who had used at least one of the six agents and had deleted data from one, so it speaks most directly to experienced users and not to people who never find the deletion controls. The sample also leans toward younger and more educated participants (Section~\ref{sec:design}). Answers are self-reported, participants chose their own methods, and both scenarios involved location data, so differences between methods are associations and other types of data remain to be studied. Only four data deletion methods were chosen often enough to compare, so the other four are not compared, and for the four we compared, a nonsignificant result means we detected no difference, not that the methods are equivalent.
+
+The post-deletion analysis describes six agents on free consumer accounts as we tested them in 2026, with each recall test at least 30 days after deletion. Some controls need a paid plan and were not run (Section~\ref{sec:design}). Agents change: while we tested, Copilot migrated to a new domain and Claude replaced its memory system, so the results describe each agent as tested and may differ at other times, on paid plans, and for other agents. Each test case used a synthetic fact, which an agent may store differently from real personal information.
+
+Recall in a new conversation is weak evidence that a fact is gone, because an agent may fail to return a fact it still holds. We therefore count a test case as recall failed only when we also have evidence that the fact was saved, and more than half of the test cases were can't tell for that reason. The share that was recall success is a lower bound on how often a deletion failed. The post-deletion analysis reports what a user can observe and not what a platform stores, so we cannot say that any fact was removed from a platform's systems.
+

@@ -1,32 +1,66 @@
 \section{Background}
 \label{sec:background}
 
+\para{Legal foundations and user expectations of data deletion}
+%
+Data deletion is an important mechanism for protecting user privacy, supported by both legal requirements and user expectations. 
+%
+For example, Article 17 of the GDPR establishes the right to erasure under specified conditions, commonly known as the right to be forgotten~\cite{gdpr2016}. 
+%
+Similarly, the CCPA gives California residents the right to request deletion of their personal information~\cite{ccpa2018}. 
+%
+Beyond legal requirements, users expect to have control over their personal information, including the ability to delete previously shared data~\cite{murillo2018if}.
+%
+As LLM agents accumulate substantial amounts of personal information through ongoing conversations (e.g., voluntary user disclosures and requests for user information to personalize their responses) and may also use user data to train their models, understanding whether and how data deletion works in these systems becomes critical to protecting users' privacy rights.
 
-Privacy law gives people the right to have their personal data deleted, but an LLM agent offers no single action that exercises it. Article 17 of the GDPR gives people, under specified conditions, a right to have personal data concerning them deleted~\cite{gdpr2016}, and the California Consumer Privacy Act gives California residents a right to request deletion of personal information a business has collected~\cite{ccpa2018}. A single agent account may instead expose conversation deletion, memory deletion, sending a deletion-request prompt, and account-level controls, each with a different scope.
+\para{Data deletion methods of LLM agents}
+%
+Looking through user-facing features, LLM agents may retain user-provided information across different locations, such as conversation histories, saved memories\footnote{Here, saved memory refers to a user-facing feature that retains information across conversations, rather than information encoded in model parameters or held in the context window.}, and account-level profiles or settings.
+%
+Accordingly, LLM agents offer different data deletion methods that appear to target specific data storage locations, while their effects on data retained elsewhere are not always clear.
+%
+For example, deleting a conversation removes it from the user-visible conversation history, but its effects on information retained in saved memories or used for model training remain unclear.
 
-What a deletion method removes depends on where the agent kept the fact. A fact a user shares can sit in the conversation history, which keeps what was said in that chat. It can sit in saved memories, which are facts the agent keeps about the user across conversations and which some agents let users review and delete. It can sit in custom instructions, which some agents keep. And a platform may use conversations to train its models, which deleting a record does not undo~\cite{bourtoule2021machine}. A method that clears one of these places leaves the others, so the methods below differ in what they reach, not only in whether they exist.
 
-Before testing what deletion does, we identified which data deletion methods users can choose from. We walked through six commercial LLM agents on free consumer accounts: ChatGPT, Claude, Gemini, Copilot, Perplexity, and DeepSeek. They are the major general-purpose consumer agents available in the United States, where our survey participants live, and each was used by at least a third of them ($n=177$). For each agent, we recorded every way a user can delete data.
-
+To understand the deletion methods available to users, we conducted a systematic walkthrough of six widely used commercial LLM agents using free consumer accounts:  ChatGPT, Claude, Gemini, Copilot, Perplexity, and DeepSeek.
+%
+Following prior research on LLM privacy controls~\cite{li2026privacy}, we inspected each agent's interface and settings to identify the available data deletion methods.
+%
+As shown in Table~\ref{tab:methods}, we identified six data deletion methods: (D1) sending a deletion-request prompt through conversations; (D2) deleting a single conversation or (D3) clearing all conversation history through UI buttons; (D4) deleting a specific saved memory or (D5) clearing all saved memories through memory settings; and (D6) using an account-level privacy dashboard.
+%
+These methods differ in their intended scope, ranging from individual conversations and saved facts to broader conversation histories and account-level data management.
+%
+Their availability also varies across agents, as detailed in Table~\ref{tab:methods}.
 
 
 \begin{table}[t]
 \centering
-
-\caption{Data deletion methods and the agents that offer each. A dash means the control was not available to us: it does not exist on the agent, or (Perplexity's memory controls) requires a paid plan. A circle means the control is available on some accounts only.}
+\caption{Availability of six data deletion methods across commercial LLM agents. A dash indicates that a method was unavailable on the tested free account.}
 \label{tab:methods}
 \footnotesize
-\setlength{\tabcolsep}{2pt}
-\begin{tabular}{@{}p{0.25\columnwidth}p{0.33\columnwidth}cccccc@{}}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}p{0.5\columnwidth}cccccc@{}}
 \toprule
-Data deletion method & Survey wording (verbatim) & \rotatebox{90}{ChatGPT} & \rotatebox{90}{Claude} & \rotatebox{90}{Gemini} & \rotatebox{90}{Copilot} & \rotatebox{90}{Perplexity} & \rotatebox{90}{DeepSeek} \\
+Data deletion method
+& \rotatebox{75}{ChatGPT}
+& \rotatebox{75}{Claude}
+& \rotatebox{75}{Gemini}
+& \rotatebox{75}{Copilot}
+& \rotatebox{75}{Perplexity}
+& \rotatebox{75}{DeepSeek} \\
 \midrule
-Sending a deletion-request prompt & Type a message asking the AI Chatbot to forget it. & \ding{51} & \ding{51} & \ding{51} & \ding{51} & \ding{51} & \ding{51} \\
-Deleting a single conversation & Delete this single conversation. & \ding{51} & \ding{51} & \ding{51} & \ding{51} & \ding{51} & \ding{51} \\
-Clearing all conversation history & Clear all conversation history. & \ding{51} & -- & \ding{51} & -- & \ding{51} & \ding{51} \\
-Deleting a specific saved memory & Delete a specific saved memory or fact. & -- & \ding{51} & \ding{51} & $\circ$ & -- & -- \\
-Clearing all saved memories & Clear all saved memories. & \ding{51} & \ding{51} & \ding{51} & $\circ$ & -- & -- \\
-Using a privacy dashboard & Privacy dashboard or account-level data management page. & -- & -- & -- & \ding{51} & -- & -- \\
+(D1) Send a deletion-request prompt
+& \ding{51} & \ding{51} & \ding{51} & \ding{51} & \ding{51} & \ding{51} \\
+(D2) Delete a single conversation
+& \ding{51} & \ding{51} & \ding{51} & \ding{51} & \ding{51} & \ding{51} \\
+(D3) Clear all conversation history
+& \ding{51} & -- & \ding{51} & -- & \ding{51} & \ding{51} \\
+(D4) Delete a specific saved memory
+& -- & \ding{51} & \ding{51} & \ding{51} & -- & -- \\
+(D5) Clear all saved memories
+& \ding{51} & \ding{51} & \ding{51} & \ding{51} & -- & -- \\
+(D6) Use a privacy dashboard
+& -- & -- & -- & \ding{51} & -- & -- \\
 \bottomrule
 \end{tabular}
 \end{table}

@@ -75,8 +75,7 @@ PLATFOMR DESIGN/PRIVACY REGUAKLTION
 
 THEY MAY NOT EXISTS, SO WE SHOILD TRY OUR BEST TON IDNEIFY THEM FOR AN EXTENSIVE DISCUSSION
 
-
-Yes, I understand it. These are the professor's notes, and they say three things.
+----
 
 Section 5 (the main message):
 - Message first: start each paragraph with the point or conclusion, such as "a deletion method works on one platform and not on another". Point the reader to the table or figure for the numbers.
@@ -105,8 +104,6 @@ I haven't changed anything. A sensible order would be:
 2. Cut every number that doesn't support a message, and move the detail to the tables or provisional.md.
 3. Add subheadings and highlights.
 
-Should I start with the list of messages for 5.1 to 5.4?
-
 
 --
 
@@ -117,3 +114,84 @@ For the writing, I take it to mean:
 - Deep reviewers need the proof that we know the domain and that the claim is solid. The numbers in tables and figures, the base for every count, and the links to the platform documentation and privacy rules serve them.
 
 This matches the Section 5 note: the message in the text serves the first group, and the tables and figures with the full counts serve the second. It also explains why the notes want less background but more attention to what explains the platform differences.
+
+
+
+
+he writing should follow a continuous methodological narrative, with paragraphs organized around distinct ideas and transitions connecting them. Headings should establish major conceptual divisions, not announce every procedure
+
+let's answer the questions, what are the results available, whicj ones are importnat, how do we frame it, what do we want to communicate int his section and it's
+  subsections, how do we wamt to drive the user, what value does it add to the paper or eesearch question, how will the reviewer see this, we need to answer all
+  these questions to ge the best out pf this question
+
+
+  ---
+
+Results structures
+
+- Yan (USENIX Sec '25, account deletion audit).
+  - "Results and Findings" runs: Link Retrieval, Link Analysis, Method Classification, Verification.
+  - The pilot study is organized by increasingly severe issues: link, then content, t
+  - Its three RQs run availability, then compliance, then functionality.
+- Hausladen (USENIX Sec '25, GPC).
+  - Its Results open with "CCPA Opt Out Right Applicability: How Many Sites Sell or Share? Which Sites Are Subject?" before any compliance result.
+  - It establishes the denominator first.
+- Leave No Data Behind (PoPETs '22).
+  - Results run by scope: individual data, account erasure, scope of erasure, access,
+  - A separate "Further Insights" section holds the policies and the questionnaire.
+- Khandelwal (USENIX Sec '24). RQ tags sit in the headings ("Data Practices in Privac
+- Minaei, Kwesi and Malki. RQ tags sit in the headings, and Minaei adds a claim as each sub-heading.
+- Setting the Course. It defines its properties first (completeness, correctness, conagainst them.
+
+What this adds to my outline
+
+1. Establish the denominator first. Hausladen's applicability step is the counterpartBefore saying how often deletion failed, say how many test cases could be judged at all (the fact reached the place we tested). That turns can't tell from an embarrassing 54.5% into the stated scope of the measurement.
+2. A ladder from cheapest to hardest check. Yan's order is link, then content, then f the agent said, what the interface showed, what asking again returned, and what recall found.
+3. RQ tags in the headings, as in Khandelwal, Minaei, Kwesi and Malki. This is the fo4 too, since your professor's headings stay and only the tag is added.
+4. Keep secondary evidence separate. The documentation comparison goes in its own section or subsection, as in "Further Insights".
+
+Revised outline
+- Opening: the three outcomes, the lower-bound rule, and the RQ3/RQ4 map.
+- 5.1 Overall Behavior of Agents [RQ3]:
+  - (a) what could be judged;
+  - (b) how often the fact came back among those;
+  - (c) methods as a range;
+  - (d) agents in a table.
+- 5.2 Cross-Agent Difference [RQ3]: where each agent keeps the fact, the documentatio
+- 5.3 What Users Can See: the ladder.
+- 5.4 User Expectation vs. Behavior [RQ4]: the figure.
+
+Decisions for you
+1. Headline on all 865 or on the judgeable cases? On the judgeable cases it would read something like "of 394 test cases we could judge, the fact came back in 41%", which is larger and fairer to the
+   measurement. On all 865 it stays at "at least 18.7%". I'd report both, with the jus provisional, since 61 test cases are placeholders.
+2. RQ tags in the Section 5 and 4 headings: yes or no?
+3. Merge "What Agents Say" into 5.3, or keep four subsections?
+------
+
+"Gemini permission cards" cant' tbe in the appendix, it is a finding too
+--
+
+) A one-paragraph recap of the findings from Sections 4
+and 5.
+2) Recommendations, one heading each, for example “State
+what each deletion method deletes” and “Give users a
+way to check”.
+3) For platforms and regulators: deletion rights have to be
+testable.
+4) Limitations, short and last. The free-text reasons partici-
+pants gave (not coded) go here as a note without counts
+
+---
+
+https://momenticmarketing.com/blog/top-ai-chatbots
+
+
+---
+
+
+- Only one within-method difference is significant: protection for deleting a single conversation. It rises when the data is more sensitive. That is also the largest group, so it has the most power.
+- That does not show the methods differ. A significant shift in one method next to nonsignificant shifts in others is not evidence of a difference between them, and the interaction test shows none.
+- Effort moves in opposite directions for the memory and ask-to-forget methods (lower in MS) compared with single conversation and clear history (higher). It is not significant within any single method, and the interaction does not hold after Holm, so I would treat it as a pattern to mention at most.
+
+What this means for the paper's claims. The assumption behind the between-method model, that the scenario shift is the same for all methods, is not contradicted. Nothing here changes the Section 4.2 statement that participants told the methods apart by effort and not by protection.
+i

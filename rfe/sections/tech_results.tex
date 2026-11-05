@@ -1,77 +1,123 @@
 \section{Post-Deletion Behavior}
-\label{sec:tech_results}
+    \label{sec:tech_results}
 
-\subsection{Overall Behavior of Agents}
-\label{sec:overall}
+    Deleting did not reliably keep a fact out of later conversations, and what happened depended more on the agent than on the deletion method or how the request was worded. The agent's reply and the interface did not show a user which outcome they had. This section reports what happened after deletion (Sections~\ref{sec:overall} to \ref{sec:what-agents-say}) and where it differs from what participants expected (Section~\ref{sec:expectation}).
 
-\begin{outlinenote}
-deletion methods, recall results, different platforms. 
+    \begin{takeawaybox}
+    \textbf{Finding:} The outcome depended on the agent. Where we could judge, the fact stayed out of later conversations on Claude and Copilot and was often recall success on ChatGPT and Perplexity, and how the request was worded did not explain the difference. Agents mostly replied that they had complied or partly complied, in about seven in ten of the deletion requests typed in the chat, so the reply did not show the outcome.
+    \end{takeawaybox}
+    
+    \subsection{Overall Behavior of Agents}
+    \label{sec:overall}
 
-identify common patterns
+    We could judge fewer than half of the test cases, and among those about four in ten were recall success. Of the 865 test cases, 394 (45.5\%) were recall success or recall failed, and 162 of them (41.1\%) were recall success. The other 471 (54.5\%) were can't tell, because we cannot show that the fact reached the place we tested (Section~\ref{sec:didr}). So at least 18.7\% of all deletions failed, and the true share could be higher.
 
-\emph{Planned structure:} the headline result (how often a deleted fact came back, and how often we can't tell), then the breakdown by deletion method.
-\end{outlinenote}
+    No data deletion method held in every test case we could judge. The four methods we tested through UI actions were recall success in 29\% to 50\% of their test cases, but with 7 to 13 test cases each, we do not rank them. Sending a deletion-request prompt, the method we tested most, was recall success in 144 of 811 test cases and can't tell in 454. So for most deletions through prompts the outcome is can't tell, and we cannot say whether the fact is gone.
 
-Deletion did not hold in nearly one in five test cases, and in more than half we cannot tell. Of the 865 test cases, 18.7\% were recall success, 26.8\% were recall failed, and 54.5\% were can't tell. A test case is can't tell when we cannot show that the fact reached the place we tested, because then not finding the value does not show that deletion held (Section~\ref{sec:didr}). So at least 18.7\% of the deletions failed, and the true share could be higher.
+    The agent mattered more than the method (Table~\ref{tab:outcomes-agent}). ChatGPT was mostly recall success and Claude mostly recall failed, and the other four agents were mostly can't tell (56\% to 100\% of test cases, by agent). So the pooled share hides that nearly three quarters of all recall success come from ChatGPT.
 
-The data deletion methods did not fail equally, and none held in every test case. The fact came back in 6 of 13 test cases for deleting a single conversation, 4 of 8 for clearing all conversation history, 2 of 7 for deleting a specific saved memory, and 4 of 10 for clearing all saved memories. Sending a deletion-request prompt, the method we tested most, was recall success in 144 of 811 test cases and can't tell in 454 of 811. So no method held in every test case we could judge, and for most deletion through prompts we could not tell whether the fact was gone.
+    Uploaded files form a separate group of 12 test cases, of which we ran 11 (the most extensive deletion on Perplexity needs a paid plan). After deleting the conversation or applying the most extensive deletion, the fact was not retrieved in a new conversation in any of them (recall failed).
 
-The agents differed more than the methods did. ChatGPT was recall success in 118 of 151 test cases, while Claude was recall success in 3 of 148 and recall failed in 141. For DeepSeek (137 of 137) and Gemini (138 of 145) nearly every test case was can't tell, and so was most of Perplexity (106 of 139) and Copilot (81 of 145). So deletion mostly held on Claude and mostly failed on ChatGPT, and on the other four agents we mostly could not tell.
+    \begin{table}[!t]
+    \centering
+    \caption{Outcome of the 865 test cases for each agent. A test case is can't tell when we cannot show that the fact reached the place we tested.}
+    \label{tab:outcomes-agent}
+    \footnotesize
+    \begin{tabular}{@{}lrrrr@{}}
+    \toprule
+    Agent & Recall success & Recall failed & Can't tell & Test cases \\
+    \midrule
+    ChatGPT & 118 & 28 & 5 & 151 \\
+    Claude & 3 & 141 & 4 & 148 \\
+    Copilot & 5 & 59 & 81 & 145 \\
+    DeepSeek & 0 & 0 & 137 & 137 \\
+    Gemini & 5 & 2 & 138 & 145 \\
+    Perplexity & 31 & 2 & 106 & 139 \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
 
-Uploaded files, which we report separately, were recall failed in all 11 test cases we ran, but not all 11 are strong evidence. In 8 of them the agent kept the fact in the conversation and deleting the conversation removed it, and in the other 3 the agent had not clearly kept the fact.
 
-\subsection{Cross-Agent Difference}
+    \subsection{Cross-Agent Difference}
+    \label{sec:cross-agent}
 
-\para{Categorization of differences.}
+    The agents differed in what happened after a deletion request, and the differences are consistent with how each agent is built and what its documentation says, not with how the request was worded. We take the wording first, because it is the explanation we can rule out.
 
-\begin{outlinenote}
-some common patterns: delete, not delete and just don't use, etc. 
+    What an agent did with a deletion request typed in the chat falls into three kinds. Claude and Copilot deleted: where we could judge, the test cases were recall failed, and the agent had shown it saved the fact. ChatGPT and Perplexity did not: the test cases were recall success in most of ChatGPT's and a minority of Perplexity's. Both also sometimes withheld the fact, saying we had asked them to delete or not use it, and for Perplexity this was most of the test cases that were can't tell. For Gemini and DeepSeek every such test case was can't tell.
 
-connect different platforms to these
+    Among the 350 deletion requests typed in the chat with a known outcome, the wording of a request did not explain the differences. For each of the seven coded dimensions, such as where the request asks to delete, how it is phrased, and whether it gives a reason, we compared the outcome across its codes. Recall success never occurred under any code on Claude or Copilot, and on ChatGPT it occurred in half or more of the test cases under every code with at least six requests. Perplexity varied more across codes, but the codes that differed held few requests. We leave out Gemini and DeepSeek, because every one of their test cases is can't tell. So which agent received a request mattered more than how it was worded.
 
-\emph{Planned structure:} a small taxonomy of what agents did (wording to confirm against the data), with the agents sorted under each category.
-\end{outlinenote}
+    The agents mostly did what their documentation says, and that did not mean the fact was gone. We take the documentation as the behavior each provider says to expect. Among the deletion requests typed in the chat, 319 test cases had a verdict and 1 contradicted the documentation. In 107 of the 318 consistent test cases the fact was recall success, all on ChatGPT, whose documentation says that deleting a saved memory does not remove mentions of that information from past conversations. For Gemini and Perplexity there is no commitment to compare the result with, and DeepSeek's documentation does not address a deletion request. Through UI actions the pattern was the same: 22 of the 23 test cases with a verdict matched the documentation, and in 6 of the 22 the fact was recall success.
 
-Among the deletion requests typed in the chat, the agents differed in what they said and in what the recall found. Claude replied that it had complied in 95 of 133 test cases, and recall failed in 131 of 133. ChatGPT replied with partial compliance in 110 of 133, and recall success in 108 of 133. For DeepSeek and Gemini, replies ranged from complied to deflected, but every test case was can't tell. Copilot and Perplexity fell between: recall failed in 57 of 133 Copilot test cases and recall success in 31 of 133 Perplexity test cases, and the rest were can't tell. So an agent's reply does not tell the user whether deletion held. Claude said it had complied and deletion held, ChatGPT said it had only partly complied and deletion failed, and for four of the six agents we could not tell.
+    The remaining differences are consistent with where each agent keeps a fact. Claude's help page says that memory entries made from a deleted conversation are not removed, and deleting a conversation was recall success in all 3 UI-action test cases, while deleting a saved memory was recall failed in all 3. On ChatGPT, the memory page no longer showed the fact in 112 of the 118 test cases where it was recall success, so we cannot attribute those to saved memory. DeepSeek has no memory page to read, which is why every one of its test cases is can't tell. So a deletion method that acts on one place did not remove a fact kept in another.
 
-A third kind of result is neither deleted nor returned: the agent withheld the fact. In a new conversation, ChatGPT and Perplexity sometimes declined to give the fact and said that we had asked them to delete it or not use it, as in ``I can't provide that name because you previously asked me to delete the information about your letterpress kit.'' Among the deletion requests typed in the chat where the fact did not come back, this happened in 13 of 25 ChatGPT test cases and 97 of 102 Perplexity test cases, and we found none for the other four agents. So for Perplexity most of the test cases we cannot tell are not empty: the agent still held the earlier request and chose not to use it.
+    \subsection{What Agents Say}
+    \label{sec:what-agents-say}
 
-\para{Design choices causing difference.}
+    Replies that complied or were partial were far more common than deletions shown to hold: 70.9\% of the 798 deletion requests typed in the chat got such a reply, while the deletion was shown to hold in 26.4\% and could not be judged in 56.1\% (Table~\ref{tab:replies-outcome}). A reply did not tell the user what happened. Among the test cases with a known outcome, the same kind of reply came with recall success in none of Claude's and Copilot's and in most of ChatGPT's and Perplexity's, whether it complied or was partial. After a deflected reply, most test cases were can't tell (86\%). So the same kind of reply could come with a deletion that held, one that failed, or one we could not judge, depending on the agent.
 
-\begin{outlinenote}
-then frame privacy policy as an evidence for the intended design.
-\end{outlinenote}
+    \begin{table}[!t]
+    \centering
+    \caption{Outcome of the 798 deletion requests typed in the chat, by the kind of reply the agent gave.}
+    \label{tab:replies-outcome}
+    \footnotesize
+    \begin{tabular}{@{}lrrrr@{}}
+    \toprule
+    Reply & Recall success & Recall failed & Can't tell & Test cases \\
+    \midrule
+    Complied & 11 & 142 & 146 & 299 \\
+    Partial & 101 & 39 & 127 & 267 \\
+    Deflected & 13 & 11 & 144 & 168 \\
+    Refused & 1 & 0 & 7 & 8 \\
+    Silently ignored & 3 & 1 & 3 & 7 \\
+    Other & 10 & 18 & 21 & 49 \\
+    \midrule
+    All replies & 139 & 211 & 448 & 798 \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
 
-For the deletion requests typed in the chat, the differences follow what each agent's documentation says a deletion request does. ChatGPT, Claude, and Copilot document that it deletes, and what we found matched that documentation in 130 of 133 ChatGPT, 131 of 133 Claude, and 57 of 133 Copilot test cases. ChatGPT's documentation also states that deleting a saved memory does not remove mentions of that information from past conversations. In 107 of the 133 test cases the fact came back while the memory summary no longer held it, and we count these as consistent with that statement, although we cannot show which place the agent drew the fact from. Gemini and Perplexity document no commitment for a deletion request, and DeepSeek's documentation does not address it, so for these three agents we have nothing to check the result against. So where an agent documents that a deletion request deletes, 1 of 399 test cases contradicted it, but that does not mean the fact was gone: in 107 of the 318 consistent test cases the fact came back, which ChatGPT's documentation allows. Of the 7 typed requests among the walkthrough methods that have such a commitment, 3 were consistent, 2 contradicted it (on ChatGPT and Copilot, each for a fact saved on request), and 2 stayed unresolved. For the three agents that document nothing we cannot say whether they did what they intended.
+    Some replies showed that the agent remembered the deletion request. In a new conversation, ChatGPT and Perplexity sometimes withheld the fact, saying that we had asked them to delete it or not use it, as in ``I can't provide that name because you previously asked me to delete the information about your letterpress kit.'' Among the test cases that were not recall success, this happened in 52\% to 95\% of ChatGPT's and Perplexity's, and in none of the other four agents'. So for Perplexity, most test cases that are can't tell show the agent still held the earlier request and said it would not use the fact.
 
-Through UI actions, the agents mostly did what their documentation says, but that did not mean the fact was gone. Among the 23 test cases through UI actions with a verdict, 22 were consistent with the documentation and 1 contradicted it. In 6 of the 22 the fact came back, because the documentation says the method leaves it: Claude's documentation says that deleting a conversation does not remove the memory entries made from it, and ChatGPT's and Copilot's say that past conversations remain. The one contradiction is on Gemini, whose help page says ``To delete something that Gemini remembered about you, delete all chats with this info from Gemini Apps Activity.'' After we deleted the Gemini activity for the period that held the conversation, the fact we had mentioned in passing was still retrievable, although the interface showed the deletion done. So a deletion that matches the documentation can still leave the fact retrievable.
+    Only Gemini answered some requests with an app-permission card. It showed one for 6.0\% of its deletion requests typed in the chat, mostly for a fact about a project or plan, which Gemini may have read as a note or message to delete in a Google app. Nothing was deleted, because we declined every card. No other agent answered the same prompts this way, so the reply came from the agent, though the content of the request may have prompted it. All of these test cases are can't tell.
 
-The differences also follow where each agent keeps a fact. An agent can hold the same fact in the conversation, in a saved memory, and in account activity, and a deletion method may reach only one of them. Claude's help page says that memory entries generated from a deleted conversation are not removed, and deleting the conversation left the fact retrievable in 2 of 2 test cases that had a conversation to delete, while deleting a specific saved memory was recall failed in 3 of 3. ChatGPT's documentation says that deleting a chat does not automatically delete a saved memory. We have no result for this, because in the two conversation-deletion test cases the fact did not come back but ChatGPT had not shown that it saved the fact (in one it only acknowledged the message, in the other it said it could not store the fact), so a missing fact shows nothing. On ChatGPT, the memory page no longer showed the fact in 112 of the 118 test cases where it came back, so we cannot attribute those to saved memory. On Gemini, deleting the activity for the period that held the conversation left the fact we had mentioned in passing retrievable (1 test case). So on Claude, a deletion method that acts on one place did not remove a fact kept in another.
+    \subsection{User Expectation vs. Behavior}
+    \label{sec:expectation}
 
-Among the deletion requests typed in the chat, the wording of a request did not explain these differences. For each of the seven coded dimensions, such as where the deletion request asks to delete, how it is phrased, and whether it gives a reason, we compared the outcome across its codes. On Claude and Copilot, recall success never occurred under any code. On ChatGPT it occurred in half or more of the test cases under every code with at least six deletion requests. Perplexity varied more across codes, but the codes that differed held few deletion requests. We leave out Gemini and DeepSeek, because every one of their test cases is can't tell. So which agent received a deletion request mattered more than how it was worded.
+    \begin{takeawaybox}
+    \textbf{Finding:} Users and agents differed in two ways. The fact stayed retrievable in a new conversation after a deletion that participants expected to keep it out, and the signals participants used to verify a deletion did not show the outcome.
+    \end{takeawaybox}
+    
+    Users and agents differed in two ways. The fact stayed retrievable in a new conversation after a deletion that participants expected to keep it out, and the signals participants used to verify a deletion did not show the outcome.
 
-\subsection{What Agents Say}
+    Participants expected a deletion to keep the information out of later conversations, and our test speaks to that expectation directly. For the four most chosen data deletion methods, 42.5\% to 63.4\% of responses expected the agent not to bring the information up in future conversations (Section~\ref{sec:qual_results}). Recall success contradicts this expectation and recall failed is consistent with it. The other expectation, permanent deletion from the database and backups (52.1\% to 65.9\%), we cannot observe, so recall success contradicts it but recall failed does not confirm it.
 
-\begin{outlinenote}
-How agents respond when asked to delete (the replies we coded). New subsection, not in the original outline.
-\end{outlinenote}
+    Table~\ref{tab:expectation-outcome} sets each method's expectation beside its outcomes. For every method, the fact was recall success in some test cases, so the expectation was not met even for methods that about half of the responses expected to keep it out. For deletion-request prompts, 454 of the 811 test cases are can't tell, so the expectation was tested in 357. The survey counts responses and the test counts test cases, so we compare the pattern and not the percentages.
 
-Agents rarely refused a deletion request, and most replies said it was done or partly done. Among the 798 deletion requests typed in the chat, 299 replies complied, 267 were partial, 168 deflected, 8 refused, 7 silently ignored the request, and 42 were other. Seven replies were not captured.
+    \begin{table}[!t]
+    \centering
+    \caption{Expected (share of Pooled responses expecting the information not to come up in future conversations) and test outcomes (test cases), by data deletion method.}
+    \label{tab:expectation-outcome}
+    \footnotesize
+    \setlength{\tabcolsep}{3pt}
+    \begin{tabularx}{\columnwidth}{@{}Xrrrrr@{}}
+    \toprule
+    Method & Expected & \makecell[r]{Recall\\success} & \makecell[r]{Recall\\failed} & \makecell[r]{Can't\\tell} & \makecell[r]{Test\\cases} \\
+    \midrule
+    Delete a single conversation & 54.3\% & 6 & 1 & 6 & 13 \\
+    Clear all conversation history & 42.5\% & 4 & 2 & 2 & 8 \\
+    Delete a specific saved memory & 63.4\% & 2 & 3 & 2 & 7 \\
+    Send a deletion-request prompt & 51.3\% & 144 & 213 & 454 & 811 \\
+    \bottomrule
+    \end{tabularx}
+    \end{table}
 
-What an agent said was a weak guide to what came back. The fact came back after 11 of the 299 complied replies and after 101 of the 267 partial replies, 91 of them from ChatGPT. After a deflected reply, 144 of 168 test cases were can't tell. So a complied reply rarely came with the fact returning, but a user who got a partial or deflected reply could not tell from it whether the fact was gone.
+    The first signal was the agent's reply to the request, and it said a deletion was done far more often than we could show it held. Participants wanted to be told what a deletion did (41.2\% wanted a breakdown of what was deleted and what may be retained), yet 70.9\% of the replies to the deletion requests typed in the chat complied or were partial, while the deletion was shown to hold in 26.4\% of those requests and could not be judged in 56.1\% (Table~\ref{tab:replies-outcome}).
 
-Only Gemini sometimes treated a deletion request as a task for one of its apps. It met 8 of 133 requests with a permission card, 7 for Google Keep and 1 for Gmail, and nothing was deleted, because we declined every card. We coded these replies as other, and all 8 test cases are can't tell.
+    The second signal was asking the agent again in the same conversation, and it often disagreed with the outcome. Participants who deleted by sending a deletion-request prompt mostly verified this way (53.8\% of those responses). Among the test cases with a known outcome, the agent's reply when asked again disagreed with the outcome in 26\% to 78\%, depending on the agent. On ChatGPT the agent mostly did not repeat the fact although the outcome was recall success, and on Claude it repeated the fact although the outcome was recall failed, so a user who asked this way would conclude that the deletion held on ChatGPT when it had failed, and that it failed on Claude when it had held. Gemini and DeepSeek are left out, because every one of their test cases is can't tell.
 
-\subsection{User Expectation vs. Behavior}
+    The third signal, the interface, was no better a guide. For deletions through UI actions, the interface changed in cases such as a conversation missing from the history list or an entry missing from a memory page, and among those with a known outcome 42\% were recall success. A user who expects the information to stay out of later conversations therefore had no signal that confirmed it, and 44.6\% of responses said they did not know how to verify a deletion at all.
 
-\begin{outlinenote}
-perhaps use a figure to visualize the comparison between user expectations and behavior, across LLM agents.
+    So expectation and behavior differ where an agent kept the fact after a deletion that participants expected to keep it out of later conversations, and that depended on the agent (Section~\ref{sec:cross-agent}). The documentation did not close the gap: for the deletion requests typed in the chat, the documentation of Gemini, Perplexity and DeepSeek made no commitment that applied, and for ChatGPT it says that mentions in past conversations remain after a saved memory is deleted. Neither the agent's reply nor the interface showed which case a user was in.
 
-\emph{Planned structure:} the kinds of match and mismatch between what users expected (permanent deletion) and what came back, with the figure.
-\end{outlinenote}
-
-Whichever method participants chose, about half to two-thirds of the responses expected the data to be permanently deleted from the database and backups (46.7\% to 65.9\%, depending on the method), and for every method the fact came back in some test cases (Section~\ref{sec:overall}). The survey counts responses and the test counts test cases, so we compare the pattern and not the percentages.
-
-The check most participants relied on gave the wrong answer. Participants who deleted by sending a deletion-request prompt mostly checked by asking the agent in the same conversation (53.8\% of those responses). On ChatGPT, the fact came back in 108 test cases, and in 104 of them the agent did not repeat it in the original conversation. On Claude, deletion held in 131 test cases, and in 86 of the 130 with a same-conversation reading the agent repeated it. So a user who checks in the same conversation would conclude that deletion worked on ChatGPT when it had not, and that it failed on Claude when it had held. ChatGPT's documentation says that deleting a saved memory does not remove mentions of the information from past conversations, so the fact coming back is not necessarily a departure from what it documents, though it is not the permanent deletion that 46.7\% to 65.9\% of responses expected.
-
-The screen was no better a guide. For deletions through UI actions, the interface showed the change in 49 test cases, such as a conversation missing from the history list or an entry missing from a memory page, and in 14 of them the fact still came back (19 were recall failed and 16 can't tell). So neither the screen nor the same-conversation check reliably showed whether the fact was gone, and both are checks that participants said they used.
+    \FloatBarrier

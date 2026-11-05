@@ -1,6 +1,6 @@
 # checks_vs_outcome
 
-_Run at 2026-11-03T16:04:49_
+_Run at 2026-11-03T16:30:19_
 
 Source: outputs/tables/audit_outcomes_provisional.csv. Known outcomes only (recall success or recall failed); can't tell is left out.
 
@@ -11,7 +11,7 @@ Source: outputs/tables/audit_outcomes_provisional.csv. Known outcomes only (reca
 | ChatGPT | 133 | 29 | 104 | 0 | 78% |
 | Claude | 131 | 45 | 0 | 86 | 66% |
 | Perplexity | 31 | 23 | 8 | 0 | 26% |
-| Copilot | 8 | 4 | 0 | 4 | 50% |
+| Copilot | 58 | 29 | 0 | 29 | 50% |
 
 Wrong share ranges from 26% to 78% across the four agents with known outcomes (Gemini and DeepSeek have none; Copilot has few).
 

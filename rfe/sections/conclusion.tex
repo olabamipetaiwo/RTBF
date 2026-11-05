@@ -1,12 +1,6 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-\begin{outlinenote}
-\begin{enumerate}[leftmargin=*,nosep]
-\item Summary of what we did and found.
-\item The main takeaway for users, platforms, and regulators.
-\item Future work.
-\end{enumerate}
-\end{outlinenote}
+We studied what happens when a user asks an LLM agent to delete data, from two sides: what users do and expect, and what six agents do afterward. In the survey, more sensitive data raised participants' willingness to delete but not which data deletion method they chose, and about half named sending a deletion-request prompt as ideal although few chose it. Most expected every data deletion method to delete permanently, and many did not know how to verify that it worked. In the post-deletion analysis, deletion did not reliably keep a fact out of later conversations, and what happened depended more on the agent than on the data deletion method or how the request was worded. Where we could judge, the fact stayed out of later conversations on Claude and Copilot and was often recall success on ChatGPT and Perplexity, and more than half of the deletions we tested were can't tell.
 
-
+Users and agents differed where an agent kept a fact after a deletion that participants expected to keep out of later conversations. The signals participants relied on to verify a deletion, the agent's reply, asking again in the same conversation, and the interface, did not show which case a user was in. So deletion controls need to state what they act on and give users a way to verify the outcome. Future work can inspect what a platform stores, which needs access that platforms do not give, and can repeat the test on other agents, on paid plans, and with other types of data.

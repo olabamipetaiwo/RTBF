@@ -1,6 +1,6 @@
 # replies_by_outcome
 
-_Run at 2026-11-03T15:46:28_
+_Run at 2026-11-03T22:40:35_
 
 Source: outputs/tables/audit_outcomes_provisional.csv (798 typed-request test cases, placeholders included).
 
@@ -13,8 +13,7 @@ Source: outputs/tables/audit_outcomes_provisional.csv (798 typed-request test ca
 | Deflected | 13 | 11 | 144 | 168 | 21.1% |
 | Refused | 1 | 0 | 7 | 8 | 1.0% |
 | Silently ignored | 3 | 1 | 3 | 7 | 0.9% |
-| Other | 9 | 18 | 15 | 42 | 5.3% |
-| Not captured | 1 | 0 | 6 | 7 | 0.9% |
+| Other | 10 | 18 | 21 | 49 | 6.1% |
 | All replies | 139 | 211 | 448 | 798 | 100.0% |
 
 ## After a reply that complied
@@ -56,5 +55,4 @@ Source: outputs/tables/audit_outcomes_provisional.csv (798 typed-request test ca
 | Perplexity | Deflected | 12 | 0 | 10 | 22 |
 | Perplexity | Refused | 1 | 0 | 2 | 3 |
 | Perplexity | Silently ignored | 2 | 0 | 0 | 2 |
-| Perplexity | Other | 2 | 0 | 0 | 2 |
-| Perplexity | Not captured | 1 | 0 | 6 | 7 |
+| Perplexity | Other | 3 | 0 | 6 | 9 |

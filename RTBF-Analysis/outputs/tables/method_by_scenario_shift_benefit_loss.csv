@@ -1,0 +1,5 @@
+method,diff_MS_minus_LS,se,p_raw,p_holm,sig,scale
+Delete this single conversation.,0.056746031746031766,0.12159214979546304,0.6407205592089715,1.0,,benefit_loss
+Clear all conversation history.,0.08106060606060583,0.19015864482430808,0.6699046765312915,1.0,,benefit_loss
+Delete a specific saved memory or fact.,-0.16507177033492806,0.1849686266376048,0.3721618631339936,1.0,,benefit_loss
+Type a message asking the AI Chatbot to forget it.,-0.0019047619047619022,0.2516297072211534,0.993960309302409,1.0,,benefit_loss

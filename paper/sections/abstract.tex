@@ -1,15 +1,5 @@
 \begin{abstract}
 
-\begin{outlinenote}
-\begin{enumerate}[leftmargin=*,nosep]
-\item LLM agents keep user data across conversations, and users have no clear way to delete it.
-\item We ran a survey of 177 participants on how they delete data and what they expect.
-\item We built a pipeline (DIDR) that injects a fact into six agents, deletes it, and tests whether the fact comes back.
-\item Survey result: users rely on conversation-level deletion, expect permanent deletion, and can't check it.
-\item Agent result: deletion held on some agents and failed on others, depending on the method.
-\item Implication: what users expect and what agents do differ, so deletion controls need clearer scope and a way to check.
-\end{enumerate}
-\end{outlinenote}
-
+LLM agents keep what users tell them, and privacy law gives users a right to have it deleted, but agents offer several data deletion methods that each act on a different part of what they store. We ask how users delete data from LLM agents, what they expect deletion to do, how they verify it, and what agents do after a deletion request. We surveyed 177 U.S. adults who had deleted data from an agent. We also built DIDR, a pipeline that injects a synthetic fact into an agent, deletes it, and tests at least 30 days after deletion whether the agent still returns it in a new conversation, which we call recall success if it does, recall failed if it does not, and can't tell if we cannot show that the fact reached the place we tested. In the Post-Deletion Behavioral Analysis, we ran DIDR on six commercial agents on free accounts: ChatGPT, Claude, Gemini, Copilot, Perplexity, and DeepSeek. Participants did not choose a different data deletion method for more sensitive data, most expected every method to delete permanently, and many could not verify that it worked. In the analysis, whether a fact stayed out of later conversations depended more on the agent than on the data deletion method or how the request was worded. Where we could judge, it was recall failed on Claude and Copilot and often recall success on ChatGPT and Perplexity, and more than half of the deletions we tested were can't tell. The agent's reply and the interface did not show users which outcome they had. So deletion controls need to state what they act on and give users a way to verify the outcome.
 
 \end{abstract}

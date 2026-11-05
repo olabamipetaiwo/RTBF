@@ -38,7 +38,6 @@ REPLY_ORDER = [  # coded acknowledgment -> row label
     ("REFUSED", "Refused"),
     ("SILENTLY IGNORED", "Silently ignored"),
     ("OTHER", "Other"),
-    ("", "Not captured"),
 ]
 
 
@@ -46,6 +45,8 @@ def load() -> pd.DataFrame:
     df = pd.read_csv(IN_CSV, keep_default_na=False)
     df = df[(df["sheet"] == "NL FORGET") & df["recoverability"].isin(OUTCOME)].copy()
     df["outcome"] = df["recoverability"].map(OUTCOME)
+    # Decision 2026-11-03: the 7 replies with no code (Perplexity) are classed as Other.
+    df["acknowledgment"] = df["acknowledgment"].replace("", "OTHER")
     return df
 
 

@@ -1,17 +1,37 @@
 \section{Introduction}
 \label{sec:intro}
 
-\begin{outlinenote}
-\begin{enumerate}[leftmargin=*,nosep]
-\item LLM agents remember what users tell them, and that raises the question of deleting it.
-\item Privacy law gives a right to deletion, but agents offer many deletion methods with different scopes.
-\item Gap: we know little about how users delete, what they expect, or what agents do after a request.
-\item Our approach: a participatory survey, plus a pipeline that tests six commercial agents.
-\item The four research questions, one line each.
-\item Findings in brief, with the user and agent sides placed side by side.
-\item Contributions: the survey, the DIDR pipeline, and the comparison of user expectations with agent behavior.
-\item Paper roadmap.
+LLM agents keep what users tell them. Some save facts about a user across conversations~\cite{chen2026relational,zhang2025understanding}, and all of them keep a history of conversations that a user can return to. That makes deleting what an agent has kept a practical question for anyone who has shared information with one.
+
+Privacy law gives people a right to have their personal data deleted~\cite{gdpr2016,ccpa2018}, but a user of an LLM agent finds no single action that carries it out. Agents offer several data deletion methods, such as deleting a single conversation, deleting a saved memory, or sending a deletion-request prompt~\cite{li2026privacy}, and each acts on a different part of what the agent has stored (Section~\ref{sec:background}).
+
+This leaves three things we cannot read off the controls. We do not know how users choose among data deletion methods, what they expect a deletion to do, or what an agent does with the information after a deletion request. The first two are questions about users and the third is about agents, and they matter together, because a user's choice is only as good as what the chosen method does.
+
+We studied both sides. We ran a participatory survey of 177 U.S. adults who had deleted data from an LLM agent, asking how they delete, what they expect, and how they verify that a deletion worked. We also built DIDR (Section~\ref{sec:didr}), a pipeline that injects a synthetic fact into an agent, deletes it, and tests whether the agent still returns it in a later conversation, which we call recall success if it does, recall failed if it does not, and can't tell if we cannot show that the fact reached the place we tested. In the Post-Deletion Behavioral Analysis, we ran DIDR on six commercial agents on free accounts: ChatGPT, Claude, Gemini, Copilot, Perplexity, and DeepSeek, and we set what the agents did against what participants expected. We ask four research questions:
+
+
+
+\begin{enumerate}[leftmargin=4pt,itemindent=0pt,labelsep=0pt]
+    \item[] \textbf{RQ1: Data deletion practices.}
+    What deletion methods do users use, and how does data sensitivity affect their choices?
+
+    \item[] \textbf{RQ2: User expectations and verification.}
+    What do users expect from data deletion, and how do they verify its outcomes?
+
+    \item[] \textbf{RQ3: Post-deletion agent behavior.}
+    How do LLM agents respond to deletion requests, and what data resurfaces afterward?
+
+    \item[] \textbf{RQ4: Expectations versus behavior.}
+    How do users' deletion expectations compare with observed agent behavior?
 \end{enumerate}
-\end{outlinenote}
+
+We examine data deletion in commercial LLM agents from two complementary perspectives: users' expectations and agents' post-deletion behavior (Figure~\ref{fig:overview}). First, a participatory survey examines how users approach data deletion across two scenarios, including their choice of deletion method, deletion-request prompts, expectations, and verification strategies. We then use the collected deletion requests in a Post-Deletion Behavioral Analysis, where we inject synthetic facts, made-up pieces of personal information, into six commercial LLM agents, apply deletion methods, and subsequently probe for data recall. Finally, we compare survey responses with observed agent behavior to identify discrepancies between users' expectations and what deletion achieves in practice.
 
 
+Our four research questions follow this design. The survey answers RQ1 (How do users delete data from LLM agents, and does scenario sensitivity change what they do?) and RQ2 (What do users expect deletion to do, and how do they verify that it worked?). The post-deletion analysis answers RQ3 (What do agents do after a deletion request, and how do they differ from each other?). Only the two together answer RQ4 (Where do user expectations and agent behavior differ?).
+
+Participants did not choose a different data deletion method for more sensitive data, most expected every method to delete permanently, and many could not verify that it worked. After a deletion, whether a fact stayed out of later conversations depended more on the agent than on the data deletion method or how the request was worded. Where we could judge, it was recall failed on Claude and Copilot and often recall success on ChatGPT and Perplexity, and more than half of the deletions we tested were can't tell. The agent's reply and the interface did not show a user which outcome they had.
+
+This paper makes three contributions: a participatory survey of how users delete data from LLM agents, what they expect, and how they verify it; DIDR, a pipeline that tests whether a deletion holds on deployed agents; and a comparison of user expectations with agent behavior that shows where they differ.
+
+Section~\ref{sec:background} gives the background and Section~\ref{sec:design} our methods. Sections~\ref{sec:qual_results} and \ref{sec:tech_results} report the survey and the post-deletion results, Section~\ref{sec:discussion} discusses them, Section~\ref{sec:related} reviews related work, and Section~\ref{sec:conclusion} concludes.

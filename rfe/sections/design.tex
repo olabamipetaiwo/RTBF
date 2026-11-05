@@ -1,132 +1,339 @@
-\section{Study Design}
-\label{sec:design}
+\section{Understanding User Data Deletion Practices and Expectations}
+\label{sec:user_study}
 
-\subsection{Overview}
+To investigate users' data deletion practices and expectations in LLM agents (RQ1 and RQ2), we conducted an online survey of users with prior experience deleting data from LLM agents.
+%
+This section describes our study methodology and presents the key findings.
+
+\subsection{User Study Methodology}
+
+\subsubsection{Participant Recruitment}
+%
+We recruited participants through Prolific, targeting adults aged 18 or older residing in the United States who had used at least one of the six LLM agents described in Section~\ref{sec:background}. 
+%
+The survey was administered through Qualtrics, with a recruitment target of approximately 200 participants to support the exploratory nature of the study.
+%
+Participants received \$4 upon completing the survey and passing the attention checks.
+%
+Of 235 submissions, we excluded 36 participants who reported no prior experience deleting data from LLM agents, as our analysis focused on users with such experience. 
+%
+We further excluded 17 incomplete submissions, one response that failed an attention check, and four participants with missing responses to key survey questions, yielding a final sample of 177 participants.
+%
+Among these participants, 58.8\% were men, 40.7\% were women (one preferred not to say), 73.4\% were under 45 years old, and 62.1\% held at least a bachelor's degree (Table~\ref{tab:demographics}). 
+%
+Thus, our survey findings characterize users with prior deletion experience rather than the broader population of LLM-agent users.
+%
+Separately, we collected deletion-request prompts from 209 participants, including some without prior deletion experience, for the later post-deletion behavioral analysis in Section~\ref{sec:didr}, as the hypothetical prompt-writing task did not require such experience.
+%
+Table~\ref{tab:demographics} in the Appendix presents the demographic details of the participants.
+
+\subsubsection{Study Procedure}
+%
+The survey was designed to take about 15 minutes to complete. 
+%
+Participants first reviewed an informed consent form describing the study's purpose, procedures, data handling, and participant rights. 
+%
+Those who consented proceeded to screening questions assessing their age, U.S. residence, and prior use of LLM agents.
+%
+Eligible participants then completed the following survey components in sequence: (1) LLM-agent usage and prior use of deletion methods; (2) scenario-based assessments of deletion practices, expectations, and verification; (3) prior data deletion experiences; (4) deletion feedback and desired confirmation mechanisms; (5) privacy awareness and knowledge; (6) attitudes toward LLM agents, data sharing, social influences, and perceived AI-related abilities; and (7) demographic information.
+%
+The scenario-based assessments involved two scenarios presented in randomized order, each followed by the same set of questions. 
+%
+Two instructed-response attention checks were embedded in the survey to assess response quality. Throughout the survey, we used the term ``AI chatbot'' to refer to LLM agents, as this term is more familiar and accessible to general users.
+
+\subsubsection{Survey Question Design}
+%
+\label{subsubsec:questions}
+%
+We designed the survey questions to investigate users' deletion practices (RQ1) and their expectations and verification strategies (RQ2), using scenario-based assessments complemented by questions about prior experiences.
+
+\para{Scenario design}
+%
+To investigate users' deletion practices and how these practices vary across different contexts, we developed two hypothetical scenarios involving different levels of data sensitivity and usage contexts.
+%
+The less sensitive scenario (\textbf{LS}) concerns sharing a city while requesting weather information, whereas the more sensitive scenario (\textbf{MS}) concerns disclosing a home address while seeking a clinic for sexually transmitted infection treatment.
+%
+In both scenarios, participants were asked to consider deleting the disclosed location information to protect their privacy. 
+%
+The scenarios used identical follow-up questions and were presented in randomized order to enable within-participant comparisons while mitigating potential order effects.
+
+\para{Data deletion practices (RQ1)}
+%
+Before evaluating the scenarios, participants were introduced to eight deletion methods, including the six methods described in Table~\ref{tab:methods}, account deletion, and filing a deletion request.
+%
+Each method was accompanied by a description and example screenshot. 
+%
+Participants reported which methods they had previously used.
+%
+For each scenario, participants selected a deletion method from those they had previously used and explained their choice. 
+%
+They then rated the selected method along three dimensions using five-point agreement scales: \textit{perceived privacy protection} (five items), \textit{effort} (four items), and \textit{potential loss of personalized benefits} (three items). 
+%
+Participants also indicated their willingness to delete the disclosed information on a five-point scale. 
+%
+Finally, they selected their preferred deletion methods from all available options, regardless of prior experience, allowing us to distinguish prior method use from hypothetical preferences.
+
+\para{User expectations and verification (RQ2)}
+%
+For each scenario, participants indicated what they expected their selected deletion method to accomplish, including \textit{permanent deletion from databases and backups}, \textit{removal from the user interface}, \textit{prevention of information recall in current or future conversations}, and \textit{exclusion from model training}. 
+%
+Participants could select multiple outcomes or indicate uncertainty.
+%
+We also asked participants how they had previously verified deletion, including asking the agent in the same or a new conversation, checking saved memories or the user interface, and submitting a data access request through a privacy portal. 
+%
+Participants could indicate that they did not know how to verify deletion or did not wish to do so, and rated their confidence in verification. 
+%
+Additional questions examined the confirmation participants had received after previous deletion attempts and the feedback they believed LLM agents should provide.
+
+\para{Participant-authored deletion-request prompts}
+%
+In each scenario, participants wrote the message they would send to an LLM agent to request deletion of the disclosed information and explained their wording. 
+%
+These participant-authored deletion-request prompts were later used as inputs to our post-deletion behavioral analysis (RQ3; Section~\ref{sec:didr}), allowing us to evaluate LLM agents using prompts written by survey participants (i.e., real users).
+
+\para{Other survey questions}
+%
+We also asked participants about their prior deletion experiences, including the types of information they had attempted to delete, their motivations, how they discovered deletion controls, and whether agents had subsequently referenced information they believed was deleted.
+%
+Finally, we collected participants' demographic characteristics, including education level, gender, and primary domain of work or study. 
+%
+To assess response quality, we also embedded two instructed-response attention checks in the survey, asking participants to select a specific response option to verify that they were reading and following the instructions carefully.
+%
+The complete questionnaire, including question wording and measurement items, is provided in Appendix~\ref{app:questions}.
+
+
+\subsubsection{Data Analysis}
+%
+We analyzed responses from 177 participants, reporting percentages separately for the less sensitive (LS) and more sensitive (MS) scenarios. 
+%
+Because each participant evaluated both scenarios, we used paired statistical tests to compare their responses. 
+%
+Specifically, we used Wilcoxon signed-rank tests~\cite{} for \textit{willingness to delete}, \textit{perceived privacy protection}, \textit{effort}, and \textit{benefit loss}; the Stuart-Maxwell test~\cite{} for overall deletion-method choices; and McNemar tests~\cite{} for individual deletion methods, expected deletion outcomes, and verification strategies. 
+%
+We also examined potential scenario-order effects using binomial~\cite{}, Mann-Whitney~\cite{}, and Fisher's exact tests~\cite{}. 
+%
+To compare deletion methods, we pooled responses from both scenarios (\textbf{Pooled}), with each participant contributing two responses. 
+%
+We fitted generalized estimating equations (GEE)~\cite{} clustered by participant to account for within-participant dependence. 
+%
+To avoid unstable estimates from small groups, we restricted these analyses to the four deletion methods selected by at least 14 participants, retaining 317 of the 354 responses. 
+%
+We used Gaussian models~\cite{} for \textit{perceived privacy protection}, \textit{effort}, and \textit{benefit loss}, and logistic models~\cite{} for binary expectation outcomes, with scenario included as a covariate. 
+%
+Pairwise differences in effort were assessed using GEE contrasts, while verification strategies were compared across methods using chi-square or Fisher's exact tests separately for each scenario.
+
+
+We assessed the three perception scales using confirmatory factor analysis (CFA)~\cite{}, with separate factors for protection (five items), effort (four items), and benefit loss (three items).
+%
+Standardized factor loadings ranged from .73 to .94, average variance extracted from .64 to .76, and Cronbach's $\alpha$ from .87 to .92. Model fit was acceptable on several indices (CFI = .94, TLI = .92, SRMR = .060), although RMSEA = .099 exceeded the conventional .08 threshold. 
+%
+Because the pooled CFA did not account for repeated responses, we also fitted separate models for each scenario, obtaining similar results (CFI = .95 and .93; RMSEA = .087 and .108). 
+%
+We treated the analyses as exploratory and applied Holm corrections~\cite{} within families of related tests, leaving individual tests unadjusted. 
+%
+We report adjusted values as $p_{\mathrm{Holm}}$. 
+%
+Table~\ref{tab:analysis-families} summarizes the statistical tests, sample sizes, and correction families.
+
+\begin{table*}[t]
+\centering
+\caption{Summary of statistical analyses, tests, and multiple-testing correction families.}
+\label{tab:analysis-families}
+\small
+\begin{tabular}{@{}p{0.32\textwidth}p{0.28\textwidth}p{0.20\textwidth}p{0.14\textwidth}@{}}
+\toprule
+Analysis & Statistical test & Sample & Holm family \\
+\midrule
+
+\multicolumn{4}{@{}l}{\textit{Scenario comparisons (LS vs. MS)}} \\
+Willingness to delete
+    & Wilcoxon signed-rank; rank-biserial $r$
+    & 177 pairs
+    & None (single test) \\
+Protection, effort, and benefit loss
+    & Wilcoxon signed-rank; rank-biserial $r$
+    & 177 pairs
+    & 3 scales \\
+Deletion-method choice (overall)
+    & Stuart-Maxwell marginal homogeneity
+    & 176 participants who chose a method in both scenarios
+    & None (single test) \\
+Deletion-method choice (each method)
+    & McNemar
+    & 177 participants
+    & 7 methods \\
+Expected deletion outcomes
+    & McNemar
+    & 177 participants
+    & 7 options \\
+Verification strategies
+    & McNemar
+    & 177 participants
+    & 8 options \\
+\midrule
+
+\multicolumn{4}{@{}l}{\textit{Deletion-method comparisons}} \\
+Protection, effort, and benefit loss
+    & Gaussian GEE, clustered by participant (Wald)
+    & 317 responses, 4 methods
+    & 3 scales \\
+Effort (pairwise between methods)
+    & GEE contrasts, adjusted for scenario
+    & 317 responses, 4 methods
+    & 6 method pairs \\
+Expected deletion outcomes
+    & Logistic GEE, clustered by participant
+    & 317 responses, 4 methods
+    & 7 options \\
+Verification strategies
+    & Chi-square or Fisher's exact, each scenario separately
+    & Participants choosing a method with at least 14 participants in that scenario
+    & 8 options, within each scenario \\
+\midrule
+
+\multicolumn{4}{@{}l}{\textit{Measurement validation and robustness checks}} \\
+Scale structure
+    & Confirmatory factor analysis
+    & 354 responses
+    & Not applicable \\
+Scenario order
+    & Binomial test, Mann-Whitney, Fisher's exact
+    & 177 participants
+    & 4 ratings (Mann-Whitney) \\
+\bottomrule
+\end{tabular}
+
+\par\vspace{0.5em}
+\begin{minipage}{0.94\textwidth}
+\footnotesize
+\textit{Note.} LS and MS denote the less and more sensitive scenarios, respectively.
+A response is one participant's answer in one scenario.
+GEE denotes generalized estimating equations.
+Holm corrections are applied within the specified families;
+single tests are not adjusted.
+\end{minipage}
+\end{table*}
+
+\subsection{User Study Findings}
+\label{sec:qual_results}
+
+We present findings from 177 participants, organized around users' deletion practices (RQ1) and their expectations and verification strategies (RQ2).
+%
+Results are reported separately for the less sensitive (LS) and more sensitive (MS) scenarios.
+%
+Analyses combining both scenarios are denoted as \textbf{Pooled}, comprising 354 responses unless otherwise specified.
+
+\subsubsection{User Deletion Practices (RQ1)}
+
+Deleting a single conversation was the most commonly used deletion method (76.8\% of participants) and the most frequently selected method in both scenarios (Table~\ref{tab:method-use}).
+%
+Clearing all conversation history was also common (53.1\%), whereas deleting a specific saved memory (32.2\%) and clearing all saved memories (25.4\%) were less frequently reported.
+%
+Fewer participants had used a privacy dashboard (9.6\%), deleted their account (10.2\%), or filed a deletion request (2.8\%).
+%
+Most participants discovered deletion controls by exploring the settings or guessing how to delete their data, while only 6 of 177 reported learning about these options from the agent itself.
+
+\begin{table*}[!t]
+\centering
+\caption{Previously used deletion methods (multiple selections allowed) and scenario-based method choices in LS, MS, and Pooled. Scenario-based choices were restricted to methods participants had previously used; ``Other'' choices are excluded from the pooled counts.}
+\label{tab:method-use}
+\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+ & Previously used & \multicolumn{3}{c}{Chosen in scenario} \\
+\cmidrule(lr){3-5}
+Deletion method & ($n=177$) & LS & MS & Pooled ($n=352$) \\
+\midrule
+Sending a deletion-request prompt & 55 (31.1\%) & 25 & 14 & 39 (11.1\%) \\
+Deleting a single conversation & 136 (76.8\%) & 84 & 80 & 164 (46.6\%) \\
+Clearing all conversation history & 94 (53.1\%) & 33 & 40 & 73 (20.7\%) \\
+Deleting a specific saved memory & 57 (32.2\%) & 19 & 22 & 41 (11.6\%) \\
+Clearing all saved memories & 45 (25.4\%) & 7 & 8 & 15 (4.3\%) \\
+Using a privacy dashboard & 17 (9.6\%) & 6 & 9 & 15 (4.3\%) \\
+Deleting the account & 18 (10.2\%) & 2 & 3 & 5 (1.4\%) \\
+Filing a request & 5 (2.8\%) & 0 & 0 & 0 (0.0\%) \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+The more sensitive scenario increased participants' willingness to delete the disclosed information, but did not significantly change their deletion-method choices.
+%
+In LS and MS, respectively, 125 and 150 of 177 participants indicated that they would probably or definitely delete the information.
+%
+Mean willingness increased from 3.98 in LS to 4.37 in MS on the five-point scale (Wilcoxon signed-rank test, $p<.001$, $r=.55$).
+%
+However, the overall distribution of deletion-method choices did not differ significantly between scenarios (Stuart-Maxwell test, $p=.39$, 176 participants).
+%
+Thus, although participants expressed greater willingness to delete information in the more sensitive scenario, we found no corresponding evidence of a change in their selected deletion methods.
+
+Participants' preferred deletion methods also differed from their scenario-based choices.
+%
+Sending a deletion-request prompt was the second most frequently preferred method (47\%--50\% across LS and MS), following deleting a single conversation (61\%--66\%).
+%
+However, only 8\%--14\% of participants selected a deletion-request prompt from the methods they had previously used.
+%
+This gap suggests that deletion-request prompts appealed to many participants, even though relatively few had previously used them.
+
+\begin{takeawaybox}
+\textbf{Finding 1:} Participants primarily used conversation-level deletion methods and often discovered deletion controls on their own. The more sensitive scenario increased willingness to delete but did not significantly change deletion-method choices. Although many participants preferred deletion-request prompts, relatively few selected them among their previously used methods.
+\end{takeawaybox}
+
+
+\subsubsection{User Expectations and Verification (RQ2)}
+
+Participants expressed similar expectations across deletion methods, despite differences in the data locations these methods target.
+%
+Across Pooled responses, 59.0\% expected permanent deletion from the agent's databases and backups, while 54.2\% expected the information to become unavailable for recall in future conversations (Figure~\ref{fig:expectation}).
+%
+Among the four most frequently selected methods, we detected no statistically significant differences in expectations of permanent deletion ($p_{\mathrm{Holm}}=1.0$) or prevention of recall in future conversations ($p_{\mathrm{Holm}}=1.0$).
+%
+These results suggest that participants did not consistently distinguish deletion methods by their expected outcomes.
+%
+In contrast, participants perceived differences in the effort required by deletion methods.
+%
+Among the four most frequently selected methods, perceived effort differed significantly ($p_{\mathrm{Holm}}=.0001$), whereas perceived privacy protection did not ($p_{\mathrm{Holm}}=.29$; Figure~\ref{fig:scales}).
+%
+These results suggest that participants differentiated methods more by perceived effort than by expected protection.
+%
+However, because participants selected their own methods and the groups were relatively small, these comparisons are associative rather than causal.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\columnwidth,height=0.42\textheight,keepaspectratio]{figures/fig_expectation.png}
+    \caption{Expected deletion outcomes and reported verification strategies in LS, MS, and Pooled. The analysis includes 354 responses from 177 participants, with multiple selections allowed. Percentages are based on 177 participants within each scenario and 354 responses for Pooled results.}
+    \label{fig:expectation}
+\end{figure}
 
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/high-level.png}
-    \caption{Overview of the study. The participatory survey answers RQ1 and RQ2, and its deletion requests feed the Post-Deletion Behavioral Analysis, which answers RQ3. Comparing the two answers RQ4.}
-    \label{fig:overview}
+    \includegraphics[width=0.9\textwidth]{figures/fig_scales.png}
+    \caption{Mean ratings of perceived privacy protection, effort, and potential loss of personalized benefits for the four most frequently selected deletion methods, shown separately for LS and MS and combined (Pooled). The analysis includes 317 responses from 105, 50, 30, and 29 participants, respectively. Ratings use five-point agreement scales.}
+    \label{fig:scales}
 \end{figure*}
 
-We examine data deletion in commercial LLM agents from two complementary perspectives: users' expectations and agents' post-deletion behavior (Figure~\ref{fig:overview}). First, a participatory survey examines how users approach data deletion across two scenarios, including their choice of deletion method, deletion-request prompts, expectations, and verification strategies. We then use the collected deletion requests in a Post-Deletion Behavioral Analysis, where we inject synthetic facts into six commercial LLM agents, apply deletion methods, and subsequently probe for data recall. Finally, we compare survey responses with observed agent behavior to identify discrepancies between users' expectations and what deletion achieves in practice.
+Many participants were uncertain how to verify deletion outcomes.
+%
+Across Pooled responses, 44.6\% indicated that they did not know how to verify deletion.
+%
+Reported verification strategies included asking the agent in the same or a new conversation (21\%--22\% of responses) and checking saved memories, settings, or the user interface (16\%--18\%).
+%
+Notably, among responses selecting a deletion-request prompt, 53.8\% (of 39 responses) indicated verification by asking the agent in the same conversation.
+%
+This suggests that users relying on conversational deletion requests may also rely on the agent's own responses as evidence that deletion succeeded.
 
+Participants also reported limitations in deletion feedback and experiences of information resurfacing.
+%
+Among the 177 participants, 42 (23.7\%) reported that an agent had referenced information they believed was deleted.
+%
+After previous deletion attempts, 41.2\% reported receiving a clear confirmation message, while 29.4\%--34.5\% reported vague acknowledgements or no feedback (multiple selections allowed).
+%
+Furthermore, 73 participants (41.2\%) wanted a breakdown specifying what information had been deleted and what might still be retained.
+%
+These findings highlight a gap between users' expectations of deletion and their ability to establish its outcome, motivating our subsequent post-deletion behavioral analysis (Section~\ref{sec:tech_analysis}).
 
-Our four research questions follow this design. The survey answers RQ1 (How do users delete data from LLM agents, and does scenario sensitivity change what they do?) and RQ2 (What do users expect deletion to do, and how do they check that it worked?). The post-deletion analysis answers RQ3 (What do agents do after a deletion request, and how do they differ from each other?). Only the two together answer RQ4 (Where do user expectations and agent behavior differ?).
+%
+\begin{takeawaybox}
+\textbf{Finding 2:} Participants commonly expected deletion methods to permanently remove their data, despite differences in the data locations these methods target. Perceived effort differed across methods, but expected deletion outcomes and perceived protection showed no significant differences. Many participants did not know how to verify deletion, and those selecting deletion-request prompts often relied on the agent itself for verification.
+\end{takeawaybox}
 
-
-\subsection{Participatory Survey}
-
-\subsubsection{Participant recruitment}
-
-We recruited U.S. adults through Prolific who had used at least one of the six LLM agents described in Section~\ref{sec:background}. The survey was administered through Qualtrics, with a recruitment target of approximately 200 participants rather than a power-based sample size. Participants received \$4 each.
-
-Of 235 submissions, 17 were incomplete and one failed an attention check. We excluded another 36 respondents who reported no prior experience deleting data from an LLM agent, as the survey examined deletion practices and expectations among users with such experience. Of the remaining 181 participants, four did not complete the method-choice question in both scenarios, yielding a final survey sample of 177. Separately, deletion-request prompts for the Post-Deletion Behavioral Analysis were drawn from 209 participants, including those without prior deletion experience, because the request-writing task was hypothetical (Section~\ref{sec:didr}).
-
-Among the 177 participants, 73.4\% were under 45, and 62.1\% held at least a bachelor's degree (Appendix~A). Our findings therefore characterize users with prior deletion experience rather than the broader population of LLM-agent users.
-
-\subsubsection{Survey design}
-
-To address RQ1 and RQ2, we designed a survey examining users' deletion practices, perceptions of deletion methods, expectations, and verification strategies. Participants evaluated two scenarios differing in data sensitivity. The less sensitive scenario involved sharing a city while requesting weather information, while the more sensitive scenario involved disclosing a home address when seeking a clinic for a sexually transmitted infection. In both scenarios, participants considered deleting the shared location data. The scenarios used identical questions and were presented in randomized order to mitigate order effects. The survey used the term ``AI chatbot'' to refer to LLM agents.
-
-Participants first indicated which of eight deletion methods they had previously used: the six listed in Table~\ref{tab:methods}, account deletion, and filing a deletion request. In each scenario, they selected a method from those previously used and rated its perceived protection, effort, and benefit loss using five-point agreement scales comprising five, four, and three items, respectively. They also selected a preferred method from all eight options, regardless of prior experience. Additional questions assessed willingness to delete, expected deletion outcomes, and verification practices. Participants then wrote the deletion request they would send to the agent.
-
-Before the scenarios, participants reported which LLM agents they had used and their duration of use. Following the scenarios, they answered questions about prior deletion experiences, including the types of data they had attempted to delete, their motivations, and whether deleted information had resurfaced. The survey concluded with a privacy-knowledge quiz, questions about attitudes toward LLM agents and data sharing, and demographic questions. Two instructed-response items served as attention checks. Appendix~B provides the complete scenarios, measurement items, and attention checks.
-
-\subsubsection{Data analysis}
-
-We report percentages of the 177 participants, within each scenario or with both scenarios combined. When the scenarios are combined, a response is one participant's answer in one scenario, and percentages are of responses. Each participant answered in both scenarios, so we compare the scenarios within participants. For the five-point ratings we use Wilcoxon signed-rank tests, because a normality test rejected normality of the differences. For choices, such as the method chosen or the options marked, we use McNemar tests, which suit the same participant choosing in both scenarios.
-
-To compare methods, we use only the four methods chosen by at least 14 participants, because smaller groups are too small to compare. Where we combine both scenarios, each participant contributes two responses, so we use models that account for that (generalized estimating equations clustered by participant). There are 354 responses in all, fewer where a participant chose Other or the method has too few participants. To check that protection, effort, and benefit loss measure separate things, we ran a confirmatory factor analysis (Appendix~C).
-
-Because we ran many tests on a modest sample, the analyses are exploratory. We adjust $p$ values for the number of tests (Holm correction, reported as $p_{\mathrm{Holm}}$; unadjusted values are $p$). A nonsignificant result means we found no association, not that none exists. Table~\ref{tab:analysis-families} in the Appendix lists each analysis, its test, and its correction family. The written deletion requests are coded and sampled in the post-deletion analysis (Section~\ref{sec:didr}), not here.
-
-\subsection{Post-Deletion Behavioral Analysis}
-\label{sec:didr}
-
-\begin{outlinenote}
-start with a leading paragraph, and figure, as overview of these steps
-\begin{itemize}[leftmargin=*,nosep]
-\item Say that we built a new data injection, deletion, and recall pipeline, DIDR Pipeline)
-\item talk to the figure that make the steps and relationships between the components clear
-\item components in the figure (and pipeline):
-\begin{itemize}[leftmargin=*,nosep]
-\item[(1)] input: commercial LLM agents
-\item[(2)] synthetic fact generation (define fact as a <entity, attribute, value> tuple)
-\item[(3)] data injection
-\begin{itemize}[leftmargin=*,nosep]
-\item[(3.1)] synthetic fact injection
-\begin{itemize}[leftmargin=*,nosep]
-\item through prompts
-\item through UI actions
-\end{itemize}
-\end{itemize}
-\item[(4)] data deletion
-\begin{itemize}[leftmargin=*,nosep]
-\item[(4.1)] input: deletion-request prompts (from survey)
-\item[(4.2)] stratified prompt sampling (this will include coding, purpose is to identify the most representative prompts, and reduce redundant testing)
-\item[(4.3)] input: deletion-request UI actions
-\item[(4.4)] issue deletion requests
-\begin{itemize}[leftmargin=*,nosep]
-\item through prompts
-\item through UI actions
-\end{itemize}
-\end{itemize}
-\item[] \-\-> 31 days
-\item[(5)] data recall
-\begin{itemize}[leftmargin=*,nosep]
-\item[(5.1)] prompt-based recall (direct recall prompt, which is asking about entity and attribute, indirect recall prompt, which is asking about only the entity)
-\item[(5.2)] UI-based check
-\end{itemize}
-\end{itemize}
-\item implementation: playwright-based automation (in the figure, this should underlie or connect to injection, deletion, and recall as they all need this).
-\end{itemize}
-\end{outlinenote}
-
-To observe what agents do after a deletion request, we built a pipeline that injects a known fact into an agent, deletes it, and later tests whether the agent still returns it: the data injection, deletion, and recall (DIDR) pipeline (Figure~\ref{fig:didr}). Because we plant the fact ourselves, we know exactly what the agent was told, and a later recall can be traced back to it. Each test case combines one fact, one way of injecting and deleting it, and one agent. The pipeline starts with synthetic fact generation, which produces the facts we inject into commercial LLM agents. The pipeline runs in two parts. Through UI actions, we walk through each agent's interface and inject and delete facts in every way it offers, from typing in the chat to using memory pages and history controls. Through prompts, we inject a fact with a conversational disclosure and delete it with a deletion request that a participant wrote in the survey. In both parts, we delete at least 48 hours after injection, so the agent has time to process the fact, and we run data recall at least 30 days after deletion, so that the up to 30 days some agents document for deleted data have passed. Data recall tests whether the agent still returns the fact, through recall prompts and a UI-based check. Playwright-based automation drives the three stages where a control can be automated, and we ran the others by hand (for example Gemini's activity deletion, where we chose a time frame that held the injection).
-    
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=\textwidth]{figures/DIDR.png}
-    \caption{The DIDR pipeline. Synthetic facts are injected into commercial LLM agents, followed by deletion at least 48 hours later and recall testing at least 30 days after deletion. Each stage uses prompt-based and UI-based interactions, automated with Playwright.}
-    \label{fig:didr}
-\end{figure*}
-
-\para{Synthetic fact generation}
-
-To trace any later recall to the fact that caused it, each test case needs a fact the agent could not already know. We therefore generate synthetic facts, each a tuple of an entity, an attribute, and a value. The entity is an ordinary thing a person might mention in passing, such as a scarf being knitted or a sourdough starter. The attribute is its name. The value is a made-up code name of two to four words. For example, one fact is $\langle$a scarf I'm knitting, name, ``Magnifier King Broom''$\rangle$. Each value is unique to one test case, following the canary approach of Carlini et al.~\cite{carlini2019secret}, so a recall of the value identifies the test case it came from. We wrote the entities ourselves, from curated lists of everyday objects and projects. We drew each value from the EFF long word list, kept only words with a noun sense in WordNet, and removed words under WordNet's weapon, drug, and sexual-content categories, along with a short list of other terms, because content that a platform's safety filter might intercept would confuse a filtered answer with a deleted fact. Each fact is delivered in a casual sentence that varies across test cases, because a single repeated template would look unlike real chat.
-
-\para{Data injection}
-
-We inject each fact in the ways people put information into agents, and we use more than one because each reaches a different place where an agent may keep it. Through UI actions, we inject each fact in every way the agent's interface allows: mentioned in passing in a conversation, as an explicit request to remember it, or entered on a page such as a memory page, custom instructions, or Gemini's saved-info page. We found these by walking through each agent's web interface and listing every way a user can put information in, an approach similar to earlier walkthroughs of LLM privacy controls~\cite{li2026privacy}. Where an agent offers only some of these, we use those. Through prompts, every fact is a casual sentence mentioned in passing in a chat, always the same way in, so injection is held constant and only the deletion request varies. Deletion follows at least 48 hours after injection, which gives the agent time to process the fact, such as saving it to memory, before we delete it.
-
-\para{Data deletion}
-
-Through UI actions, we use the methods we found in the walkthrough, which match the controls users actually have and the methods our survey participants know (Table~\ref{tab:methods}). One of these methods, sending a deletion-request prompt, is typed in the chat, so 13 of the test cases through UI actions are typed requests. Each acts on a place where an agent may keep the fact, such as the conversation, individual or all saved memories, a saved-info page, activity history, or a privacy dashboard. For each agent we also ran the most extensive deletion, a combination of all its controls and the most a careful user could do, to see whether anything still comes back. We did not test two of the survey's eight methods: deleting the account, because nothing is left to observe once the account is gone, and filing a request with the company, because it is handled outside the agent where we cannot observe the result. We also left out settings that only switch a feature off, because they stop future collection and delete nothing already stored. Test cases whose deletion could affect other test cases, such as account-wide actions, ran on dedicated accounts, and deletions that share an account ran from narrowest to broadest. This keeps each result tied to the method under test: otherwise an account-wide deletion run for one test case could clear the fact in another test case that was still waiting for its own deletion or recall, and we could not tell which deletion removed it. This gives 73 test cases through UI actions across the six agents, of which we could run 67, because six Perplexity controls need a paid plan.
-
-Through prompts, we take the deletion requests from the survey so that they match how users actually ask. In total, 209 participants wrote 415 requests, including participants without deletion experience, because the task was hypothetical. After removing repeats and duplicates, 375 distinct requests remained, and we redacted identifying details from 7 of them. Testing all 375 on six agents would have meant 2,250 test cases under free-tier rate limits, so we tested a sample chosen to be representative and to avoid redundant tests. We grouped the requests into seven groups with keyword rules, for example whether a request mentions memory, the conversation, the account, or a database, and drew 138 requests by stratified random sampling, with at least 15 per group so the two smallest groups were included in full. The groups only spread the sample and are not used in any analysis. Two researchers then independently coded the 138 requests on seven dimensions of wording, such as where a request asks to delete and how politely it is phrased, so that we can test whether wording affects the outcome. Their agreement was high (Gwet's AC1 of 0.954 pooled over the seven dimensions; Appendix~D). Five requests asked to delete all of a user's data and could have deleted other test cases' facts, so we excluded them. We sent the remaining 133 to all six agents after injecting a fact through a prompt, which gives 798 test cases. Together with the 67 test cases through UI actions, we ran 865 test cases. We also tested uploaded files as a separate group of 12 test cases, deleting the conversation and applying the most extensive deletion on each agent, because an agent can read an uploaded document, save it to memory, do both, or do neither. Every deletion in this group was a button, so there is no reply to code, and we report the 11 we could run one by one. The most extensive deletion on Perplexity needs a paid plan.
-
-\begin{outlinenote}
-just use multiple paragraphs if we need it, but don't need to highlight the other paragraphs
-\end{outlinenote}
-
-\para{Data recall}
-
-We wait at least 30 days after deletion because ChatGPT, Claude, and Perplexity document that deleted data can persist in their systems for up to 30 days, and the same minimum wait for all six agents keeps the results comparable. We then test whether the agent still returns the value, through prompt-based recall and a UI-based check. Prompt-based recall opens a new conversation. A direct recall prompt asks about the entity and the attribute, as a user trying to find out whether something was kept would. A direct prompt alone is not enough, because an agent can hold information and not volunteer it. An indirect recall prompt therefore asks for an ordinary task about the entity and does not name the attribute or contain the value, which tests whether the fact surfaces in the output a user would actually see. We send each of the two prompts twice with different wording, because replies vary between runs and one miss could be chance. We check whether each reply contains the value and review all replies by hand. The UI-based check reads the memory or saved-info page the agent shows its users. It does not depend on the agent's reply, so it can show that an entry is still stored when the agent says nothing. It applies only where the agent has such a page, so it is not used for DeepSeek or Perplexity, and not on the Copilot accounts that lacked the page.
-
- We run the UI-based check first, then the indirect recall prompt, then the direct recall prompt, so the direct prompt, which names the entity, cannot influence the other checks. A test case is a recall success if any check returns the value. It is recall failed only when no check does and the fact is known to have reached the place we tested. Otherwise it is can't tell, so that a missing answer is never counted as proof of deletion. We count the fact as having reached the place we tested only when the agent showed or said that it saved it: its interface displayed a memory notice such as ``Memory updated'', or its reply said in storage words that it had saved the fact. A reply that only reacts to the fact, such as ``Got it'', no signal at all, or a statement that the agent cannot store it does not count. We read this from the reply and the screenshot saved at injection, and settled unclear replies by hand. When a deletion request was typed into the original conversation, we also send the first direct prompt back in that conversation, and report it separately, because the original disclosure is still in that chat's context.
-
-For deletions through UI actions, we also coded whether the interface changed: whether the screen the action acts on showed the fact gone afterwards, such as a conversation missing from the history list or an entry missing from a memory page. We coded this from the screenshot taken after the deletion and, where it did not show the result, checked the account directly. A deletion typed into the chat leaves nothing on the interface to inspect, so its interface change is not observable.
-
-To judge whether what we found matches what an agent promises, we assigned each test case a commitment type from the agent's own published help and privacy pages, for the deletion method and the place the fact was injected. A commitment is deletes when the documentation says the method removes the content, does not delete when it says the method does not reach it, no commitment when it is silent, unrelated when the method does not apply to where the fact was injected, and not testable when the account could not reach that place. Only deletes and does not delete support a verdict. For a deletes commitment, a recall success or an unchanged interface contradicts it, and a recall failed with an interface that changed or is not observable is consistent with it, and where the documentation says past conversations remain, recall success from those conversations alone is consistent with it. For a does not delete commitment, recall success is consistent with it. Every other test case, including can't tell, stays unresolved. For the other three commitment types we report the recall result without comparing it to the documentation, because it states nothing to compare against.
-
-We also coded what the agent said in reply to each deletion request typed in the chat. Two researchers independently coded each reply as complied, partial, deflected, refused, silently ignored, or other (Appendix~D), judging only what the agent said and not whether anything was deleted. Their agreement was high (Gwet's AC1 of 0.969 on 788 replies), and we settled disagreements by discussion. Deletions through UI actions have no reply to code.
-
-We also counted recall replies that decline to give the fact because the user earlier asked the agent to delete it or not use it. We found these by matching phrases that cite the earlier request, and we checked every match by hand for ChatGPT and Perplexity, the only agents with matches. These replies do not change the outcome: a reply that does not give the fact is still scored by the rule above.
-
-To test whether wording affects the outcome, we compare recall success across the codes of each dimension for each agent. Because some codes hold few deletion requests, we report counts and give no tests, and we look only at codes with at least six deletion requests. We leave out agents whose test cases are all can't tell.
-
-\para{Comparing expectations with behavior}
-To find where expectations and behavior differ, we take each data deletion method that participants chose in the survey and look at the test cases that used the same method. The survey percentages are shares of participants' responses and the post-deletion percentages are shares of test cases, so we do not compare the two numbers directly. We ask instead whether what participants expected held up in the post-deletion analysis. We make two comparisons. We set what participants expected deletion to do against whether the fact came back, which is recall success, and we set the checks participants said they used, asking the agent in the same conversation and looking at whether the interface changed, against what those checks showed in our test cases.

@@ -14,16 +14,19 @@ Survey vocabulary
 - user experience, user expectation: the two survey headings.
 - data deletion method: what users can do to delete data (found in the Background walkthrough, asked about in the survey). This is the survey's own term. The eight methods are defined once in Background as a table of our name and the survey's exact wording in quotes. Option 1 is named "sending a deletion-request prompt" (survey wording: "Type a message asking the AI Chatbot to forget it."). Options 2 to 8 use the survey wording as their name.
 - Participants saw "AI chatbot". The paper says so once, then uses "LLM agent" throughout. "Forget" and "chatbot" appear only inside quoted survey wording.
+- verify, verification: what participants do to find out whether a deletion worked (the survey's own term for the options). Not check. "Check" is kept only for our own recall checks (see below), attention checks, and quoted survey wording.
 - scenario sensitivity.
 - LS: the less sensitive scenario. MS: the more sensitive scenario. Pooled: analyses that combine both scenarios. Defined once in Survey design, then used throughout the text. Table and figure captions spell them out.
 
 Pipeline vocabulary
 - synthetic fact: an <entity, attribute, value> tuple. The value is the part we search for in recall. Not "token".
+- fact: short form of synthetic fact after its first use.
 - data injection: through prompts or through UI actions.
 - data deletion: through deletion-request prompts or deletion-request UI actions. Not erasure or removal.
 - No umbrella noun for prompt vs. UI action. Write through prompts / through UI actions.
 - stratified prompt sampling.
 - data recall has two parts: prompt-based recall (direct recall prompt: asks about entity and attribute; indirect recall prompt: asks about entity only) and UI-based check.
+- recall check: any of the three steps that test whether the value still comes back (direct recall prompts, indirect recall prompts, the UI-based check).
 
 Outcomes
 - recall success: value retrieved, so deletion failed.

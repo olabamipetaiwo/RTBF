@@ -23,6 +23,7 @@
 \pagestyle{plain}
 \usepackage{tcolorbox}
 \usepackage{xcolor}
+\usepackage{amsmath}
 
 \usepackage{enumitem}
 \usepackage{pifont}
@@ -32,7 +33,6 @@
 
 %\usepackage{appendix}
 \usepackage{booktabs}    % for \midrule, \toprule, \bottomrule
-\usepackage{placeins}    % \FloatBarrier keeps a section's floats inside it
 \usepackage[table]{xcolor} % for \rowcolor
 \usepackage{tabularx}
 
@@ -65,7 +65,7 @@
 \usepackage{makecell}
 \usepackage{array}
 
-\newcommand{\para}[1]{\vspace{3pt}\noindent\textbf{#1.~}}
+\newcommand{\para}[1]{\vspace{3pt}\textbf{#1.~}}
 \newcommand{\subpara}[1]{\vspace{3pt}\textbf{#1}}
 
 \usepackage{multirow}
@@ -89,9 +89,8 @@
 
 \input{sections/intro}
 \input{sections/background}
-\input{sections/design}
-\input{sections/qual_results}
-\input{sections/tech_results}
+\input{sections/user_study}
+\input{sections/tech_analysis}
 \input{sections/discussion}
 \input{sections/related}
 \input{sections/conclusion}
@@ -100,7 +99,6 @@
 \bibliographystyle{IEEEtran}
 \bibliography{refs}
 
-\section*{Appendix}
 \input{sections/appendix}
 
 \end{document}
