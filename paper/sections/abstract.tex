@@ -1,5 +1,23 @@
 \begin{abstract}
 
-LLM agents keep what users tell them, and privacy law gives users a right to have it deleted, but agents offer several data deletion methods that each act on a different part of what they store. We ask how users delete data from LLM agents, what they expect deletion to do, how they verify it, and what agents do after a deletion request. We surveyed 177 U.S. adults who had deleted data from an agent. We also built DIDR, a pipeline that injects a synthetic fact into an agent, deletes it, and tests at least 30 days after deletion whether the agent still returns it in a new conversation, which we call recall success if it does, recall failed if it does not, and can't tell if we cannot show that the fact reached the place we tested. In the Post-Deletion Behavioral Analysis, we ran DIDR on six commercial agents on free accounts: ChatGPT, Claude, Gemini, Copilot, Perplexity, and DeepSeek. Participants did not choose a different data deletion method for more sensitive data, most expected every method to delete permanently, and many could not verify that it worked. In the analysis, whether a fact stayed out of later conversations depended more on the agent than on the data deletion method or how the request was worded. Where we could judge, it was recall failed on Claude and Copilot and often recall success on ChatGPT and Perplexity, and more than half of the deletions we tested were can't tell. The agent's reply and the interface did not show users which outcome they had. So deletion controls need to state what they act on and give users a way to verify the outcome.
+
+Commercial LLM agents retain user-provided information across conversations and offer various data deletion methods, yet it remains unclear whether these methods achieve the outcomes users expect.
+%
+In this study, we investigate users' data deletion practices, expectations, and verification strategies, alongside the post-deletion behavior of commercial LLM agents.
+%
+We conducted a survey of 177 U.S. adults with prior data deletion experience and developed a Data Injection-Deletion-Recall (DIDR) pipeline to evaluate whether synthetic user information remains retrievable after deletion.
+%
+Using DIDR, we conducted 865 test cases across six commercial LLM agents, with recall tested at least 30 days after deletion.
+%
+Our survey reveals that users generally expect deletion methods to permanently remove their information and prevent future retrieval, yet many lack reliable ways to verify deletion outcomes.
+%
+Our experiments further reveal substantial differences in post-deletion behavior across agents, with information sometimes remaining retrievable despite deletion requests and confirmations.
+%
+Moreover, post-deletion outcomes varied more across agents than across deletion methods or request wording.
+%
+By comparing users' expectations with observed agent behavior, we identify discrepancies between expected deletion outcomes and subsequent information retrievability, while finding that agents' responses and interface changes do not reliably indicate recall outcomes.
+%
+Our findings motivate clearer communication of deletion scope, verifiable deletion feedback, and standardized evaluation protocols to improve data deletion practices in LLM agents.
+
 
 \end{abstract}

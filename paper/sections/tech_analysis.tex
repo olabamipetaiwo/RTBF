@@ -182,7 +182,7 @@ We evaluated post-deletion agent behavior using multiple measures, including age
 %
 We also examined whether the wording of participant-authored deletion requests was associated with recall outcomes.
 %
-Importantly, these measures characterize externally observable behavior rather than establishing complete erasure of information from an agent's underlying systems.
+Importantly, these measures characterize externally observable behavior rather than establishing complete deletion of information from an agent's underlying systems.
 
 \para{Deletion-request responses}
 %
@@ -236,7 +236,7 @@ We assessed these changes through post-deletion screenshots and directly inspect
 %
 Comparable interface changes were not observable for deletion requests submitted through chat.
 %
-These observations provide evidence about externally visible deletion behavior but do not independently establish complete removal from an agent's underlying storage.
+These observations provide evidence about externally visible deletion behavior but do not independently establish complete deletion from an agent's underlying storage.
 
 \para{Documentation consistency}
 %
@@ -264,27 +264,6 @@ Because some coding categories contained relatively few requests, we reported de
 %
 Agents whose test cases were all classified as \textit{can't tell} were excluded from these comparisons.
 
-\begin{table}[t]
-\centering
-\caption{Inter-rater agreement for coding 138 participant-authored deletion requests. AC1 denotes Gwet's agreement coefficient.}
-\label{tab:coding}
-\small
-\begin{tabular}{@{}lrrr@{}}
-\toprule
-Dimension & Agreed & \% & AC1 \\
-\midrule
-Deletion location & 125/138 & 90.6 & 0.890 \\
-Justification & 131/138 & 94.9 & 0.943 \\
-Data named & 133/138 & 96.4 & 0.956 \\
-Mood & 133/138 & 96.4 & 0.959 \\
-Tone & 137/138 & 99.3 & 0.990 \\
-Verb & 131/138 & 94.9 & 0.947 \\
-Accompanying request & 133/138 & 96.4 & 0.962 \\
-\midrule
-All dimensions (966 ratings) & 923/966 & 95.5 & 0.954 \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 
 \subsubsection{Comparing User Expectations with Agent Behavior}
@@ -300,7 +279,7 @@ First, we compared users' expectations that deleted information would not resurf
 %
 Recall success contradicted this expectation, whereas recall failed was consistent with it.
 %
-We focused on future-conversation recall because it was observable across the DIDR test cases, whereas other expectations, such as permanent removal from databases and backups or exclusion from model training, could not be directly assessed through external testing.
+We focused on future-conversation recall because it was observable across the DIDR test cases, whereas other expectations, such as permanent deletion from databases and backups or exclusion from model training, could not be directly assessed through external testing.
 %
 Second, we examined whether the signals participants reported using to verify deletion corresponded to the observed outcomes.
 %
@@ -319,6 +298,7 @@ We distinguish among \textit{recall success}, \textit{recall failed}, and \texti
 
 
 \subsubsection{Post-Deletion Agent Behavior (RQ3)}
+\label{sec:rq3}
 
 Post-deletion recall outcomes were often uncertain, and previously disclosed information remained retrievable in a substantial number of test cases.
 %
@@ -331,7 +311,7 @@ Thus, recall success was observed in 18.7\% of all test cases, while more than h
 %
 No deletion method consistently prevented recall across all determinable test cases.
 %
-Among the four methods evaluated through UI actions, recall success occurred in 29\%--50\% of test cases, although the small sample sizes (7--13 cases per method) do not support reliable rankings.
+Among the three methods evaluated through UI actions, recall success occurred in 29\%-50\% of test cases, although the small sample sizes (7-13 cases per method) do not support reliable rankings.
 %
 For deletion-request prompts, the most extensively tested method, 144 of 811 test cases resulted in recall success, while 454 were classified as \textit{can't tell}.
 %
@@ -468,9 +448,9 @@ Some agents explicitly withheld information because of an earlier deletion or no
 %
 For example, an agent responded, ``I can't provide that name because you previously asked me to delete the information about your letterpress kit.''
 %
-Among test cases without recall success, such responses occurred in 52\%--95\% of cases on ChatGPT and Perplexity, but not on the other four agents.
+Among test cases without recall success, such responses occurred in 52\%-95\% of cases on ChatGPT and Perplexity, but not on the other four agents.
 %
-For Perplexity in particular, these responses accounted for many cases classified as \textit{can't tell}, illustrating that an agent's refusal to disclose information does not establish that the underlying fact was erased.
+For Perplexity in particular, these responses accounted for many cases classified as \textit{can't tell}, illustrating that an agent's refusal to disclose information does not establish that the underlying fact was deleted.
 
 %
 We also observed agent-specific responses unrelated to direct deletion confirmation.
@@ -491,7 +471,7 @@ We declined all such permission requests, and the corresponding test cases were 
 
 Users commonly expected deletion methods to prevent previously disclosed information from resurfacing in future conversations, but the DIDR experiments showed that this expectation was not consistently met.
 %
-For the four most frequently selected deletion methods, 42.5\%--63.4\% of Pooled survey responses expected the agent to no longer reference the deleted information in future conversations (Section~\ref{sec:qual_results}).
+For the four most frequently selected deletion methods, 42.5\%-63.4\% of Pooled survey responses expected the agent to no longer reference the deleted information in future conversations (Section~\ref{sec:qual_results}).
 %
 However, each of these methods produced recall-success outcomes in at least some test cases (Table~\ref{tab:expectation-outcome}).
 %
@@ -504,7 +484,7 @@ Among the 811 test cases using this method, 144 resulted in recall success, 213 
 %
 Thus, observable recall contradicted the expectation that deletion would prevent subsequent retrieval in some cases, while more than half of these outcomes could not be determined.
 %
-Because the survey reports shares of participant responses and the DIDR analysis reports shares of experimental test cases, these values describe different populations of observations and should not be interpreted as directly comparable rates.
+Because the survey reports shares of participant responses and the post-deletion analysis reports shares of experimental test cases, these values describe different populations of observations and should not be interpreted as directly comparable rates.
 
 \begin{table}[!t]
 \centering
@@ -525,9 +505,9 @@ Send a deletion-request prompt & 51.3\% & 144 & 213 & 454 & 811 \\
 \end{table}
 
 %
-Participants also commonly expected permanent deletion from databases and backups (52.1\%--65.9\% across the four methods).
+Participants also commonly expected permanent deletion from databases and backups (52.1\%-65.9\% across the four methods).
 %
-Although recall success provides evidence inconsistent with complete removal of the retrieved information, recall failed cannot confirm permanent deletion from underlying databases or backups.
+Although recall success provides evidence inconsistent with complete deletion of the retrieved information, recall failed cannot confirm permanent deletion from underlying databases or backups.
 %
 Therefore, our comparison focuses primarily on the expectation that deleted information will not resurface in future conversations, which can be assessed through the DIDR recall checks.
 
@@ -555,7 +535,7 @@ As shown in RQ3, agents sometimes indicated compliance with deletion requests ev
 %
 Similarly, 53.8\% of survey responses selecting deletion-request prompts reported verification by asking the agent again in the same conversation.
 %
-Yet responses to such queries disagreed with subsequent recall outcomes in 26\%--78\% of determinable cases, depending on the agent.
+Yet responses to such queries disagreed with subsequent recall outcomes in 26\%-78\% of determinable cases, depending on the agent.
 %
 For example, ChatGPT sometimes withheld information in the original conversation that remained retrievable in a new conversation, whereas Claude sometimes returned information in the original conversation despite a recall-failed outcome in the new-conversation evaluation.
 %

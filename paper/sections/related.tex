@@ -2,6 +2,7 @@
 \label{sec:related}
 
 
+
 % 1. Systems and the law
 % 2. Audits of deployed services
 % 3. Unlearning and verification
@@ -9,16 +10,69 @@
 % 5. Users and deletion controls
 % 6. Users of LLM agents
 
-\begin{outlinenote}
-Plan: a wide and deep review of  papers, published venues only, each verified against the publisher or proceedings page before it is cited.
-\begin{enumerate}[leftmargin=*,nosep]
-\item Data deletion in computer systems: What deletion means formally, and how software systems, databases, storage, websites, and web applications implement data deletion, including where the right to be forgotten has been applied outside language models.
-\item Audits of deployed services: Technical analyses of whether websites, mobile apps, and other platforms delete data when asked.
-\item Deletion in AI: Machine unlearning methods, attacks on unlearning, how unlearning is verified, memorization of training data, and whether unlearning can be made usable by users.
-\item Users: How users perceive privacy and memory in AI systems, how usable and effective deletion and privacy controls are, and how users verify that their data was removed.
-\item Gaps: Prior work audits services, studies unlearning inside models, and studies how users use controls. No work tests what happens after a deletion request to deployed LLM agents, or compares the outcome with what users expect and how they try to verify it.
-\end{enumerate}
-\end{outlinenote}
+
+% \begin{outlinenote}
+% Plan: a wide and deep review of papers, published venues only , each verified against the publisher or proceedings page before it is cited.
+% \begin{enumerate}[leftmargin=*,nosep]
+% \item Data deletion in computer systems: What deletion means formally, and how software systems, databases, storage, websites, and web applications implement data deletion, including where the right to be forgotten has been applied outside language models.
+% \item Audits of deployed services, about 10 papers. Technical analyses of whether websites, mobile apps, and other platforms delete data when asked.
+% \item Deletion in AI: Machine unlearning methods, attacks on unlearning, how unlearning is verified, memorization of training data, and whether unlearning can be made usable by users.
+% \item Users:. How users perceive privacy and memory in AI systems, how usable and effective deletion and privacy controls are, and how users verify that their data was removed.
+% \item Gaps. Prior work audits services, studies unlearning inside models, and studies how users use controls. No work tests what happens after a deletion request to deployed LLM agents, or compares the outcome with what users expect and how they try to verify it.
+% \end{enumerate}
+% \end{outlinenote}
 
 
-\para{}
+\para{Data deletion effectiveness and usability}
+%
+Prior research has examined the effectiveness and usability of data deletion across systems (mostly in domains other than LLM agents).
+%
+For example, secure deletion research shows that removing a file or issuing a deletion command does not necessarily eliminate the underlying data~\cite{reardon2013sok}.
+%
+Similar challenges arise in databases, where physical removal may be delayed~\cite{sarkar2020lethe,shastri2020understanding}, and in backups that fail to support the right to be forgotten~\cite{politou2018backups}.
+%
+Studies of deployed services have also identified gaps between deletion controls and actual outcomes.
+%
+Habib et al.~\cite{habib2019empirical} identified limitations in how websites present and explain deletion and opt-out choices, while other studies found that online services and mobile applications may retain personal information after deletion requests or account deletion~\cite{rupp2022leave,santhanam2022scraping,yan2025sign}.
+%
+These findings highlight the need to evaluate deletion outcomes rather than assume that available controls ensure data removal.
+
+Beyond deletion effectiveness, usable privacy research further shows that users struggle to locate and exercise deletion controls~\cite{ramokapane2017stupid,habib2020scavenger,bumiller2026zombies}, and that their expectations may differ from what services provide~\cite{rao2016expecting}.
+%
+Minaei et al.~\cite{minaei2022deletion} also identified limitations in deletion privacy through users' experiences and expectations.
+%
+These usability studies are loosely related to our work, as they may affect how users choose, understand, and verify data deletion.
+
+\para{Unlearning in machine learning}
+%
+Machine unlearning aims to remove the influence of selected training data from learned models.
+%
+Prior work has developed formal definitions~\cite{garg2020formalizing}, methods that avoid complete retraining~\cite{cao2015towards,bourtoule2021machine}, and certified removal guarantees under specific assumptions~\cite{guo2020certified}, with surveys summarizing these advances~\cite{xu2023machine}.
+%
+However, verification remains challenging~\cite{thudi2022necessity,xue2026towards}.
+%
+Evaluations of language-model unlearning reveal persistent privacy risks, including information leakage after unlearning~\cite{shi2025muse,patil2024sensitive}.
+%
+In-context unlearning can also modify model behavior without removing information from model parameters~\cite{pawelczyk2024incontext}, illustrating why non-retrieval does not necessarily establish erasure.
+%
+Related research shows that language models can memorize and reproduce training data~\cite{carlini2019secret,carlini2021extracting,carlini2023quantifying,lukas2023analyzing}.
+%
+Controlled insertion and extraction of synthetic information provides a useful way to investigate memorization~\cite{carlini2019secret}.
+%
+Building on this principle, our study examines a different setting: whether user-provided information remains retrievable after deletion through the controls of deployed LLM agents, rather than unlearning from model parameters.
+
+\para{Data deletion in LLM agents}
+%
+LLM agents introduce additional privacy challenges by retaining user interactions and derived information.
+%
+As shown in past research, generative agents can store past interactions and generate reflections~\cite{park2023generative}, while agent memory can expose private information to extraction attacks~\cite{wang2025unveiling}, raising questions about whether deletion controls cover retained and derived data.
+%
+Recent studies have examined privacy controls and user perceptions in conversational LLM platforms.
+%
+For example, Li et al.~\cite{li2026privacy} studied six platforms, identifying challenges in accessing, editing, deleting, and sharing conversational data, including ambiguity in natural-language privacy controls.
+%
+Other work examined users' privacy concerns, disclosure decisions, and expectations~\cite{zhang2024fair,malki2025hoovered,kwesi2026impact}, while studies of ChatGPT memory and retrieval-augmented memory highlighted tensions between personalization and privacy~\cite{chen2026relational,zhang2025understanding}.
+%
+Despite these advances, limited empirical evidence connects users' deletion expectations with the observed post-deletion behavior of commercial LLM agents.
+%
+Our study addresses this gap by combining a user survey with controlled post-deletion recall experiments to evaluate information retrievability after different deletion methods and compare observed outcomes with user expectations and platform documentation.

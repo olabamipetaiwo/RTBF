@@ -3121,8 +3121,8 @@
     "injection_ref": "https://copilot.com/chat/conversation/fbit4dbSAWRcz52sAaYYL",
     "injection_ref_legacy": "https://copilot.microsoft.com/chats/fbit4dbSAWRcz52sAaYYL",
     "recall_due_at": "2026-10-19T00:50:34.451948+00:00",
-    "recalled_at": null,
-    "status": "erased"
+    "recalled_at": "2026-11-05T04:37:10.018817+00:00",
+    "status": "recalled"
   },
   "CO-NLF-I0042": {
     "erased_at": "2026-09-18T00:52:07.275708+00:00",
@@ -3231,8 +3231,8 @@
     "injection_ref": "https://copilot.com/chat/conversation/4bL2MJa8X1pqwqA5Xgg3k",
     "injection_ref_legacy": "https://copilot.microsoft.com/chats/4bL2MJa8X1pqwqA5Xgg3k",
     "recall_due_at": "2026-10-24T20:30:42-04:00",
-    "recalled_at": null,
-    "status": "erased"
+    "recalled_at": "2026-11-05T04:40:25.457561+00:00",
+    "status": "recalled"
   },
   "CO-NLF-I0062": {
     "erased_at": "2026-09-18T01:00:29.093266+00:00",
@@ -3381,8 +3381,8 @@
     "injection_ref": "https://copilot.com/chat/conversation/jW168KrewpFKdNZhY2XjF",
     "injection_ref_legacy": "https://copilot.microsoft.com/chats/jW168KrewpFKdNZhY2XjF",
     "recall_due_at": "2026-10-19T01:10:12.622814+00:00",
-    "recalled_at": null,
-    "status": "erased"
+    "recalled_at": "2026-11-05T04:44:19.761793+00:00",
+    "status": "recalled"
   },
   "CO-NLF-I0105": {
     "erased_at": "2026-09-18T01:11:06.554609+00:00",
@@ -3501,8 +3501,8 @@
     "injection_ref": "https://copilot.com/chat/conversation/9Ew13bh7T6NixHN1v97zM",
     "injection_ref_legacy": "https://copilot.microsoft.com/chats/9Ew13bh7T6NixHN1v97zM",
     "recall_due_at": "2026-10-19T01:28:13.217979+00:00",
-    "recalled_at": null,
-    "status": "erased"
+    "recalled_at": "2026-11-05T04:46:35.060724+00:00",
+    "status": "recalled"
   },
   "CO-NLF-I0137": {
     "erased_at": "2026-09-18T01:29:12.172883+00:00",
@@ -3561,8 +3561,8 @@
     "injection_ref": "https://copilot.com/chat/conversation/2e93FnMoRcwshGQZXS9Jt",
     "injection_ref_legacy": "https://copilot.microsoft.com/chats/2e93FnMoRcwshGQZXS9Jt",
     "recall_due_at": "2026-10-19T01:32:06.654411+00:00",
-    "recalled_at": null,
-    "status": "erased"
+    "recalled_at": "2026-11-05T04:56:45.680241+00:00",
+    "status": "recalled"
   },
   "CO-NLF-I0159": {
     "erased_at": "2026-09-18T01:33:09.250048+00:00",
@@ -3621,8 +3621,8 @@
     "injection_ref": "https://copilot.com/chat/conversation/aaXtzqdV4ZZhsVMKzqaE8",
     "injection_ref_legacy": "https://copilot.microsoft.com/chats/aaXtzqdV4ZZhsVMKzqaE8",
     "recall_due_at": "2026-10-19T01:38:16.396193+00:00",
-    "recalled_at": null,
-    "status": "erased"
+    "recalled_at": "2026-11-05T04:35:50.465110+00:00",
+    "status": "recalled"
   },
   "CO-NLF-I0170": {
     "erased_at": "2026-09-18T01:39:12.130071+00:00",
@@ -3661,8 +3661,8 @@
     "injection_ref": "https://copilot.com/chat/conversation/SzMawbj9xeWHeevJMnYn3",
     "injection_ref_legacy": "https://copilot.microsoft.com/chats/SzMawbj9xeWHeevJMnYn3",
     "recall_due_at": "2026-10-19T01:48:50.345842+00:00",
-    "recalled_at": null,
-    "status": "erased"
+    "recalled_at": "2026-11-05T04:50:14.656357+00:00",
+    "status": "recalled"
   },
   "CO-NLF-I0182": {
     "erased_at": "2026-09-23T20:38:15-04:00",
@@ -4071,8 +4071,8 @@
     "injection_ref": "https://copilot.com/chat/conversation/fKqGGiV4JzjKYerRZ4GMu",
     "injection_ref_legacy": "https://copilot.microsoft.com/chats/fKqGGiV4JzjKYerRZ4GMu",
     "recall_due_at": "2026-10-19T02:29:34.099514+00:00",
-    "recalled_at": null,
-    "status": "erased"
+    "recalled_at": "2026-11-05T04:54:08.809958+00:00",
+    "status": "recalled"
   },
   "CO-NLF-I0304": {
     "erased_at": "2026-09-18T02:30:07.012030+00:00",
@@ -4131,8 +4131,8 @@
     "injection_ref": "https://copilot.com/chat/conversation/iEC1GPQANZ3v1uD6kKd5d",
     "injection_ref_legacy": "https://copilot.microsoft.com/chats/iEC1GPQANZ3v1uD6kKd5d",
     "recall_due_at": "2026-10-19T02:41:01.408392+00:00",
-    "recalled_at": null,
-    "status": "erased"
+    "recalled_at": "2026-11-05T04:59:16.730152+00:00",
+    "status": "recalled"
   },
   "CO-NLF-I0322": {
     "erased_at": "2026-09-18T02:42:21.488168+00:00",
