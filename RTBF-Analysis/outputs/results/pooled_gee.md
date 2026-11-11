@@ -1,6 +1,6 @@
 # pooled_gee
 
-_Run at 2026-10-20T00:46:37_
+_Run at 2026-11-11T01:44:02_
 
 ```text
 === Pooled between-method tests: participant-clustered GEE ===
@@ -62,6 +62,56 @@ Pairwise contrasts for effort (lower = less effort); diff = a minus b, adjusted 
         Clear all conversation history.            Delete a specific saved memory or fact. -0.4012 -0.8729   0.0705 0.0955  0.2385
         Clear all conversation history. Type a message asking the AI Chatbot to forget it.  0.3524 -0.0414   0.7461 0.0795  0.2385
 Delete a specific saved memory or fact. Type a message asking the AI Chatbot to forget it.  0.7536  0.2871   1.2201 0.0015  0.0077
+
+======================================================================
+FULL COEFFICIENTS of every primary GEE (reference: first method listed above, scenario = less); robust SEs; OR = exp(beta) for logit models
+======================================================================
+                        outcome    model                                                            term    beta  se_robust       z  p_raw  ci_low  ci_high  odds_ratio  or_ci_low  or_ci_high  omnibus_chi2  omnibus_df  omnibus_p  n_obs  n_clusters  converged
+            permanently deleted    logit                                                       Intercept  0.2193     0.2060  1.0644 0.2872 -0.1845   0.6231      1.2452     0.8315      1.8647        1.9391           3     0.5851    317         165       True
+            permanently deleted    logit                    C(method)[T.Clear all conversation history.] -0.2794     0.3425 -0.8158 0.4146 -0.9506   0.3918      0.7562     0.3865      1.4797        1.9391           3     0.5851    317         165       True
+            permanently deleted    logit            C(method)[T.Delete a specific saved memory or fact.]  0.3004     0.4383  0.6855 0.4930 -0.5586   1.1594      1.3505     0.5720      3.1881        1.9391           3     0.5851    317         165       True
+            permanently deleted    logit C(method)[T.Type a message asking the AI Chatbot to forget it.]  0.2693     0.4147  0.6495 0.5160 -0.5434   1.0821      1.3091     0.5807      2.9509        1.9391           3     0.5851    317         165       True
+            permanently deleted    logit                                             C(scenario)[T.more]  0.2604     0.1394  1.8673 0.0619 -0.0129   0.5337      1.2974     0.9872      1.7051        1.9391           3     0.5851    317         165       True
+        made invisible / hidden    logit                                                       Intercept -0.9402     0.2185 -4.3027 0.0000 -1.3685  -0.5119      0.3906     0.2545      0.5993        6.2631           3     0.0995    317         165       True
+        made invisible / hidden    logit                    C(method)[T.Clear all conversation history.]  0.2510     0.3500  0.7170 0.4734 -0.4351   0.9370      1.2853     0.6472      2.5523        6.2631           3     0.0995    317         165       True
+        made invisible / hidden    logit            C(method)[T.Delete a specific saved memory or fact.] -1.1309     0.6058 -1.8667 0.0619 -2.3182   0.0565      0.3228     0.0985      1.0581        6.2631           3     0.0995    317         165       True
+        made invisible / hidden    logit C(method)[T.Type a message asking the AI Chatbot to forget it.] -0.6449     0.5424 -1.1890 0.2344 -1.7079   0.4181      0.5247     0.1813      1.5191        6.2631           3     0.0995    317         165       True
+        made invisible / hidden    logit                                             C(scenario)[T.more]  0.1753     0.1801  0.9736 0.3303 -0.1777   0.5284      1.1917     0.8372      1.6962        6.2631           3     0.0995    317         165       True
+not referenced in current convo    logit                                                       Intercept -0.0394     0.2024 -0.1948 0.8456 -0.4362   0.3574      0.9613     0.6465      1.4295        7.6797           3     0.0531    317         165       True
+not referenced in current convo    logit                    C(method)[T.Clear all conversation history.] -0.1755     0.3348 -0.5241 0.6002 -0.8317   0.4807      0.8391     0.4353      1.6172        7.6797           3     0.0531    317         165       True
+not referenced in current convo    logit            C(method)[T.Delete a specific saved memory or fact.]  1.0144     0.4148  2.4454 0.0145  0.2014   1.8274      2.7576     1.2231      6.2175        7.6797           3     0.0531    317         165       True
+not referenced in current convo    logit C(method)[T.Type a message asking the AI Chatbot to forget it.]  0.3292     0.3975  0.8281 0.4076 -0.4499   1.1082      1.3898     0.6377      3.0290        7.6797           3     0.0531    317         165       True
+not referenced in current convo    logit                                             C(scenario)[T.more] -0.3750     0.1630 -2.3002 0.0214 -0.6945  -0.0555      0.6873     0.4993      0.9460        7.6797           3     0.0531    317         165       True
+ not referenced in future convo    logit                                                       Intercept  0.2101     0.2077  1.0117 0.3117 -0.1970   0.6172      1.2339     0.8212      1.8538        3.6958           3     0.2962    317         165       True
+ not referenced in future convo    logit                    C(method)[T.Clear all conversation history.] -0.4702     0.3418 -1.3757 0.1689 -1.1401   0.1997      0.6249     0.3198      1.2210        3.6958           3     0.2962    317         165       True
+ not referenced in future convo    logit            C(method)[T.Delete a specific saved memory or fact.]  0.3829     0.4302  0.8901 0.3734 -0.4603   1.2262      1.4666     0.6311      3.4081        3.6958           3     0.2962    317         165       True
+ not referenced in future convo    logit C(method)[T.Type a message asking the AI Chatbot to forget it.] -0.1302     0.4272 -0.3048 0.7605 -0.9674   0.7071      0.8779     0.3801      2.0280        3.6958           3     0.2962    317         165       True
+ not referenced in future convo    logit                                             C(scenario)[T.more] -0.0798     0.1557 -0.5124 0.6084 -0.3850   0.2254      0.9233     0.6804      1.2529        3.6958           3     0.2962    317         165       True
+    no longer used for training    logit                                                       Intercept -1.0343     0.2364 -4.3747 0.0000 -1.4976  -0.5709      0.3555     0.2237      0.5650        5.2719           3     0.1529    317         165       True
+    no longer used for training    logit                    C(method)[T.Clear all conversation history.] -0.6960     0.4005 -1.7378 0.0822 -1.4810   0.0890      0.4986     0.2274      1.0930        5.2719           3     0.1529    317         165       True
+    no longer used for training    logit            C(method)[T.Delete a specific saved memory or fact.] -0.4848     0.4609 -1.0519 0.2929 -1.3881   0.4185      0.6158     0.2496      1.5197        5.2719           3     0.1529    317         165       True
+    no longer used for training    logit C(method)[T.Type a message asking the AI Chatbot to forget it.]  0.3869     0.4595  0.8420 0.3998 -0.5137   1.2874      1.4724     0.5983      3.6235        5.2719           3     0.1529    317         165       True
+    no longer used for training    logit                                             C(scenario)[T.more]  0.1852     0.1702  1.0878 0.2767 -0.1485   0.5188      1.2034     0.8620      1.6801        5.2719           3     0.1529    317         165       True
+          not sure what happens    logit                                                       Intercept -1.9587     0.3347 -5.8518 0.0000 -2.6148  -1.3027      0.1410     0.0732      0.2718        2.0646           3     0.5591    317         165       True
+          not sure what happens    logit                    C(method)[T.Clear all conversation history.] -0.3304     0.5715 -0.5781 0.5632 -1.4505   0.7898      0.7187     0.2344      2.2029        2.0646           3     0.5591    317         165       True
+          not sure what happens    logit            C(method)[T.Delete a specific saved memory or fact.] -0.6247     0.8113 -0.7700 0.4413 -2.2149   0.9655      0.5354     0.1092      2.6261        2.0646           3     0.5591    317         165       True
+          not sure what happens    logit C(method)[T.Type a message asking the AI Chatbot to forget it.] -0.9890     0.7787 -1.2701 0.2040 -2.5152   0.5372      0.3719     0.0808      1.7112        2.0646           3     0.5591    317         165       True
+          not sure what happens    logit                                             C(scenario)[T.more]  0.0815     0.2460  0.3314 0.7403 -0.4007   0.5638      1.0850     0.6699      1.7573        2.0646           3     0.5591    317         165       True
+                     protection gaussian                                                       Intercept  3.5688     0.0899 39.7146 0.0000  3.3927   3.7450         NaN        NaN         NaN        3.7066           3     0.2949    317         165       True
+                     protection gaussian                    C(method)[T.Clear all conversation history.]  0.1359     0.1524  0.8916 0.3726 -0.1628   0.4346         NaN        NaN         NaN        3.7066           3     0.2949    317         165       True
+                     protection gaussian            C(method)[T.Delete a specific saved memory or fact.]  0.0135     0.1584  0.0850 0.9323 -0.2971   0.3240         NaN        NaN         NaN        3.7066           3     0.2949    317         165       True
+                     protection gaussian C(method)[T.Type a message asking the AI Chatbot to forget it.]  0.2431     0.1429  1.7011 0.0889 -0.0370   0.5232         NaN        NaN         NaN        3.7066           3     0.2949    317         165       True
+                     protection gaussian                                             C(scenario)[T.more]  0.1239     0.0463  2.6783 0.0074  0.0332   0.2146         NaN        NaN         NaN        3.7066           3     0.2949    317         165       True
+                         effort gaussian                                                       Intercept  1.6523     0.0748 22.0975 0.0000  1.5057   1.7988         NaN        NaN         NaN       23.0522           3     0.0000    317         165       True
+                         effort gaussian                    C(method)[T.Clear all conversation history.]  0.4503     0.1592  2.8279 0.0047  0.1382   0.7624         NaN        NaN         NaN       23.0522           3     0.0000    317         165       True
+                         effort gaussian            C(method)[T.Delete a specific saved memory or fact.]  0.8515     0.2022  4.2119 0.0000  0.4553   1.2477         NaN        NaN         NaN       23.0522           3     0.0000    317         165       True
+                         effort gaussian C(method)[T.Type a message asking the AI Chatbot to forget it.]  0.0979     0.1474  0.6644 0.5064 -0.1910   0.3868         NaN        NaN         NaN       23.0522           3     0.0000    317         165       True
+                         effort gaussian                                             C(scenario)[T.more] -0.0184     0.0491 -0.3743 0.7082 -0.1146   0.0779         NaN        NaN         NaN       23.0522           3     0.0000    317         165       True
+                   benefit_loss gaussian                                                       Intercept  2.9829     0.1018 29.2989 0.0000  2.7834   3.1824         NaN        NaN         NaN        6.9397           3     0.0738    317         165       True
+                   benefit_loss gaussian                    C(method)[T.Clear all conversation history.]  0.1075     0.1713  0.6274 0.5304 -0.2283   0.4433         NaN        NaN         NaN        6.9397           3     0.0738    317         165       True
+                   benefit_loss gaussian            C(method)[T.Delete a specific saved memory or fact.]  0.4580     0.1910  2.3976 0.0165  0.0836   0.8325         NaN        NaN         NaN        6.9397           3     0.0738    317         165       True
+                   benefit_loss gaussian C(method)[T.Type a message asking the AI Chatbot to forget it.] -0.0865     0.1925 -0.4494 0.6532 -0.4638   0.2908         NaN        NaN         NaN        6.9397           3     0.0738    317         165       True
+                   benefit_loss gaussian                                             C(scenario)[T.more]  0.0267     0.0677  0.3946 0.6931 -0.1060   0.1595         NaN        NaN         NaN        6.9397           3     0.0738    317         165       True
 
 saved -> outputs/tables/pooled_obs_*.csv, pooled_gee_*.csv
 ```

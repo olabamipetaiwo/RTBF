@@ -1,6 +1,6 @@
 # recall_refusals
 
-_Run at 2026-11-02T11:13:35_
+_Run at 2026-11-10T22:04:15_
 
 ```text
 Refusals among cells where the token did not come back (scoring unchanged; reported separately).

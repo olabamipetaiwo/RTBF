@@ -1,6 +1,6 @@
 # willingness
 
-_Run at 2026-10-20T00:48:10_
+_Run at 2026-11-11T01:30:56_
 
 ```text
 === Willingness to delete: less vs more sensitive (paired Wilcoxon) ===

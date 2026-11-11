@@ -1,32 +1,43 @@
-"""Provenance table: where every number in Methods and Results comes from.
+"""Provenance table: where every number in the paper's data sections comes from.
 
-Reads paper/paper.tex between \\section{Methodology} and \\section{Discussion},
+Reads the section files of the current paper (../paper/sections/: abstract, intro,
+user_study, tech_analysis, and appendix up to \\section{Survey Questions}),
 extracts every number, and looks for it in the saved outputs of the analysis
 scripts (SciPy outputs in scipy_analysis/ and src/ outputs). For each paper line
 the saved output that explains most of its numbers is reported as the line's
 source; a number that this source does not print is listed as an exception and
 must be explained either by another saved output or by an entry in MANUAL below.
 
-Run: python -m src.number_sources   (writes docs/number_sources.md)
+Run: python -m src.number_sources [--root RTBF-Analysis dir]   (writes docs/number_sources.md)
+--root defaults to this script's project; pass it to check another checkout.
 Rerun after any change to the paper's numbers or to a saved output.
 """
 from __future__ import annotations
 
+import argparse
 import collections
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-PAPER = ROOT / "paper" / "paper.tex"
-OUT = ROOT / "docs" / "number_sources.md"
+# File name -> heading after which the file stops being checked (None = whole file).
+PAPER_FILES: dict[str, str | None] = {
+    "abstract.tex": None,
+    "intro.tex": None,
+    "user_study.tex": None,
+    "tech_analysis.tex": None,
+    "appendix.tex": "\\section{Survey Questions}",
+}
 
-SOURCES = (sorted((ROOT / "outputs" / "results").glob("*.md"))
-           + sorted((ROOT / "outputs" / "tables").glob("*.csv"))
-           + sorted((ROOT / "scipy_analysis" / "outputs" / "results").glob("*.md"))
-           + sorted((ROOT / "scipy_analysis" / "outputs" / "tables").glob("*.csv"))
-           + [ROOT.parent / "RTBF-Prompt" / "results_217" / "run_log.md",
-              ROOT.parent / "RTBF-Prompt" / "results" / "prompt_clean.md",
-              ROOT.parent / "Compare" / "Prompts" / "Fourth Pass" / "agreement_report.md"])
+
+def sources(root: Path) -> list[Path]:
+    return (sorted((root / "outputs" / "results").glob("*.md"))
+           + sorted((root / "outputs" / "tables").glob("*.csv"))
+           + sorted((root / "scipy_analysis" / "outputs" / "results").glob("*.md"))
+           + sorted((root / "scipy_analysis" / "outputs" / "tables").glob("*.csv"))
+           + [root.parent / "RTBF-Prompt" / "results_217" / "run_log.md",
+              root.parent / "RTBF-Prompt" / "results" / "prompt_clean.md",
+              root.parent / "Compare" / "Prompts" / "Fourth Pass" / "agreement_report.md"])
+
 
 # Numbers that no analysis output prints, each with the reason and the place it
 # is recorded. A number is listed by its text as it appears in the paper.
@@ -80,13 +91,21 @@ CONFIRMED: dict[str, str] = {
 NUM = re.compile(r"(?<![\w.])[-+]?(?:\d+\.\d+|\.\d+|\d+)(?![\w])")
 FRAC = re.compile(r"(\d+)\s*/\s*(\d+)")
 STRIP = re.compile(r"\\cite\w*\{[^}]*\}|\\label\{[^}]*\}|\\S?\\?ref\{[^}]*\}|~\\ref\{[^}]*\}"
-                   r"|\\url\{[^}]*\}|\\(?:sub)*section\{[^}]*\}")
+                   r"|\\url\{[^}]*\}|\\(?:sub)*section\{[^}]*\}|\\rotatebox\{\d+\}"
+                   r"|\\(?:multicolumn|cmidrule)(?:\([^)]*\))?\{[^}]*\}"
+                   # LaTeX lengths: 0.42\textheight, 3pt, -2mm
+                   r"|[-\d.]+\s*(?:\\(?:column|text|line)(?:width|height)|pt|em|ex|mm|cm)\b"
+                   # design parameters stated as durations: "48 hours", "30 days"
+                   r"|\d+(?:\.\d+)?\s*(?:hours|days)\b")
+# Layout lines that hold no results.
+SKIP_PREFIXES = ("%", "\\begin{tabular", "\\setlength", "\\includegraphics", "\\vspace",
+                 "\\begin{figure", "\\begin{table", "\\begin{enumerate")
 
 
-def load_values() -> dict[Path, set[float]]:
+def load_values(root: Path) -> dict[Path, set[float]]:
     """Every number in each source, plus x100 (stored fractions) and a/b ratios."""
     values: dict[Path, set[float]] = {}
-    for f in SOURCES:
+    for f in sources(root):
         if not f.exists():
             continue
         text = f.read_text(errors="ignore")
@@ -106,25 +125,38 @@ def hits(value: float, decimals: int, values: dict[Path, set[float]]) -> list[Pa
     return [f for f, vals in values.items() if any(abs(x - abs(value)) < tol for x in vals)]
 
 
-def main() -> None:
-    lines = PAPER.read_text().split("\n")
-    start = next(i for i, l in enumerate(lines) if l.startswith("\\section{Methodology}"))
-    end = next(i for i, l in enumerate(lines) if l.startswith("\\section{Discussion}"))
-    app_start = next(i for i, l in enumerate(lines) if l.startswith("\\section{Statistical Details}"))
-    app_end = next(i for i, l in enumerate(lines) if l.startswith("\\section{Survey Instrument}"))
-    values = load_values()
+def paper_lines(root: Path) -> list[tuple[str, int, str]]:
+    """(file name, 1-based line number, text) for every checked line of the paper."""
+    out = []
+    for name, stop in PAPER_FILES.items():
+        for i, line in enumerate((root.parent / "paper" / "sections" / name).read_text().split("\n")):
+            if stop and line.startswith(stop):
+                break
+            out.append((name, i + 1, line))
+    return out
 
-    heading = "Methodology"
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
+    root = ap.parse_args().root.resolve()
+    out_path = root / "docs" / "number_sources.md"
+    values = load_values(root)
+
+    heading = "-"
+    current = None
     rows, exceptions = [], []
-    for i in [*range(start, end), *range(app_start, app_end)]:
-        raw = lines[i]
-        m = re.match(r"\\(?:sub)*section\{([^}]*)\}", raw)
+    for name, ln, raw in paper_lines(root):
+        if name != current:
+            current, heading = name, name.removesuffix(".tex")
+        where = f"{name}:{ln}"
+        m = re.match(r"\\(?:sub)*section\*?\{([^}]*)\}", raw)
         if m:
             heading = m.group(1)
         m = re.match(r"\\textbf\{([^}]*)\}", raw)
         label = m.group(1).rstrip(".") if m else None
         # Comments, and table column specs (widths such as 0.25\columnwidth are not results).
-        if raw.lstrip().startswith(("%", "\\begin{tabular}")):
+        if raw.lstrip().startswith(SKIP_PREFIXES):
             continue
         body = STRIP.sub("", raw).replace("\\%", "").replace("$", "")
         found = []
@@ -142,12 +174,13 @@ def main() -> None:
         other = [f"{t} ({', '.join(sorted({x.name for x in h})[:2])})" for t, h in found
                  if h and best not in h and t not in MANUAL and t not in CONFIRMED]
         manual = [t for t, _ in found if t in MANUAL]
-        rows.append((i + 1, heading, len(found), best, manual))
+        rows.append((where, heading, len(found), best, manual))
         if loose or other:
-            exceptions.append((i + 1, heading, best, loose, other))
+            exceptions.append((where, heading, best, loose, other))
 
     total = sum(r[2] for r in rows)
-    out = ["# Number sources (Methods and Results)", "",
+    out = ["# Number sources (paper data sections)", "",
+           f"Files: {', '.join(PAPER_FILES)} (appendix up to the survey questions).", "",
            "Generated by `python -m src.number_sources`. For each paper line with numbers, the saved",
            "output that prints most of them. Exceptions are numbers that source does not print.", "",
            f"Lines with numbers: {len(rows)}; numbers checked: {total}; "
@@ -165,12 +198,11 @@ def main() -> None:
         out.append(f"| {ln} | {h} | {best.name if best else '-'} | {', '.join(loose) or '-'} | {', '.join(other) or '-'} |")
     out += ["", "## Line to source", "", "| Line | Section | Numbers | Main source |", "|---|---|---|---|"]
     for ln, h, n, best, _ in rows:
-        out.append(f"| {ln} | {h} | {n} | {best.relative_to(ROOT.parent).as_posix() if best else 'manual list'} |")
-    OUT.parent.mkdir(exist_ok=True)
-    OUT.write_text("\n".join(out) + "\n")
-    print("\n".join(out[:5]))
-    print("\n".join(l for l in out if l.startswith("| ") and l.split("|")[1].strip().isdigit() and int(l.split("|")[1]) in {e[0] for e in exceptions}))
-    print("saved ->", OUT)
+        out.append(f"| {ln} | {h} | {n} | {best.relative_to(root.parent).as_posix() if best else 'manual list'} |")
+    out_path.parent.mkdir(exist_ok=True)
+    out_path.write_text("\n".join(out) + "\n")
+    print("\n".join(out[:7]))
+    print(f"saved -> {out_path}")
 
 
 if __name__ == "__main__":

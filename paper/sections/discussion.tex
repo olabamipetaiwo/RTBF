@@ -1,15 +1,15 @@
 \section{Discussion}
 \label{sec:discussion}
 
-This section discusses the implications of our findings for improving data deletion in LLM agents, the rationale for using user-facing post-deletion analysis rather than systematic auditing, and the limitations of our study.
+This section discusses implications for data deletion in LLM agents, the rationale for user-facing post-deletion analysis rather than systematic auditing, and study limitations.
 
 \subsection{Implications and Recommendations}
 
-Our findings identify several challenges, such as differences in deletion scope across agents, unreliable deletion feedback, and limited means for users to verify deletion outcomes.
+Our findings reveal deletion methods that reach only some locations where agents retain information, unreliable feedback, and limited ways to verify outcomes.
 %
-These challenges motivate recommendations for LLM platforms, regulators, users, and researchers, which we summarize in Table~\ref{tab:recommendations} and describe below.
-
-
+Although largely consistent with agents' documentation, this behavior poses privacy risks: confirmations and responses in the original conversation may indicate deletion even when information remains retrievable.
+%
+Table~\ref{tab:recommendations} summarizes our recommendations for platforms, regulators, users, and researchers.
 
 \begin{table}[!t]
 \centering
@@ -31,88 +31,80 @@ Platforms, researchers, regulators &
 Develop and promote standardized evaluation protocols that combine user-facing post-deletion recall tests with authorized backend assessments, to enable independent verification while protecting providers' proprietary information. \\
 \addlinespace
 Users &
-Avoid treating deletion confirmations or disappearing interface entries as definitive evidence of data erasure. \\
+Avoid treating deletion confirmations or disappearing interface entries as definitive evidence of data removal. \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-
 \para{Clarifying deletion scope and outcomes}
 %
-Our experiments reveal that deletion methods may leave information retrievable through other data locations.
+Deletion methods may leave information retrievable through other locations. For example, deleting a Claude conversation did not necessarily remove its saved memory, while ChatGPT sometimes retrieved information after its saved-memory entry was removed (Section~\ref{sec:rq3}).
 %
-For example, deleting a conversation in Claude did not necessarily remove information retained in saved memory, while ChatGPT sometimes retrieved information after its corresponding saved memory entry was removed (Section~\ref{sec:rq3}).
+Although platforms document some distinctions, they do not always explain the observed behavior or what remains retrievable.
 %
-Although platforms document some distinctions between deletion methods, their documentation does not always clearly explain the observed post-deletion behavior or the potential for information to remain retrievable.
-%
-Based on this, we recommend that \textit{platforms} (i.e., LLM agent providers) explicitly communicate the scope and limitations of each deletion method, including what information may remain accessible and whether users need to take more actions to achieve their intended deletion outcomes.
-
+We recommend that \textit{platforms} clarify each method's scope and limitations, including what may remain accessible and whether further actions are needed.
 
 \para{Improving deletion feedback and verification}
 %
-Users often relied on agents' responses, subsequent queries, or interface changes to assess deletion, yet these signals did not consistently correspond to observed recall outcomes (Section~\ref{sec:expectation}). In particular, an acknowledgment of deletion does not establish that information is no longer retrievable. 
+Users relied on agents' responses, follow-up queries, and interface changes, but these signals did not reliably indicate recall outcomes (Section~\ref{sec:expectation}). Deletion acknowledgments alone do not establish that information is no longer retrievable.
 %
-To better inform users, a potential suggest to platforms is to provide more specific feedback about the scope and status of deletion, supported by mechanisms that allow users to inspect retained information or obtain meaningful confirmation of its removal. 
+Platforms should provide specific feedback on deletion scope and status, with mechanisms to inspect retained information or obtain meaningful confirmation of removal.
 %
-Such transparency would better address participants' expressed desire to understand what had been deleted and what might remain (Section~\ref{sec:qual_results}).
+This would address participants' desire to know what was deleted and what might remain (Section~\ref{sec:qual_results}).
 
 \para{Enabling independently verifiable data deletion}
 %
-Our findings highlight the need for more transparent and independently verifiable data deletion practices in LLM agents.
+User-facing recall tests can identify retrievable information but cannot establish how data are processed, retained, or deleted internally.
 %
-While user-facing post-deletion analysis can identify information that remains retrievable, it cannot establish the ground truth of how data are processed, retained, and deleted within the underlying systems.
+We encourage providers to work with researchers and auditors on standardized protocols combining recall tests with authorized assessments of backend retention and deletion.
 %
-Hence, we encourage LLM agent providers to collaborate with researchers and auditors to develop standardized evaluation protocols that combine user-facing recall tests with authorized assessments of backend data retention and deletion.
-%
-Such protocols should enable independent verification of deletion outcomes without requiring providers to disclose proprietary system details or intellectual property.
+These protocols should enable independent verification without requiring disclosure of proprietary information.
 
 \subsection{User-Facing Post-Deletion Analysis vs. Systematic Auditing}
 \label{subsec:vs_audit}
 
-Our post-deletion analysis evaluates deletion from the user's perspective, without requiring access to an agent's internal systems. By injecting controlled information, issuing deletion requests, and testing recall in subsequent conversations, our DIDR pipeline examines whether information remains retrievable after deletion. This approach captures a practical aspect of deletion that matters to users: whether information they attempted to delete can resurface.
+Our DIDR pipeline evaluates deletion from the user's perspective by injecting controlled information, requesting deletion, and testing recall in subsequent conversations without access to internal systems. It measures whether information users attempted to delete remains retrievable.
 
-However, \emph{post-deletion recall is not equivalent to verification of data erasure}. Successful retrieval provides evidence that information remains accessible to the agent, but unsuccessful retrieval does not establish that it has been removed. Information may remain stored without being returned in a particular interaction. This distinction is especially important in our experiments, where more than half of the test cases were classified as \emph{can't tell} because initial storage could not be established (Section~\ref{sec:rq3}).
+However, \emph{post-deletion recall is not equivalent to verification of data removal}. Successful retrieval indicates that information remains accessible, whereas unsuccessful retrieval does not establish removal: stored information may not be returned in a particular interaction. In our experiments, more than half of the test cases were classified as \emph{can't tell} because initial storage could not be established (Section~\ref{sec:rq3}).
 
-Systematic auditing of actual data retention requires a complementary approach. With appropriate access, such audits could examine conversation records, saved memories, logs, backups, and derived data to determine whether deletion propagates across relevant storage locations. Evaluating removal of information incorporated into model training presents additional challenges and requires different methods~\cite{bourtoule2021machine}. Such investigations generally require cooperation from providers or authorized access to their internal systems.
+Systematic auditing complements this approach. With authorized access, it could examine conversation records, saved memories, logs, backups, and derived data to assess whether deletion propagates across storage locations. Removing information incorporated into model training requires different methods~\cite{bourtoule2021machine}. Such audits generally require provider cooperation or authorized access to internal systems.
 
-We note that the two approaches answer different questions: user-facing analysis evaluates \emph{observable post-deletion behavior}, whereas systematic auditing evaluates \emph{underlying data retention and removal}. 
+Thus, user-facing analysis measures \emph{observable post-deletion behavior}, while systematic auditing examines \emph{underlying data retention and removal}.
 %
-Our findings can help guide more comprehensive audits by identifying discrepancies between deletion claims and subsequent behavior, as well as agents and deletion methods warranting closer examination.
+Our findings can guide audits toward discrepancies between deletion claims and behavior, and toward agents and methods requiring closer examination.
 
 \subsection{Limitations and Future Research}
 
 \para{Survey sample and self-reported behavior}
 %
-Our survey focused on U.S. adults recruited through Prolific who had prior experience deleting data from LLM agents.
+Our Prolific survey included U.S. adults with prior experience deleting data from LLM agents.
 %
-The sample skewed toward younger and more educated participants and may not represent broader populations, particularly users unfamiliar with deletion controls.
+Participants skewed younger and more educated, limiting generalizability, particularly to users unfamiliar with deletion controls.
 %
-Additionally, participants self-reported their experiences and selected deletion methods in hypothetical scenarios involving location information, which may not reflect their actual behavior in other contexts.
+Their self-reported experiences and choices in hypothetical location-based scenarios may not reflect behavior in other contexts.
 %
-Our post-deletion analysis focused on deletion methods frequently used by survey participants, leaving less commonly used methods unexamined.
+Our post-deletion analysis also focused on frequently used methods, leaving less common methods unexamined.
 %
-These limitations constrain the generalizability and comprehensiveness of our findings, motivating future studies involving more diverse populations, broader deletion methods, and real-world deletion behaviors.
+Future studies should include more diverse populations, broader deletion methods, and real-world deletion behaviors.
 
 \para{Experimental scope and agent evolution}
 %
-Our experiments examined six commercial LLM agents using free consumer accounts in 2026, with recall tested at least 30 days after deletion.
+We tested six commercial agents on free U.S. consumer accounts in 2026, with recall at least 30 days after deletion. Paid-only controls were not evaluated (Section~\ref{sec:tech_analysis}).
 %
-Some deletion controls available only on paid plans were not evaluated (Section~\ref{sec:tech_analysis}).
+Capabilities and interfaces changed during the study, including those of Copilot and Claude. After a Copilot interface migration, some accounts lacked a saved-memory section, preventing saved-memory deletion and memory-page recall checks.
 %
-Agent capabilities and interfaces also evolved during the study, including changes to Copilot and Claude.
+Results therefore reflect the tested configurations, not all versions or settings. Post-deletion behavior may vary across versions, account types, and regions, even if fundamental deletion mechanisms change less frequently.
 %
-Accordingly, our results reflect the agents and configurations tested during the study rather than their behavior across all versions and settings.
-%
-Although fundamental changes to agents' data deletion mechanisms may be less frequent, post-deletion behavior may still vary across versions, account types, and geographic regions.
-%
-Therefore, we believe that future longitudinal and cross-configuration studies will provide meaningful information about the consistency and evolution of data deletion behavior in LLM agents.
+Longitudinal and cross-configuration studies could assess the consistency and evolution of this behavior.
 
 \textbf{Observability of deletion outcomes.}
 %
-Our analysis relies on externally observable recall rather than direct inspection of internal storage.
+Our analysis relies on observable recall rather than internal storage inspection. Because unsuccessful retrieval does not establish removal, cases without evidence of initial storage were classified as \emph{can't tell}.
 %
-Since failure to retrieve information does not establish its erasure, we classified cases without evidence of initial storage as \emph{can't tell}.
+This applied to 471 of 865 test cases (54.5\%); most cases for DeepSeek, Gemini, and Perplexity could not be classified as recall success or recall failed, limiting comparisons of deletion outcomes for these agents.
 %
-Thus, our findings characterize observable post-deletion behavior rather than actual data removal from underlying systems.
+We also lacked a no-deletion baseline and pre-deletion recall check, so \textit{recall failed} cannot be attributed to deletion. Our results establish whether information remained retrievable, not which methods or agents delete it most effectively.
 %
-We discussed the rationale for adopting user-facing post-deletion analysis (versus systematic auditing) in Section~\ref{subsec:vs_audit}.
+We omitted pre-deletion recall by design: users typically request deletion without testing recall first, and such a test could itself cause information to be stored again.
+%
+Our findings therefore concern observable behavior rather than actual removal from underlying systems, as discussed in Section~\ref{subsec:vs_audit}.

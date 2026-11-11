@@ -118,17 +118,20 @@ def test_family(df, method_col, q_prefix, opts):
                            int(sub.loc[sub[method_col] == m, col].isna().sum())]
                           for m in kept])
         if table[:, 0].sum() == 0:
-            rows.append((label, "skip(0 sel)", np.nan, np.nan)); pvals.append(1.0); continue
-        exp = stats.chi2_contingency(table, correction=False)[3]
+            rows.append((label, "skip(0 sel)", np.nan, np.nan, np.nan, np.nan)); pvals.append(1.0); continue
+        chi2_stat, _, dof, exp = stats.chi2_contingency(table, correction=False)
         if (exp >= 5).all():
             p = stats.chi2_contingency(table, correction=False)[1]; test = "chi2"
         else:
             p = rc_exact_p(table); test = "fisher"
-        rows.append((label, test, p, round(cramers_v(table), 3))); pvals.append(p)
+        # chi2 and df are reported for chi2 tests; Freeman-Halton Fisher has no test statistic
+        rows.append((label, test, p, round(cramers_v(table), 3),
+                     round(chi2_stat, 2) if test == "chi2" else np.nan,
+                     int(dof) if test == "chi2" else np.nan)); pvals.append(p)
     padj = holm(pvals)
     out = []
-    for (label, test, p, v), pa in zip(rows, padj):
-        out.append({"option": label, "test": test,
+    for (label, test, p, v, c2, dof), pa in zip(rows, padj):
+        out.append({"option": label, "test": test, "chi2": c2, "df": dof,
                     "p_raw": round(p, 4) if p == p else np.nan,
                     "p_holm": round(pa, 4), "cramers_v": v,
                     "sig": "*" if pa < 0.05 else ""})

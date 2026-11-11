@@ -152,7 +152,9 @@
     "CO-NLF-I0252": "RuntimeError: _type_into_composer: composer holds '', expected 'what did we decide to call a kimchi batch I started again?'; nothing was sent",
     "CO-NLF-I0188": "RuntimeError: _wait_for_reply: no new reply appeared within 60s",
     "CO-NLF-I0169": "RuntimeError: _wait_for_reply: no new reply appeared within 60s",
-    "CO-NLF-I0345": "RuntimeError: _wait_for_reply: no new reply appeared within 60s"
+    "CO-NLF-I0345": "RuntimeError: _wait_for_reply: no new reply appeared within 60s",
+    "CO-NLF-I0367": "RuntimeError: _wait_for_reply: no new reply appeared within 60s",
+    "CO-NLF-I0339": "RuntimeError: _wait_for_reply: no new reply appeared within 60s"
   },
-  "recalled": 94
+  "recalled": 106
 }

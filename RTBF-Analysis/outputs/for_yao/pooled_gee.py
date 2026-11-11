@@ -1,0 +1,344 @@
+"""
+Between-method tests for the pooled survey responses (both scenarios).
+
+Model per outcome: outcome ~ method + scenario, GEE clustered on participant,
+independence working correlation, robust SEs. Binary expectation options use
+a logit GEE; the three Likert scales use a Gaussian GEE. Omnibus test: Wald
+chi-square on the method coefficients, Holm-adjusted within each family
+(7 expectation options, 3 scales). Reference method: single conversation.
+Only methods chosen by at least 14 distinct participants are modelled.
+"""
+
+import warnings
+from itertools import combinations
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+from scipy import stats
+from statsmodels.stats.multitest import multipletests
+from statsmodels.tools.sm_exceptions import ConvergenceWarning
+
+from src.reporting import save_report
+from src.screen import get_bases
+from src.stats import SCALES, scale_score
+from src.verify import cramers_v
+
+
+SURVEY_XLSX = "survey/RTBF_October+19,+2026_22.37.xlsx"
+TABLES_DIR = Path("outputs/tables")
+OTHER = "Other (Please specify)"
+N_FLOOR = 14
+ALPHA = 0.05
+
+SCENARIOS = {"less": ("Q4", "Q4.2", "Q4.4"), "more": ("Q5", "Q5.2", "Q5.4")}
+EXP_OPTS = {
+    1: "permanently deleted", 2: "made invisible / hidden",
+    3: "not referenced in current convo", 4: "not referenced in future convo",
+    5: "no longer used for training", 6: "not sure what happens", 7: "other",
+}
+SCALE_DIRECTION = {"protection": "higher = more protective", "effort": "lower = less effort",
+                   "benefit_loss": "lower = less benefit lost"}
+
+
+def build_observation_frame(paired: pd.DataFrame) -> pd.DataFrame:
+    """One row per participant-scenario response with a named method.
+
+    Columns: pid, scenario, method, exp_1..exp_7 (0/1), protection, effort,
+    benefit_loss. "Other (Please specify)" is filtered per scenario, same
+    convention as stats.between_method, so a respondent who answered
+    "Other" in only one scenario still contributes the other.
+    """
+    rows = []
+    for scenario, (base, method_col, exp_prefix) in SCENARIOS.items():
+        scores = {s: scale_score(paired, base, q, k) for s, (q, k) in SCALES.items()}
+        for pid in paired.index:
+            method = paired.at[pid, method_col]
+            if pd.isna(method) or method == OTHER:
+                continue
+            row = {"pid": pid, "scenario": scenario, "method": method}
+            row |= {f"exp_{j}": int(pd.notna(paired.at[pid, f"{exp_prefix}_{j}"])) for j in EXP_OPTS}
+            row |= {s: scores[s].loc[pid] for s in SCALES}
+            rows.append(row)
+    return pd.DataFrame(rows).sort_values(["pid", "scenario"]).reset_index(drop=True)
+
+
+def qualifying_methods(obs: pd.DataFrame, n_floor: int = N_FLOOR) -> list[str]:
+    """Methods with at least `n_floor` distinct participants, largest first
+    (the first one becomes the regression reference level)."""
+    people = obs.groupby("method")["pid"].nunique().sort_values(ascending=False)
+    return people[people >= n_floor].index.tolist()
+
+
+def _model_frame(obs: pd.DataFrame, methods: list[str]) -> pd.DataFrame:
+    sub = obs[obs["method"].isin(methods)].copy()
+    sub["method"] = pd.Categorical(sub["method"], categories=methods)
+    return sub.sort_values(["pid", "scenario"])
+
+
+def fit_gee(data: pd.DataFrame, outcome: str, family: sm.families.Family, exchangeable: bool = False):
+    """GEE clustered on participant with robust SEs.
+
+    Independence working correlation by default (see module docstring);
+    `exchangeable=True` fits the sensitivity variant. Returns
+    (result, estimated_within_person_correlation, converged); the
+    correlation is NaN under independence.
+    """
+    cov_struct = sm.cov_struct.Exchangeable() if exchangeable else sm.cov_struct.Independence()
+    model = smf.gee(f"{outcome} ~ C(method) + C(scenario)", groups="pid", data=data,
+                    family=family, cov_struct=cov_struct)
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always")
+        result = model.fit()
+    converged = not any(issubclass(w.category, ConvergenceWarning) for w in caught)
+    rho = float(model.cov_struct.dep_params) if exchangeable else np.nan
+    return result, rho, converged
+
+
+def method_p_exchangeable(data: pd.DataFrame, outcome: str, family: sm.families.Family) -> tuple[float, float]:
+    """Sensitivity: (Wald p, within-person correlation) under exchangeable
+    working correlation; (NaN, NaN) if the fit is not estimable."""
+    try:
+        result, rho, _ = fit_gee(data, outcome, family, exchangeable=True)
+        return method_wald(result)[2], rho
+    except (np.linalg.LinAlgError, ValueError):
+        return np.nan, np.nan
+
+
+def method_wald(result) -> tuple[float, int, float]:
+    """Wald chi-square test that all method coefficients are zero."""
+    idx = [i for i, name in enumerate(result.params.index) if name.startswith("C(method)")]
+    restriction = np.zeros((len(idx), len(result.params)))
+    restriction[np.arange(len(idx)), idx] = 1.0
+    wald = result.wald_test(restriction, scalar=True, use_f=False)
+    return float(wald.statistic), len(idx), float(wald.pvalue)
+
+
+def pairwise_contrasts(result, methods: list[str]) -> pd.DataFrame:
+    """All pairwise method contrasts (a - b) from a fitted GEE, Holm-adjusted."""
+    names = list(result.params.index)
+
+    def column(method: str) -> int | None:
+        key = f"C(method)[T.{method}]"
+        return names.index(key) if key in names else None   # None = reference level
+
+    rows = []
+    for a, b in combinations(methods, 2):
+        contrast = np.zeros(len(names))
+        if (i := column(a)) is not None:
+            contrast[i] += 1.0
+        if (j := column(b)) is not None:
+            contrast[j] -= 1.0
+        test = result.t_test(contrast.reshape(1, -1))
+        low, high = np.ravel(test.conf_int())[:2]
+        rows.append({"a": a, "b": b, "diff": float(np.ravel(test.effect)[0]),
+                     "ci_low": float(low), "ci_high": float(high),
+                     "p_raw": float(np.ravel(test.pvalue)[0])})
+    out = pd.DataFrame(rows)
+    out["p_holm"] = multipletests(out["p_raw"], method="holm")[1]
+    return out
+
+
+def _holm_with_unestimable(p_raw: pd.Series) -> np.ndarray:
+    """Holm over the whole family; inestimable (NaN) options count as p = 1."""
+    return multipletests(p_raw.fillna(1.0).to_numpy(), method="holm")[1]
+
+
+def expectation_family(obs: pd.DataFrame, methods: list[str]) -> pd.DataFrame:
+    """Method effect on each of the 7 expectation options (select-all items)."""
+    data = _model_frame(obs, methods)
+    rows = []
+    for j, label in EXP_OPTS.items():
+        col = f"exp_{j}"
+        per = data.groupby("method", observed=True)[col].agg(["sum", "count"]).reindex(methods)
+        table = np.column_stack([per["sum"], per["count"] - per["sum"]]).astype(int)
+        n_sel = int(per["sum"].sum())
+        zero_cell = bool((per["sum"] == 0).any() or (per["sum"] == per["count"]).any())
+
+        row = {"option": label, "n_selected": n_sel, "chi2": np.nan, "df": np.nan,
+               "p_raw": np.nan, "p_exch": np.nan, "p_lpm": np.nan, "p_naive": np.nan,
+               "cramers_v": np.nan, "rho": np.nan, "note": ""}
+        if n_sel == 0:
+            row["note"] = "never selected"
+        else:
+            row["p_naive"] = stats.chi2_contingency(table, correction=False)[1]
+            row["cramers_v"] = round(float(cramers_v(table)), 3)
+            # rho is the within-person correlation of the 0/1 indicator, from
+            # the exchangeable linear-probability fit (estimable even when the
+            # logit is not).
+            try:
+                lpm, _, _ = fit_gee(data, col, sm.families.Gaussian())
+                row["p_lpm"] = method_wald(lpm)[2]
+            except (np.linalg.LinAlgError, ValueError):
+                pass
+            _, row["rho"] = method_p_exchangeable(data, col, sm.families.Gaussian())
+            if zero_cell:
+                row["note"] = "logit not estimable (a method has 0 or all selections)"
+            else:
+                res, _, converged = fit_gee(data, col, sm.families.Binomial())
+                row["chi2"], row["df"], row["p_raw"] = method_wald(res)
+                row["p_exch"], _ = method_p_exchangeable(data, col, sm.families.Binomial())
+                row["note"] = "" if converged else "GEE did not converge"
+        rows.append(row)
+    out = pd.DataFrame(rows)
+    out["p_holm"] = _holm_with_unestimable(out["p_raw"])
+    out["sig"] = np.where(out["p_holm"] < ALPHA, "*", "")
+    return out
+
+
+def scale_family(obs: pd.DataFrame, methods: list[str]) -> tuple[pd.DataFrame, dict[str, pd.DataFrame]]:
+    """Method effect on each Likert composite, plus pairwise contrasts where
+    the Holm-adjusted omnibus test is significant."""
+    data = _model_frame(obs, methods)
+    rows, fits = [], {}
+    for scale in SCALES:
+        res, _, converged = fit_gee(data, scale, sm.families.Gaussian())
+        chi2, df, p = method_wald(res)
+        p_exch, rho = method_p_exchangeable(data, scale, sm.families.Gaussian())
+        groups = [g[scale].to_numpy() for _, g in data.groupby("method", observed=True)]
+        rows.append({"scale": scale, "chi2": chi2, "df": df, "p_raw": p, "p_exch": p_exch,
+                     "p_naive": stats.kruskal(*groups)[1], "rho": rho,
+                     "note": "" if converged else "GEE did not converge"})
+        fits[scale] = res
+    out = pd.DataFrame(rows)
+    out["p_holm"] = multipletests(out["p_raw"], method="holm")[1]
+    out["sig"] = np.where(out["p_holm"] < ALPHA, "*", "")
+    posthoc = {row.scale: pairwise_contrasts(fits[row.scale], methods)
+               for row in out.itertuples() if row.p_holm < ALPHA}
+    return out, posthoc
+
+
+def coefficient_table(obs: pd.DataFrame, methods: list[str]) -> pd.DataFrame:
+    """Full coefficient output of every primary GEE (reference: "Delete this single conversation", the method with the most participants; scenario reference: LS, the less sensitive scenario).
+
+    One row per model term (intercept, each method vs the reference, scenario):
+    beta, robust SE, z, raw p, 95% CI, and for logit models the odds ratio with
+    its CI. Each row also carries the model's omnibus Wald chi-square, df,
+    number of observations and number of participant clusters.
+    """
+    data = _model_frame(obs, methods)
+    rows = []
+    models = [(f"exp_{j}", label, "logit") for j, label in EXP_OPTS.items()]
+    models += [(scale, scale, "gaussian") for scale in SCALES]
+    for col, label, kind in models:
+        if kind == "logit":
+            per = data.groupby("method", observed=True)[col].sum()
+            if per.sum() == 0 or (per == 0).any() or (per == data.groupby("method", observed=True)[col].count()).any():
+                continue
+            family = sm.families.Binomial()
+        else:
+            family = sm.families.Gaussian()
+        res, _, converged = fit_gee(data, col, family)
+        chi2, df, p_omnibus = method_wald(res)
+        ci = res.conf_int()
+        for term in res.params.index:
+            row = {"outcome": label, "model": kind, "term": term, "beta": res.params[term],
+                   "se_robust": res.bse[term], "z": res.tvalues[term], "p_raw": res.pvalues[term],
+                   "ci_low": ci.loc[term, 0], "ci_high": ci.loc[term, 1],
+                   "odds_ratio": np.nan, "or_ci_low": np.nan, "or_ci_high": np.nan,
+                   "omnibus_chi2": chi2, "omnibus_df": df, "omnibus_p": p_omnibus,
+                   "n_obs": int(res.nobs), "n_clusters": int(data["pid"].nunique()),
+                   "converged": converged}
+            if kind == "logit":
+                row |= {"odds_ratio": np.exp(row["beta"]), "or_ci_low": np.exp(row["ci_low"]),
+                        "or_ci_high": np.exp(row["ci_high"])}
+            rows.append(row)
+    return pd.DataFrame(rows)
+
+
+def expectation_pct_table(obs: pd.DataFrame, min_people: int = N_FLOOR) -> pd.DataFrame:
+    """Observation-level % of each method's responses selecting each option."""
+    rows = []
+    for method, g in obs.groupby("method"):
+        people = g["pid"].nunique()
+        row = {"method": method, "n_obs": len(g), "n_people": people,
+               "flag": "" if people >= min_people else f"<{min_people} people"}
+        row |= {label: round(100 * g[f"exp_{j}"].mean(), 1) for j, label in EXP_OPTS.items()}
+        rows.append(row)
+    return pd.DataFrame(rows).sort_values("n_people", ascending=False).reset_index(drop=True)
+
+
+def scale_desc_table(obs: pd.DataFrame, min_people: int = N_FLOOR) -> pd.DataFrame:
+    """Observation-level mean / median / SD of each scale, per method."""
+    rows = []
+    for method, g in obs.groupby("method"):
+        people = g["pid"].nunique()
+        row = {"method": method, "n_obs": len(g), "n_people": people,
+               "flag": "" if people >= min_people else f"<{min_people} people"}
+        for s in SCALES:
+            row |= {f"{s}_mean": round(g[s].mean(), 2), f"{s}_median": round(g[s].median(), 2),
+                    f"{s}_sd": round(g[s].std(), 2)}
+        rows.append(row)
+    return pd.DataFrame(rows).sort_values("n_people", ascending=False).reset_index(drop=True)
+
+
+def _fmt(df: pd.DataFrame) -> str:
+    return df.round(4).to_string(index=False)
+
+
+def main() -> None:
+    bases = get_bases(path=SURVEY_XLSX, verbose=False)
+    obs = build_observation_frame(bases["paired"])
+    methods = qualifying_methods(obs)
+    people = obs["pid"].nunique()
+
+    lines = [
+        "=== Pooled between-method tests: participant-clustered GEE ===",
+        f"{len(obs)} participant-scenario observations from {people} participants "
+        f"(paired base n={len(bases['paired'])}; 'Other' filtered per scenario).",
+        f"Qualifying methods (>= {N_FLOOR} distinct participants): "
+        + "; ".join(f"{m} (ref)" if i == 0 else m for i, m in enumerate(methods)),
+        "Model: outcome ~ method + scenario, clustered on participant, independence "
+        "working correlation with robust SEs (primary; see module docstring). Wald "
+        "chi-square on the method coefficients.",
+        "p_exch = sensitivity check under an exchangeable working correlation; "
+        "p_lpm = sensitivity check with a linear-probability (Gaussian) GEE; "
+        "rho = within-person correlation of the outcome (exchangeable fit).",
+        "p_naive = same comparison ignoring clustering (chi-square / Kruskal-Wallis on "
+        "the observations); shown only to expose the size of the correction.",
+    ]
+
+    exp_pct = expectation_pct_table(obs)
+    lines += ["", "-" * 70, "DESCRIPTIVE: % of each method's observations selecting each expectation", "-" * 70,
+              exp_pct.to_string(index=False)]
+    scale_desc = scale_desc_table(obs)
+    lines += ["", "-" * 70, "DESCRIPTIVE: scale scores per method (observation level)", "-" * 70,
+              scale_desc.to_string(index=False)]
+
+    exp_tests = expectation_family(obs, methods)
+    lines += ["", "=" * 70,
+              f"EXPECTATIONS by method, logit GEE, Holm across {len(EXP_OPTS)} options "
+              "(inestimable options enter the family at p=1)", "=" * 70, _fmt(exp_tests)]
+
+    scale_tests, posthoc = scale_family(obs, methods)
+    lines += ["", "=" * 70, "SCALES by method, Gaussian GEE, Holm across 3 scales", "=" * 70, _fmt(scale_tests)]
+    for scale, contrasts in posthoc.items():
+        lines += ["", f"Pairwise contrasts for {scale} ({SCALE_DIRECTION[scale]}); diff = a minus b, "
+                      "adjusted for scenario, Holm within the 6 pairs:", _fmt(contrasts)]
+    if not posthoc:
+        lines += ["", "No scale had a Holm-significant omnibus test, so no pairwise contrasts were run."]
+
+    coefs = coefficient_table(obs, methods)
+    lines += ["", "=" * 70,
+              "FULL COEFFICIENTS of every primary GEE (reference: first method listed above, "
+              "scenario = less); robust SEs; OR = exp(beta) for logit models", "=" * 70,
+              coefs.round(4).to_string(index=False)]
+
+    TABLES_DIR.mkdir(parents=True, exist_ok=True)
+    coefs.to_csv(TABLES_DIR / "pooled_gee_coefficients.csv", index=False)
+    exp_pct.to_csv(TABLES_DIR / "pooled_obs_expectation_pct.csv", index=False)
+    scale_desc.to_csv(TABLES_DIR / "pooled_obs_scale_desc.csv", index=False)
+    exp_tests.to_csv(TABLES_DIR / "pooled_gee_expectations.csv", index=False)
+    scale_tests.to_csv(TABLES_DIR / "pooled_gee_scales.csv", index=False)
+    for scale, contrasts in posthoc.items():
+        contrasts.to_csv(TABLES_DIR / f"pooled_gee_posthoc_{scale}.csv", index=False)
+    lines += ["", f"saved -> {TABLES_DIR}/pooled_obs_*.csv, pooled_gee_*.csv"]
+
+    print("\n".join(lines))
+    print(f"\nreport saved -> {save_report('pooled_gee', lines)}")
+
+
+if __name__ == "__main__":
+    main()

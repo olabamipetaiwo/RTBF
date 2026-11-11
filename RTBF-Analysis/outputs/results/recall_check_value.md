@@ -1,6 +1,6 @@
 # recall_check_value
 
-_Run at 2026-10-27T14:44:33_
+_Run at 2026-11-09T23:23:29_
 
 ```text
 Which recall checks found the token (recall-success cells only).
@@ -30,8 +30,8 @@ R1 missed, found by R2 or R3: 1
 R2 scoring across all cells (platform: not applicable / found):
   chatgpt: no R2 result 7, found 6 of 156
   claude: no R2 result 5, found 0 of 153
-  copilot: no R2 result 107, found 0 of 150
+  copilot: no R2 result 88, found 0 of 150
   deepseek: no R2 result 142, found 0 of 142
-  gemini: no R2 result 18, found 4 of 150
+  gemini: no R2 result 15, found 4 of 150
   perplexity: no R2 result 150, found 0 of 150
 ```

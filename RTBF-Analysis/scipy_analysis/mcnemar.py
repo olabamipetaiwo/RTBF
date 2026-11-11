@@ -32,16 +32,19 @@ def per_method_shift(paired):
         both = int((less & more).sum()); neither = int((~less & ~more).sum())
         dropped = int((less & ~more).sum()); added = int((~less & more).sum())
         table = [[neither, added], [dropped, both]]
-        _, p = mcnemar_p(table)
-        rows.append((SHORT[m], dropped, added, dropped + added, p)); pvals.append(p)
+        stat, p = mcnemar_p(table)
+        # exact (binomial) when < 25 discordant pairs: stat = smaller discordant count;
+        # otherwise chi2(1) with continuity correction
+        test = f"exact k={stat:.0f}" if dropped + added < 25 else f"chi2(1)={stat:.2f}"
+        rows.append((SHORT[m], dropped, added, dropped + added, test, p)); pvals.append(p)
 
     padj = holm(pvals)
     return pd.DataFrame(
-        [(name, d, a, disc,
+        [(name, d, a, disc, test,
           "drop" if d > a else ("gain" if a > d else "-"),
           round(p, 4), round(pa, 4), "*" if pa < 0.05 else "")
-         for (name, d, a, disc, p), pa in zip(rows, padj)],
-        columns=["method", "dropped", "added", "discordant", "dir", "p_raw", "p_holm", "sig"],
+         for (name, d, a, disc, test, p), pa in zip(rows, padj)],
+        columns=["method", "dropped", "added", "discordant", "test", "dir", "p_raw", "p_holm", "sig"],
     )
 
 

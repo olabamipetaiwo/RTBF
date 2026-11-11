@@ -2,12 +2,14 @@
 \label{sec:conclusion}
 
 
-This study investigates users' data deletion practices and expectations in commercial LLM agents through a user survey and further examines agents' post-deletion behavior using a Data Injection-Deletion-Recall (DIDR) pipeline.
+This study investigated users' data deletion practices and expectations in commercial LLM agents through a user survey and further examined agents' post-deletion behavior using a Data Injection-Deletion-Recall (DIDR) pipeline.
+%
+Participants primarily used conversation-level deletion methods and often discovered deletion controls on their own.
 %
 We found that users generally expected deletion methods to permanently remove their information and prevent its future retrieval, yet many lacked reliable ways to verify whether these expectations were met.
 %
-Our experiments revealed substantial differences in post-deletion behavior across agents, with information sometimes remaining retrievable despite deletion requests and confirmations.
+Our experiments showed that agents kept user information in several places, such as saved memories and past conversations, and that a single deletion method often reached only some of them, so deleted information remained retrievable in new conversations on several agents, largely as their documentation describes and in some cases after the agent confirmed the deletion.
 %
-Most importantly, there is a substantial gap between users' deletion expectations and observed agent behavior, further complicated by the limited reliability of user-facing verification signals and the uncertainty of many post-deletion outcomes.
+Comparing users' expectations with observed behavior, we found that deleted information remained retrievable after each of the deletion methods participants selected most often, contrary to users' expectations, and that the verification signals available to users did not reliably indicate deletion outcomes.
 %
 We recommend several measures to improve data deletion practices in LLM agents, including clearer communication of deletion scope, more transparent and verifiable deletion feedback, and standardized evaluation protocols to support independent verification.

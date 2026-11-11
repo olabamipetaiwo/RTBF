@@ -1,3 +1,4 @@
+\PassOptionsToPackage{table}{xcolor} % for \rowcolor; tcolorbox loads xcolor first
 \documentclass[conference,compsoc]{IEEEtran}
 \AtBeginDocument{%
   \providecommand\BibTeX{{%
@@ -33,7 +34,6 @@
 
 %\usepackage{appendix}
 \usepackage{booktabs}    % for \midrule, \toprule, \bottomrule
-\usepackage[table]{xcolor} % for \rowcolor
 \usepackage{tabularx}
 
 \usepackage[normalem]{ulem}
@@ -80,7 +80,7 @@
 
 \begin{document}
 
-\title{``I Thought It Was Gone'': Understanding User Data Deletion Experiences, Expectations, and Post-Deletion Data Resurfacing in Commercial LLM Agents}
+\title{``I Thought It Was Gone'': Understanding User Data Deletion Experiences, Expectations, and Post-Deletion Data Recall in Commercial LLM Agents}
 
 \maketitle
 \input{sections/abstract}

@@ -35,13 +35,13 @@ Studies of deployed services have also identified gaps between deletion controls
 %
 Habib et al.~\cite{habib2019empirical} identified limitations in how websites present and explain deletion and opt-out choices, while other studies found that online services and mobile applications may retain personal information after deletion requests or account deletion~\cite{rupp2022leave,santhanam2022scraping,yan2025sign}.
 %
-These findings highlight the need to evaluate deletion outcomes rather than assume that available controls ensure data removal.
+These findings highlight the need to evaluate deletion outcomes rather than assume that available controls ensure data deletion.
 
 Beyond deletion effectiveness, usable privacy research further shows that users struggle to locate and exercise deletion controls~\cite{ramokapane2017stupid,habib2020scavenger,bumiller2026zombies}, and that their expectations may differ from what services provide~\cite{rao2016expecting}.
 %
 Minaei et al.~\cite{minaei2022deletion} also identified limitations in deletion privacy through users' experiences and expectations.
 %
-These usability studies are loosely related to our work, as they may affect how users choose, understand, and verify data deletion.
+These usability findings bear on how users choose, understand, and verify data deletion, which we examine for LLM agents.
 
 \para{Unlearning in machine learning}
 %
@@ -53,7 +53,7 @@ However, verification remains challenging~\cite{thudi2022necessity,xue2026toward
 %
 Evaluations of language-model unlearning reveal persistent privacy risks, including information leakage after unlearning~\cite{shi2025muse,patil2024sensitive}.
 %
-In-context unlearning can also modify model behavior without removing information from model parameters~\cite{pawelczyk2024incontext}, illustrating why non-retrieval does not necessarily establish erasure.
+In-context unlearning can also modify model behavior without removing information from model parameters~\cite{pawelczyk2024incontext}, illustrating why non-retrieval does not necessarily establish removal.
 %
 Related research shows that language models can memorize and reproduce training data~\cite{carlini2019secret,carlini2021extracting,carlini2023quantifying,lukas2023analyzing}.
 %
@@ -65,7 +65,7 @@ Building on this principle, our study examines a different setting: whether user
 %
 LLM agents introduce additional privacy challenges by retaining user interactions and derived information.
 %
-As shown in past research, generative agents can store past interactions and generate reflections~\cite{park2023generative}, while agent memory can expose private information to extraction attacks~\cite{wang2025unveiling}, raising questions about whether deletion controls cover retained and derived data.
+Prior work shows that generative agents can store past interactions and generate reflections~\cite{park2023generative}, while agent memory can expose private information to extraction attacks~\cite{wang2025unveiling}, raising questions about whether deletion controls cover retained and derived data.
 %
 Recent studies have examined privacy controls and user perceptions in conversational LLM platforms.
 %
@@ -75,4 +75,4 @@ Other work examined users' privacy concerns, disclosure decisions, and expectati
 %
 Despite these advances, limited empirical evidence connects users' deletion expectations with the observed post-deletion behavior of commercial LLM agents.
 %
-Our study addresses this gap by combining a user survey with controlled post-deletion recall experiments to evaluate information retrievability after different deletion methods and compare observed outcomes with user expectations and platform documentation.
+Our study addresses this gap by combining a user survey with controlled post-deletion recall experiments to evaluate recall after different deletion methods and compare observed outcomes with user expectations and platform documentation.

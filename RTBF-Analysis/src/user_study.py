@@ -25,6 +25,7 @@ import statsmodels.api as sm
 import statsmodels.formula.api as smf
 from scipy import stats
 from statsmodels.multivariate.factor import Factor
+from statsmodels.stats.contingency_tables import mcnemar
 from statsmodels.stats.multitest import multipletests
 
 from src.reporting import save_report
@@ -149,7 +150,8 @@ def past_use(p: pd.DataFrame) -> list[str]:
 
 def ideal_methods(p: pd.DataFrame) -> list[str]:
     """Ideal-method selection (Q4.13/Q5.13, select all) per scenario and the
-    paired exact McNemar test per method, Holm across the eight methods."""
+    paired McNemar test per method (exact when fewer than 25 discordant pairs,
+    otherwise chi-square with continuity correction), Holm across the eight methods."""
     n = len(p)
     lines = ["\n=== 4.1 IDEAL METHODS BY SCENARIO (select all; n=%d) ===" % n]
     rows, pvals = [], []
@@ -157,14 +159,16 @@ def ideal_methods(p: pd.DataFrame) -> list[str]:
         a = p[f"Q4.13_{k}"].notna().to_numpy()
         b = p[f"Q5.13_{k}"].notna().to_numpy()
         only_b, only_a = int((~a & b).sum()), int((a & ~b).sum())
-        res = stats.binomtest(only_b, only_a + only_b, 0.5) if only_a + only_b else None
+        disc = only_a + only_b
+        res = mcnemar([[0, only_b], [only_a, 0]], exact=disc < 25, correction=True) if disc else None
         p_raw = float(res.pvalue) if res else 1.0
-        rows.append((label, int(a.sum()), int(b.sum()), only_a, only_b))
+        test = (f"exact k={res.statistic:.0f}" if disc < 25 else f"chi2(1)={res.statistic:.2f}") if res else "-"
+        rows.append((label, int(a.sum()), int(b.sum()), only_a, only_b, test))
         pvals.append(p_raw)
     p_holm = multipletests(pvals, method="holm")[1]
-    lines.append(f"{'method':<34}{'less':>12}{'more':>12}  drop add   p     p_Holm")
-    for (label, ka, kb, da, ad), pr, ph in zip(rows, pvals, p_holm):
-        lines.append(f"{label:<34}{pct(ka, n):>12}{pct(kb, n):>12}  {da:>3} {ad:>3}  {pr:.3f}  {ph:.3f}")
+    lines.append(f"{'method':<34}{'less':>12}{'more':>12}  drop add  test            p     p_Holm")
+    for (label, ka, kb, da, ad, test), pr, ph in zip(rows, pvals, p_holm):
+        lines.append(f"{label:<34}{pct(ka, n):>12}{pct(kb, n):>12}  {da:>3} {ad:>3}  {test:<14}  {pr:.3f}  {ph:.3f}")
     return lines
 
 
@@ -253,12 +257,12 @@ def per_method_scales(p: pd.DataFrame) -> list[str]:
             g = obs[obs.method == m]
             gl, gm = g[g.scenario == "less"][scale], g[g.scenario == "more"][scale]
             res = stats.mannwhitneyu(gm, gl, alternative="two-sided")
-            rows.append((m, g[scale], gl, gm))
+            rows.append((m, g[scale], gl, gm, float(res.statistic)))
             pvals.append(float(res.pvalue))
         adj = multipletests(pvals, method="holm")[1]
-        for (m, gp, gl, gm), pr, ph in zip(rows, pvals, adj):
+        for (m, gp, gl, gm, u), pr, ph in zip(rows, pvals, adj):
             lines.append(f"{SHORT[m]:<22}{gp.mean():>8.2f}({gp.std():.2f}){gl.mean():>9.2f}({len(gl)}){gm.mean():>9.2f}({len(gm)})   "
-                         f"Mann-Whitney p={pr:.3f}, p_Holm={ph:.3f}")
+                         f"Mann-Whitney U={u:.1f}, p={pr:.3f}, p_Holm={ph:.3f}")
     return lines
 
 

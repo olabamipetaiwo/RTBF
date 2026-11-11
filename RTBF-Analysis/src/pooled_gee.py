@@ -100,9 +100,7 @@ from src.screen import get_bases
 from src.stats import SCALES, scale_score
 from src.verify import cramers_v
 
-# screen.RAW_FILE still points at data/raw/..., which does not exist in this
-# checkout; the Sept 9 export lives under survey/ (same constant as
-# src/effect_cis.py).
+
 SURVEY_XLSX = "survey/RTBF_October+19,+2026_22.37.xlsx"
 TABLES_DIR = Path("outputs/tables")
 OTHER = "Other (Please specify)"
@@ -286,6 +284,44 @@ def scale_family(obs: pd.DataFrame, methods: list[str]) -> tuple[pd.DataFrame, d
     return out, posthoc
 
 
+def coefficient_table(obs: pd.DataFrame, methods: list[str]) -> pd.DataFrame:
+    """Full coefficient output of every primary GEE (reference: "Delete this single conversation", the method with the most participants; scenario reference: LS, the less sensitive scenario).
+
+    One row per model term (intercept, each method vs the reference, scenario):
+    beta, robust SE, z, raw p, 95% CI, and for logit models the odds ratio with
+    its CI. Each row also carries the model's omnibus Wald chi-square, df,
+    number of observations and number of participant clusters.
+    """
+    data = _model_frame(obs, methods)
+    rows = []
+    models = [(f"exp_{j}", label, "logit") for j, label in EXP_OPTS.items()]
+    models += [(scale, scale, "gaussian") for scale in SCALES]
+    for col, label, kind in models:
+        if kind == "logit":
+            per = data.groupby("method", observed=True)[col].sum()
+            if per.sum() == 0 or (per == 0).any() or (per == data.groupby("method", observed=True)[col].count()).any():
+                continue
+            family = sm.families.Binomial()
+        else:
+            family = sm.families.Gaussian()
+        res, _, converged = fit_gee(data, col, family)
+        chi2, df, p_omnibus = method_wald(res)
+        ci = res.conf_int()
+        for term in res.params.index:
+            row = {"outcome": label, "model": kind, "term": term, "beta": res.params[term],
+                   "se_robust": res.bse[term], "z": res.tvalues[term], "p_raw": res.pvalues[term],
+                   "ci_low": ci.loc[term, 0], "ci_high": ci.loc[term, 1],
+                   "odds_ratio": np.nan, "or_ci_low": np.nan, "or_ci_high": np.nan,
+                   "omnibus_chi2": chi2, "omnibus_df": df, "omnibus_p": p_omnibus,
+                   "n_obs": int(res.nobs), "n_clusters": int(data["pid"].nunique()),
+                   "converged": converged}
+            if kind == "logit":
+                row |= {"odds_ratio": np.exp(row["beta"]), "or_ci_low": np.exp(row["ci_low"]),
+                        "or_ci_high": np.exp(row["ci_high"])}
+            rows.append(row)
+    return pd.DataFrame(rows)
+
+
 def expectation_pct_table(obs: pd.DataFrame, min_people: int = N_FLOOR) -> pd.DataFrame:
     """Observation-level % of each method's responses selecting each option."""
     rows = []
@@ -358,7 +394,14 @@ def main() -> None:
     if not posthoc:
         lines += ["", "No scale had a Holm-significant omnibus test, so no pairwise contrasts were run."]
 
+    coefs = coefficient_table(obs, methods)
+    lines += ["", "=" * 70,
+              "FULL COEFFICIENTS of every primary GEE (reference: first method listed above, "
+              "scenario = less); robust SEs; OR = exp(beta) for logit models", "=" * 70,
+              coefs.round(4).to_string(index=False)]
+
     TABLES_DIR.mkdir(parents=True, exist_ok=True)
+    coefs.to_csv(TABLES_DIR / "pooled_gee_coefficients.csv", index=False)
     exp_pct.to_csv(TABLES_DIR / "pooled_obs_expectation_pct.csv", index=False)
     scale_desc.to_csv(TABLES_DIR / "pooled_obs_scale_desc.csv", index=False)
     exp_tests.to_csv(TABLES_DIR / "pooled_gee_expectations.csv", index=False)

@@ -23,6 +23,7 @@ Pipeline vocabulary
 - fact: short form of synthetic fact after its first use.
 - data injection: through prompts or through UI actions.
 - data deletion: through deletion-request prompts or deletion-request UI actions. Not erasure or removal.
+- removal: only for whether information is actually gone from the provider's systems (Discussion, Ethics), which the paper does not measure. Not a synonym for data deletion. "Erasure" only in the GDPR's "right to erasure".
 - No umbrella noun for prompt vs. UI action. Write through prompts / through UI actions.
 - stratified prompt sampling.
 - data recall has two parts: prompt-based recall (direct recall prompt: asks about entity and attribute; indirect recall prompt: asks about entity only) and UI-based check.

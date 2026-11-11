@@ -1,0 +1,143 @@
+\appendices
+
+\begin{table}[t]
+\centering
+\caption{Participant demographics ($N=177$).}
+\label{tab:demographics}
+\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+ & Count & \% \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Age}} \\
+18--24 years & 29 & 16.4 \\
+25--34 years & 56 & 31.6 \\
+35--44 years & 45 & 25.4 \\
+45--54 years & 27 & 15.3 \\
+55--64 years & 17 & 9.6 \\
+65+ years & 3 & 1.7 \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Gender}} \\
+Man & 104 & 58.8 \\
+Woman & 72 & 40.7 \\
+Prefer not to say & 1 & 0.6 \\
+\midrule
+\multicolumn{3}{@{}l}{\textit{Education}} \\
+Bachelor's degree & 75 & 42.4 \\
+Graduate or professional degree & 35 & 19.8 \\
+Some college, but no degree & 30 & 16.9 \\
+Associate's or technical degree & 19 & 10.7 \\
+High school diploma or GED & 15 & 8.5 \\
+Some high school or less & 3 & 1.7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table*}[t]
+\centering
+\caption{Summary of statistical analyses, tests, and multiple-testing correction families.}
+\label{tab:analysis-families}
+\small
+\begin{tabular}{@{}p{0.32\textwidth}p{0.28\textwidth}p{0.20\textwidth}p{0.14\textwidth}@{}}
+\toprule
+Analysis & Statistical test & Sample & Holm family \\
+\midrule
+
+\multicolumn{4}{@{}l}{\textit{Scenario comparisons (LS vs. MS)}} \\
+Willingness to delete
+    & Wilcoxon signed-rank; rank-biserial $r$
+    & 177 pairs
+    & None (single test) \\
+Protection, effort, and benefit loss
+    & Wilcoxon signed-rank; rank-biserial $r$
+    & 177 pairs
+    & 3 scales \\
+Deletion-method choice (overall)
+    & Stuart-Maxwell marginal homogeneity
+    & 176 participants who chose a method in both scenarios
+    & None (single test) \\
+Deletion-method choice (each method)
+    & McNemar
+    & 177 participants
+    & 7 methods \\
+Expected deletion outcomes
+    & McNemar
+    & 177 participants
+    & 7 options \\
+Verification strategies
+    & McNemar
+    & 177 participants
+    & 8 options \\
+\midrule
+
+\multicolumn{4}{@{}l}{\textit{Deletion-method comparisons}} \\
+Protection, effort, and benefit loss
+    & Gaussian GEE, clustered by participant (Wald)
+    & 317 responses, 4 methods
+    & 3 scales \\
+Effort (pairwise between methods)
+    & GEE contrasts, adjusted for scenario
+    & 317 responses, 4 methods
+    & 6 method pairs \\
+Expected deletion outcomes
+    & Logistic GEE, clustered by participant
+    & 317 responses, 4 methods
+    & 7 options \\
+Verification strategies
+    & Chi-square or Fisher's exact, each scenario separately
+    & Participants choosing a method with at least 14 participants in that scenario
+    & 8 options, within each scenario \\
+\midrule
+
+\multicolumn{4}{@{}l}{\textit{Measurement validation and robustness checks}} \\
+Scale structure
+    & Confirmatory factor analysis
+    & 354 responses
+    & Not applicable \\
+Scenario order
+    & Binomial test, Mann-Whitney, Fisher's exact
+    & 177 participants
+    & 4 ratings (Mann-Whitney) \\
+\bottomrule
+\end{tabular}
+
+\par\vspace{0.5em}
+\begin{minipage}{0.94\textwidth}
+\footnotesize
+\textit{Note.} LS and MS denote the less and more sensitive scenarios, respectively.
+A response is one participant's answer in one scenario.
+GEE denotes generalized estimating equations.
+Holm corrections are applied within the specified families;
+single tests are not adjusted.
+\end{minipage}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Full GEE results for expectations, perceived protection, effort, and benefit loss as a function of deletion method and scenario ($n=317$ responses from 165 participants). Expectations are modeled with logistic GEE (odds ratios); perceived scales with Gaussian GEE ($\beta$, in rating points). Deletion methods are compared with deleting a single conversation, and scenario is compared with LS. Omnibus tests are Wald $\chi^2(3)$ tests of the method effect, with Holm correction within each family (7 expectation options, 3 scales; the seventh expectation option, ``Other,'' was too rare to estimate and enters the correction with $p=1$). * $p<.05$, ** $p<.01$, *** $p<.001$ (unadjusted coefficient tests).}
+\label{tab:gee-full}
+\small
+\begin{tabular}{@{}lrrrrrrrrr@{}}
+\toprule
+ & Perm. & Hidden & Curr. & Fut. & Train. & Unsure & Prot. & Effort & Loss \\
+\midrule
+Omnibus $\chi^2(3)$ & 1.94 & 6.26 & 7.68 & 3.70 & 5.27 & 2.06 & 3.71 & 23.05 & 6.94 \\
+Holm $p$ & 1.000 & .597 & .372 & 1.000 & .765 & 1.000 & .295 & $<$.001 & .148 \\
+\midrule
+ & \multicolumn{6}{c}{Odds ratios} & \multicolumn{3}{c}{$\beta$} \\
+\cmidrule(lr){2-7}\cmidrule(lr){8-10}
+\multicolumn{10}{@{}l}{\textit{Compared to deleting single conversation:}} \\
+Clear history & 0.76 & 1.29 & 0.84 & 0.62 & 0.50 & 0.72 & 0.14 & 0.45** & 0.11 \\
+Specific memory & 1.35 & 0.32 & 2.76* & 1.47 & 0.62 & 0.54 & 0.01 & 0.85*** & 0.46* \\
+Deletion-request prompt & 1.31 & 0.52 & 1.39 & 0.88 & 1.47 & 0.37 & 0.24 & 0.10 & $-$0.09 \\
+\multicolumn{10}{@{}l}{\textit{Scenario:}} \\
+MS vs.\ LS & 1.30 & 1.19 & 0.69* & 0.92 & 1.20 & 1.08 & 0.12** & $-$0.02 & 0.03 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+
+\input{sections/ethics}
+
+\section{Survey Questions}
+\label{app:questions}

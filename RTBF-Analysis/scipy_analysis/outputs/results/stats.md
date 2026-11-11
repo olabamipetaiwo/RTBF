@@ -1,6 +1,6 @@
 # stats
 
-_Run at 2026-10-20T00:46:42_
+_Run at 2026-11-11T02:30:36_
 
 ```text
 paired base n = 177
@@ -45,23 +45,23 @@ STEP 5  BETWEEN-SCENARIO binary: McNemar per option
 ======================================================================
 
 -- expectation (Q4.4/Q5.4) --
-    opt1: less-only=  9 more-only= 22 (more>less)  p_holm=0.2180  ns
-    opt2: less-only= 12 more-only= 21 (more>less)  p_holm=0.9284  ns
-    opt3: less-only= 25 more-only= 15 (less>more)  p_holm=0.9284  ns
-    opt4: less-only= 18 more-only= 18 (less>more)  p_holm=1.0000  ns
-    opt5: less-only= 12 more-only= 16 (more>less)  p_holm=1.0000  ns
-    opt6: less-only=  6 more-only=  9 (more>less)  p_holm=1.0000  ns
-    opt7: less-only=  1 more-only=  0 (less>more)  p_holm=1.0000  ns
+    opt1: less-only=  9 more-only= 22 (more>less)  chi2(1)=4.65  p_holm=0.2180  ns
+    opt2: less-only= 12 more-only= 21 (more>less)  chi2(1)=1.94  p_holm=0.9284  ns
+    opt3: less-only= 25 more-only= 15 (less>more)  chi2(1)=2.02  p_holm=0.9284  ns
+    opt4: less-only= 18 more-only= 18 (less>more)  chi2(1)=0.03  p_holm=1.0000  ns
+    opt5: less-only= 12 more-only= 16 (more>less)  chi2(1)=0.32  p_holm=1.0000  ns
+    opt6: less-only=  6 more-only=  9 (more>less)  exact k=6  p_holm=1.0000  ns
+    opt7: less-only=  1 more-only=  0 (less>more)  exact k=0  p_holm=1.0000  ns
 
 -- verification (Q4.5/Q5.5) --
-    opt1: less-only= 16 more-only= 13 (less>more)  p_holm=1.0000  ns
-    opt2: less-only= 10 more-only= 17 (more>less)  p_holm=1.0000  ns
-    opt3: less-only= 12 more-only= 10 (less>more)  p_holm=1.0000  ns
-    opt4: less-only= 15 more-only= 10 (less>more)  p_holm=1.0000  ns
-    opt5: less-only=  5 more-only=  5 (less>more)  p_holm=1.0000  ns
-    opt6: less-only= 13 more-only= 13 (less>more)  p_holm=1.0000  ns
-    opt7: less-only=  7 more-only=  5 (less>more)  p_holm=1.0000  ns
-    opt8: less-only=  0 more-only=  1 (more>less)  p_holm=1.0000  ns
+    opt1: less-only= 16 more-only= 13 (less>more)  chi2(1)=0.14  p_holm=1.0000  ns
+    opt2: less-only= 10 more-only= 17 (more>less)  chi2(1)=1.33  p_holm=1.0000  ns
+    opt3: less-only= 12 more-only= 10 (less>more)  exact k=10  p_holm=1.0000  ns
+    opt4: less-only= 15 more-only= 10 (less>more)  chi2(1)=0.64  p_holm=1.0000  ns
+    opt5: less-only=  5 more-only=  5 (less>more)  exact k=5  p_holm=1.0000  ns
+    opt6: less-only= 13 more-only= 13 (less>more)  chi2(1)=0.04  p_holm=1.0000  ns
+    opt7: less-only=  7 more-only=  5 (less>more)  exact k=5  p_holm=1.0000  ns
+    opt8: less-only=  0 more-only=  1 (more>less)  exact k=0  p_holm=1.0000  ns
 
 ======================================================================
 STEP 6  METHOD SWITCHING (Q4.2->Q5.2): Stuart-Maxwell + transitions

@@ -1,83 +1,108 @@
+
 \section{Introduction}
 \label{sec:intro}
 
-LLM agents increasingly retain information shared by users, including conversation histories and saved memories that support personalized interactions across conversations~\cite{chen2026relational,zhang2025understanding}.
+LLM agents retain user information, including conversation histories and saved memories that support personalized interactions~\cite{chen2026relational,zhang2025understanding}.
 %
-While such capabilities improve usability and personalization, they also raise an important privacy question: \textit{Can users effectively delete information they have shared with LLM agents?}
+While these capabilities improve usability, they raise a privacy question: \textit{Does information remain retrievable after users delete it from an LLM agent?}
 %
-This question is particularly relevant when users disclose sensitive personal information that they later wish to remove.
-%
-Privacy regulations, such as the GDPR and CCPA, establish rights to request the deletion of personal data under applicable conditions~\cite{gdpr2016,ccpa2018}.
-%
-However, deleting information from an LLM agent is not necessarily straightforward.
-%
-Commercial agents offer multiple deletion methods, such as deleting conversations, removing saved memories, or submitting deletion requests through natural-language prompts~\cite{li2026privacy}.
-%
-These methods may affect different forms of retained information, making it difficult for users to understand what is actually deleted and whether information remains accessible.
 
-Prior research has demonstrated challenges in the effectiveness and usability of data deletion in storage systems, websites, and mobile applications~\cite{reardon2013sok,habib2019empirical,rupp2022leave,yan2025sign}.
 %
-Research on machine unlearning has further highlighted the difficulty of verifying data removal from learned models~\cite{thudi2022necessity,xue2026towards}.
+% \ji{Do we have to explain this question? Our study focuses more on users rather than on the effectiveness of the deletion itself.}
 %
-More closely related, recent studies have examined deletion controls in conversational LLM platforms~\cite{li2026privacy} and users' expectations and concerns about data deletion~\cite{malki2025hoovered,kwesi2026impact,chen2026relational}.
-%
-However, limited empirical evidence connects \textit{what users expect from data deletion} with \textit{how deployed LLM agents behave afterward}.
-%
-Understanding this gap is important because users may rely on deletion controls and confirmations without knowing whether their information remains retrievable.
 
-In this study, we investigate users' deletion practices and expectations alongside the post-deletion behavior of commercial LLM agents.
+This question matters when users disclose sensitive information they later wish to remove.
 %
-Specifically, we address four research questions:
+Privacy regulations, such as the GDPR and CCPA, establish rights to request deletion under applicable conditions~\cite{gdpr2016,ccpa2018}, which may shape users' expectations.
+%
+However, agents may retain the same information in conversations and saved memories.
+%
+Commercial agents offer deletion methods, including deleting conversations, removing memories, and submitting natural-language deletion requests~\cite{li2026privacy}.
+%
+Each method may reach only some of these places, leaving users uncertain about what is deleted.
+%
+In this paper, \textit{data deletion} refers to these user-facing controls. We evaluate whether information remains retrievable through the agent, not whether it is removed from the provider's storage, which users cannot observe (Section~\ref{subsec:vs_audit}).
+
+% \ji{I believe the statement ``deleting information from an LLM agent is not straightforward'' is too weak. Most real-world applications offer data deletion methods that are not straightforward. For example, an Apple account holds many types of user data, which users cannot delete with a single request. Therefore, as an opening statement, I would rather write something like: deleting user data from LLM agents (especially in users' perspective) is largely underexplored, considering the amount of data users input (cite prior work finding that users unintentionally disclose more information during conversational interactions). Also, I’m still not sure whether reviewers will agree that deleting conversation history or memory is meaningful data deletion...}
+
+Prior research has examined the effectiveness and usability of data deletion in storage systems, websites, and mobile applications~\cite{reardon2013sok,habib2019empirical,rupp2022leave,yan2025sign}, and the difficulty of verifying deletion from learned models~\cite{thudi2022necessity,xue2026towards}.
+
+% \ji{I feel like, these two background topics --- data deletion and machine unlearning --- are not closely relevant (too broad), or at least, don't need to be appear in the introduction.}
+%
+Recent studies have examined deletion controls in conversational LLM platforms~\cite{li2026privacy} and users' expectations and concerns~\cite{malki2025hoovered,kwesi2026impact,chen2026relational}.
+%
+They report that users doubt deletion controls and cannot verify their outcomes~\cite{kwesi2026impact,chen2026relational}, but do not examine how users try to verify deletion or what they expect from natural-language deletion requests~\cite{li2026privacy}.
+%
+None tests whether information remains retrievable from deployed agents after deletion.
+%
+Thus, limited evidence connects \textit{users' deletion expectations} with \textit{observed post-deletion agent behavior}.
+
+% \ji{I don’t follow the logic here. You mention that the main gap is that prior work did not test whether information remains retrievable after deletion, but our work is also not strictly technical; we indeed focus on users’ perceptions as well. There should be a gap that our user study addresses, which differentiates our work from prior user studies on data deletion in LLM applications.}
+%
+This gap matters because users rely on deletion confirmations or their own verification methods, which may not reliably indicate whether information remains retrievable.
+
+% \ji{Is ``users relying on deletion controls without knowing whether their information remains retrievable’’ what we want to study? Overall, the introduction feels pretty vague to me. It does not clearly state why we conducted this study (motivation) and what we are addressing (novelty). In my opinion, the definition of data deletion in this paper is the main weakness, so we need to find a clearer way to present the motivation and novelty.}
+
+We examine whether data deletion in commercial LLM agents works as users expect through a survey of deletion practices and expectations and an evaluation of post-deletion retrievability.
+%
+We address four research questions:
+
+% RQ1: Data deletion practices. What deletion methods
+% do users use, and how do their choices vary with data
+% sensitivity                   
 
 \begin{enumerate}[leftmargin=4pt,itemindent=0pt,labelsep=0pt]
     \item[] \textbf{RQ1: Data deletion practices.}
-    What deletion methods do users use, and how do their choices vary with data sensitivity?
+    What deletion methods do users use and prefer?
 
-    \item[] \textbf{RQ2: User expectations and verification.}
-    What do users expect from data deletion, and how do they verify its outcomes?
+    \item[] \textbf{RQ2: User expectations and evaluations.}
+    What do users expect from data deletion, and how do they evaluate different deletion methods?
 
     \item[] \textbf{RQ3: Post-deletion agent behavior.}
-    How do LLM agents respond to deletion requests, and what data resurfaces afterward?
+    How do LLM agents respond to deletion requests, and what data remains retrievable afterward?
 
     \item[] \textbf{RQ4: Expectations versus behavior.}
     How do users' deletion expectations compare with observed agent behavior?
 \end{enumerate}
 
-
-To address RQ1 and RQ2, we conducted an online survey of 177 U.S. adults with prior experience deleting data from LLM agents.
+For RQ1 and RQ2, we surveyed 177 U.S. adults with prior experience deleting data from LLM agents, examining their deletion practices, expectations, and verification strategies across scenarios with different levels of data sensitivity.
 %
-The survey examined participants' deletion practices, expectations, and verification strategies, using scenarios with different levels of data sensitivity to investigate how deletion choices and expectations vary.
+We also collected participant-written deletion requests to inform our experiments.
 %
-We also collected participant-written deletion requests to inform our technical evaluation.
+For RQ3, we developed a Data Injection-Deletion-Recall (DIDR) pipeline that injects synthetic information, applies a deletion method, and tests retrievability in subsequent conversations.
 %
-To address RQ3, we developed a new Data Injection-Deletion-Recall (DIDR) pipeline for evaluating post-deletion behavior in deployed LLM agents.
-%
-The pipeline injects synthetic user information into an agent, applies a deletion method, and tests whether the information remains retrievable in subsequent conversations.
-%
-We evaluated six leading commercial LLM agents, i.e., ChatGPT, Claude, Gemini, Copilot, Perplexity, and DeepSeek, using consumer-facing deletion methods, including participant-written requests.
+We evaluated six commercial LLM agents, i.e., ChatGPT, Claude, Gemini, Copilot, Perplexity, and DeepSeek, using consumer-facing deletion methods, including participant-written requests.
 %
 Our experiments comprised 865 test cases, with recall evaluated at least 30 days after deletion.
 %
-We also distinguished cases where information remained retrievable from those where initial storage could not be established, avoiding the assumption that unsuccessful recall proves deletion.
+We distinguished retrievable information from cases where initial storage could not be established, avoiding the assumption that unsuccessful recall proves deletion.
 %
-Finally, to address RQ4, we compared observed post-deletion behavior with users' expectations and the verification signals available to them.
+For RQ4, we compared observed behavior with users' expectations and available verification signals.
 
-Our study reveals several noteworthy findings regarding users' deletion expectations and the post-deletion behavior of commercial LLM agents.
+Our contributions are threefold.
 %
-First, users generally expected deletion methods to permanently remove their information and prevent future retrieval, yet many lacked reliable ways to verify deletion outcomes (RQ2).
+First, we examine how users verify deletion and what they expect from natural-language deletion requests, which prior user studies have not examined.
 %
-Regarding deletion practices, participants' willingness to delete increased with data sensitivity, while their deletion-method choices remained largely unchanged (RQ1).
+Second, we introduce the DIDR pipeline to evaluate post-deletion retrievability in deployed agents, including participant-written requests.
 %
-Our post-deletion experiments revealed substantial differences across LLM agents, with information sometimes remaining retrievable despite deletion requests and confirmations (RQ3).
-%
-Observed outcomes varied more across agents than across deletion methods or request wording, while 54.5\% of test cases were classified as \emph{can't tell} because initial storage could not be established.
-%
-By comparing users' deletion expectations with observed post-deletion agent behavior, we identified a gap between expected and observed deletion outcomes (RQ4).
-%
-In particular, agents' responses and interface changes did not reliably indicate subsequent recall outcomes, leaving users with limited means to determine whether their expectations were met.
+Third, we identify where users' expectations and verification strategies diverge from agent behavior.
 
-Our findings highlight the need for more transparent and verifiable data deletion practices in LLM agents and offer potential recommendations for LLM agent providers, users, and regulators.
+Participants primarily used conversation-level deletion methods and often discovered deletion controls on their own.
 %
-For example, providers may need to clarify the scope and limitations of deletion methods and offer reliable deletion feedback and verification mechanisms, while researchers and regulators could collaborate with providers to develop standardized protocols for independently evaluating deletion outcomes.
+They were more willing to delete in the more sensitive scenario, but their method choices did not change significantly (RQ1).
 %
-Such improvements could help users distinguish between deletion confirmations and actual post-deletion outcomes, reducing the uncertainty underlying the gap between their expectations and observed agent behavior.
+Users expected permanent deletion and prevention of future retrieval, yet many lacked reliable verification methods (RQ2).
+%
+Agents retained information in several places, including conversations and saved memories, while individual deletion methods often reached only some of them.
+%
+Information remained retrievable in new conversations on several agents, sometimes after deletion confirmations, largely consistent with their documentation (RQ3).
+%
+Information also remained retrievable after each of the methods participants selected most often, contrary to their expectations, while agents' responses and interface changes did not reliably indicate recall outcomes (RQ4).
+%
+For example, ChatGPT did not return a deleted fact in the conversation where deletion was requested, where many participants reported verifying deletion, but returned it in new conversations.
+
+Our findings highlight the need for transparent and verifiable deletion practices.
+%
+Providers should clarify deletion methods' scope and limitations and offer reliable feedback and verification mechanisms, while researchers and regulators could collaborate with providers on standardized protocols for independently evaluating deletion outcomes.
+%
+Such improvements could help users distinguish deletion confirmations from actual post-deletion outcomes.

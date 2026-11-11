@@ -141,6 +141,21 @@ def main() -> None:
         f"{int((df['sheet'] != 'MASTER').sum())} on the NL FORGET sheet (prompts).",
         "",
     ]
+    # Paper, Results (RQ3): "the saved-memory interface no longer displayed the injected fact in
+    # 112 of the 118 recall-success cases" on ChatGPT. r2 is the UI-based check of the memory page.
+    gpt = df[(df["platform"] == "chatgpt") & (df["outcome"] == "success")]
+    r2 = gpt["r2"].replace("", "NOT RUN").value_counts()
+    lines += [
+        "## ChatGPT recall success: was the fact still on the saved-memory page?",
+        "",
+        f"- Recall success on ChatGPT: {len(gpt)}.",
+        f"- Fact not on the saved-memory page (UI-based check NOT FOUND): "
+        f"{int(r2.get('NOT FOUND', 0))} of {len(gpt)}.",
+        f"- Fact still on the page (FOUND): {int(r2.get('FOUND', 0))} of {len(gpt)}.",
+        *(f"- Other UI-based check values: {k} {int(v)}" for k, v in r2.items()
+          if k not in ("FOUND", "NOT FOUND")),
+        "",
+    ]
     OUT_MD.write_text("\n".join(lines))
     print("\n".join(lines))
 

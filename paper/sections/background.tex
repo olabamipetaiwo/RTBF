@@ -1,17 +1,21 @@
 \section{Background}
 \label{sec:background}
 
-\para{Legal foundations and user expectations of data deletion}
+\para{User expectations of data deletion}
+
+% \ji{Rather than framing this as ``legal foundations'' and ``user expectations,'' I would focus on explaining user expectations and mention the legal foundations only briefly. For example, you can describe user expectations of data deletion across different platforms (not limited to LLM agents) and use the legal foundations to show why understanding users' perspectives on data deletion is important, but you don't need to focus on explaining the legal foundations. Also, in user study papers, it is very common to discuss prior work in the background section. As you can see here, prior work is often essential for showing the research gap, so you might want to consider this structure and discuss it with the professors.}
+
+
 %
-Data deletion is an important mechanism for protecting user privacy, supported by both legal requirements and user expectations. 
+Users expect deletion to give them control over information they have shared~\cite{murillo2018if}.
 %
-For example, Article 17 of the GDPR establishes the right to erasure under specified conditions, commonly known as the right to be forgotten~\cite{gdpr2016}. 
+Studies of online services show that these expectations often go beyond what services provide: some users expect that a service can no longer use their data after deletion~\cite{liu2022zombie}, users find deletion mechanisms opaque~\cite{minaei2022deletion}, and a lack of deletion confirmation leaves users uncertain whether their data was removed~\cite{bumiller2026zombies}.
 %
-Similarly, the CCPA gives California residents the right to request deletion of their personal information~\cite{ccpa2018}. 
+Privacy regulations reinforce these expectations: the GDPR's right to erasure and the CCPA's right to request deletion entitle users to have their personal data deleted under specified conditions~\cite{gdpr2016,ccpa2018}.
 %
-Beyond legal requirements, users expect to have control over their personal information, including the ability to delete previously shared data~\cite{murillo2018if}.
-%
-As LLM agents accumulate substantial amounts of personal information through ongoing conversations (e.g., voluntary user disclosures and requests for user information to personalize their responses) and may also use user data to train their models, understanding whether and how data deletion works in these systems becomes critical to protecting users' privacy rights.
+LLM agents accumulate personal information through ongoing conversations, from voluntary disclosures to information requested for personalization, and may use it to train their models, so whether their deletion controls meet users' expectations remains an open question.
+
+% \ji{Again, here you mention ``how data deletion works’’ as something critical to understand, but that is not the main point of our paper, is it?}
 
 \para{Data deletion methods of LLM agents}
 %
@@ -21,12 +25,17 @@ Accordingly, LLM agents offer different data deletion methods that appear to tar
 %
 For example, deleting a conversation removes it from the user-visible conversation history, but its effects on information retained in saved memories or used for model training remain unclear.
 
+% \ji{Can we say that this was a ``systematic'' walkthrough?}
 
-To understand the deletion methods available to users, we conducted a systematic walkthrough of six widely used commercial LLM agents using free consumer accounts:  ChatGPT, Claude, Gemini, Copilot, Perplexity, and DeepSeek.
+To understand the deletion methods available to users, we conducted a walkthrough of six widely used commercial LLM agents using free consumer accounts: ChatGPT, Claude, Gemini, Copilot, Perplexity, and DeepSeek.
 %
-Following prior research on LLM privacy controls~\cite{li2026privacy}, we inspected each agent's interface and settings to identify the available data deletion methods.
+Using a walkthrough approach similar to prior work on LLM privacy controls~\cite{li2026privacy}, we inspected each agent's interface and settings to identify the available data deletion methods.
+
+% \ji{The paper you reference here does not focus on data deletion methods; rather, it examines privacy control features in general, and deletion is just one of them. So I’m not sure it is reasonable to say that we followed this work.}
 %
 As shown in Table~\ref{tab:methods}, we identified six data deletion methods: (D1) sending a deletion-request prompt through conversations; (D2) deleting a single conversation or (D3) clearing all conversation history through UI buttons; (D4) deleting a specific saved memory or (D5) clearing all saved memories through memory settings; and (D6) using an account-level privacy dashboard.
+
+% \ji{These data deletion methods do not appear again later in the paper, so why do we label them D1--D6?}
 %
 These methods differ in their intended scope, ranging from individual conversations and saved facts to broader conversation histories and account-level data management.
 %

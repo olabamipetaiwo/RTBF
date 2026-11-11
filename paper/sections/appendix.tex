@@ -33,7 +33,161 @@ Some high school or less & 3 & 1.7 \\
 \end{tabular}
 \end{table}
 
+\begin{table*}[t]
+\centering
+\caption{Statistical analyses, tests, multiple-testing correction families, and results. Full GEE coefficients are in Table~\ref{tab:gee-full}.}
+\label{tab:analysis-families}
+\small
+\begin{tabular}{@{}p{0.18\textwidth}p{0.15\textwidth}p{0.14\textwidth}p{0.10\textwidth}p{0.35\textwidth}@{}}
+\toprule
+Analysis & Statistical test & Sample & Holm family & Result \\
+\midrule
+
+\multicolumn{5}{@{}l}{\textit{Scenario comparisons (LS vs. MS)}} \\
+Willingness to delete
+    & Wilcoxon signed-rank; rank-biserial $r$
+    & 177 pairs
+    & None (single test)
+    & $W=754.5$, $p<.001$, $r=.55$; means 3.98 (LS), 4.37 (MS) \\
+Protection, effort, and benefit loss
+    & Wilcoxon signed-rank; rank-biserial $r$
+    & 177 pairs
+    & 3 scales
+    & Protection $W=1752.0$, $p_{\mathrm{Holm}}=.002$, $r=.38$; effort $W=1750.5$, $p_{\mathrm{Holm}}=.59$, $r=.09$; benefit loss $W=1999.5$, $p_{\mathrm{Holm}}=.59$, $r=.12$ (means in Table~\ref{tab:method-scales}) \\
+Protection, effort, and benefit loss (within each method)
+    & Mann-Whitney
+    & Responses choosing each of the four methods in LS and MS
+    & 4 methods, within each scale
+    & $U$ between 146.0 and 3813.0, all $p_{\mathrm{Holm}}\geq.54$ \\
+Deletion-method choice (overall)
+    & Stuart-Maxwell marginal homogeneity
+    & 176 participants who chose a method in both scenarios
+    & None (single test)
+    & $\chi^2(6)=6.28$, $p=.39$ \\
+Deletion-method choice (each method)
+    & McNemar
+    & 177 participants
+    & 7 methods
+    & All $p_{\mathrm{Holm}}\geq.13$; largest shift for deletion-request prompts (15 LS only, 4 MS only; exact, $p_{\mathrm{Holm}}=.13$) \\
+Desired deletion methods
+    & McNemar
+    & 177 participants
+    & 8 methods
+    & All $p_{\mathrm{Holm}}\geq.09$; largest shift for deleting a specific saved memory (16 LS only, 35 MS only; $\chi^2(1)=6.35$, $p_{\mathrm{Holm}}=.09$) \\
+Expected deletion outcomes
+    & McNemar
+    & 177 participants
+    & 7 options
+    & All $p_{\mathrm{Holm}}\geq.22$; largest shift for permanent deletion (9 LS only, 22 MS only; $\chi^2(1)=4.65$, $p_{\mathrm{Holm}}=.22$) \\
+Verification strategies
+    & McNemar
+    & 177 participants
+    & 8 options
+    & All $p_{\mathrm{Holm}}=1.00$ \\
+\midrule
+
+\multicolumn{5}{@{}l}{\textit{Deletion-method comparisons}} \\
+Protection, effort, and benefit loss
+    & Gaussian GEE, clustered by participant (Wald)
+    & 317 responses, 4 methods
+    & 3 scales
+    & Protection $\chi^2(3)=3.71$, $p_{\mathrm{Holm}}=.29$; effort $\chi^2(3)=23.05$, $p_{\mathrm{Holm}}=.0001$; benefit loss $\chi^2(3)=6.94$, $p_{\mathrm{Holm}}=.15$ \\
+Effort (pairwise between methods)
+    & GEE contrasts, adjusted for scenario
+    & 317 responses, 4 methods
+    & 6 method pairs
+    & Specific saved memory higher than single conversation ($\beta=0.85$, $p_{\mathrm{Holm}}<.001$) and deletion-request prompt ($\beta=0.75$, $p_{\mathrm{Holm}}=.008$); clearing all history higher than single conversation ($\beta=0.45$, $p_{\mathrm{Holm}}=.019$); other pairs $p_{\mathrm{Holm}}\geq.24$ \\
+Expected deletion outcomes
+    & Logistic GEE, clustered by participant
+    & 317 responses, 4 methods
+    & 7 options
+    & $\chi^2(3)$ between 1.94 and 7.68, all $p_{\mathrm{Holm}}\geq.37$ \\
+Verification strategies
+    & Chi-square or Fisher's exact, each scenario separately
+    & Participants choosing a method with at least 14 participants in that scenario
+    & 8 options, within each scenario
+    & LS: asking in the same conversation ($p_{\mathrm{Holm}}=.001$), asking in a new conversation ($p_{\mathrm{Holm}}=.007$), not knowing how to verify ($\chi^2(3)=15.99$, $p_{\mathrm{Holm}}=.007$); MS: asking in the same conversation ($p_{\mathrm{Holm}}=.039$), verifying in memory settings ($p_{\mathrm{Holm}}=.046$); other options $p_{\mathrm{Holm}}\geq.22$ \\
+\midrule
+
+\multicolumn{5}{@{}l}{\textit{Measurement validation and robustness checks}} \\
+Scale structure
+    & Confirmatory factor analysis
+    & 354 responses
+    & Not applicable
+    & $\chi^2(51)=225.82$, CFI $=.94$, TLI $=.92$, RMSEA $=.099$, SRMR $=.060$ \\
+Scenario order
+    & Binomial test, Mann-Whitney, Fisher's exact
+    & 177 participants
+    & 4 ratings (Mann-Whitney)
+    & Split 83/94, $p=.45$; shift by order, $U$ between 3566.5 and 4110.0, all $p_{\mathrm{Holm}}=1.00$; method change by order, OR $=0.71$, $p=.35$ \\
+\bottomrule
+\end{tabular}
+
+\par\vspace{0.5em}
+\begin{minipage}{0.94\textwidth}
+\footnotesize
+\textit{Note.} LS and MS denote the less and more sensitive scenarios, respectively.
+A response is one participant's answer in one scenario.
+GEE denotes generalized estimating equations.
+Holm corrections are applied within the specified families;
+single tests are not adjusted.
+\end{minipage}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Full GEE results for expectations, perceived protection, effort, and benefit loss as a function of deletion method and scenario ($n=317$ responses from 165 participants). Expectations are modeled with logistic GEE (odds ratios); perceived scales with Gaussian GEE ($\beta$, in rating points). Deletion methods are compared with deleting a single conversation, and scenario is compared with LS. Omnibus tests are Wald $\chi^2(3)$ tests of the method effect, with Holm correction within each family (7 expectation options, 3 scales; the seventh expectation option, ``Other,'' was too rare to estimate and enters the correction with $p=1$). * $p<.05$, ** $p<.01$, *** $p<.001$ (unadjusted coefficient tests).}
+\label{tab:gee-full}
+\small
+\begin{tabular}{@{}lrrrrrrrrr@{}}
+\toprule
+ & Perm. & Hidden & Curr. & Fut. & Train. & Unsure & Prot. & Effort & Loss \\
+\midrule
+Omnibus $\chi^2(3)$ & 1.94 & 6.26 & 7.68 & 3.70 & 5.27 & 2.06 & 3.71 & 23.05 & 6.94 \\
+Holm $p$ & 1.000 & .597 & .372 & 1.000 & .765 & 1.000 & .295 & $<$.001 & .148 \\
+\midrule
+ & \multicolumn{6}{c}{Odds ratios} & \multicolumn{3}{c}{$\beta$} \\
+\cmidrule(lr){2-7}\cmidrule(lr){8-10}
+\multicolumn{10}{@{}l}{\textit{Compared to deleting single conversation:}} \\
+Clear history & 0.76 & 1.29 & 0.84 & 0.62 & 0.50 & 0.72 & 0.14 & 0.45** & 0.11 \\
+Specific memory & 1.35 & 0.32 & 2.76* & 1.47 & 0.62 & 0.54 & 0.01 & 0.85*** & 0.46* \\
+Deletion-request prompt & 1.31 & 0.52 & 1.39 & 0.88 & 1.47 & 0.37 & 0.24 & 0.10 & $-$0.09 \\
+\multicolumn{10}{@{}l}{\textit{Scenario:}} \\
+MS vs.\ LS & 1.30 & 1.19 & 0.69* & 0.92 & 1.20 & 1.08 & 0.12** & $-$0.02 & 0.03 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+
 \input{sections/ethics}
 
 \section{Survey Questions}
 \label{app:questions}
+
+\begin{table}[h]
+\centering
+\caption{Scale items, rated on five-point agreement scales for the method each participant chose.}
+\label{tab:scale-items}
+\footnotesize
+\begin{tabular}{@{}p{0.95\columnwidth}@{}}
+\toprule
+\textit{Perceived privacy protection}~\cite{xu2011information} \\
+This data deletion method contributes to the protection of my privacy. \\
+This data deletion method helps me to protect my personal information. \\
+This data deletion method effectively reduces the risk of my data being misused. \\
+This data deletion method gives me complete control over my personal data. \\
+By using this data deletion method, I can decide what personal data the AI Chatbot retains about me. \\
+\midrule
+\textit{Effort}~\cite{habib2022evaluating} \\
+This data deletion method takes too much time. \\
+This data deletion method is overly complex to use. \\
+I find it difficult to navigate this data deletion method. \\
+Understanding how this data deletion method works requires significant effort. \\
+\midrule
+\textit{Potential loss of personalized benefits}~\cite{xu2011personalization} \\
+Using this data deletion method would prevent AI Chatbots from providing responses tailored to my activity context. \\
+Using this data deletion method would reduce the relevance of assistance tailored to my preferences. \\
+Using this data deletion method would prevent AI Chatbots from providing the kind of help I need. \\
+\bottomrule
+\end{tabular}
+\end{table}

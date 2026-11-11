@@ -1,6 +1,6 @@
 # user_study
 
-_Run at 2026-10-27T12:36:13_
+_Run at 2026-11-11T02:44:16_
 
 ```text
 === SAMPLE PROFILE (n=177) ===
@@ -62,15 +62,15 @@ How did you find out the deletion options existed? (Q6.7)
   Others (Please specify)                                 4/177 (2.3%)
 
 === 4.1 IDEAL METHODS BY SCENARIO (select all; n=177) ===
-method                                    less        more  drop add   p     p_Holm
-Ask chatbot to forget             83/177 (46.9%)89/177 (50.3%)   18  24  0.441  1.000
-Delete single conversation        117/177 (66.1%)107/177 (60.5%)   28  18  0.184  0.920
-Clear all conversation history    63/177 (35.6%)72/177 (40.7%)   17  26  0.222  0.920
-Delete specific memory or fact    55/177 (31.1%)74/177 (41.8%)   16  35  0.011  0.088
-Clear all saved memories          30/177 (16.9%)43/177 (24.3%)    6  19  0.015  0.102
-Delete account                    8/177 (4.5%)11/177 (6.2%)    4   7  0.549  1.000
-Privacy dashboard                 27/177 (15.3%)31/177 (17.5%)    7  11  0.481  1.000
-File a request                    4/177 (2.3%)9/177 (5.1%)    0   5  0.062  0.375
+method                                    less        more  drop add  test            p     p_Holm
+Ask chatbot to forget             83/177 (46.9%)89/177 (50.3%)   18  24  chi2(1)=0.60    0.440  1.000
+Delete single conversation        117/177 (66.1%)107/177 (60.5%)   28  18  chi2(1)=1.76    0.185  0.923
+Clear all conversation history    63/177 (35.6%)72/177 (40.7%)   17  26  chi2(1)=1.49    0.222  0.923
+Delete specific memory or fact    55/177 (31.1%)74/177 (41.8%)   16  35  chi2(1)=6.35    0.012  0.094
+Clear all saved memories          30/177 (16.9%)43/177 (24.3%)    6  19  chi2(1)=5.76    0.016  0.115
+Delete account                    8/177 (4.5%)11/177 (6.2%)    4   7  exact k=4       0.549  1.000
+Privacy dashboard                 27/177 (15.3%)31/177 (17.5%)    7  11  exact k=7       0.481  1.000
+File a request                    4/177 (2.3%)9/177 (5.1%)    0   5  exact k=0       0.062  0.375
 
 === 4.2.1 MEASUREMENT MODEL (EFA, principal axis, oblimin) ===
 observations: 354 participant-scenario rows, 12 items
@@ -129,24 +129,24 @@ pooled observations: 317
 
 -- protection --
 method                    pooled M(SD)     less M(n)     more M(n)   between-scenario contrast
-Single conversation       3.63(0.88)     3.54(84)     3.73(80)   Mann-Whitney p=0.135, p_Holm=0.538
-Clear all history         3.77(0.87)     3.77(33)     3.77(40)   Mann-Whitney p=0.740, p_Holm=1.000
-Specific memory           3.65(0.79)     3.58(19)     3.71(22)   Mann-Whitney p=0.741, p_Holm=1.000
-Ask to forget             3.86(0.65)     3.84(25)     3.89(14)   Mann-Whitney p=0.906, p_Holm=1.000
+Single conversation       3.63(0.88)     3.54(84)     3.73(80)   Mann-Whitney U=3813.0, p=0.135, p_Holm=0.538
+Clear all history         3.77(0.87)     3.77(33)     3.77(40)   Mann-Whitney U=630.0, p=0.740, p_Holm=1.000
+Specific memory           3.65(0.79)     3.58(19)     3.71(22)   Mann-Whitney U=222.0, p=0.741, p_Holm=1.000
+Ask to forget             3.86(0.65)     3.84(25)     3.89(14)   Mann-Whitney U=179.5, p=0.906, p_Holm=1.000
 
 -- effort --
 method                    pooled M(SD)     less M(n)     more M(n)   between-scenario contrast
-Single conversation       1.64(0.76)     1.62(84)     1.67(80)   Mann-Whitney p=0.957, p_Holm=1.000
-Clear all history         2.09(0.97)     1.98(33)     2.18(40)   Mann-Whitney p=0.324, p_Holm=1.000
-Specific memory           2.49(1.03)     2.70(19)     2.32(22)   Mann-Whitney p=0.269, p_Holm=1.000
-Ask to forget             1.74(0.79)     1.86(25)     1.54(14)   Mann-Whitney p=0.393, p_Holm=1.000
+Single conversation       1.64(0.76)     1.62(84)     1.67(80)   Mann-Whitney U=3376.5, p=0.957, p_Holm=1.000
+Clear all history         2.09(0.97)     1.98(33)     2.18(40)   Mann-Whitney U=748.0, p=0.324, p_Holm=1.000
+Specific memory           2.49(1.03)     2.70(19)     2.32(22)   Mann-Whitney U=166.5, p=0.269, p_Holm=1.000
+Ask to forget             1.74(0.79)     1.86(25)     1.54(14)   Mann-Whitney U=146.0, p=0.393, p_Holm=1.000
 
 -- benefit_loss --
 method                    pooled M(SD)     less M(n)     more M(n)   between-scenario contrast
-Single conversation       3.00(1.03)     2.97(84)     3.02(80)   Mann-Whitney p=0.757, p_Holm=1.000
-Clear all history         3.11(1.10)     3.06(33)     3.14(40)   Mann-Whitney p=0.805, p_Holm=1.000
-Specific memory           3.46(0.88)     3.54(19)     3.38(22)   Mann-Whitney p=0.615, p_Holm=1.000
-Ask to forget             2.91(0.95)     2.91(25)     2.90(14)   Mann-Whitney p=1.000, p_Holm=1.000
+Single conversation       3.00(1.03)     2.97(84)     3.02(80)   Mann-Whitney U=3454.0, p=0.757, p_Holm=1.000
+Clear all history         3.11(1.10)     3.06(33)     3.14(40)   Mann-Whitney U=682.5, p=0.805, p_Holm=1.000
+Specific memory           3.46(0.88)     3.54(19)     3.38(22)   Mann-Whitney U=189.5, p=0.615, p_Holm=1.000
+Ask to forget             2.91(0.95)     2.91(25)     2.90(14)   Mann-Whitney U=174.5, p=1.000, p_Holm=1.000
 
 === PROTECTION ~ demographics, AI literacy, privacy concern (OLS, participant-clustered SE, both scenarios pooled) ===
 observations: 348 (174 participants)

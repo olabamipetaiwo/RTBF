@@ -1,6 +1,6 @@
 # expectation_vs_outcome
 
-_Run at 2026-11-03T17:28:47_
+_Run at 2026-11-10T01:34:37_
 
 Sources: outputs/tables/pooled_obs_expectation_pct.csv (Pooled responses) and the provisional audit table (placeholders included).
 

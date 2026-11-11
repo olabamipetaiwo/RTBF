@@ -1,6 +1,6 @@
 # outcomes_by_agent
 
-_Run at 2026-11-03T16:30:20_
+_Run at 2026-11-10T21:10:42_
 
 Source: outputs/tables/audit_outcomes_provisional.csv (865 erased test cases, placeholders included).
 
@@ -35,3 +35,9 @@ Can't tell share by agent ranges from 2.7% to 100.0%, but the six-agent range in
 
 UI-action methods: recall success in 29% to 50% of their test cases.
 Streams: 67 on the MASTER sheet (UI actions, including 13 typed commands) and 798 on the NL FORGET sheet (prompts).
+
+## ChatGPT recall success: was the fact still on the saved-memory page?
+
+- Recall success on ChatGPT: 118.
+- Fact not on the saved-memory page (UI-based check NOT FOUND): 112 of 118.
+- Fact still on the page (FOUND): 6 of 118.

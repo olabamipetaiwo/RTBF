@@ -119,15 +119,18 @@ def between_scenario_binary(paired, lines):
             c_cell = int(((sel_less == 0) & (sel_more == 1)).sum())
             tbl = [[int(((sel_less == 0) & (sel_more == 0)).sum()), c_cell],
                    [b_cell, int(((sel_less == 1) & (sel_more == 1)).sum())]]
-            _, p = mcnemar_p(tbl)
-            rows.append((i, b_cell, c_cell, p)); pvals.append(p)
+            stat, p = mcnemar_p(tbl)
+            rows.append((i, b_cell, c_cell, stat, p)); pvals.append(p)
             all_pvals.append((f"[scenario shift] {label} opt{i}", p))
         padj = holm(pvals)
-        for (i, bcell, ccell, _), pa in zip(rows, padj):
+        for (i, bcell, ccell, stat, _), pa in zip(rows, padj):
+            # exact (binomial) when < 25 discordant pairs: stat = smaller discordant count;
+            # otherwise chi2(1) with continuity correction
+            test = f"exact k={stat:.0f}" if bcell + ccell < 25 else f"chi2(1)={stat:.2f}"
             direction = "more>less" if ccell > bcell else "less>more"
             flag = "SIG" if pa < 0.05 else "ns"
             lines.append(f"    opt{i}: less-only={bcell:3d} more-only={ccell:3d} "
-                          f"({direction})  p_holm={pa:.4f}  {flag}")
+                          f"({direction})  {test}  p_holm={pa:.4f}  {flag}")
     return all_pvals
 
 

@@ -13,7 +13,7 @@ BANNED = {
     r"\bchatbots?\b": "agent (chatbot only inside quoted survey wording)",
     r"\bforget": "delete/deletion request (forget only inside quoted prompts)",
     r"behavioral audit|technical audit": "Post-Deletion Behavioral Analysis",
-    r"\beras(?:ure|ed|e)\b|\bremoval\b": "data deletion",
+    r"\beras(?:ed|e)\b|(?<!right to )\berasure\b": "data deletion (removal only for backend removal; erasure only in \"right to erasure\")",
     r"\bmaximal\b": "the most extensive deletion",
     r"\bindeterminate\b": "unresolved / can't tell",
     r"cannot tell|can not tell": "can't tell (outcome noun)",
