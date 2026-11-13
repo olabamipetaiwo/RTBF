@@ -78,6 +78,18 @@
 \newcommand{\mycontent}[1] {{\color{notepink}Content: #1}}
 \newenvironment{outlinenote}{\par\begingroup\color{red}}{\par\endgroup}
 
+\usepackage{float}
+\setcounter{dbltopnumber}{2}
+\renewcommand{\dbltopfraction}{0.9}
+\renewcommand{\dblfloatpagefraction}{0.8}
+
+\makeatletter
+\setlength{\@fptop}{0pt}
+\setlength{\@fpbot}{0pt plus 1fil}
+\setlength{\@dblfptop}{0pt}
+\setlength{\@dblfpbot}{0pt plus 1fil}
+\makeatother
+
 \begin{document}
 
 \title{``I Thought It Was Gone'': Understanding User Data Deletion Experiences, Expectations, and Post-Deletion Data Recall in Commercial LLM Agents}

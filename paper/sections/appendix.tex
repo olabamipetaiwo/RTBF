@@ -1,10 +1,19 @@
 \appendices
 
+\begin{outlinenote}
+\textbf{Appendix: pending items (remove before submission).}
+\begin{itemize}[leftmargin=*,itemsep=0pt]
+\item Ethics considerations: add vendor disclosure (to discuss with Dr Xue/Dr Yao).
+\item Artifact availability: waiting on the artifact. Share the DIDR code, recall prompts, and request-coding codebook; include the date note; add an anonymized link.
+\end{itemize}
+\end{outlinenote}
+
+
 \begin{table}[t]
 \centering
 \caption{Participant demographics ($N=177$).}
 \label{tab:demographics}
-\small
+\footnotesize
 \begin{tabular}{@{}lrr@{}}
 \toprule
  & Count & \% \\
@@ -58,7 +67,7 @@ Protection, effort, and benefit loss (within each method)
     & Mann-Whitney
     & Responses choosing each of the four methods in LS and MS
     & 4 methods, within each scale
-    & $U$ between 146.0 and 3813.0, all $p_{\mathrm{Holm}}\geq.54$ \\
+    & Protection: single conversation $U=3813.0$, $p_{\mathrm{Holm}}=.54$; clearing all history $U=630.0$; specific saved memory $U=222.0$; deletion-request prompt $U=179.5$. Effort: $U=3376.5$, $748.0$, $166.5$, $146.0$. Benefit loss: $U=3454.0$, $682.5$, $189.5$, $174.5$. All others $p_{\mathrm{Holm}}=1.00$ \\
 Deletion-method choice (overall)
     & Stuart-Maxwell marginal homogeneity
     & 176 participants who chose a method in both scenarios
@@ -164,7 +173,7 @@ MS vs.\ LS & 1.30 & 1.19 & 0.69* & 0.92 & 1.20 & 1.08 & 0.12** & $-$0.02 & 0.03 
 \section{Survey Questions}
 \label{app:questions}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Scale items, rated on five-point agreement scales for the method each participant chose.}
 \label{tab:scale-items}
@@ -191,3 +200,101 @@ Using this data deletion method would prevent AI Chatbots from providing the kin
 \bottomrule
 \end{tabular}
 \end{table}
+
+{\footnotesize
+\para{Survey instrument}
+We list the questionnaire in the order presented, with the wording participants saw.
+%
+The two scenario blocks appeared in random order and contained identical questions, so we list the LS block in full and give only the MS scenario text.
+%
+[chosen method] denotes the method selected in Q4.2 or Q5.2, whose options were the methods the participant had selected in Q3.2.
+%
+Options labeled ``Other (please specify)'' included a text field.
+%
+The perceived privacy protection, effort, and benefit loss items (Q4.7 to Q4.9) are listed in Table~\ref{tab:scale-items}.
+%
+Responses to the social influence, concern, usefulness, and AI literacy items (Q9.1, Q9.2, Q9.4 to Q9.6) were collected but not analyzed in this paper.
+
+\para{Consent} Participants read an informed consent form describing the study's purpose, procedures, data handling, and their rights, and indicated whether they consented. Those who did not consent left the survey.
+
+\para{Screening}
+\begin{description}[leftmargin=0pt,itemsep=1pt,font=\normalfont]
+\item[\textbf{Q2.1}] How old are you? \emph{Options (select one):} Under 18; 18-24 years old; 25-34 years old; 35-44 years old; 45-54 years old; 55-64 years old; 65+ years old.
+\item[\textbf{Q2.2}] Are you currently living in the United States? \emph{Options (select one):} Yes; No.
+\item[\textbf{Q2.3}] Have you ever used at least one of the following AI Chatbots: Claude, ChatGPT, Gemini, Perplexity, Deepseek and Microsoft Copilot? \emph{Options (select one):} Yes; No, I have never used any of these AI Chatbots.
+\end{description}
+
+\para{Agent use and prior deletion}
+\begin{description}[leftmargin=0pt,itemsep=1pt,font=\normalfont]
+\item[\textbf{Q3.1}] Which of the following AI Chatbots have you used, and for how long? (Select one per row) \emph{Rows:} ChatGPT; Claude; Gemini; Microsoft Copilot; Perplexity; Deepseek. \emph{Scale:} Never used to 2+ years (5 points).
+\item[\textbf{Q3.2}] Here are some common methods people use to delete their personal data from AI Chatbots: [each method was shown with a description and an example screenshot]. Which of the above methods have you used to remove your data? (Select all that apply) \emph{Options:} Type a message asking the AI Chatbot to forget it; Delete this single conversation; Clear all conversation history; Delete a specific saved memory or fact; Clear all saved memories; Delete my account entirely; Privacy dashboard or account-level data management page; File a request; Other (Please specify); I have never deleted my data in AI Chatbots.
+\end{description}
+
+\para{Less sensitive scenario (LS)}
+\begin{description}[leftmargin=0pt,itemsep=1pt,font=\normalfont]
+\item[\textbf{Q4.1}] Imagine that you are chatting with an AI chatbot and would like to know the weather of your location. The conversation may look like the example below: User: I am in Orlando now. What's the weather today in Orlando? AI: Based on your city, it's 72$^\circ$F and sunny. There is a slight chance of rain this evening. User: Should I bring an umbrella? AI: Probably not. The chance of rain is only 10\%. Now you want to delete your location data to protect your privacy.
+\item[\textbf{Q4.2}] Among the methods you have used, which would you use to delete your location data in the scenario above? \emph{Options: the methods the participant selected in Q3.2.}
+\item[\textbf{Q4.3}] Why would you want to use ``[chosen method]'' to delete your location data in the scenario? Please do not include any personally identifiable information (such as your name, email address, or account details) in your response \emph{(Open text.)}
+\item[\textbf{Q4.4}] When you use ``[chosen method]'', what do you expect to happen to your location data? (Select all that apply) \emph{Options:} It is permanently deleted from the database and backups of the AI Chatbot; It is made invisible to users, such as by hiding the conversation containing the data; The AI chatbot will not be able to reference it (or its derivatives) in the current conversation; The AI chatbot will not be able to reference it (or its derivatives) in future conversation; It is no longer used for training the AI model; I am not sure what happens; Others (Please specify).
+\item[\textbf{Q4.5}] Have you ever verified whether ``[chosen method]'' deletes your data? (Select all that apply) \emph{Options:} Yes, I asked the AI Chatbot in the same conversation and it no longer recalled my data; Yes, I asked the AI Chatbot in a new conversation and it no longer recalled my data; Yes, I checked the memory or saved data settings on the AI Chatbot; Yes, I checked whether the conversation or data was still visible in the user interface; Yes, I submitted a data access request through the AI Chatbot privacy portal; No, I did not know how to check; No, I don't want to check; Others (Please specify).
+\item[\textbf{Q4.6}] How confident are you about your answer to the above question? \emph{Options (select one):} Not confident at all (I doubted it worked); Slightly confident; Moderately confident; Very confident; Completely confident (I had no doubt).
+\item[\textbf{Q4.7}] Please evaluate the perceived privacy protection of ``[chosen method]'' and indicate your level of agreement with the following statements: \emph{Items in Table~\ref{tab:scale-items}; five-point agreement scale.}
+\item[\textbf{Q4.8}] Please evaluate the effort of using the data deletion method on ``[chosen method]'' and indicate your level of agreement with the following statements: \emph{Items in Table~\ref{tab:scale-items}; five-point agreement scale.}
+\item[\textbf{Q4.9}] Please evaluate the perceived benefit loss of using the data deletion method on ``[chosen method]'' and indicate your level of agreement with the following statements: \emph{Items in Table~\ref{tab:scale-items}; five-point agreement scale.}
+\item[\textbf{Q4.10}] Are you willing to delete your location data in the scenario? \emph{Options (select one):} Definitely not; Probably not; Might or might not; Probably yes; Definitely yes.
+\item[\textbf{Q4.11}] If you were to type a message asking the AI Chatbot to delete your location data in the scenario, what would be your message? Please do not include any personally identifiable information (such as your name, email address, or account details) in your response \emph{(Open text.)}
+\item[\textbf{Q4.12}] Why would you phrase the message this way? Please do not include any personally identifiable information (such as your name, email address, or account details) in your response \emph{(Open text.)}
+\item[\textbf{Q4.13}] Among the data deletion methods, including those you have used before and those you have not , which would you choose to delete your location data in this scenario? (Select all that apply) Please do not include any personally identifiable information (such as your name, email address, or account details) in your response \emph{Options:} Type a message asking the AI Chatbot to forget it; Delete this single conversation; Clear all conversation history; Delete a specific saved memory or fact; Clear all saved memories; Delete my account entirely; Privacy dashboard or account-level data management page; File a request; Other (Please specify).
+\end{description}
+
+\para{More sensitive scenario (MS)}
+\begin{description}[leftmargin=0pt,itemsep=1pt,font=\normalfont]
+\item[\textbf{Q5.1}] Imagine that you are chatting with an AI chatbot and want to know what to prepare for medical center visit. The conversation might look like the example below: User : I live at 7482 Orange Blossom Lane, Orlando, FL 32801. Can you find me the nearest Medical Center to get treatment for sexually transmitted infections? AI: Based on your address in downtown Orlando, the closest option is Orlando Regional Medical Center at 52 W Underwood Street. If it's a life-threatening emergency, call 911 rather than driving yourself. User : How should I prepare? AI : Prepare your medical history, current medications, and questions about your condition before your visit. Now you want to delete your location/address data to protect your privacy. Questions Q5.2 to Q5.13 repeated Q4.2 to Q4.13 for this scenario.
+\end{description}
+
+\para{Deletion experience}
+\begin{description}[leftmargin=0pt,itemsep=1pt,font=\normalfont]
+\item[\textbf{Q6.1}] This section asks about your experience trying to delete data from an AI Chatbot. There are no right or wrong answers.
+\item[\textbf{Q6.2}] When you use an AI Chatbot, which of the following types of information do you typically share? (Select all that apply) \emph{(11 options.)}
+\item[\textbf{Q6.3}] Which platforms have you attempted to delete data from? (Select all that apply) \emph{(8 options.)}
+\item[\textbf{Q6.4}] What type of data did you try to delete? (Select all that apply) \emph{(12 options.)}
+\item[\textbf{Q6.5}] Please select ``Sometimes'' for this question. \emph{Options (select one):} Never; Rarely; Sometimes; Often; Always. \emph{(Attention check.)}
+\item[\textbf{Q6.6}] In your own words, describe what made you decide to delete your data from an AI Chatbot What happened, and why did you want it removed? \emph{(Open text.)}
+\item[\textbf{Q6.7}] How did you find out that these deletion options existed? \emph{Options (select one):} I found them while browsing the platform settings; The platform told or reminded me; I searched online or read the platform documentation; Someone told me about them; I guessed or experimented until I found them; Others (Please specify); I have not attempted to delete data.
+\item[\textbf{Q6.8}] Have you ever noticed the AI Chatbot referencing information you believed you had already deleted? \emph{Options (select one):} Yes, this happened frequently; Yes, this happened occasionally; No, this has never happened; I am not sure; I have not attempted to delete data.
+\end{description}
+
+\para{Post-deletion feedback}
+\begin{description}[leftmargin=0pt,itemsep=1pt,font=\normalfont]
+\item[\textbf{Q7.1}] After deleting data on an AI Chatbot, what kind of confirmation do you currently receive from the AI Chatbot? \emph{Options (select all):} A clear message confirming the deletion; A brief or vague acknowledgement (e.g. the item just disappears); No feedback at all; Others (Please specify); I have not attempted to delete data.
+\item[\textbf{Q7.2}] What feedback do you think an AI Chatbot should provide after you delete your data? (Select all that apply) \emph{Options:} A popup confirmation message on screen; An inline natural language confirmation within the conversation; An email confirmation; A timestamp or estimate of when the deletion will be fully complete; A breakdown of exactly what was deleted and what may still be retained; No feedback is necessary; Others (Please specify).
+\end{description}
+
+\para{Privacy awareness and knowledge}
+\begin{description}[leftmargin=0pt,itemsep=1pt,font=\normalfont]
+\item[\textbf{Q8.1}] Have you read privacy policies of AI Chatbots? \emph{Options (select one):} Yes; No.
+\item[\textbf{Q8.2}] Please select the best answer. The ``right to be forgotten'', the right to request deletion of your personal data is? \emph{(4 options; select one.)}
+\item[\textbf{Q8.3}] Please state whether the following is True or False: When you use AI Chatbots, your conversations may be used to train future versions of the AI model. \emph{Options (select one):} True; False.
+\item[\textbf{Q8.4}] Please select the best answer. What are ``training data'' in the context of AI chatbots? \emph{(4 options; select one.)}
+\item[\textbf{Q8.5}] Please select the best answer. What does the term ``memory'' mean in the context of AI Chatbots? \emph{(4 options; select one.)}
+\item[\textbf{Q8.6}] Please state whether the following is True or False: AI Chatbots access only public user data, which are visible for anyone. \emph{Options (select one):} True; False.
+\item[\textbf{Q8.7}] Please state whether the following is True or False: User data collected by AI Chatbots are deleted after five years. \emph{Options (select one):} True; False.
+\end{description}
+
+\para{Social influence, concern, usefulness, and AI literacy (not analyzed)}
+\begin{description}[leftmargin=0pt,itemsep=1pt,font=\normalfont]
+\item[\textbf{Q9.1}] How do people in your social network feel about using AI Chatbots? \emph{(4 statements; 5-point scale from Strongly Disagree to Strongly Agree.)}
+\item[\textbf{Q9.2}] How do people in your social network feel about sharing data with AI Chatbots? \emph{(4 statements; 5-point scale from Strongly Disagree to Strongly Agree.)}
+\item[\textbf{Q9.3}] Please select ``Agree'' for this question. \emph{Options (select one):} Strongly Disagree; Disagree; Neutral; Agree; Strongly Agree. \emph{(Attention check.)}
+\item[\textbf{Q9.4}] How do you feel about submitting personal information to AI Chatbots? \emph{(4 statements; 5-point scale from Strongly Disagree to Strongly Agree.)}
+\item[\textbf{Q9.5}] How do you feel about using AI Chatbots for your tasks? \emph{(6 statements; 5-point scale from Strongly Disagree to Strongly Agree.)}
+\item[\textbf{Q9.6}] Please indicate how well each statement describes your abilities when dealing with artificial intelligence. \emph{(10 statements; 5-point scale from 1 - Does not describe me at all to 5 - Describes me very well.)}
+\end{description}
+
+\para{Demographics}
+\begin{description}[leftmargin=0pt,itemsep=1pt,font=\normalfont]
+\item[\textbf{Q10.1}] What is the highest level of education you have completed? \emph{Options (select one):} Some high school or less; High school diploma or GED; Some college, but no degree; Associates or technical degree; Bachelor's degree; Graduate or professional degree (MA, MS, MBA, PhD, JD, MD, DDS etc.); Prefer not to say.
+\item[\textbf{Q10.2}] What is your gender? \emph{Options (select one):} Man; Woman; Non-binary or gender diverse; Prefer not to say; Prefer to self-describe (Please specify).
+\item[\textbf{Q10.3}] What is your primary domain of work or study? \emph{(8 options; select one.)}
+\end{description}
+\par}

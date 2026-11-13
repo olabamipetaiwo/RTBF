@@ -1,314 +1,314 @@
+    \section{Understanding User Data Deletion Practices and Expectations}
+    \label{sec:user_study}
 
 
-\section{Understanding User Data Deletion Practices and Expectations}
-\label{sec:user_study}
+    % \ji{Right now, Sections 3 and 4 each combine a method with its findings (user study and technical audit, respectively). I suggest presenting both methods first in Section 3, then the user study findings in Section 4 and the technical audit findings in Section 5.}
+
+    To examine deletion practices and expectations (RQ1 and RQ2), we surveyed users with prior experience deleting data from LLM agents.
+    %We present the methodology and findings.
+
+    \subsection{User Study Methodology}
+
+    \subsubsection{Participant Recruitment}
+    %
+    Through Prolific, we recruited U.S. adults aged 18 or older who had used at least one of the six LLM agents in Section~\ref{sec:background}.
+    %
+    The survey was administered through Qualtrics.
+    %
+    Participants received \$4 for completing the survey and passing attention checks.
+    %
+    Of 235 submissions, 17 were incomplete and one failed an attention check, leaving 217 complete responses.
+    %
+    We excluded 36 participants without prior deletion experience, who could not evaluate methods they had never used, and four with missing responses, yielding 177 participants.
+    %
+    Of these, 58.8\% were men, 40.7\% were women (one preferred not to say), 73.4\% were under 45, and 62.1\% held at least a bachelor's degree (Table~\ref{tab:demographics}, Appendix). 
+
+    %Separately, we collected deletion-request prompts from 209 participants, including some without prior deletion experience, for the later post-deletion analysis in Section~\ref{sec:didr}, as the hypothetical prompt-writing task did not require such experience.
 
 
-% \ji{Right now, Sections 3 and 4 each combine a method with its findings (user study and technical audit, respectively). I suggest presenting both methods first in Section 3, then the user study findings in Section 4 and the technical audit findings in Section 5.}
-
-To examine deletion practices and expectations (RQ1 and RQ2), we surveyed users with prior experience deleting data from LLM agents.
-%We present the methodology and findings.
-
-\subsection{User Study Methodology}
-
-\subsubsection{Participant Recruitment}
-%
-Through Prolific, we recruited U.S. adults aged 18 or older who had used at least one of the six LLM agents in Section~\ref{sec:background} and had prior experience deleting data from LLM agents. 
-%
-The survey was administered through Qualtrics.
-%
-Participants received \$4 for completing the survey and passing attention checks.
-%
-Of 235 submissions, 17 were incomplete and one failed an attention check, leaving 217 complete responses.
-%
-We excluded 36 participants without prior deletion experience, who could not evaluate methods they had never used, and four with missing responses, yielding 177 participants.
-%
-Of these, 58.8\% were men, 40.7\% were women (one preferred not to say), 73.4\% were under 45, and 62.1\% held at least a bachelor's degree (Table~\ref{tab:demographics}, Appendix). 
-
-%Separately, we collected deletion-request prompts from 209 participants, including some without prior deletion experience, for the later post-deletion analysis in Section~\ref{sec:didr}, as the hypothetical prompt-writing task did not require such experience.
-
-\subsubsection{Study Procedure}
-Participants first reviewed an informed consent form covering the study's purpose, procedures, data handling, and their rights. 
-%
-Those who consented answered screening questions.
-%
-After screening, eligible participants completed, in sequence: (1) scenario-based assessments of deletion methods, expectations, and verification; (2) prior data deletion experiences; (3) desired design of deletion; (4) general privacy awareness and knowledge; %(6) attitudes toward LLM agents, data sharing, social influences, and perceived AI-related abilities; and 
-(5) demographic information.
-%
-Two scenarios appeared in randomized order, each with identical follow-up questions. 
-%Two attention checks requiring specific responses assessed response quality.
-%Throughout the survey, we used the term ``AI chatbot'' to refer to LLM agents, as this term is more familiar and accessible to general users.
-
-\subsubsection{Survey Question Design}
-%
-\label{subsubsec:questions}
-%The survey questions were designed to investigate users' deletion practices (RQ1) and their expectations and verification strategies (RQ2).
-
-\para{Data deletion used}
-%
-For RQ1, we presented eight deletion methods: the six in Table~\ref{tab:methods} plus account deletion, which prevents further observation, and filing a company request, which occurs outside the agent. We did not test these two methods (Section~\ref{sec:didr}).
-%
-Each method had a description and example screenshot. 
-%
-Participants selected all methods they had previously used.
-%
-An “Other (please specify)” text field captured unlisted methods. 
-%
-
-\para{Data deletion preference, evaluation and expectation}
-%
-To assess preferences (RQ1), participants selected their preferred deletion method for each scenario.
-%
-The scenarios differed in data sensitivity.
-%
-In the less sensitive scenario (\textbf{LS}), a user shares their city to request weather information; in the more sensitive scenario (\textbf{MS}), they disclose their home address while seeking a clinic treating sexually transmitted infections.
-%
-A city is coarse-grained and rarely identifies an individual; a home address identifies a specific person and, with an STI-treatment request, links them to sensitive health information.
-%
-In both, participants considered deleting the location information to protect their privacy. 
-%
-Randomized presentation mitigated order effects.
-%
-For each scenario, participants chose a method they had previously used.
-%
-Prior experience supported evaluation of the chosen method.
-%
-They also rated willingness to delete and selected all methods they would choose, regardless of prior use (multiple selections allowed).
 
 
-For RQ2, participants rated their chosen method on three five-point agreement scales (items in Appendix~\ref{app:questions}).
-%
-\textit{Perceived privacy protection} (five items) measured whether the method protects participants' personal information and gives them control over what the agent retains; we adapted it from the perceived effectiveness and privacy control measures of Xu et al.~\cite{xu2011information}.
-%
-\textit{Effort} (four items) measured the time, complexity, and difficulty of using and understanding the method, following perceived-effort measures for privacy choice mechanisms~\cite{habib2022evaluating}.
-%
-\textit{Potential loss of personalized benefits} (three items) measured whether the method would reduce the agent's personalized assistance; we adapted it from the personalization items of Xu et al.~\cite{xu2011personalization}.
-%
-Ratings concerned the chosen method rather than deletion in general.
-%
-Participants also selected expected outcomes for that method, including \textit{permanent deletion from the database and backups}, being \textit{made invisible to users}, the agent not referencing the information in \textit{the current conversation} or in \textit{future conversations}, and \textit{exclusion from model training}. 
-%
-Multiple outcomes or uncertainty could be selected.
-%
-Participants reported prior verification strategies: asking the agent in the same or a new conversation, checking saved memories or the interface, or submitting a data access request through a privacy portal. 
-%
-They could also indicate not knowing how to verify deletion or not wishing to do so. 
-%
-We asked about confirmations received after actual deletion attempts and feedback agents should provide.
-%
-Each question included an ``Other (please specify)'' text field.
 
-\para{Participant-authored deletion-request prompts}
-%
-For RQ2, participants wrote a deletion-request message for each scenario and explained their wording.
-%
-These messages captured expectations about what, how, and with what outcome information should be deleted beyond closed-ended items.
-%
-We also adapted these participant-authored prompts for the post-deletion analysis (RQ3; Section~\ref{sec:didr}).
-
-\para{Other survey questions}
-%
-We asked about prior deletion attempts, types of information, motivations, discovery of controls, and whether agents later referenced information participants believed deleted.
-%
-We collected education, gender, and primary domain of work or study. 
-%
-Appendix~\ref{app:questions} contains the questionnaire and measurement items.
+    \subsubsection{Study Procedure}
+    Participants first reviewed an informed consent form covering the study's purpose, procedures, data handling, and their rights. 
+    %
+    Those who consented answered screening questions.
+    %
+    After screening, eligible participants completed, in sequence: (1) scenario-based assessments of deletion methods, expectations, and verification; (2) prior data deletion experiences; (3) desired design of deletion; (4) general privacy awareness and knowledge; %(6) attitudes toward LLM agents, data sharing, social influences, and perceived AI-related abilities; and 
+    (5) demographic information.
+    %
+    Two scenarios appeared in randomized order, each with identical follow-up questions. 
+    %Two attention checks requiring specific responses assessed response quality.
+    %Throughout the survey, we used the term ``AI chatbot'' to refer to LLM agents, as this term is more familiar and accessible to general users.
 
 
-\subsubsection{Data Analysis}
-%
-We analyzed 177 participants and reported percentages separately for LS and MS. 
-%
-As participants evaluated both scenarios, comparisons used paired tests. 
-%
-We used Wilcoxon signed-rank tests~\cite{wilcoxon1945individual}, with rank-biserial $r$ as the effect size, for \textit{willingness to delete}, \textit{perceived privacy protection}, \textit{effort}, and \textit{benefit loss}; the Stuart-Maxwell test~\cite{agresti2013categorical} for overall deletion-method choices; and McNemar tests~\cite{agresti2013categorical}, exact when fewer than 25 pairs were discordant, for individual deletion methods, both the method chosen in each scenario and the methods participants would choose, as well as expected deletion outcomes and verification strategies. 
-%
-We assessed scenario-order effects using binomial~\cite{agresti2013categorical}, Mann-Whitney~\cite{mann1947test}, and Fisher's exact tests~\cite{agresti2013categorical}. 
 
-For method comparisons, we pooled both scenarios (\textbf{Pooled}), with two responses per participant. 
-%
-We fitted generalized estimating equations (GEE)~\cite{liang1986longitudinal}, clustered by participant to account for repeated responses. 
-%
-To avoid unstable estimates, we included only four methods selected by at least 14 participants, retaining 317 of 354 responses. 
-%
-We used Gaussian GEE models~\cite{liang1986longitudinal} for \textit{perceived privacy protection}, \textit{effort}, and \textit{benefit loss}, and logistic models~\cite{agresti2013categorical} for binary expectation outcomes, with scenario included as a covariate. 
-%
-We used GEE contrasts for pairwise effort differences, chi-square or Fisher's exact tests for verification strategies within each scenario, and Mann-Whitney tests~\cite{mann1947test} comparing LS and MS ratings within each method.
+    \subsubsection{Survey Question Design}
+    %
+    \label{subsubsec:questions}
+    %The survey questions were designed to investigate users' deletion practices (RQ1) and their expectations and verification strategies (RQ2).
 
+    \para{Data deletion used}
+    %
+    For RQ1, we presented eight deletion methods: the six in Table~\ref{tab:methods} plus account deletion, which prevents further observation, and filing a company request, which occurs outside the agent. We did not test these two methods (Section~\ref{sec:didr}).
+    %
+    Each method had a description and example screenshot. 
+    %
+    Participants selected all methods they had previously used.
+    %
+    An “Other (please specify)” text field captured unlisted methods. 
+    %
 
-We assessed all 354 pooled responses with confirmatory factor analysis (CFA) using separate factors for protection (five items), effort (four), and benefit loss (three).
-%
-Standardized loadings were .73--.94, average variance extracted .64--.76, and Cronbach's $\alpha$ .87--.92. Fit indices were CFI = .94, TLI = .92, and SRMR = .060, although RMSEA = .099 exceeded .08. 
-%
-As pooled CFA did not account for repeated responses, separate scenario models yielded similar results (CFI = .95 and .93; RMSEA = .087 and .108). 
-
-Analyses were exploratory; we applied Holm corrections~\cite{holm1979simple} within related test families but not to single tests. 
-%
-We report adjusted $p_{\mathrm{Holm}}$ values and use $\alpha=.05$ for significance. 
-%
-Table~\ref{tab:analysis-families} (Appendix) summarizes tests, samples, and correction families.
-
-\subsection{User Study Findings}
-\label{sec:qual_results}
-
-Findings from 177 participants address deletion practices (RQ1), expectations, and verification (RQ2).
-%
-Results are reported for LS and MS separately.
-%
-Combined analyses are \textbf{Pooled} (354 responses unless stated otherwise).
-%
-Scenario order did not affect these comparisons: 83 participants saw LS first and 94 saw MS first (binomial, $p=.45$), the change from LS to MS in willingness, protection, effort, and benefit loss did not differ by order (Mann-Whitney, $U$ between 3566.5 and 4110.0, all $p_{\mathrm{Holm}}=1.00$), and neither did the share of participants who changed method (39.8\% vs.\ 31.9\%; Fisher's exact, OR $=0.71$, $p=.35$).
-
-\subsubsection{Deletion Practices Used and Preferred (RQ1)}
-
-Deleting a single conversation was most commonly used (76.8\%) and most frequently chosen in both scenarios (Table~\ref{tab:method-use}).
-%
-Other previously used methods were clearing all history (53.1\%), deleting specific memories (32.2\%), and clearing all memories (25.4\%).
-%
-Fewer used a privacy dashboard (9.6\%), deleted an account (10.2\%), or filed a request (2.8\%).
-%
-Most (110/177, 62.1\%) found controls by exploring settings or guessing; only 6/177 learned about them from the agent.
-
-\begin{table*}[!t]
-\centering
-\caption{Previously used, scenario-based, and desired deletion methods in LS, MS, and Pooled. Scenario-based choices were restricted to previously used methods ($n=176$; Pooled $n=352$), while desired methods allowed all options ($n=177$ per scenario). Multiple selections were allowed for previously used and desired methods.}
-\label{tab:method-use}
-\small
-\begin{tabular}{@{}lrrrrrr@{}}
-\toprule
- & Previously used & \multicolumn{3}{c}{Chosen in scenario} & \multicolumn{2}{c}{Would choose} \\
-\cmidrule(lr){3-5} \cmidrule(lr){6-7}
-Deletion method & ($n=177$) & LS & MS & Pooled ($n=352$) & LS & MS \\
-\midrule
-Sending a deletion-request prompt & 55 (31.1\%) & 25 & 14 & 39 (11.1\%) & 83 (46.9\%) & 89 (50.3\%) \\
-Deleting a single conversation & 136 (76.8\%) & 84 & 80 & 164 (46.6\%) & 117 (66.1\%) & 107 (60.5\%) \\
-Clearing all conversation history & 94 (53.1\%) & 33 & 40 & 73 (20.7\%) & 63 (35.6\%) & 72 (40.7\%) \\
-Deleting a specific saved memory & 57 (32.2\%) & 19 & 22 & 41 (11.6\%) & 55 (31.1\%) & 74 (41.8\%) \\
-Clearing all saved memories & 45 (25.4\%) & 7 & 8 & 15 (4.3\%) & 30 (16.9\%) & 43 (24.3\%) \\
-Using a privacy dashboard & 17 (9.6\%) & 6 & 9 & 15 (4.3\%) & 27 (15.3\%) & 31 (17.5\%) \\
-Deleting the account & 18 (10.2\%) & 2 & 3 & 5 (1.4\%) & 8 (4.5\%) & 11 (6.2\%) \\
-Filing a request & 5 (2.8\%) & 0 & 0 & 0 (0.0\%) & 4 (2.3\%) & 9 (5.1\%) \\
-\bottomrule
-\end{tabular}
-\end{table*}
-
-The more sensitive scenario increased willingness to delete but did not significantly change method choices.
-%
-In LS and MS, respectively, 125 and 150 of 177 would probably or definitely delete the information, and mean willingness rose from 3.98 to 4.37 on the five-point scale (Wilcoxon signed-rank, $W=754.5$, $p<.001$, $r=.55$).
-%
-Method-choice distributions did not differ significantly (Stuart-Maxwell, $\chi^2(6)=6.28$, $p=.39$).
-%
-No individual method was chosen significantly more or less often in MS than in LS (McNemar, all $p_{\mathrm{Holm}}\geq.13$); the largest shift was away from deletion-request prompts, chosen by 15 participants only in LS and 4 only in MS.
+    \para{Data deletion preference, evaluation and expectation}
+    %
+    To assess preferences (RQ1), participants selected their preferred deletion method for each scenario from the methods they had previously used.
+    %
+    The scenarios differed in data sensitivity.
+    %
+    In the less sensitive scenario (\textbf{LS}), a user shares their city to request weather information; in the more sensitive scenario (\textbf{MS}), they disclose their home address while seeking a clinic treating sexually transmitted infections.
+    %
+    A city is coarse-grained and rarely identifies an individual; a home address identifies a specific person and, with an STI-treatment request, links them to sensitive health information.
+    %
+    In both, participants considered deleting the location information to protect their privacy. 
+    %
+    We restricted choices to previously used methods because participants subsequently evaluated their chosen method.
+    %
+    They also rated willingness to delete and selected all methods they would choose, regardless of prior use (multiple selections allowed).
 
 
-When all methods were available regardless of prior use, deletion-request prompts were second most selected (47\%--50\%), after deleting a conversation (61\%--66\%; Table~\ref{tab:method-use}).
-%
-These selections did not differ significantly between scenarios for any method (McNemar, all $p_{\mathrm{Holm}}\geq.09$), although deleting a specific saved memory (31.1\% to 41.8\%) and clearing all saved memories (16.9\% to 24.3\%) were selected more often in MS.
-%
-Among previously used methods, only 8\%--14\% chose a deletion-request prompt as their single method.
-%
-These percentages are not directly comparable because one question allowed multiple selections and the other one, but indicate interest in prompts despite limited prior reliance.
+    For RQ2, participants rated their chosen method on three five-point agreement scales (items in Appendix~\ref{app:questions}).
+    %
+    \textit{Perceived privacy protection} (five items) measured whether the method protects participants' personal information and gives them control over what the agent retains; we adapted it from the perceived effectiveness and privacy control measures of Xu et al.~\cite{xu2011information}.
+    %
+    \textit{Effort} (four items) measured the time, complexity, and difficulty of using and understanding the method, following perceived-effort measures for privacy choice mechanisms~\cite{habib2022evaluating}.
+    %
+    \textit{Potential loss of personalized benefits} (three items) measured whether the method would reduce the agent's personalized assistance; we adapted it from the personalization items of Xu et al.~\cite{xu2011personalization}.
+    %
+    Participants also selected expected outcomes for that method. Multiple outcomes or uncertainty could be selected.
+    %
+    Participants reported prior verification strategies: asking the agent in the same or a new conversation, checking saved memories or the interface, or submitting a data access request through a privacy portal. 
+    %
+    They could also indicate not knowing how to verify deletion or not wishing to do so. 
+    %
+    We asked about confirmations received after actual deletion attempts and feedback agents should provide.
+    %
+    Each question included an ``Other (please specify)'' text field.
+
+    \para{Participant-authored deletion-request prompts}
+    %
+    For RQ2, participants wrote a deletion-request message for each scenario and explained their wording.
+    %
+    These messages captured expectations about what, how, and with what outcome information should be deleted beyond closed-ended items.
+    %
+    We also adapted these participant-authored prompts for the post-deletion analysis (RQ3; Section~\ref{sec:didr}).
+
+    \para{Other survey questions}
+    %
+    We asked about prior deletion attempts, types of information, motivations, discovery of controls, and whether agents later referenced information participants believed deleted.
+    %
+    We collected education, gender, and primary domain of work or study. 
+    %
+    Appendix~\ref{app:questions} contains the questionnaire and measurement items.
 
 
-\begin{takeawaybox}
-\textbf{Finding 1:} Participants primarily used conversation-level deletion methods and often discovered deletion controls on their own. Many participants would choose deletion-request prompts, but relatively few chose them among their previously used methods. Participants were more willing to delete in the more sensitive scenario, but their deletion-method choices did not change significantly.
-\end{takeawaybox}
 
 
-\subsubsection{User Expectations and Verification (RQ2)}
-\label{sec:user_verification}
 
-%Participants' expectations did not differ significantly across deletion methods, even though the methods target different data locations.
-%
-Across Pooled responses, 59.0\% expected permanent deletion from databases and backups, and 54.2\% expected prevention of future recall (Figure~\ref{fig:expectation}).
-%
-Expectations did not differ significantly across methods.
-%
-Logistic GEE found no significant differences across methods for permanent deletion ($\chi^2(3)=1.94$, $p_{\mathrm{Holm}}=1.00$) or future recall prevention ($\chi^2(3)=3.70$, $p_{\mathrm{Holm}}=1.00$), nor for any other expected outcome (all $p_{\mathrm{Holm}}\geq.37$; Table~\ref{tab:gee-full}, Appendix).
-%
-Expectations also did not change significantly between scenarios (McNemar, all $p_{\mathrm{Holm}}\geq.22$); the largest shift was toward permanent deletion, expected by 9 participants only in LS and 22 only in MS.
-%With two small method groups (29 and 30 participants), this is absence of a detectable difference, not evidence of equal expectations.
+    \subsubsection{Data Analysis}
+    %
+    We analyzed 177 participants and reported percentages separately for LS and MS. 
+    %
+    As participants evaluated both scenarios, comparisons used paired tests. 
+    %
+    We used Wilcoxon signed-rank tests~\cite{wilcoxon1945individual}, with rank-biserial $r$ as the effect size, for \textit{willingness to delete}, \textit{perceived privacy protection}, \textit{effort}, and \textit{benefit loss}; the Stuart-Maxwell test~\cite{agresti2013categorical} for overall deletion-method choices; and McNemar tests~\cite{agresti2013categorical}, exact when fewer than 25 pairs were discordant, for individual deletion methods, both the method chosen in each scenario and the methods participants would choose, as well as expected deletion outcomes and verification strategies. 
+    %
+    We assessed scenario-order effects using binomial~\cite{agresti2013categorical}, Mann-Whitney~\cite{mann1947test}, and Fisher's exact tests~\cite{agresti2013categorical}. 
 
-Evaluations varied by method.
-%
-Effort differed across the four most selected methods (Gaussian GEE, $\chi^2(3)=23.05$, $p_{\mathrm{Holm}}=.0001$), but perceived protection ($\chi^2(3)=3.71$, $p_{\mathrm{Holm}}=.29$) and benefit loss ($\chi^2(3)=6.94$, $p_{\mathrm{Holm}}=.15$) did not (Table~\ref{tab:method-scales}; Figure~\ref{fig:scales}).
-In pairwise GEE contrasts, deleting a specific saved memory took more effort than deleting a single conversation ($\beta=0.85$, $p_{\mathrm{Holm}}<.001$) and sending a deletion-request prompt ($\beta=0.75$, $p_{\mathrm{Holm}}=.008$), and clearing all conversation history took more effort than deleting a single conversation ($\beta=0.45$, $p_{\mathrm{Holm}}=.019$); the other three pairs did not differ significantly ($p_{\mathrm{Holm}}\geq.24$).
-%
-Across scenarios, perceived protection was higher in MS than in LS (3.79 vs.\ 3.66; Wilcoxon signed-rank, $W=1752.0$, $p_{\mathrm{Holm}}=.002$, $r=.38$), whereas effort ($W=1750.5$, $p_{\mathrm{Holm}}=.59$) and benefit loss ($W=1999.5$, $p_{\mathrm{Holm}}=.59$) did not differ significantly (Table~\ref{tab:method-scales}).
-Within each method, LS and MS ratings did not differ significantly on any scale (Mann-Whitney, all $p_{\mathrm{Holm}}\geq.54$; Table~\ref{tab:method-scales}).
-%Participants thus distinguished methods by effort, not protection.
-%As participants chose their methods and groups were small, these comparisons are associative, not causal.
+    For method comparisons, we pooled both scenarios (\textbf{Pooled}; 354 responses unless stated otherwise), with two responses per participant. 
+    %
+    We fitted generalized estimating equations (GEE)~\cite{liang1986longitudinal}, clustered by participant to account for repeated responses. 
+    %
+    To avoid unstable estimates, we included only four methods selected by at least 14 participants, retaining 317 of 354 responses. 
+    %
+    We used Gaussian GEE models~\cite{liang1986longitudinal} for \textit{perceived privacy protection}, \textit{effort}, and \textit{benefit loss}, and logistic models~\cite{agresti2013categorical} for binary expectation outcomes, with scenario included as a covariate. 
+    %
+    We used GEE contrasts for pairwise effort differences, chi-square or Fisher's exact tests for verification strategies within each scenario, and Mann-Whitney tests~\cite{mann1947test} comparing LS and MS ratings within each method.
 
-\begin{figure}[t]
+
+    We assessed all 354 pooled responses with CFA using separate factors for protection, effort, and benefit loss.
+    %
+    Standardized loadings ranged from .73 to .94, average variance extracted from .64 to .76, and Cronbach's $\alpha$ from .87 to .92. Fit indices were CFI = .94, TLI = .92, and SRMR = .060, although RMSEA = .099 exceeded .08.
+    %
+    Because pooled CFA did not account for repeated responses, separate scenario models yielded similar results (CFI = .95 and .93; RMSEA = .087 and .108). 
+
+    Analyses were exploratory; we applied Holm corrections~\cite{holm1979simple} within related test families but not to single tests. 
+    %
+    We report adjusted $p_{\mathrm{Holm}}$ values and use $\alpha=.05$ for significance. 
+    %
+    Table~\ref{tab:analysis-families} (Appendix) summarizes tests, samples, and correction families.
+
+
+
+    \subsection{User Study Findings}
+    \label{sec:qual_results}
+
+    Findings from 177 participants address deletion practices (RQ1), expectations, and verification (RQ2).
+    %
+    Scenario order did not affect these comparisons: 83 participants saw LS first and 94 saw MS first (binomial, $p=.45$), the change from LS to MS in willingness, protection, effort, and benefit loss did not differ by order (Mann-Whitney, $U$ between 3566.5 and 4110.0, all $p_{\mathrm{Holm}}=1.00$), and neither did the share of participants who changed method (39.8\% vs.\ 31.9\%; Fisher's exact, OR $=0.71$, $p=.35$).
+
+
+    \subsubsection{Deletion Practices Used and Preferred (RQ1)}
+
+    Participants primarily used conversation-level deletion methods: 76.8\% had deleted a single conversation and 53.1\% had cleared all conversation history, compared with 32.2\% who had deleted a specific saved memory and 25.4\% who had cleared all saved memories (Table~\ref{tab:method-use}).
+    %
+    Account-level options, including privacy dashboards, account deletion, and filing a request, were each used by at most 10.2\%.
+    %
+    Deleting a single conversation was also the most frequently chosen method in both scenarios.
+    %
+    Most participants (110 of 177, 62.1\%) discovered these controls by exploring settings or guessing; only 6 learned about them from the agent.
+
+
+    \begin{table*}[!t]
     \centering
-    \includegraphics[width=\columnwidth,height=0.42\textheight,keepaspectratio]{figures/fig_expectation.png}
-   \caption{Expected deletion outcomes and reported verification strategies in LS, MS, and Pooled. Multiple selections were allowed. Percentages are based on 177 participants per scenario and 354 pooled responses.}
-    \label{fig:expectation}
-\end{figure}
+    \caption{Previously used, scenario-based, and desired deletion methods in LS, MS, and Pooled. Scenario-based choices were restricted to previously used methods ($n=176$; Pooled $n=352$), while desired methods allowed all options ($n=177$ per scenario). Multiple selections were allowed for previously used and desired methods.}
+    \label{tab:method-use}
+    \small
+    \begin{tabular}{@{}lrrrrrr@{}}
+    \toprule
+    & Previously used & \multicolumn{3}{c}{Chosen in scenario} & \multicolumn{2}{c}{Would choose} \\
+    \cmidrule(lr){3-5} \cmidrule(lr){6-7}
+    Deletion method & ($n=177$) & LS & MS & Pooled ($n=352$) & LS & MS \\
+    \midrule
+    Sending a deletion-request prompt & 55 (31.1\%) & 25 & 14 & 39 (11.1\%) & 83 (46.9\%) & 89 (50.3\%) \\
+    Deleting a single conversation & 136 (76.8\%) & 84 & 80 & 164 (46.6\%) & 117 (66.1\%) & 107 (60.5\%) \\
+    Clearing all conversation history & 94 (53.1\%) & 33 & 40 & 73 (20.7\%) & 63 (35.6\%) & 72 (40.7\%) \\
+    Deleting a specific saved memory & 57 (32.2\%) & 19 & 22 & 41 (11.6\%) & 55 (31.1\%) & 74 (41.8\%) \\
+    Clearing all saved memories & 45 (25.4\%) & 7 & 8 & 15 (4.3\%) & 30 (16.9\%) & 43 (24.3\%) \\
+    Using a privacy dashboard & 17 (9.6\%) & 6 & 9 & 15 (4.3\%) & 27 (15.3\%) & 31 (17.5\%) \\
+    Deleting the account & 18 (10.2\%) & 2 & 3 & 5 (1.4\%) & 8 (4.5\%) & 11 (6.2\%) \\
+    Filing a request & 5 (2.8\%) & 0 & 0 & 0 (0.0\%) & 4 (2.3\%) & 9 (5.1\%) \\
+    \bottomrule
+    \end{tabular}
+    \end{table*}
 
 
-\begin{figure*}[t]
+    The more sensitive scenario increased willingness to delete: 125 of 177 participants in LS and 150 in MS would probably or definitely delete the information. Mean willingness rose from 3.98 to 4.37 on the five-point scale (Wilcoxon signed-rank, $W=754.5$, $p<.001$, $r=.55$).
+    %
+    However, method-choice distributions did not differ significantly (Stuart-Maxwell, $\chi^2(6)=6.28$, $p=.39$).
+    %
+    No individual method was chosen significantly more or less often in MS than in LS (McNemar, all $p_{\mathrm{Holm}}\geq.13$); the largest shift was away from deletion-request prompts, chosen by 15 participants only in LS and 4 only in MS.
+
+    When all methods were available regardless of prior use, deletion-request prompts were second most selected (between 47\% and 50\%), after deleting a conversation (between 61\% and 66\%; Table~\ref{tab:method-use}).
+    %
+    These selections did not differ significantly between scenarios (McNemar, all $p_{\mathrm{Holm}}\geq.09$), although deleting a specific saved memory (31.1\% to 41.8\%) and clearing all saved memories (16.9\% to 24.3\%) were selected more often in MS.
+    %
+    Among previously used methods, only between 8\% and 14\% chose a deletion-request prompt as their single method.
+    %
+    These percentages are not directly comparable because the first question allowed multiple selections and the second only one, but they indicate interest in prompts despite limited prior reliance.
+
+
+
+    \begin{takeawaybox}
+    \textbf{Finding 1:} Participants primarily used conversation-level deletion methods and often discovered deletion controls on their own. Many participants would choose deletion-request prompts, but relatively few chose them among their previously used methods. Participants were more willing to delete in the more sensitive scenario, but their deletion-method choices did not change significantly.
+    \end{takeawaybox}
+
+
+    \subsubsection{User Expectations and Verification (RQ2)}
+    \label{sec:user_verification}
+
+    %Participants' expectations did not differ significantly across deletion methods, even though the methods target different data locations.
+    %
+    Across Pooled responses, 59.0\% expected permanent deletion from databases and backups, and 54.2\% expected prevention of future recall (Figure~\ref{fig:expectation}).
+    %
+    Expectations did not differ significantly across methods for permanent deletion (logistic GEE, $\chi^2(3)=1.94$, $p_{\mathrm{Holm}}=1.00$), future recall prevention ($\chi^2(3)=3.70$, $p_{\mathrm{Holm}}=1.00$), or any other expected outcome (all $p_{\mathrm{Holm}}\geq.37$; Table~\ref{tab:gee-full}, Appendix).
+    %
+    Expectations also did not change significantly between scenarios (McNemar, all $p_{\mathrm{Holm}}\geq.22$); the largest shift was toward permanent deletion, expected by 9 participants only in LS and 22 only in MS.
+    %With two small method groups (29 and 30 participants), this is absence of a detectable difference, not evidence of equal expectations.
+
+    Evaluations varied by method.
+    %
+    Effort differed across the four most selected methods (Gaussian GEE, $\chi^2(3)=23.05$, $p_{\mathrm{Holm}}=.0001$), but perceived protection ($\chi^2(3)=3.71$, $p_{\mathrm{Holm}}=.29$) and benefit loss ($\chi^2(3)=6.94$, $p_{\mathrm{Holm}}=.15$) did not (Table~\ref{tab:method-scales}; Figure~\ref{fig:scales}).
+    In pairwise GEE contrasts, deleting a specific saved memory took more effort than deleting a single conversation ($\beta=0.85$, $p_{\mathrm{Holm}}<.001$) and sending a deletion-request prompt ($\beta=0.75$, $p_{\mathrm{Holm}}=.008$), and clearing all conversation history took more effort than deleting a single conversation ($\beta=0.45$, $p_{\mathrm{Holm}}=.019$); the other three pairs did not differ significantly ($p_{\mathrm{Holm}}\geq.24$).
+    %
+    Across scenarios, perceived protection was higher in MS than in LS (3.79 vs.\ 3.66; Wilcoxon signed-rank, $W=1752.0$, $p_{\mathrm{Holm}}=.002$, $r=.38$), whereas effort ($W=1750.5$, $p_{\mathrm{Holm}}=.59$) and benefit loss ($W=1999.5$, $p_{\mathrm{Holm}}=.59$) did not differ significantly (Table~\ref{tab:method-scales}).
+    Within each method, LS and MS ratings did not differ significantly on any scale (Mann-Whitney, all $p_{\mathrm{Holm}}\geq.54$; Table~\ref{tab:method-scales}).
+    %Participants thus distinguished methods by effort, not protection.
+    %As participants chose their methods and groups were small, these comparisons are associative, not causal.
+
+    % \begin{figure}[t]
+    %     \centering
+    %     \includegraphics[width=\columnwidth,height=0.42\textheight,keepaspectratio]{figures/fig_expectation.png}
+    %    \caption{Expected deletion outcomes and reported verification strategies in LS, MS, and Pooled. Multiple selections were allowed. Percentages are based on 177 participants per scenario and 354 pooled responses.}
+    %     \label{fig:expectation}
+    % \end{figure}
+
+
+    \begin{figure*}[t]
+        \centering
+        \includegraphics[width=0.9\textwidth]{figures/fig_scales.png}
+        \caption{Mean ratings of perceived privacy protection, effort, and potential loss of personalized benefits across the four most frequently selected deletion methods in LS, MS, and Pooled. The analysis includes 317 responses from 165 participants, with 105, 50, 30, and 29 participants per method, respectively. Participants choosing different methods across scenarios are counted under both. Ratings use five-point agreement scales.}
+        \label{fig:scales}
+    \end{figure*}
+    \begin{table*}[!t]
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/fig_scales.png}
-    \caption{Mean ratings of perceived privacy protection, effort, and potential loss of personalized benefits across the four most frequently selected deletion methods in LS, MS, and Pooled. The analysis includes 317 responses from 165 participants, with 105, 50, 30, and 29 participants per method, respectively. Participants choosing different methods across scenarios are counted under both. Ratings use five-point agreement scales.}
-    \label{fig:scales}
-\end{figure*}
-\begin{table*}[!t]
-\centering
-\caption{Perceived privacy protection, effort, and benefit loss by chosen deletion method, on five-point agreement scales (higher effort means more effort). Cells show the mean (SD) for Pooled and the mean for LS and MS; $n$ is the number of responses (Pooled; LS; MS), and participants who chose different methods in the two scenarios are counted under both. Method difference: Gaussian GEE Wald test of the method effect across the four methods (317 responses from 165 participants). Scenario difference: Wilcoxon signed-rank test of each participant's LS and MS ratings of their chosen method (177 participants, all methods), with rank-biserial $r$. Both tests are Holm-corrected across the three scales. The $p_{\mathrm{Holm}}$ column compares LS and MS ratings within each method (Mann-Whitney, Holm-corrected across the four methods; $U$ values in Table~\ref{tab:analysis-families}); participants who chose the same method in both scenarios appear in both groups, which this test does not account for.}
-\label{tab:method-scales}
-\small
-\setlength{\tabcolsep}{4pt}
-\begin{tabular}{@{}llcccccccccccc@{}}
-\toprule
- & & \multicolumn{4}{c}{Protection} & \multicolumn{4}{c}{Effort} & \multicolumn{4}{c}{Benefit loss} \\
-\cmidrule(lr){3-6}\cmidrule(lr){7-10}\cmidrule(lr){11-14}
-Deletion method & $n$ & Pooled & LS & MS & $p_{\mathrm{Holm}}$ & Pooled & LS & MS & $p_{\mathrm{Holm}}$ & Pooled & LS & MS & $p_{\mathrm{Holm}}$ \\
-\midrule
-Deleting a single conversation & 164; 84; 80 & 3.63 (0.88) & 3.54 & 3.73 & .54 & 1.64 (0.76) & 1.62 & 1.67 & 1.00 & 3.00 (1.03) & 2.97 & 3.02 & 1.00 \\
-Clearing all conversation history & 73; 33; 40 & 3.77 (0.87) & 3.77 & 3.77 & 1.00 & 2.09 (0.97) & 1.98 & 2.18 & 1.00 & 3.11 (1.10) & 3.06 & 3.14 & 1.00 \\
-Deleting a specific saved memory & 41; 19; 22 & 3.65 (0.79) & 3.58 & 3.71 & 1.00 & 2.49 (1.03) & 2.70 & 2.32 & 1.00 & 3.46 (0.88) & 3.54 & 3.38 & 1.00 \\
-Sending a deletion-request prompt & 39; 25; 14 & 3.86 (0.65) & 3.84 & 3.89 & 1.00 & 1.74 (0.79) & 1.86 & 1.54 & 1.00 & 2.91 (0.95) & 2.91 & 2.90 & 1.00 \\
-\midrule
-All participants & 177 & & 3.66 & 3.79 & & & 1.90 & 1.94 & & & 3.08 & 3.12 & \\
-\midrule
-Method difference & & \multicolumn{4}{c}{$\chi^2(3)=3.71$, $p_{\mathrm{Holm}}=.29$} & \multicolumn{4}{c}{$\chi^2(3)=23.05$, $p_{\mathrm{Holm}}=.0001$} & \multicolumn{4}{c}{$\chi^2(3)=6.94$, $p_{\mathrm{Holm}}=.15$} \\
-Scenario difference & & \multicolumn{4}{c}{$W=1752.0$, $p_{\mathrm{Holm}}=.002$, $r=.38$} & \multicolumn{4}{c}{$W=1750.5$, $p_{\mathrm{Holm}}=.59$, $r=.09$} & \multicolumn{4}{c}{$W=1999.5$, $p_{\mathrm{Holm}}=.59$, $r=.12$} \\
-\bottomrule
-\end{tabular}
-\end{table*}
 
-Many were uncertain how to verify deletion.
-%
-Across Pooled responses, 44.6\% did not know how to verify deletion.
-%
-Strategies included asking the agent in the same or a new conversation (21\%--22\%) and checking memories, settings, or the interface (16\%--18\%).
-%
-These strategies did not change significantly between scenarios (McNemar, all $p_{\mathrm{Holm}}=1.00$).
-%
-Among 39 responses selecting deletion-request prompts, 53.8\% verified by asking in the same conversation.
-%
-Verification strategies differed by method in both scenarios.
-%
-Participants who sent a deletion-request prompt most often verified by asking in the same conversation (52.0\% in LS and 57.1\% in MS, compared with between 10.7\% and 27.3\% and between 12.5\% and 18.2\% for the other methods; Fisher's exact, $p_{\mathrm{Holm}}=.001$ and $p_{\mathrm{Holm}}=.039$), whereas those who deleted a single conversation most often did not know how to verify (59.5\% in LS; $\chi^2(3)=15.99$, $p_{\mathrm{Holm}}=.007$).
-%
-Asking in a new conversation also differed by method in LS ($p_{\mathrm{Holm}}=.007$), as did verifying in memory settings in MS, which was most common after deleting a specific saved memory (36.4\%; $p_{\mathrm{Holm}}=.046$).
-%
-Users choosing conversational requests may thus treat the agent's response as evidence of deletion.
+    \caption{Perceived privacy protection, effort, and benefit loss by chosen deletion method in LS, MS, and Pooled. Ratings use five-point scales. Cells show Pooled mean (SD) and LS/MS means; $n$ denotes response counts.}
 
-Participants reported limited feedback and information resurfacing.
-%
-Of 177 participants, 42 (23.7\%) reported an agent referencing information they believed deleted.
-%
-After deletion attempts, 41.2\% received clear confirmation, 34.5\% vague acknowledgement, and 29.4\% no feedback (multiple selections allowed).
-%
-Another 73 participants (41.2\%) wanted a breakdown of deleted and potentially retained information.
-%
-Thus, despite expectations of removal or recall prevention, many could not confirm deletion because of limited feedback, uncertain verification, or resurfacing information.
-%
-User reports alone cannot establish retrievability, which our post-deletion analysis tests directly (Section~\ref{sec:tech_analysis}).
 
-%
-\begin{takeawaybox}
-\textbf{Finding 2:} Participants commonly expected deletion methods to permanently remove their data, despite differences in the data locations these methods target. Perceived effort differed across methods, but expected deletion outcomes and perceived protection showed no significant differences. Many participants did not know how to verify deletion, and those selecting deletion-request prompts often relied on the agent itself for verification.
-\end{takeawaybox}
+    \label{tab:method-scales}
+    \footnotesize
+    \setlength{\tabcolsep}{3pt}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{@{}llccccccccc@{}}
+    \toprule
+    & & \multicolumn{3}{c}{Protection} & \multicolumn{3}{c}{Effort} & \multicolumn{3}{c}{Benefit loss} \\
+    \cmidrule(lr){3-5}\cmidrule(lr){6-8}\cmidrule(lr){9-11}
+    Deletion method & $n$ & Pooled & LS & MS & Pooled & LS & MS & Pooled & LS & MS \\
+    \midrule
+    Deleting a single conversation & 164; 84; 80 & 3.63 (0.88) & 3.54 & 3.73 & 1.64 (0.76) & 1.62 & 1.67 & 3.00 (1.03) & 2.97 & 3.02 \\
+    Clearing all conversation history & 73; 33; 40 & 3.77 (0.87) & 3.77 & 3.77 & 2.09 (0.97) & 1.98 & 2.18 & 3.11 (1.10) & 3.06 & 3.14 \\
+    Deleting a specific saved memory & 41; 19; 22 & 3.65 (0.79) & 3.58 & 3.71 & 2.49 (1.03) & 2.70 & 2.32 & 3.46 (0.88) & 3.54 & 3.38 \\
+    Sending a deletion-request prompt & 39; 25; 14 & 3.86 (0.65) & 3.84 & 3.89 & 1.74 (0.79) & 1.86 & 1.54 & 2.91 (0.95) & 2.91 & 2.90 \\
+    \midrule
+    All participants & 177 & & 3.66 & 3.79 & & 1.90 & 1.94 & & 3.08 & 3.12 \\
+    \midrule
+    Method difference & & \multicolumn{3}{c}{$\chi^2(3)=3.71$, $p_{\mathrm{Holm}}=.29$} & \multicolumn{3}{c}{$\chi^2(3)=23.05$, $p_{\mathrm{Holm}}=.0001$} & \multicolumn{3}{c}{$\chi^2(3)=6.94$, $p_{\mathrm{Holm}}=.15$} \\
+    Scenario difference & & \multicolumn{3}{c}{$W=1752.0$, $p_{\mathrm{Holm}}=.002$, $r=.38$} & \multicolumn{3}{c}{$W=1750.5$, $p_{\mathrm{Holm}}=.59$, $r=.09$} & \multicolumn{3}{c}{$W=1999.5$, $p_{\mathrm{Holm}}=.59$, $r=.12$} \\
+    Scenario difference (per method) & & \multicolumn{3}{c}{all $p_{\mathrm{Holm}}\geq.54$} & \multicolumn{3}{c}{all $p_{\mathrm{Holm}}=1.00$} & \multicolumn{3}{c}{all $p_{\mathrm{Holm}}=1.00$} \\
+    \bottomrule
+    \end{tabular}%
+    }
+    \end{table*}
+
+    Many were uncertain how to verify deletion.
+    %
+    Across Pooled responses, 44.6\% did not know how to verify deletion.
+    %
+    Strategies included asking the agent in the same or a new conversation (between 21\% and 22\%) and checking memories, settings, or the interface (between 16\% and 18\%).
+    %
+    These strategies did not change significantly between scenarios (McNemar, all $p_{\mathrm{Holm}}=1.00$).
+    %
+    Verification strategies differed by method in both scenarios.
+    %
+    Participants who sent a deletion-request prompt most often verified by asking in the same conversation (53.8\% of 39 Pooled responses; 52.0\% in LS and 57.1\% in MS, compared with between 10.7\% and 27.3\% and between 12.5\% and 18.2\% for the other methods; Fisher's exact, $p_{\mathrm{Holm}}=.001$ and $p_{\mathrm{Holm}}=.039$), whereas those who deleted a single conversation most often did not know how to verify (59.5\% in LS; $\chi^2(3)=15.99$, $p_{\mathrm{Holm}}=.007$).
+    %
+    Asking in a new conversation also differed by method in LS ($p_{\mathrm{Holm}}=.007$), as did verifying in memory settings in MS, which was most common after deleting a specific saved memory (36.4\%; $p_{\mathrm{Holm}}=.046$).
+    %
+    Users choosing conversational requests may thus treat the agent's response as evidence of deletion.
+
+    Participants reported limited feedback and information resurfacing.
+    %
+    Of 177 participants, 42 (23.7\%) reported an agent referencing information they believed deleted.
+    %
+    After deletion attempts, 41.2\% received clear confirmation, 34.5\% vague acknowledgement, and 29.4\% no feedback (multiple selections allowed).
+    %
+    Another 73 participants (41.2\%) wanted a breakdown of deleted and potentially retained information.
+    %
+    Thus, despite expectations of removal or recall prevention, many could not confirm deletion because of limited feedback, uncertain verification, or resurfacing information.
+    %
+    User reports alone cannot establish retrievability, which our post-deletion analysis tests directly (Section~\ref{sec:tech_analysis}).
+
+    %
+    \begin{takeawaybox}
+    \textbf{Finding 2:} Participants commonly expected deletion methods to permanently remove their data, despite differences in the data locations these methods target. Perceived effort differed across methods, but expected deletion outcomes and perceived protection showed no significant differences. Many participants did not know how to verify deletion, and those selecting deletion-request prompts often relied on the agent itself for verification.
+    \end{takeawaybox}

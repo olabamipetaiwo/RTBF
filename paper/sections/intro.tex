@@ -39,7 +39,7 @@ Thus, limited evidence connects \textit{users' deletion expectations} with \text
 
 % \ji{I don’t follow the logic here. You mention that the main gap is that prior work did not test whether information remains retrievable after deletion, but our work is also not strictly technical; we indeed focus on users’ perceptions as well. There should be a gap that our user study addresses, which differentiates our work from prior user studies on data deletion in LLM applications.}
 %
-This gap matters because users rely on deletion confirmations or their own verification methods, which may not reliably indicate whether information remains retrievable.
+This lack of evidence matters because users rely on deletion confirmations or their own verification methods, which may not reliably indicate whether information remains retrievable.
 
 % \ji{Is ``users relying on deletion controls without knowing whether their information remains retrievable’’ what we want to study? Overall, the introduction feels pretty vague to me. It does not clearly state why we conducted this study (motivation) and what we are addressing (novelty). In my opinion, the definition of data deletion in this paper is the main weakness, so we need to find a clearer way to present the motivation and novelty.}
 
@@ -67,11 +67,9 @@ We address four research questions:
 
 For RQ1 and RQ2, we surveyed 177 U.S. adults with prior experience deleting data from LLM agents, examining their deletion practices, expectations, and verification strategies across scenarios with different levels of data sensitivity.
 %
-We also collected participant-written deletion requests to inform our experiments.
-%
 For RQ3, we developed a Data Injection-Deletion-Recall (DIDR) pipeline that injects synthetic information, applies a deletion method, and tests retrievability in subsequent conversations.
 %
-We evaluated six commercial LLM agents, i.e., ChatGPT, Claude, Gemini, Copilot, Perplexity, and DeepSeek, using consumer-facing deletion methods, including participant-written requests.
+We evaluated six commercial LLM agents, i.e., ChatGPT, Claude, Gemini, Copilot, Perplexity, and DeepSeek, using consumer-facing deletion methods, including deletion requests written by survey participants.
 %
 Our experiments comprised 865 test cases, with recall evaluated at least 30 days after deletion.
 %
@@ -81,7 +79,7 @@ For RQ4, we compared observed behavior with users' expectations and available ve
 
 Our contributions are threefold.
 %
-First, we examine how users verify deletion and what they expect from natural-language deletion requests, which prior user studies have not examined.
+First, we examine how users verify deletion and what they expect from natural-language deletion requests.
 %
 Second, we introduce the DIDR pipeline to evaluate post-deletion retrievability in deployed agents, including participant-written requests.
 %
@@ -93,7 +91,7 @@ They were more willing to delete in the more sensitive scenario, but their metho
 %
 Users expected permanent deletion and prevention of future retrieval, yet many lacked reliable verification methods (RQ2).
 %
-Agents retained information in several places, including conversations and saved memories, while individual deletion methods often reached only some of them.
+Individual deletion methods often reached only some of the places where agents retained information.
 %
 Information remained retrievable in new conversations on several agents, sometimes after deletion confirmations, largely consistent with their documentation (RQ3).
 %
@@ -101,8 +99,6 @@ Information also remained retrievable after each of the methods participants sel
 %
 For example, ChatGPT did not return a deleted fact in the conversation where deletion was requested, where many participants reported verifying deletion, but returned it in new conversations.
 
-Our findings highlight the need for transparent and verifiable deletion practices.
+This gap highlights the need for transparent and verifiable deletion practices.
 %
 Providers should clarify deletion methods' scope and limitations and offer reliable feedback and verification mechanisms, while researchers and regulators could collaborate with providers on standardized protocols for independently evaluating deletion outcomes.
-%
-Such improvements could help users distinguish deletion confirmations from actual post-deletion outcomes.

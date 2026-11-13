@@ -1,0 +1,10 @@
+Test case ID,Agent,Injection method,Deletion method,Account
+CH-01,chatgpt,prompt,deletion-request prompt,
+CH-02,chatgpt,memory-request prompt,clear all saved memories,dedicated1
+CH-03,chatgpt,prompt,delete a single conversation,
+CL-01,claude,prompt,deletion-request prompt,
+CL-02,claude,UI action,delete a specific saved memory,
+GE-01,gemini,prompt,delete a single conversation,
+CO-01,copilot,memory-request prompt,delete a specific saved memory,
+PE-01,perplexity,prompt,delete a single conversation,
+DE-01,deepseek,prompt,deletion-request prompt,

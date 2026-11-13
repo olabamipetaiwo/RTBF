@@ -4,8 +4,6 @@
 To examine agents' responses to deletion requests and whether disclosed information remains retrievable (RQ3), we developed a Data Injection-Deletion-Recall (DIDR) pipeline.
 %
 We compare these observations with users' deletion expectations (RQ4).
-%
-We present the methodology and findings for both questions.
 
 \subsection{Post-Deletion Analysis Methodology}
 %
@@ -26,7 +24,7 @@ We use two experimental approaches.
 %
 \textit{UI-action experiments} examine the information-entry and deletion controls available through each agent's interface, whereas \textit{prompt-based experiments} evaluate deletion requests authored by participants in our user study (Section~\ref{sec:user_study}).
 %
-In both approaches, deletion occurs at least 48 hours after injection, and recall testing occurs at least 30 days after deletion.
+In both approaches, deletion occurs at least 48 hours after injection to allow potential retention, and recall testing occurs at least 30 days after deletion.
 %
 ChatGPT~\cite{openai2026retention}, Perplexity~\cite{perplexity2026retention}, and Claude~\cite{anthropic2026retention} document that deleted data may remain for up to 30 days; we applied the same interval to all agents for consistency.
 %
@@ -68,8 +66,6 @@ These mechanisms included \textit{casually disclosing information during a conve
 We tested only the mechanisms available for each agent.
 %
 For prompt-based experiments, we injected each fact as a casual conversational statement, holding disclosure constant across deletion requests.
-%
-We waited at least 48 hours before deletion to allow potential retention.
 
 \para{Data deletion}
 %
@@ -83,19 +79,15 @@ We also tested clearing ChatGPT custom instructions, where users can enter infor
 %
 For each agent, we tested its most extensive deletion procedure by combining applicable controls.
 %
-We excluded two methods included in the survey: \textit{deleting the account}, which would prevent subsequent observation of the same account, and \textit{filing a request with the company}, which is handled outside the agent.
+We excluded two methods included in the survey: \textit{deleting the account}, which would prevent subsequent observation of the same account, and \textit{filing a request with the company}, which is not selected by any user in our study. 
 %
 Across the six agents, we designed 73 UI-action test cases and executed 67, as the remaining six required paid Perplexity features.
-%
-\para{Accounts and timeline}
 %
 We used U.S.-operated free consumer accounts with default memory and history settings.
 %
 Each agent's prompt-based test cases shared one account, and its UI-action test cases shared a main account.
 %
 We isolated deletion procedures that could affect other test cases on separate accounts, preventing premature removal of other facts and preserving attribution.
-%
-Every test case was deleted at least 48 hours after injection and recalled at least 30 days after deletion.
 %
 All deletions preceded recall testing, and recall prompts omitted injected values to prevent reintroduction.
 
@@ -119,8 +111,6 @@ They independently coded 50 requests without a shared codebook, reconciled the d
 They then independently coded all 138 requests and resolved disagreements through discussion.
 %
 Inter-rater agreement was high, with a pooled Gwet's AC1~\cite{gwet2008ac1} of 0.954 across the seven dimensions and at least 0.89 for each dimension (Table~\ref{tab:coding}).
-%
-We used reconciled codes to examine associations between wording and recall.
 %
 Codes reflect original wording; for \textit{data named}, submitted adaptations referenced the synthetic fact rather than the participant's original data.
 
@@ -163,10 +153,6 @@ All dimensions (966 ratings) & 923/966 & 95.5 & 0.954 \\
 
 \para{Data recall}
 %
-Recall testing began at least 30 days after deletion.
-%
-This interval reflects documented retention periods for ChatGPT, Claude, and Perplexity and was applied to all six agents.
-%
 We assessed post-deletion recall through three checks: \textit{direct recall prompts}, \textit{indirect recall prompts}, and \textit{UI-based checks}.
 %
 Direct prompts explicitly asked about the injected entity and its attribute, whereas indirect prompts requested an ordinary task involving the entity without mentioning the attribute or its value.
@@ -192,15 +178,9 @@ When deletion was requested in the original conversation, we also issued the fir
 %
 Each test case is one synthetic fact on one account.
 %
-A test case was classified as \textit{recall success} when its injected value appeared in the response to any recall prompt issued in a new conversation on its account, or was found by the UI-based check.
-%
-The same-conversation check did not contribute to the recall outcome and was run after all other recall checks, so it could not influence them; we included it because participants commonly verified deletion by asking in the same conversation (Section~\ref{sec:user_verification}), and we report its results separately.
-%
 Because cases share accounts and requests recur across agents, the 865 cases are not independent; we report descriptive results without statistical tests.
 %
 We evaluated post-deletion agent behavior using multiple measures, including agents' responses to deletion requests, recall of injected information, observable interface changes, and consistency with published documentation.
-%
-We also examined whether the wording of participant-authored deletion requests was associated with recall outcomes.
 %
 These measures characterize observable behavior, not complete deletion from underlying systems.
 
@@ -230,9 +210,11 @@ UI-based deletion actions without conversational responses were excluded from th
 %
 We classified each test case into one of three outcomes: \textit{recall success}, \textit{recall failed}, or \textit{can't tell}.
 %
-A test case was classified as \textit{recall success} if any applicable recall check retrieved the injected value.
+A test case was classified as \textit{recall success} when its injected value appeared in the response to any recall prompt issued in a new conversation on its account, or was found by the UI-based check.
 %
-It was classified as \textit{recall failed} only if no recall check retrieved the value and there was evidence that the fact had initially been saved in the tested location.
+The same-conversation check did not contribute to the recall outcome and was run after all other recall checks, so it could not influence them; we included it because participants commonly verified deletion by asking in the same conversation (Section~\ref{sec:user_verification}), and we report its results separately.
+%
+A test case was classified as \textit{recall failed} only if no recall check retrieved the value and there was evidence that the fact had initially been saved in the tested location.
 %
 A \textit{recall failed} outcome indicates that the value was not retrieved, not that it was deleted; without a no-deletion baseline, we cannot attribute it to the deletion method.
 %
@@ -261,8 +243,6 @@ For UI-action experiments, we verified whether conversations disappeared from hi
 We assessed these changes through post-deletion screenshots and directly inspected accounts when the screenshots were inconclusive.
 %
 Comparable interface changes were not observable for deletion requests submitted through chat.
-%
-These visible changes do not establish complete deletion from underlying storage.
 
 \para{Documentation consistency}
 %
@@ -341,13 +321,11 @@ Our conclusions about recall therefore rest mainly on ChatGPT and Claude, whose 
 %
 Neither each agent's most extensive deletion procedure, which combined all applicable controls, nor Copilot's privacy dashboard was followed by \textit{recall success}.
 %
-Among the conversation and saved-memory deletion methods evaluated through UI actions (deleting a single conversation, clearing all conversation history, deleting a specific saved memory, and clearing all saved memories), \textit{recall success} occurred in 29\%-50\% of test cases, although the small sample sizes (7-13 cases per method) do not support reliable rankings.
+Among the conversation and saved-memory deletion methods evaluated through UI actions (deleting a single conversation, clearing all conversation history, deleting a specific saved memory, and clearing all saved memories), \textit{recall success} occurred in between 29\% and 50\% of test cases, although the small sample sizes (between 7 and 13 cases per method) do not support reliable rankings.
 %
 Deletion-request prompts, the most extensively tested method, were followed by both \textit{recall success} and \textit{recall failed} outcomes (Table~\ref{tab:expectation-outcome}).
 %
-We separately evaluated 12 supplemental uploaded-file test cases, of which 11 were executable because one Perplexity procedure required a paid plan.
-%
-In all 11 executable cases, the injected facts were not retrieved in subsequent conversations, and the test cases were classified as \textit{recall failed}.
+All 11 executable supplemental uploaded-file test cases were classified as \textit{recall failed}: the injected facts were not retrieved in subsequent conversations.
 
 \begin{takeawaybox}
 \textbf{Finding 3:} Deleted information remained retrievable on five of the six agents, mostly on ChatGPT and Perplexity, but never after an agent's most extensive deletion procedure.
@@ -382,13 +360,7 @@ ChatGPT accounted for 118 of the 162 recall-success cases, whereas Claude exhibi
 %
 Copilot also had more recall-failed than recall-success outcomes among its determinable cases.
 %
-In contrast, the majority of test cases for Gemini, Perplexity, and DeepSeek were classified as \textit{can't tell}.
-%
-Differences were also evident for deletion requests submitted through chat.
-%
-Among cases with determinable outcomes, Claude and Copilot generally did not retrieve the injected facts, whereas ChatGPT frequently retrieved them.
-%
-Perplexity exhibited both recall-success and uncertain outcomes, while all prompt-based test cases for Gemini and DeepSeek were classified as \textit{can't tell}.
+In contrast, most test cases for Gemini and Perplexity, and all test cases for DeepSeek, which provided no accessible memory interface or sufficient evidence of initial storage, were classified as \textit{can't tell}.
 
 %
 Some differences were consistent with the locations in which agents retain information and the scope of their deletion controls.
@@ -398,22 +370,16 @@ For example, Claude's documentation states that deleting a conversation does not
 Consistent with this distinction, deleting a conversation was followed by \textit{recall success} in all three corresponding UI-action test cases, whereas deleting a saved memory was followed by \textit{recall failed} in all three.
 %
 On ChatGPT, the saved-memory interface no longer displayed the injected fact in 112 of the 118 recall-success cases, indicating that the observed recall could not be attributed solely to a visible saved-memory entry.
-%
-DeepSeek did not provide an accessible memory interface or sufficient evidence of initial storage, leaving all its test cases classified as \textit{can't tell}.
 
 \para{Deletion-request wording}
 %
-We examined associations between request wording and recall.
+Recall outcomes differed more across agents than across request wording.
 %
-Among the 350 prompt-based test cases with determinable outcomes, we compared recall outcomes across the seven manually coded wording dimensions, including deletion location, justification, mood, and tone.
-%
-On Claude and Copilot, recall success did not occur within any coding category in these comparisons, while on ChatGPT it occurred in at least half of the test cases for every category containing six or more requests.
+Among the 350 prompt-based test cases with determinable outcomes (Gemini and DeepSeek excluded), recall success did not occur within any coding category on Claude and Copilot, while on ChatGPT it occurred in at least half of the test cases for every category containing six or more requests.
 %
 Perplexity exhibited greater variation across categories, although categories showing differences generally contained few requests.
 %
-Gemini and DeepSeek were excluded because all their prompt-based cases were classified as \textit{can't tell}.
-%
-Agent differences were more pronounced than wording differences, but these descriptive results cannot rule out wording effects.
+These descriptive results cannot rule out wording effects.
 
 \begin{takeawaybox}
 \textbf{Finding 4:} Post-deletion recall differed across LLM agents even when every agent received the same deletion requests: after these requests, recall success was frequent on ChatGPT and never occurred on Claude. These differences may reflect how each agent stores and retrieves information, whereas deletion-request wording showed no consistent pattern that explained them.
@@ -430,7 +396,7 @@ Of the consistent cases, 107 were classified as \textit{recall success}, all inv
 %
 In these cases, deletion behaved as documented, yet the original conversation containing the fact remained in the chat history, and the fact was retrieved in a new conversation.
 %
-In the original conversation, however, ChatGPT did not return the fact in 104 of the 107 cases, so users who verify deletion by asking in the same conversation, as many participants reported doing (Section~\ref{sec:user_verification}), would likely conclude that the information had been deleted.
+In the original conversation, however, ChatGPT did not return the fact in 104 of these 107 cases.
 %
 We could not determine whether ChatGPT retrieved the fact from the original conversation or from another stored source.
 %
@@ -490,7 +456,7 @@ Some agents explicitly withheld information because of an earlier deletion or no
 %
 For example, an agent responded, ``I can't provide that name because you previously asked me to delete the information about your letterpress kit.''
 %
-Among test cases without recall success, such responses occurred in 52\%-95\% of cases on ChatGPT and Perplexity, but not on the other four agents.
+Among test cases without recall success, such responses occurred in between 52\% and 95\% of cases on ChatGPT and Perplexity, but not on the other four agents.
 %
 For Perplexity in particular, these responses accounted for most cases classified as \textit{can't tell}, and many referred to the information as still present in earlier conversations.
 %
@@ -515,7 +481,9 @@ We declined all such permission requests, and the corresponding test cases were 
 
 Users commonly expected deletion to prevent future retrieval, but DIDR results did not consistently support this expectation.
 %
-For the four most frequently selected deletion methods, 42.5\%-63.4\% of Pooled survey responses expected the agent to no longer reference the deleted information in future conversations (Section~\ref{sec:qual_results}).
+\xw{Add}
+%
+For the four most frequently selected deletion methods, between 42.5\% and 63.4\% of Pooled survey responses expected the agent to no longer reference the deleted information in future conversations (Section~\ref{sec:qual_results}).
 %
 However, each of these methods was followed by \textit{recall success} in at least some test cases (Table~\ref{tab:expectation-outcome}).
 %
@@ -525,12 +493,10 @@ For example, deleting a single conversation was followed by \textit{recall succe
 Deletion-request prompts were also followed by \textit{recall success} in some test cases (Table~\ref{tab:expectation-outcome}).
 %
 These recall successes contradicted expected prevention of future retrieval.
-%
-Survey responses and experimental test cases are different units and their percentages are not directly comparable.
 
 \begin{table}[!t]
 \centering
-\caption{Survey expectations that information would not be retrievable in future conversations and observed DIDR recall outcomes, by deletion method. The survey column gives percentages of Pooled responses (164, 73, 41, and 39 responses for the four methods, respectively), and the DIDR columns give numbers of test cases; the two describe different observations and are not comparable rates.}
+\caption{Data deletion methods commonly used by participants, and observed DIDR recall outcomes, by deletion method. The other data deletion methods either prevent effective post-deletion behavior analysis (e.g., account deletion)， or not (e.g., fi) or less used by participants.}
 \label{tab:expectation-outcome}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
@@ -538,7 +504,7 @@ Survey responses and experimental test cases are different units and their perce
 \toprule
 & \multicolumn{1}{c}{Survey} & \multicolumn{4}{c}{DIDR experiments} \\
 \cmidrule(lr){2-2}\cmidrule(lr){3-6}
-Method & \makecell[r]{Expected\\(\% of\\responses)} & \makecell[r]{Recall\\success} & \makecell[r]{Recall\\failed} & \makecell[r]{Can't\\tell} & \makecell[r]{Test\\cases} \\
+Method & \makecell[r]{\% participants\\ using} & \makecell[r]{Recall\\success} & \makecell[r]{Recall\\failed} & \makecell[r]{Can't\\tell} & \makecell[r]{Test\\cases} \\
 \midrule
 Delete a single conversation & 54.3\% & 6 & 1 & 6 & 13 \\
 Clear all conversation history & 42.5\% & 4 & 2 & 2 & 8 \\
@@ -549,7 +515,7 @@ Send a deletion-request prompt & 51.3\% & 144 & 213 & 454 & 811 \\
 \end{table}
 
 %
-Participants also commonly expected permanent deletion from databases and backups (52.1\%-65.9\% across the four methods).
+Participants also commonly expected permanent deletion from databases and backups (between 52.1\% and 65.9\% across the four methods).
 %
 Although recall success provides evidence inconsistent with complete deletion of the retrieved information, recall failed cannot confirm permanent deletion from underlying databases or backups.
 

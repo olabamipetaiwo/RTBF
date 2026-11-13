@@ -9,25 +9,25 @@
 %
 Users expect deletion to give them control over information they have shared~\cite{murillo2018if}.
 %
-Studies of online services show that these expectations often go beyond what services provide: some users expect that a service can no longer use their data after deletion~\cite{liu2022zombie}, users find deletion mechanisms opaque~\cite{minaei2022deletion}, and a lack of deletion confirmation leaves users uncertain whether their data was removed~\cite{bumiller2026zombies}.
+Studies of online services show that users may expect services to stop using their data after deletion~\cite{liu2022zombie}, find deletion mechanisms opaque~\cite{minaei2022deletion}, and remain uncertain whether their data was removed without confirmation~\cite{bumiller2026zombies}.
 %
 Privacy regulations reinforce these expectations: the GDPR's right to erasure and the CCPA's right to request deletion entitle users to have their personal data deleted under specified conditions~\cite{gdpr2016,ccpa2018}.
 %
-LLM agents accumulate personal information through ongoing conversations, from voluntary disclosures to information requested for personalization, and may use it to train their models, so whether their deletion controls meet users' expectations remains an open question.
+LLM agents accumulate personal information through ongoing conversations, including voluntary disclosures and information requested for personalization, and may use it for model training. Whether their deletion controls meet users' expectations remains an open question.
 
 % \ji{Again, here you mention ``how data deletion works’’ as something critical to understand, but that is not the main point of our paper, is it?}
 
 \para{Data deletion methods of LLM agents}
 %
-Looking through user-facing features, LLM agents may retain user-provided information across different locations, such as conversation histories, saved memories\footnote{Here, saved memory refers to a user-facing feature that retains information across conversations, rather than information encoded in model parameters or held in the context window.}, and account-level profiles or settings.
+LLM agents may retain user-provided information in conversation histories, saved memories\footnote{Here, saved memory refers to a user-facing feature that retains information across conversations, rather than information encoded in model parameters or held in the context window.}, and account-level profiles or settings.
 %
-Accordingly, LLM agents offer different data deletion methods that appear to target specific data storage locations, while their effects on data retained elsewhere are not always clear.
+LLM agents offer deletion methods that appear to target specific data storage locations.
 %
 For example, deleting a conversation removes it from the user-visible conversation history, but its effects on information retained in saved memories or used for model training remain unclear.
 
 % \ji{Can we say that this was a ``systematic'' walkthrough?}
 
-To understand the deletion methods available to users, we conducted a walkthrough of six widely used commercial LLM agents using free consumer accounts: ChatGPT, Claude, Gemini, Copilot, Perplexity, and DeepSeek.
+We conducted a walkthrough of six widely used commercial LLM agents using free consumer accounts: ChatGPT, Claude, Gemini, Copilot, Perplexity, and DeepSeek.
 %
 Using a walkthrough approach similar to prior work on LLM privacy controls~\cite{li2026privacy}, we inspected each agent's interface and settings to identify the available data deletion methods.
 
@@ -37,9 +37,7 @@ As shown in Table~\ref{tab:methods}, we identified six data deletion methods: (D
 
 % \ji{These data deletion methods do not appear again later in the paper, so why do we label them D1--D6?}
 %
-These methods differ in their intended scope, ranging from individual conversations and saved facts to broader conversation histories and account-level data management.
-%
-Their availability also varies across agents, as detailed in Table~\ref{tab:methods}.
+These methods vary across agents in availability and intended scope, ranging from individual conversations and saved facts to broader conversation histories and account-level data management.
 
 
 \begin{table}[t]

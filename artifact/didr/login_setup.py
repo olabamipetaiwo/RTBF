@@ -1,0 +1,219 @@
+"""Log in to an agent by hand once; the session is saved to sessions/ for the pipeline.
+
+Usage: python login_setup.py <agent> [--label NAME] [--from-chrome-profile [--profile DIR]]
+--from-chrome-profile copies the login from your normal Chrome, for sites that reject automated sign-in.
+"""
+
+import shutil
+import sys
+import time
+from pathlib import Path
+
+from playwright.sync_api import sync_playwright
+
+from didr import config
+
+SECONDARY_DOMAINS = {
+    "gemini": "https://myactivity.google.com/",
+    "copilot": "https://account.microsoft.com/privacy",
+}
+
+REAL_CHROME_DIR = Path.home() / "Library/Application Support/Google/Chrome"
+PROFILE_COPY_DIR = config.SESSIONS_DIR / "_chrome_profile_copy"
+
+PROFILE_FILES_TO_COPY = [
+    "Local State",
+]
+PROFILE_SUBDIR_FILES_TO_COPY = [
+    "Cookies",
+    "Cookies-journal",
+    "Preferences",
+]
+PROFILE_SUBDIRS_TO_COPY = [
+    "Local Storage",
+]
+
+
+def _prepare_chrome_profile_copy(source_profile: str = "Default") -> Path:
+    src_default = REAL_CHROME_DIR / source_profile
+    if not src_default.exists():
+        raise FileNotFoundError(
+            f"No Chrome profile at {src_default} -- pass a different "
+            f"source_profile if you use a non-default one (e.g. 'Profile 7')."
+        )
+
+    if PROFILE_COPY_DIR.exists():
+        shutil.rmtree(PROFILE_COPY_DIR)
+    dst_default = PROFILE_COPY_DIR / source_profile
+    dst_default.mkdir(parents=True)
+
+    for name in PROFILE_FILES_TO_COPY:
+        src = REAL_CHROME_DIR / name
+        if src.exists():
+            shutil.copy2(src, PROFILE_COPY_DIR / name)
+
+    for name in PROFILE_SUBDIR_FILES_TO_COPY:
+        src = src_default / name
+        if src.exists():
+            shutil.copy2(src, dst_default / name)
+
+    for name in PROFILE_SUBDIRS_TO_COPY:
+        src = src_default / name
+        if src.exists():
+            shutil.copytree(src, dst_default / name)
+
+    return PROFILE_COPY_DIR
+
+
+def capture_session_from_chrome_profile(
+    platform: str, source_profile: str = "Default", auto: bool = False, label: str | None = None
+) -> None:
+    if not auto:
+        print(
+            "This copies only Cookies/Local Storage/Preferences from your real "
+            "Chrome profile -- never the live profile itself. Make sure Chrome "
+            "is FULLY QUIT (Cmd+Q, not just closed) before continuing, so the "
+            "files aren't being written to mid-copy."
+        )
+        if label:
+            print(f"NOTE: saving as a SEPARATE account (label={label!r}) -- log into a DIFFERENT account than usual.")
+        input("Chrome fully quit? Press Enter to continue... ")
+
+    profile_dir = _prepare_chrome_profile_copy(source_profile)
+    print(f"Profile pieces copied -> {profile_dir}")
+
+    url = config.PLATFORMS[platform]
+    out_path = config.session_path(platform, label)
+
+    with sync_playwright() as p:
+        context = p.chromium.launch_persistent_context(
+            user_data_dir=str(profile_dir), headless=False, channel="chrome"
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+        page.goto(url)
+
+        if auto:
+            page.wait_for_load_state("networkidle", timeout=15000)
+            page.wait_for_timeout(2000)
+            shot_path = config.SESSIONS_DIR / f"_check_{platform}.png"
+            page.screenshot(path=str(shot_path))
+            print(f"\nOpened {url} using your copied profile. Screenshot -> {shot_path}")
+        else:
+            print(f"\nOpened {url} using your copied profile.")
+            input(
+                "Check the browser window -- if you're already logged in, great. "
+                "If not, log in manually here. Once you see the chat UI, press "
+                "Enter to continue... "
+            )
+
+        secondary = SECONDARY_DOMAINS.get(platform)
+        if secondary:
+            page.goto(secondary)
+            if auto:
+                page.wait_for_load_state("networkidle", timeout=15000)
+                page.wait_for_timeout(2000)
+                shot_path2 = config.SESSIONS_DIR / f"_check_{platform}_secondary.png"
+                page.screenshot(path=str(shot_path2))
+                print(f"Also opened {secondary}. Screenshot -> {shot_path2}")
+            else:
+                print(f"\nAlso opened {secondary} (needed for this platform's cross-domain erasure surface).")
+                input("Confirm you're logged in there too (same account), then press Enter to save the session... ")
+
+        context.storage_state(path=str(out_path))
+        print(f"Session saved -> {out_path}")
+        context.close()
+
+
+def _wait_for_signal(signal_path: Path, timeout_s: int = 900) -> bool:
+    waited = 0
+    while not signal_path.exists():
+        if waited >= timeout_s:
+            return False
+        time.sleep(2)
+        waited += 2
+    signal_path.unlink()
+    return True
+
+
+def capture_session(platform: str, wait_for_signal: bool = False, label: str | None = None) -> None:
+    url = config.PLATFORMS[platform]
+    out_path = config.session_path(platform, label)
+    config.SESSIONS_DIR.mkdir(exist_ok=True)
+    signal_key = f"{platform}__{label}" if label else platform
+    signal_path = config.SESSIONS_DIR / f".continue_{signal_key}"
+    signal_path.unlink(missing_ok=True)
+
+    with sync_playwright() as p:
+        try:
+            browser = p.chromium.launch(headless=False, channel="chrome")
+        except Exception as e:
+            print(f"Couldn't launch real Chrome ({e}). Falling back to bundled Chromium --")
+            print("Google sign-in may block this with 'This browser or app may not be secure.'")
+            browser = p.chromium.launch(headless=False)
+        context = browser.new_context()
+        page = context.new_page()
+        page.goto(url)
+
+        print(f"\nOpened {url}")
+        if label:
+            print(f"NOTE: saving as a SEPARATE account (label={label!r}) -- log into a DIFFERENT account than usual.")
+        print("Log in manually (handle CAPTCHA/verification/2FA as needed).")
+        print("If Google rejects sign-in ('browser or app may not be secure'),")
+        print(f"stop and re-run with: python login_setup.py {platform} --from-chrome-profile")
+
+        if wait_for_signal:
+            print(f"Waiting for signal file {signal_path} (touched once you're logged in)...")
+            if not _wait_for_signal(signal_path):
+                print("Timed out waiting for login. Session NOT saved.")
+                browser.close()
+                return
+        else:
+            input("Once you're fully logged in and see the chat UI, press Enter here to continue... ")
+
+        secondary = SECONDARY_DOMAINS.get(platform)
+        if secondary:
+            page.goto(secondary)
+            print(f"\nAlso opened {secondary} (needed for this platform's cross-domain erasure surface).")
+            if wait_for_signal:
+                secondary_signal = config.SESSIONS_DIR / f".continue_{signal_key}_secondary"
+                secondary_signal.unlink(missing_ok=True)
+                print(f"Waiting for signal file {secondary_signal}...")
+                _wait_for_signal(secondary_signal)
+            else:
+                input("Confirm you're logged in there too (same account), then press Enter to save the session... ")
+
+        context.storage_state(path=str(out_path))
+        print(f"Session saved -> {out_path}")
+        browser.close()
+
+
+if __name__ == "__main__":
+    args = sys.argv[1:]
+    from_profile = "--from-chrome-profile" in args
+    auto = "--auto" in args
+    label = None
+    if "--label" in args:
+        i = args.index("--label")
+        label = args[i + 1]
+        args = args[:i] + args[i + 2:]
+    source_profile = None
+    if "--profile" in args:
+        i = args.index("--profile")
+        source_profile = args[i + 1]
+        args = args[:i] + args[i + 2:]
+    args = [a for a in args if a not in ("--from-chrome-profile", "--auto")]
+
+    if len(args) != 1 or args[0] not in config.PLATFORMS:
+        print(f"Usage: python login_setup.py <platform> [--from-chrome-profile [--profile <Chrome profile folder>]] [--auto] [--label <name>]")
+        print(f"--profile is the folder name under Chrome's user-data dir that holds your login (see 'Profile Path' at chrome://version); default 'Default'.")
+        print(f"Platforms: {list(config.PLATFORMS)}")
+        print("--label names an additional account for the same agent (the workbook's Account column).")
+        sys.exit(1)
+
+    config.SESSIONS_DIR.mkdir(exist_ok=True)
+    if from_profile:
+        capture_session_from_chrome_profile(
+            args[0], **({"source_profile": source_profile} if source_profile else {}), auto=auto, label=label
+        )
+    else:
+        capture_session(args[0], wait_for_signal=auto, label=label)

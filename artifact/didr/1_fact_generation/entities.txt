@@ -1,0 +1,102 @@
+# One entity per line: an everyday object or project a person might name.
+# Each test case gets its own entity, so list at least as many as test cases.
+a new houseplant
+my sourdough starter culture
+a road trip I'm planning
+a side project I'm tinkering with
+a playlist I made
+our home renovation
+the garden bed I just planted
+a new bike
+my old car
+a kayak I bought secondhand
+a motorcycle I'm fixing up
+a canoe we restored
+an electric scooter I got
+a puppy we just adopted
+a kitten we're fostering
+a rescue dog we brought home
+a new betta fish
+a hamster the kids got
+a backyard chicken coop
+a tomato plant on the balcony
+an herb garden I started
+a succulent collection on my windowsill
+a rose bush I'm nursing back to health
+a vegetable patch out back
+a bonsai tree I'm training
+a compost bin in the backyard
+my old guitar
+a sketchbook I've been filling
+a pottery piece I'm working on
+a woodworking project in the garage
+a quilt I'm sewing
+a scarf I'm knitting
+a birdhouse I built
+a terrarium I put together
+a scrapbook I'm making
+a jigsaw puzzle on the coffee table
+a chess set I got as a gift
+a photo album I'm putting together
+the deck we're rebuilding
+a bookshelf I built
+a mural I'm painting in the hallway
+a treehouse project for the kids
+our front yard landscaping
+a fence we're putting up
+a garage workshop I'm setting up
+a mudroom we're adding
+a backyard fire pit we built
+a bread recipe I'm testing
+a coffee blend I'm experimenting with
+a hot sauce recipe I'm perfecting
+a pickling project
+a batch of homemade jam
+a spice rack I organized
+a meal plan I'm following
+my grandmother's old recipe box
+a workout routine I'm trying
+a new running route
+a skincare routine I'm trying
+a meditation habit I'm building
+a yoga practice I started
+a language app streak I'm keeping up
+our vacation itinerary
+a camping trip I'm organizing
+a hiking trail I want to do
+a weekend getaway I'm planning
+my vinyl record collection
+a stamp collection I inherited
+a rock and mineral collection
+a comic book collection
+a vintage postcard collection
+a houseplant collection
+a sneaker collection
+a board game collection
+this month's book club pick
+a reading list for the year
+a podcast I started
+a TV show I'm rewatching
+a video game I'm playing through
+a documentary series I'm working through
+a new laptop
+a new camera
+a smart home setup I'm building
+a 3D printer project
+a drone I'm learning to fly
+our new couch
+a new mattress
+a blanket I'm knitting
+a hammock I strung up
+my new standing desk
+a budget spreadsheet I set up
+a candle I'm making
+a friendship bracelet I'm braiding
+a crossword puzzle habit
+a birdwatching log I keep
+a home aquarium I set up
+a notebook I'm decorating
+a cheese-making experiment
+a beer I'm homebrewing
+a knife I'm restoring
+a vintage typewriter I'm restoring

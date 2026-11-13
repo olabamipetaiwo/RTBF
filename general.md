@@ -213,3 +213,76 @@ Proposed:
 Analysis: Protection, effort, and benefit loss (within each method)
 Test: Mann-Whitney
 Sample: Responses choosing each of the four methods in LS and MS
+
+
+
+
+
+------
+
+add the extra 2 to the table
+disclosure
+artifact
+
+section 3 contians a lot of numbers with just 2 fidnisns- make it more fine-grined maybe we can have mor efindings, make it msmlla or maybe split it
+
+meanignful finding - read it, see hwether i tbrings useful message
+
+
+5.2 too muc parahgroahs, we do not hae to have many sgort pragrpsgs, it makes messiy
+
+make sure a rapraggh i not longer than quarter of a page - too nay shorts apragrpahs makes it messy
+
+
+can w e bring 5.2 to end of methodoly(so people get a clarifeid message of what we are doing), is it an auditign tool 
+
+check wherthet those fihkigetd fininds alighn with what papragrphs
+
+
+xheck if there are iumportant infomraition nto summrized in the fining, if there are , we shoufl add dthem
+
+
+
+nobody seleted  Filing a request - put 4.2.2.2
+
+
+add a foot note to tabe 7, reducr all table cpations
+
+put tables and diagrams in boundaries
+
+
+----
+
+context window by design/same conversation    
+
+rmeove can'tell
+
+
+treat the most effective deletion method
+
+
+deletion request wording
+
+for each dimaneison, cna we use figure to show it ,t hat wordingsd doeent maetter - make i
+
+
+
+split results by data deletion method
+
+methods on horizonatla
+agents on vertical
+
+
+compare same convo woth new convo
+
+--
+
+recall section is tailored by agent
+
+get the same covo sche
+
+
+
+
+
+

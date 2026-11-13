@@ -1,0 +1,11 @@
+.env
+sessions/*
+!sessions/.gitkeep
+results/*
+!results/.gitkeep
+data/state/
+data/*.xlsx
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
